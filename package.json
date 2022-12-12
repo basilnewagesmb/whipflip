@@ -9,10 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-hook/window-size": "^3.0.7",
+    "antd": "^5.0.6",
+    "bootstrap": "^4.5.3",
+    "bootstrap-icons": "^1.9.1",
+    "cdbreact": "^1.5.3",
     "eslint": "8.29.0",
     "eslint-config-next": "13.0.6",
+    "jquery": "^3.6.0",
     "next": "13.0.6",
+    "node-sass": "^7.0.1",
+    "popper.js": "^1.16.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-bootstrap": "^2.4.0",
+    "react-confetti": "^6.1.0",
+    "react-datepicker": "^4.8.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "^6.3.0",
+    "react-slick": "^0.29.0",
+    "react-use-window-size": "^1.0.1",
+    "sass": "^1.56.2"
   }
 }

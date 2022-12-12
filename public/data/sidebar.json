@@ -1,0 +1,63 @@
+[
+    {
+        "title": "About WhipFlip",
+        "icon": "bi-gear-fill",
+        "childs": [
+            {
+                "title": "Company",
+                "icon": "bi-house-fill",
+                "path": "/about"
+            },
+            {
+                "title": "Customer Reviews",
+                "icon": "bi-info-circle-fill",
+                "path": "/reviews"
+            },
+            {
+                "title": "Careers",
+                "icon": "bi-phone-fill",
+                "path": "/careers"
+            }
+        ]
+    },
+    {
+        "title": "How It Works",
+        "icon": "bi-info-circle-fill",
+        "childs": [
+            {
+                "title": "Why Sell to Us?",
+                "path": "/whysellyourcartous"
+            },
+            {
+                "title": "Private Sale or Trading In?",
+                "path": "/privatesale_vs_tradingin"
+            },
+            {
+                "title": "Referrals",
+                "path": "/ourreferralprogram"
+            }
+        ]
+    },
+    {
+        "title": "Support",
+        "icon": "bi-person-fill",
+        "childs": [
+            {
+                "title": "FAQ",
+                "path": "/pagefaq"
+            },
+            {
+                "title": "Blog",
+                "path": "/blog"
+            },
+            {
+                "title": "Chat",
+                "path": "/"
+            },
+            {
+                "title": "Contact Us",
+                "path": "/contactus"
+            }
+        ]
+    }
+]

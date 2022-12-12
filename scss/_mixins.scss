@@ -1,0 +1,67 @@
+@mixin responsive($breakpoint){
+    @if $breakpoint == Forfold{
+        @media only screen and (max-width:280px){
+            @content
+        };
+    }
+    @if $breakpoint == Exsmall330{
+        @media only screen and (max-width:330px){
+            @content
+        };
+    }
+    @if $breakpoint == Exsmall355{
+        @media only screen and (max-width:355px){
+            @content
+        };
+    }
+    @if $breakpoint == Exsmall394{
+        @media only screen and (max-width:394px){
+            @content
+        };
+    }
+  @if $breakpoint == Exsmall{
+      @media only screen and (max-width:474px){
+          @content
+      };
+  }
+  @if $breakpoint == phone{
+      @media only screen and (max-width:768px){
+          @content
+      };
+  }
+  @if $breakpoint == tab-port{
+      @media only screen and (max-width:992px){
+          @content
+      };
+  }
+  @if $breakpoint == tab-port-min{
+    @media only screen and (min-width:992px){
+        @content
+    };
+}
+  @if $breakpoint == tab-port-1024{
+      @media only screen and (max-width:1024px){
+          @content
+      };
+  }
+  @if $breakpoint == device1200{
+      @media only screen and (min-width:1200px){
+          @content
+      };
+  }
+  @if $breakpoint == device1200Max{
+      @media only screen and (max-width:1200px){
+          @content
+      };
+  }
+  @if $breakpoint == tab-land{
+      @media only screen and (max-width:1400px){
+          @content
+      };
+  }
+  @if $breakpoint == big-desktop{
+      @media only screen and (min-width:1800px){
+          @content
+      };
+  }
+}
