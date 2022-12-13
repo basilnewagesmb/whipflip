@@ -1,347 +1,42 @@
-import React from "react";
-import Slider from "react-slick";
-import Head from "next/head";
-function HappyCustomersSlider() {
-  var settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: false,
-          dots: false,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          centerMode: true,
-          focusOnSelect: true,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          centerMode: true,
-          focusOnSelect: true,
-        },
-      },
-    ],
-  };
-  return (
-    <div>
-      <Head>
-        <>
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-          />
-        </>
-      </Head>
-      <div className="happy_customers_list">
-        <div className="container">
-          <Slider {...settings}>
-            <div className="hc_item">
-              <div className="hcItemIn">
-                <div className="hc_head">
-                  <div className="hcIn">
-                    <h2>James Foga</h2>
-                  </div>
-                  <div className="hcstars">
-                    <svg
-                      width="121"
-                      height="24"
-                      viewBox="0 0 121 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M12.5 17.27L18.68 21L17.04 13.97L22.5 9.24L15.31 8.63L12.5 2L9.69 8.63L2.5 9.24L7.96 13.97L6.32 21L12.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M36.5 17.27L42.68 21L41.04 13.97L46.5 9.24L39.31 8.63L36.5 2L33.69 8.63L26.5 9.24L31.96 13.97L30.32 21L36.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M60.5 17.27L66.68 21L65.04 13.97L70.5 9.24L63.31 8.63L60.5 2L57.69 8.63L50.5 9.24L55.96 13.97L54.32 21L60.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M84.5 17.27L90.68 21L89.04 13.97L94.5 9.24L87.31 8.63L84.5 2L81.69 8.63L74.5 9.24L79.96 13.97L78.32 21L84.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M108.5 17.27L114.68 21L113.04 13.97L118.5 9.24L111.31 8.63L108.5 2L105.69 8.63L98.5 9.24L103.96 13.97L102.32 21L108.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="hc_body">
-                  <p>
-                    Great way to sell your vehicle. The whole deal took about 20
-                    min.I was offered a fair price. I receive a check on the
-                    spot. All the people I spoke with were polite and...More
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="hc_item">
-              <div className="hcItemIn">
-                <div className="hc_head">
-                  <div className="hcIn">
-                    <h2>James Foga</h2>
-                  </div>
-                  <div className="hcstars">
-                    <svg
-                      width="121"
-                      height="24"
-                      viewBox="0 0 121 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M12.5 17.27L18.68 21L17.04 13.97L22.5 9.24L15.31 8.63L12.5 2L9.69 8.63L2.5 9.24L7.96 13.97L6.32 21L12.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M36.5 17.27L42.68 21L41.04 13.97L46.5 9.24L39.31 8.63L36.5 2L33.69 8.63L26.5 9.24L31.96 13.97L30.32 21L36.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M60.5 17.27L66.68 21L65.04 13.97L70.5 9.24L63.31 8.63L60.5 2L57.69 8.63L50.5 9.24L55.96 13.97L54.32 21L60.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M84.5 17.27L90.68 21L89.04 13.97L94.5 9.24L87.31 8.63L84.5 2L81.69 8.63L74.5 9.24L79.96 13.97L78.32 21L84.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M108.5 17.27L114.68 21L113.04 13.97L118.5 9.24L111.31 8.63L108.5 2L105.69 8.63L98.5 9.24L103.96 13.97L102.32 21L108.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="hc_body">
-                  <p>
-                    Great way to sell your vehicle. The whole deal took about 20
-                    min.I was offered a fair price. I receive a check on the
-                    spot. All the people I spoke with were polite and...More
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="hc_item">
-              <div className="hcItemIn">
-                <div className="hc_head">
-                  <div className="hcIn">
-                    <h2>James Foga</h2>
-                  </div>
-                  <div className="hcstars">
-                    <svg
-                      width="121"
-                      height="24"
-                      viewBox="0 0 121 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M12.5 17.27L18.68 21L17.04 13.97L22.5 9.24L15.31 8.63L12.5 2L9.69 8.63L2.5 9.24L7.96 13.97L6.32 21L12.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M36.5 17.27L42.68 21L41.04 13.97L46.5 9.24L39.31 8.63L36.5 2L33.69 8.63L26.5 9.24L31.96 13.97L30.32 21L36.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M60.5 17.27L66.68 21L65.04 13.97L70.5 9.24L63.31 8.63L60.5 2L57.69 8.63L50.5 9.24L55.96 13.97L54.32 21L60.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M84.5 17.27L90.68 21L89.04 13.97L94.5 9.24L87.31 8.63L84.5 2L81.69 8.63L74.5 9.24L79.96 13.97L78.32 21L84.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M108.5 17.27L114.68 21L113.04 13.97L118.5 9.24L111.31 8.63L108.5 2L105.69 8.63L98.5 9.24L103.96 13.97L102.32 21L108.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="hc_body">
-                  <p>
-                    Great way to sell your vehicle. The whole deal took about 20
-                    min.I was offered a fair price. I receive a check on the
-                    spot. All the people I spoke with were polite and...More
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="hc_item">
-              <div className="hcItemIn">
-                <div className="hc_head">
-                  <div className="hcIn">
-                    <h2>James Foga</h2>
-                  </div>
-                  <div className="hcstars">
-                    <svg
-                      width="121"
-                      height="24"
-                      viewBox="0 0 121 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M12.5 17.27L18.68 21L17.04 13.97L22.5 9.24L15.31 8.63L12.5 2L9.69 8.63L2.5 9.24L7.96 13.97L6.32 21L12.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M36.5 17.27L42.68 21L41.04 13.97L46.5 9.24L39.31 8.63L36.5 2L33.69 8.63L26.5 9.24L31.96 13.97L30.32 21L36.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M60.5 17.27L66.68 21L65.04 13.97L70.5 9.24L63.31 8.63L60.5 2L57.69 8.63L50.5 9.24L55.96 13.97L54.32 21L60.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M84.5 17.27L90.68 21L89.04 13.97L94.5 9.24L87.31 8.63L84.5 2L81.69 8.63L74.5 9.24L79.96 13.97L78.32 21L84.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M108.5 17.27L114.68 21L113.04 13.97L118.5 9.24L111.31 8.63L108.5 2L105.69 8.63L98.5 9.24L103.96 13.97L102.32 21L108.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="hc_body">
-                  <p>
-                    Great way to sell your vehicle. The whole deal took about 20
-                    min.I was offered a fair price. I receive a check on the
-                    spot. All the people I spoke with were polite and...More
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="hc_item">
-              <div className="hcItemIn">
-                <div className="hc_head">
-                  <div className="hcIn">
-                    <h2>James Foga</h2>
-                  </div>
-                  <div className="hcstars">
-                    <svg
-                      width="121"
-                      height="24"
-                      viewBox="0 0 121 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M12.5 17.27L18.68 21L17.04 13.97L22.5 9.24L15.31 8.63L12.5 2L9.69 8.63L2.5 9.24L7.96 13.97L6.32 21L12.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M36.5 17.27L42.68 21L41.04 13.97L46.5 9.24L39.31 8.63L36.5 2L33.69 8.63L26.5 9.24L31.96 13.97L30.32 21L36.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M60.5 17.27L66.68 21L65.04 13.97L70.5 9.24L63.31 8.63L60.5 2L57.69 8.63L50.5 9.24L55.96 13.97L54.32 21L60.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M84.5 17.27L90.68 21L89.04 13.97L94.5 9.24L87.31 8.63L84.5 2L81.69 8.63L74.5 9.24L79.96 13.97L78.32 21L84.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M108.5 17.27L114.68 21L113.04 13.97L118.5 9.24L111.31 8.63L108.5 2L105.69 8.63L98.5 9.24L103.96 13.97L102.32 21L108.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="hc_body">
-                  <p>
-                    Great way to sell your vehicle. The whole deal took about 20
-                    min.I was offered a fair price. I receive a check on the
-                    spot. All the people I spoke with were polite and...More
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="hc_item">
-              <div className="hcItemIn">
-                <div className="hc_head">
-                  <div className="hcIn">
-                    <h2>James Foga</h2>
-                  </div>
-                  <div className="hcstars">
-                    <svg
-                      width="121"
-                      height="24"
-                      viewBox="0 0 121 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M12.5 17.27L18.68 21L17.04 13.97L22.5 9.24L15.31 8.63L12.5 2L9.69 8.63L2.5 9.24L7.96 13.97L6.32 21L12.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M36.5 17.27L42.68 21L41.04 13.97L46.5 9.24L39.31 8.63L36.5 2L33.69 8.63L26.5 9.24L31.96 13.97L30.32 21L36.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M60.5 17.27L66.68 21L65.04 13.97L70.5 9.24L63.31 8.63L60.5 2L57.69 8.63L50.5 9.24L55.96 13.97L54.32 21L60.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M84.5 17.27L90.68 21L89.04 13.97L94.5 9.24L87.31 8.63L84.5 2L81.69 8.63L74.5 9.24L79.96 13.97L78.32 21L84.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                      <path
-                        d="M108.5 17.27L114.68 21L113.04 13.97L118.5 9.24L111.31 8.63L108.5 2L105.69 8.63L98.5 9.24L103.96 13.97L102.32 21L108.5 17.27Z"
-                        fill="#FFC000"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="hc_body">
-                  <p>
-                    Great way to sell your vehicle. The whole deal took about 20
-                    min.I was offered a fair price. I receive a check on the
-                    spot. All the people I spoke with were polite and...More
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Slider>
-        </div>
-      </div>
-    </div>
-  );
-}
+import React, { useEffect, useRef } from "react";
+import services from "utils/services";
+
+const HappyCustomersSlider = ({ setAttributes }) => {
+  const reviews = useRef(null);
+  useEffect(() => {
+    services.loadScript(`https://apps.elfsight.com/p/platform.js`, () => {
+      const container = document.createElement("div");
+      container.className = "elfsight-app-f3baf688-498f-4c7e-84ba-df8e6c487e36";
+      if (reviews.current.children.length == 0) {
+        reviews.current.appendChild(container);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const count = document.getElementsByClassName(
+        "RatingValue__Container-sc-1eexc2w-0 "
+      )["0"]?.innerText;
+      let avatars = document.getElementsByClassName(
+        "ReviewAvatar__Avatar-sc-1lraoly-2 "
+      );
+      if (count && avatars?.length > 0) {
+        const reviews = {
+          count,
+          avatars,
+        };
+        setAttributes((prev) => ({
+          ...prev,
+          reviews,
+        }));
+        clearInterval(timer);
+      }
+      console.log(count);
+    }, 1000);
+  }, []);
+
+  return <div className="happy_customers_list p-4 " ref={reviews}></div>;
+};
 
 export default HappyCustomersSlider;
