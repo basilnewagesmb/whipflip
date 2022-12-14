@@ -2,13 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import ConfirmOffer from "./confirmeOffer";
-import InstantOffer from "./InstantOffer";
+import InstantOffer from "./instantOffer";
 import Reviews from "./review";
-function HomeBanner({attributes}) {
-  const [showConfirmOffer, setShowConfirmOffer] = useState(false);
-
+import VideoModal from "./videoModal";
+function HomeBanner({ reviews }) {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
   return (
     <div className="home-banner">
+      <VideoModal isVideoOpen={isVideoOpen} setIsVideoOpen={setIsVideoOpen} />
       <div className="container h100">
         <div className="hb_wrapper">
           <div className="row">
@@ -27,16 +28,22 @@ function HomeBanner({attributes}) {
                   </div>
                   <div className="bnr_left_info desk-show">
                     <div className="row">
-                      <Reviews attributes={attributes} />
+                      <Reviews reviews={reviews} />
                       <div className="col-lg-6 accredit_col p-0 bnr_left_points">
                         <div className="acc_left">
-                          <Image
-                            src="/images/acc-text.png"
-                            alt="profile"
-                            title="profile"
-                            width={200}
-                            height={50}
-                          />
+                          <a
+                            href="https://www.bbb.org/us/de/wilmington/profile/used-car-dealers/whipflip-inc-0251-92026602/#sealclick"
+                            target={"_blank"}
+                            rel="noreferrer"
+                          >
+                            <Image
+                              src="/images/acc-text.png"
+                              alt="profile"
+                              title="profile"
+                              width={200}
+                              height={50}
+                            />
+                          </a>
                         </div>
                       </div>
                       <div className="col-lg-12 video_col bnr_left_points">
@@ -47,6 +54,9 @@ function HomeBanner({attributes}) {
                             title="video"
                             width={64}
                             height={36}
+                            onClick={() => {
+                              setIsVideoOpen(true);
+                            }}
                           />
                         </div>
                         <div className="acc_right">
@@ -78,24 +88,30 @@ function HomeBanner({attributes}) {
               <div className="bnr_right">
                 <div className="row justify-content-center">
                   <div className="col-md-12">
-                    <InstantOffer />
-                    <ConfirmOffer />
+                    <InstantOffer  />
+                    {/* <ConfirmOffer /> */}
                   </div>
                 </div>
                 <div className="bnr_left_info mob-show">
                   <div className="row justify-content-center">
                     <div className="col-lg-6 col-sm-6 col-12 review_col bnr_left_points bnr_mob_btm_pts">
-                      <Reviews mob={true} attributes={attributes}/>
+                      <Reviews mob={true} reviews={reviews} />
                     </div>
                     <div className="col-lg-6 col-sm-6 col-12 accredit_col bnr_left_points bnr_mob_btm_pts">
                       <div className="acc_left">
-                        <Image
-                          src="/images/accredit.png"
-                          alt="accredit"
-                          title="accredit"
-                          width={95}
-                          height={36}
-                        />
+                        <a
+                          href="https://www.bbb.org/us/de/wilmington/profile/used-car-dealers/whipflip-inc-0251-92026602/#sealclick"
+                          target={"_blank"}
+                          rel="noreferrer"
+                        >
+                          <Image
+                            src="/images/accredit.png"
+                            alt="accredit"
+                            title="accredit"
+                            width={95}
+                            height={36}
+                          />
+                        </a>
                       </div>
                       <div className="acc_right">
                         <span>BBB Rating: A</span>
@@ -111,6 +127,9 @@ function HomeBanner({attributes}) {
                           title="video"
                           width={64}
                           height={36}
+                          onClick={() => {
+                            setIsVideoOpen(true);
+                          }}
                         />
                       </div>
                       <div className="acc_right">

@@ -8,9 +8,10 @@ import HappyCustomersSlider from "components/home/slider";
 import MetaHead from "components/common/metaHead";
 import { DatePicker } from "antd";
 import HomeBanner from "components/home/banner/index";
-function index() {
-  const [attributes, setAttributes] = useState({});
-  console.log(attributes);
+import { useSelector } from "react-redux";
+import ReadyToSell from "components/common/readytoSell";
+function Index() {
+  const reviews = useSelector((state) => state.reviews);
   const [showConfirmOffer, setShowConfirmOffer] = useState(false);
   const [showRetriveOffer, setShowRetriveOffer] = useState(false);
   const handleShowConfirmOffer = (e) => {
@@ -31,7 +32,7 @@ function index() {
   return (
     <>
       <MetaHead title="Home" />
-      <HomeBanner attributes={attributes} />
+      <HomeBanner reviews={reviews} />
       <div className="how-it-works pt100">
         <div className="container">
           <div className="secHd text-center">
@@ -65,8 +66,8 @@ function index() {
                 <div className="hiw_body">
                   <h2>Get Instant Offer</h2>
                   <p>
-                    Enter your vehicle’s basic details and get an idea of what
-                    your vehicle is worth in seconds!
+                    {`Enter your vehicle’s basic details and get an idea of what
+                    your vehicle is worth in seconds!`}
                   </p>
                 </div>
               </div>
@@ -105,8 +106,8 @@ function index() {
                 <div className="hiw_body">
                   <h2>SOLD!</h2>
                   <p>
-                    Accept our awesome offer and set a time & place to sell.
-                    We’re on our way to buy. That’s it!
+                    {`Accept our awesome offer and set a time & place to sell.
+                    We’re on our way to buy. That’s it!`}
                   </p>
                 </div>
               </div>
@@ -239,9 +240,9 @@ function index() {
                     <div className="si-body">
                       <h2>Trusted & Safe</h2>
                       <p>
-                        No 3rd parties, we are with you all the way. Full
+                        {`No 3rd parties, we are with you all the way. Full
                         breakdown of how your final offer was made and ways to
-                        maximize it. No more "fuzzy" trade-in math!
+                        maximize it. No more "fuzzy" trade-in math!`}
                       </p>
                       <p>
                         <span className="meet_txt">
@@ -307,11 +308,15 @@ function index() {
             </span>
           </h2>
         </div>
-        <HappyCustomersSlider setAttributes={setAttributes}/>
+        <HappyCustomersSlider />
         <div className="moreReviews text-center">
           <span>
             Want to see more raving reviews? Visit our{" "}
-            <a href="#">customers reviews page</a>
+            <Link href={"/reviews"}>
+              <span className="link-primary link_blue">
+                customers reviews page
+              </span>
+            </Link>
           </span>
         </div>
       </div>
@@ -345,38 +350,15 @@ function index() {
           </div>
         </div>
       </div>
-      <div className="ready-to-sell">
-        <div className="container h100">
-          <div className="row h100">
-            <div className="col-lg-7 align-self-center">
-              <div className="relHd text-center">
-                <h2>Ready to Sell?</h2>
-                <p>We are ready to buy now, at your door, and on your time!</p>
-                <button className="sell_car_btn">GET INSTANT OFFER</button>
-              </div>
-            </div>
-            <div className="col-lg-5 align-self-end">
-              <div className="rts-rtImg">
-                <Image
-                  src="/images/sell_to_customer.png"
-                  alt="Ready to Sell"
-                  title="Ready to Sell"
-                  width={450}
-                  height={395}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ReadyToSell />
       <div className="sell-car-info">
         <div className="container">
           <div className="row">
             <div className="col-lg-10 colsciLeft">
               <div className="sciLeft sellCarTxt">
                 <h2>
-                  <span>"There has to be a better</span>
-                  <span> way to sell my car!"</span>
+                  <span>{`"There has to be a better`}</span>
+                  <span>{`way to sell my car!"`}</span>
                 </h2>
                 <p>
                   The process of selling a car still remains very difficult and
@@ -470,4 +452,4 @@ function index() {
   );
 }
 
-export default index;
+export default Index;

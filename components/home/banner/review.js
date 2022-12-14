@@ -3,23 +3,23 @@ import Image from "next/image";
 import { Rate } from "antd";
 import React from "react";
 
-function Reviews({ mob, attributes }) {
+function Reviews({ mob, reviews }) {
   if (mob) {
     return (
       <div className="reviewRt_info">
-        {attributes?.reviews?.count && (
+        {reviews?.count && (
           <Rate
             allowHalf
             disabled
-            defaultValue={parseFloat(attributes?.reviews?.count)}
+            defaultValue={parseFloat(reviews?.count)}
           />
         )}
-        {!attributes?.reviews?.count && (
+        {!reviews?.count && (
           <Rate allowHalf disabled defaultValue={5} />
         )}
         <div className="revDetail">
           <span>
-            {attributes?.reviews?.count || 5}/5 in <b>Google</b> reviews
+            {reviews?.count || 5}/5 in <b>Google</b> reviews
           </span>
         </div>
       </div>
@@ -33,13 +33,13 @@ function Reviews({ mob, attributes }) {
           className="reviewLt_icons"
         >
           <div className="c-profile__list">
-            {attributes?.reviews?.avatars &&
-              Array.from(attributes?.reviews?.avatars)?.map(
+            {reviews?.avatars &&
+              reviews?.avatars?.map(
                 (img, i) =>
                   i < 3 && (
-                    <span className="c-profile">
+                    <span className="c-profile" key={i}>
                       <img
-                        src={img?.src}
+                        src={img}
                         alt="profile"
                         title="profile"
                         width={40}
@@ -51,19 +51,19 @@ function Reviews({ mob, attributes }) {
           </div>
         </article>
         <div className="reviewRt_info">
-          {attributes?.reviews?.count && (
+          {reviews?.count && (
             <Rate
               allowHalf
               disabled
-              defaultValue={parseFloat(attributes?.reviews?.count)}
+              defaultValue={parseFloat(reviews?.count)}
             />
           )}
-          {!attributes?.reviews?.count && (
+          {!reviews?.count && (
             <Rate allowHalf disabled defaultValue={5} />
           )}
           <div className="revDetail">
             <span>
-              {attributes?.reviews?.count || 5}/5 in <b>Google</b> reviews
+              {reviews?.count || 5}/5 in <b>Google</b> reviews
             </span>
           </div>
         </div>

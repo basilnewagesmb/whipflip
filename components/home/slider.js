@@ -1,7 +1,10 @@
+import { setReviews } from "features/reviews/reviewsSlice";
 import React, { useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
 import services from "utils/services";
 
-const HappyCustomersSlider = ({ setAttributes }) => {
+const HappyCustomersSlider = () => {
+  const dispatch = useDispatch();
   const reviews = useRef(null);
   useEffect(() => {
     services.loadScript(`https://apps.elfsight.com/p/platform.js`, () => {
@@ -12,27 +15,23 @@ const HappyCustomersSlider = ({ setAttributes }) => {
       }
     });
   }, []);
-
   useEffect(() => {
     const timer = setInterval(() => {
       const count = document.getElementsByClassName(
         "RatingValue__Container-sc-1eexc2w-0 "
       )["0"]?.innerText;
-      let avatars = document.getElementsByClassName(
-        "ReviewAvatar__Avatar-sc-1lraoly-2 "
-      );
+      let avatars = Array.from(
+        document.getElementsByClassName("ReviewAvatar__Avatar-sc-1lraoly-2 ")
+      ).map((img) => img.src);
       if (count && avatars?.length > 0) {
-        const reviews = {
-          count,
-          avatars,
-        };
-        setAttributes((prev) => ({
-          ...prev,
-          reviews,
-        }));
+        dispatch(
+          setReviews({
+            count,
+            avatars,
+          })
+        );
         clearInterval(timer);
       }
-      console.log(count);
     }, 1000);
   }, []);
 

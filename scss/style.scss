@@ -11,7 +11,13 @@
 ::-webkit-scrollbar {
   width: 5px;
 }
-
+.link_blue {
+  color: #4381c0 !important;
+}
+.ant-select-selector {
+  height: 50px !important;
+  padding: 3px 11px !important;
+}
 /* Track */
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
