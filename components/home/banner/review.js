@@ -2,21 +2,16 @@ import Stars from "components/common/star";
 import Image from "next/image";
 import { Rate } from "antd";
 import React from "react";
+import ShimmerImage from "components/common/shimmerImage";
 
 function Reviews({ mob, reviews }) {
   if (mob) {
     return (
       <div className="reviewRt_info">
         {reviews?.count && (
-          <Rate
-            allowHalf
-            disabled
-            defaultValue={parseFloat(reviews?.count)}
-          />
+          <Rate allowHalf disabled defaultValue={parseFloat(reviews?.count)} />
         )}
-        {!reviews?.count && (
-          <Rate allowHalf disabled defaultValue={5} />
-        )}
+        {!reviews?.count && <Rate allowHalf disabled defaultValue={5} />}
         <div className="revDetail">
           <span>
             {reviews?.count || 5}/5 in <b>Google</b> reviews
@@ -38,13 +33,16 @@ function Reviews({ mob, reviews }) {
                 (img, i) =>
                   i < 3 && (
                     <span className="c-profile" key={i}>
-                      <img
+                      <ShimmerImage
                         src={img}
-                        alt="profile"
+                        alt="a"
                         title="profile"
                         width={40}
                         height={40}
+                        preview={false}
+                        fallback={"/images/personFallback.jpg"}
                       />
+                      {img}
                     </span>
                   )
               )}
@@ -58,9 +56,7 @@ function Reviews({ mob, reviews }) {
               defaultValue={parseFloat(reviews?.count)}
             />
           )}
-          {!reviews?.count && (
-            <Rate allowHalf disabled defaultValue={5} />
-          )}
+          {!reviews?.count && <Rate allowHalf disabled defaultValue={5} />}
           <div className="revDetail">
             <span>
               {reviews?.count || 5}/5 in <b>Google</b> reviews

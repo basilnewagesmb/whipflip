@@ -3,33 +3,19 @@ import { Select, Button, Form } from "antd";
 import React, { useState } from "react";
 import InfoIcon from "components/common/infoIcon";
 import TrimModal from "./trimModal";
-import {
-  useGetMakesQuery,
-  useGetModelsQuery,
-  useGetTrimsQuery,
-  useGetYearsQuery,
-} from "services/vehicle/api";
 import useVehicleForm from "services/vehicle/function";
-
+import PoweredBy from "components/common/poweredBy";
 function InstantOffer() {
   const [isTrimOpen, setIsTrimOpen] = useState(false);
   const [form] = Form.useForm();
-  const { onFinish, year, model, make, trim } = useVehicleForm(form);
-  console.log(year, model, make, trim);
+  const { onFinish, year, model, make, trim, setThisOpen, isDisable } =
+    useVehicleForm(form);
   return (
     <div className="card card-outline-secondary home-form">
       <TrimModal isTrimOpen={isTrimOpen} setIsTrimOpen={setIsTrimOpen} />
       <div className="get_offer_banner">
         <div className="form_top">
-          <div className="poweredBy">
-            <Image
-              src="/images/jd.svg"
-              alt="poweredBy"
-              title="poweredBy"
-              width={180}
-              height={20}
-            />
-          </div>
+          <PoweredBy />
           <div className="form_head">
             <h2>Get a REAL offer in seconds!</h2>
             <p>Enter your vehicles details:</p>
@@ -49,6 +35,9 @@ function InstantOffer() {
                     }))}
                     allowClear
                     placeholder="Year"
+                    disabled={year?.isDisable()}
+                    loading={year?.isDisable()}
+                    onChange={year?.onChange}
                   />
                 </Form.Item>
               </div>
@@ -65,6 +54,13 @@ function InstantOffer() {
                     }))}
                     allowClear
                     placeholder="Make"
+                    disabled={make?.isDisable()}
+                    loading={make?.values?.isFetching}
+                    onChange={make?.onChange}
+                    open={make?.isOpen()}
+                    onClick={() => {
+                      !make?.isOpen() && setThisOpen("make");
+                    }}
                   />
                 </Form.Item>
               </div>
@@ -81,6 +77,13 @@ function InstantOffer() {
                     }))}
                     allowClear
                     placeholder="Model"
+                    disabled={model?.isDisable()}
+                    loading={model?.values?.isFetching}
+                    onChange={model?.onChange}
+                    open={model?.isOpen()}
+                    onClick={() => {
+                      !model?.isOpen() && setThisOpen("model");
+                    }}
                   />
                 </Form.Item>
               </div>
@@ -96,17 +99,30 @@ function InstantOffer() {
                       label: i.body,
                     }))}
                     allowClear
-                    placeholder="Model"
+                    placeholder="Trim/Series"
+                    disabled={trim?.isDisable()}
+                    loading={trim?.values?.isFetching}
+                    onChange={trim?.onChange}
+                    open={trim?.isOpen()}
+                    onClick={() => {
+                      !trim?.isOpen() && setThisOpen("trim");
+                    }}
                   />
                 </Form.Item>
-                <div
-                  className="toKnow"
-                  onClick={() => {
-                    setIsTrimOpen(true);
-                  }}
-                >
-                  <InfoIcon />
-                  <span className="btn p-0 m-0">What is a Trim?</span>
+                <div className="toKnow">
+                  <InfoIcon
+                    onClick={() => {
+                      setIsTrimOpen(true);
+                    }}
+                  />
+                  <span
+                    className="btn p-0 m-0"
+                    onClick={() => {
+                      setIsTrimOpen(true);
+                    }}
+                  >
+                    What is a Trim?
+                  </span>
                 </div>
               </div>
             </div>
@@ -119,7 +135,7 @@ function InstantOffer() {
                     height: "unset",
                   }}
                   type="text"
-                  disabled={false}
+                  disabled={isDisable}
                 >
                   <span>Get Instant Offer</span>
                 </Button>

@@ -1,4 +1,5 @@
 import { Form } from "antd";
+import { useRouter } from "node_modules/next/router";
 import React, { useEffect, useState } from "react";
 import {
   useGetMakesQuery,
@@ -7,39 +8,52 @@ import {
   useGetYearsQuery,
 } from "services/vehicle/api";
 function useVehicleForm(form) {
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
   const year = Form.useWatch("year", form);
   const make = Form.useWatch("make", form);
   const model = Form.useWatch("model", form);
   const trim = Form.useWatch("trim", form);
-  //   const { data: years } = useGetYearsQuery();
-  //   const { data: makes } = useGetMakesQuery(year, {
-  //     skip: !year,
-  //   });
-  //   const { data: models } = useGetModelsQuery(
-  //     { make, year },
-  //     {
-  //       skip: !make || !year,
-  //     }
-  //   );
-  const { data: trims } = useGetTrimsQuery(
-    { make, year, model },
-    {
-      skip: !make || !year || !model,
-    }
-  );
+
   const onFinish = (values) => {
-    console.log("Success:", values);
+    router.push({
+      pathname: "/offer/[id]",
+      query: { id: 6084956 },
+    });
   };
   const formDate = {
     year: {
       values: useGetYearsQuery(),
-      value: year,
+      isOpen: null,
+      isDisable: () => {
+        return formDate?.year.values.isFetching;
+      },
+      onChange: (e) => {
+        form.setFieldsValue({
+          make: null,
+          model: null,
+          trim: null,
+        });
+        setOpen("make");
+      },
     },
     make: {
       values: useGetMakesQuery(year, {
         skip: !year,
       }),
-      value: year,
+      isOpen: () => {
+        return open == "make";
+      },
+      isDisable: () => {
+        return formDate?.make.values.isFetching || !year;
+      },
+      onChange: (e) => {
+        form.setFieldsValue({
+          model: null,
+          trim: null,
+        });
+        setOpen("model");
+      },
     },
     model: {
       values: useGetModelsQuery(
@@ -48,7 +62,18 @@ function useVehicleForm(form) {
           skip: !make || !year,
         }
       ),
-      value: model,
+      isOpen: () => {
+        return open == "model";
+      },
+      isDisable: () => {
+        return formDate?.model.values.isFetching || !make;
+      },
+      onChange: (e) => {
+        form.setFieldsValue({
+          trim: null,
+        });
+        setOpen("trim");
+      },
     },
     trim: {
       values: useGetTrimsQuery(
@@ -57,13 +82,23 @@ function useVehicleForm(form) {
           skip: !make || !year || !model,
         }
       ),
-      value: trim,
+      isOpen: () => {
+        return open == "trim";
+      },
+      isDisable: () => {
+        return formDate?.trim.values.isFetching || !model;
+      },
+      onChange: (e) => {
+        setOpen(false);
+      },
     },
     onFinish,
+    setThisOpen: (type) => {
+      setOpen(type);
+    },
+    // isDisable: !year || !make || !model || !trim,
+    isDisable:false
   };
-  //   useEffect(() => {
-  //     setFormData({ year });
-  //   }, [year]);
 
   return formDate;
 }

@@ -12,6 +12,7 @@
     "@react-hook/window-size": "^3.0.7",
     "@reduxjs/toolkit": "^1.9.1",
     "antd": "^5.0.6",
+    "aos": "^2.3.4",
     "bootstrap": "^4.5.3",
     "bootstrap-icons": "^1.9.1",
     "cdbreact": "^1.5.3",
