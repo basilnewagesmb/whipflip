@@ -7,6 +7,7 @@ import Sidebar from "./Sidebar";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "node_modules/next/router";
+import InstantOffer from "components/home/banner/instantOffer";
 function Header() {
   const { pathname } = useRouter();
   const [scroll, setScroll] = useState(false);
@@ -21,7 +22,7 @@ function Header() {
   });
   return (
     <div className="whipflip-header">
-      {pathname == "/offer" ? (
+      {pathname == "/offer/[id]" ? (
         <div className="offer_header">
           <div className="offer_header_in">
             <div className="oh_logo">
@@ -107,97 +108,7 @@ function Header() {
                   </Nav>
                 </Navbar.Collapse>
               ) : (
-                <>
-                  <div className="vehicleDetailNav">
-                    <div className="vdnHd">
-                      <div className="vdnHdIn">
-                        <span>Enter vehicle details</span>
-                        <span>for an instant offer.</span>
-                      </div>
-                    </div>
-                    <div className="vdnForm">
-                      <div className="vdnForm_fields">
-                        <form autoComplete="off" className="form" role="form">
-                          <div className="vdn_frm_flds">
-                            <div className="form-group row vdn_grp_row">
-                              <div className="col-lg-12">
-                                <select
-                                  className="form-control firstSelect"
-                                  id="user_time_zone"
-                                  size="0"
-                                >
-                                  <option value="Hawaii">Year</option>
-                                  <option value="Alaska">
-                                    (GMT-09:00) Alaska
-                                  </option>
-                                </select>
-                              </div>
-                            </div>
-                            <div className="form-group row vdn_grp_row">
-                              <div className="col-lg-12">
-                                <select
-                                  className="form-control"
-                                  id="user_time_zone"
-                                  size="0"
-                                >
-                                  <option value="Hawaii">Make</option>
-                                  <option value="Alaska">
-                                    (GMT-09:00) Alaska
-                                  </option>
-                                </select>
-                              </div>
-                            </div>
-                            <div className="form-group row vdn_grp_row">
-                              <div className="col-lg-12">
-                                <select
-                                  className="form-control"
-                                  id="user_time_zone"
-                                  size="0"
-                                >
-                                  <option value="Hawaii">Model</option>
-                                  <option value="Alaska">
-                                    (GMT-09:00) Alaska
-                                  </option>
-                                </select>
-                              </div>
-                            </div>
-                            <div className="form-group row vdn_grp_row">
-                              <div className="col-lg-12">
-                                <select
-                                  className="form-control lastSelect"
-                                  id="user_time_zone"
-                                  size="0"
-                                >
-                                  <option value="Hawaii">Trim/Series</option>
-                                  <option value="Alaska">
-                                    (GMT-09:00) Alaska
-                                  </option>
-                                </select>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="form-group row vdn_grp_row">
-                            <div className="col-lg-12">
-                              <input
-                                className="btn btn-secondary getOfferBtn nav_getOfferBtn"
-                                type="reset"
-                                value="Get Instant Offer"
-                              />
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                    <div
-                      className="hambergerMenu scrollHamberger"
-                      onClick={handleShowSideBar}
-                    >
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </div>
-                  </div>
-                </>
+                <InstantOffer header handleShowSideBar={handleShowSideBar} />
               )}
             </Navbar>
           </div>

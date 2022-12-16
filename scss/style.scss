@@ -14,9 +14,13 @@
 .link_blue {
   color: #4381c0 !important;
 }
-.ant-select-selector {
+.home-form .ant-select-selector {
   height: 50px !important;
   padding: 3px 11px !important;
+}
+.vehicleDetailNav .ant-select-selector {
+  border-radius: 0 !important;
+  overflow: hidden !important;
 }
 /* Track */
 ::-webkit-scrollbar-track {
@@ -1507,7 +1511,7 @@ ul.form-stepper li a .form-stepper-circle {
     margin: 0;
     margin-top: 10px;
     label {
-      display: block;
+      display: flex;
       margin-bottom: 5px;
     }
     select {
@@ -1525,20 +1529,6 @@ ul.form-stepper li a .form-stepper-circle {
       @include responsive(tab-port) {
         padding: 10px 0.75rem;
         height: auto;
-      }
-    }
-    input {
-      background: #f8f8fb;
-      border: none;
-      width: 100%;
-      background: #f8f8fb;
-      border: 1px solid #d5d5dc;
-      border-radius: 4px;
-      padding: 5px 15px;
-      outline: 0;
-      font-size: 14px;
-      @include responsive(tab-port) {
-        padding: 10px 15px;
       }
     }
   }
@@ -5616,4 +5606,30 @@ label.lblipt {
 
 .HeaderContainer__Inner-sc-pny2b8-0 {
   display: none !important ;
+}
+
+.color_card {
+  width: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d5d5dc;
+  border-radius: 4px;
+  flex-direction: column;
+}
+.color_dot {
+  list-style: none;
+  color: #605f6e !important;
+  font-size: 16px;
+  line-height: 30px;
+  font-weight: 400;
+  text-align: inherit;
+  white-space: nowrap;
+  box-sizing: border-box;
+  overflow: unset !important;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: block;
+  background-color: rgb(0, 0, 0);
 }

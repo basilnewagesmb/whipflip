@@ -18,7 +18,7 @@ function useVehicleForm(form) {
   const onFinish = (values) => {
     router.push({
       pathname: "/offer/[id]",
-      query: { id: 6084956 },
+      query: { id: trim },
     });
   };
   const formDate = {
@@ -96,8 +96,7 @@ function useVehicleForm(form) {
     setThisOpen: (type) => {
       setOpen(type);
     },
-    // isDisable: !year || !make || !model || !trim,
-    isDisable:false
+    isDisable: !year || !make || !model || !trim,
   };
 
   return formDate;
