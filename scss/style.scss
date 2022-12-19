@@ -5016,11 +5016,20 @@ span.opicon {
 .border_for_white.color_dot {
   border: 1px solid #000000;
 }
+.color_picker.show .color_list .color_item.active {
+  border: 1px solid #007bffc7;
+  background: #007bff0a;
+}
+.ant-form-item-has-error {
+  .color_picker_toggle {
+    border-color: red !important;
+  }
+}
 .color_picker {
   .color_picker_toggle {
-    background-color: #f8f8fb !important;
+    background-color: #f8f8fb00 !important;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     color: #8d8c9d;
     width: 100%;
     display: flex;
@@ -5028,6 +5037,7 @@ span.opicon {
     justify-content: space-between;
     height: 40px;
     border: 1px solid #d5d5dc;
+    font-size: inherit;
     & span:first-child {
       display: none;
     }
@@ -5115,6 +5125,9 @@ h2.hooray_hd {
 }
 .miles {
   display: block;
+}
+.confirm-model .ant-modal-confirm-body {
+  justify-content: center;
 }
 .stepper_list {
   display: flex;
@@ -5632,4 +5645,9 @@ label.lblipt {
   border-radius: 50%;
   display: block;
   background-color: rgb(0, 0, 0);
+}
+
+.h-0 .ant-form-item-control-input {
+  min-height: 0 !important ;
+  height: 0 !important;
 }

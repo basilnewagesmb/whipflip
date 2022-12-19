@@ -34,7 +34,6 @@ const HappyCustomersSlider = () => {
       }
     }, 1000);
   }, []);
-
   return <div className="happy_customers_list p-4 " ref={reviews}></div>;
 };
 

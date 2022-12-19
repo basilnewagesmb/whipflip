@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 import Image from "next/image";
@@ -6,12 +6,20 @@ import Link from "next/link";
 import Faq from "components/home/faq";
 import HappyCustomersSlider from "components/home/slider";
 import MetaHead from "components/common/metaHead";
-import { DatePicker } from "antd";
 import HomeBanner from "components/home/banner/index";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ReadyToSell from "components/common/readytoSell";
-function Index() {
+import { useRouter } from "node_modules/next/router";
+import { initialize } from "features/site/siteSlice";
+function Index(props) {
+  const { query } = useRouter();
+  const dispatch = useDispatch();
   const reviews = useSelector((state) => state.reviews);
+  useEffect(() => {
+    ga(function () {
+      dispatch(initialize(query));
+    });
+  }, [query]);
   const [showConfirmOffer, setShowConfirmOffer] = useState(false);
   const [showRetriveOffer, setShowRetriveOffer] = useState(false);
   const handleShowConfirmOffer = (e) => {

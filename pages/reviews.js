@@ -25,7 +25,7 @@ function Reviews() {
               </picture>
               <p>Hear It from of Thousands of Raving Customers</p>
               <p className="reviewTxt">
-                {reviews.count}/5 in recent{" "}
+                {reviews?.count}/5 in recent{" "}
                 <span>
                   <picture>
                     <Image

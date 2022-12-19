@@ -5,17 +5,24 @@ import { persistReducer, persistStore } from "redux-persist";
 // features
 import reviewsSlice from "features/reviews/reviewsSlice";
 import offerSlice from "features/offer/offerSlice";
+import siteSlice from "features/site/siteSlice";
+//
+
 // APIS
 import { vehicle } from "services/vehicle/api";
+import { offerApi } from "services/offer.js/api";
+//
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["reviews","offer"],
+  whitelist: ["reviews", "offer", "site"],
 };
 const rootReducer = combineReducers({
   reviews: reviewsSlice,
   offer: offerSlice,
+  site: siteSlice,
   [vehicle.reducerPath]: vehicle.reducer,
+  [offerApi.reducerPath]: offerApi.reducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const store = configureStore({
@@ -23,7 +30,9 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
-    }).concat(vehicle.middleware),
+    })
+      .concat(vehicle.middleware)
+      .concat(offerApi.middleware),
 });
 
 export const persister = persistStore(store);

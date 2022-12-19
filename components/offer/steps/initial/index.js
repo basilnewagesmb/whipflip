@@ -1,22 +1,28 @@
 import { Clock, DisLike, Like, SandClock } from "components/common/icons";
-import InfoIcon from "components/common/infoIcon";
 import MetaHead from "components/common/metaHead";
-import { Form, Button, Input, Select, InputNumber } from "antd";
+import { Form, Button, Input, Select, InputNumber, Modal } from "antd";
 import React from "react";
 import { useSelector } from "react-redux";
 import { InfoCircleOutlined } from "@ant-design/icons";
-import useCheckMobile from "utils/useCheckMobile";
+import useCheckMobile from "utils/checkMobile";
+import ColorSelect from "./web/colorSelect";
+import useInitialForm from "services/offer.js/function";
+import SpeedoMeter from "components/anim/speed";
+import Script from "node_modules/next/script";
 const { Option } = Select;
 
-function Initial() {
+function Initial({ data }) {
   const isMobile = useCheckMobile();
   const { current, steps } = useSelector((state) => state.offer);
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
+  const [form] = Form.useForm();
+  const {
+    onFinish,
+    onFinishFailed,
+    mileageOnblur,
+    initialValues,
+    breakDownPop,
+  } = useInitialForm(form, data);
+
   return (
     <div>
       <MetaHead title={steps[current].title} />
@@ -24,13 +30,12 @@ function Initial() {
         <Form
           layout={"vertical"}
           name={steps[current].name}
-          initialValues={{
-            remember: true,
-          }}
+          form={form}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           autoComplete="off"
           requiredMark={false}
+          initialValues={initialValues}
         >
           <div className="offer_right">
             <div className="or_head">
@@ -60,6 +65,7 @@ function Initial() {
                           className="w-100"
                           placeholder="Enter Mileage"
                           min={0}
+                          onBlur={mileageOnblur}
                         />
                       </Form.Item>
                     </div>
@@ -77,123 +83,117 @@ function Initial() {
                           },
                         ]}
                       >
-                        <Select
-                          defaultValue="lucy"
-                          size="large"
-                          className="w-100 row m-0 color_list"
-                          placeholder="Enter Mileage"
-                        >
-                          <Option className="color_card" value="china" label="China">
-                            <div className="d-flex flex-column align-items-center justify-content-center">
-                              <div className="dropItemSpn">
-                                <span
-                                  style={{ backgroundColor: "red" }}
-                                  className="color_dot"
-                                ></span>
-                              </div>
-                              <span>value</span>
-                            </div>
-                          </Option>
-                          <Option className="color_card" value="china" label="China">
-                            <div className="d-flex flex-column align-items-center justify-content-center">
-                              <div className="dropItemSpn">
-                                <span
-                                  style={{ backgroundColor: "red" }}
-                                  className="color_dot"
-                                ></span>
-                              </div>
-                              <span>value</span>
-                            </div>
-                          </Option>
-                        </Select>
-                        
+                        <ColorSelect form={form} />
                       </Form.Item>
                     </div>
                   </div>
                   <div className="form-group row ob_frm_row">
                     <div className="col-lg-12 p-0">
-                      <label htmlFor="">Transmission</label>
-                      <div className="chooseBlock selector row selectorRow">
-                        <div className="selecotr-item col-lg-6 p-0">
-                          <input
-                            type="radio"
-                            id="radio1"
-                            name="selector"
-                            className="selector-item_radio"
-                            defaultChecked
-                          />
-                          <label
-                            htmlFor="radio1"
-                            className="selector-item_label"
-                          >
-                            Automatic
-                          </label>
-                        </div>
-                        <div className="selecotr-item col-lg-6 pr-0">
-                          <input
-                            type="radio"
-                            id="radio2"
-                            name="selector"
-                            className="selector-item_radio"
-                          />
-                          <label
-                            htmlFor="radio2"
-                            className="selector-item_label"
-                          >
-                            Manual (i.e. Stick Shift)
-                          </label>
-                        </div>
-                      </div>
+                      <label htmlFor=""></label>
+                      <Form.Item
+                        label="Transmission"
+                        name="transmission"
+                        className="m-0 w-100"
+                      >
+                        <div className="chooseBlock selector row selectorRow">
+                          <div className="selecotr-item col-lg-6 p-0">
+                            <input
+                              type="radio"
+                              id="radio1"
+                              name="selector"
+                              className="selector-item_radio"
+                              defaultChecked
+                              onChange={() => {
+                                form.setFieldsValue({
+                                  transmission: "automatic",
+                                });
+                              }}
+                            />
+                            <label
+                              htmlFor="radio1"
+                              className="selector-item_label"
+                            >
+                              Automatic
+                            </label>
+                          </div>
+                          <div className="selecotr-item col-lg-6 pr-0">
+                            <input
+                              type="radio"
+                              id="radio2"
+                              name="selector"
+                              className="selector-item_radio"
+                              onChange={() => {
+                                form.setFieldsValue({
+                                  transmission: "manual",
+                                });
+                              }}
+                            />
+                            <label
+                              htmlFor="radio2"
+                              className="selector-item_label"
+                            >
+                              Manual (i.e. Stick Shift)
+                            </label>
+                          </div>
+                        </div>{" "}
+                      </Form.Item>
                     </div>
                   </div>
                   <div className="form-group row ob_frm_row">
                     <div className="col-lg-12 p-0">
-                      <label htmlFor="">
-                        Does the vehicle start and drive?
-                      </label>
-                      <div className="chooseBlock selector row selectorRow">
-                        <div className="selecotr-item col-lg-6 p-0">
-                          <input
-                            type="radio"
-                            id="yes"
-                            name="selector1"
-                            className="selector-item_radio"
-                            defaultChecked
-                          />
-                          <label
-                            htmlFor="yes"
-                            className="selector-item_label labelflexCenter"
+                      <Form.Item
+                        label="Does the vehicle start and drive?"
+                        name="does_vehicle_start"
+                        className="m-0 w-100"
+                      >
+                        <div className="chooseBlock selector row selectorRow">
+                          <div className="selecotr-item col-lg-6 p-0">
+                            <input
+                              type="radio"
+                              id="yes"
+                              name="selector1"
+                              className="selector-item_radio"
+                              defaultChecked
+                            />
+                            <label
+                              htmlFor="yes"
+                              className="selector-item_label labelflexCenter"
+                            >
+                              <Like />
+                              <span>Yes</span>
+                            </label>
+                          </div>
+                          <div
+                            className="selecotr-item col-lg-6 pr-0"
+                            onClick={() => breakDownPop()}
                           >
-                            <Like />
-                            <span>Yes</span>
-                          </label>
+                            <input
+                              type="radio"
+                              id="no"
+                              name="selector1"
+                              className="selector-item_radio"
+                              disabled
+                            />
+                            <label
+                              htmlFor="no"
+                              className="selector-item_label labelflexCenter"
+                            >
+                              <DisLike /> <span>No</span>
+                            </label>
+                          </div>
                         </div>
-                        <div className="selecotr-item col-lg-6 pr-0">
-                          <input
-                            type="radio"
-                            id="no"
-                            name="selector1"
-                            className="selector-item_radio"
-                          />
-                          <label
-                            htmlFor="no"
-                            className="selector-item_label labelflexCenter"
-                          >
-                            <DisLike /> <span>No</span>
-                          </label>
-                        </div>
-                      </div>
+                      </Form.Item>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="offer_block">
+            <div className="offer_block border-0">
               <div className="ob_hd">
                 <h2>Where can we send your offer?</h2>
               </div>
               <div className="offer_block-body">
-                <form autoComplete="off" className="form" role="form">
+                <div className="form">
                   <div className="form-group row ob_frm_row">
                     <div className="col-lg-6 p-0">
                       <Form.Item
@@ -321,56 +321,43 @@ function Initial() {
                   </div>
                   <div className="form-group row ob_frm_row">
                     <div className="col-lg-12 p-0">
-                      <label htmlFor="">When are you selling your car?</label>
+                      <Form.Item
+                        label="When are you selling your car?"
+                        name="readiness_uid"
+                        className="m-0 w-100 h-0"
+                      >
+                        <Input hidden className="d-none" />
+                      </Form.Item>
                       <div className="chooseBlock selector row selectorRow rowSell">
-                        <div className="sellItemChoose">
-                          <input
-                            type="radio"
-                            id="sl1"
-                            name="sl1"
-                            className="selector-item_radio"
-                            defaultChecked
-                          />
-                          <label
-                            htmlFor="sl1"
-                            className="selector-item_label labelflexCenter"
+                        {data?.readiness?.map((item, i) => (
+                          <div
+                            className="sellItemChoose"
+                            onClick={() => {
+                              form.setFieldValue("readiness_uid", item.uid);
+                            }}
+                            key={item.uid}
                           >
-                            <Clock /> <span>ASAP!</span>
-                          </label>
-                        </div>
-                        <div className="sellItemChoose">
-                          <input
-                            type="radio"
-                            id="sl2"
-                            name="sl1"
-                            className="selector-item_radio"
-                          />
-                          <label
-                            htmlFor="sl2"
-                            className="selector-item_label labelflexCenter"
-                          >
-                            <SandClock />
-                            <span>In a Few Weeks</span>
-                          </label>
-                        </div>
-                        <div className="sellItemChoose">
-                          <input
-                            type="radio"
-                            id="sl3"
-                            name="sl1"
-                            className="selector-item_radio"
-                          />
-                          <label
-                            htmlFor="sl3"
-                            className="selector-item_label labelflexCenter"
-                          >
-                            <span>Maybe Later...</span>
-                          </label>
-                        </div>
+                            <input
+                              type="radio"
+                              id={item.uid}
+                              name="readiness"
+                              className="selector-item_radio"
+                              defaultChecked={i == 0}
+                            />
+                            <label
+                              htmlFor={item.uid}
+                              className="selector-item_label labelflexCenter"
+                            >
+                              {item.name == "A FEW WEEKS" && <SandClock />}
+                              {item.name == "ASAP!" && <Clock />}
+                              <span>{item.name}</span>
+                            </label>
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
             <div className="initial_order_btn">

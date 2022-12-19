@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SideBar from "components/offer/sideBar.js/index";
 import Initial from "components/offer/steps/initial/index";
-import { useSelector } from "react-redux";
-import useCheckMobile from "utils/useCheckMobile";
-function offer({ data }) {
+import { useDispatch, useSelector } from "react-redux";
+import useCheckMobile from "utils/checkMobile";
+import { useRouter } from "node_modules/next/router";
+import { initialize } from "features/site/siteSlice";
+function Offer({ data }) {
+  const { query } = useRouter();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    ga(function () {
+      dispatch(initialize(query));
+    });
+  }, [query]);
   const isMobile = useCheckMobile();
   const { current } = useSelector((state) => state.offer);
   return (
@@ -12,7 +21,7 @@ function offer({ data }) {
         <div className="row">
           <SideBar data={data} />
           <div className={!isMobile ? "col-lg-8" : ""}>
-            {current == 0 && <Initial />}
+            {current == 0 && <Initial data={data} />}
           </div>
         </div>
       </div>
@@ -28,4 +37,4 @@ export async function getServerSideProps({ res, query }) {
   return { props: { data } };
 }
 
-export default offer;
+export default Offer;

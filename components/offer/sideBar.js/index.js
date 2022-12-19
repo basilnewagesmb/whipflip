@@ -1,5 +1,5 @@
 import React from "react";
-import useCheckMobile from "utils/useCheckMobile";
+import useCheckMobile from "utils/checkMobile";
 import AverageInfo from "./averageInfo";
 import CarInfo from "./carInfo";
 import OfferInfo from "./offerInfo";

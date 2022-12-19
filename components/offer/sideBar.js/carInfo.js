@@ -9,7 +9,7 @@ function CarInfo({ data, isShow }) {
         <div className="itemImg d-flex align-items-center justify-content-center flex-column">
           {/* <PoweredBy /> */}
           <ShimmerImage
-            src={data?.stills[0]?.image}
+            src={data?.stills?.[0]?.image}
             alt={`${data.modelyear} ${data.make} ${data.model} ${
               data.enableMultiTrim ? data.body : data.trim
             }`}
