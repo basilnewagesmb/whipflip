@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import ConfirmOffer from "./confirmeOffer";
 import InstantOffer from "./instantOffer";
 import Reviews from "./review";
 import VideoModal from "./videoModal";
 function HomeBanner({ reviews }) {
+  const { initialOffer } = useSelector((state) => state.offer);
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   return (
     <div className="home-banner">
@@ -88,8 +90,7 @@ function HomeBanner({ reviews }) {
               <div className="bnr_right">
                 <div className="row justify-content-center">
                   <div className="col-md-12">
-                    <InstantOffer  />
-                    {/* <ConfirmOffer /> */}
+                    {initialOffer ? <ConfirmOffer initialOffer={initialOffer} /> : <InstantOffer />}
                   </div>
                 </div>
                 <div className="bnr_left_info mob-show">

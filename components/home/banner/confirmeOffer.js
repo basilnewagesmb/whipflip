@@ -1,8 +1,32 @@
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { reset } from "features/offer/offerSlice";
+import ShimmerImage from "components/common/shimmerImage";
+import { useCountdown } from "utils/useCountdown";
+import moment from "moment";
+import { useGetOfferMinimalByIdQuery } from "services/offer/api";
+import getAmount from "utils/getAmount";
+import { Modal } from "antd";
 
-function ConfirmOffer() {
+function ConfirmOffer({ initialOffer }) {
+  const dispatch = useDispatch();
+
+  const { data } = useGetOfferMinimalByIdQuery(
+    { id: initialOffer.uid },
+    {
+      skip: !initialOffer.uid,
+    }
+  );
+  const date =
+    data?.status == "quote"
+      ? moment(data?.last_quote_date).add(5, "days")
+      : moment(data?.last_offer_date).add(5, "days");
+
+  const [days, hours, minutes, seconds, countDown] = useCountdown(
+    date || moment().format("YYYY-MM-DD HH:mm:ss")
+  );
   return (
     <div className="card card-outline-secondary home-form">
       <div className="confirm_offer_banner">
@@ -15,25 +39,44 @@ function ConfirmOffer() {
         </div>
         <div className="cob_body">
           <div className="cob_in">
-            <div className="cob_offer_product">
-              <Image
-                src="/images/car1.png"
-                alt="car"
-                title="car"
+            <div className="cob_offer_product d-flex">
+              <ShimmerImage
                 width={285}
-                height={155}
+                src={initialOffer?.image}
+                alt={`${initialOffer?.year} ${initialOffer?.make} ${
+                  initialOffer?.model
+                } ${
+                  initialOffer?.enableMultiTrim
+                    ? initialOffer?.body
+                    : initialOffer?.trim
+                }`}
+                title={`${initialOffer?.year} ${initialOffer?.make} ${
+                  initialOffer?.model
+                } ${
+                  initialOffer?.enableMultiTrim
+                    ? initialOffer?.body
+                    : initialOffer?.trim
+                }`}
+                preview={false}
+                fallback={"/images/no-car-image.png"}
               />
             </div>
             <div className="cob_offer_name">
-              <h2>2022 Ford Ranger</h2>
+              <h2>
+                {initialOffer?.year} {initialOffer.make}
+              </h2>
               <p>
-                <span>2.3L EcoBoost® I4 engine</span>
+                <span> {initialOffer.trim}</span>
                 <span>.</span>
-                <span>May, 12, 2022</span>
+                <span>
+                  {moment(initialOffer?.last_quote_date).format(
+                    "MMM, DD ,YYYY"
+                  )}
+                </span>
               </p>
             </div>
             <div className="cob_offer_price">
-              <h1>$7,000</h1>
+              <h1>{getAmount(initialOffer)}</h1>
             </div>
             <div className="poweredBy">
               <Image
@@ -49,25 +92,25 @@ function ConfirmOffer() {
               <div className="oe_time_left">
                 <div className="oet_col">
                   <div className="oet_col_in">
-                    <span>04</span>
+                    <span> {countDown > 0 ? days : 0}</span>
                   </div>
                   <span>DAYS</span>
                 </div>
                 <div className="oet_col">
                   <div className="oet_col_in">
-                    <span>00</span>
+                    <span> {countDown > 0 ? hours : 0}</span>
                   </div>
                   <span>hrs</span>
                 </div>
                 <div className="oet_col">
                   <div className="oet_col_in">
-                    <span>00</span>
+                    <span> {countDown > 0 ? minutes : 0}</span>
                   </div>
                   <span>mins</span>
                 </div>
                 <div className="oet_col">
                   <div className="oet_col_in">
-                    <span>00</span>
+                    <span> {countDown > 0 ? seconds : 0}</span>
                   </div>
                   <span>secs</span>
                 </div>
@@ -76,14 +119,7 @@ function ConfirmOffer() {
           </div>
         </div>
         <div className="cob_foo">
-          {/* <Link href="/offer" className='confirm_offer_btn'>
-    <span>Confirm My Offer</span> 
-    <span>
-      <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8.5 16L7.075 14.6L12.675 9H0.5V7H12.675L7.075 1.4L8.5 0L16.5 8L8.5 16Z" fill="#353442"/></svg>
-    </span>
-  </Link> */}
-          <Link href="/offer">
+          <Link href={"/offer/" + initialOffer.jd_vehicle_id}>
             <span className="confirm_offer_btn">
               <span>Confirm My Offer</span>
               <span>
@@ -105,7 +141,14 @@ function ConfirmOffer() {
           <button
             className="start_btn"
             onClick={() => {
-              setShowConfirmOffer(false);
+              dispatch(reset())
+              // Modal.confirm({
+              //   title: "Confirm",
+              //   content: "Are you sure to stat over new car?",
+              //   onOk: () => {
+              //     dispatch(reset());
+              //   },
+              // });
             }}
           >
             <span>Start Over</span>

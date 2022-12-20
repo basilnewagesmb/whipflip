@@ -1,13 +1,19 @@
 import PoweredBy from "components/common/poweredBy";
 import ShimmerImage from "components/common/shimmerImage";
 import React from "react";
+import getAmount from "utils/getAmount";
 
-function CarInfo({ data, isShow }) {
+function CarInfo({ data, isShow, initialOffer }) {
   return (
     isShow && (
       <>
         <div className="itemImg d-flex align-items-center justify-content-center flex-column">
-          {/* <PoweredBy /> */}
+          {initialOffer && (
+            <>
+              <h5>Initial Offer: {getAmount(initialOffer)}!</h5>
+              <PoweredBy />
+            </>
+          )}
           <ShimmerImage
             src={data?.stills?.[0]?.image}
             alt={`${data.modelyear} ${data.make} ${data.model} ${
@@ -29,7 +35,7 @@ function CarInfo({ data, isShow }) {
 
             <span className="miles"> {` ${data.model} `}</span>
           </span>
-          <a href="#" title="Not a car">
+          <a href="/" title="Not a car">
             Not your car?
           </a>
         </div>

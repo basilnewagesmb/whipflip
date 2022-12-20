@@ -15,6 +15,7 @@ function initialState() {
         name: "sell-car",
       },
     ],
+    initialOffer: null,
   };
 }
 

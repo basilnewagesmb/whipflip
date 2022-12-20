@@ -12,6 +12,14 @@ export const offerApi = createApi({
     },
   }),
   endpoints: (builder) => ({
+    getOfferMinimalById: builder.query({
+      query: ({id}) => {
+        return {
+          url: `/prospects/minimal/${id}`,
+          method: "GET",
+        };
+      },
+    }),
     createInitialOffer: builder.mutation({
       query: (data) => {
         return {
@@ -21,7 +29,19 @@ export const offerApi = createApi({
         };
       },
     }),
+    getOfferById: builder.mutation({
+      query: (id) => {
+        return {
+          url: `/prospects/${id}`,
+          method: "GET",
+        };
+      },
+    }),
   }),
 });
 
-export const { useCreateInitialOfferMutation } = offerApi;
+export const {
+  useGetOfferMinimalByIdQuery,
+  useCreateInitialOfferMutation,
+  useGetOfferByIdMutation,
+} = offerApi;

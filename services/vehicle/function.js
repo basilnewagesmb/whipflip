@@ -1,6 +1,8 @@
 import { Form } from "antd";
+import { reset } from "features/offer/offerSlice";
 import { useRouter } from "node_modules/next/router";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import {
   useGetMakesQuery,
   useGetModelsQuery,
@@ -8,6 +10,7 @@ import {
   useGetYearsQuery,
 } from "services/vehicle/api";
 function useVehicleForm(form) {
+  const dispatch = useDispatch();
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const year = Form.useWatch("year", form);
@@ -16,6 +19,7 @@ function useVehicleForm(form) {
   const trim = Form.useWatch("trim", form);
 
   const onFinish = (values) => {
+    dispatch(reset());
     router.push({
       pathname: "/offer/[id]",
       query: { id: trim },

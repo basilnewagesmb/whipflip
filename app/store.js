@@ -10,7 +10,7 @@ import siteSlice from "features/site/siteSlice";
 
 // APIS
 import { vehicle } from "services/vehicle/api";
-import { offerApi } from "services/offer.js/api";
+import { offerApi } from "services/offer/api";
 //
 const persistConfig = {
   key: "root",

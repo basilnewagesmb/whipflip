@@ -14,9 +14,15 @@ const siteSlice = createSlice({
       state.gaClickId = action.payload.gclid || null;
       state.gaClientId = ga?.getAll()[0].get("clientId") || null;
     },
+    clear: (state, action) => {
+      state.referrerUrl = null;
+      state.documentUrl = null;
+      state.gaClickId = null;
+      state.gaClientId = null;
+    },
   },
 });
 
-export const { initialize } = siteSlice.actions;
+export const { initialize, clear } = siteSlice.actions;
 
 export default siteSlice.reducer;

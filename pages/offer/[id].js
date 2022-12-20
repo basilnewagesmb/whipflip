@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import useCheckMobile from "utils/checkMobile";
 import { useRouter } from "node_modules/next/router";
 import { initialize } from "features/site/siteSlice";
+import Confirm from "components/offer/steps/confirm/index";
 function Offer({ data }) {
   const { query } = useRouter();
   const dispatch = useDispatch();
@@ -20,8 +21,9 @@ function Offer({ data }) {
       <div className="container">
         <div className="row">
           <SideBar data={data} />
-          <div className={!isMobile ? "col-lg-8" : ""}>
+          <div className={!isMobile ? "col-lg-8" : "col-12"}>
             {current == 0 && <Initial data={data} />}
+            {current == 1 && <Confirm data={data} />}
           </div>
         </div>
       </div>

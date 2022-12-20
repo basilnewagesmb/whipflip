@@ -6,9 +6,12 @@ import { useSelector } from "react-redux";
 import { InfoCircleOutlined } from "@ant-design/icons";
 import useCheckMobile from "utils/checkMobile";
 import ColorSelect from "./web/colorSelect";
-import useInitialForm from "services/offer.js/function";
+import useInitialForm from "services/offer/function";
 import SpeedoMeter from "components/anim/speed";
 import Script from "node_modules/next/script";
+import CarAnim from "components/anim/car";
+import LoaderAnim from "components/common/loader";
+import InitialMob from "./moblie/index";
 const { Option } = Select;
 
 function Initial({ data }) {
@@ -21,11 +24,14 @@ function Initial({ data }) {
     mileageOnblur,
     initialValues,
     breakDownPop,
+    isLoading,
+    isDisable,
   } = useInitialForm(form, data);
 
   return (
     <div>
       <MetaHead title={steps[current].title} />
+      <LoaderAnim isLoading={isLoading} />
       {!isMobile ? (
         <Form
           layout={"vertical"}
@@ -368,7 +374,7 @@ function Initial({ data }) {
                   height: "unset",
                 }}
                 type="text"
-                // disabled={isDisable}
+                disabled={isDisable}
               >
                 <span>Get My Initial Offer</span>
               </Button>
@@ -376,7 +382,18 @@ function Initial({ data }) {
           </div>
         </Form>
       ) : (
-        <></>
+        <Form
+          layout={"vertical"}
+          name={steps[current].name}
+          form={form}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          autoComplete="off"
+          requiredMark={false}
+          initialValues={initialValues}
+        >
+          <InitialMob data={data} form={form} />
+        </Form>
       )}
     </div>
   );
