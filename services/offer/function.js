@@ -1,12 +1,18 @@
-import { Form, Modal, message } from "antd";
+import { Form, Modal, message, Button } from "antd";
 import BreakDown from "components/anim/breakdown";
 import SpeedoMeter from "components/anim/speed";
 import { setInitialOffer } from "features/offer/offerSlice";
-import { clear } from "features/site/siteSlice";
+import {} from "node_modules/antd/es/index";
 import { useRouter } from "node_modules/next/router";
 import { useDispatch, useSelector } from "react-redux";
+import useCheckMobile from "utils/checkMobile";
 import { useCreateInitialOfferMutation, useGetOfferByIdMutation } from "./api";
-function useInitialForm(form, data) {
+import useMobileHandler from "./mobileHandler";
+function useInitialForm({ form, data, carouselRef, goTo }) {
+  const { setCurrentSlide } = useMobileHandler(carouselRef, form);
+  const isMobile = useCheckMobile();
+  const realVal = Form.useWatch([], form);
+
   const [createInitialOffer, { isLoading: isCreating }] =
     useCreateInitialOfferMutation();
   const [getOfferById, { isLoading }] = useGetOfferByIdMutation();
@@ -57,7 +63,10 @@ function useInitialForm(form, data) {
     }
   };
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    if (isMobile && errorInfo.errorFields[0].name == "mileage") {
+      setCurrentSlide(0);
+      carouselRef.current.goTo(0);
+    }
   };
   const router = useRouter();
 
@@ -67,6 +76,7 @@ function useInitialForm(form, data) {
       transmission: "automatic",
       does_vehicle_start: true,
       readiness_uid: data?.readiness[0].uid,
+      color: { id: 0, name: "Black", code: "#000" },
     },
     onFinish,
     onFinishFailed,
@@ -74,23 +84,58 @@ function useInitialForm(form, data) {
     mileage,
     mileageOnblur: () => {
       if (mileage >= 0 && mileage <= 9999) {
-        Modal.success({
+        Modal.warning({
           className: "confirm-model",
           icon: <SpeedoMeter isLoading={true} />,
-          footer: null,
+          // footer: null,
           closable: true,
-          title: <h6 className="text-center">Confirm Mileage</h6>,
-          okText: "Confirm",
+          title: (
+            <h6 className="text-center">
+              {isMobile ? "Is this right?" : "Confirm Mileage"}
+            </h6>
+          ),
           content: (
             <div className="text-center">
-              <p>
-                Are you sure your vehicle only has {mileage + " "}
-                miles?
-              </p>
+              {isMobile ? (
+                <p>
+                  You've entered "{mileage + " "}" for milage.
+                  <br />
+                  Do you want to double check the number?
+                </p>
+              ) : (
+                <p>
+                  Are you sure your vehicle only has "{mileage + " "}" miles?
+                </p>
+              )}
+              {isMobile && (
+                <Button
+                  onClick={() => {
+                    goTo(0);
+                    Modal.destroyAll();
+                  }}
+                  className={"getOfferBtn"}
+                >
+                  Enter Agin
+                </Button>
+              )}
+              <Button
+                className={
+                  isMobile ? "getOfferBtn mt-3 bg-light border" : "getOfferBtn"
+                }
+                onClick={() => {
+                  isMobile && goTo(1);
+                  Modal.destroyAll();
+                }}
+              >
+                {isMobile ? "Continue" : "Confirm"}
+              </Button>
             </div>
           ),
           okButtonProps: {
-            className: "getOfferBtn",
+            className: "getOfferBtn d-none",
+          },
+          onOk: () => {
+            alert();
           },
         });
       }

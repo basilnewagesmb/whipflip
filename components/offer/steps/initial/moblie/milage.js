@@ -2,8 +2,8 @@ import { Form, InputNumber } from "antd";
 import React from "react";
 import useInitialForm from "services/offer/function";
 
-function Milage({ carouselRef, form, data }) {
-  const { mileageOnblur, mileage } = useInitialForm(form, data);
+function Milage({ carouselRef, form, data, next, goTo }) {
+  const { mileageOnblur, mileage } = useInitialForm({form, data, goTo});
   return (
     <div className="offer_block-body ">
       <div className="form">
@@ -35,7 +35,7 @@ function Milage({ carouselRef, form, data }) {
             <button
               className="continueBtn"
               onClick={() => {
-                carouselRef.current.next();
+                next();
               }}
               type="button"
               disabled={!mileage}

@@ -2,7 +2,6 @@ import { Form } from "antd";
 import React, { useState, useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 function ColorSelect({ form }) {
-  const color = Form.useWatch("color", form);
   const dropdownList = [
     { id: 0, name: "Black", code: "#000" },
     { id: 1, name: "White", code: "#fff" },

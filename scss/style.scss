@@ -5668,3 +5668,16 @@ label.lblipt {
     background-color: #ffd147;
   }
 }
+
+.fixed_back {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(0px, -50%);
+}
+.checked {
+  background: rgba(67, 129, 192, 0.06);
+  border: 1px solid #4381c0;
+  border-radius: 4px;
+  color: #4381c0;
+}

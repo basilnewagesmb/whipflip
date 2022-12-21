@@ -39,7 +39,7 @@ function ConfirmOffer({ initialOffer }) {
         </div>
         <div className="cob_body">
           <div className="cob_in">
-            <div className="cob_offer_product d-flex">
+            <div className="cob_offer_product d-flex justify-content-center">
               <ShimmerImage
                 width={285}
                 src={initialOffer?.image}

@@ -7,7 +7,6 @@ import { Provider } from "react-redux";
 import NextNProgress from "nextjs-progressbar";
 import { PersistGate } from "redux-persist/integration/react";
 import { ConfigProvider } from "antd";
-import Aos from "aos";
 import { useEffect } from "react";
 import Router from "next/router";
 import withGA from "components/site/analytics";
@@ -18,9 +17,6 @@ import { isDev, isLocal } from "utils/helper";
 import * as prodGTM from "utils/GTM/prod";
 import * as devGTM from "utils/GTM/dev";
 function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
-  useEffect(() => {
-    Aos.init();
-  }, []);
   useEffect(() => {
     const shouldNotTrack = isLocal("localhost") || isDev();
     const gtm = shouldNotTrack ? devGTM : prodGTM;

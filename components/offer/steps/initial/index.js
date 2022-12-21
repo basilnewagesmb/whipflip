@@ -1,23 +1,20 @@
 import { Clock, DisLike, Like, SandClock } from "components/common/icons";
 import MetaHead from "components/common/metaHead";
-import { Form, Button, Input, Select, InputNumber, Modal } from "antd";
-import React from "react";
+import { Form, Button, Input, InputNumber } from "antd";
+import React, { useRef } from "react";
 import { useSelector } from "react-redux";
 import { InfoCircleOutlined } from "@ant-design/icons";
 import useCheckMobile from "utils/checkMobile";
 import ColorSelect from "./web/colorSelect";
 import useInitialForm from "services/offer/function";
-import SpeedoMeter from "components/anim/speed";
-import Script from "node_modules/next/script";
-import CarAnim from "components/anim/car";
 import LoaderAnim from "components/common/loader";
 import InitialMob from "./moblie/index";
-const { Option } = Select;
 
 function Initial({ data }) {
   const isMobile = useCheckMobile();
   const { current, steps } = useSelector((state) => state.offer);
   const [form] = Form.useForm();
+  const carouselRef = useRef();
   const {
     onFinish,
     onFinishFailed,
@@ -26,7 +23,7 @@ function Initial({ data }) {
     breakDownPop,
     isLoading,
     isDisable,
-  } = useInitialForm(form, data);
+  } = useInitialForm({form, data, carouselRef});
 
   return (
     <div>
@@ -392,7 +389,7 @@ function Initial({ data }) {
           requiredMark={false}
           initialValues={initialValues}
         >
-          <InitialMob data={data} form={form} />
+          <InitialMob data={data} form={form} carouselRef={carouselRef} />
         </Form>
       )}
     </div>
