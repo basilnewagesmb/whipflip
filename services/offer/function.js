@@ -1,7 +1,9 @@
 import { Form, Modal, message, Button } from "antd";
 import BreakDown from "components/anim/breakdown";
 import SpeedoMeter from "components/anim/speed";
+import { setCurrentSlide } from "features/mob/mobSlice";
 import { setInitialOffer } from "features/offer/offerSlice";
+import { clear } from "features/site/siteSlice";
 import {} from "node_modules/antd/es/index";
 import { useRouter } from "node_modules/next/router";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,7 +11,6 @@ import useCheckMobile from "utils/checkMobile";
 import { useCreateInitialOfferMutation, useGetOfferByIdMutation } from "./api";
 import useMobileHandler from "./mobileHandler";
 function useInitialForm({ form, data, carouselRef, goTo }) {
-  const { setCurrentSlide } = useMobileHandler(carouselRef, form);
   const isMobile = useCheckMobile();
   const realVal = Form.useWatch([], form);
 
@@ -64,7 +65,7 @@ function useInitialForm({ form, data, carouselRef, goTo }) {
   };
   const onFinishFailed = (errorInfo) => {
     if (isMobile && errorInfo.errorFields[0].name == "mileage") {
-      setCurrentSlide(0);
+      dispatch(setCurrentSlide(0));
       carouselRef.current.goTo(0);
     }
   };

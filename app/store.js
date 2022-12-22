@@ -6,6 +6,8 @@ import { persistReducer, persistStore } from "redux-persist";
 import reviewsSlice from "features/reviews/reviewsSlice";
 import offerSlice from "features/offer/offerSlice";
 import siteSlice from "features/site/siteSlice";
+import mobSlice from "features/mob/mobSlice";
+
 //
 
 // APIS
@@ -21,6 +23,7 @@ const rootReducer = combineReducers({
   reviews: reviewsSlice,
   offer: offerSlice,
   site: siteSlice,
+  mob: mobSlice,
   [vehicle.reducerPath]: vehicle.reducer,
   [offerApi.reducerPath]: offerApi.reducer,
 });

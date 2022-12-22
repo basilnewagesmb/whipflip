@@ -48,6 +48,7 @@ function ColorPicker({ form, next }) {
                   <div
                     className="sellItemChoose"
                     onClick={() => listClick(col)}
+                    key={i}
                   >
                     <label
                       htmlFor="sl1"

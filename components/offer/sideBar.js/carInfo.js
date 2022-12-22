@@ -1,5 +1,6 @@
 import PoweredBy from "components/common/poweredBy";
 import ShimmerImage from "components/common/shimmerImage";
+import Link from "next/link";
 import React from "react";
 import getAmount from "utils/getAmount";
 
@@ -35,9 +36,7 @@ function CarInfo({ data, isShow, initialOffer }) {
 
             <span className="miles"> {` ${data.model} `}</span>
           </span>
-          <a href="/" title="Not a car">
-            Not your car?
-          </a>
+          <Link href="/">Not your car?</Link>
         </div>
       </>
     )

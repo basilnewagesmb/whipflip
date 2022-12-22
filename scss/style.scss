@@ -5681,3 +5681,126 @@ label.lblipt {
   border-radius: 4px;
   color: #4381c0;
 }
+
+.whipflip-faq .accordion {
+  border-color: #ced4da !important;
+  border: none;
+}
+
+.whipflip-faq .accordion .accordion__item {
+  border-color: #ced4da !important;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.whipflip-faq
+  .accordion
+  .accordion__item
+  .accordion__heading
+  .accordion__button {
+  background-color: transparent;
+  position: relative;
+  font-weight: 400;
+  color: #343a40;
+  font-size: 20px;
+  font-size: 1.25rem;
+}
+
+.whipflip-faq
+  .accordion
+  .accordion__item
+  .accordion__heading
+  .accordion__button:before {
+  position: absolute;
+  right: 8px;
+  top: 25px;
+}
+
+.whipflip-faq
+  .accordion
+  .accordion__item
+  .accordion__heading
+  .accordion__button:active,
+.whipflip-faq
+  .accordion
+  .accordion__item
+  .accordion__heading
+  .accordion__button:focus,
+.whipflip-faq
+  .accordion
+  .accordion__item
+  .accordion__heading
+  .accordion__button:visited {
+  outline-style: none;
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.whipflip-faq
+  .accordion
+  .accordion__item
+  .accordion__heading[aria-expanded="true"] {
+  background-color: red !important;
+}
+
+.whipflip-faq .accordion .accordion__item .accordion__panel {
+  font-weight: 400;
+}
+
+.whipflip-faq .accordion .accordion__item .accordion__panel h6 {
+  font-weight: 700;
+  color: #343a40;
+}
+
+.whipflip-faq .accordion .accordion__item .accordion__panel ol li {
+  margin-bottom: 1.25rem;
+}
+
+.material-tab .RRT__container .RRT__tabs .RRT__tab {
+  border: none;
+  background-color: none !important;
+  background: none;
+}
+
+.material-tab .RRT__container .RRT__tabs .RRT__tab.RRT__tab--selected {
+  border-bottom: 4px solid #00b0f0;
+  color: #00b0f0;
+}
+
+.material-tab .RRT__container .RRT__panel {
+  border: none;
+  background-color: none;
+  padding: 2rem 0 0;
+}
+.top-5 {
+  padding-top: 5rem !important;
+}
+
+@media (max-width: 767.98px) {
+  .top-5 {
+    padding-top: 2rem !important;
+  }
+}
+.pe-auto{
+  cursor: pointer!important;
+
+}
+li.active.pe-auto::after {
+  content: "|";
+  position: absolute;
+  left: 0;
+  background-color: #4381c0;
+  width: 4px;
+  height:auto;
+  top:0;
+  margin-left:-21px;
+  
+}
+li.pe-auto{
+  position:relative;
+}
+
+li.active.pe-auto {
+  color:#4381c0;
+  
+}

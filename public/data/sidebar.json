@@ -2,7 +2,7 @@
     {
         "title": "About WhipFlip",
         "icon": "bi-gear-fill",
-        "childs": [
+        "sub": [
             {
                 "title": "Company",
                 "icon": "bi-house-fill",
@@ -23,40 +23,40 @@
     {
         "title": "How It Works",
         "icon": "bi-info-circle-fill",
-        "childs": [
+        "sub": [
             {
                 "title": "Why Sell to Us?",
-                "path": "/whysellyourcartous"
+                "path": "/why-sell-your-car-to-us"
             },
             {
                 "title": "Private Sale or Trading In?",
-                "path": "/privatesale_vs_tradingin"
+                "path": "/private-sale-vs-trading-in"
             },
             {
-                "title": "Referrals",
-                "path": "/ourreferralprogram"
+                "title": "Our Referral Program",
+                "path": "/our-referral-program"
             }
         ]
     },
     {
         "title": "Support",
         "icon": "bi-person-fill",
-        "childs": [
+        "sub": [
             {
                 "title": "FAQ",
-                "path": "/pagefaq"
+                "path": "/faq"
             },
             {
                 "title": "Blog",
-                "path": "/blog"
+                "path": "/blogs"
             },
             {
                 "title": "Chat",
-                "path": "/"
+                "path": "/chat"
             },
             {
                 "title": "Contact Us",
-                "path": "/contactus"
+                "path": "/contact-us"
             }
         ]
     }

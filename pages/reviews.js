@@ -2,11 +2,13 @@ import React from "react";
 import Image from "next/image";
 import HappyCustomersSlider from "components/home/slider";
 import { useSelector } from "react-redux";
+import MetaHead from "components/common/metaHead";
 function Reviews() {
-    const reviews = useSelector((state) => state.reviews);
+  const reviews = useSelector((state) => state.reviews);
 
   return (
     <>
+      <MetaHead title="Reviews" />
       <div className="page-header reviews d-flex align-items-center">
         <div className="container">
           <div className="row">

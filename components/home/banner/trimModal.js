@@ -30,8 +30,6 @@ function TrimModal({ isTrimOpen, setIsTrimOpen }) {
             alt="What is a Trim?"
             title="What is a Trim?"
             className="img-fluid"
-            width={714}
-            height={360}
           />
           
         </p>

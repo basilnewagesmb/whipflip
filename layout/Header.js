@@ -4,10 +4,13 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Sidebar from "./Sidebar";
-import Head from "next/head";
+import items from "public/data/sidebar.json";
 import Link from "next/link";
 import { useRouter } from "node_modules/next/router";
 import InstantOffer from "components/home/banner/instantOffer";
+import { Button } from "antd";
+import { CarTwoTone } from "@ant-design/icons";
+
 function Header() {
   const { pathname } = useRouter();
   const [scroll, setScroll] = useState(false);
@@ -54,15 +57,15 @@ function Header() {
             }
           >
             <Navbar expand="lg" className="whipflip_nav navBar">
-              <Navbar.Brand href="/">
+              <Link href="/">
                 <Image
                   src="/images/logo.png"
-                  alt="Vercel Logo"
+                  alt="Logo"
                   width={275}
                   priority
                   height={50}
                 />
-              </Navbar.Brand>
+              </Link>
               {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
               <div
                 className="hambergerMenu scrollHamberger showOnMobileHam"
@@ -75,36 +78,32 @@ function Header() {
               {!scroll ? (
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="me-auto wf-nav-list">
-                    <NavDropdown title="About WhipFlip" id="basic-nav-dropdown">
-                      <NavDropdown.Item href="/about">Company</NavDropdown.Item>
-                      <NavDropdown.Item href="/reviews">
-                        Customer Reviews
-                      </NavDropdown.Item>
-                      <NavDropdown.Item href="/careers">
-                        Careers
-                      </NavDropdown.Item>
-                    </NavDropdown>
-                    <NavDropdown title="How It Works" id="basic-nav-dropdown">
-                      <NavDropdown.Item href="/whysellyourcartous">
-                        Why Sell Your Car to Us?
-                      </NavDropdown.Item>
-                      <NavDropdown.Item href="/privatesale_vs_tradingin">
-                        Private Sale or Trading In?
-                      </NavDropdown.Item>
-                      <NavDropdown.Item href="/ourreferralprogram">
-                        Our Referral Program
-                      </NavDropdown.Item>
-                    </NavDropdown>
-                    <NavDropdown title="Support" id="basic-nav-dropdown">
-                      <NavDropdown.Item href="/pagefaq">FAQ</NavDropdown.Item>
-                      <NavDropdown.Item href="/blog">Blog</NavDropdown.Item>
-                      <NavDropdown.Item href="#action/3.3">
-                        Chat
-                      </NavDropdown.Item>
-                      <NavDropdown.Item href="/contactus">
-                        Contact Us
-                      </NavDropdown.Item>
-                    </NavDropdown>
+                    {items.map((item, index) => (
+                      <NavDropdown
+                        title={item.title}
+                        id="basic-nav-dropdown"
+                        key={index}
+                      >
+                        {item?.sub?.map((s, i) => (
+                          <Link href={s.path}>
+                            <Button
+                              icon={
+                                pathname == s.path && (
+                                  <CarTwoTone twoToneColor="#00b0ef" />
+                                )
+                              }
+                              type="text"
+                              style={{
+                                color: pathname == s.path && "#00b0ef",
+                              }}
+                              className="w-100 text-left d-flex align-items-center"
+                            >
+                              {s.title}
+                            </Button>
+                          </Link>
+                        ))}
+                      </NavDropdown>
+                    ))}
                   </Nav>
                 </Navbar.Collapse>
               ) : (

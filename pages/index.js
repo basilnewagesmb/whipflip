@@ -328,36 +328,7 @@ function Index(props) {
           </span>
         </div>
       </div>
-      <div className="faq">
-        <div className="faqLogo text-center">
-          <Image
-            src="/images/faq.svg"
-            alt="FAQ"
-            title="FAQ"
-            width={250}
-            height={250}
-          />
-        </div>
-        <div className="secHd text-center mt25">
-          <h2>
-            <span>
-              Frequently{" "}
-              <span className="asked-questions">Asked Questions</span>
-            </span>
-          </h2>
-        </div>
-        <div className="faqWrapper">
-          <div className="container">
-            <Faq />
-            <div className="moreReviews text-center moreLoad">
-              <span>
-                Looking for more? Visit our <a href="#">FAQs page</a> or{" "}
-                <a href="#">Contact us</a>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Faq icon/>
       <ReadyToSell />
       <div className="sell-car-info">
         <div className="container">

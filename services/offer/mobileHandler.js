@@ -1,12 +1,8 @@
 import React, { useRef, useState } from "react";
+import { useSelector } from "react-redux";
 
 function useMobileHandler(carouselRef, form) {
-  const [data, setData] = useState({
-    currentSlide: 0,
-  });
-  const setCurrentSlide = (i) => {
-    setData((prev) => ({ ...prev, currentSlide: i }));
-  };
+  const currentSlide = useSelector((state) => state.mob.currentSlide);
   const next = () => {
     carouselRef.current.next();
   };
@@ -16,9 +12,8 @@ function useMobileHandler(carouselRef, form) {
   const goTo = (e) => {
     carouselRef.current.goTo(e);
   };
-  console.log(data);
 
-  return { ...data, setCurrentSlide, next, prev, goTo };
+  return { currentSlide, next, prev, goTo };
 }
 
 export default useMobileHandler;

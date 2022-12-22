@@ -9,13 +9,14 @@ import SeeInitOffer from "./see-init-offer";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import useMobileHandler from "services/offer/mobileHandler";
-function InitialMob({ data, form ,carouselRef}) {
-  const { currentSlide, setCurrentSlide, next, prev, goTo } = useMobileHandler(
+import { useDispatch } from "react-redux";
+import { setCurrentSlide } from "features/mob/mobSlice";
+function InitialMob({ data, form, carouselRef }) {
+  const { currentSlide, next, prev, goTo } = useMobileHandler(
     carouselRef,
     form
   );
- console.log(currentSlide);
-  
+  const dispatch = useDispatch();
   return (
     <div className="bookingcar">
       <div className="container">
@@ -56,7 +57,7 @@ function InitialMob({ data, form ,carouselRef}) {
             </div>
           )}
           <Carousel
-            afterChange={setCurrentSlide}
+            afterChange={(i) => dispatch(setCurrentSlide(i))}
             dots={false}
             effect={"fade"}
             infinite={false}

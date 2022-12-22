@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import getAmount from "utils/getAmount";
+import useCheckMobile from "utils/checkMobile";
+import ConfirmMob from "./mob/index";
 function Confirm() {
+  const isMobile = useCheckMobile();
   const { initialOffer } = useSelector((state) => state.offer);
   const [status2, setStatus2] = useState(1);
   const [condition, setCondition] = useState(2);
@@ -41,7 +44,7 @@ function Confirm() {
     setShow(true);
   };
   const handlefinalClose = () => setShowfinal(false);
-  return (
+  return !isMobile ? (
     <div>
       <div className="offer_right">
         <div className="or_head">
@@ -1149,6 +1152,8 @@ function Confirm() {
         </div>
       </div>
     </div>
+  ) : (
+    <ConfirmMob initialOffer={initialOffer} />
   );
 }
 
