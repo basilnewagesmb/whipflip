@@ -12,12 +12,11 @@ import {
 function useVehicleForm(form) {
   const dispatch = useDispatch();
   const router = useRouter();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(null);
   const year = Form.useWatch("year", form);
   const make = Form.useWatch("make", form);
   const model = Form.useWatch("model", form);
   const trim = Form.useWatch("trim", form);
-
   const onFinish = (values) => {
     dispatch(reset());
     router.push({
@@ -28,7 +27,9 @@ function useVehicleForm(form) {
   const formDate = {
     year: {
       values: useGetYearsQuery(),
-      isOpen: null,
+      isOpen: () => {
+        return open == "year";
+      },
       isDisable: () => {
         return formDate?.year.values.isFetching;
       },

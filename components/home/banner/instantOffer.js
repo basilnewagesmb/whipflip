@@ -172,6 +172,10 @@ function InstantOffer({ header, handleShowSideBar }) {
                       disabled={year?.isDisable()}
                       loading={year?.isDisable()}
                       onChange={year?.onChange}
+                      open={year?.isOpen()}
+                      onClick={() => {
+                        !year?.isOpen() && setThisOpen("year");
+                      }}
                     />
                   </Form.Item>
                 </div>
