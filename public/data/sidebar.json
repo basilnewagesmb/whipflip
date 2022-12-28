@@ -1,63 +1,71 @@
 [
-    {
-        "title": "About WhipFlip",
-        "icon": "bi-gear-fill",
-        "sub": [
-            {
-                "title": "Company",
-                "icon": "bi-house-fill",
-                "path": "/about"
-            },
-            {
-                "title": "Customer Reviews",
-                "icon": "bi-info-circle-fill",
-                "path": "/reviews"
-            },
-            {
-                "title": "Careers",
-                "icon": "bi-phone-fill",
-                "path": "/careers"
-            }
-        ]
-    },
-    {
-        "title": "How It Works",
+  {
+    "title": "About WhipFlip",
+    "icon": "bi-gear-fill",
+    "sub": [
+      {
+        "title": "Company",
+        "icon": "bi-house-fill",
+        "path": "/about"
+      },
+      {
+        "title": "Customer Reviews",
         "icon": "bi-info-circle-fill",
-        "sub": [
-            {
-                "title": "Why Sell to Us?",
-                "path": "/why-sell-your-car-to-us"
-            },
-            {
-                "title": "Private Sale or Trading In?",
-                "path": "/private-sale-vs-trading-in"
-            },
-            {
-                "title": "Our Referral Program",
-                "path": "/our-referral-program"
-            }
-        ]
-    },
-    {
-        "title": "Support",
-        "icon": "bi-person-fill",
-        "sub": [
-            {
-                "title": "FAQ",
-                "path": "/faq"
-            },
-            {
-                "title": "Blog",
-                "path": "/blogs"
-            },
-            {
-                "title": "Chat",
-                "path": "/chat"
-            },
-            {
-                "title": "Contact Us",
-                "path": "/contact-us"
-            }
-        ]
-    }
+        "path": "/reviews"
+      },
+      {
+        "title": "Careers",
+        "icon": "bi-phone-fill",
+        "path": "/careers"
+      }
+    ]
+  },
+  {
+    "title": "How It Works",
+    "icon": "bi-info-circle-fill",
+    "sub": [
+      {
+        "title": "Why Sell to Us?",
+        "path": "/why-sell-your-car-to-us"
+      },
+      {
+        "title": "Private Sale or Trading In?",
+        "path": "/private-sale-vs-trading-in"
+      },
+      {
+        "title": "Our Referral Program",
+        "path": "/our-referral-program"
+      }
+    ]
+  },
+  {
+    "title": "Support",
+    "icon": "bi-person-fill",
+    "sub": [
+      {
+        "title": "FAQ",
+        "path": "/faq"
+      },
+      {
+        "title": "Blog",
+        "path": "/blogs"
+      },
+      {
+        "title": "Chat",
+        "path": "/chat"
+      },
+      {
+        "title": "Contact Us",
+        "path": "/contact-us"
+      }
+    ]
+  },
+  {
+    "title": "Privacy Policy",
+    "path": "/privacy-policy"
+  },
+  {
+    "title": "Terms and Conditions",
+    "path": "/terms-and-conditions"
+  }
 ]

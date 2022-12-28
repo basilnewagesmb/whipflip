@@ -68,6 +68,7 @@ function Initial({ data }) {
                           className="w-100"
                           placeholder="Enter Mileage"
                           min={0}
+                          maxLength={6}
                           onBlur={mileageOnblur}
                         />
                       </Form.Item>
@@ -114,7 +115,7 @@ function Initial({ data }) {
                             />
                             <label
                               htmlFor="radio1"
-                              className="selector-item_label"
+                              className="selector-item_label height_40_flex"
                             >
                               Automatic
                             </label>
@@ -133,7 +134,7 @@ function Initial({ data }) {
                             />
                             <label
                               htmlFor="radio2"
-                              className="selector-item_label"
+                              className="selector-item_label height_40_flex"
                             >
                               Manual (i.e. Stick Shift)
                             </label>
@@ -160,7 +161,7 @@ function Initial({ data }) {
                             />
                             <label
                               htmlFor="yes"
-                              className="selector-item_label labelflexCenter"
+                              className="selector-item_label labelflexCenter height_40_flex"
                             >
                               <Like />
                               <span>Yes</span>
@@ -179,7 +180,7 @@ function Initial({ data }) {
                             />
                             <label
                               htmlFor="no"
-                              className="selector-item_label labelflexCenter"
+                              className="selector-item_label labelflexCenter height_40_flex"
                             >
                               <DisLike /> <span>No</span>
                             </label>
@@ -206,16 +207,16 @@ function Initial({ data }) {
                         rules={[
                           {
                             required: true,
-                            message: "Please input your zib code!",
+                            message: "Please input your zip code!",
                           },
                           {
                             validator: (rule, value = "") => {
                               if (value.trim().length != 0) {
-                                if (/^\d{5}(-\d{4})?$/.test(value)) {
+                                if (/^\d{4,5}?$/.test(value)) {
                                   return Promise.resolve();
                                 }
                                 return Promise.reject(
-                                  "The zip code must contain 5 digits"
+                                  "The zip code must contain 4 or 5 digits"
                                 );
                               }
                               return Promise.resolve();
@@ -232,6 +233,7 @@ function Initial({ data }) {
                           size="large"
                           className="w-100"
                           placeholder="Enter Here"
+                          maxLength={5}
                         />
                       </Form.Item>
                     </div>
@@ -266,7 +268,7 @@ function Initial({ data }) {
                         ]}
                         tooltip={{
                           title:
-                            "We send a copy of your quote to pick up right where you left off. We DO NOT distribute your info to 3rd parties..",
+                            "We send a copy of your quote to pick up right where you left off. We DO NOT distribute your info to 3rd parties",
                           icon: <InfoCircleOutlined />,
                         }}
                       >

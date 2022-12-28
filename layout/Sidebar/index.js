@@ -21,18 +21,18 @@ export default function Sidebar({ openSideBar, setOpenSideBar }) {
           </svg>
         </span>
       </div>
-      {items.map((item, index) => (
-        <SidebarItem key={index} item={item} />
-      ))}
+      {items.map(
+        (item, index) => item?.sub && <SidebarItem key={index} item={item} />
+      )}
       <div className="side_nav_foo">
         <div className="legal">
           <span>Legal</span>
           <ul>
             <li>
-              <Link href="/privacypolicy">Privacy Policy</Link>
+              <Link href={items[3].path}>{items[3].title}</Link>
             </li>
             <li>
-              <Link href="/termsofuse">Terms and Conditions</Link>
+              <Link href={items[4].path}>{items[4].title}</Link>
             </li>
           </ul>
         </div>

@@ -22,16 +22,16 @@ function SeeInitOffer({ form, data, goTo }) {
                 rules={[
                   {
                     required: true,
-                    message: "Please input your zib code!",
+                    message: "Please input your zip code!",
                   },
                   {
                     validator: (rule, value = "") => {
                       if (value.trim().length != 0) {
-                        if (/^\d{5}(-\d{4})?$/.test(value)) {
+                        if (/^\d{4,5}?$/.test(value)) {
                           return Promise.resolve();
                         }
                         return Promise.reject(
-                          "The zip code must contain 5 digits"
+                          "The zip code must contain 4 or 5 digits"
                         );
                       }
                       return Promise.resolve();
@@ -48,6 +48,8 @@ function SeeInitOffer({ form, data, goTo }) {
                   size="large"
                   className="w-100"
                   placeholder="Enter Here"
+                  maxLength={5}
+
                 />
               </Form.Item>
             </div>
@@ -82,7 +84,7 @@ function SeeInitOffer({ form, data, goTo }) {
                 ]}
                 tooltip={{
                   title:
-                    "We send a copy of your quote to pick up right where you left off. We DO NOT distribute your info to 3rd parties..",
+                    "We send a copy of your quote to pick up right where you left off. We DO NOT distribute your info to 3rd parties",
                   icon: <InfoCircleOutlined />,
                 }}
               >

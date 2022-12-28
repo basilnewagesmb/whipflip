@@ -288,7 +288,7 @@ function Index(props) {
             />
           </div>
           <span className="gtagLine">
-            WhipFlip has earned 4.9 stars in
+            WhipFlip has earned {reviews.count} stars in
             <span>
               <Image
                 src="/images/google.svg"

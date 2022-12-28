@@ -5,6 +5,7 @@ import { setCurrentSlide } from "features/mob/mobSlice";
 import { setInitialOffer } from "features/offer/offerSlice";
 import { clear } from "features/site/siteSlice";
 import {} from "node_modules/antd/es/index";
+import moment from "moment";
 import { useRouter } from "node_modules/next/router";
 import { useDispatch, useSelector } from "react-redux";
 import useCheckMobile from "utils/checkMobile";
@@ -77,14 +78,14 @@ function useInitialForm({ form, data, carouselRef, goTo }) {
       transmission: "automatic",
       does_vehicle_start: true,
       readiness_uid: data?.readiness[0].uid,
-      color: { id: 0, name: "Black", code: "#000" },
     },
     onFinish,
     onFinishFailed,
     isDisable: isLoading,
     mileage,
     mileageOnblur: () => {
-      if (mileage >= 0 && mileage <= 9999) {
+      var diff = moment().diff(`${data.modelyear}-01-01`, "years", true);
+      if (diff > 2 && mileage != null && mileage >= 0 && mileage <= 9999) {
         Modal.warning({
           className: "confirm-model",
           icon: <SpeedoMeter isLoading={true} />,

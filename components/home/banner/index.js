@@ -26,7 +26,7 @@ function HomeBanner({ reviews }) {
                       <span>Sell Your Car - </span>
                       <span>Period!</span>
                     </h1>
-                    <span>We come to you. Paid on the sport!</span>
+                    <span>Welcome to you. Paid on the spot!</span>
                   </div>
                   <div className="bnr_left_info desk-show">
                     <div className="row">
@@ -40,8 +40,8 @@ function HomeBanner({ reviews }) {
                           >
                             <Image
                               src="/images/acc-text.png"
-                              alt="profile"
-                              title="profile"
+                              alt="accredited business"
+                              title="accredited business"
                               width={200}
                               height={50}
                             />
@@ -90,7 +90,11 @@ function HomeBanner({ reviews }) {
               <div className="bnr_right">
                 <div className="row justify-content-center">
                   <div className="col-md-12">
-                    {initialOffer ? <ConfirmOffer initialOffer={initialOffer} /> : <InstantOffer />}
+                    {initialOffer ? (
+                      <ConfirmOffer initialOffer={initialOffer} />
+                    ) : (
+                      <InstantOffer />
+                    )}
                   </div>
                 </div>
                 <div className="bnr_left_info mob-show">

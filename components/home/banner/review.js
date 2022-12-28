@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Rate } from "antd";
 import React from "react";
 import ShimmerImage from "components/common/shimmerImage";
+import Link from "next/link";
 
 function Reviews({ mob, reviews }) {
   if (mob) {
@@ -32,18 +33,25 @@ function Reviews({ mob, reviews }) {
               reviews?.avatars?.map(
                 (img, i) =>
                   i < 3 && (
-                    <span className="c-profile" key={i}>
-                      <ShimmerImage
-                        src={img}
-                        alt="a"
-                        title="profile"
-                        width={40}
-                        height={40}
-                        preview={false}
-                        fallback={"/images/personFallback.jpg"}
-                      />
-                      {img}
-                    </span>
+                    <Link
+                      className="c-profile"
+                      href={img.url}
+                      key={i}
+                      target="_blank"
+                    >
+                      <span>
+                        <ShimmerImage
+                          src={img.src}
+                          alt={img.name}
+                          title={img.name}
+                          width={40}
+                          height={40}
+                          preview={false}
+                          fallback={"/images/personFallback.jpg"}
+                        />
+                        {img.src}
+                      </span>
+                    </Link>
                   )
               )}
           </div>

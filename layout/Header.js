@@ -78,32 +78,35 @@ function Header() {
               {!scroll ? (
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="me-auto wf-nav-list">
-                    {items.map((item, index) => (
-                      <NavDropdown
-                        title={item.title}
-                        id="basic-nav-dropdown"
-                        key={index}
-                      >
-                        {item?.sub?.map((s, i) => (
-                          <Link href={s.path}>
-                            <Button
-                              icon={
-                                pathname == s.path && (
-                                  <CarTwoTone twoToneColor="#00b0ef" />
-                                )
-                              }
-                              type="text"
-                              style={{
-                                color: pathname == s.path && "#00b0ef",
-                              }}
-                              className="w-100 text-left d-flex align-items-center"
-                            >
-                              {s.title}
-                            </Button>
-                          </Link>
-                        ))}
-                      </NavDropdown>
-                    ))}
+                    {items.map(
+                      (item, index) =>
+                        item?.sub && (
+                          <NavDropdown
+                            title={item.title}
+                            id="basic-nav-dropdown"
+                            key={index}
+                          >
+                            {item?.sub?.map((s, i) => (
+                              <Link href={s.path}>
+                                <Button
+                                  icon={
+                                    pathname == s.path && (
+                                      <CarTwoTone twoToneColor="#00b0ef" />
+                                    )
+                                  }
+                                  type="text"
+                                  style={{
+                                    color: pathname == s.path && "#00b0ef",
+                                  }}
+                                  className="w-100 text-left d-flex align-items-center"
+                                >
+                                  {s.title}
+                                </Button>
+                              </Link>
+                            ))}
+                          </NavDropdown>
+                        )
+                    )}
                   </Nav>
                 </Navbar.Collapse>
               ) : (

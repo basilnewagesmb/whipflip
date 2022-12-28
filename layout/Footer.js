@@ -1,5 +1,7 @@
 import React from "react";
 import Image from "next/image";
+import items from "public/data/sidebar.json";
+import Link from "next/link";
 function Footer() {
   return (
     <div>
@@ -8,32 +10,37 @@ function Footer() {
           <div className="row fooRow">
             <div className="col-lg-3 col-6 fooCol">
               <div className="fooColIn">
-                <h2>About Whipflip</h2>
+                <h2>{items[0].title}</h2>
                 <ul>
-                  <li>About Us</li>
-                  <li>Customer Reviews</li>
-                  <li>Careers</li>
+                  {items?.[0]?.sub?.map((s, i) => (
+                    <Link href={s.path}>
+                      <li>{s.title}</li>
+                    </Link>
+                  ))}
                 </ul>
               </div>
             </div>
             <div className="col-lg-3 col-6 fooCol">
               <div className="fooColIn">
-                <h2>How It works</h2>
+                <h2>{items[1].title}</h2>
                 <ul>
-                  <li>Why Sell to Us?</li>
-                  <li>Private Sale or Trading In?</li>
-                  <li>Referrals</li>
+                  {items?.[1]?.sub?.map((s, i) => (
+                    <Link href={s.path}>
+                      <li>{s.title}</li>
+                    </Link>
+                  ))}
                 </ul>
               </div>
             </div>
             <div className="col-lg-3 col-6 fooCol">
               <div className="fooColIn">
-                <h2>Support</h2>
+                <h2>{items[2].title}</h2>
                 <ul>
-                  <li>FAQ</li>
-                  <li>Blog</li>
-                  <li>Chat</li>
-                  <li>Contact Us</li>
+                  {items?.[2]?.sub?.map((s, i) => (
+                    <Link href={s.path}>
+                      <li>{s.title}</li>
+                    </Link>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -41,8 +48,12 @@ function Footer() {
               <div className="fooColIn">
                 <h2>Legal</h2>
                 <ul>
-                  <li>Privacy Policy</li>
-                  <li>Terms and Conditions</li>
+                  <Link href={items[3].path}>
+                    <li>{items[3].title}</li>
+                  </Link>
+                  <Link href={items[4].path}>
+                    <li>{items[4].title}</li>
+                  </Link>
                 </ul>
               </div>
               <div className="fooColIn">

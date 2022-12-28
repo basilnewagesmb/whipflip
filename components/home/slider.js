@@ -20,9 +20,18 @@ const HappyCustomersSlider = () => {
       const count = document.getElementsByClassName(
         "RatingValue__Container-sc-1eexc2w-0 "
       )["0"]?.innerText;
+      const reviewsUrls = Array.from(
+        document.getElementsByClassName(
+          "ReviewLinkContainer__Container-sc-1k1tx10-0 gaUYjb"
+        )
+      );
       let avatars = Array.from(
         document.getElementsByClassName("ReviewAvatar__Avatar-sc-1lraoly-2 ")
-      ).map((img) => img.src);
+      ).map((img, i) => ({
+        src: img.src,
+        url: reviewsUrls[i].href,
+        name: img.alt,
+      }));
       if (count && avatars?.length > 0) {
         dispatch(
           setReviews({

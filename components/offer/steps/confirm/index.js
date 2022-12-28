@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import getAmount from "utils/getAmount";
 import useCheckMobile from "utils/checkMobile";
 import ConfirmMob from "./mob/index";
+import { Button } from "antd";
 function Confirm() {
   const isMobile = useCheckMobile();
   const { initialOffer } = useSelector((state) => state.offer);
@@ -109,7 +110,12 @@ function Confirm() {
                   <div className="viewDetail">
                     {status2 === 1 && (
                       <div className="selectView vin">
-                        <input type="text" placeholder="Enter Here" />
+                        <input
+                          disabled
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter Here"
+                        />
                         <span className="helpin" onClick={handleOpen}>
                           <span>
                             <svg
@@ -131,7 +137,12 @@ function Confirm() {
                     )}
                     {status2 === 2 && (
                       <div className="selectView license_plate">
-                        <input type="text" placeholder="Enter Here" />
+                        <input
+                          disabled
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter Here"
+                        />
                         <span className="helpin">
                           <span>
                             <svg
@@ -945,9 +956,13 @@ function Confirm() {
             <form autoComplete="off" className="form" role="form">
               <div className="form-group row ob_frm_row">
                 <div className="col-lg-12 p-0">
-                  <label htmlFor="">
+                  <label className="d-block">
                     How would you honestly rate your vehicle’s{" "}
-                    <b className="underline">EXTERIOR</b> condition?
+                    <span className="underline">
+                      {"  "}
+                      <b>EXTERIOR</b>
+                    </span>{" "}
+                    condition?
                   </label>
                   <div className="chooseBlock selector row selectorRow rowSell tireconditions">
                     <div className="sellItemChoose tirecondition">
@@ -1043,9 +1058,13 @@ function Confirm() {
               </div>
               <div className="form-group row ob_frm_row">
                 <div className="col-lg-12 p-0">
-                  <label htmlFor="">
+                  <label htmlFor="" className="d-block">
                     How would you honestly rate your vehicle’s{" "}
-                    <b className="underline">INTERIOR</b> condition?
+                    <span className="underline">
+                      {" "}
+                      <b>INTERIOR</b>{" "}
+                    </span>{" "}
+                    condition?
                   </label>
                   <div className="chooseBlock selector row selectorRow rowSell tireconditions cosmicconditions">
                     <div className="sellItemChoose tirecondition">
@@ -1146,9 +1165,16 @@ function Confirm() {
           </div>
         </div>
         <div className="initial_order_btn">
-          <button className="initofferBtn" onClick={handlefinalOpen}>
-            Confirm My Offer
-          </button>
+          <Button
+            htmlType="submit"
+            className="getOfferBtn"
+            style={{
+              height: "unset",
+            }}
+            type="text"
+          >
+            <span> Confirm My Offer</span>
+          </Button>
         </div>
       </div>
     </div>

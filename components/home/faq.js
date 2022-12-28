@@ -1299,7 +1299,7 @@ const Faq = ({ icon }) => {
           <div className="moreReviews text-center moreLoad">
             <span>
               Looking for more? Visit our <Link href="/faq">FAQs page</Link> or{" "}
-              <Link href="/contact-us">Contact uss</Link>
+              <Link href="/contact-us">Contact us</Link>
             </span>
           </div>
         </div>

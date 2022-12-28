@@ -25,6 +25,7 @@ function Milage({ carouselRef, form, data, next, goTo }) {
                 className="w-100"
                 placeholder="Enter Mileage"
                 min={0}
+                maxLength={6}
                 onBlur={mileageOnblur}
               />
             </Form.Item>
