@@ -1,6 +1,15 @@
 import MetaHead from "components/common/metaHead";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import useCheckMobile from "utils/checkMobile";
 function Index() {
+  const isMobile = useCheckMobile();
+
+  const [height, setHeight] = useState(0);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    setHeight(ref.current.clientHeight);
+  });
   return (
     <>
       <MetaHead title="Private Sale vs. Trading In" />
@@ -8,13 +17,17 @@ function Index() {
         <div className="container">
           <div className="row">
             <div className="col-12 page-title text-center mt-5">
-              <h1>Private Sale vs. Trading In</h1>
+              <h1>Private Sale vs.{isMobile && <br />} Trading In</h1>
               <p className="pt-4">{`Here's some great advice!`}</p>
             </div>
           </div>
         </div>
       </div>
-      <div className="how-it-works pt100 pb-5 body-text">
+      <div
+        className={`how-it-works ${
+          isMobile ? " pt-4 " : " pt100 "
+        } pb-5 body-text`}
+      >
         <div className="container">
           <div className="row mb-5">
             <div className="col-12">
@@ -77,7 +90,12 @@ function Index() {
                       </li>
                     </ul>
                   </div>
-                  <div className="border-bottom-colored card-body-custom colored column-colored">
+                  <div
+                    className="border-bottom-colored card-body-custom colored column-colored"
+                    style={{
+                      height: height,
+                    }}
+                  >
                     <h3>The WhipFlip Tips </h3>
                     <h6>Setting expectations & price</h6>
                     <p>
@@ -123,7 +141,11 @@ function Index() {
                 </div>
               </div>
             </div>
-            <div className="col-lg-6 col-md-10">
+            <div
+              className={
+                isMobile ? "col-lg-6 col-md-10 mt-4" : "col-lg-6 col-md-10"
+              }
+            >
               <div className="card">
                 <div className="card-body p-0">
                   <div className="border-bottom card-body-custom column-one">
@@ -182,7 +204,10 @@ function Index() {
                       </li>
                     </ul>
                   </div>
-                  <div className="border-bottom-colored card-body-custom colored column-colored">
+                  <div
+                    className="border-bottom-colored card-body-custom colored column-colored"
+                    ref={ref}
+                  >
                     <h3>The WhipFlip Tips </h3>
                     <h6>Find the right dealer</h6>
                     <p>
@@ -228,6 +253,45 @@ function Index() {
                       make sure you check the math before signing on that dotted
                       line.`}
                     </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="row mb-5 py-5">
+            <div className="col-12">
+              {" "}
+              <div className="card">
+                <div className="card-body p-0">
+                  <div className="border-bottom-colored card-body-custom colored column-colored">
+                    <h2>Try WhipFlip?</h2>
+                    <p>
+                      {` Ok, we couldn't help ourselves here! Both methods above have their pro's and con's. WhipFlip was created to solve these issues while providing great benefits to YOU the consumer to get a great deal. sell your car quickly. and do it in a safe manner. `}
+                    </p>
+                    <p>
+                     {`So if you don't want to deal with the painful task of
+                      selling your car on your own or going to the dealership.
+                      and just want to get it SOLD now...`}<b>try WhIpFlIp.</b>
+                    </p>
+                    <h3>Our Advantages</h3>
+                    <ul>
+                      <li>No strangers or tire-kickers wasting your time.</li>
+                      <li>
+                        {" "}
+                        Sell now, not in days or months. 3 easy steps. in less
+                        than 5 minutes.
+                      </li>
+                      <li>We come to you. Just tell us when and where.</li>
+                      <li>Paid on the spot and ownership transfer handled.</li>
+                      <li>
+                        No weird trade-in math or low-balls. Real competitive
+                        true market offers.
+                      </li>
+                      <li>
+                        Spend time living your best life.....not trying to sell
+                        your car.
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>

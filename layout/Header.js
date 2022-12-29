@@ -8,10 +8,12 @@ import items from "public/data/sidebar.json";
 import Link from "next/link";
 import { useRouter } from "node_modules/next/router";
 import InstantOffer from "components/home/banner/instantOffer";
-import { Button } from "antd";
+import { Button, Modal } from "antd";
 import { CarTwoTone } from "@ant-design/icons";
+import useCheckMobile from "utils/checkMobile";
 
 function Header() {
+  const isMobile = useCheckMobile();
   const { pathname } = useRouter();
   const [scroll, setScroll] = useState(false);
   const [openSideBar, setOpenSideBar] = useState(false);
@@ -23,8 +25,34 @@ function Header() {
       setScroll(window.scrollY > 150);
     });
   });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+  useEffect(() => {
+    setIsModalOpen(false);
+  }, [pathname]);
+
   return (
     <div className="whipflip-header">
+      {isModalOpen && (
+        <Modal
+          title="Get instant offer"
+          open={isModalOpen}
+          onOk={handleOk}
+          onCancel={handleCancel}
+          footer={null}
+          className="common_initial_model"
+        >
+          <InstantOffer handleCancel={handleCancel} />
+        </Modal>
+      )}
       {pathname == "/offer/[id]" ? (
         <div className="offer_header">
           <div className="offer_header_in">
@@ -42,7 +70,6 @@ function Header() {
             </div>
             <div className="hambergerMenu" onClick={handleShowSideBar}>
               <span></span>
-
               <span></span>
               <span></span>
             </div>
@@ -61,19 +88,30 @@ function Header() {
                 <Image
                   src="/images/logo.png"
                   alt="Logo"
-                  width={275}
+                  width={isMobile ? 140 : 275}
                   priority
-                  height={50}
+                  height={isMobile ? 25 : 50}
                 />
               </Link>
-              {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
-              <div
-                className="hambergerMenu scrollHamberger showOnMobileHam"
-                onClick={handleShowSideBar}
-              >
-                <span></span>
-                <span></span>
-                <span></span>
+              <div className="d-flex justify-content-between align-items-center">
+                {pathname != "/offer/[id]" && pathname != "/" && isMobile && (
+                  <Button
+                    htmlType="button"
+                    className="getOfferBtn text-uppercase py-0 px-2 mr-3"
+                    type="text"
+                    onClick={showModal}
+                  >
+                    <span>Get My Initial Offer</span>
+                  </Button>
+                )}
+                <div
+                  className="hambergerMenu scrollHamberger showOnMobileHam"
+                  onClick={handleShowSideBar}
+                >
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
               </div>
               {!scroll ? (
                 <Navbar.Collapse id="basic-navbar-nav">

@@ -15,7 +15,7 @@ import Image from "next/image";
 export const faqData = {
   howItWorks: () => (
     <div className="whipflip-faq">
-      <Accordion>
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
         <AccordionItem key={0} uuid={0}>
           <AccordionItemHeading>
             <AccordionItemButton>Is WhipFlip Legit?</AccordionItemButton>
@@ -410,7 +410,7 @@ export const faqData = {
   ),
   whatWeBuy: () => (
     <div className="whipflip-faq">
-      <Accordion>
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
         <AccordionItem key={11} uuid={11}>
           <AccordionItemHeading>
             <AccordionItemButton>Do we buy any car?</AccordionItemButton>
@@ -621,7 +621,7 @@ export const faqData = {
   ),
   quotesAndOffers: () => (
     <div className="whipflip-faq">
-      <Accordion>
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
         <AccordionItem key={16} uuid={16}>
           <AccordionItemHeading>
             <AccordionItemButton>
@@ -912,7 +912,7 @@ export const faqData = {
   ),
   appointment: () => (
     <div className="whipflip-faq">
-      <Accordion>
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
         <AccordionItem key={29} uuid={29}>
           <AccordionItemHeading>
             <AccordionItemButton>
@@ -1056,7 +1056,7 @@ export const faqData = {
   ),
   payments: () => (
     <div className="whipflip-faq">
-      <Accordion>
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
         <AccordionItem key={24} uuid={24}>
           <AccordionItemHeading>
             <AccordionItemButton>How and when am I paid?</AccordionItemButton>
@@ -1168,7 +1168,7 @@ export const faqData = {
   ),
   feedback: () => (
     <div className="whipflip-faq">
-      <Accordion>
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
         <AccordionItem key={27} uuid={27}>
           <AccordionItemHeading>
             <AccordionItemButton>
@@ -1278,16 +1278,18 @@ const Faq = ({ icon }) => {
           />
         </div>
       )}
-      <div className="secHd text-center mt25">
-        <h2>
-          <span>
+      <div className="secHd text-center mt-2">
+        <h1>
+          <span style={{
+            lineHeight:1.5
+          }}>
             Frequently <span className="asked-questions">Asked Questions</span>
           </span>
-        </h2>
+        </h1>
       </div>
       <div className="faqWrapper">
         <div className="container">
-          <section className="top-5 mb-1">
+          <section className="mt-3 mb-1">
             <div className="container">
               <div className="row mb-4">
                 <div className="col-12 material-tab">

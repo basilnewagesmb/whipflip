@@ -3,7 +3,7 @@ import React from "react";
 import useInitialForm from "services/offer/function";
 
 function Milage({ carouselRef, form, data, next, goTo }) {
-  const { mileageOnblur, mileage } = useInitialForm({form, data, goTo});
+  const { mileageOnblur, mileage } = useInitialForm({ form, data, goTo });
   return (
     <div className="offer_block-body ">
       <div className="form">
@@ -27,6 +27,7 @@ function Milage({ carouselRef, form, data, next, goTo }) {
                 min={0}
                 maxLength={6}
                 onBlur={mileageOnblur}
+                inputMode="numeric"
               />
             </Form.Item>
           </div>

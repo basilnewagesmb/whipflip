@@ -5,7 +5,7 @@ import InfoIcon from "components/common/infoIcon";
 import TrimModal from "./trimModal";
 import useVehicleForm from "services/vehicle/function";
 import PoweredBy from "components/common/poweredBy";
-function InstantOffer({ header, handleShowSideBar }) {
+function InstantOffer({ header, handleShowSideBar, handleCancel }) {
   const [isTrimOpen, setIsTrimOpen] = useState(false);
   const [form] = Form.useForm();
   const { onFinish, year, model, make, trim, setThisOpen, isDisable } =
@@ -268,7 +268,7 @@ function InstantOffer({ header, handleShowSideBar }) {
                 <div className="col-lg-12">
                   <Button
                     htmlType="submit"
-                    className="getOfferBtn"
+                    className={handleCancel ? "getOfferBtn p-1" : "getOfferBtn"}
                     style={{
                       height: "unset",
                     }}
@@ -277,6 +277,20 @@ function InstantOffer({ header, handleShowSideBar }) {
                   >
                     <span>Get Instant Offer</span>
                   </Button>
+                  {handleCancel && (
+                    <Button
+                      htmlType="button"
+                      className="getOfferBtn border mt-2 p-1"
+                      style={{
+                        height: "unset",
+                        backgroundColor: "#fff",
+                      }}
+                      onClick={handleCancel}
+                      type="text"
+                    >
+                      <span>Cancel</span>
+                    </Button>
+                  )}
                 </div>
                 <div className="col-lg-12 already_offer text-center">
                   <p>

@@ -117,7 +117,7 @@ function useInitialForm({ form, data, carouselRef, goTo }) {
                   }}
                   className={"getOfferBtn"}
                 >
-                  Enter Agin
+                  Enter Again
                 </Button>
               )}
               <Button

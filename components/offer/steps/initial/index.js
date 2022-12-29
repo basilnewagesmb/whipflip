@@ -23,7 +23,7 @@ function Initial({ data }) {
     breakDownPop,
     isLoading,
     isDisable,
-  } = useInitialForm({form, data, carouselRef});
+  } = useInitialForm({ form, data, carouselRef });
 
   return (
     <div>
@@ -355,7 +355,9 @@ function Initial({ data }) {
                             >
                               {item.name == "A FEW WEEKS" && <SandClock />}
                               {item.name == "ASAP!" && <Clock />}
-                              <span>{item.name}</span>
+                              <span>
+                                {item.name == "I'M NOT" ? "IN THE FUTURE" : item.name}
+                              </span>
                             </label>
                           </div>
                         ))}

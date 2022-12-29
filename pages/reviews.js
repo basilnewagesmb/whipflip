@@ -3,7 +3,10 @@ import Image from "next/image";
 import HappyCustomersSlider from "components/home/slider";
 import { useSelector } from "react-redux";
 import MetaHead from "components/common/metaHead";
+import ReadyToSell from "components/common/readytoSell";
+import useCheckMobile from "utils/checkMobile";
 function Reviews() {
+  const isMobile = useCheckMobile();
   const reviews = useSelector((state) => state.reviews);
 
   return (
@@ -21,8 +24,8 @@ function Reviews() {
                   alt="Customer Review"
                   title="Customer Review"
                   className="my-2"
-                  width={370}
-                  height={80}
+                  width={isMobile ? 200 : 370}
+                  height={isMobile ? 45 : 80}
                 />
               </picture>
               <p>Hear It from of Thousands of Raving Customers</p>
@@ -46,7 +49,11 @@ function Reviews() {
           </div>
         </div>
       </div>
-      <div className="how-it-works pt100">
+      <div
+        className={
+          isMobile ? "how-it-works pt-4 pb-5" : "how-it-works pt100 pb-5"
+        }
+      >
         <div className="container">
           <div className="sub-title text-center">
             <h2>
@@ -62,6 +69,7 @@ function Reviews() {
           <HappyCustomersSlider />
         </div>
       </div>
+      <ReadyToSell />
     </>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import MetaHead from "components/common/metaHead";
+import Faq from "components/home/faq";
 function Index() {
   return (
     <>
@@ -19,7 +20,7 @@ function Index() {
       <div className="how-it-works pt100">
         <div className="container">
           <div className="row justify-content-between align-items-center">
-            <div className="col-md-7 col-lg-6">
+            <div className="col-md-7 col-lg-6 order-2 order-md-1">
               <div className="sub-title">
                 <h2 className="font-weight-800">Ultimate Convenience</h2>
               </div>
@@ -30,7 +31,7 @@ function Index() {
                 </p>
               </div>
             </div>
-            <div className="col-md-5 col-lg-4">
+            <div className="col-md-5 col-lg-4 order-1 order-md-2">
               <picture>
                 <Image
                   src="/images/ultimate_convenience.png"
@@ -44,7 +45,7 @@ function Index() {
             </div>
           </div>
           <div className="row justify-content-between align-items-center flex-row-reverse">
-            <div className="col-md-7 col-lg-6">
+            <div className="col-md-7 col-lg-6 order-2 order-md-1">
               <div className="sub-title">
                 <h2 className="font-weight-800">The Best Price</h2>
               </div>
@@ -58,7 +59,7 @@ function Index() {
                 </p>
               </div>
             </div>
-            <div className="col-md-5 col-lg-4">
+            <div className="col-md-5 col-lg-4 order-1 order-md-2">
               <picture>
                 <Image
                   src="/images/thebestprice.png"
@@ -72,7 +73,7 @@ function Index() {
             </div>
           </div>
           <div className="row justify-content-between align-items-center">
-            <div className="col-md-7 col-lg-6">
+            <div className="col-md-7 col-lg-6 order-2 order-md-1">
               <div className="sub-title">
                 <h2 className="font-weight-800">Fast & Guaranteed Payment</h2>
               </div>
@@ -85,7 +86,7 @@ function Index() {
                 </p>
               </div>
             </div>
-            <div className="col-md-5 col-lg-4">
+            <div className="col-md-5 col-lg-4 order-1 order-md-2">
               <picture>
                 <Image
                   src="/images/fastpayment.png"
@@ -99,7 +100,7 @@ function Index() {
             </div>
           </div>
           <div className="row justify-content-between align-items-center flex-row-reverse">
-            <div className="col-md-7 col-lg-6">
+            <div className="col-md-7 col-lg-6 order-2 order-md-1">
               <div className="sub-title">
                 <h2 className="font-weight-800">Trusted & Safe</h2>
               </div>
@@ -112,7 +113,7 @@ function Index() {
                 </p>
               </div>
             </div>
-            <div className="col-md-5 col-lg-4">
+            <div className="col-md-5 col-lg-4 order-1 order-md-2">
               <picture>
                 <Image
                   src="/images/trust_save.webp"
@@ -150,6 +151,9 @@ function Index() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="pt-5">
+        <Faq />
       </div>
     </>
   );

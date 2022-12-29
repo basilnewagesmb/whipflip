@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React from "react";
+import useCheckMobile from "utils/checkMobile";
 function ReadyToSell() {
+  const isMobile = useCheckMobile();
   return (
     <div className="ready-to-sell">
       <div className="container h100">
@@ -20,6 +22,12 @@ function ReadyToSell() {
                 title="Ready to Sell"
                 width={445}
                 height={392}
+                style={
+                  isMobile && {
+                    objectFit: "cover",
+                    objectPosition: "left",
+                  }
+                }
               />
             </div>
           </div>

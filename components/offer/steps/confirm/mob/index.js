@@ -13,21 +13,17 @@ function ConfirmMob({ initialOffer }) {
             Your <i>FLIPPIN’</i> Awesome Offer!
           </h1>
           <div className="ioCard">
-            <PoweredBy />
             <h2>Initial offer: {getAmount(initialOffer)}</h2>
             <div className="offerProduct-mobi row">
               <div className="ofp_left col-4 p-0">
-                <ShimmerImage
-                  src={initialOffer?.image}
-                  alt="car"
-                  title="car"
-                />
+                <ShimmerImage src={initialOffer?.image} alt="car" title="car" />
               </div>
               <div className="ofp_right col-8">
                 <h3>2022 Ford Ranger</h3>
                 <span>2.3L EcoBoost® I4 engine</span>
               </div>
             </div>
+            <PoweredBy />
           </div>
           <div className="custo_info">
             <p>We’d love to buy your car!</p>

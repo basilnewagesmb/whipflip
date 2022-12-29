@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ReadyToSell from "components/common/readytoSell";
 import { useRouter } from "node_modules/next/router";
 import { initialize } from "features/site/siteSlice";
+import ShimmerImage from "components/common/shimmerImage";
 function Index(props) {
   const { query } = useRouter();
   const dispatch = useDispatch();
@@ -169,7 +170,7 @@ function Index(props) {
               difficult assets you own….A CAR!
             </span>
           </div>
-          <div className="row wstwRow">
+          <div className="row wstwRow d-none d-md-flex">
             <div className="col-lg-7">
               <div className="row servicesRow">
                 <div className="col-lg-6 siCol">
@@ -263,15 +264,109 @@ function Index(props) {
               </div>
             </div>
           </div>
+          <div className="row wstwRow d-flex d-md-none">
+            <div className="col-lg-7">
+              <div className="row servicesRow">
+                <div className="col-lg-6 siCol">
+                  <div className="service-item">
+                    <div className="si-head">
+                      <Image
+                        src="/images/uc.svg"
+                        alt="easy-sell"
+                        title="easy-sell"
+                        width={50}
+                        height={50}
+                      />
+                    </div>
+                    <div className="si-body">
+                      <h2>Ultimate Convenience</h2>
+                      <p>
+                        No more traveling to dealers and months spent wasting
+                        time with tire-kickers. We come to you.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-6 siCol">
+                  <div className="service-item">
+                    <div className="si-head">
+                      <Image
+                        src="/images/fgp.svg"
+                        alt="Fast Guaranteed Payment"
+                        title="Fast Guaranteed Payment"
+                        width={50}
+                        height={50}
+                      />
+                    </div>
+                    <div className="si-body">
+                      <h2>Fast & Guaranteed Payment</h2>
+                      <p>
+                        Sell and get paid as soon as today in 3 quick and easy
+                        steps! Guaranteed payment on the spot before we take the
+                        keys!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-6 siCol">
+                  <div className="service-item">
+                    <div className="si-head">
+                      <Image
+                        src="/images/bp.svg"
+                        alt="The Best Price"
+                        title="The Best Price"
+                        width={50}
+                        height={50}
+                      />
+                    </div>
+                    <div className="si-body">
+                      <h2>The Best Price</h2>
+                      <p>
+                        We are digital and pass our savings onto you. Our
+                        real-time pricing engine ensures you get a great market
+                        price.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-lg-6 siCol">
+                  <div className="service-item">
+                    <div className="si-head">
+                      <Image
+                        src="/images/ts.svg"
+                        alt="Trusted Saf"
+                        title="Trusted  Saf"
+                        width={50}
+                        height={50}
+                      />
+                    </div>
+                    <div className="si-body">
+                      <h2>Trusted & Safe</h2>
+                      <p>
+                        {`No 3rd parties, we are with you all the way. Full
+                        breakdown of how your final offer was made and ways to
+                        maximize it. No more "fuzzy" trade-in math!`}
+                      </p>
+                      <p>
+                        <span className="meet_txt">
+                          Meet some of our Concierges!
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="mob-easy-sell">
-          <div className="easy-sell-mob mob-show">
-            <Image
+          <div className="easy-sell-mob mob-show pt-3">
+            <ShimmerImage
               src="/images/easy-sell.svg"
               alt="easy sell"
               title="easy sell"
-              width={612}
-              height={600}
+              width={"100%"}
             />
           </div>
         </div>
@@ -310,10 +405,17 @@ function Index(props) {
           </h2>
           <h2 className="mob-show happy_cus_mob">
             <span>Thousands of </span>
-            <span className="text-highlight long_line happy_customer">
+          </h2>
+          <h2 className="mob-show happy_cus_mob">
+            <div className="text-highlight long_line happy_customer">
               {" "}
-              HAPPY CUSTOMERS!{" "}
-            </span>
+              HAPPY{" "}
+            </div>
+            <br />
+            <div className="text-highlight long_line happy_customer">
+              {" "}
+              CUSTOMERS!{" "}
+            </div>
           </h2>
         </div>
         <HappyCustomersSlider />
@@ -328,7 +430,7 @@ function Index(props) {
           </span>
         </div>
       </div>
-      <Faq icon/>
+      <Faq icon />
       <ReadyToSell />
       <div className="sell-car-info">
         <div className="container">

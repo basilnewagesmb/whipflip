@@ -1,7 +1,10 @@
 import MetaHead from "components/common/metaHead";
 import Faq from "components/home/faq";
 import React from "react";
+import useCheckMobile from "utils/checkMobile";
 function Index() {
+  const isMobile = useCheckMobile();
+
   return (
     <>
       <MetaHead title="Our Referral Program" />
@@ -11,19 +14,19 @@ function Index() {
             <div className="col-12 page-title text-center">
               <p>Our Referral Program</p>
               <h1>
-                Refer someone and you{" "}
+                Refer someone {isMobile && <br />}and you {isMobile && <br />}
                 <span className="text-noted">each get $150!</span>
               </h1>
             </div>
           </div>
         </div>
       </div>
-      <div className="how-it-works pt100">
+      <div className={`how-it-works ${isMobile ? "pt-1" : "pt100"}`}>
         <div className="container">
           <div className="row justify-content-between flex-column-reverse flex-md-row align-items-center">
             <div className="col-md-7 col-lg-6">
               <div className="sub-title">
-                <h2 className="font-weight-800">
+                <h2 className="font-weight-800 text-capitalize">
                   Refer Your friends, colleagues, and even grandma!
                 </h2>
               </div>

@@ -1,6 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import MetaHead from "components/common/metaHead";
+import { Empty } from "antd";
+import { Tag } from "antd";
+
 function careers() {
   return (
     <>
@@ -21,7 +24,7 @@ function careers() {
           </div>
         </div>
       </div>
-      <div className="how-it-works pt100">
+      <div className="how-it-works ">
         <div className="container">
           <div className="row py-5">
             <div className="col-lg-6 col-sm-6 pb-3">
@@ -62,25 +65,46 @@ function careers() {
           </div>
         </div>
       </div>
-      <div className="ready-to-sell">
-        <div className="container h100">
-          <div className="row h100">
-            <div className="col-lg-7 align-self-center">
-              <div className="relHd text-center">
-                <h2>Ready to Sell?</h2>
-                <p>We are ready to buy now, at your door, and on your time!</p>
-                <button className="sell_car_btn">Sell Your Car Now!</button>
+      <div className="how-it-works ">
+        <div className="container">
+          <div className="row pb-5">
+            <div className="col-12 pb-3">
+              <div className="sub-title">
+                <h2 className="font-weight-800">Open Position</h2>
               </div>
-            </div>
-            <div className="col-lg-5 align-self-end">
-              <div className="rts-rtImg">
-                <Image
-                  src="/images/sell_to_customer.png"
-                  alt="Ready to Sell"
-                  title="Ready to Sell"
-                  width={445}
-                  height={392}
-                />
+              <div className="py-3">
+                <div className="border-bottom py-3 d-flex justify-content-between align-items-center">
+                  <h6 className="fw-normal">Data Scientist</h6>
+                  <div>
+                    <Tag>Remote</Tag>
+                    <Tag>LA</Tag>
+                  </div>
+                </div>
+                <div className="border-bottom py-3 d-flex justify-content-between align-items-center">
+                  <h6 className="fw-normal"> Full-stack developer</h6>
+                  <div>
+                    <Tag>LA</Tag>
+                  </div>
+                </div>
+                <div className="border-bottom py-3 d-flex justify-content-between align-items-center">
+                  <h6 className="fw-normal">Growth Manager </h6>
+                  <div>
+                    <Tag>Remote</Tag>
+                    <Tag>LA</Tag>
+                  </div>
+                </div>
+              </div>
+              {/* <Empty
+                image={Empty.PRESENTED_IMAGE_SIMPLE}
+                description="No open positios"
+              /> */}
+              <div className="body-text pt-4">
+                <p>
+                 {`don't see the right job ? Contact us at`}{" "}
+                  <a href="mailto:join@whipflip.com" className="text-primary">
+                    join@whipflip.com
+                  </a>
+                </p>
               </div>
             </div>
           </div>

@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import MetaHead from "components/common/metaHead";
-function about() {
+function About() {
+  const [height, setHeight] = useState(0);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    setHeight(ref.current.clientHeight);
+  });
   return (
     <>
       <MetaHead title="About" />
@@ -15,7 +21,7 @@ function about() {
           </div>
         </div>
       </div>
-      <div className="how-it-works pt100">
+      <div className="how-it-works pt-5">
         <div className="container">
           <div className="sub-title text-center">
             <span>Our Values</span>
@@ -28,7 +34,7 @@ function about() {
           </div>
           <div className="secRow row pt50">
             <div className="col-lg-4">
-              <div className="card blue_card">
+              <div className="card blue_card" ref={ref}>
                 <div className="card-body text-center">
                   <div className="card-icon">
                     <picture>
@@ -56,7 +62,12 @@ function about() {
               </div>
             </div>
             <div className="col-lg-4">
-              <div className="card blue_card">
+              <div
+                className="card blue_card"
+                style={{
+                  height: height,
+                }}
+              >
                 <div className="card-body text-center">
                   <div className="card-icon innovation">
                     <picture>
@@ -84,7 +95,12 @@ function about() {
               </div>
             </div>
             <div className="col-lg-4">
-              <div className="card blue_card">
+              <div
+                className="card blue_card"
+                style={{
+                  height: height,
+                }}
+              >
                 <div className="card-body text-center">
                   <div className="card-icon">
                     <picture>
@@ -122,7 +138,7 @@ function about() {
               </div>
               <div className="body-text">
                 <p>
-                 {` Why is selling a car whether on your own or trading in still a
+                  {` Why is selling a car whether on your own or trading in still a
                   huge pain? It's time for change.`}
                 </p>
                 <p>
@@ -170,22 +186,21 @@ function about() {
             </div>
             <div className="col-12 col-lg-6">
               <div className="sub-title">
-                <p className="mb-0">Our Mission</p>
-                <h2 className="mb-4">
-                  Make selling any car as fast and as easy as ordering a pizza!
-                </h2>
+                <p className="mb-0">People You Can Trust </p>
+                <h2 className="mb-4">Meet Our Concierges!</h2>
               </div>
               <div className="body-text">
                 <p>
-                  {`Why is selling a car whether on your own or trading in still a
-                  huge pain? It's time for change.`}
+                  {`WhipFlip does not use third parties to purchase your car. It's you and us all the way!`}
                 </p>
                 <p>
-                  WhipFlip is here to put an end to the inconvenience,
-                  time-waste, and risk you face with one of the most expensive
-                  and difficult assets to sell...a car. Be a part of the
-                  WhipFlip revolution and sell your car the way it should be. We
-                  are ready to buy it now, at your door, and on your time!
+                 {`Our professional Car Concierges will
+                  come to you at the time and place you set to sell your car.
+                  Before they arrive, you'll receive a text or email of which
+                  Concierge will be arriving at your place. You'll instantly
+                  recognize them from the WhipFlip uniform! In only a few
+                  minutes time, our Concierge will verify your vehicle's
+                  condition, and hand you the check!`}
                 </p>
               </div>
             </div>
@@ -260,4 +275,4 @@ function about() {
   );
 }
 
-export default about;
+export default About;
