@@ -42,6 +42,7 @@
     "react-slick": "^0.29.0",
     "react-use-window-size": "^1.0.1",
     "redux-persist": "^6.0.0",
-    "sass": "^1.56.2"
+    "sass": "^1.56.2",
+    "sharp": "^0.31.3"
   }
 }
