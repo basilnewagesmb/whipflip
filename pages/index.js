@@ -422,11 +422,11 @@ function Index(props) {
         <div className="moreReviews text-center">
           <span>
             Want to see more raving reviews? Visit our{" "}
-            <Link href="/reviews">
+            {/* <Link href="/reviews">
               <span className="link-primary link_blue">
                 customers reviews page
               </span>
-            </Link>
+            </Link> */}
           </span>
         </div>
       </div>
