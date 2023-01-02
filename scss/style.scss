@@ -15,8 +15,12 @@
   color: #4381c0 !important;
 }
 .home-form .ant-select-selector {
-  height: 50px !important;
+  height: auto !important;
+  min-height: 50px !important;
   padding: 3px 11px !important;
+}
+span.ant-select-selection-item {
+  white-space: unset !important;
 }
 .vehicleDetailNav .ant-select-selector {
   border-radius: 0 !important;
@@ -393,6 +397,9 @@ article.reviewLt_icons {
   line-height: 28px;
   @include responsive(phone) {
     font-size: 14px;
+  }
+  &:hover {
+    background: #ffd147 !important;
   }
 }
 .home-form select {
@@ -1729,6 +1736,9 @@ ul.form-stepper li a .form-stepper-circle {
     font-weight: 600;
     font-size: 18px;
     color: #353442;
+    &:hover {
+      background: #ffd147 !important;
+    }
   }
 }
 .offer_right {
@@ -5828,25 +5838,24 @@ li.active.pe-auto {
     padding-bottom: 0;
     padding-left: 0;
     padding-right: 0;
-    .ant-modal-title{
+    .ant-modal-title {
       padding-left: 1.5rem;
     }
   }
 }
 
 .ant-steps-item-finish .ant-steps-item-icon {
-    background-color: #4381c0!important;
+  background-color: #4381c0 !important;
 }
 
 .ant-steps-item-finish .ant-steps-item-icon span.ant-steps-icon {
-    color: #fff!important;
+  color: #fff !important;
 }
 
-
-.ant-steps-item-active  .ant-steps-item-icon {
-    background-color: #ffffff!important;
-    color: #4381c0!important;
+.ant-steps-item-active .ant-steps-item-icon {
+  background-color: #ffffff !important;
+  color: #4381c0 !important;
 }
-.ant-steps-item-active  .ant-steps-item-icon span.ant-steps-icon {
-    color: #4381c0!important;
+.ant-steps-item-active .ant-steps-item-icon span.ant-steps-icon {
+  color: #4381c0 !important;
 }

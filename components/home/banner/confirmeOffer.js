@@ -95,19 +95,19 @@ function ConfirmOffer({ initialOffer }) {
                     <span> {countDown > 0 ? days : 0}</span>
                   </div>
                   <span>DAYS</span>
-                </div>
+                </div>:
                 <div className="oet_col">
                   <div className="oet_col_in">
                     <span> {countDown > 0 ? hours : 0}</span>
                   </div>
                   <span>hrs</span>
-                </div>
+                </div>:
                 <div className="oet_col">
                   <div className="oet_col_in">
                     <span> {countDown > 0 ? minutes : 0}</span>
                   </div>
                   <span>mins</span>
-                </div>
+                </div>:
                 <div className="oet_col">
                   <div className="oet_col_in">
                     <span> {countDown > 0 ? seconds : 0}</span>

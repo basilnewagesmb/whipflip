@@ -86,9 +86,9 @@ function Header() {
             <Navbar expand="lg" className="whipflip_nav navBar">
               <Link href="/">
                 <Image
-                  src="/images/logo.png"
+                  src={isMobile ? "/images/logo-mob.png" : "/images/logo.png"}
                   alt="Logo"
-                  width={isMobile ? 140 : 275}
+                  width={isMobile ? 100 : 275}
                   priority
                   height={isMobile ? 25 : 50}
                 />
@@ -100,8 +100,13 @@ function Header() {
                     className="getOfferBtn text-uppercase py-0 px-2 mr-3"
                     type="text"
                     onClick={showModal}
+                    style={
+                      isMobile && {
+                        fontSize: "12px",
+                      }
+                    }
                   >
-                    <span>Get My Initial Offer</span>
+                    <span>GET INSTANT OFFER</span>
                   </Button>
                 )}
                 <div

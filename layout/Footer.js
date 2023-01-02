@@ -144,7 +144,10 @@ function Footer() {
           </div>
           <div className="fooCopyRight">
             <div className="fcl">
-              <span>WhipFlip © 2022 WhipFlip, Inc. All rights reserved.</span>
+              <span>
+                WhipFlip © {new Date().getFullYear().toString()} WhipFlip, Inc.
+                All rights reserved.
+              </span>
             </div>
             <div className="fcr">
               <div className="fooIcons">

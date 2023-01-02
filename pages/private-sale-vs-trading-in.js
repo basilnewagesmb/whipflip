@@ -1,4 +1,5 @@
 import MetaHead from "components/common/metaHead";
+import ReadyToSell from "components/common/readytoSell";
 import React, { useEffect, useRef, useState } from "react";
 import useCheckMobile from "utils/checkMobile";
 function Index() {
@@ -24,9 +25,7 @@ function Index() {
         </div>
       </div>
       <div
-        className={`how-it-works ${
-          isMobile ? " pt-4 " : " pt100 "
-        } pb-5 body-text`}
+        className={`how-it-works ${isMobile ? " pt-4 " : " pt100 "}  body-text`}
       >
         <div className="container">
           <div className="row mb-5">
@@ -258,7 +257,7 @@ function Index() {
               </div>
             </div>
           </div>
-          <div className="row mb-5 py-5">
+          <div className="row mb-5">
             <div className="col-12">
               {" "}
               <div className="card">
@@ -269,9 +268,10 @@ function Index() {
                       {` Ok, we couldn't help ourselves here! Both methods above have their pro's and con's. WhipFlip was created to solve these issues while providing great benefits to YOU the consumer to get a great deal. sell your car quickly. and do it in a safe manner. `}
                     </p>
                     <p>
-                     {`So if you don't want to deal with the painful task of
+                      {`So if you don't want to deal with the painful task of
                       selling your car on your own or going to the dealership.
-                      and just want to get it SOLD now...`}<b>try WhIpFlIp.</b>
+                      and just want to get it SOLD now...`}
+                      <b>try WhIpFlIp.</b>
                     </p>
                     <h3>Our Advantages</h3>
                     <ul>
@@ -299,6 +299,7 @@ function Index() {
           </div>
         </div>
       </div>
+      <ReadyToSell />
     </>
   );
 }

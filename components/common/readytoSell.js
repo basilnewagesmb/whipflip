@@ -1,10 +1,27 @@
-import Image from "next/image";
-import React from "react";
-import useCheckMobile from "utils/checkMobile";
+import { Image } from "antd";
+import { useWindowSize } from "@react-hook/window-size/throttled";
+import React, { useEffect, useState } from "react";
 function ReadyToSell() {
-  const isMobile = useCheckMobile();
+  const [isMobile, setIsMobile] = useState(false);
+  const [width] = useWindowSize();
+  useEffect(() => {
+    if (width >= 600) {
+      setIsMobile(false);
+    } else {
+      setIsMobile(true);
+    }
+  }, [width]);
   return (
-    <div className="ready-to-sell">
+    <div
+      className="ready-to-sell"
+      style={
+        isMobile
+          ? {
+              backgroundImage: "url()",
+            }
+          : {}
+      }
+    >
       <div className="container h100">
         <div className="row h100">
           <div className="col-lg-7 align-self-center">
@@ -14,20 +31,30 @@ function ReadyToSell() {
               <button className="sell_car_btn">Sell Your Car Now!</button>
             </div>
           </div>
-          <div className="col-lg-5 align-self-end">
-            <div className="rts-rtImg">
+          <div className={`col-lg-5 align-self-end ${isMobile && " p-0"}`}>
+            <div
+              className="rts-rtImg"
+              style={
+                isMobile
+                  ? {
+                      display: "flex",
+                      justifyContent: "center",
+                      paddingTop: "40px",
+                      paddingLeft: "0px",
+                      paddingRight: "0px",
+                    }
+                  : {}
+              }
+            >
               <Image
-                src="/images/sell_to_customer.png"
+                src={
+                  isMobile
+                    ? "/images/ready-to-sell-bg-mob.webp"
+                    : "/images/sell_to_customer.png"
+                }
                 alt="Ready to Sell"
                 title="Ready to Sell"
-                width={445}
-                height={392}
-                style={
-                  isMobile && {
-                    objectFit: "cover",
-                    objectPosition: "left",
-                  }
-                }
+                preview={false}
               />
             </div>
           </div>

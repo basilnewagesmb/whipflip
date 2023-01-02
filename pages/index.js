@@ -363,6 +363,7 @@ function Index(props) {
         <div className="mob-easy-sell">
           <div className="easy-sell-mob mob-show pt-3">
             <ShimmerImage
+              preview={false}
               src="/images/easy-sell.svg"
               alt="easy sell"
               title="easy sell"
@@ -438,7 +439,7 @@ function Index(props) {
             <div className="col-lg-10 colsciLeft">
               <div className="sciLeft sellCarTxt">
                 <h2>
-                  <span>{`"There has to be a better`}</span>
+                  <span>{`"There has to be a better `}</span>
                   <span>{`way to sell my car!"`}</span>
                 </h2>
                 <p>

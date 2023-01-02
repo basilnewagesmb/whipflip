@@ -1172,6 +1172,7 @@ function Confirm() {
               height: "unset",
             }}
             type="text"
+            disabled
           >
             <span> Confirm My Offer</span>
           </Button>

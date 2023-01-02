@@ -65,6 +65,11 @@ function useInitialForm({ form, data, carouselRef, goTo }) {
     }
   };
   const onFinishFailed = (errorInfo) => {
+    console.log(errorInfo);
+    if (isMobile && errorInfo.errorFields[0].name == "color") {
+      dispatch(setCurrentSlide(1));
+      carouselRef.current.goTo(1);
+    }
     if (isMobile && errorInfo.errorFields[0].name == "mileage") {
       dispatch(setCurrentSlide(0));
       carouselRef.current.goTo(0);
