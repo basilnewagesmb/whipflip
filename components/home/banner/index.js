@@ -26,7 +26,7 @@ function HomeBanner({ reviews }) {
                       <span>Sell Your Car - </span>
                       <span>Period!</span>
                     </h1>
-                    <span>Welcome to you. Paid on the spot!</span>
+                    <span>We come to you. Paid on the spot!</span>
                   </div>
                   <div className="bnr_left_info desk-show">
                     <div className="row">
