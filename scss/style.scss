@@ -400,7 +400,7 @@ article.reviewLt_icons {
     font-size: 14px;
   }
   &:hover {
-    background: #ffd147 !important;
+    background: #d9a300 !important;
   }
 }
 .home-form select {
@@ -4426,6 +4426,11 @@ canvas {
   color: #353442;
   border: none;
   cursor: pointer;
+  &:hover {
+    text-decoration: none;
+
+    background: #d9a300 !important;
+  }
   @include responsive(phone) {
     font-size: 18px;
   }

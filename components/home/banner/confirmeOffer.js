@@ -95,19 +95,22 @@ function ConfirmOffer({ initialOffer }) {
                     <span> {countDown > 0 ? days : 0}</span>
                   </div>
                   <span>DAYS</span>
-                </div>:
+                </div>
+                <b className="mt-md-1 text-muted">:</b>
                 <div className="oet_col">
                   <div className="oet_col_in">
                     <span> {countDown > 0 ? hours : 0}</span>
                   </div>
                   <span>hrs</span>
-                </div>:
+                </div>
+                <b className="mt-md-1 text-muted">:</b>
                 <div className="oet_col">
                   <div className="oet_col_in">
                     <span> {countDown > 0 ? minutes : 0}</span>
                   </div>
                   <span>mins</span>
-                </div>:
+                </div>
+                <b className="mt-md-1 text-muted">:</b>
                 <div className="oet_col">
                   <div className="oet_col_in">
                     <span> {countDown > 0 ? seconds : 0}</span>
@@ -141,7 +144,7 @@ function ConfirmOffer({ initialOffer }) {
           <button
             className="start_btn"
             onClick={() => {
-              dispatch(reset())
+              dispatch(reset());
               // Modal.confirm({
               //   title: "Confirm",
               //   content: "Are you sure to stat over new car?",

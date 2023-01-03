@@ -11,8 +11,10 @@ import InstantOffer from "components/home/banner/instantOffer";
 import { Button, Modal } from "antd";
 import { CarTwoTone } from "@ant-design/icons";
 import useCheckMobile from "utils/checkMobile";
+import { useSelector } from "react-redux";
 
 function Header() {
+  const { current } = useSelector((state) => state.offer);
   const isMobile = useCheckMobile();
   const { pathname } = useRouter();
   const [scroll, setScroll] = useState(false);
@@ -59,7 +61,11 @@ function Header() {
             <div className="oh_logo">
               <Navbar.Brand href="/">
                 <Image
-                  src="/images/offer-sell-header.svg"
+                  src={
+                    current < 2
+                      ? "/images/offer-logo.svg"
+                      : "/images/offer-sell-header.svg"
+                  }
                   alt="offer sell logo"
                   title="offer sell logo"
                   width={250}
