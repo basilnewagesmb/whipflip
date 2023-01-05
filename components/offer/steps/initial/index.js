@@ -28,7 +28,7 @@ function Initial({ data }) {
   return (
     <div>
       <MetaHead title={steps[current].title} />
-      <LoaderAnim isLoading={isLoading} />
+      <LoaderAnim isLoading={true} />
       {!isMobile ? (
         <Form
           layout={"vertical"}

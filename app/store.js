@@ -13,6 +13,7 @@ import mobSlice from "features/mob/mobSlice";
 // APIS
 import { vehicle } from "services/vehicle/api";
 import { offerApi } from "services/offer/api";
+import { general } from "services/util";
 //
 const persistConfig = {
   key: "root",
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   mob: mobSlice,
   [vehicle.reducerPath]: vehicle.reducer,
   [offerApi.reducerPath]: offerApi.reducer,
+  [general.reducerPath]: general.reducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const store = configureStore({
@@ -35,7 +37,8 @@ export const store = configureStore({
       serializableCheck: false,
     })
       .concat(vehicle.middleware)
-      .concat(offerApi.middleware),
+      .concat(offerApi.middleware)
+      .concat(general.middleware),
 });
 
 export const persister = persistStore(store);

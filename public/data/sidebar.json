@@ -51,10 +51,6 @@
         "path": "/blogs"
       },
       {
-        "title": "Chat",
-        "path": "/chat"
-      },
-      {
         "title": "Contact Us",
         "path": "/contact-us"
       }
