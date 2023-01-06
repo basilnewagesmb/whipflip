@@ -1,7 +1,10 @@
 import { Image } from "antd";
 import { useWindowSize } from "@react-hook/window-size/throttled";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { setIsModalOpen } from "features/offer/offerSlice";
 function ReadyToSell() {
+  const dispatch = useDispatch();
   const [isMobile, setIsMobile] = useState(false);
   const [width] = useWindowSize();
   useEffect(() => {
@@ -28,7 +31,12 @@ function ReadyToSell() {
             <div className="relHd text-center">
               <h2>Ready to Sell?</h2>
               <p>We are ready to buy now, at your door, and on your time!</p>
-              <button className="sell_car_btn">Sell Your Car Now!</button>
+              <button
+                className="sell_car_btn"
+                onClick={() => dispatch(setIsModalOpen())}
+              >
+                Sell Your Car Now!
+              </button>
             </div>
           </div>
           <div className={`col-lg-5 align-self-end ${isMobile && " p-0"}`}>

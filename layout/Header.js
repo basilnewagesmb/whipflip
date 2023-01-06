@@ -11,10 +11,12 @@ import InstantOffer from "components/home/banner/instantOffer";
 import { Button, Modal } from "antd";
 import { CarTwoTone } from "@ant-design/icons";
 import useCheckMobile from "utils/checkMobile";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsModalHide, setIsModalOpen } from "features/offer/offerSlice";
 
 function Header() {
-  const { current } = useSelector((state) => state.offer);
+  const { current, isModalOpen } = useSelector((state) => state.offer);
+  const dispatch = useDispatch();
   const isMobile = useCheckMobile();
   const { pathname } = useRouter();
   const [scroll, setScroll] = useState(false);
@@ -27,18 +29,18 @@ function Header() {
       setScroll(window.scrollY > 150);
     });
   });
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
-    setIsModalOpen(true);
+    dispatch(setIsModalOpen());
   };
   const handleOk = () => {
-    setIsModalOpen(false);
+    dispatch(setIsModalHide());
   };
   const handleCancel = () => {
-    setIsModalOpen(false);
+    dispatch(setIsModalHide());
   };
   useEffect(() => {
-    setIsModalOpen(false);
+    dispatch(setIsModalHide());
+    setOpenSideBar(false);
   }, [pathname]);
 
   return (

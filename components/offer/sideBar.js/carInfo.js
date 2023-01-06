@@ -23,6 +23,7 @@ function CarInfo({ data, isShow, initialOffer }) {
             title={`${data.modelyear} ${data.make} ${data.model} ${
               data.enableMultiTrim ? data.body : data.trim
             }`}
+            height={250}
             preview={false}
             fallback={"/images/no-car-image.png"}
           />

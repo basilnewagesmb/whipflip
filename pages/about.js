@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import MetaHead from "components/common/metaHead";
+import ReadyToSell from "components/common/readytoSell";
 function About() {
   const [height, setHeight] = useState(0);
   const ref = useRef(null);
@@ -194,7 +195,7 @@ function About() {
                   {`WhipFlip does not use third parties to purchase your car. It's you and us all the way!`}
                 </p>
                 <p>
-                 {`Our professional Car Concierges will
+                  {`Our professional Car Concierges will
                   come to you at the time and place you set to sell your car.
                   Before they arrive, you'll receive a text or email of which
                   Concierge will be arriving at your place. You'll instantly
@@ -247,30 +248,7 @@ function About() {
           </div>
         </div>
       </div>
-      <div className="ready-to-sell">
-        <div className="container h100">
-          <div className="row h100">
-            <div className="col-lg-7 align-self-center">
-              <div className="relHd text-center">
-                <h2>Ready to Sell?</h2>
-                <p>We are ready to buy now, at your door, and on your time!</p>
-                <button className="sell_car_btn">Sell Your Car Now!</button>
-              </div>
-            </div>
-            <div className="col-lg-5 align-self-end">
-              <div className="rts-rtImg">
-                <Image
-                  src="/images/sell_to_customer.png"
-                  alt="Ready to Sell"
-                  title="Ready to Sell"
-                  width={445}
-                  height={392}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ReadyToSell />
     </>
   );
 }

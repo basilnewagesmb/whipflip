@@ -16,6 +16,7 @@ function initialState() {
       },
     ],
     initialOffer: null,
+    isModalOpen: false,
   };
 }
 

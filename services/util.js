@@ -14,7 +14,15 @@ export const general = createApi({
         };
       },
     }),
+    retrieveOffer: builder.mutation({
+      query: (email) => {
+        return {
+          url: `/prospects/retrieve?email=${email}`,
+          method: "GET",
+        };
+      },
+    }),
   }),
 });
 
-export const { useContactMutation } = general;
+export const { useContactMutation, useRetrieveOfferMutation } = general;

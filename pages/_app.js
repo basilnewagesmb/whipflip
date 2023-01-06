@@ -32,10 +32,12 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
             theme={{
               token: {
                 colorPrimary: "#4381c0",
+                borderRadiusLG: 4,
               },
             }}
           >
             <Head>
+              <link rel="preload" href="/images/car-anim.gif" as="image" />
               <title>
                 Sell Car Online for FREE | Get Best Price for Used Car |
                 whipflip.com

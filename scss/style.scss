@@ -403,6 +403,14 @@ article.reviewLt_icons {
     background: #d9a300 !important;
   }
 }
+.btn-primary-color-only {
+  background: #ffd147;
+  color: #353442;
+  &:hover {
+    color: #353442!important;
+    background: #d9a300 !important;
+  }
+}
 .home-form select {
   display: block;
   width: 100%;
@@ -5681,8 +5689,8 @@ label.lblipt {
   top: 50%;
   width: 100%;
   transform: translate(-50%, -50%);
-  z-index: 1;
-  backdrop-filter: blur(5px);
+  z-index: 100000;
+  background-color: #fefefe;
 }
 
 .dot_color {
