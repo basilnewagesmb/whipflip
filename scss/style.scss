@@ -407,7 +407,7 @@ article.reviewLt_icons {
   background: #ffd147;
   color: #353442;
   &:hover {
-    color: #353442!important;
+    color: #353442 !important;
     background: #d9a300 !important;
   }
 }
@@ -5693,6 +5693,15 @@ label.lblipt {
   background-color: #fefefe;
 }
 
+.center-child .ant-modal-confirm-content {
+  max-width: 100% !important;
+}
+.active-btn-only .selector-item_label {
+  background: rgba(67, 129, 192, 0.06);
+  border: 1px solid #4381c0;
+  border-radius: 6px;
+  color: #4381c0;
+}
 .dot_color {
   li {
     background-color: #ffd147;

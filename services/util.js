@@ -22,7 +22,45 @@ export const general = createApi({
         };
       },
     }),
+    states: builder.query({
+      query: () => {
+        return {
+          url: `/states`,
+          method: "GET",
+        };
+      },
+    }),
+    conditions: builder.query({
+      query: () => {
+        return {
+          url: `/vehicles/conditions`,
+          method: "GET",
+        };
+      },
+      transformResponse: (response) => {
+        return [
+          {
+            title:
+              "Any vehicle history issues or title brand? (e.g. accident, flood, etc.)",
+            yes: false,
+            data: response.history,
+            active: 0,
+          },
+          {
+            title: "Any engine and/or drivability issues?",
+            yes: false,
+            data: response.history,
+            active: 0,
+          },
+        ];
+      },
+    }),
   }),
 });
 
-export const { useContactMutation, useRetrieveOfferMutation } = general;
+export const {
+  useContactMutation,
+  useRetrieveOfferMutation,
+  useStatesQuery,
+  useConditionsQuery,
+} = general;

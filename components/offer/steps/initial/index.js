@@ -39,6 +39,7 @@ function Initial({ data }) {
           autoComplete="off"
           requiredMark={false}
           initialValues={initialValues}
+          scrollToFirstError={true}
         >
           <div className="offer_right">
             <div className="or_head">
@@ -356,7 +357,9 @@ function Initial({ data }) {
                               {item.name == "A FEW WEEKS" && <SandClock />}
                               {item.name == "ASAP!" && <Clock />}
                               <span>
-                                {item.name == "I'M NOT" ? "IN THE FUTURE" : item.name}
+                                {item.name == "I'M NOT"
+                                  ? "IN THE FUTURE"
+                                  : item.name}
                               </span>
                             </label>
                           </div>
