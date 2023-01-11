@@ -8,11 +8,26 @@
 @import "./variables";
 @import "./layout";
 /* width */
+
+html,
+.scroll-container {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion) {
+  html,
+  .scroll-container {
+    scroll-behavior: auto;
+  }
+}
 ::-webkit-scrollbar {
   width: 5px;
 }
 .link_blue {
   color: #4381c0 !important;
+}
+.height-hide .ant-form-item-control-input {
+  height: 0;
+  min-height: 0!important;
 }
 .home-form .ant-select-selector {
   height: auto !important;

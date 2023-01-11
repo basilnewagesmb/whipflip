@@ -2,13 +2,22 @@ import { Form, Input, InputNumber } from "antd";
 import React, { useEffect } from "react";
 import { useConditionsQuery } from "services/util";
 import Jump from "react-reveal/Jump";
+import Image from "next/image";
 function VehicleCD({ form, formRealValues }) {
   const { data: conditions } = useConditionsQuery();
-  console.log(formRealValues?.conditions?.[0]?.data?.[0]);
   useEffect(() => {
     if (form) form.setFieldValue("conditions", conditions);
   }, [conditions]);
-
+  useEffect(() => {
+    formRealValues?.conditions?.map((item, i) => {
+      form.setFieldValue(
+        ["conditions", i, "active"],
+        item.data.filter((one) => one.active).length == 0
+          ? ""
+          : item.data.filter((one) => one.active).length
+      );
+    });
+  }, [formRealValues?.conditions]);
   return (
     <div className="offer_block">
       <div className="ob_hd">
@@ -29,6 +38,10 @@ function VehicleCD({ form, formRealValues }) {
                       className={`si-wrap ${!item.yes && "active-btn-only"}`}
                       onClick={() => {
                         form.setFieldValue(["conditions", i, "yes"], false);
+                        form.setFieldValue(
+                          ["conditions", i, "data"],
+                          conditions[i].data
+                        );
                       }}
                     >
                       <label className="selector-item_label justify-content-center">
@@ -52,26 +65,33 @@ function VehicleCD({ form, formRealValues }) {
                 <Jump spy={item.yes}>
                   {item.yes && (
                     <div className="viewDetails">
-                      <div className="viewDetail">
+                      <div className={`viewDetail`}>
                         <div className="selectView vin">
                           <div className="checkIssues">
-                            <h3>Check all that apply.</h3>
+                            <h3 className="m-0">Check all that apply.</h3>
+                            <Form.Item
+                              label={false}
+                              name={["conditions", i, "active"]}
+                              className="m-0 border-0 p-0 height-hide"
+                              rules={[
+                                {
+                                  required: true,
+                                  message: "Please select at least one!",
+                                },
+                              ]}
+                            >
+                              <InputNumber
+                                className="w-100"
+                                min={1}
+                                style={{
+                                  height: 0,
+                                  opacity: 0,
+                                  overFlow: "hidden",
+                                }}
+                              />
+                            </Form.Item>
                             <div className="chooseIssues">
                               <div className="row">
-                                <Form.Item
-                                  label={false}
-                                  name={["conditions", i, "active"]}
-                                  className="m-0"
-                                  rules={[
-                                    {
-                                      min: 2,
-                                      message:
-                                        "Please input your plate number!",
-                                    },
-                                  ]}
-                                >
-                                  <InputNumber />
-                                </Form.Item>
                                 {item?.data?.map((radio, j) => (
                                   <div className="col-lg-6" key={j}>
                                     <div className="form-group check-group mb-0">
@@ -85,8 +105,8 @@ function VehicleCD({ form, formRealValues }) {
                                           <input
                                             type="checkbox"
                                             id={radio?.uid}
-                                            onClick={() => {
-                                              form.setFieldValue(
+                                            onClick={async () => {
+                                              await form.setFieldValue(
                                                 ["conditions", i, "data", j],
                                                 {
                                                   uid: radio.uid,
@@ -96,11 +116,26 @@ function VehicleCD({ form, formRealValues }) {
                                                       ?.conditions?.[i].data?.[
                                                       j
                                                     ].active,
+                                                  image: radio?.image
+                                                    ? radio.image
+                                                    : null,
                                                 }
                                               );
+                                              form.validateFields();
                                             }}
                                           />
                                           <label htmlFor={radio?.uid}>
+                                            {radio.image && (
+                                              <span className="opicon">
+                                                <img
+                                                  src={radio.image}
+                                                  alt={radio?.name}
+                                                  title={radio?.name}
+                                                  width={20}
+                                                  height={20}
+                                                />
+                                              </span>
+                                            )}
                                             {radio?.name}
                                           </label>
                                         </>

@@ -73,11 +73,17 @@ function Confirm() {
       onFinish={(data) => {
         console.log(data);
       }}
-      onFinishFailed={() => {}}
+      onFinishFailed={(error) => {
+        console.log(error);
+      }}
       autoComplete="off"
       size="large"
       layout="vertical"
-      scrollToFirstError={true}
+      scrollToFirstError={{
+        behavior: "smooth",
+        block: "center",
+        inline: "center",
+      }}
       requiredMark={false}
     >
       <div className="offer_right">
@@ -262,7 +268,7 @@ function Confirm() {
             </div>
           </div>
         </div>
-        <VehicleCD form={form} formRealValues={formRealValues}/>
+        <VehicleCD form={form} formRealValues={formRealValues} />
         <div className="offer_block">
           <div className="ob_hd">
             <h2>Tire Condition</h2>

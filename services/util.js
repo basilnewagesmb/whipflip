@@ -38,19 +38,35 @@ export const general = createApi({
         };
       },
       transformResponse: (response) => {
+        console.log(response);
         return [
           {
             title:
               "Any vehicle history issues or title brand? (e.g. accident, flood, etc.)",
             yes: false,
             data: response.history,
-            active: 0,
+            active: "",
           },
           {
             title: "Any engine and/or drivability issues?",
             yes: false,
-            data: response.history,
-            active: 0,
+            data: response.mechanical.filter((m) => m.match_name == "engine"),
+            active: "",
+          },
+          {
+            title:
+              "Any dashboard warning lights or inoperable parts? (e.g. Check Engine, Airbag Light, A/C issue, etc.)",
+            yes: false,
+            data: response.mechanical.filter((m) => m.match_name == "warning"),
+            active: "",
+          },
+          {
+            title: "Any aftermarket parts or modifications?",
+            yes: false,
+            data: response.mechanical.filter(
+              (m) => m.match_name == "modification"
+            ),
+            active: "",
           },
         ];
       },
