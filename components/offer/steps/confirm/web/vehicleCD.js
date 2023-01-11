@@ -1,10 +1,8 @@
 import { Form, Input, InputNumber } from "antd";
 import React, { useEffect } from "react";
-import { useConditionsQuery } from "services/util";
 import Jump from "react-reveal/Jump";
 import Image from "next/image";
-function VehicleCD({ form, formRealValues }) {
-  const { data: conditions } = useConditionsQuery();
+function VehicleCD({ form, formRealValues, conditions }) {
   useEffect(() => {
     if (form) form.setFieldValue("conditions", conditions);
   }, [conditions]);

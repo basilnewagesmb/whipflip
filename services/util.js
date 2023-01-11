@@ -39,36 +39,57 @@ export const general = createApi({
       },
       transformResponse: (response) => {
         console.log(response);
-        return [
-          {
-            title:
-              "Any vehicle history issues or title brand? (e.g. accident, flood, etc.)",
-            yes: false,
-            data: response.history,
-            active: "",
-          },
-          {
-            title: "Any engine and/or drivability issues?",
-            yes: false,
-            data: response.mechanical.filter((m) => m.match_name == "engine"),
-            active: "",
-          },
-          {
-            title:
-              "Any dashboard warning lights or inoperable parts? (e.g. Check Engine, Airbag Light, A/C issue, etc.)",
-            yes: false,
-            data: response.mechanical.filter((m) => m.match_name == "warning"),
-            active: "",
-          },
-          {
-            title: "Any aftermarket parts or modifications?",
-            yes: false,
-            data: response.mechanical.filter(
-              (m) => m.match_name == "modification"
+        return {
+          vehicle: [
+            {
+              title:
+                "Any vehicle history issues or title brand? (e.g. accident, flood, etc.)",
+              yes: false,
+              data: response.history,
+              active: "",
+            },
+            {
+              title: "Any engine and/or drivability issues?",
+              yes: false,
+              data: response.mechanical.filter((m) => m.match_name == "engine"),
+              active: "",
+            },
+            {
+              title:
+                "Any dashboard warning lights or inoperable parts? (e.g. Check Engine, Airbag Light, A/C issue, etc.)",
+              yes: false,
+              data: response.mechanical.filter(
+                (m) => m.match_name == "warning"
+              ),
+              active: "",
+            },
+            {
+              title: "Any aftermarket parts or modifications?",
+              yes: false,
+              data: response.mechanical.filter(
+                (m) => m.match_name == "modification"
+              ),
+              active: "",
+            },
+          ],
+          tire: response.mechanical.filter((m) =>
+            ["tires_rough", "tires_better", "tires_normal"].includes(
+              m.match_name
+            )
+          ),
+          cosmetic: {
+            interior: response.cosmetic.filter((m) =>
+              ["interior_better", "interior_normal", "interior_rough"].includes(
+                m.match_name
+              )
             ),
-            active: "",
+            exterior: response.cosmetic.filter((m) =>
+              ["exterior_better", "exterior_normal", "exterior_rough"].includes(
+                m.match_name
+              )
+            ),
           },
-        ];
+        };
       },
     }),
   }),

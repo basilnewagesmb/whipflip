@@ -1,64 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import getAmount from "utils/getAmount";
 import useCheckMobile from "utils/checkMobile";
 import ConfirmMob from "./mob/index";
-import {
-  Button,
-  Form,
-  Input,
-  InputNumber,
-  Select,
-  Modal,
-  Checkbox,
-} from "antd";
+import { Button, Form, Input, InputNumber, Select, Modal } from "antd";
 import InfoIcon from "components/common/infoIcon";
 import { useConditionsQuery, useStatesQuery } from "services/util";
 import VehicleCD from "./web/vehicleCD";
 function Confirm() {
+  const [isValid, setValid] = useState(null);
   const [form] = Form.useForm();
   const formRealValues = Form.useWatch([], form);
   const isMobile = useCheckMobile();
   const { initialOffer } = useSelector((state) => state.offer);
   const { data: states } = useStatesQuery();
-  const [status2, setStatus2] = useState(1);
-  const [condition, setCondition] = useState(2);
-  const [warning, setWarning] = useState(1);
-  const [show, setShow] = useState(false);
-  const [showfinal, setShowfinal] = useState(false);
-  const [issues, setIssues] = useState(1);
-  const [modify, setModify] = useState(1);
-  const modifyHandler = (modify) => {
-    setModify(modify);
-    console.log("issue", modify);
-  };
-  const handleClose = () => setShow(false);
-
-  const handleShow = () => setShow(true);
-
-  const radioHandler2 = (status) => {
-    setStatus2(status);
-  };
-  const conditionHandler = (condition) => {
-    setCondition(condition);
-  };
-  const issueHandler = (issue) => {
-    setIssues(issue);
-    console.log("issue", issue);
-  };
-  const warningHandler = (warning) => {
-    setWarning(warning);
-  };
-  const handlefinalOpen = (e) => {
-    e.preventDefault();
-    setShowfinal(true);
-  };
-  const handleOpen = (e) => {
-    e.preventDefault();
-    setShow(true);
-  };
-  const handlefinalClose = () => setShowfinal(false);
+  const { data: conditions } = useConditionsQuery();
+  useEffect(() => {
+    if (form) {
+      form.setFieldValue("tire", conditions?.tire[0]?.uid);
+      form.setFieldValue(
+        ["cosmetic", "interior"],
+        conditions?.cosmetic?.interior[0]?.uid
+      );
+      form.setFieldValue(
+        ["cosmetic", "exterior"],
+        conditions?.cosmetic?.exterior[0]?.uid
+      );
+    }
+  }, [conditions?.tire, conditions?.cosmetic]);
+  console.log(formRealValues);
   return !isMobile ? (
     <Form
       name="confirm"
@@ -179,6 +150,8 @@ function Confirm() {
                             message: "Please input your vin number!",
                           },
                         ]}
+                        help={!isValid && "nkjsdds"}
+                        validateStatus={!isValid && "error"}
                       >
                         <InputNumber
                           className="w-100"
@@ -268,96 +241,51 @@ function Confirm() {
             </div>
           </div>
         </div>
-        <VehicleCD form={form} formRealValues={formRealValues} />
+        <VehicleCD
+          form={form}
+          formRealValues={formRealValues}
+          conditions={conditions?.vehicle}
+        />
         <div className="offer_block">
           <div className="ob_hd">
             <h2>Tire Condition</h2>
           </div>
           <div className="offer_block-body">
-            <div autoComplete="off" className="form" role="form">
+            <div>
               <div className="form-group row ob_frm_row">
                 <div className="col-lg-12 p-0">
                   <label htmlFor="">Tire condition?</label>
                   <div className="chooseBlock selector row selectorRow rowSell tireconditions">
-                    <div className="sellItemChoose tirecondition">
-                      <input
-                        type="radio"
-                        id="tc1"
-                        name="tc"
-                        className="selector-item_radio"
-                        defaultChecked
-                      />
-                      <label
-                        htmlFor="tc1"
-                        className="selector-item_label labelflexCenter tclabel"
+                    <Form.Item label={false} name={"tire"} hidden>
+                      <Input />
+                    </Form.Item>
+                    {conditions?.tire?.map((item, i) => (
+                      <div
+                        className={`sellItemChoose tirecondition ${
+                          formRealValues.tire == item.uid && "selected"
+                        }`}
+                        key={i}
+                        onClick={(e) => form.setFieldValue("tire", item.uid)}
                       >
-                        <span>
-                          <Image
-                            src="/images/plenty-thread.svg"
-                            alt="plenty-thread"
-                            title="plenty-thread"
-                            width={50}
-                            height={50}
-                          />
-                        </span>
-                        <span className="bodyTc">
-                          <h3>Plenty of Tread</h3>
-                          <span>Recently replaced tires</span>
-                        </span>
-                      </label>
-                    </div>
-                    <div className="sellItemChoose tirecondition">
-                      <input
-                        type="radio"
-                        id="tc2"
-                        name="tc"
-                        className="selector-item_radio"
-                      />
-                      <label
-                        htmlFor="tc2"
-                        className="selector-item_label labelflexCenter tclabel"
-                      >
-                        <span>
-                          <Image
-                            src="/images/some-thread.svg"
-                            alt="some-thread"
-                            title="some thread"
-                            width={50}
-                            height={50}
-                          />
-                        </span>
-                        <span className="bodyTc">
-                          <h3>Some Tread</h3>
-                          <span>Average wear, but passes inspection</span>
-                        </span>
-                      </label>
-                    </div>
-                    <div className="sellItemChoose tirecondition">
-                      <input
-                        type="radio"
-                        id="tc3"
-                        name="tc"
-                        className="selector-item_radio"
-                      />
-                      <label
-                        htmlFor="tc3"
-                        className="selector-item_label labelflexCenter tclabel"
-                      >
-                        <span>
-                          <Image
-                            src="/images/bald.svg"
-                            alt="bald"
-                            title="bald"
-                            width={50}
-                            height={50}
-                          />
-                        </span>
-                        <span className="bodyTc">
-                          <h3>Bald</h3>
-                          <span>Little tread left, steel belts showing</span>
-                        </span>
-                      </label>
-                    </div>
+                        <label className="selector-item_label labelflexCenter tclabel ">
+                          {item?.image && (
+                            <span>
+                              <Image
+                                src={item?.image}
+                                alt={item?.name}
+                                title={item?.name}
+                                width={50}
+                                height={50}
+                              />
+                            </span>
+                          )}
+                          <span className="bodyTc">
+                            <h3>{item?.name}</h3>
+                            <span>{item?.description}</span>
+                          </span>
+                        </label>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -369,218 +297,131 @@ function Confirm() {
             <h2>Cosmetic Condition</h2>
           </div>
           <div className="offer_block-body">
-            <form autoComplete="off" className="form" role="form">
+            <div autoComplete="off" className="form" role="form">
               <div className="form-group row ob_frm_row">
                 <div className="col-lg-12 p-0">
                   <label className="d-block">
-                    How would you honestly rate your vehicle’s{" "}
+                    How would you honestly rate your vehicle's{" "}
                     <span className="underline">
                       {"  "}
                       <b>EXTERIOR</b>
                     </span>{" "}
                     condition?
                   </label>
+                  <Form.Item
+                    label={false}
+                    name={["cosmetic", "exterior"]}
+                    hidden
+                  >
+                    <Input />
+                  </Form.Item>
                   <div className="chooseBlock selector row selectorRow rowSell tireconditions">
-                    <div className="sellItemChoose tirecondition">
-                      <input
-                        type="radio"
-                        id="cc1"
-                        name="cc"
-                        className="selector-item_radio"
-                        defaultChecked
-                      />
-                      <label
-                        htmlFor="cc1"
-                        className="selector-item_label labelflexCenter tclabel"
+                    {conditions?.cosmetic?.exterior?.map((item, i) => (
+                      <div
+                        className={`sellItemChoose tirecondition ${
+                          formRealValues?.cosmetic?.exterior == item.uid &&
+                          "selected"
+                        }`}
+                        onClick={(e) =>
+                          form.setFieldValue(["cosmetic", "exterior"], item.uid)
+                        }
                       >
-                        <span>
-                          <Image
-                            src="/images/great.svg"
-                            alt="great"
-                            title="great"
-                            width={50}
-                            height={50}
-                          />
-                        </span>
-                        <span className="bodyTc">
-                          <h3>FLIPPIN’ GREAT!</h3>
-                          <span>
-                            Truly in showroom condition. May only have a few
-                            barely visible imperfections.
+                        <label className="selector-item_label labelflexCenter tclabel">
+                          {item?.image && (
+                            <span>
+                              <Image
+                                src={item?.image}
+                                alt={item?.name}
+                                title={item?.name}
+                                width={50}
+                                height={50}
+                              />
+                            </span>
+                          )}
+                          <span className="bodyTc">
+                            <h3>{item?.name}</h3>
+                            <span>{item?.description}</span>
                           </span>
-                        </span>
-                      </label>
-                    </div>
-                    <div className="sellItemChoose tirecondition">
-                      <input
-                        type="radio"
-                        id="cc2"
-                        name="cc"
-                        className="selector-item_radio"
-                      />
-                      <label
-                        htmlFor="cc2"
-                        className="selector-item_label labelflexCenter tclabel"
-                      >
-                        <span>
-                          <Image
-                            src="/images/average.svg"
-                            alt="average"
-                            title="average"
-                            width={50}
-                            height={50}
-                          />
-                        </span>
-                        <span className="bodyTc">
-                          <h3>Just Average</h3>
-                          <span>
-                            A few SMALL dings, dents, or scratches on the body,
-                            but nothing needing significant repair.
-                          </span>
-                        </span>
-                      </label>
-                    </div>
-                    <div className="sellItemChoose tirecondition">
-                      <input
-                        type="radio"
-                        id="cc3"
-                        name="cc"
-                        className="selector-item_radio"
-                      />
-                      <label
-                        htmlFor="cc3"
-                        className="selector-item_label labelflexCenter tclabel"
-                      >
-                        <span>
-                          <Image
-                            src="/images/rough.svg"
-                            alt="rough"
-                            title="rough"
-                            width={50}
-                            height={50}
-                          />
-                        </span>
-                        <span className="bodyTc">
-                          <h3>It’s Rough...</h3>
-                          <span>
-                            Medium to large dents, several scratches, cracked
-                            bumper, and/or heavy rust.
-                          </span>
-                        </span>
-                      </label>
-                    </div>
+                        </label>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
               <div className="form-group row ob_frm_row">
                 <div className="col-lg-12 p-0">
                   <label htmlFor="" className="d-block">
-                    How would you honestly rate your vehicle’s{" "}
+                    How would you honestly rate your vehicle's{" "}
                     <span className="underline">
                       {" "}
                       <b>INTERIOR</b>{" "}
                     </span>{" "}
                     condition?
                   </label>
+                  <Form.Item
+                    label={false}
+                    name={["cosmetic", "interior"]}
+                    hidden
+                  >
+                    <Input />
+                  </Form.Item>
                   <div className="chooseBlock selector row selectorRow rowSell tireconditions cosmicconditions">
-                    <div className="sellItemChoose tirecondition">
-                      <input
-                        type="radio"
-                        id="cc11"
-                        name="cc11"
-                        className="selector-item_radio"
-                        defaultChecked
-                      />
-                      <label
-                        htmlFor="cc11"
-                        className="selector-item_label labelflexCenter tclabel cclabel"
+                    {conditions?.cosmetic?.interior?.map((item, i) => (
+                      <div
+                        className={`sellItemChoose tirecondition ${
+                          formRealValues?.cosmetic?.interior == item.uid &&
+                          "selected"
+                        }`}
+                        onClick={(e) =>
+                          form.setFieldValue(["cosmetic", "interior"], item.uid)
+                        }
                       >
-                        <span>
-                          <Image
-                            src="/images/great.svg"
-                            alt="great"
-                            title="great"
-                            width={50}
-                            height={50}
-                          />
-                        </span>
-                        <span className="bodyTc">
-                          <h3>FLIPPIN’ GREAT!</h3>
-                          <span>
-                            It might not have the new car smell, but the
-                            interior is super clean and there are no signs of
-                            wear.
+                        <label className="selector-item_label labelflexCenter tclabel">
+                          {item?.image && (
+                            <span>
+                              <Image
+                                src={item?.image}
+                                alt={item?.name}
+                                title={item?.name}
+                                width={50}
+                                height={50}
+                              />
+                            </span>
+                          )}
+                          <span className="bodyTc">
+                            <h3>{item?.name}</h3>
+                            <span>{item?.description}</span>
                           </span>
-                        </span>
-                      </label>
-                    </div>
-                    <div className="sellItemChoose tirecondition">
-                      <input
-                        type="radio"
-                        id="cc22"
-                        name="cc11"
-                        className="selector-item_radio"
-                      />
-                      <label
-                        htmlFor="cc22"
-                        className="selector-item_label labelflexCenter tclabel"
-                      >
-                        <span>
-                          <Image
-                            src="/images/average.svg"
-                            alt="average"
-                            title="average"
-                            width={50}
-                            height={50}
-                          />
-                        </span>
-                        <span className="bodyTc">
-                          <h3>Just Average</h3>
-                          <span>
-                            A little dirty but nothing a good detail can’t fix.
-                            Some wear and tear, but no need for significant
-                            repairs.
-                          </span>
-                        </span>
-                      </label>
-                    </div>
-                    <div className="sellItemChoose tirecondition">
-                      <input
-                        type="radio"
-                        id="cc33"
-                        name="cc11"
-                        className="selector-item_radio"
-                      />
-                      <label
-                        htmlFor="cc33"
-                        className="selector-item_label labelflexCenter tclabel"
-                      >
-                        <span>
-                          <Image
-                            src="/images/rough.svg"
-                            alt="rough"
-                            title="rough"
-                            width={50}
-                            height={50}
-                          />
-                        </span>
-                        <span className="bodyTc">
-                          <h3>It’s Rough...</h3>
-                          <span>
-                            Tears, excessive wear, heavily stained seats and
-                            carpet, damaged interior parts, and/or significant
-                            odor.
-                          </span>
-                        </span>
-                      </label>
-                    </div>
+                        </label>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
         <div className="initial_order_btn">
+          <div
+            className="btn border"
+            onClick={() => {
+              window.scrollTo(0, 0);
+
+              setValid(true);
+            }}
+          >
+            setValid true
+          </div>
+          <div
+            className="btn border"
+            onClick={() => {
+              window.scrollTo(0, 0);
+
+              setValid(false);
+            }}
+          >
+            setValid false
+          </div>
           <Button
             htmlType="submit"
             className="getOfferBtn"
@@ -588,6 +429,7 @@ function Confirm() {
               height: "unset",
             }}
             type="text"
+
             // disabled
           >
             <span> Confirm My Offer</span>
