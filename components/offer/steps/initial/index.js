@@ -6,9 +6,9 @@ import { useSelector } from "react-redux";
 import { InfoCircleOutlined } from "@ant-design/icons";
 import useCheckMobile from "utils/checkMobile";
 import ColorSelect from "./web/colorSelect";
-import useInitialForm from "services/offer/function";
+import useInitialForm from "services/offer/initial/function";
 import LoaderAnim from "components/common/loader";
-import InitialMob from "./moblie/index";
+import InitialMob from "./mob/index";
 
 function Initial({ data }) {
   const isMobile = useCheckMobile();

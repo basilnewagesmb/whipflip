@@ -9,12 +9,10 @@ import moment from "moment";
 import { useRouter } from "node_modules/next/router";
 import { useDispatch, useSelector } from "react-redux";
 import useCheckMobile from "utils/checkMobile";
-import { useCreateInitialOfferMutation, useGetOfferByIdMutation } from "./api";
-import useMobileHandler from "./mobileHandler";
+import { useCreateInitialOfferMutation, useGetOfferByIdMutation } from "../api";
 function useInitialForm({ form, data, carouselRef, goTo }) {
+  const router = useRouter();
   const isMobile = useCheckMobile();
-  const realVal = Form.useWatch([], form);
-
   const [createInitialOffer, { isLoading: isCreating }] =
     useCreateInitialOfferMutation();
   const [getOfferById, { isLoading }] = useGetOfferByIdMutation();
@@ -57,6 +55,10 @@ function useInitialForm({ form, data, carouselRef, goTo }) {
       if (offerRes?.data) {
         dispatch(clear());
         dispatch(setInitialOffer(offerRes?.data));
+        router.push({
+          pathname: "/prospect/[id]/quote",
+          query: { id: offerRes?.data?.uid },
+        });
       } else {
         message.error(offerRes.data.message || "Something went wrong");
       }
@@ -75,14 +77,13 @@ function useInitialForm({ form, data, carouselRef, goTo }) {
       carouselRef.current.goTo(0);
     }
   };
-  const router = useRouter();
 
   const formDate = {
     isLoading: isLoading || isCreating,
     initialValues: {
       transmission: "automatic",
       does_vehicle_start: true,
-      readiness_uid: data?.readiness[0].uid,
+      readiness_uid: data?.readiness?.[0]?.uid,
     },
     onFinish,
     onFinishFailed,

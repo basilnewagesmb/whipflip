@@ -16,12 +16,12 @@ function CarInfo({ data, isShow, initialOffer }) {
             </>
           )}
           <ShimmerImage
-            src={data?.stills?.[0]?.image}
-            alt={`${data.modelyear} ${data.make} ${data.model} ${
-              data.enableMultiTrim ? data.body : data.trim
+            src={data?.stills?.[0]?.image || data?.image}
+            alt={`${data?.modelyear} ${data?.make} ${data?.model} ${
+              data?.enableMultiTrim ? data?.body : data?.trim
             }`}
-            title={`${data.modelyear} ${data.make} ${data.model} ${
-              data.enableMultiTrim ? data.body : data.trim
+            title={`${data?.modelyear} ${data?.make} ${data?.model} ${
+              data?.enableMultiTrim ? data?.body : data?.trim
             }`}
             height={250}
             preview={false}
@@ -30,12 +30,12 @@ function CarInfo({ data, isShow, initialOffer }) {
         </div>
         <div className="itemInfo">
           <h2>
-            {data.modelyear} {data.make}
+            {data?.modelyear} {data?.make}
           </h2>
           <span>
-            {data.enableMultiTrim ? data.body : data.trim}
+            {data?.enableMultiTrim ? data?.body : data?.trim}
 
-            <span className="miles"> {` ${data.model} `}</span>
+            <span className="miles"> {` ${data?.model} `}</span>
           </span>
           <Link href="/">Not your car?</Link>
         </div>

@@ -57,7 +57,7 @@ function Header() {
           <InstantOffer handleCancel={handleCancel} />
         </Modal>
       )}
-      {pathname == "/offer/[id]" ? (
+      {pathname?.includes("/vehicle") || pathname?.includes("/prospect") ? (
         <div className="offer_header">
           <div className="offer_header_in">
             <div className="oh_logo">

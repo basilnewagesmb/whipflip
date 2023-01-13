@@ -38,7 +38,6 @@ export const general = createApi({
         };
       },
       transformResponse: (response) => {
-        console.log(response);
         return {
           vehicle: [
             {
@@ -92,6 +91,22 @@ export const general = createApi({
         };
       },
     }),
+    vehicleWithVin: builder.mutation({
+      query: (vin) => {
+        return {
+          url: `/vehicles?vin=${vin}`,
+          method: "GET",
+        };
+      },
+    }),
+    vehicleWithPlate: builder.mutation({
+      query: ({ state, plateNumber }) => {
+        return {
+          url: `/vehicles?plate=${plateNumber}&state=${state}`,
+          method: "GET",
+        };
+      },
+    }),
   }),
 });
 
@@ -100,4 +115,6 @@ export const {
   useRetrieveOfferMutation,
   useStatesQuery,
   useConditionsQuery,
+  useVehicleWithVinMutation,
+  useVehicleWithPlateMutation,
 } = general;

@@ -13,7 +13,7 @@ export const offerApi = createApi({
   }),
   endpoints: (builder) => ({
     getOfferMinimalById: builder.query({
-      query: ({id}) => {
+      query: ({ id }) => {
         return {
           url: `/prospects/minimal/${id}`,
           method: "GET",
@@ -37,6 +37,15 @@ export const offerApi = createApi({
         };
       },
     }),
+    confirmOffer: builder.mutation({
+      query: ({ issues }) => {
+        return {
+          url: `/prospects/${issues.uid}/damages`,
+          method: "POST",
+          body: {issues},
+        };
+      },
+    }),
   }),
 });
 
@@ -44,4 +53,5 @@ export const {
   useGetOfferMinimalByIdQuery,
   useCreateInitialOfferMutation,
   useGetOfferByIdMutation,
+  useConfirmOfferMutation,
 } = offerApi;

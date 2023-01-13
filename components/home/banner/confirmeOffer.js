@@ -122,7 +122,7 @@ function ConfirmOffer({ initialOffer }) {
           </div>
         </div>
         <div className="cob_foo">
-          <Link href={"/offer/" + initialOffer.jd_vehicle_id}>
+          <Link href={"/prospect/" + initialOffer.uid}>
             <span className="confirm_offer_btn">
               <span>Confirm My Offer</span>
               <span>

@@ -1,6 +1,6 @@
 import { Form, InputNumber } from "antd";
 import React from "react";
-import useInitialForm from "services/offer/function";
+import useInitialForm from "services/offer/initial/function";
 
 function Milage({ carouselRef, form, data, next, goTo }) {
   const { mileageOnblur, mileage } = useInitialForm({ form, data, goTo });

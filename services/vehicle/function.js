@@ -20,8 +20,8 @@ function useVehicleForm(form) {
   const onFinish = (values) => {
     dispatch(reset());
     router.push({
-      pathname: "/offer/[id]",
-      query: { id: trim },
+      pathname: "/vehicle",
+      query: { vehicle_id: trim },
     });
   };
   const formDate = {

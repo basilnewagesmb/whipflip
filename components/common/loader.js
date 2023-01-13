@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Fade from "react-reveal/Fade";
 function LoaderAnim({ isLoading }) {
+  useEffect(() => {
+    if (isLoading) {
+      document.getElementsByTagName("body")[0].style = "overflow: hidden";
+      document.getElementsByTagName("footer")[0].style = "display: none";
+    } else {
+      document.getElementsByTagName("body")[0].style = "overflow: unset";
+      document.getElementsByTagName("footer")[0].style = "display: block";
+    }
+  }, [isLoading]);
+
   return (
     <div
       className="full-page-loading"

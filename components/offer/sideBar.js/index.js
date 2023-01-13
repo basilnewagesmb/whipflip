@@ -7,13 +7,13 @@ import OfferInfo from "./offerInfo";
 import ProgressBar from "./ProgressBar";
 import WillComeback from "./willComeback";
 
-function SideBar({ data }) {
+function SideBar({ data, current }) {
   const isMobile = useCheckMobile();
-  const { current, initialOffer } = useSelector((state) => state.offer);
+  const { initialOffer } = useSelector((state) => state.offer);
   return (
     <div className="col-lg-4 p-0">
       <div className="formLeftSec">
-        <ProgressBar isMobile={isMobile} />
+        <ProgressBar isMobile={isMobile} current={current} />
         {!isMobile ? (
           <div className="itemForSell">
             <CarInfo

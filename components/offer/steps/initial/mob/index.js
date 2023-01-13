@@ -8,7 +8,7 @@ import StartAndDrive from "./start-and-drive";
 import SeeInitOffer from "./see-init-offer";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { Button } from "antd";
-import useMobileHandler from "services/offer/mobileHandler";
+import useMobileHandler from "services/offer/initial/mobileHandler";
 import { useDispatch } from "react-redux";
 import { setCurrentSlide } from "features/mob/mobSlice";
 function InitialMob({ data, form, carouselRef }) {
