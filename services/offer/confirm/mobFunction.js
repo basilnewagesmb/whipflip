@@ -17,7 +17,7 @@ import Image from "next/image";
 import { setCurrent } from "features/offer/offerSlice";
 import { useRouter } from "next/router";
 import SkipButton from "components/offer/steps/confirm/web/skipButton";
-function useConfirmForm({ form }) {
+function useConfirmFormMob({ form }) {
   const dispatch = useDispatch();
   const [isValid, setValid] = useState(true);
   const formRealValues = Form.useWatch([], form);
@@ -126,6 +126,7 @@ function useConfirmForm({ form }) {
   };
 
   const formDate = {
+    form,
     formRealValues,
     initialOffer,
     isMobile,
@@ -292,54 +293,4 @@ export const ShowEasyStep = (
   });
 };
 
-export const Images = () => {
-  return {
-    tire: {
-      tires_better: {
-        src: "/images/plenty-thread.svg",
-        description: "Recently replaced tires",
-      },
-      tires_normal: {
-        src: "/images/some-thread.svg",
-        description: "Average wear, but passes inspection",
-      },
-      tires_rough: {
-        src: "/images/bald.svg",
-        description: "Little tread left, steel belts showing",
-      },
-    },
-    cosmetic: {
-      exterior_better: {
-        src: "/images/great.svg",
-        description:
-          "Truly in showroom condition. May only have a few barely visible imperfections.",
-      },
-      exterior_normal: {
-        src: "/images/average.svg",
-        description:
-          "A few SMALL dings, dents, or scratches on the body, but nothing needing significant repair.",
-      },
-      exterior_rough: {
-        src: "/images/rough.svg",
-        description:
-          "Medium to large dents, several scratches, cracked bumper, and/or heavy rust.",
-      },
-      interior_better: {
-        src: "/images/great.svg",
-        description:
-          "It might not have the new car smell, but the interior is super clean and there are no signs of wear.",
-      },
-      interior_normal: {
-        src: "/images/average.svg",
-        description:
-          "A little dirty but nothing a good detail can't fix. Some wear and tear, but no need for significant repairs.",
-      },
-      interior_rough: {
-        src: "/images/rough.svg",
-        description:
-          "Tears, excessive wear, heavily stained seats and carpet, damaged interior parts, and/or significant odor.",
-      },
-    },
-  };
-};
-export default useConfirmForm;
+export default useConfirmFormMob;

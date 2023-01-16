@@ -42,6 +42,10 @@ export const getServerSideProps = async ({ res, params, query }) => {
     res.statusCode = 404;
   }
   return {
+    redirect: {
+      permanent: false,
+      destination: `/prospect/${data.uid}/${data.status}`,
+    },
     props: {
       data,
       status: !!data ? 200 : 404,

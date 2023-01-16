@@ -1,16 +1,34 @@
-import Link from "next/link";
 import React from "react";
+import { Modal } from "antd";
+import WillComebackContent from "./willComebackModal";
 
-function willComeback({ isShow }) {
+function WillComeback({ isShow }) {
+  const { confirm } = Modal;
+
   return (
     isShow && (
       <div className="come_back_later">
-        <Link href="/">
+        <div
+          onClick={() => {
+            confirm({
+              icon: null,
+              content: <WillComebackContent />,
+              title: "Need to Leave?",
+              closable: true,
+              footer: null,
+              className:"will_come_back"
+            });
+          }}
+          style={{
+            textDecoration: "underline",
+            cursor: "pointer",
+          }}
+        >
           <>{`I’ll come back later.`}</>
-        </Link>
+        </div>
       </div>
     )
   );
 }
 
-export default willComeback;
+export default WillComeback;

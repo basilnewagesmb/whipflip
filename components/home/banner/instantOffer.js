@@ -6,6 +6,9 @@ import useVehicleForm from "services/vehicle/function";
 import PoweredBy from "components/common/poweredBy";
 import { Modal } from "antd";
 import { useRetrieveOfferMutation } from "services/util";
+import { useDispatch } from "react-redux";
+import { setInitialOffer } from "features/offer/offerSlice";
+import { useGetOfferByIdMutation } from "services/offer/api";
 
 function InstantOffer({ header, handleShowSideBar, handleCancel }) {
   const [showError, setShowError] = useState(false);
@@ -31,7 +34,8 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
   useEffect(() => {
     setShowError(false);
   }, [realEmail]);
-
+  const dispatch = useDispatch();
+  const [getOfferById, { isLoading: getting }] = useGetOfferByIdMutation();
   if (header) {
     return (
       <div className="vehicleDetailNav ">
@@ -180,6 +184,8 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
             onFinish={async ({ email }) => {
               const res = await retrieveOffer(email);
               if (res?.data?.uid) {
+                const { data } = await getOfferById(res?.data?.uid);
+                await dispatch(setInitialOffer(data));
                 handleClose();
               } else {
                 setShowError(true);
@@ -247,7 +253,7 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
                 className="ml-2 w-auto btn-primary-color-only"
                 htmlType="submit"
                 type="primary"
-                loading={isLoading}
+                loading={isLoading || getting}
                 disabled={
                   !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(realEmail)
                 }

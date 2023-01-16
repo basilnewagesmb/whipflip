@@ -1,5 +1,6 @@
 import OfferLayout from "components/offer/layout";
 import Confirm from "components/offer/steps/confirm/index";
+import Sell from "components/offer/steps/sell/index";
 import React from "react";
 import { useGetOfferQuery } from "services/offer/api";
 
@@ -9,8 +10,8 @@ function index({ data }) {
   });
 
   return (
-    <OfferLayout data={offerData || data} current={1}>
-      <Confirm data={offerData || data} />
+    <OfferLayout data={offerData || data} current={2}>
+      <Sell data={offerData || data} />
     </OfferLayout>
   );
 }
@@ -20,7 +21,7 @@ export async function getServerSideProps({ res, query }) {
     `${process.env.NEXT_PUBLIC_API_URL}/prospects/${id}`
   );
   const data = await resp.json();
-  if (data.status !== "quote") {
+  if (data.status !== "offer") {
     return {
       redirect: {
         permanent: false,

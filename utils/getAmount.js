@@ -1,6 +1,7 @@
 import React from "react";
 
 function getAmount(value) {
+  console.log(value);
   if (value?.manrev) {
     return "$ NEEDS REVIEW";
   } else {
@@ -9,7 +10,9 @@ function getAmount(value) {
         value?.quote_amount / 100
       )}`;
     } else {
-      `$${new Intl.NumberFormat("en-US").format(value?.offer_amount / 100)}`;
+      return `$${new Intl.NumberFormat("en-US").format(
+        value?.offer_amount / 100
+      )}`;
     }
   }
 }

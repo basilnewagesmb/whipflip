@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import PoweredBy from "components/common/poweredBy";
 import ShimmerImage from "components/common/shimmerImage";
 import getAmount from "utils/getAmount";
+import WillComeback from "components/offer/sideBar.js/willComeback";
+import QuestionsLayout from "./questionsLayout";
 
 function ConfirmMob({ initialOffer }) {
-  return (
+  const [started, setStarted] = useState(false);
+  return !started ? (
     <div className="mobConfirmOff">
       <div className="container">
         <div className="confOffBody">
           <h1>
-            Your <i>FLIPPIN’</i> Awesome Offer!
+            Your <i>FLIPPING’</i> Awesome Offer!
           </h1>
           <div className="ioCard">
             <h2>Initial offer: {getAmount(initialOffer)}</h2>
@@ -19,8 +22,15 @@ function ConfirmMob({ initialOffer }) {
                 <ShimmerImage src={initialOffer?.image} alt="car" title="car" />
               </div>
               <div className="ofp_right col-8">
-                <h3>2022 Ford Ranger</h3>
-                <span>2.3L EcoBoost® I4 engine</span>
+                <h3>
+                  {initialOffer?.modelyear} {initialOffer?.make}
+                </h3>
+                <span>
+                  {initialOffer?.enableMultiTrim
+                    ? initialOffer?.body
+                    : initialOffer?.trim}
+                  <span className="miles"> {` ${initialOffer?.model} `}</span>
+                </span>
               </div>
             </div>
             <PoweredBy />
@@ -29,7 +39,12 @@ function ConfirmMob({ initialOffer }) {
             <p>We’d love to buy your car!</p>
             <p>You’re just one quick step away from confirming your offer.</p>
           </div>
-          <button className="confirm_off_btn">
+          <button
+            className="confirm_off_btn"
+            onClick={() => {
+              setStarted(true);
+            }}
+          >
             <span>Confirm My Offer</span>
             <span>
               <svg
@@ -46,13 +61,7 @@ function ConfirmMob({ initialOffer }) {
               </svg>
             </span>
           </button>
-          <a
-            href="#"
-            className="custo_info-aref"
-            onClick={(e) => showLeaveHandler(e)}
-          >
-            I’ll come back later
-          </a>
+          <WillComeback isShow={true} />
           <div className="whip_cus_info">
             <div className="wci_in wci-mob-in">
               <div className="wci_left">
@@ -76,6 +85,8 @@ function ConfirmMob({ initialOffer }) {
         </div>
       </div>
     </div>
+  ) : (
+    <QuestionsLayout initialOffer={initialOffer} />
   );
 }
 

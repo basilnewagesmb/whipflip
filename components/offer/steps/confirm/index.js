@@ -8,10 +8,14 @@ import VehicleCD from "./web/vehicleCD";
 import useConfirmForm, {
   Images,
   ShowEasyStep,
-  showEasyStep,
 } from "services/offer/confirm/function";
 import LoaderAnim from "components/common/loader";
+import { setCurrent } from "features/offer/offerSlice";
+import { useDispatch } from "react-redux";
+import { useSkipToInstantOfferMutation } from "services/offer/api";
 function Confirm() {
+  const [skipToInstantOffer, {}] = useSkipToInstantOfferMutation();
+  const dispatch = useDispatch();
   const [form] = Form.useForm();
   const {
     formRealValues,
@@ -32,6 +36,37 @@ function Confirm() {
   return (
     <>
       <LoaderAnim isLoading={confirming} />
+      {initialOffer?.is_deduction_added == "Y" && (
+        <div className="offer_right">
+          <div className="or_head">
+            <h1>Awesome Initial Offer: {getAmount(initialOffer)}!</h1>
+            <p>
+              We just need a few more bits of information to make your offer as
+              accurate as possible!
+            </p>
+            <div className="initial_order_btn mb-5">
+              <Button
+                htmlType="button"
+                className="getOfferBtn"
+                style={{
+                  height: "unset",
+                }}
+                type="text"
+                onClick={() => {
+                  ShowEasyStep(
+                    dispatch,
+                    setCurrent,
+                    skipToInstantOffer,
+                    initialOffer
+                  );
+                }}
+              >
+                <span>Confirm My Offer</span>
+              </Button>
+            </div>{" "}
+          </div>
+        </div>
+      )}
       {!isMobile ? (
         <Form
           name="confirm"
@@ -48,15 +83,19 @@ function Confirm() {
             inline: "center",
           }}
           requiredMark={false}
+          disabled={initialOffer?.is_deduction_added == "Y"}
+          className={initialOffer?.is_deduction_added == "Y" && "disabled"}
         >
           <div className="offer_right">
-            <div className="or_head">
-              <h1>Awesome Initial Offer: {getAmount(initialOffer)}!</h1>
-              <p>
-                We just need a few more bits of information to make your offer
-                as accurate as possible!
-              </p>
-            </div>
+            {!initialOffer?.is_deduction_added == "Y" && (
+              <div className="or_head">
+                <h1>Awesome Initial Offer: {getAmount(initialOffer)}!</h1>
+                <p>
+                  We just need a few more bits of information to make your offer
+                  as accurate as possible!
+                </p>
+              </div>
+            )}
             <div className="offer_block">
               <div className="ob_hd">
                 <h2>Vehicle Information</h2>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { reset } from "features/offer/offerSlice";
 import ShimmerImage from "components/common/shimmerImage";
@@ -12,13 +12,20 @@ import { Modal } from "antd";
 
 function ConfirmOffer({ initialOffer }) {
   const dispatch = useDispatch();
+  const [data, setData] = useState(initialOffer);
 
-  const { data } = useGetOfferMinimalByIdQuery(
+  const offerData = useGetOfferMinimalByIdQuery(
     { id: initialOffer.uid },
     {
       skip: !initialOffer.uid,
     }
   );
+  useEffect(() => {
+    if (offerData.data) {
+      setData(offerData.data);
+    }
+  }, [offerData]);
+
   const date =
     data?.status == "quote"
       ? moment(data?.last_quote_date).add(5, "days")
@@ -42,20 +49,12 @@ function ConfirmOffer({ initialOffer }) {
             <div className="cob_offer_product d-flex justify-content-center">
               <ShimmerImage
                 width={285}
-                src={initialOffer?.image}
-                alt={`${initialOffer?.year} ${initialOffer?.make} ${
-                  initialOffer?.model
-                } ${
-                  initialOffer?.enableMultiTrim
-                    ? initialOffer?.body
-                    : initialOffer?.trim
+                src={data?.image}
+                alt={`${data?.year} ${data?.make} ${data?.model} ${
+                  data?.enableMultiTrim ? data?.body : data?.trim
                 }`}
-                title={`${initialOffer?.year} ${initialOffer?.make} ${
-                  initialOffer?.model
-                } ${
-                  initialOffer?.enableMultiTrim
-                    ? initialOffer?.body
-                    : initialOffer?.trim
+                title={`${data?.year} ${data?.make} ${data?.model} ${
+                  data?.enableMultiTrim ? data?.body : data?.trim
                 }`}
                 preview={false}
                 fallback={"/images/no-car-image.png"}
@@ -63,20 +62,18 @@ function ConfirmOffer({ initialOffer }) {
             </div>
             <div className="cob_offer_name">
               <h2>
-                {initialOffer?.year} {initialOffer.make}
+                {data?.year} {data?.make}
               </h2>
               <p>
-                <span> {initialOffer.trim}</span>
+                <span> {data?.trim}</span>
                 <span>.</span>
                 <span>
-                  {moment(initialOffer?.last_quote_date).format(
-                    "MMM, DD ,YYYY"
-                  )}
+                  {moment(data?.last_quote_date).format("MMM, DD ,YYYY")}
                 </span>
               </p>
             </div>
             <div className="cob_offer_price">
-              <h1>{getAmount(initialOffer)}</h1>
+              <h1>{getAmount(data)}</h1>
             </div>
             <div className="poweredBy">
               <Image
@@ -122,9 +119,13 @@ function ConfirmOffer({ initialOffer }) {
           </div>
         </div>
         <div className="cob_foo">
-          <Link href={"/prospect/" + initialOffer.uid}>
+          <Link href={"/prospect/" + data?.uid + "/" + data?.status}>
             <span className="confirm_offer_btn">
-              <span>Confirm My Offer</span>
+              <span>
+                {data?.status == "offer"
+                  ? "Accept Offer & Sell"
+                  : "Confirm My Offer"}{" "}
+              </span>
               <span>
                 <svg
                   width="17"
@@ -144,14 +145,13 @@ function ConfirmOffer({ initialOffer }) {
           <button
             className="start_btn"
             onClick={() => {
-              dispatch(reset());
-              // Modal.confirm({
-              //   title: "Confirm",
-              //   content: "Are you sure to stat over new car?",
-              //   onOk: () => {
-              //     dispatch(reset());
-              //   },
-              // });
+              Modal.confirm({
+                title: "Confirm",
+                content: "Are you sure to stat over new car?",
+                onOk: () => {
+                  dispatch(reset());
+                },
+              });
             }}
           >
             <span>Start Over</span>

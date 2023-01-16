@@ -5909,3 +5909,13 @@ li.active.pe-auto {
 .ant-steps-item-active .ant-steps-item-icon span.ant-steps-icon {
   color: #4381c0 !important;
 }
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.1;
+}
+.will_come_back {
+  .ant-modal-confirm-content {
+    max-width: unset !important;
+  }
+}

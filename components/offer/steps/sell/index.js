@@ -1,7 +1,8 @@
 import Image from "next/image";
 import React, { useState } from "react";
+import getAmount from "utils/getAmount";
 
-function Sell() {
+function Sell({ data }) {
   return (
     <div>
       <div className="acceptOffer">
@@ -22,7 +23,7 @@ function Sell() {
               </div>
             </div>
             <div className="at_price">
-              <h1>$6,800</h1>
+              <h1>{getAmount(data)}</h1>
             </div>
             <div className="at_dec">
               <p>

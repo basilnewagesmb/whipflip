@@ -11,6 +11,7 @@ export const offerApi = createApi({
       return headers;
     },
   }),
+  tagTypes: ["offers"],
   endpoints: (builder) => ({
     getOfferMinimalById: builder.query({
       query: ({ id }) => {
@@ -28,6 +29,16 @@ export const offerApi = createApi({
           body: data,
         };
       },
+      invalidatesTags: ["offers"],
+    }),
+    getOffer: builder.query({
+      query: (id) => {
+        return {
+          url: `/prospects/${id}`,
+          method: "GET",
+        };
+      },
+      providesTags: ["offers"],
     }),
     getOfferById: builder.mutation({
       query: (id) => {
@@ -37,14 +48,25 @@ export const offerApi = createApi({
         };
       },
     }),
-    confirmOffer: builder.mutation({
+    addDamages: builder.mutation({
       query: ({ issues }) => {
         return {
           url: `/prospects/${issues.uid}/damages`,
           method: "POST",
-          body: {issues},
+          body: { issues },
         };
       },
+      invalidatesTags: ["offers"],
+    }),
+    skipToInstantOffer: builder.mutation({
+      query: (data) => {
+        return {
+          url: `/prospects/offer`,
+          method: "POST",
+          body: data,
+        };
+      },
+      invalidatesTags: ["offers"],
     }),
   }),
 });
@@ -52,6 +74,8 @@ export const offerApi = createApi({
 export const {
   useGetOfferMinimalByIdQuery,
   useCreateInitialOfferMutation,
+  useGetOfferQuery,
   useGetOfferByIdMutation,
-  useConfirmOfferMutation,
+  useAddDamagesMutation,
+  useSkipToInstantOfferMutation,
 } = offerApi;
