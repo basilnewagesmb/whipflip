@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { Button, Form, Input, InputNumber, Select, Modal } from "antd";
+import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import InfoIcon from "components/common/infoIcon";
 import Image from "next/image";
+import {
+  useVehicleWithPlateMutation,
+  useVehicleWithVinMutation,
+} from "services/util";
 
 function ConfirmVehicle({
   initialOffer,
@@ -10,12 +15,49 @@ function ConfirmVehicle({
   isValid,
   setValid,
   states,
+  currentSlide,
+  prev,
+  next,
+  vehicleWithVin,
+  vinHdl,
+  vehicleWithPlate,
+  platHdl,
+  isReview,
 }) {
-  console.log(formRealValues);
   return (
     <div className="offer_block noBordBtm offer_block_mobi">
-      <div className="ob_hd">
-        <h2>Confirm Exact Vehicle</h2>
+      <div className="ob_hd d-flex justify-content-between">
+        <h2
+          style={{
+            fontSize: "20px",
+          }}
+        >
+          Confirm Exact Vehicle
+        </h2>
+        {!isReview && (
+          <div className="d-flex justify-content-center align-items-center">
+            <Button
+              className=" d-flex justify-content-center align-items-center"
+              shape="circle"
+              icon={<LeftOutlined />}
+              disabled={currentSlide == 0}
+              onClick={prev}
+            />
+            <Button
+              className="ml-3 d-flex justify-content-center align-items-center"
+              shape="circle"
+              icon={<RightOutlined />}
+              onClick={next}
+              {...(formRealValues?.info?.type == "vin"
+                ? { disabled: !formRealValues?.info?.vinNumber }
+                : {
+                    disabled:
+                      !formRealValues?.info?.plateNumber ||
+                      !formRealValues?.info?.state,
+                  })}
+            />{" "}
+          </div>
+        )}
       </div>
       <Form.Item label={false} name={["info", "type"]} hidden>
         <Input />
@@ -206,41 +248,69 @@ function ConfirmVehicle({
           </div>
         </div>
       </div>
-      <div className="offer_block-body">
-        <div className="form-group text-center">
-          <Button
-            className="continueBtn"
-            style={{
-              borderRadius: "30px",
-            }}
-            size="large"
-            loading={false}
-            {...(formRealValues?.info?.type == "vin"
-              ? { disabled: !formRealValues?.info?.vinNumber }
-              : {
-                  disabled:
-                    !formRealValues?.info?.plateNumber ||
-                    !formRealValues?.info?.state,
-                })}
-          >
-            Continue
-            <span>
-              <svg
-                width="8"
-                height="5"
-                viewBox="0 0 10 7"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M5 6.8151L0 1.8151L1.16667 0.648438L5 4.48177L8.83333 0.648438L10 1.8151L5 6.8151Z"
-                  fill="white"
-                />
-              </svg>
-            </span>
-          </Button>
+      {!isReview && (
+        <div className="offer_block-body">
+          <div className="form-group text-center">
+            <Button
+              className="continueBtn"
+              style={{
+                borderRadius: "30px",
+              }}
+              size="large"
+              loading={vinHdl?.isLoading || platHdl?.isLoading}
+              {...(formRealValues?.info?.type == "vin"
+                ? { disabled: !formRealValues?.info?.vinNumber }
+                : {
+                    disabled:
+                      !formRealValues?.info?.plateNumber ||
+                      !formRealValues?.info?.state,
+                  })}
+              onClick={async () => {
+                const { info } = formRealValues;
+                let res;
+                switch (info.type) {
+                  case "vin":
+                    res = await vehicleWithVin(info.vinNumber);
+                    if (res?.error?.data?.message) {
+                      setValid(false);
+                    } else {
+                      next();
+                      setValid(true);
+                    }
+                    break;
+                  case "plate":
+                    res = await vehicleWithPlate(info);
+                    if (res?.error?.data?.message) {
+                      setValid(false);
+                    } else {
+                      next();
+                      setValid(true);
+                    }
+                    break;
+                  default:
+                    break;
+                }
+              }}
+            >
+              Continue
+              <span>
+                <svg
+                  width="8"
+                  height="5"
+                  viewBox="0 0 10 7"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5 6.8151L0 1.8151L1.16667 0.648438L5 4.48177L8.83333 0.648438L10 1.8151L5 6.8151Z"
+                    fill="white"
+                  />
+                </svg>
+              </span>
+            </Button>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

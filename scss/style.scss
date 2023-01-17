@@ -5919,3 +5919,32 @@ li.active.pe-auto {
     max-width: unset !important;
   }
 }
+
+li.col-6.ci_col > div {
+    height: 100%;
+}
+
+li.col-6.ci_col > div >div {
+    height: 100%;
+}
+
+li.col-6.ci_col > div >div>div {
+    height: 100%;
+}
+
+li.col-6.ci_col > div >div>div >div{
+    height: 100%;
+}
+li.col-6.ci_col > div >div>div >div>div{
+    height: 100%;
+}
+
+.fixed_btn {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 10px);
+  width: 100%;
+  z-index: 10;
+  padding: 10px;
+  bottom: 5%;
+}

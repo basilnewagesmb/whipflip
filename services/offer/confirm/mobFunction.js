@@ -17,7 +17,8 @@ import Image from "next/image";
 import { setCurrent } from "features/offer/offerSlice";
 import { useRouter } from "next/router";
 import SkipButton from "components/offer/steps/confirm/web/skipButton";
-function useConfirmFormMob({ form }) {
+function useConfirmFormMob({ form, navFunc }) {
+  const [isReview, setIsReview] = useState(false);
   const dispatch = useDispatch();
   const [isValid, setValid] = useState(true);
   const formRealValues = Form.useWatch([], form);
@@ -118,6 +119,7 @@ function useConfirmFormMob({ form }) {
       }
     } else {
       message.error("trim not fount");
+      navFunc.goTo(0);
     }
   };
 
@@ -141,6 +143,10 @@ function useConfirmFormMob({ form }) {
     platHdl,
     setValid,
     confirming,
+    vehicleWithVin,
+    vehicleWithPlate,
+    isReview,
+    setIsReview,
   };
   return formDate;
 }

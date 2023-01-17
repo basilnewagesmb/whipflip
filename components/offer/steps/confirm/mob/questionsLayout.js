@@ -1,28 +1,45 @@
 import { setCurrentSlide } from "features/mob/mobSlice";
-import { Form, Carousel } from "antd";
-import React, { useRef } from "react";
+import { Form, Carousel, Input, Button } from "antd";
+import React, { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import useMobileHandler from "services/offer/initial/mobileHandler";
 import getAmount from "utils/getAmount";
 import ConfirmVehicle from "./confirm-vehicle";
 import useConfirmFormMob from "services/offer/confirm/mobFunction";
+import VehicleConditionMob from "./vehicle-condition";
+import TireConditionsTemp from "./tire-conditions";
+import ExteriorConditions from "./exterior-conditions";
+import InteriorConditions from "./interior-conditions";
+import Bounce from "react-reveal/Bounce";
 
 function QuestionsLayout({ initialOffer }) {
   const carouselRef = useRef();
   const [form] = Form.useForm();
-  const { currentSlide, next, prev, goTo } = useMobileHandler(
-    carouselRef,
-    form
-  );
+  const navFunc = useMobileHandler(carouselRef, form);
   const formFunc = useConfirmFormMob({
     form,
+    navFunc,
   });
   const dispatch = useDispatch();
+  useEffect(() => {
+    if (form) form.setFieldValue("conditions", formFunc?.conditions?.vehicle);
+  }, [formFunc?.conditions?.vehicle]);
+  useEffect(() => {
+    formFunc?.formRealValues?.conditions?.map((item, i) => {
+      form.setFieldValue(
+        ["conditions", i, "active"],
+        item.data.filter((one) => one.active).length == 0
+          ? ""
+          : item.data.filter((one) => one.active).length
+      );
+    });
+  }, [formFunc?.formRealValues?.conditions]);
   return (
     <div className="container p-0">
       <div className="itemSelected text-center">
         <span>Initial offer: {getAmount(initialOffer)}</span>
       </div>
+
       <Form
         name="confirm-mob"
         form={form}
@@ -32,8 +49,11 @@ function QuestionsLayout({ initialOffer }) {
         layout="vertical"
         requiredMark={false}
       >
+        <Form.Item label={false} name={"conditions"} hidden>
+          <Input />
+        </Form.Item>
         <ConditionalWrap
-          condition={false}
+          condition={!formFunc?.isReview}
           wrap={(wrappedChildren) => (
             <Carousel
               afterChange={(i) => dispatch(setCurrentSlide(i))}
@@ -46,8 +66,55 @@ function QuestionsLayout({ initialOffer }) {
             </Carousel>
           )}
         >
-          <ConfirmVehicle {...formFunc} />
+          <ConfirmVehicle {...formFunc} {...navFunc} />
+          {formFunc?.formRealValues?.conditions?.map((item, i) => (
+            <VehicleConditionMob
+              key={i}
+              i={i}
+              item={item}
+              {...formFunc}
+              {...navFunc}
+            />
+          ))}
+          <TireConditionsTemp
+            {...formFunc}
+            {...navFunc}
+            data={formFunc?.conditions?.tire}
+          />
+          <ExteriorConditions
+            {...formFunc}
+            {...navFunc}
+            data={formFunc?.conditions?.cosmetic?.exterior}
+          />
+          <InteriorConditions
+            {...formFunc}
+            {...navFunc}
+            data={formFunc?.conditions?.cosmetic?.interior}
+          />
         </ConditionalWrap>
+        {navFunc?.currentSlide == 7 && (
+          <div className="fixed_btn">
+            <Bounce bottom>
+              <Button
+                className="confirm_off_btn"
+                size="large"
+                htmlType="submit"
+                loading={
+                  formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading
+                }
+                disabled={
+                  formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading
+                }
+              >
+                <span>
+                  {formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading
+                    ? "Getting Details..."
+                    : " Confirm My Offer"}
+                </span>
+              </Button>
+            </Bounce>
+          </div>
+        )}
       </Form>
     </div>
   );

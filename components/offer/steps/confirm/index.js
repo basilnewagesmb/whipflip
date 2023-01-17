@@ -306,7 +306,7 @@ function Confirm() {
                 <div>
                   <div className="form-group row ob_frm_row">
                     <div className="col-lg-12 p-0">
-                      <label htmlFor="">Tire condition?</label>
+                      <label htmlFor="">How are your tires?</label>
                       <div className="chooseBlock selector row selectorRow rowSell tireconditions">
                         <Form.Item label={false} name={"tire"} hidden>
                           <Input />
@@ -498,7 +498,9 @@ function Confirm() {
           </div>
         </Form>
       ) : (
-        <ConfirmMob initialOffer={initialOffer} />
+        initialOffer?.is_deduction_added != "Y" && (
+          <ConfirmMob initialOffer={initialOffer} />
+        )
       )}
     </>
   );

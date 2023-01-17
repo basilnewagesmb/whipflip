@@ -1,7 +1,6 @@
 import React from "react";
 
 function getAmount(value) {
-  console.log(value);
   if (value?.manrev) {
     return "$ NEEDS REVIEW";
   } else {
