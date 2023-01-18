@@ -11,7 +11,7 @@ import TireConditionsTemp from "./tire-conditions";
 import ExteriorConditions from "./exterior-conditions";
 import InteriorConditions from "./interior-conditions";
 import Bounce from "react-reveal/Bounce";
-
+import { EyeOutlined } from "@ant-design/icons";
 function QuestionsLayout({ initialOffer }) {
   const carouselRef = useRef();
   const [form] = Form.useForm();
@@ -95,23 +95,41 @@ function QuestionsLayout({ initialOffer }) {
         {navFunc?.currentSlide == 7 && (
           <div className="fixed_btn">
             <Bounce bottom>
-              <Button
-                className="confirm_off_btn"
-                size="large"
-                htmlType="submit"
-                loading={
-                  formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading
-                }
-                disabled={
-                  formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading
-                }
-              >
-                <span>
-                  {formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading
-                    ? "Getting Details..."
-                    : " Confirm My Offer"}
-                </span>
-              </Button>
+              <div className="d-flex justify-content-center align-items-center">
+                {!formFunc?.isReview && (
+                  <Button
+                    size="large"
+                    htmlType="button"
+                    className="w-100  m-1"
+                    onClick={() => {
+                      formFunc?.setIsReview(true);
+                      window.scrollTo(0, 0);
+                    }}
+                    icon={<EyeOutlined />}
+                  >
+                    Preview
+                  </Button>
+                )}
+                <Button
+                  className="confirm_off_btn m-1"
+                  size="large"
+                  htmlType="submit"
+                  loading={
+                    formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading
+                  }
+                  disabled={
+                    formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading
+                  }
+                >
+                  <span>
+                    {formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading
+                      ? "Getting Details..."
+                      : !formFunc?.isReview
+                      ? "Continue"
+                      : "Confirm"}
+                  </span>
+                </Button>
+              </div>
             </Bounce>
           </div>
         )}

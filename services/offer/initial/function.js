@@ -60,10 +60,10 @@ function useInitialForm({ form, data, carouselRef, goTo }) {
           query: { id: offerRes?.data?.uid },
         });
       } else {
-        message.error(offerRes.data.message || "Something went wrong");
+        message.error(offerRes?.data?.message || "Something went wrong");
       }
     } else {
-      message.error(res.data.message || "Something went wrong");
+      message.error(res?.data?.message || "Something went wrong");
     }
   };
   const onFinishFailed = (errorInfo) => {

@@ -17,6 +17,7 @@ import Image from "next/image";
 import { setCurrent } from "features/offer/offerSlice";
 import { useRouter } from "next/router";
 import SkipButton from "components/offer/steps/confirm/web/skipButton";
+import Link from "next/link";
 function useConfirmFormMob({ form, navFunc }) {
   const [isReview, setIsReview] = useState(false);
   const dispatch = useDispatch();
@@ -36,7 +37,7 @@ function useConfirmFormMob({ form, navFunc }) {
     if (offerData) {
       setInitialOffer(offerData);
       if (offerData.status == "quote" && offerData?.is_deduction_added == "Y") {
-        ShowEasyStep(dispatch, setCurrent, skipToInstantOffer, initialOffer);
+        ShowEasyStepMob(dispatch, setCurrent, skipToInstantOffer, initialOffer);
       }
     }
   }, [offerData]);
@@ -150,14 +151,18 @@ function useConfirmFormMob({ form, navFunc }) {
   };
   return formDate;
 }
-export const ShowEasyStep = (
+export const ShowEasyStepMob = (
   dispatch,
   setCurrent,
   skipToInstantOffer,
   initialOffer
 ) => {
   Modal.info({
-    title: "One Final Easy Step!",
+    title: (
+      <h6 className="text-center " style={{ color: "#4381c0" }}>
+        One Final Easy Step!
+      </h6>
+    ),
     className: "final_easy_step_modal",
     width: 700,
     closable: true,
@@ -173,7 +178,7 @@ export const ShowEasyStep = (
         <div className="fesBody_in">
           <div className="fesBody_in_row row">
             <div className="col-lg-4 fes_col fes_col_left">
-              <div className="fes_col_left_in">
+              <div className="fes_col_left_in text-center">
                 <Image
                   src="/images/easy-final.svg"
                   alt=""
@@ -185,9 +190,6 @@ export const ShowEasyStep = (
             </div>
             <div className="col-lg-8 fes_col fes_col_right">
               <div className="fes_col_right_in">
-                <div className="tag">
-                  <span>Highly Recommended!</span>
-                </div>
                 <div className="fcr_head">
                   <h2>Use our awesome photo tool!</h2>
                 </div>
@@ -202,91 +204,33 @@ export const ShowEasyStep = (
                     </li>
                   </ul>
                 </div>
+                <Link href={`/prospect/${initialOffer.uid}/valuate`}>
+                  <Button
+                    className="confirm_off_btn rounded"
+                    size="large"
+                    htmlType="button"
+                  >
+                    Start Taking Photos
+                  </Button>
+                </Link>
               </div>
-            </div>
-          </div>
-          <div className="fes_middle">
-            <div className="fesm_hd">
-              <h2>On your phone, do one of the following:</h2>
-            </div>
-            <div className="fesCon">
-              <div className="fesConItem">
-                <div className="fesConItemRow align-items-center">
-                  <div className="fesCon_left">
-                    <div className="fesConItem_img">
-                      <Image
-                        src="/images/access-email.svg"
-                        alt="easy final"
-                        title="easy final"
-                        width={60}
-                        height={60}
-                      />
-                    </div>
-                  </div>
-                  <div className="fesCon_right">
-                    <div className="fesConItem_detail">
-                      <h3>Access the photo tool via email</h3>
-                      <p>
-                        We’ve sent you an email! Open the email on your phone
-                        and tap the link.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="seprator">
-                <span>-OR</span>
-              </div>
-              <div className="fesConItem">
-                <div className="fesConItemRow align-items-center">
-                  <div className="fesCon_left">
-                    <div className="fesConItem_img">
-                      <Image
-                        src="/images/url.svg"
-                        alt="Access the photo"
-                        title="Access the photo"
-                        width={60}
-                        height={60}
-                      />
-                    </div>
-                  </div>
-                  <div className="fesCon_right">
-                    <div className="fesConItem_detail">
-                      <h3>Go to www.whipflip.com on your phone</h3>
-                      <p>
-                        Tap the “Retrieve Offer” button and enter your email
-                        address.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {window?.location?.href && (
-                <>
-                  <div className="seprator">
-                    <span>-OR</span>
-                  </div>
-                  <div className="fesConItem d-flex align-items-center justify-content-center">
-                    <div className="fesConItemRow align-items-center">
-                      <div className="fesConItem_detail d-flex align-items-center justify-content-center flex-column">
-                        <QRCode size={100} value={window?.location?.href} />{" "}
-                        <h3>Scan this QR code on your phone</h3>
-                        <p>continue in your phone</p>
-                      </div>
-                    </div>
-                  </div>
-                </>
-              )}
             </div>
           </div>
         </div>
-        <div className="fesFooter">
-          <h2>Can't take the photos right now?</h2>
+        <div className="fesFooter fesBody_in_row">
           <div className="fesFooter_body">
-            <p>
-              Your instant offer is a click away! Well confirm the exact
-              condition at your driveway. The final value might change.
-            </p>
+            <div className="fes_col_right_in">
+              <div className="fcr_head">
+                <h2>Can't take the photos right now?</h2>
+              </div>
+              <div className="fcr_list text-left">
+                <ul>
+                  <li>Instant offer is a click away!</li>
+                  <li>We'ill confirm the exact condition at your delivery. </li>
+                  <li>Final value might change </li>
+                </ul>
+              </div>
+            </div>
             <SkipButton
               skipToInstantOffer={skipToInstantOffer}
               initialOffer={initialOffer}

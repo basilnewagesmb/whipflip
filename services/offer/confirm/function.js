@@ -17,6 +17,7 @@ import Image from "next/image";
 import { setCurrent } from "features/offer/offerSlice";
 import { useRouter } from "next/router";
 import SkipButton from "components/offer/steps/confirm/web/skipButton";
+import { ShowEasyStepMob } from "./mobFunction";
 function useConfirmForm({ form }) {
   const dispatch = useDispatch();
   const [isValid, setValid] = useState(true);
@@ -35,7 +36,19 @@ function useConfirmForm({ form }) {
     if (offerData) {
       setInitialOffer(offerData);
       if (offerData.status == "quote" && offerData?.is_deduction_added == "Y") {
-        ShowEasyStep(dispatch, setCurrent, skipToInstantOffer, initialOffer);
+        isMobile
+          ? ShowEasyStepMob(
+              dispatch,
+              setCurrent,
+              skipToInstantOffer,
+              initialOffer
+            )
+          : ShowEasyStep(
+              dispatch,
+              setCurrent,
+              skipToInstantOffer,
+              initialOffer
+            );
       }
     }
   }, [offerData]);

@@ -13,6 +13,7 @@ import LoaderAnim from "components/common/loader";
 import { setCurrent } from "features/offer/offerSlice";
 import { useDispatch } from "react-redux";
 import { useSkipToInstantOfferMutation } from "services/offer/api";
+import { ShowEasyStepMob } from "services/offer/confirm/mobFunction";
 function Confirm() {
   const [skipToInstantOffer, {}] = useSkipToInstantOfferMutation();
   const dispatch = useDispatch();
@@ -53,12 +54,19 @@ function Confirm() {
                 }}
                 type="text"
                 onClick={() => {
-                  ShowEasyStep(
-                    dispatch,
-                    setCurrent,
-                    skipToInstantOffer,
-                    initialOffer
-                  );
+                  isMobile
+                    ? ShowEasyStepMob(
+                        dispatch,
+                        setCurrent,
+                        skipToInstantOffer,
+                        initialOffer
+                      )
+                    : ShowEasyStep(
+                        dispatch,
+                        setCurrent,
+                        skipToInstantOffer,
+                        initialOffer
+                      );
                 }}
               >
                 <span>Confirm My Offer</span>
