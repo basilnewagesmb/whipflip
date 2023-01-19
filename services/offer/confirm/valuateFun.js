@@ -16,7 +16,7 @@ function useValuateFun({ offerData }) {
         stills: offerData?.stills?.map((item, i) => ({
           ...item,
           preview: false,
-          id: i,
+          id: 1 + i,
         })),
       }));
     }
@@ -59,13 +59,21 @@ function useValuateFun({ offerData }) {
     (id) => {
       try {
         const blob = webcamRef.current.getScreenshot();
-        setState((prev) => ({
-          ...prev,
-          stills: [
-            ...prev?.stills?.filter((item) => item.id != id),
-            ...[{ ...prev?.stills[id], preview: true, blob }],
-          ],
-        }));
+        if (blob) {
+          setState((prev) => ({
+            ...prev,
+            stills: [
+              ...prev?.stills?.filter((item) => item.id != id),
+              ...[
+                {
+                  ...prev?.stills?.find((item) => item.id == id),
+                  preview: true,
+                  blob,
+                },
+              ],
+            ],
+          }));
+        }
       } catch (error) {}
     },
     [webcamRef]
@@ -74,7 +82,7 @@ function useValuateFun({ offerData }) {
     audio: false,
     videoConstraints: {
       aspectRatio: { ideal: 1.7777777778 },
-      // facingMode: { exact: "environment" },
+       facingMode: { exact: "environment" },
     },
     ref: webcamRef,
     screenshotFormat: "image/png",
@@ -95,9 +103,23 @@ function useValuateFun({ offerData }) {
   const retake = () => {
     setState((prev) => ({
       ...prev,
-      stills: [{ ...previewing, preview: false, blob: null }].concat(
-        state?.stills?.filter((item) => item.id != previewing.id)
+      stills: [
+        {
+          ...prev?.stills?.find((item) => item.preview),
+          preview: false,
+          blob: null,
+        },
+      ].concat(
+        prev?.stills?.filter(
+          (item) => item.id != prev?.stills?.find((item) => item.preview).id
+        )
       ),
+    }));
+  };
+  const continue_ = () => {
+    setState((prev) => ({
+      ...prev,
+      stills: prev?.stills?.map((i) => ({ ...i, preview: false })),
     }));
   };
   return {
@@ -114,6 +136,7 @@ function useValuateFun({ offerData }) {
     pendingLayouts,
     previewing,
     retake,
+    continue_,
   };
 }
 

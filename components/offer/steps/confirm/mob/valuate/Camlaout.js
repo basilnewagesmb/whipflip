@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, Modal, Avatar, Image } from "antd";
+import { Layout, Modal } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 import { FullscreenOutlined, FullscreenExitOutlined } from "@ant-design/icons";
 const { Content, Sider } = Layout;
@@ -14,14 +14,19 @@ function CamLayout({
   capture,
   pendingLayouts,
   previewing,
-  state,
+  offerData,
 }) {
-  const { id } = pendingLayouts[0];
-  const { back } = useRouter();
+  const { push } = useRouter();
   const [play] = useSound("/data/capture.mp3");
   return (
     <Layout className="vh-100 overflow-hidden">
-      <Sider collapsedWidth={60} collapsed>
+      <Sider
+        collapsedWidth={60}
+        collapsed
+        style={{
+          backgroundColor: "#3c3c3c",
+        }}
+      >
         {handle?.active ? (
           <FullscreenExitOutlined style={fullStyle} onClick={handle.exit} />
         ) : (
@@ -32,13 +37,10 @@ function CamLayout({
             style={{
               fontSize: "20px",
               color: "#fff",
-              position: "absolute",
-              left: "60%",
-              top: "50%",
-              transform: "translate(-50%,-50%)",
             }}
-            onClick={() => {
-              Modal.info({
+            onClick={async () => {
+              handle.exit();
+              await Modal.info({
                 icon: null,
                 title: (
                   <h6 className="text-center">
@@ -53,9 +55,9 @@ function CamLayout({
                       style={{
                         fontWeight: "700",
                       }}
-                      onClick={() => {
+                      onClick={async () => {
                         Modal.destroyAll();
-                        back();
+                        push(`/prospect/${offerData.uid}/quote`);
                       }}
                     >
                       Yes, exit
@@ -67,6 +69,7 @@ function CamLayout({
                         fontWeight: "700",
                       }}
                       onClick={() => {
+                        handle.enter();
                         Modal.destroyAll();
                       }}
                     >
@@ -78,26 +81,15 @@ function CamLayout({
             }}
           />
         )}
-        {state?.stills?.filter((i) => i.blob)[
-          state?.stills?.filter((i) => i.blob).length - 1
-        ]?.blob && (
-          <Avatar
-            style={blockView}
-            src={
-              <Image
-                src={
-                  state.stills.filter((i) => i.blob)[
-                    state?.stills?.filter((i) => i.blob).length-1
-                  ]?.blob
-                }
-                style={{ width: 32, height: 32, objectFit: "cover" }}
-              />
-            }
-          />
-        )}
       </Sider>
       <Content className="position-relative">{children}</Content>
-      <Sider collapsedWidth={100} collapsed>
+      <Sider
+        collapsedWidth={100}
+        collapsed
+        style={{
+          backgroundColor: "#3c3c3c",
+        }}
+      >
         {!previewing && (
           <Button
             type="primary"
@@ -105,7 +97,7 @@ function CamLayout({
             style={captureStyle}
             size="large"
             onClick={() => {
-              capture(id);
+              capture(pendingLayouts[0]?.id);
               play();
             }}
           />
@@ -134,10 +126,6 @@ const blockView = {
 const captureStyle = {
   fontSize: "20px",
   color: "#fff",
-  position: "absolute",
-  left: "40%",
-  top: "50%",
-  transform: "translate(-50%,-40%)",
   backgroundColor: "#fff",
   border: "4px solid #939393b8",
 };

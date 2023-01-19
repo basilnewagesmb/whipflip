@@ -18,7 +18,7 @@ function Camera(props) {
           ) : (
             <CamLayout {...props}>
               <Webcam {...camProps} />
-              {pendingLayouts.length >= 0 && (
+              {pendingLayouts?.length >= 0 && (
                 <>
                   <Captured {...props} />
                   <Overlay {...props} />

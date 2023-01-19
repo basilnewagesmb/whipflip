@@ -8,7 +8,7 @@ function InfoCam({ setSkipped }) {
       <CloseOutlined
         style={{
           fontSize: "20px",
-          color: "#fff",
+          color: "#000",
           position: "absolute",
           right: "10px",
           top: "10px",

@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CheckOutlined } from "@ant-design/icons";
 import { Button } from "antd";
-function Captured({ previewing, retake }) {
+function Captured({ previewing, retake, continue_, pendingLayouts }) {
   const [success, setSuccess] = useState(true);
+  useEffect(() => {
+    if (previewing && success) {
+      setTimeout(() => {
+        setSuccess(false);
+      }, 1500);
+    }
+  }, [success, previewing]);
+
   if (previewing?.blob)
     return (
       <div
@@ -46,9 +54,11 @@ function Captured({ previewing, retake }) {
                 backgroundColor: "#ffd147",
                 fontWeight: "700",
               }}
-              onClick={() => {}}
+              onClick={() => {
+                pendingLayouts?.length == 0 ? compleat() : continue_();
+              }}
             >
-              Continue
+              {pendingLayouts?.length == 0 ? "All Done" : "Continue"}
             </Button>
           </div>
         )}
@@ -61,6 +71,7 @@ const overlayStyle = {
   left: 0,
   width: "100%",
   height: "100%",
+  fontSize: "14px",
 };
 const titleStyle = {
   position: "absolute",
@@ -70,7 +81,8 @@ const titleStyle = {
   backgroundColor: "#0000005c",
   color: "#ccc",
   transform: "translate(-50%,-50%)",
-  padding: "7px 60px",
+  padding: "7px 7px",
+  fontSize: "14px",
 };
 
 const controlsStyle = {

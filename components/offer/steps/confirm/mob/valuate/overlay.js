@@ -1,7 +1,7 @@
 import React from "react";
 
 function Overlay({ pendingLayouts, previewing }) {
-  const { overlay, title, id } = pendingLayouts[0];
+  const { overlay, title, id } = pendingLayouts?.[0] || {};
   if (!previewing)
     return (
       <div style={overlayStyle}>
@@ -35,6 +35,7 @@ const titleStyle = {
   fontWeight: "normal",
   color: "#ccc",
   transform: "translate(-50%,-5%)",
-  padding: "7px 60px",
+  padding: "7px 15px",
+  fontSize: "14px",
 };
 export default Overlay;
