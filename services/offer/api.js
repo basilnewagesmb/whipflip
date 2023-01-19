@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import transformOfferData from "utils/trancformOfferData";
 export const offerApi = createApi({
   reducerPath: "offerApi",
   baseQuery: fetchBaseQuery({
@@ -38,6 +39,7 @@ export const offerApi = createApi({
           method: "GET",
         };
       },
+      transformResponse: transformOfferData,
       providesTags: ["offers"],
     }),
     getOfferById: builder.mutation({

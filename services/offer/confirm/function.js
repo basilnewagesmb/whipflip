@@ -36,14 +36,9 @@ function useConfirmForm({ form }) {
     if (offerData) {
       setInitialOffer(offerData);
       if (offerData.status == "quote" && offerData?.is_deduction_added == "Y") {
-        isMobile
-          ? ShowEasyStepMob(
-              dispatch,
-              setCurrent,
-              skipToInstantOffer,
-              initialOffer
-            )
-          : ShowEasyStep(
+        !isMobile
+          ? ShowEasyStep(dispatch, setCurrent, skipToInstantOffer, initialOffer)
+          : ShowEasyStepMob(
               dispatch,
               setCurrent,
               skipToInstantOffer,
@@ -51,7 +46,7 @@ function useConfirmForm({ form }) {
             );
       }
     }
-  }, [offerData]);
+  }, [offerData, isMobile]);
 
   const { data: states } = useStatesQuery();
   const { data: conditions, isLoading: isConditionsLoading } =

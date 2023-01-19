@@ -1,13 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useFullScreenHandle } from "react-full-screen";
 import useScreenOrientation from "utils/useScreenOrientation";
 
-function useValuateFun() {
+function useValuateFun({ offerData }) {
   const [state, setState] = useState({
     current: "initial",
+    infoSkipped: false,
+    preview: false,
+    stills: [],
   });
+  useEffect(() => {
+    if (offerData?.stills) {
+      setState((prev) => ({
+        ...prev,
+        stills: offerData?.stills?.map((item, i) => ({
+          ...item,
+          preview: false,
+          id: i,
+        })),
+      }));
+    }
+  }, [offerData]);
+
+  const setSkipped = (current) => {
+    setState((prev) => ({ ...prev, infoSkipped: current }));
+  };
   const setCurrent = (current) => {
     setState((prev) => ({ ...prev, current: current }));
+  };
+  const setPreview = (current) => {
+    setState((prev) => ({ ...prev, preview: current }));
   };
   const handle = useFullScreenHandle();
   const orientation = useScreenOrientation();
@@ -31,7 +53,68 @@ function useValuateFun() {
     };
     switchOrientation();
   }, [orientation]);
-  return { state, setState, setCurrent, handle };
+  const webcamRef = useRef(null);
+
+  const capture = useCallback(
+    (id) => {
+      try {
+        const blob = webcamRef.current.getScreenshot();
+        setState((prev) => ({
+          ...prev,
+          stills: [
+            ...prev?.stills?.filter((item) => item.id != id),
+            ...[{ ...prev?.stills[id], preview: true, blob }],
+          ],
+        }));
+      } catch (error) {}
+    },
+    [webcamRef]
+  );
+  const camProps = {
+    audio: false,
+    videoConstraints: {
+      aspectRatio: { ideal: 1.7777777778 },
+      // facingMode: { exact: "environment" },
+    },
+    ref: webcamRef,
+    screenshotFormat: "image/png",
+    screenshotQuality: 0.99,
+    style: {
+      textAlign: "center",
+      zindex: 8,
+      height: "100vh",
+      width: "100%",
+      objectFit: "cover",
+    },
+    forceScreenshotSourceSize: true,
+    onUserMedia: () => {},
+    onUserMediaError: () => {},
+  };
+  const pendingLayouts = state?.stills?.filter((item) => !item.blob);
+  const previewing = state?.stills?.find((item) => item.preview);
+  const retake = () => {
+    setState((prev) => ({
+      ...prev,
+      stills: [{ ...previewing, preview: false, blob: null }].concat(
+        state?.stills?.filter((item) => item.id != previewing.id)
+      ),
+    }));
+  };
+  return {
+    state,
+    setState,
+    setCurrent,
+    setPreview,
+    handle,
+    setSkipped,
+    webcamRef,
+    capture,
+    camProps,
+    offerData,
+    pendingLayouts,
+    previewing,
+    retake,
+  };
 }
 
 export default useValuateFun;

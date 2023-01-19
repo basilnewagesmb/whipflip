@@ -25,7 +25,7 @@ function useConfirmFormMob({ form, navFunc }) {
   const formRealValues = Form.useWatch([], form);
   const isMobile = useCheckMobile();
   const initialOfferData = useSelector((state) => state.offer);
-  const { query } = useRouter();
+  const { query, pathname } = useRouter();
   const { data: offerData } = useGetOfferQuery(query.id, {
     skip: !query.id,
   });
@@ -37,7 +37,7 @@ function useConfirmFormMob({ form, navFunc }) {
     if (offerData) {
       setInitialOffer(offerData);
       if (offerData.status == "quote" && offerData?.is_deduction_added == "Y") {
-        ShowEasyStepMob(dispatch, setCurrent, skipToInstantOffer, initialOffer);
+        // ShowEasyStepMob(dispatch, setCurrent, skipToInstantOffer, initialOffer);
       }
     }
   }, [offerData]);

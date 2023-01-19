@@ -2,12 +2,16 @@ import Initial from "components/offer/steps/confirm/mob/valuate/initial";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import useValuateFun from "services/offer/confirm/valuateFun";
+import { useGetOfferQuery } from "services/offer/api";
 const Camera = dynamic(
   () => import("components/offer/steps/confirm/mob/valuate/camera"),
   { ssr: false }
 );
-function Index() {
-  const valuateControl = useValuateFun();
+function Index({ data }) {
+  const { data: offerData } = useGetOfferQuery(data?.uid, {
+    skip: !data?.uid,
+  });
+  const valuateControl = useValuateFun({offerData});
   const { state } = valuateControl;
   return (
     <>
