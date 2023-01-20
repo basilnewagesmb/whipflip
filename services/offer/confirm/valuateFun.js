@@ -1,6 +1,8 @@
+import { message } from "antd";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useFullScreenHandle } from "react-full-screen";
 import useScreenOrientation from "utils/useScreenOrientation";
+import { useLoginMutation, useProcessQuoteMutation } from "../clearQuote";
 
 function useValuateFun({ offerData }) {
   const [state, setState] = useState({
@@ -8,6 +10,7 @@ function useValuateFun({ offerData }) {
     infoSkipped: false,
     preview: false,
     stills: [],
+    speed: 0.1,
   });
   useEffect(() => {
     if (offerData?.stills) {
@@ -38,10 +41,10 @@ function useValuateFun({ offerData }) {
       try {
         if (handle.active) {
           await handle.exit();
-          await window.screen.orientation.unlock();
+          await window?.screen?.orientation?.unlock();
         } else {
           await handle.enter();
-          await window.screen.orientation.lock("landscape");
+          await window?.screen?.orientation?.lock("landscape");
         }
       } catch (error) {
         console.log(error);
@@ -82,7 +85,7 @@ function useValuateFun({ offerData }) {
     audio: false,
     videoConstraints: {
       aspectRatio: { ideal: 1.7777777778 },
-       facingMode: { exact: "environment" },
+      //  facingMode: { exact: "environment" },
     },
     ref: webcamRef,
     screenshotFormat: "image/png",
@@ -122,6 +125,38 @@ function useValuateFun({ offerData }) {
       stills: prev?.stills?.map((i) => ({ ...i, preview: false })),
     }));
   };
+  const [login] = useLoginMutation();
+  const [processQuote] = useProcessQuoteMutation();
+  const compleat = async () => {
+    setCurrent("uploading");
+    handle.exit();
+    try {
+      await window?.screen?.orientation?.lock("portrait");
+    } catch (error) {}
+    const loginRes = await login();
+    if (loginRes?.data?.user) {
+      const data = {
+        vehicle: {
+          licenseplateno: offerData.plate_number || "0000",
+        },
+        quoteType: "lease",
+        dealerCode: "WhipFlip Test",
+        paintType: "solid",
+        dealer: loginRes?.data?.user?.dealer,
+        imageUrls: state?.stills,
+      };
+      const token = loginRes?.data?.user?.token;
+      const processRes = await processQuote({ data, token });
+      console.log(processRes);
+      if (processRes?.data) {
+        setState((prev) => ({ ...prev, speed: 2 }));
+      } else {
+        message.error("Something went Wrong");
+      }
+    } else {
+      message.error("Something went Wrong");
+    }
+  };
   return {
     state,
     setState,
@@ -137,6 +172,7 @@ function useValuateFun({ offerData }) {
     previewing,
     retake,
     continue_,
+    compleat,
   };
 }
 

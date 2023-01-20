@@ -14,6 +14,8 @@ import mobSlice from "features/mob/mobSlice";
 import { vehicle } from "services/vehicle/api";
 import { offerApi } from "services/offer/api";
 import { general } from "services/util";
+import { clearQuote } from "services/offer/clearQuote";
+
 //
 const persistConfig = {
   key: "root",
@@ -28,6 +30,7 @@ const rootReducer = combineReducers({
   [vehicle.reducerPath]: vehicle.reducer,
   [offerApi.reducerPath]: offerApi.reducer,
   [general.reducerPath]: general.reducer,
+  [clearQuote.reducerPath]: clearQuote.reducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const store = configureStore({
@@ -38,7 +41,8 @@ export const store = configureStore({
     })
       .concat(vehicle.middleware)
       .concat(offerApi.middleware)
-      .concat(general.middleware),
+      .concat(general.middleware)
+      .concat(clearQuote.middleware),
 });
 
 export const persister = persistStore(store);

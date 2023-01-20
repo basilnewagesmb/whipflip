@@ -263,7 +263,7 @@ export const ShowEasyStep = (
                 </div>
               </div>
               {window?.location?.href && (
-                <>
+                <div className="d-none">
                   <div className="seprator">
                     <span>-OR</span>
                   </div>
@@ -276,7 +276,7 @@ export const ShowEasyStep = (
                       </div>
                     </div>
                   </div>
-                </>
+                </div>
               )}
             </div>
           </div>

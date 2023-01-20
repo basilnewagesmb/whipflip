@@ -24,9 +24,8 @@ function Default({ children, user }) {
           </>
         )}
       >
-        {" "}
         <Fade spy={children}>{children}</Fade>
-      </ConditionalWrap>{" "}
+      </ConditionalWrap>
     </div>
   );
 }

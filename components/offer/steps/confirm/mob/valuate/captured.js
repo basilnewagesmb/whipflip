@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { CheckOutlined } from "@ant-design/icons";
 import { Button } from "antd";
-function Captured({ previewing, retake, continue_, pendingLayouts }) {
+function Captured({ previewing, retake, continue_, pendingLayouts, compleat }) {
   const [success, setSuccess] = useState(true);
   useEffect(() => {
     if (previewing && success) {

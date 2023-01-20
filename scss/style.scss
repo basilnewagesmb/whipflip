@@ -5955,7 +5955,38 @@ li.col-6.ci_col > div > div > div > div > div {
   bottom: 5%;
 }
 .ant-layout-sider-children {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cr_middle.cr_middle_web {
+  .crm_offer_info {
+    .info_right {
+      text-align: center;
+    }
     display: flex;
-    align-items: center;
     justify-content: center;
+    gap: 15px;
+    .crm_info_item {
+      background-color: #fff;
+      margin-bottom: 0 !important;
+      padding: 20px;
+      flex-direction: column;
+      background: #f8f8fb;
+      box-shadow: 0px 2px 12px rgba(32, 31, 45, 0.16),
+        0px 47px 46px -27px rgba(32, 31, 45, 0.06);
+      border-radius: 6px;
+    }
+  }
+}
+.camera_ready_modal_web {
+  .modal-dialog {
+    height: 100%;
+    .modal-content {
+      height: 100%;
+    }
+  }
+}
+.mvh-100 {
+  min-height: 100vh;
 }

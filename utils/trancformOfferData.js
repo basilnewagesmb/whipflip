@@ -5,49 +5,49 @@ function transformOfferData(response) {
       overlay: `front_${getOverlayType(response.body_type)}.png`,
       blob: null,
     },
-    {
-      title: "Drivers Side (Front Corner)",
-      overlay: `drivers_side_front_corner_${getOverlayType(
-        response.body_type
-      )}.png`,
-      blob: null,
-    },
-    {
-      title: "Drivers Side",
-      overlay: `drivers_side_${getOverlayType(response.body_type)}.png`,
-      blob: null,
-    },
-    {
-      title: "Drivers Side (Rear Corner)",
-      overlay: `drivers_side_rear_corner_${getOverlayType(
-        response.body_type
-      )}.png`,
-      blob: null,
-    },
-    {
-      title: "Rear",
-      overlay: `rear_${getOverlayType(response.body_type)}.png`,
-      blob: null,
-    },
-    {
-      title: "Passenger Side (Rear Corner)",
-      overlay: `passenger_side_rear_corner_${getOverlayType(
-        response.body_type
-      )}.png`,
-      blob: null,
-    },
-    {
-      title: "Passenger Side",
-      overlay: `passenger_side_${getOverlayType(response.body_type)}.png`,
-      blob: null,
-    },
-    {
-      title: "Passenger Side (Front Corner)",
-      overlay: `passenger_side_front_corner_${getOverlayType(
-        response.body_type
-      )}.png`,
-      blob: null,
-    },
+    // {
+    //   title: "Drivers Side (Front Corner)",
+    //   overlay: `drivers_side_front_corner_${getOverlayType(
+    //     response.body_type
+    //   )}.png`,
+    //   blob: null,
+    // },
+    // {
+    //   title: "Drivers Side",
+    //   overlay: `drivers_side_${getOverlayType(response.body_type)}.png`,
+    //   blob: null,
+    // },
+    // {
+    //   title: "Drivers Side (Rear Corner)",
+    //   overlay: `drivers_side_rear_corner_${getOverlayType(
+    //     response.body_type
+    //   )}.png`,
+    //   blob: null,
+    // },
+    // {
+    //   title: "Rear",
+    //   overlay: `rear_${getOverlayType(response.body_type)}.png`,
+    //   blob: null,
+    // },
+    // {
+    //   title: "Passenger Side (Rear Corner)",
+    //   overlay: `passenger_side_rear_corner_${getOverlayType(
+    //     response.body_type
+    //   )}.png`,
+    //   blob: null,
+    // },
+    // {
+    //   title: "Passenger Side",
+    //   overlay: `passenger_side_${getOverlayType(response.body_type)}.png`,
+    //   blob: null,
+    // },
+    // {
+    //   title: "Passenger Side (Front Corner)",
+    //   overlay: `passenger_side_front_corner_${getOverlayType(
+    //     response.body_type
+    //   )}.png`,
+    //   blob: null,
+    // },
   ];
 
   return { ...response, stills };
