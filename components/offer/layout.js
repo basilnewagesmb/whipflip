@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import useCheckMobile from "utils/checkMobile";
 import { useRouter } from "node_modules/next/router";
 import { initialize } from "features/site/siteSlice";
-function OfferLayout({ children, data ,current}) {
+function OfferLayout({ children, data, current }) {
   const { query } = useRouter();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -19,11 +19,7 @@ function OfferLayout({ children, data ,current}) {
       <div className="container">
         <div className="row">
           <SideBar data={data} current={current} />
-          <div className={!isMobile ? "col-lg-8" : "col-12"}>
-            {children}
-            {/* {current == 1 && <Confirm data={data} />}
-            {current == 2 && <Sell data={data} />} */}
-          </div>
+          <div className={!isMobile ? "col-lg-8" : "col-12"}>{children}</div>
         </div>
       </div>
     </div>

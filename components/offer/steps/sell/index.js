@@ -32,9 +32,6 @@ function Sell({ data }) {
               </p>
             </div>
             <div className="at_buttons">
-              <button className="elsewhere_offer" disabled>
-                I have a higher offer elsewhere
-              </button>
               <button className="accept_off_btn" disabled>
                 Accept Offer & Sell
               </button>

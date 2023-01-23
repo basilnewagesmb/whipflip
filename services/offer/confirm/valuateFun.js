@@ -1,10 +1,13 @@
 import { message } from "antd";
+import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useFullScreenHandle } from "react-full-screen";
 import useScreenOrientation from "utils/useScreenOrientation";
+import { useCreateInstantOfferMutation } from "../api";
 import { useLoginMutation, useProcessQuoteMutation } from "../clearQuote";
 
 function useValuateFun({ offerData }) {
+  const { push } = useRouter();
   const [state, setState] = useState({
     current: "initial",
     infoSkipped: false,
@@ -127,6 +130,7 @@ function useValuateFun({ offerData }) {
   };
   const [login] = useLoginMutation();
   const [processQuote] = useProcessQuoteMutation();
+  const [createInstantOffer] = useCreateInstantOfferMutation();
   const compleat = async () => {
     setCurrent("uploading");
     handle.exit();
@@ -147,9 +151,44 @@ function useValuateFun({ offerData }) {
       };
       const token = loginRes?.data?.user?.token;
       const processRes = await processQuote({ data, token });
-      console.log(processRes);
       if (processRes?.data) {
         setState((prev) => ({ ...prev, speed: 2 }));
+        let dData = processRes.data;
+        let deductionData = { panels: [] };
+        state?.stills?.forEach((item, index) => {
+          deductionData.panels.push({
+            quoteId: dData.quoteId,
+            image: dData.segmentImages.rawImages[index],
+            title: item.title,
+            annotatedImage: dData.segmentImages.annotatedImages[index],
+          });
+        });
+        deductionData["damages"] = dData.segmentationEstimate.estimates
+          .filter((item) => item.damageCode != "Clean")
+          .reduce((obj, damage) => {
+            return { ...obj, [damage.name]: damage["damageCode"] };
+          }, {});
+        const postData = {
+          detection_data: deductionData,
+          odometer_image: "", //odometerImage.Location,
+          vin: offerData.vin,
+          uid: offerData.uid,
+          plate_state: offerData.plate_state,
+          plate_number: offerData.plate_number,
+          option: 1,
+          full_trim: offerData.body || "",
+        };
+        if (offerData.enableMultiTrim) {
+          postData.jd_vehicle_id = offerData.jd_vehicle_id;
+        } else {
+          postData.trim = offerData.trim;
+        }
+        const offerRes = await createInstantOffer(postData);
+        if (offerRes?.data.uid) {
+          push(`/prospect/${offerRes?.data.uid}/${offerRes?.data.status}`);
+        } else {
+          message.error("Something went Wrong");
+        }
       } else {
         message.error("Something went Wrong");
       }

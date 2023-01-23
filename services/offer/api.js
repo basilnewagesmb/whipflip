@@ -70,6 +70,16 @@ export const offerApi = createApi({
       },
       invalidatesTags: ["offers"],
     }),
+    createInstantOffer: builder.mutation({
+      query: (data) => {
+        return {
+          url: `/prospects/offer`,
+          method: "POST",
+          body: data,
+        };
+      },
+      invalidatesTags: ["offers"],
+    }),
   }),
 });
 
@@ -80,4 +90,5 @@ export const {
   useGetOfferByIdMutation,
   useAddDamagesMutation,
   useSkipToInstantOfferMutation,
+  useCreateInstantOfferMutation,
 } = offerApi;

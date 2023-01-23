@@ -53,8 +53,18 @@ export async function getServerSideProps({ res, query }) {
     `${process.env.NEXT_PUBLIC_API_URL}/prospects/${id}`
   );
   const data = await resp.json();
-  return {
-    props: { data },
-  };
+  if (data.status !== "quote") {
+    return {
+      redirect: {
+        permanent: false,
+        destination: `/prospect/${data.uid}/${data.status}`,
+      },
+      props: { data },
+    };
+  } else {
+    return {
+      props: { data },
+    };
+  }
 }
 export default Index;

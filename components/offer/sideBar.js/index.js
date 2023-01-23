@@ -25,7 +25,10 @@ function SideBar({ data, current }) {
               isShow={!isMobile}
               initialOffer={offerData || initialOffer}
             />
-            <OfferInfo isShow={current > 1} />
+            <OfferInfo
+              data={offerData || initialOffer || data}
+              isShow={current > 1}
+            />
             <AverageInfo isShow={current > 0} />
           </div>
         ) : (
