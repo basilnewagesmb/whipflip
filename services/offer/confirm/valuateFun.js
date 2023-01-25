@@ -88,7 +88,7 @@ function useValuateFun({ offerData }) {
     audio: false,
     videoConstraints: {
       aspectRatio: { ideal: 1.7777777778 },
-      //  facingMode: { exact: "environment" },
+      facingMode: { exact: "environment" },
     },
     ref: webcamRef,
     screenshotFormat: "image/png",
@@ -102,7 +102,14 @@ function useValuateFun({ offerData }) {
     },
     forceScreenshotSourceSize: true,
     onUserMedia: () => {},
-    onUserMediaError: () => {},
+    onUserMediaError: async () => {
+      const permission = await navigator.permissions.query({ name: "camera" });
+      if (permission.state == "granted") {
+        console.log("granted");
+      } else {
+        console.log(permission.state);
+      }
+    },
   };
   const pendingLayouts = state?.stills?.filter((item) => !item.blob);
   const previewing = state?.stills?.find((item) => item.preview);
