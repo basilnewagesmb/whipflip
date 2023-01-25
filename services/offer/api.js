@@ -51,11 +51,11 @@ export const offerApi = createApi({
       },
     }),
     addDamages: builder.mutation({
-      query: ({ issues }) => {
+      query: (data) => {
         return {
-          url: `/prospects/${issues.uid}/damages`,
+          url: `/prospects/${data.uid}/damages`,
           method: "POST",
-          body: { issues },
+          body: data,
         };
       },
       invalidatesTags: ["offers"],

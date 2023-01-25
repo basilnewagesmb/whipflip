@@ -43,7 +43,7 @@ function ExteriorConditions({
           <div className="form-group row ob_frm_row">
             <div className="col-lg-12 p-0">
               <label className="d-block">
-                How would you honestly rate your vehicle's{" "}
+                {`How would you honestly rate your vehicle's`}{" "}
                 <span className="underline">
                   {"  "}
                   <b>EXTERIOR</b>
@@ -67,6 +67,7 @@ function ExteriorConditions({
                       );
                       next();
                     }}
+                    key={i}
                   >
                     <input
                       type="radio"

@@ -175,9 +175,9 @@ function ConfirmVehicle({
                               className="mt-3"
                             />
                             <p className="mt-3">
-                              You can find your 17-digit VIN # on the windshield
+                              {`You can find your 17-digit VIN # on the windshield
                               beneath the drivers side or in the driver's side
-                              door jamb.
+                              door jamb.`}
                             </p>
                           </div>
                         ),

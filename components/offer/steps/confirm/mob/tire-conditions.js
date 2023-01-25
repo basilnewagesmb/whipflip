@@ -57,6 +57,7 @@ function TireConditionsTemp({
                       await form.setFieldValue("tire", item.uid);
                       next();
                     }}
+                    key={i}
                   >
                     <input
                       type="radio"

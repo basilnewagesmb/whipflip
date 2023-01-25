@@ -25,7 +25,7 @@ function Index() {
           <div className="row">
             <div className="col-12 page-title text-center">
               <h1>
-                Questions? <br /> We'd Love to Hear from You!
+                Questions? <br /> {`We'd Love to Hear from You!`}
               </h1>
             </div>
           </div>

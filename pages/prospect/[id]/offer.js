@@ -4,7 +4,7 @@ import Sell from "components/offer/steps/sell/index";
 import React from "react";
 import { useGetOfferQuery } from "services/offer/api";
 
-function index({ data }) {
+function Index({ data }) {
   const { data: offerData } = useGetOfferQuery(data?.uid, {
     skip: !data?.uid,
   });
@@ -36,4 +36,4 @@ export async function getServerSideProps({ res, query }) {
   }
 }
 
-export default index;
+export default Index;

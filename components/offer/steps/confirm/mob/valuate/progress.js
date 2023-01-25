@@ -84,8 +84,8 @@ export const Progress = ({ speed }) => {
                 />
                 <p>
                   <b>
-                    WhipFlip has a 5 Star Google review average and BBB A
-                    Rating. We're trusted by the best names in the industry!
+                    {`WhipFlip has a 5 Star Google review average and BBB A
+                    Rating. We're trusted by the best names in the industry!`}
                   </b>
                 </p>
               </div>

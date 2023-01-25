@@ -24,7 +24,8 @@ function ConfirmOffer({ initialOffer }) {
     if (offerData.data) {
       setData(offerData.data);
     }
-  }, [offerData]);
+  }, [initialOffer, offerData]);
+  console.log(data);
 
   const date =
     data?.status == "quote"
@@ -124,7 +125,9 @@ function ConfirmOffer({ initialOffer }) {
               <span>
                 {data?.status == "offer"
                   ? "Accept Offer & Sell"
-                  : "Confirm My Offer"}{" "}
+                  : data?.status == "appointment"
+                  ? "Confirm My Appointment"
+                  : "Confirm My Offer"}
               </span>
               <span>
                 <svg

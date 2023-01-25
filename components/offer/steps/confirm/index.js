@@ -224,9 +224,9 @@ function Confirm() {
                                       className="mt-3"
                                     />
                                     <p className="mt-3">
-                                      You can find your 17-digit VIN # on the
+                                     {`You can find your 17-digit VIN # on the
                                       windshield beneath the drivers side or in
-                                      the driver's side door jamb.
+                                      the driver's side door jamb.`}
                                     </p>
                                   </div>
                                 ),
@@ -365,7 +365,7 @@ function Confirm() {
                   <div className="form-group row ob_frm_row">
                     <div className="col-lg-12 p-0">
                       <label className="d-block">
-                        How would you honestly rate your vehicle's{" "}
+                        {`How would you honestly rate your vehicle's`}{" "}
                         <span className="underline">
                           {"  "}
                           <b>EXTERIOR</b>
@@ -386,6 +386,7 @@ function Confirm() {
                               formRealValues?.cosmetic?.exterior == item.uid &&
                               "selected"
                             }`}
+                            key={i}
                             onClick={(e) =>
                               form.setFieldValue(
                                 ["cosmetic", "exterior"],
@@ -425,7 +426,7 @@ function Confirm() {
                   <div className="form-group row ob_frm_row">
                     <div className="col-lg-12 p-0">
                       <label htmlFor="" className="d-block">
-                        How would you honestly rate your vehicle's{" "}
+                        {`How would you honestly rate your vehicle's`}{" "}
                         <span className="underline">
                           {" "}
                           <b>INTERIOR</b>{" "}
@@ -452,6 +453,7 @@ function Confirm() {
                                 item.uid
                               )
                             }
+                            key={i}
                           >
                             <label className="selector-item_label labelflexCenter tclabel">
                               {Images()?.cosmetic[item.match_name].src && (

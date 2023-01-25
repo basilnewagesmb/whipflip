@@ -119,10 +119,14 @@ function useConfirmForm({ form }) {
       cosmetic: data.cosmetic,
     };
     if (res?.data) {
-      const cRes = await addDamages({ issues });
-      console.log(cRes);
+      const cRes = await addDamages({
+        issues,
+        ...initialOffer,
+      });
       if (cRes?.data) {
         //ShowEasyStep(dispatch, setCurrent);
+      } else {
+        message.error("something went wrong");
       }
     } else {
       message.error("trim not fount");

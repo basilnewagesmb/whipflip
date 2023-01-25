@@ -107,6 +107,30 @@ export const general = createApi({
         };
       },
     }),
+    placeSearch: builder.query({
+      query: (input) => {
+        return {
+          url: `${window.location.origin}/api/place`,
+          method: "GET",
+          params: {
+            input,
+          },
+        };
+      },
+      headers: {},
+    }),
+    validateZip: builder.query({
+      query: (zip) => {
+        return {
+          url: `/zip/status`,
+          method: "GET",
+          params: {
+            zip,
+          },
+        };
+      },
+      headers: {},
+    }),
   }),
 });
 
@@ -117,4 +141,6 @@ export const {
   useConditionsQuery,
   useVehicleWithVinMutation,
   useVehicleWithPlateMutation,
+  usePlaceSearchQuery,
+  useValidateZipQuery,
 } = general;

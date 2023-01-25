@@ -92,7 +92,7 @@ function Initial({ setCurrent }) {
                 setCurrent("camera");
               }}
             >
-              I'm Ready
+              {`I'm Ready`}
             </button>
             <a href="#" className="skipHref" onClick={back}>
               Skip Taking Photos
