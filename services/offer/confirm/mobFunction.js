@@ -113,8 +113,10 @@ function useConfirmFormMob({ form, navFunc }) {
       cosmetic: data.cosmetic,
     };
     if (res?.data) {
-      const cRes = await addDamages({ issues });
-      console.log(cRes);
+      const cRes = await addDamages({
+        issues,
+        ...initialOffer,
+      });
       if (cRes?.data) {
         //ShowEasyStep(dispatch, setCurrent);
       }
