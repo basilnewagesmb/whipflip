@@ -1,4 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import moment from "moment";
+
 export const general = createApi({
   reducerPath: "general",
   baseQuery: fetchBaseQuery({
@@ -117,7 +119,17 @@ export const general = createApi({
           },
         };
       },
-      headers: {},
+    }),
+    zipSearch: builder.query({
+      query: (latLng) => {
+        return {
+          url: `${window.location.origin}/api/zip`,
+          method: "GET",
+          params: {
+            latLng,
+          },
+        };
+      },
     }),
     validateZip: builder.query({
       query: (zip) => {
@@ -129,7 +141,43 @@ export const general = createApi({
           },
         };
       },
-      headers: {},
+    }),
+    slots: builder.query({
+      query: (params) => {
+        return {
+          url: `/slots`,
+          method: "GET",
+          params,
+        };
+      },
+      transformResponse: (response, meta, arg) => {
+        const date = arg;
+        let browserTime = moment(
+          new Date().toLocaleString("en-US", {
+            timeZone: "America/New_York",
+          })
+        );
+        let blockedHours = [
+          browserTime.startOf("hour").add(1, "hour").format("hh:mm A"),
+          browserTime.startOf("hour").add(1, "hour").format("hh:mm A"),
+        ];
+        var index = response
+          .map(function (e) {
+            return e.hour;
+          })
+          .indexOf(blockedHours[0]);
+        if (
+          moment(date).format("MM/DD/YYYY") == browserTime.format("MM/DD/YYYY")
+        ) {
+          var slots = response.filter((x) => {
+            if (!blockedHours.includes(x.hour)) return true;
+            return false;
+          });
+          return index >= 0 ? slots.splice(index) : slots;
+        } else {
+          return response;
+        }
+      },
     }),
   }),
 });
@@ -142,5 +190,7 @@ export const {
   useVehicleWithVinMutation,
   useVehicleWithPlateMutation,
   usePlaceSearchQuery,
+  useZipSearchQuery,
   useValidateZipQuery,
+  useSlotsQuery,
 } = general;

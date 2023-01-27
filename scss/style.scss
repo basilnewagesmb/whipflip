@@ -1583,6 +1583,12 @@ ul.form-stepper li a .form-stepper-circle {
   border-radius: 6px;
   color: #4381c0;
 }
+.active_ {
+  background: rgba(67, 129, 192, 0.06);
+  border: 1px solid #4381c0 !important;
+  border-radius: 6px;
+  color: #4381c0;
+}
 .frmfldItem.frmAgree {
   margin-bottom: 20px;
   input {

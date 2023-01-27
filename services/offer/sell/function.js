@@ -1,12 +1,18 @@
-import { Form } from "antd";
+import { Form, Modal } from "antd";
+import BreakDown from "components/anim/breakdown";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
   usePlaceSearchQuery,
+  useSlotsQuery,
   useStatesQuery,
   useValidateZipQuery,
+  useZipSearchQuery,
 } from "services/util";
 import debounce from "utils/debounce";
 import services from "utils/services";
+import moment from "moment";
+
 function useSellFuc(data) {
   const [state, setState] = useState({ isAccept: false });
   const [form] = Form.useForm();
@@ -16,26 +22,7 @@ function useSellFuc(data) {
       isAccept: true,
     }));
   };
-  const formData = {
-    form,
-    autoComplete: "off",
-    requiredMark: false,
-    scrollToFirstError: true,
-    layout: "vertical",
-    name: "Sell",
-    size: "large",
-    onFinish: (data) => {
-      console.log(data);
-    },
-    onFinishFailed: (errorInfo) => {
-      console.log("Failed:", errorInfo);
-    },
-    scrollToFirstError: {
-      behavior: "smooth",
-      block: "center",
-      inline: "center",
-    },
-  };
+
   const formRealData = Form.useWatch([], form);
 
   const { data: placeResult, isFetching: placeFetching } = usePlaceSearchQuery(
@@ -44,10 +31,33 @@ function useSellFuc(data) {
       skip: !formRealData?.street_address,
     }
   );
-  const { data: validateStatus } = useValidateZipQuery(formRealData?.zip, {
-    skip: !formRealData?.zip,
-  });
-  console.log(validateStatus);
+  const { data: zipResult, isFetching: zipFetching } = useZipSearchQuery(
+    formRealData?.latLng,
+    {
+      skip: !formRealData?.latLng,
+    }
+  );
+  useEffect(() => {
+    form.setFieldsValue({
+      zip:
+        zipResult?.results[0]?.address_components.find(
+          (item) => item.types[0] == "postal_code"
+        )?.short_name || "",
+    });
+  }, [zipResult]);
+
+  const { data: zipStatus, isFetching: zipValidating } = useValidateZipQuery(
+    formRealData?.zip,
+    {
+      skip: !formRealData?.zip,
+    }
+  );
+  useEffect(() => {
+    if (zipStatus == false) {
+      showNotValidZip();
+    }
+  }, [zipStatus]);
+
   const { data: states } = useStatesQuery();
   console.log(formRealData);
   useEffect(() => {
@@ -62,7 +72,6 @@ function useSellFuc(data) {
       geocoder
         .geocode({ placeId: d.place_id, country: "us" })
         .then(({ results }) => {
-          console.log(results);
           for (var i = 0; i < results.length; i++) {
             const { street_address, postal_code, city, state } = results[
               i
@@ -79,6 +88,7 @@ function useSellFuc(data) {
               zip: postal_code?.long_name || "",
               city: city?.long_name || "",
               state: state?.short_name || "",
+              latLng: `${results?.[0].geometry.location.lat()},${results?.[0].geometry.location.lng()}`,
             });
           }
         })
@@ -119,7 +129,75 @@ function useSellFuc(data) {
         return type;
     }
   };
-  return { ...state, data, setAccept, formData, autoComplete, states };
+  const formData = {
+    form,
+    autoComplete: "off",
+    requiredMark: false,
+    scrollToFirstError: true,
+    layout: "vertical",
+    name: "Sell",
+    size: "large",
+    onFinish: (data) => {
+      console.log(data);
+    },
+    onFinishFailed: (errorInfo) => {
+      console.log("Failed:", errorInfo);
+    },
+    scrollToFirstError: {
+      behavior: "smooth",
+      block: "center",
+      inline: "center",
+    },
+    disabled: zipValidating,
+    formRealData,
+  };
+  const showNotValidZip = () => {
+    Modal.success({
+      className: "confirm-model",
+      icon: <BreakDown isLoading={true} />,
+      footer: null,
+      closable: true,
+      title: <h6 className="text-center">Uh oh!</h6>,
+      okText: "OK",
+      content: (
+        <div className="text-center">
+          <p>
+            Out of Service Area - But we'll be there soon!
+            <br />
+            For further queries, <Link href={"/contact-us"}>
+              contact us.
+            </Link>{" "}
+            We apologize for any inconvenience.
+          </p>
+        </div>
+      ),
+      okButtonProps: {
+        className: "getOfferBtn",
+      },
+    });
+  };
+  const { data: slots } = useSlotsQuery(
+    {
+      zip: formRealData?.zip,
+      date: moment(formRealData?.appointment_date).format("YYYY-MM-DD"),
+    },
+    {
+      skip: !formRealData?.zip || !formRealData?.appointment_date,
+    }
+  );
+
+  return {
+    ...state,
+    data,
+    setAccept,
+    formData,
+    autoComplete,
+    states,
+    zipStatus,
+    zipValidating,
+    showNotValidZip,
+    slots,
+  };
 }
 
 export default useSellFuc;

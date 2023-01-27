@@ -4,12 +4,24 @@ import {
   Form,
   Button,
   Input,
-  InputNumber,
+  Checkbox,
   DatePicker,
   Select,
   AutoComplete,
 } from "antd";
-function SellFrom({ formData, autoComplete, states }) {
+import { LoadingOutlined, InfoCircleOutlined } from "@ant-design/icons";
+import moment from "moment";
+import Link from "node_modules/next/link";
+
+function SellFrom({
+  formData,
+  autoComplete,
+  states,
+  zipStatus,
+  zipValidating,
+  showNotValidZip,
+  slots,
+}) {
   const [show, setShow] = React.useState(false);
   const [startDate, setStartDate] = useState(null);
   const [status2, setStatus2] = useState(true);
@@ -36,6 +48,7 @@ function SellFrom({ formData, autoComplete, states }) {
     e.preventDefault();
     setShow(true);
   };
+
   return (
     <Form {...formData}>
       <div className="offer_right">
@@ -67,6 +80,9 @@ function SellFrom({ formData, autoComplete, states }) {
                       {...autoComplete}
                       placeholder="Address"
                     />{" "}
+                  </Form.Item>
+                  <Form.Item name={"latLng"} hidden={true}>
+                    <Input hidden />
                   </Form.Item>
                 </div>
                 <div className="col-lg-12 p-0 sacol">
@@ -112,7 +128,7 @@ function SellFrom({ formData, autoComplete, states }) {
                       rules={[
                         {
                           required: true,
-                          message: "Please input your state!",
+                          message: "Please input your State!",
                         },
                       ]}
                     >
@@ -132,6 +148,20 @@ function SellFrom({ formData, autoComplete, states }) {
                       label={false}
                       name={"zip"}
                       className="m-0 w-100"
+                      {...(zipStatus == false
+                        ? {
+                            help: (
+                              <>
+                                Out of Area
+                                <InfoCircleOutlined
+                                  className="ml-2"
+                                  onClick={showNotValidZip}
+                                />
+                              </>
+                            ),
+                            validateStatus: "error",
+                          }
+                        : {})}
                       rules={[
                         {
                           required: true,
@@ -157,6 +187,7 @@ function SellFrom({ formData, autoComplete, states }) {
                         className="w-100"
                         placeholder="Zip Code"
                         maxLength={5}
+                        suffix={zipValidating && <LoadingOutlined />}
                       />
                     </Form.Item>
                   </div>
@@ -168,18 +199,49 @@ function SellFrom({ formData, autoComplete, states }) {
                     <label htmlFor="">When would you like to sell?</label>
                     <div className="sellfld">
                       <div className="sellfld_itm">
-                        <DatePicker className="w-100" />
+                        <Form.Item
+                          label={false}
+                          name={"appointment_date"}
+                          className="m-0 w-100"
+                          rules={[
+                            {
+                              required: true,
+                              message: "Please input your Date!",
+                            },
+                          ]}
+                        >
+                          <DatePicker
+                            className="w-100"
+                            disabledDate={(current) =>
+                              current.isBefore(moment().subtract(1, "day"))
+                            }
+                          />
+                        </Form.Item>
                       </div>
                       <div className="sellfld_itm">
                         <div className="selTime">
-                          <select
-                            className="form-control"
-                            id="user_time_zone"
-                            size="0"
+                          <Form.Item
+                            label={false}
+                            name={"appointment_time"}
+                            className="m-0"
+                            rules={[
+                              {
+                                required: true,
+                                message: "Please input your state!",
+                              },
+                            ]}
                           >
-                            <option value="Hawaii">Select Time</option>
-                            <option value="Alaska">(GMT-09:00) Alaska</option>
-                          </select>
+                            <Select
+                              className="w-100"
+                              options={slots?.map?.((i) => ({
+                                value: i.hour,
+                                label: i.hour,
+                              }))}
+                              allowClear
+                              placeholder="Select Time"
+                              disabled={!slots}
+                            />
+                          </Form.Item>
                         </div>
                       </div>
                     </div>
@@ -197,206 +259,355 @@ function SellFrom({ formData, autoComplete, states }) {
             <div autoComplete="off" className="form" role="form">
               <div className="form-group row ob_frm_row">
                 <div className="col-lg-12 p-0">
-                  <label htmlFor="">Sole owner/only name on title?</label>
-                  <div className="chooseBlock selector row selectorRow">
-                    <div className="selecotr-item col-lg-6 p-0">
-                      <div
-                        className={
-                          condition === 1 ? "si-wrap active" : "si-wrap"
-                        }
-                      >
-                        <input
-                          type="radio"
-                          id="radio11"
-                          name="selector"
+                  <label htmlFor="">Sole owner/only name on title?</label>{" "}
+                  <Form.Item
+                    name={"owner_type"}
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your Choice!",
+                      },
+                    ]}
+                    className="m-0"
+                  >
+                    {" "}
+                    <div className="chooseBlock selector row selectorRow">
+                      <div className="selecotr-item col-lg-6 p-0">
+                        <div
                           className={
-                            condition === 1
-                              ? "selector-item_radio active"
-                              : "selector-item_radio"
+                            formData?.formRealData?.owner_type == "single"
+                              ? "si-wrap active"
+                              : "si-wrap"
                           }
-                          checked={condition === 1}
-                          onClick={(e) => conditionHandler(1)}
-                        />
-                        <label
-                          htmlFor="radio11"
-                          className="selector-item_label"
                         >
-                          Yes
-                        </label>
-                      </div>
-                    </div>
-                    <div className="selecotr-item col-lg-6 pr-0">
-                      <div
-                        className={
-                          condition === 2 ? "si-wrap active" : "si-wrap"
-                        }
-                      >
-                        <input
-                          type="radio"
-                          id="radio12"
-                          name="selector"
-                          className={
-                            condition === 2
-                              ? "selector-item_radio active"
-                              : "selector-item_radio"
-                          }
-                          checked={condition === 2}
-                          onClick={(e) => conditionHandler(2)}
-                        />
-                        <label
-                          htmlFor="radio12"
-                          className="selector-item_label"
-                        >
-                          No
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="viewDetails">
-                    {condition === 1 && (
-                      <div className="viewDetail">
-                        <div className="selectView vin">
-                          <div className="checkIssues">
-                            <div className="chooseIssues">
-                              <div className="form-fld-grp">
-                                {/* <label className="frmfl_label">Owner</label>  */}
-                                <div className="form-row frmRow">
-                                  <div className="frmfldItem">
-                                    <input
-                                      type="text"
-                                      placeholder="Owner First Name"
-                                    />
-                                  </div>
-                                  <div className="frmfldItem">
-                                    <input
-                                      type="text"
-                                      placeholder="Owner Last Name"
-                                    />
-                                  </div>
-                                  <div className="frmfldItem suffFld">
-                                    <select
-                                      className="form-control"
-                                      id="user_time_zone"
-                                      size="0"
-                                    >
-                                      <option value="Hawaii">Suffix</option>
-                                      <option value="Alaska">
-                                        (GMT-09:00) Alaska
-                                      </option>
-                                    </select>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="form-fld-grp">
-                                {/* <label className="frmfl_label">Email</label>   */}
-                                <div className="form-row frmRow">
-                                  <div className="frmfldItem">
-                                    <input
-                                      type="text"
-                                      placeholder="Confirm Email"
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="form-fld-grp">
-                                {/* <label className="frmfl_label">Phone Number</label>   */}
-                                <div className="form-row frmRow">
-                                  <div className="frmfldItem">
-                                    <input
-                                      type="text"
-                                      placeholder="Confirm Phone #"
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                          <input
+                            type="radio"
+                            id="radio11"
+                            name="selector"
+                            className={
+                              formData?.formRealData?.owner_type == "single"
+                                ? "selector-item_radio active"
+                                : "selector-item_radio"
+                            }
+                            checked={
+                              formData?.formRealData?.owner_type == "single"
+                            }
+                            onClick={(e) =>
+                              formData?.form.setFieldsValue({
+                                owner_type: "single",
+                              })
+                            }
+                          />
+                          <label
+                            htmlFor="radio11"
+                            className="selector-item_label justify-content-center"
+                          >
+                            Yes
+                          </label>
                         </div>
                       </div>
-                    )}
-                    {condition === 2 && (
+                      <div className="selecotr-item col-lg-6 pr-0">
+                        <div
+                          className={
+                            formData?.formRealData?.owner_type == "double"
+                              ? "si-wrap active"
+                              : "si-wrap"
+                          }
+                        >
+                          <input
+                            type="radio"
+                            id="radio12"
+                            name="selector"
+                            className={
+                              formData?.formRealData?.owner_type == "double"
+                                ? "selector-item_radio active"
+                                : "selector-item_radio"
+                            }
+                            checked={
+                              formData?.formRealData?.owner_type == "double"
+                            }
+                            onClick={(e) =>
+                              formData?.form.setFieldsValue({
+                                owner_type: "double",
+                              })
+                            }
+                          />
+                          <label
+                            htmlFor="radio12"
+                            className="selector-item_label justify-content-center"
+                          >
+                            No
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </Form.Item>
+                  <div className="viewDetails">
+                    {formData?.formRealData?.owner_type && (
                       <div className="viewDetail">
                         <div className="selectView vin">
                           <div className="checkIssues">
                             <div className="chooseIssues">
                               <div className="form-fld-grp">
-                                {/* <label className="frmfl_label">Owner</label>  */}
                                 <div className="form-row frmRow">
                                   <div className="frmfldItem">
-                                    <input
-                                      type="text"
-                                      placeholder="Owner First Name"
-                                    />
+                                    <Form.Item
+                                      label={false}
+                                      name={"first_name"}
+                                      className="m-0 "
+                                      rules={[
+                                        {
+                                          required: true,
+                                          message:
+                                            "Please input your First Name!",
+                                        },
+                                      ]}
+                                    >
+                                      <Input
+                                        size="large"
+                                        className="w-100"
+                                        placeholder="Owner First Name"
+                                      />
+                                    </Form.Item>
                                   </div>
                                   <div className="frmfldItem">
-                                    <input
-                                      type="text"
-                                      placeholder="Owner Last Name"
-                                    />
+                                    <Form.Item
+                                      label={false}
+                                      name={"last_name"}
+                                      className="m-0 "
+                                      rules={[
+                                        {
+                                          required: true,
+                                          message:
+                                            "Please input your First Name!",
+                                        },
+                                      ]}
+                                    >
+                                      <Input
+                                        size="large"
+                                        className="w-100"
+                                        placeholder="Owner Last Name"
+                                      />
+                                    </Form.Item>
                                   </div>
                                   <div className="frmfldItem suffFld">
-                                    <select
-                                      className="form-control"
-                                      id="user_time_zone"
-                                      size="0"
+                                    <Form.Item
+                                      label={false}
+                                      name={"suffix"}
+                                      className="m-0"
+                                      rules={[
+                                        {
+                                          required: true,
+                                          message: "Please input your suffix!",
+                                        },
+                                      ]}
                                     >
-                                      <option value="Hawaii">Suffix</option>
-                                      <option value="Alaska">
-                                        (GMT-09:00) Alaska
-                                      </option>
-                                    </select>
+                                      <Select
+                                        className="w-100"
+                                        options={[
+                                          {
+                                            value: "Jr.",
+                                            label: "Jr.",
+                                          },
+                                          {
+                                            value: "Sr.",
+                                            label: "Sr.",
+                                          },
+                                          {
+                                            value: "I",
+                                            label: "I",
+                                          },
+                                          {
+                                            value: "II",
+                                            label: "II",
+                                          },
+                                          {
+                                            value: "III",
+                                            label: "III",
+                                          },
+                                          {
+                                            value: "IV",
+                                            label: "IV",
+                                          },
+                                          {
+                                            value: "V",
+                                            label: "V",
+                                          },
+                                        ]}
+                                        allowClear
+                                        placeholder="Suffix"
+                                      />
+                                    </Form.Item>
                                   </div>
                                 </div>
+                                {formData?.formRealData?.owner_type ==
+                                  "double" && (
+                                  <div className="form-row frmRow mt-2">
+                                    <div className="frmfldItem">
+                                      <Form.Item
+                                        label={false}
+                                        name={"second_owner_first_name"}
+                                        className="m-0 "
+                                        rules={[
+                                          {
+                                            required: true,
+                                            message:
+                                              "Please input your First Name!",
+                                          },
+                                        ]}
+                                      >
+                                        <Input
+                                          size="large"
+                                          className="w-100"
+                                          placeholder="Second Owner First Name"
+                                        />
+                                      </Form.Item>
+                                    </div>
+                                    <div className="frmfldItem">
+                                      <Form.Item
+                                        label={false}
+                                        name={"second_owner_last_name"}
+                                        className="m-0 "
+                                        rules={[
+                                          {
+                                            required: true,
+                                            message:
+                                              "Please input your Second Owner Last Name!",
+                                          },
+                                        ]}
+                                      >
+                                        <Input
+                                          size="large"
+                                          className="w-100"
+                                          placeholder="Second Owner Last Name"
+                                        />
+                                      </Form.Item>
+                                    </div>
+                                    <div className="frmfldItem suffFld">
+                                      <Form.Item
+                                        label={false}
+                                        name={"second_owner_suffix"}
+                                        className="m-0"
+                                        rules={[
+                                          {
+                                            required: true,
+                                            message:
+                                              "Please input your suffix!",
+                                          },
+                                        ]}
+                                      >
+                                        <Select
+                                          className="w-100"
+                                          options={[
+                                            {
+                                              value: "Jr.",
+                                              label: "Jr.",
+                                            },
+                                            {
+                                              value: "Sr.",
+                                              label: "Sr.",
+                                            },
+                                            {
+                                              value: "I",
+                                              label: "I",
+                                            },
+                                            {
+                                              value: "II",
+                                              label: "II",
+                                            },
+                                            {
+                                              value: "III",
+                                              label: "III",
+                                            },
+                                            {
+                                              value: "IV",
+                                              label: "IV",
+                                            },
+                                            {
+                                              value: "V",
+                                              label: "V",
+                                            },
+                                          ]}
+                                          allowClear
+                                          placeholder="Suffix"
+                                        />
+                                      </Form.Item>
+                                    </div>
+                                  </div>
+                                )}
                               </div>
-                              <div className="form-fld-grp">
-                                {/* <label className="frmfl_label">Owner</label>  */}
-                                <div className="form-row frmRow">
-                                  <div className="frmfldItem">
-                                    <input
-                                      type="text"
-                                      placeholder="Second Owner First Name"
-                                    />
-                                  </div>
-                                  <div className="frmfldItem">
-                                    <input
-                                      type="text"
-                                      placeholder="Second Owner Last Name"
-                                    />
-                                  </div>
-                                  <div className="frmfldItem suffFld">
-                                    <select
-                                      className="form-control"
-                                      id="user_time_zone"
-                                      size="0"
-                                    >
-                                      <option value="Hawaii">Suffix</option>
-                                      <option value="Alaska">
-                                        (GMT-09:00) Alaska
-                                      </option>
-                                    </select>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="form-fld-grp">
-                                {/* <label className="frmfl_label">Email</label>   */}
-                                <div className="form-row frmRow">
-                                  <div className="frmfldItem">
-                                    <input
-                                      type="text"
+                              <div className="row">
+                                <div className="col-5">
+                                  <Form.Item
+                                    label={false}
+                                    name={"email"}
+                                    className="m-0 "
+                                    rules={[
+                                      {
+                                        required: true,
+                                        message: "Please input your Email!",
+                                      },
+                                      {
+                                        required: false,
+                                        validator: (rule, value = "") => {
+                                          if (value.trim().length != 0) {
+                                            if (
+                                              /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(
+                                                value
+                                              )
+                                            ) {
+                                              return Promise.resolve();
+                                            }
+                                            return Promise.reject(
+                                              "Invalid email"
+                                            );
+                                          }
+                                          return Promise.resolve();
+                                        },
+                                      },
+                                    ]}
+                                  >
+                                    <Input
+                                      size="large"
+                                      className="w-100"
                                       placeholder="Confirm Email"
                                     />
-                                  </div>
+                                  </Form.Item>
                                 </div>
                               </div>
-                              <div className="form-fld-grp">
-                                {/* <label className="frmfl_label">Phone Number</label>   */}
-                                <div className="form-row frmRow">
-                                  <div className="frmfldItem">
-                                    <input
-                                      type="text"
-                                      placeholder="Confirm Phone #"
+                              <div className="row mt-2">
+                                <div className="col-5">
+                                  <Form.Item
+                                    label={false}
+                                    name={"phone"}
+                                    className="m-0 w-100"
+                                    rules={[
+                                      {
+                                        required: true,
+                                        message:
+                                          "Please input your phone number!",
+                                      },
+                                      {
+                                        validator: (rule, value = "") => {
+                                          if (value.trim().length != 0) {
+                                            if (/^[0-9]{10}$/.test(value)) {
+                                              return Promise.resolve();
+                                            }
+                                            return Promise.reject(
+                                              "Invalid phone number"
+                                            );
+                                          }
+                                          return Promise.resolve();
+                                        },
+                                      },
+                                    ]}
+                                  >
+                                    <Input
+                                      size="large"
+                                      className="w-100"
+                                      placeholder="Confirm Phone Number"
                                     />
-                                  </div>
+                                  </Form.Item>
                                 </div>
                               </div>
                             </div>
@@ -412,121 +623,139 @@ function SellFrom({ formData, autoComplete, states }) {
                   <label htmlFor="">
                     Do you have the title to this vehicle?
                   </label>
-                  <div className="chooseBlock selector row selectorRow">
-                    <div className="selecotr-item col-lg-6 p-0">
-                      <input
-                        type="radio"
-                        id="radiono"
-                        name="selector__sel"
-                        className="selector-item_radio"
-                        defaultChecked
-                        onClick={() => setStatus2(true)}
-                      />
-                      <label htmlFor="radiono" className="selector-item_label">
-                        Yes
-                      </label>
+                  <Form.Item
+                    name={"hasTitle"}
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your Choice!",
+                      },
+                    ]}
+                    className="m-0"
+                  >
+                    <div className="chooseBlock selector row selectorRow">
+                      <div
+                        className="selecotr-item col-lg-6 p-0"
+                        onClick={() =>
+                          formData?.form.setFieldsValue({
+                            hasTitle: true,
+                          })
+                        }
+                      >
+                        <label
+                          className={`selector-item_label justify-content-center ${
+                            formData?.formRealData?.hasTitle == true &&
+                            "active_"
+                          }`}
+                        >
+                          Yes
+                        </label>
+                      </div>
+                      <div
+                        className="selecotr-item col-lg-6 pr-0 "
+                        onClick={() =>
+                          formData?.form.setFieldsValue({
+                            hasTitle: false,
+                          })
+                        }
+                      >
+                        <label
+                          className={`selector-item_label justify-content-center ${
+                            formData?.formRealData?.hasTitle == false &&
+                            "active_"
+                          }`}
+                        >
+                          No
+                        </label>
+                      </div>
                     </div>
-                    <div className="selecotr-item col-lg-6 pr-0">
-                      <input
-                        type="radio"
-                        id="radioyes"
-                        name="selector__sel"
-                        className="selector-item_radio"
-                        onClick={() => setStatus2(false)}
-                      />
-                      <label htmlFor="radioyes" className="selector-item_label">
-                        No
-                      </label>
-                    </div>
-                  </div>
+                  </Form.Item>
                 </div>
               </div>
-              {status2 === false && (
-                <div className="form-group row ob_frm_row">
-                  <div className="col-lg-12 p-0">
-                    <label htmlFor=""> Is this vehicle financed?</label>
+              <div className="form-group row ob_frm_row">
+                <div className="col-lg-12 p-0">
+                  <label htmlFor=""> Is this vehicle financed?</label>
+                  <Form.Item
+                    name={"has_active_loan"}
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your Choice!",
+                      },
+                    ]}
+                    className="m-0"
+                  >
                     <div className="chooseBlock selector row selectorRow">
-                      <div className="selecotr-item col-lg-6 p-0">
-                        <div
-                          className={
-                            warning === 1 ? "si-wrap active" : "si-wrap"
-                          }
+                      <div
+                        className="selecotr-item col-lg-6 p-0"
+                        onClick={() =>
+                          formData?.form.setFieldsValue({
+                            has_active_loan: true,
+                          })
+                        }
+                      >
+                        <label
+                          className={`selector-item_label justify-content-center ${
+                            formData?.formRealData?.has_active_loan == true &&
+                            "active_"
+                          }`}
                         >
-                          <input
-                            type="radio"
-                            id="war1"
-                            name="selectorw"
-                            className={
-                              warning === 1
-                                ? "selector-item_radio active"
-                                : "selector-item_radio"
-                            }
-                            checked={warning === 1}
-                            onClick={(e) => warningHandler(1)}
-                          />
-                          <label htmlFor="war1" className="selector-item_label">
-                            Yes
-                          </label>
-                        </div>
+                          Yes
+                        </label>
                       </div>
-                      <div className="selecotr-item col-lg-6 pr-0">
-                        <div className={warning === 2 ? "si-wrap" : "si-wrap"}>
-                          <input
-                            type="radio"
-                            id="war2"
-                            name="selectorw"
-                            className={
-                              warning === 2
-                                ? "selector-item_radio active"
-                                : "selector-item_radio"
-                            }
-                            checked={warning === 2}
-                            onClick={(e) => warningHandler(2)}
-                          />
-                          <label htmlFor="war2" className="selector-item_label">
-                            No
-                          </label>
-                        </div>
+                      <div
+                        className="selecotr-item col-lg-6 pr-0 "
+                        onClick={() =>
+                          formData?.form.setFieldsValue({
+                            has_active_loan: false,
+                          })
+                        }
+                      >
+                        <label
+                          className={`selector-item_label justify-content-center ${
+                            formData?.formRealData?.has_active_loan == false &&
+                            "active_"
+                          }`}
+                        >
+                          No
+                        </label>
                       </div>
                     </div>
-
-                    {warning === 1 && (
-                      <>
-                        <div className="viewDetail">
-                          <div className="selectView vin">
-                            <div className="checkIssues">
-                              <div className="chooseIssues">
-                                <div className="form-fld-grp">
-                                  <label className="frmfl_label">
-                                    Which bank is it with?
-                                  </label>
-                                  <div className="form-row frmRow">
-                                    <div className="frmfldItem">
-                                      <input
-                                        type="text"
-                                        placeholder="Choose Bank"
-                                      />
-                                    </div>
+                  </Form.Item>
+                  {formData?.formRealData?.has_active_loan == true && (
+                    <>
+                      <div className="viewDetail">
+                        <div className="selectView vin">
+                          <div className="checkIssues">
+                            <div className="chooseIssues">
+                              <div className="form-fld-grp">
+                                <label className="frmfl_label">
+                                  Which bank is it with?
+                                </label>
+                                <div className="form-row frmRow">
+                                  <div className="frmfldItem">
+                                    <input
+                                      type="text"
+                                      placeholder="Choose Bank"
+                                    />
                                   </div>
                                 </div>
-                                <div className="form-fld-grp">
-                                  <label className="frmfl_label">
-                                    How much is financed?
-                                  </label>
-                                  <div className="form-row frmRow">
-                                    <div className="frmfldItem">
-                                      <input
-                                        type="text"
-                                        placeholder="Enter Amount"
-                                      />
-                                    </div>
-                                    <div className="frmfldItem">
-                                      <div className="form-group check-group frm_fld_chk">
-                                        <input type="checkbox" id="chk11" />
-                                        <label htmlFor="chk11">
-                                          I dont know
-                                        </label>
-                                      </div>
+                              </div>
+                              <div className="form-fld-grp">
+                                <label className="frmfl_label">
+                                  How much is financed?
+                                </label>
+                                <div className="form-row frmRow">
+                                  <div className="frmfldItem">
+                                    <input
+                                      type="text"
+                                      placeholder="Enter Amount"
+                                    />
+                                  </div>
+                                  <div className="frmfldItem">
+                                    <div className="form-group check-group frm_fld_chk">
+                                      <input type="checkbox" id="chk11" />
+                                      <label htmlFor="chk11">I dont know</label>
                                     </div>
                                   </div>
                                 </div>
@@ -534,9 +763,11 @@ function SellFrom({ formData, autoComplete, states }) {
                             </div>
                           </div>
                         </div>
-                      </>
-                    )}
-                    {warning === 2 && (
+                      </div>
+                    </>
+                  )}
+                  {formData?.formRealData?.has_active_loan == false &&
+                    formData?.formRealData?.hasTitle == false && (
                       <div className="selectView license_plate finance_no">
                         <div className="unable_to_reach unable_to_reach_desk">
                           <div className="ur_head text-center">
@@ -550,7 +781,7 @@ function SellFrom({ formData, autoComplete, states }) {
                             />
                           </div>
                           <div className="ur_body text-center">
-                            <h2>Sorry, but we’re unable to buy your car.</h2>
+                            <h2>Sorry, but we're unable to buy your car.</h2>
                             <p>
                               If you do not have a physical title and your
                               vehicle is not currently financed (Yes, we can buy
@@ -563,41 +794,42 @@ function SellFrom({ formData, autoComplete, states }) {
                           </div>
                         </div>
                         <div className="returnBtn returnBtnDesk">
-                          <button className="retBtn">
-                            Return to the WhipFlip Website
-                          </button>
+                          <Link href={"/"}>
+                            <button className="retBtn">
+                              Return to the WhipFlip Website
+                            </button>
+                          </Link>
                         </div>
                       </div>
                     )}
+                </div>
+              </div>
+              {formData?.formRealData?.has_active_loan == false &&
+              formData?.formRealData?.hasTitle == false ? null : (
+                <div className="doneProcess mt-3">
+                  <Form.Item name={"agreed"} className="m-0">
+                    <Checkbox
+                      onChange={(e) => {
+                        formData?.form.setFieldsValue({
+                          agreed: e.target.checked,
+                        });
+                      }}
+                    >
+                      I agree to the{" "}
+                      <Link href={"/terms-and-conditions"}>terms of use.</Link>
+                    </Checkbox>
+                  </Form.Item>
+                  <div className="initial_order_btn mt-2">
+                    <Button
+                      htmlType="submit"
+                      className="initofferBtn h-auto"
+                      disabled={formData?.formRealData?.agreed != true}
+                    >
+                      Submit
+                    </Button>
                   </div>
                 </div>
               )}
-              {status2 === true || warning === 1 ? (
-                <>
-                  <div className="doneProcess mt-3">
-                    <div className="frmfldItem frmAgree">
-                      <div className="form-group check-group frm_fld_chk">
-                        <input type="checkbox" id="chk111" />
-                        <label htmlFor="chk111">
-                          I agree to the terms of use.
-                        </label>
-                      </div>
-                    </div>
-                    <div className="initial_order_btn">
-                      <button
-                        type="submit"
-                        className="initofferBtn"
-                        onClick={handleOpen}
-                      >
-                        Submit
-                      </button>
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <></>
-              )}
-              <Button htmlType="submit">Submit</Button>
             </div>
           </div>
         </div>
