@@ -99,6 +99,12 @@ function Initial({ data }) {
                         label="Transmission"
                         name="transmission"
                         className="m-0 w-100"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Please input your Choice!",
+                          },
+                        ]}
                       >
                         <div className="chooseBlock selector row selectorRow">
                           <div className="selecotr-item col-lg-6 p-0">
@@ -107,7 +113,6 @@ function Initial({ data }) {
                               id="radio1"
                               name="selector"
                               className="selector-item_radio"
-                              defaultChecked
                               onChange={() => {
                                 form.setFieldsValue({
                                   transmission: "automatic",
@@ -150,15 +155,27 @@ function Initial({ data }) {
                         label="Does the vehicle start and drive?"
                         name="does_vehicle_start"
                         className="m-0 w-100"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Please input your Choice!",
+                          },
+                        ]}
                       >
                         <div className="chooseBlock selector row selectorRow">
-                          <div className="selecotr-item col-lg-6 p-0">
+                          <div
+                            className="selecotr-item col-lg-6 p-0 "
+                            onClick={() =>
+                              form.setFieldsValue({
+                                does_vehicle_start: true,
+                              })
+                            }
+                          >
                             <input
                               type="radio"
                               id="yes"
                               name="selector1"
                               className="selector-item_radio"
-                              defaultChecked
                             />
                             <label
                               htmlFor="yes"
@@ -330,41 +347,45 @@ function Initial({ data }) {
                       <Form.Item
                         label="When are you selling your car?"
                         name="readiness_uid"
-                        className="m-0 w-100 h-0"
+                        className="m-0 w-100"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Please input your Choice!",
+                          },
+                        ]}
                       >
-                        <Input hidden className="d-none" />
-                      </Form.Item>
-                      <div className="chooseBlock selector row selectorRow rowSell">
-                        {data?.readiness?.map((item, i) => (
-                          <div
-                            className="sellItemChoose"
-                            onClick={() => {
-                              form.setFieldValue("readiness_uid", item.uid);
-                            }}
-                            key={item.uid}
-                          >
-                            <input
-                              type="radio"
-                              id={item.uid}
-                              name="readiness"
-                              className="selector-item_radio"
-                              defaultChecked={i == 0}
-                            />
-                            <label
-                              htmlFor={item.uid}
-                              className="selector-item_label labelflexCenter"
+                        <div className="chooseBlock selector row selectorRow rowSell">
+                          {data?.readiness?.map((item, i) => (
+                            <div
+                              className="sellItemChoose"
+                              onClick={() => {
+                                form.setFieldValue("readiness_uid", item.uid);
+                              }}
+                              key={item.uid}
                             >
-                              {item.name == "A FEW WEEKS" && <SandClock />}
-                              {item.name == "ASAP!" && <Clock />}
-                              <span>
-                                {item.name == "I'M NOT"
-                                  ? "IN THE FUTURE"
-                                  : item.name}
-                              </span>
-                            </label>
-                          </div>
-                        ))}
-                      </div>
+                              <input
+                                type="radio"
+                                id={item.uid}
+                                name="readiness"
+                                className="selector-item_radio"
+                              />
+                              <label
+                                htmlFor={item.uid}
+                                className="selector-item_label labelflexCenter"
+                              >
+                                {item.name == "A FEW WEEKS" && <SandClock />}
+                                {item.name == "ASAP!" && <Clock />}
+                                <span>
+                                  {item.name == "I'M NOT"
+                                    ? "IN THE FUTURE"
+                                    : item.name}
+                                </span>
+                              </label>
+                            </div>
+                          ))}
+                        </div>
+                      </Form.Item>
                     </div>
                   </div>
                 </div>

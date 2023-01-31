@@ -8,7 +8,7 @@ function About() {
 
   useEffect(() => {
     setHeight(ref.current.clientHeight);
-  });
+  }, [ref]);
   return (
     <>
       <MetaHead title="About" />

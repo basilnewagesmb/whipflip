@@ -12,6 +12,7 @@ function TireConditionsTemp({
   data,
   isReview,
 }) {
+  console.log(formRealValues);
   return (
     <div className="offer_block noBordBtm offer_block_mobi">
       <div className="ob_hd d-flex justify-content-between">
@@ -30,17 +31,11 @@ function TireConditionsTemp({
               icon={<LeftOutlined />}
               onClick={prev}
             />
-            <Button
-              className="ml-3 d-flex justify-content-center align-items-center"
-              shape="circle"
-              icon={<RightOutlined />}
-              onClick={next}
-            />{" "}
           </div>
         )}
       </div>
       <div className="offer_block-body">
-        <form autoComplete="off" className="form" role="form">
+        <div autoComplete="off" className="form" role="form">
           <div className="form-group row ob_frm_row">
             <div className="col-lg-12 p-0">
               <label htmlFor="">How are your tires?</label>
@@ -55,7 +50,6 @@ function TireConditionsTemp({
                     }`}
                     onClick={async (e) => {
                       await form.setFieldValue("tire", item.uid);
-                      next();
                     }}
                     key={i}
                   >
@@ -90,7 +84,27 @@ function TireConditionsTemp({
               </div>
             </div>
           </div>
-        </form>
+        </div>
+        {!isReview && (
+          <div className="offer_block-body">
+            <div className="form-group text-center">
+              <Button
+                className="continueBtn"
+                style={{
+                  borderRadius: "30px",
+                }}
+                size="large"
+                onClick={async () => {
+                  next();
+                  window.scrollTo(0, 0);
+                }}
+                disabled={!formRealValues?.tire}
+              >
+                Continue
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

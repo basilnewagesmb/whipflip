@@ -80,11 +80,7 @@ function useInitialForm({ form, data, carouselRef, goTo }) {
 
   const formDate = {
     isLoading: isLoading || isCreating,
-    initialValues: {
-      transmission: "automatic",
-      does_vehicle_start: true,
-      readiness_uid: data?.readiness?.[0]?.uid,
-    },
+    initialValues: {},
     onFinish,
     onFinishFailed,
     isDisable: isLoading,

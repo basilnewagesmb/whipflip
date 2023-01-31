@@ -49,19 +49,7 @@ function useConfirmFormMob({ form, navFunc }) {
   const [vehicleWithPlate, platHdl] = useVehicleWithPlateMutation();
   const [addDamages, { isLoading: confirming }] = useAddDamagesMutation();
 
-  useEffect(() => {
-    if (form) {
-      form.setFieldValue("tire", conditions?.tire[0]?.uid);
-      form.setFieldValue(
-        ["cosmetic", "interior"],
-        conditions?.cosmetic?.interior[0]?.uid
-      );
-      form.setFieldValue(
-        ["cosmetic", "exterior"],
-        conditions?.cosmetic?.exterior[0]?.uid
-      );
-    }
-  }, [conditions?.tire, conditions?.cosmetic]);
+
 
   const initialValues = {
     info: {

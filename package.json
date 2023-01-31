@@ -25,6 +25,7 @@
     "react": "18.2.0",
     "react-accessible-accordion": "^5.0.0",
     "react-bootstrap": "^2.4.0",
+    "react-confetti": "^6.1.0",
     "react-dom": "18.2.0",
     "react-facebook-pixel": "^1.0.4",
     "react-full-page": "^0.1.12",

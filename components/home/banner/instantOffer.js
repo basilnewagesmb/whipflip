@@ -15,8 +15,16 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
   const [retrieveOffer, { isLoading }] = useRetrieveOfferMutation();
   const [isTrimOpen, setIsTrimOpen] = useState(false);
   const [form] = Form.useForm();
-  const { onFinish, year, model, make, trim, setThisOpen, isDisable } =
-    useVehicleForm(form);
+  const {
+    onFinish,
+    year,
+    model,
+    make,
+    trim,
+    setThisOpen,
+    isDisable,
+    isLoading: isVehicleLoad,
+  } = useVehicleForm(form);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -396,6 +404,7 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
                     }}
                     type="text"
                     disabled={isDisable}
+                    loading={isVehicleLoad}
                   >
                     <span>Get Instant Offer</span>
                   </Button>

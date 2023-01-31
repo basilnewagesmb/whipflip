@@ -45,20 +45,20 @@ export const general = createApi({
             {
               title:
                 "Any vehicle history issues or title brand? (e.g. accident, flood, etc.)",
-              yes: false,
+              yes: "",
               data: response.history,
               active: "",
             },
             {
               title: "Any engine and/or drivability issues?",
-              yes: false,
+              yes: "",
               data: response.mechanical.filter((m) => m.match_name == "engine"),
               active: "",
             },
             {
               title:
                 "Any dashboard warning lights or inoperable parts? (e.g. Check Engine, Airbag Light, A/C issue, etc.)",
-              yes: false,
+              yes: "",
               data: response.mechanical.filter(
                 (m) => m.match_name == "warning"
               ),
@@ -66,7 +66,7 @@ export const general = createApi({
             },
             {
               title: "Any aftermarket parts or modifications?",
-              yes: false,
+              yes: "",
               data: response.mechanical.filter(
                 (m) => m.match_name == "modification"
               ),

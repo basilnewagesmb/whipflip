@@ -43,19 +43,6 @@ function ConfirmVehicle({
               disabled={currentSlide == 0}
               onClick={prev}
             />
-            <Button
-              className="ml-3 d-flex justify-content-center align-items-center"
-              shape="circle"
-              icon={<RightOutlined />}
-              onClick={next}
-              {...(formRealValues?.info?.type == "vin"
-                ? { disabled: !formRealValues?.info?.vinNumber }
-                : {
-                    disabled:
-                      !formRealValues?.info?.plateNumber ||
-                      !formRealValues?.info?.state,
-                  })}
-            />{" "}
           </div>
         )}
       </div>

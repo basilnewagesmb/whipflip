@@ -6,12 +6,15 @@ import {
   Input,
   Checkbox,
   DatePicker,
+  InputNumber,
   Select,
   AutoComplete,
 } from "antd";
 import { LoadingOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import moment from "moment";
-import Link from "node_modules/next/link";
+import Link from "next/link";
+import RulesModal from "./rulesModal";
+import useCheckMobile from "utils/checkMobile";
 
 function SellFrom({
   formData,
@@ -21,34 +24,12 @@ function SellFrom({
   zipValidating,
   showNotValidZip,
   slots,
+  closeRuleModal,
+  isRulesOpen,
+  data,
+  submitAppointment,
 }) {
-  const [show, setShow] = React.useState(false);
-  const [startDate, setStartDate] = useState(null);
-  const [status2, setStatus2] = useState(true);
-  const [condition, setCondition] = useState(2);
-  const [warning, setWarning] = useState(1);
-  const handleOnBlur = ({ target: { value } }) => {
-    const date = new Date(value);
-    if (isValid(date)) {
-      console.log("date: %s", format(date, "dd/MM/yyyy"));
-    } else {
-      console.log("value: %s", date);
-    }
-  };
-  const conditionHandler = (condition) => {
-    setCondition(condition);
-  };
-  const warningHandler = (warning) => {
-    setWarning(warning);
-  };
-  const handleClose = () => {
-    setShow(false);
-  };
-  const handleOpen = (e) => {
-    e.preventDefault();
-    setShow(true);
-  };
-
+  const isMobile = useCheckMobile();
   return (
     <Form {...formData}>
       <div className="offer_right">
@@ -197,7 +178,11 @@ function SellFrom({
                 <div className="form-row frmRow">
                   <div className="frmfldItem">
                     <label htmlFor="">When would you like to sell?</label>
-                    <div className="sellfld">
+                    <div
+                      className={`sellfld ${
+                        isMobile && " flex-column align-items-stretch"
+                      }`}
+                    >
                       <div className="sellfld_itm">
                         <Form.Item
                           label={false}
@@ -261,7 +246,7 @@ function SellFrom({
                 <div className="col-lg-12 p-0">
                   <label htmlFor="">Sole owner/only name on title?</label>{" "}
                   <Form.Item
-                    name={"owner_type"}
+                    name={"is_sole_owner"}
                     rules={[
                       {
                         required: true,
@@ -272,10 +257,10 @@ function SellFrom({
                   >
                     {" "}
                     <div className="chooseBlock selector row selectorRow">
-                      <div className="selecotr-item col-lg-6 p-0">
+                      <div className="selecotr-item col-lg-6 col-6 p-0">
                         <div
                           className={
-                            formData?.formRealData?.owner_type == "single"
+                            formData?.formRealData?.is_sole_owner == "single"
                               ? "si-wrap active"
                               : "si-wrap"
                           }
@@ -285,16 +270,16 @@ function SellFrom({
                             id="radio11"
                             name="selector"
                             className={
-                              formData?.formRealData?.owner_type == "single"
+                              formData?.formRealData?.is_sole_owner == "single"
                                 ? "selector-item_radio active"
                                 : "selector-item_radio"
                             }
                             checked={
-                              formData?.formRealData?.owner_type == "single"
+                              formData?.formRealData?.is_sole_owner == "single"
                             }
                             onClick={(e) =>
                               formData?.form.setFieldsValue({
-                                owner_type: "single",
+                                is_sole_owner: "single",
                               })
                             }
                           />
@@ -306,10 +291,10 @@ function SellFrom({
                           </label>
                         </div>
                       </div>
-                      <div className="selecotr-item col-lg-6 pr-0">
+                      <div className="selecotr-item col-lg-6 col-6 pr-0 ">
                         <div
                           className={
-                            formData?.formRealData?.owner_type == "double"
+                            formData?.formRealData?.is_sole_owner == "double"
                               ? "si-wrap active"
                               : "si-wrap"
                           }
@@ -319,16 +304,16 @@ function SellFrom({
                             id="radio12"
                             name="selector"
                             className={
-                              formData?.formRealData?.owner_type == "double"
+                              formData?.formRealData?.is_sole_owner == "double"
                                 ? "selector-item_radio active"
                                 : "selector-item_radio"
                             }
                             checked={
-                              formData?.formRealData?.owner_type == "double"
+                              formData?.formRealData?.is_sole_owner == "double"
                             }
                             onClick={(e) =>
                               formData?.form.setFieldsValue({
-                                owner_type: "double",
+                                is_sole_owner: "double",
                               })
                             }
                           />
@@ -343,7 +328,7 @@ function SellFrom({
                     </div>
                   </Form.Item>
                   <div className="viewDetails">
-                    {formData?.formRealData?.owner_type && (
+                    {formData?.formRealData?.is_sole_owner && (
                       <div className="viewDetail">
                         <div className="selectView vin">
                           <div className="checkIssues">
@@ -440,7 +425,7 @@ function SellFrom({
                                     </Form.Item>
                                   </div>
                                 </div>
-                                {formData?.formRealData?.owner_type ==
+                                {formData?.formRealData?.is_sole_owner ==
                                   "double" && (
                                   <div className="form-row frmRow mt-2">
                                     <div className="frmfldItem">
@@ -537,7 +522,7 @@ function SellFrom({
                                 )}
                               </div>
                               <div className="row">
-                                <div className="col-5">
+                                <div className="col-lg-5 col-12">
                                   <Form.Item
                                     label={false}
                                     name={"email"}
@@ -576,7 +561,7 @@ function SellFrom({
                                 </div>
                               </div>
                               <div className="row mt-2">
-                                <div className="col-5">
+                                <div className="col-lg-5 col-12">
                                   <Form.Item
                                     label={false}
                                     name={"phone"}
@@ -635,7 +620,7 @@ function SellFrom({
                   >
                     <div className="chooseBlock selector row selectorRow">
                       <div
-                        className="selecotr-item col-lg-6 p-0"
+                        className="selecotr-item col-lg-6 col-6 p-0"
                         onClick={() =>
                           formData?.form.setFieldsValue({
                             hasTitle: true,
@@ -652,7 +637,7 @@ function SellFrom({
                         </label>
                       </div>
                       <div
-                        className="selecotr-item col-lg-6 pr-0 "
+                        className="selecotr-item col-lg-6 col-6 pr-0  "
                         onClick={() =>
                           formData?.form.setFieldsValue({
                             hasTitle: false,
@@ -687,7 +672,7 @@ function SellFrom({
                   >
                     <div className="chooseBlock selector row selectorRow">
                       <div
-                        className="selecotr-item col-lg-6 p-0"
+                        className="selecotr-item col-lg-6 col-6 p-0"
                         onClick={() =>
                           formData?.form.setFieldsValue({
                             has_active_loan: true,
@@ -704,7 +689,7 @@ function SellFrom({
                         </label>
                       </div>
                       <div
-                        className="selecotr-item col-lg-6 pr-0 "
+                        className="selecotr-item col-lg-6 col-6 pr-0  "
                         onClick={() =>
                           formData?.form.setFieldsValue({
                             has_active_loan: false,
@@ -734,10 +719,22 @@ function SellFrom({
                                 </label>
                                 <div className="form-row frmRow">
                                   <div className="frmfldItem">
-                                    <input
-                                      type="text"
-                                      placeholder="Choose Bank"
-                                    />
+                                    <Form.Item
+                                      name={"loanCompany"}
+                                      className="m-0"
+                                      rules={[
+                                        {
+                                          required: true,
+                                          message:
+                                            "Please input your financed bank!",
+                                        },
+                                      ]}
+                                    >
+                                      <Input
+                                        size="large"
+                                        placeholder="Choose Bank"
+                                      />
+                                    </Form.Item>
                                   </div>
                                 </div>
                               </div>
@@ -747,15 +744,41 @@ function SellFrom({
                                 </label>
                                 <div className="form-row frmRow">
                                   <div className="frmfldItem">
-                                    <input
-                                      type="text"
-                                      placeholder="Enter Amount"
-                                    />
+                                    <Form.Item
+                                      name={"loanBalance"}
+                                      className="m-0"
+                                      rules={[
+                                        {
+                                          required:
+                                            formData?.formRealData?.idk != true,
+                                          message:
+                                            "Please input your financed amount!",
+                                        },
+                                      ]}
+                                    >
+                                      <InputNumber
+                                        size="large"
+                                        placeholder="Enter Amount"
+                                        disabled={
+                                          formData?.formRealData?.idk == true
+                                        }
+                                        className="w-100"
+                                      />
+                                    </Form.Item>
                                   </div>
                                   <div className="frmfldItem">
-                                    <div className="form-group check-group frm_fld_chk">
-                                      <input type="checkbox" id="chk11" />
-                                      <label htmlFor="chk11">I dont know</label>
+                                    <div className=" frm_fld_chk">
+                                      <Form.Item name={"idk"} className="m-0">
+                                        <Checkbox
+                                          onChange={(e) => {
+                                            formData?.form.setFieldsValue({
+                                              idk: e.target.checked,
+                                            });
+                                          }}
+                                        >
+                                          I don`t know
+                                        </Checkbox>
+                                      </Form.Item>
                                     </div>
                                   </div>
                                 </div>
@@ -781,7 +804,7 @@ function SellFrom({
                             />
                           </div>
                           <div className="ur_body text-center">
-                            <h2>Sorry, but we're unable to buy your car.</h2>
+                            <h2>Sorry, but we`re unable to buy your car.</h2>
                             <p>
                               If you do not have a physical title and your
                               vehicle is not currently financed (Yes, we can buy
@@ -834,6 +857,14 @@ function SellFrom({
           </div>
         </div>
       </div>
+      <RulesModal
+        data={data}
+        handleClose={closeRuleModal}
+        show={isRulesOpen}
+        clickFromWeb
+        {...formData}
+        submitAppointment={submitAppointment}
+      />
     </Form>
   );
 }

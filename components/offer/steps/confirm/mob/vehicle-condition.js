@@ -32,16 +32,6 @@ function VehicleConditionMob({
               disabled={currentSlide == 0}
               onClick={prev}
             />
-            <Button
-              className="ml-3 d-flex justify-content-center align-items-center"
-              shape="circle"
-              icon={<RightOutlined />}
-              onClick={next}
-              disabled={
-                formRealValues?.conditions[i].yes &&
-                !formRealValues.conditions[i].active
-              }
-            />{" "}
           </div>
         )}
       </div>
@@ -51,7 +41,7 @@ function VehicleConditionMob({
           <div className="chooseBlock selector row selectorRow">
             <div className="selecotr-item col-6 p-0">
               <div
-                className={`si-wrap ${!item.yes && "active-btn-only"}`}
+                className={`si-wrap ${item.yes === false && "active-btn-only"}`}
                 onClick={() => {
                   form.setFieldValue(["conditions", i, "yes"], false);
                   form.setFieldValue(
@@ -67,9 +57,11 @@ function VehicleConditionMob({
             </div>
             <div className="selecotr-item col-6 pr-0">
               <div
-                className={`si-wrap ${item.yes && "active"}`}
+                className={`si-wrap ${item.yes === true && "active"}`}
                 onClick={() => {
                   form.setFieldValue(["conditions", i, "yes"], true);
+                  window.scrollTo(0, 0);
+
                 }}
               >
                 <label className="selector-item_label justify-content-center">
@@ -184,23 +176,37 @@ function VehicleConditionMob({
       {!isReview && (
         <div className="offer_block-body">
           <div className="form-group text-center">
-            <Button
-              className="continueBtn"
-              style={{
-                borderRadius: "30px",
-              }}
-              size="large"
-              onClick={async () => {
-                next();
-                window.scrollTo(0, 0);
-              }}
-              disabled={
-                formRealValues?.conditions[i].yes &&
-                !formRealValues.conditions[i].active
-              }
-            >
-              Continue
-            </Button>
+            {formRealValues?.conditions[i].yes === true ? (
+              <Button
+                className="continueBtn"
+                style={{
+                  borderRadius: "30px",
+                }}
+                size="large"
+                onClick={async () => {
+                  next();
+                  window.scrollTo(0, 0);
+                }}
+                disabled={formRealValues?.conditions[i].active === ""}
+              >
+                Continue
+              </Button>
+            ) : (
+              <Button
+                className="continueBtn"
+                style={{
+                  borderRadius: "30px",
+                }}
+                size="large"
+                onClick={async () => {
+                  next();
+                  window.scrollTo(0, 0);
+                }}
+                disabled={formRealValues?.conditions[i].yes === ""}
+              >
+                Continue
+              </Button>
+            )}
           </div>
         </div>
       )}

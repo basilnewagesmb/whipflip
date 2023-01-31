@@ -6,6 +6,14 @@ export const vehicle = createApi({
   }),
   tagTypes: ["vehicle"],
   endpoints: (builder) => ({
+    getVehicleById: builder.query({
+      query: (id) => {
+        return {
+          url: `/vehicles?vehicleID=${id}`,
+          method: "GET",
+        };
+      },
+    }),
     getYears: builder.query({
       query: () => {
         return {
@@ -83,6 +91,7 @@ export const vehicle = createApi({
 });
 
 export const {
+  useGetVehicleByIdQuery,
   useGetYearsQuery,
   useGetMakesQuery,
   useGetModelsQuery,

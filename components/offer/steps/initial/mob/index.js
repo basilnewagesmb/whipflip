@@ -47,12 +47,6 @@ function InitialMob({ data, form, carouselRef }) {
                   disabled={currentSlide == 0}
                   onClick={prev}
                 />
-                <Button
-                  className="ml-3 d-flex justify-content-center align-items-center"
-                  shape="circle"
-                  icon={<RightOutlined />}
-                  onClick={next}
-                />{" "}
               </div>
             </div>
           )}
@@ -62,6 +56,8 @@ function InitialMob({ data, form, carouselRef }) {
             effect={"fade"}
             infinite={false}
             ref={carouselRef}
+            autoplay={false}
+            swipe={false}
           >
             <Milage form={form} data={data} next={next} goTo={goTo} />
             <ColorPicker form={form} data={data} next={next} />

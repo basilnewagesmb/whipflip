@@ -34,36 +34,52 @@ function VehicleCD({ form, formRealValues, conditions, isConditionsLoading }) {
               <div className="form-group row ob_frm_row" key={i}>
                 <div className="col-lg-12 p-0">
                   <label>{item.title}</label>
-                  <div className="chooseBlock selector row selectorRow">
-                    <div className="selecotr-item col-lg-6 p-0">
-                      <div
-                        className={`si-wrap ${!item.yes && "active-btn-only"}`}
-                        onClick={() => {
-                          form.setFieldValue(["conditions", i, "yes"], false);
-                          form.setFieldValue(
-                            ["conditions", i, "data"],
-                            conditions[i].data
-                          );
-                        }}
-                      >
-                        <label className="selector-item_label justify-content-center">
-                          Nope!
-                        </label>
+                  <Form.Item
+                    label={false}
+                    className="m-0"
+                    name={["conditions", i, "yes"]}
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your Choice!",
+                      },
+                    ]}
+                  >
+                    <div className="chooseBlock selector row selectorRow">
+                      <div className="selecotr-item col-lg-6 p-0">
+                        <div
+                          className={`si-wrap ${
+                            item.yes === false && "active-btn-only"
+                          }`}
+                          onClick={() => {
+                            form.setFieldValue(["conditions", i, "yes"], false);
+                            form.setFieldValue(
+                              ["conditions", i, "data"],
+                              conditions[i].data
+                            );
+                            form.validateFields();
+                          }}
+                        >
+                          <label className="selector-item_label justify-content-center">
+                            Nope!
+                          </label>
+                        </div>
+                      </div>
+                      <div className="selecotr-item col-lg-6 pr-0">
+                        <div
+                          className={`si-wrap ${item.yes === true && "active"}`}
+                          onClick={() => {
+                            form.setFieldValue(["conditions", i, "yes"], true);
+                            form.validateFields();
+                          }}
+                        >
+                          <label className="selector-item_label justify-content-center">
+                            Yes
+                          </label>
+                        </div>
                       </div>
                     </div>
-                    <div className="selecotr-item col-lg-6 pr-0">
-                      <div
-                        className={`si-wrap ${item.yes && "active"}`}
-                        onClick={() => {
-                          form.setFieldValue(["conditions", i, "yes"], true);
-                        }}
-                      >
-                        <label className="selector-item_label justify-content-center">
-                          Yes
-                        </label>
-                      </div>
-                    </div>
-                  </div>
+                  </Form.Item>
                   <Jump spy={item.yes}>
                     {item.yes && (
                       <div className="viewDetails">

@@ -29,12 +29,6 @@ function InteriorConditions({
               icon={<LeftOutlined />}
               onClick={prev}
             />
-            <Button
-              className="ml-3 d-flex justify-content-center align-items-center"
-              shape="circle"
-              icon={<RightOutlined />}
-              onClick={next}
-            />{" "}
           </div>
         )}
       </div>

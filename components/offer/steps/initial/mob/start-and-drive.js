@@ -4,7 +4,9 @@ import React from "react";
 import useInitialForm from "services/offer/initial/function";
 
 function StartAndDrive({ form, data, next }) {
-  const { breakDownPop } = useInitialForm({form, data});
+  const { breakDownPop } = useInitialForm({ form, data });
+  const does_vehicle_start = Form.useWatch("does_vehicle_start", form);
+
   return (
     <Form.Item label={false} name="does_vehicle_start" className="m-0 w-100">
       <div className="offer_block-body">
@@ -16,9 +18,14 @@ function StartAndDrive({ form, data, next }) {
                 <div className="selecotr-item chooseItem col-6 p-0">
                   <label
                     htmlFor="radio1"
-                    className="selector-item_label flex-selector checked"
+                    className={`selector-item_label flex-selector ${
+                      does_vehicle_start ? " checked" : " "
+                    } `}
                     onClick={() => {
                       next();
+                      form.setFieldsValue({
+                        does_vehicle_start: true,
+                      });
                     }}
                   >
                     <span>

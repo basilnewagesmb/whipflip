@@ -1,4 +1,4 @@
-import { Form, Modal } from "antd";
+import { Form, Modal, message } from "antd";
 import BreakDown from "components/anim/breakdown";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -12,14 +12,26 @@ import {
 import debounce from "utils/debounce";
 import services from "utils/services";
 import moment from "moment";
+import { useAppointmentOfferMutation } from "../api";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { reset } from "features/offer/offerSlice";
 
 function useSellFuc(data) {
-  const [state, setState] = useState({ isAccept: false });
+  const dispatch = useDispatch();
+  const { push } = useRouter();
+  const [state, setState] = useState({ isAccept: false, isRulesOpen: false });
   const [form] = Form.useForm();
   const setAccept = () => {
     setState((prev) => ({
       ...prev,
       isAccept: true,
+    }));
+  };
+  const closeRuleModal = () => {
+    setState((prev) => ({
+      ...prev,
+      isRulesOpen: false,
     }));
   };
 
@@ -59,7 +71,6 @@ function useSellFuc(data) {
   }, [zipStatus]);
 
   const { data: states } = useStatesQuery();
-  console.log(formRealData);
   useEffect(() => {
     services.loadScript(
       `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}&libraries=places`,
@@ -139,6 +150,10 @@ function useSellFuc(data) {
     size: "large",
     onFinish: (data) => {
       console.log(data);
+      setState((prev) => ({
+        ...prev,
+        isRulesOpen: true,
+      }));
     },
     onFinishFailed: (errorInfo) => {
       console.log("Failed:", errorInfo);
@@ -185,7 +200,24 @@ function useSellFuc(data) {
       skip: !formRealData?.zip || !formRealData?.appointment_date,
     }
   );
-
+  const [appointmentOffer, { isLoading }] = useAppointmentOfferMutation();
+  const submitAppointment = async () => {
+    closeRuleModal()
+    let postData = {
+      ...formRealData,
+      uid: data.uid,
+      is_sole_owner: formRealData.isSoleOwner == "double" ? true : false,
+      appt_created_date: moment().format("YYYY-MM-DD HH:mm:ss"),
+      charity: "",
+    };
+    const res = await appointmentOffer(postData);
+    if (res?.data?.uid) {
+      dispatch(reset());
+      push(`/prospect/${res?.data?.uid}/appointment`);
+    } else {
+      message.error("Something went wrong");
+    }
+  };
   return {
     ...state,
     data,
@@ -197,6 +229,9 @@ function useSellFuc(data) {
     zipValidating,
     showNotValidZip,
     slots,
+    closeRuleModal,
+    submitAppointment,
+    isLoading,
   };
 }
 

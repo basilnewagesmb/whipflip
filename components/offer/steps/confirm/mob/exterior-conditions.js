@@ -29,12 +29,6 @@ function ExteriorConditions({
               icon={<LeftOutlined />}
               onClick={prev}
             />
-            <Button
-              className="ml-3 d-flex justify-content-center align-items-center"
-              shape="circle"
-              icon={<RightOutlined />}
-              onClick={next}
-            />{" "}
           </div>
         )}
       </div>
@@ -65,7 +59,6 @@ function ExteriorConditions({
                         ["cosmetic", "exterior"],
                         item.uid
                       );
-                      next();
                     }}
                     key={i}
                   >
@@ -105,6 +98,26 @@ function ExteriorConditions({
             </div>
           </div>
         </div>
+        {!isReview && (
+          <div className="offer_block-body">
+            <div className="form-group text-center">
+              <Button
+                className="continueBtn"
+                style={{
+                  borderRadius: "30px",
+                }}
+                size="large"
+                onClick={async () => {
+                  next();
+                  window.scrollTo(0, 0);
+                }}
+                disabled={!formRealValues?.cosmetic?.exterior}
+              >
+                Continue
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

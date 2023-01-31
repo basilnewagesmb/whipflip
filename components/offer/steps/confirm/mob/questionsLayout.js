@@ -61,6 +61,8 @@ function QuestionsLayout({ initialOffer }) {
               effect={"fade"}
               infinite={false}
               ref={carouselRef}
+              swipe={false}
+              autoplay={false}
             >
               {wrappedChildren}
             </Carousel>
@@ -92,7 +94,7 @@ function QuestionsLayout({ initialOffer }) {
             data={formFunc?.conditions?.cosmetic?.interior}
           />
         </ConditionalWrap>
-        {navFunc?.currentSlide == 7 && (
+        {formFunc?.formRealValues?.cosmetic?.interior && (
           <div className="fixed_btn">
             <Bounce bottom>
               <div className="d-flex justify-content-center align-items-center">

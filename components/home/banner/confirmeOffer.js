@@ -25,8 +25,6 @@ function ConfirmOffer({ initialOffer }) {
       setData(offerData.data);
     }
   }, [initialOffer, offerData]);
-  console.log(data);
-
   const date =
     data?.status == "quote"
       ? moment(data?.last_quote_date).add(5, "days")
