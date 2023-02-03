@@ -57,11 +57,11 @@ function useSellFuc(data) {
         )?.short_name || "",
     });
   }, [zipResult]);
-
+  console.log(/^\d{4,5}?$/.test(formRealData?.zip));
   const { data: zipStatus, isFetching: zipValidating } = useValidateZipQuery(
     formRealData?.zip,
     {
-      skip: !formRealData?.zip,
+      skip: !/^\d{4,5}?$/.test(formRealData?.zip),
     }
   );
   useEffect(() => {
@@ -202,7 +202,7 @@ function useSellFuc(data) {
   );
   const [appointmentOffer, { isLoading }] = useAppointmentOfferMutation();
   const submitAppointment = async () => {
-    closeRuleModal()
+    closeRuleModal();
     let postData = {
       ...formRealData,
       uid: data.uid,

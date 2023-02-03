@@ -52,7 +52,7 @@ function SellFrom({
                     rules={[
                       {
                         required: true,
-                        message: "Please input your Address!",
+                        message: "Please input Address!",
                       },
                     ]}
                   >
@@ -100,78 +100,74 @@ function SellFrom({
                     <Input size="large" className="w-100" placeholder="City" />
                   </Form.Item>
                 </div>
-                <div className="form-row frmRow">
-                  <div className="frmfldItem">
-                    <Form.Item
-                      label={false}
-                      name={"state"}
-                      className="m-0"
-                      rules={[
-                        {
-                          required: true,
-                          message: "Please input your State!",
-                        },
-                      ]}
-                    >
-                      <Select
-                        className="w-100"
-                        options={states?.map?.((i) => ({
-                          value: i.abbr,
-                          label: i.state,
-                        }))}
-                        allowClear
-                        placeholder="State"
-                      />
-                    </Form.Item>
-                  </div>
-                  <div className="frmfldItem">
-                    <Form.Item
-                      label={false}
-                      name={"zip"}
-                      className="m-0 w-100"
-                      {...(zipStatus == false
-                        ? {
-                            help: (
-                              <>
-                                Out of Area
-                                <InfoCircleOutlined
-                                  className="ml-2"
-                                  onClick={showNotValidZip}
-                                />
-                              </>
-                            ),
-                            validateStatus: "error",
-                          }
-                        : {})}
-                      rules={[
-                        {
-                          required: true,
-                          message: "Please input your zip code!",
-                        },
-                        {
-                          validator: (rule, value = "") => {
-                            if (value.trim().length != 0) {
-                              if (/^\d{4,5}?$/.test(value)) {
-                                return Promise.resolve();
-                              }
-                              return Promise.reject(
-                                "The zip code must contain 4 or 5 digits"
-                              );
+                <div className="d-flex w-100 flex-column flex-md-row">
+                  <Form.Item
+                    label={false}
+                    name={"state"}
+                    className="m-0 w-100 mr-0 mr-md-1 mb-1 mb-md-0"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please select your State!",
+                      },
+                    ]}
+                  >
+                    <Select
+                      className="w-100"
+                      options={states?.map?.((i) => ({
+                        value: i.abbr,
+                        label: i.state,
+                      }))}
+                      allowClear
+                      placeholder="State"
+                    />
+                  </Form.Item>
+                  <Form.Item
+                    label={false}
+                    name={"zip"}
+                    className="m-0 w-100 ml-0 ml-md-1 mt-2 mt-md-0"
+                    {...(zipStatus == false
+                      ? {
+                          help: (
+                            <>
+                              Out of Area
+                              <InfoCircleOutlined
+                                className="ml-2"
+                                onClick={showNotValidZip}
+                              />
+                            </>
+                          ),
+                          validateStatus: "error",
+                        }
+                      : {})}
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please select your zip code!",
+                      },
+                      {
+                        validator: (rule, value = "") => {
+                          if (value.trim().length != 0) {
+                            if (/^\d{4,5}?$/.test(value)) {
+                              return Promise.resolve();
                             }
-                            return Promise.resolve();
-                          },
+                            return Promise.reject(
+                              "The zip code must contain 4 or 5 digits"
+                            );
+                          }
+                          return Promise.resolve();
                         },
-                      ]}
-                    >
-                      <Input
-                        size="large"
-                        className="w-100"
-                        placeholder="Zip Code"
-                        maxLength={5}
-                        suffix={zipValidating && <LoadingOutlined />}
-                      />
-                    </Form.Item>
-                  </div>
+                      },
+                    ]}
+                  >
+                    <Input
+                      size="large"
+                      className="w-100"
+                      placeholder="Zip Code"
+                      maxLength={5}
+                      suffix={zipValidating && <LoadingOutlined />}
+                    />
+                  </Form.Item>
                 </div>
               </div>
               <div className="form-group row ob_frm_row">
@@ -191,7 +187,7 @@ function SellFrom({
                           rules={[
                             {
                               required: true,
-                              message: "Please input your Date!",
+                              message: "Please select your Date!",
                             },
                           ]}
                         >
@@ -212,7 +208,7 @@ function SellFrom({
                             rules={[
                               {
                                 required: true,
-                                message: "Please input your state!",
+                                message: "Please select your state!",
                               },
                             ]}
                           >
@@ -250,7 +246,7 @@ function SellFrom({
                     rules={[
                       {
                         required: true,
-                        message: "Please input your Choice!",
+                        message: "Please select your Choice!",
                       },
                     ]}
                     className="m-0"
@@ -364,7 +360,7 @@ function SellFrom({
                                         {
                                           required: true,
                                           message:
-                                            "Please input your First Name!",
+                                            "Please input your Last Name!",
                                         },
                                       ]}
                                     >
@@ -383,7 +379,7 @@ function SellFrom({
                                       rules={[
                                         {
                                           required: true,
-                                          message: "Please input your suffix!",
+                                          message: "Please select your suffix!",
                                         },
                                       ]}
                                     >
@@ -477,7 +473,7 @@ function SellFrom({
                                           {
                                             required: true,
                                             message:
-                                              "Please input your suffix!",
+                                              "Please select your suffix!",
                                           },
                                         ]}
                                       >
@@ -613,7 +609,7 @@ function SellFrom({
                     rules={[
                       {
                         required: true,
-                        message: "Please input your Choice!",
+                        message: "Please select your Choice!",
                       },
                     ]}
                     className="m-0"
@@ -665,7 +661,7 @@ function SellFrom({
                     rules={[
                       {
                         required: true,
-                        message: "Please input your Choice!",
+                        message: "Please select your Choice!",
                       },
                     ]}
                     className="m-0"
@@ -843,13 +839,25 @@ function SellFrom({
                     </Checkbox>
                   </Form.Item>
                   <div className="initial_order_btn mt-2">
-                    <Button
-                      htmlType="submit"
-                      className="initofferBtn h-auto"
-                      disabled={formData?.formRealData?.agreed != true}
-                    >
-                      Submit
-                    </Button>
+                    {zipStatus ? (
+                      <Button
+                        htmlType="submit"
+                        className="initofferBtn h-auto"
+                        disabled={formData?.formRealData?.agreed != true}
+                      >
+                        Submit
+                      </Button>
+                    ) : (
+                      <Button
+                        htmlType="cancel"
+                        className="initofferBtn h-auto"
+                        onClick={() => {
+                          window.scrollTo(0, 0);
+                        }}
+                      >
+                        Submit
+                      </Button>
+                    )}
                   </div>
                 </div>
               )}

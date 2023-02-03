@@ -7,10 +7,7 @@ function UploadingAnim({ isLoading, speed }) {
     autoplay: true,
     animationData: animationData,
   };
-
-  if (isLoading) {
-    return <Lottie options={defaultOptions} width={80} speed={speed} />;
-  }
+  return <Lottie options={defaultOptions} width={80} speed={speed} />;
 }
 
 export default UploadingAnim;

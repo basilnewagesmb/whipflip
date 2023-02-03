@@ -209,7 +209,7 @@ function Confirm() {
                                   {
                                     required:
                                       formRealValues?.info?.type === "vin",
-                                    message: "Please input your vin number!",
+                                    message: "Please select your vin number!",
                                   },
                                 ]}
                                 {...(!isValid
@@ -274,7 +274,7 @@ function Confirm() {
                                   {
                                     required:
                                       formRealValues?.info?.type === "plate",
-                                    message: "Please input your plate number!",
+                                    message: "Please select your plate number!",
                                   },
                                 ]}
                                 {...(!isValid
@@ -300,7 +300,7 @@ function Confirm() {
                                   {
                                     required:
                                       formRealValues?.info?.type === "plate",
-                                    message: "Please input your plate number!",
+                                    message: "Please select your plate number!",
                                   },
                                 ]}
                               >
@@ -342,7 +342,7 @@ function Confirm() {
                             rules={[
                               {
                                 required: true,
-                                message: "Please input your Choice!",
+                                message: "Please select your Choice!",
                               },
                             ]}
                           >
@@ -413,7 +413,7 @@ function Confirm() {
                             rules={[
                               {
                                 required: true,
-                                message: "Please input your Choice!",
+                                message: "Please select your Choice!",
                               },
                             ]}
                             className="m-0"
@@ -485,7 +485,7 @@ function Confirm() {
                             rules={[
                               {
                                 required: true,
-                                message: "Please input your Choice!",
+                                message: "Please select your Choice!",
                               },
                             ]}
                             className="m-0"

@@ -154,6 +154,7 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
                     }}
                     type="text"
                     disabled={isDisable}
+                    loading={isVehicleLoad}
                   >
                     <span>Get Instant Offer</span>
                   </Button>

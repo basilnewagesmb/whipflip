@@ -126,7 +126,7 @@ function ConfirmVehicle({
                     rules={[
                       {
                         required: formRealValues?.info?.type === "vin",
-                        message: "Please input your vin number!",
+                        message: "Please select your vin number!",
                       },
                     ]}
                     {...(!isValid
@@ -190,7 +190,7 @@ function ConfirmVehicle({
                     rules={[
                       {
                         required: formRealValues?.info?.type === "plate",
-                        message: "Please input your plate number!",
+                        message: "Please select your plate number!",
                       },
                     ]}
                     {...(!isValid
@@ -215,7 +215,7 @@ function ConfirmVehicle({
                     rules={[
                       {
                         required: formRealValues?.info?.type === "plate",
-                        message: "Please input your plate number!",
+                        message: "Please select your plate number!",
                       },
                     ]}
                   >

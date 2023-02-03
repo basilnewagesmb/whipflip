@@ -102,7 +102,7 @@ function Initial({ data }) {
                         rules={[
                           {
                             required: true,
-                            message: "Please input your Choice!",
+                            message: "Please select your Choice!",
                           },
                         ]}
                       >
@@ -158,7 +158,7 @@ function Initial({ data }) {
                         rules={[
                           {
                             required: true,
-                            message: "Please input your Choice!",
+                            message: "Please select your Choice!",
                           },
                         ]}
                       >
@@ -351,7 +351,7 @@ function Initial({ data }) {
                         rules={[
                           {
                             required: true,
-                            message: "Please input your Choice!",
+                            message: "Please select your Choice!",
                           },
                         ]}
                       >

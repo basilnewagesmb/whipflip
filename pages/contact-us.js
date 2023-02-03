@@ -55,7 +55,7 @@ function Index() {
                           rules={[
                             {
                               required: true,
-                              message: "Please input your first name!",
+                              message: "Please select your first name!",
                             },
                           ]}
                         >
@@ -74,7 +74,7 @@ function Index() {
                           rules={[
                             {
                               required: true,
-                              message: "Please input your Last name!",
+                              message: "Please select your Last name!",
                             },
                           ]}
                         >
@@ -161,7 +161,7 @@ function Index() {
                         rules={[
                           {
                             required: true,
-                            message: "Please input your Message!",
+                            message: "Please select your Message!",
                           },
                         ]}
                       >

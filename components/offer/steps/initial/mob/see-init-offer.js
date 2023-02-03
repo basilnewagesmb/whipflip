@@ -154,7 +154,7 @@ function SeeInitOffer({ form, data, goTo }) {
               rules={[
                 {
                   required: true,
-                  message: "Please input your Choice!",
+                  message: "Please select your Choice!",
                 },
               ]}
             >
