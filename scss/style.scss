@@ -3411,7 +3411,7 @@ label.labelflexCenter.tclabel.tclabelMobi {
             span {
               font-style: normal;
               font-weight: 700;
-              font-size: 16px;
+              font-size: 14px;
               line-height: 24px;
               color: #201f2d;
             }
@@ -5743,7 +5743,7 @@ label.lblipt {
 
 .fixed_back {
   position: absolute;
-  left: 0;
+  right: 0;
   top: 50%;
   transform: translate(0px, -50%);
 }
@@ -5995,4 +5995,12 @@ li.col-6.ci_col > div > div > div > div > div {
 }
 .mvh-100 {
   min-height: 100vh;
+}
+
+.modal-fullscreen {
+  width: 100vw;
+  max-width: none;
+  height: 100vh;
+  margin: 0;
+  border-radius: 0;
 }

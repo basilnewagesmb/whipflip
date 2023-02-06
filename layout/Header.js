@@ -64,7 +64,7 @@ function Header() {
               <Navbar.Brand href="/">
                 <Image
                   src={
-                    current < 2
+                    !pathname?.includes("/prospect")
                       ? "/images/offer-logo.svg"
                       : "/images/offer-sell-header.svg"
                   }

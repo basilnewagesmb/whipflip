@@ -115,7 +115,7 @@ function Confirm() {
               className={initialOffer?.is_deduction_added == "Y" && "disabled"}
             >
               <div className="offer_right">
-                {!initialOffer?.is_deduction_added == "Y" && (
+                {initialOffer?.is_deduction_added == "N" && (
                   <div className="or_head">
                     <h1>Awesome Initial Offer: {getAmount(initialOffer)}!</h1>
                     <p>
@@ -427,12 +427,14 @@ function Confirm() {
                                         item.uid && "selected"
                                     }`}
                                     key={i}
-                                    onClick={(e) => {
+                                    onClick={async (e) => {
                                       form.setFieldValue(
                                         ["cosmetic", "exterior"],
                                         item.uid
                                       );
-                                      form.validateFields();
+                                      await form.validateFields([
+                                        ["cosmetic", "exterior"],
+                                      ]);
                                     }}
                                   >
                                     <label className="selector-item_label labelflexCenter tclabel">
@@ -498,12 +500,14 @@ function Confirm() {
                                       formRealValues?.cosmetic?.interior ==
                                         item.uid && "selected"
                                     }`}
-                                    onClick={(e) => {
+                                    onClick={async (e) => {
                                       form.setFieldValue(
                                         ["cosmetic", "interior"],
                                         item.uid
                                       );
-                                      form.validateFields();
+                                      await form.validateFields([
+                                        ["cosmetic", "interior"],
+                                      ]);
                                     }}
                                     key={i}
                                   >

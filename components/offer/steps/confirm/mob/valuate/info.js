@@ -40,7 +40,7 @@ function InfoCam({ setSkipped }) {
         </div>
         <div className="cr_middle cr_middle_web bg-transparent mt-0">
           <div className="crm_offer_info pt-0">
-            <div className="crm_info_item">
+            <div className="crm_info_item col-4">
               <div className="info_left">
                 <div className="il_image">
                   <Image
@@ -53,10 +53,10 @@ function InfoCam({ setSkipped }) {
                 </div>
               </div>
               <div className="info_right">
-                <span>Make sure the vehicle is clear from obstructions</span>
+                <span>Clear away any heavy debris (eg. dirt. snow) from the vehicle </span>
               </div>
             </div>
-            <div className="crm_info_item">
+            <div className="crm_info_item col-4">
               <div className="info_left">
                 <div className="il_image">
                   <Image
@@ -72,7 +72,7 @@ function InfoCam({ setSkipped }) {
                 <span>Make sure the vehicle is clear from obstructions</span>
               </div>
             </div>
-            <div className="crm_info_item">
+            <div className="crm_info_item col-4">
               <div className="info_left">
                 <div className="il_image">
                   <Image
@@ -85,7 +85,7 @@ function InfoCam({ setSkipped }) {
                 </div>
               </div>
               <div className="info_right">
-                <span>Make sure the vehicle is clear from obstructions</span>
+                <span>Take pictures in bright daylight </span>
               </div>
             </div>
           </div>

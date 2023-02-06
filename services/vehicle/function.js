@@ -35,7 +35,7 @@ function useVehicleForm(form) {
         icon: null,
         footer: null,
         closable: true,
-        title: <h6>Vehicle Not FOund</h6>,
+        title: <h6>Vehicle Not Found</h6>,
         okText: "OK",
         content: (
           <div className="text-center">

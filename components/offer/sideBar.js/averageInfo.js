@@ -17,9 +17,9 @@ function AverageInfo({ isShow }) {
           </div>
           <div className="wci_right">
             <p>
-              Feel free to compare your free estimate to average trade-in values
-              and you may see that your car might worth up to{" "}
-              <b>14% higher than the national average!</b>
+              <b> 96% of WhipFlip customers</b> who scheduled an appointment to
+              set happily sold their cars to us! Ready to sell? Were ready to
+              buy. No time wasted by either party We stand behind our words!
             </p>
           </div>
         </div>

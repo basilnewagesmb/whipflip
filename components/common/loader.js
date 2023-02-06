@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
 import Fade from "react-reveal/Fade";
+import Modal from "react-bootstrap/Modal";
 function LoaderAnim({ isLoading, text }) {
   useEffect(() => {
     if (isLoading) {
@@ -13,27 +14,29 @@ function LoaderAnim({ isLoading, text }) {
   }, [isLoading]);
 
   return (
-    <div
+    <section
       className="full-page-loading"
       style={{
         overflow: "hidden",
         height: `${isLoading ? "100%" : 0}`,
       }}
     >
-      <div className="vh-100 d-flex  justify-content-center align-items-center flex-column">
-        <p className="text-center">
-          {text || (
-            <div>
-              Your awesome initial offer
-              <br /> is loading...
-            </div>
-          )}
-        </p>
-        <Fade spy={isLoading} left>
-          <Image src="/images/car-anim.gif" width={200} height={200} />
-        </Fade>
-      </div>
-    </div>
+      <Modal show={isLoading} fullscreen={true}>
+        <div className="vh-100 d-flex  justify-content-center align-items-center flex-column">
+          <p className="text-center">
+            {text || (
+              <div>
+                Your awesome initial offer
+                <br /> is loading...
+              </div>
+            )}
+          </p>
+          <Fade spy={isLoading} left>
+            <Image src="/images/car-anim.gif" width={200} height={200} />
+          </Fade>
+        </div>{" "}
+      </Modal>
+    </section>
   );
 }
 

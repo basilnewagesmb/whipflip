@@ -192,10 +192,12 @@ function SellFrom({
                           ]}
                         >
                           <DatePicker
+                            inputReadOnly={true}
                             className="w-100"
                             disabledDate={(current) =>
                               current.isBefore(moment().subtract(1, "day"))
                             }
+                            format={"MM-DD-YYYY"}
                           />
                         </Form.Item>
                       </div>
@@ -835,7 +837,9 @@ function SellFrom({
                       }}
                     >
                       I agree to the{" "}
-                      <Link href={"/terms-and-conditions"}>terms of use.</Link>
+                      <Link href={"/terms-and-conditions"} legacyBehavior>
+                        <a target="_blank">terms of use.</a>
+                      </Link>
                     </Checkbox>
                   </Form.Item>
                   <div className="initial_order_btn mt-2">
@@ -849,7 +853,7 @@ function SellFrom({
                       </Button>
                     ) : (
                       <Button
-                        htmlType="cancel"
+                        htmlType="button"
                         className="initofferBtn h-auto"
                         onClick={() => {
                           window.scrollTo(0, 0);

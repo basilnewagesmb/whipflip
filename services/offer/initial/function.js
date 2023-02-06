@@ -102,13 +102,13 @@ function useInitialForm({ form, data, carouselRef, goTo }) {
             <div className="text-center">
               {isMobile ? (
                 <p>
-                  You've entered "{mileage + " "}" for milage.
+                  You've entered "{mileage + ""}" for milage.
                   <br />
                   Do you want to double check the number?
                 </p>
               ) : (
                 <p>
-                  Are you sure your vehicle only has "{mileage + " "}" miles?
+                  Are you sure your vehicle only has "{mileage + ""}" miles?
                 </p>
               )}
               {isMobile && (

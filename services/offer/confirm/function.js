@@ -129,7 +129,7 @@ function useConfirmForm({ form }) {
         message.error("something went wrong");
       }
     } else {
-      message.error("trim not fount");
+      message.error("trim not found");
     }
   };
 

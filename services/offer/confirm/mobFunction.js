@@ -109,7 +109,7 @@ function useConfirmFormMob({ form, navFunc }) {
         //ShowEasyStep(dispatch, setCurrent);
       }
     } else {
-      message.error("trim not fount");
+      message.error("trim not found");
       navFunc.goTo(0);
     }
   };
@@ -216,7 +216,7 @@ export const ShowEasyStepMob = (
               <div className="fcr_list text-left">
                 <ul>
                   <li>Instant offer is a click away!</li>
-                  <li>We'ill confirm the exact condition at your delivery. </li>
+                  <li>We'll confirm the exact condition at your delivery. </li>
                   <li>Final value might change </li>
                 </ul>
               </div>

@@ -1,8 +1,11 @@
+import OfferInfo from "components/offer/sideBar.js/offerInfo";
 import Image from "next/image";
 import React from "react";
+import useCheckMobile from "utils/checkMobile";
 import getAmount from "utils/getAmount";
-
+import AverageInfo from "../../../sideBar.js/averageInfo";
 function Accept({ data, setAccept }) {
+  const isMobile = useCheckMobile();
   return (
     <div>
       <div className="acceptOffer">
@@ -43,6 +46,12 @@ function Accept({ data, setAccept }) {
             </div>
           </div>
         </div>
+        {isMobile && (
+          <div className="mt-4"> 
+            <OfferInfo isShow={true} data={data}/>
+            <AverageInfo isShow={true} />
+          </div>
+        )}
         <div className="acceptOffer_center">
           <div className="ac_in">
             <h2>Why Sell to Us?</h2>

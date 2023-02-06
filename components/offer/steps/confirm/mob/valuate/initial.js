@@ -48,7 +48,7 @@ function Initial({ setCurrent }) {
                   </div>
                 </div>
                 <div className="info_right">
-                  <span>Make sure the vehicle is clear from obstructions</span>
+                  <span>Clear away any heavy debris (eg. dirt. snow) from the vehicle </span>
                 </div>
               </div>
               <div className="crm_info_item">
@@ -80,7 +80,7 @@ function Initial({ setCurrent }) {
                   </div>
                 </div>
                 <div className="info_right">
-                  <span>Make sure the vehicle is clear from obstructions</span>
+                  <span>Take pictures in bright daylight </span>
                 </div>
               </div>
             </div>

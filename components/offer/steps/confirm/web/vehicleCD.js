@@ -51,13 +51,15 @@ function VehicleCD({ form, formRealValues, conditions, isConditionsLoading }) {
                           className={`si-wrap ${
                             item.yes === false && "active-btn-only"
                           }`}
-                          onClick={() => {
+                          onClick={async () => {
                             form.setFieldValue(["conditions", i, "yes"], false);
                             form.setFieldValue(
                               ["conditions", i, "data"],
                               conditions[i].data
                             );
-                            form.validateFields();
+                            await form.validateFields([
+                              ["conditions", i, "yes"],
+                            ]);
                           }}
                         >
                           <label className="selector-item_label justify-content-center">
@@ -68,9 +70,11 @@ function VehicleCD({ form, formRealValues, conditions, isConditionsLoading }) {
                       <div className="selecotr-item col-lg-6 pr-0">
                         <div
                           className={`si-wrap ${item.yes === true && "active"}`}
-                          onClick={() => {
+                          onClick={async () => {
                             form.setFieldValue(["conditions", i, "yes"], true);
-                            form.validateFields();
+                            await form.validateFields([
+                              ["conditions", i, "yes"],
+                            ]);
                           }}
                         >
                           <label className="selector-item_label justify-content-center">
@@ -138,7 +142,9 @@ function VehicleCD({ form, formRealValues, conditions, isConditionsLoading }) {
                                                       : null,
                                                   }
                                                 );
-                                                form.validateFields();
+                                                await form.validateFields([
+                                                  ["conditions", i, "data", j],
+                                                ]);
                                               }}
                                             />
                                             <label htmlFor={radio?.uid}>

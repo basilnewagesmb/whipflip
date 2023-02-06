@@ -24,6 +24,10 @@ function InitialMob({ data, form, carouselRef }) {
         <div className="offer_block noBordBtm offer_block_mobi">
           {currentSlide == 4 ? (
             <div className="initOffHd position-relative">
+              <h2>
+                <span>See Your Initial Offer!</span>
+                <span>Where Can We Send It?</span>
+              </h2>
               <Button
                 className="fixed_back d-flex justify-content-center align-items-center"
                 shape="circle"
@@ -31,10 +35,6 @@ function InitialMob({ data, form, carouselRef }) {
                 disabled={currentSlide == 0}
                 onClick={prev}
               />
-              <h2>
-                <span>See Your Initial Offer!</span>
-                <span>Where Can We Send It?</span>
-              </h2>
             </div>
           ) : (
             <div className="ob_hd d-flex justify-content-between">

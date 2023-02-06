@@ -61,7 +61,6 @@ function VehicleConditionMob({
                 onClick={() => {
                   form.setFieldValue(["conditions", i, "yes"], true);
                   window.scrollTo(0, 0);
-
                 }}
               >
                 <label className="selector-item_label justify-content-center">
@@ -125,7 +124,9 @@ function VehicleConditionMob({
                                           : null,
                                       }
                                     );
-                                    form.validateFields();
+                                    await form.validateFields([
+                                      ["conditions", i, "data", j],
+                                    ]);
                                   }}
                                   className="d-none"
                                 />

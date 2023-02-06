@@ -151,32 +151,26 @@ export const general = createApi({
         };
       },
       transformResponse: (response, meta, arg) => {
-        const date = arg;
-        let browserTime = moment(
-          new Date().toLocaleString("en-US", {
-            timeZone: "America/New_York",
-          })
-        );
-        let blockedHours = [
-          browserTime.startOf("hour").add(1, "hour").format("hh:mm A"),
-          browserTime.startOf("hour").add(1, "hour").format("hh:mm A"),
-        ];
-        var index = response
-          .map(function (e) {
-            return e.hour;
-          })
-          .indexOf(blockedHours[0]);
-        if (
-          moment(date).format("MM/DD/YYYY") == browserTime.format("MM/DD/YYYY")
-        ) {
-          var slots = response.filter((x) => {
-            if (!blockedHours.includes(x.hour)) return true;
-            return false;
-          });
-          return index >= 0 ? slots.splice(index) : slots;
-        } else {
-          return response;
-        }
+        const { date } = arg;
+        const slots = response
+          ?.map((item) =>
+            moment(`${date} ${item.hour}`).format("YYYY-MM-DD HH:mm:ss")
+          )
+          .filter(
+            (item) =>
+              item >
+              moment(
+                new Date().toLocaleString("en-US", {
+                  timeZone: "America/New_York",
+                })
+              )
+                .add(2, "hours")
+                .format("YYYY-MM-DD HH:mm:ss")
+          )
+          .map((item) => ({
+            hour: moment(item).format("HH:mm A"),
+          }));
+        return slots;
       },
     }),
   }),
