@@ -11,6 +11,7 @@ import TireConditionsTemp from "./tire-conditions";
 import ExteriorConditions from "./exterior-conditions";
 import InteriorConditions from "./interior-conditions";
 import Bounce from "react-reveal/Bounce";
+import { Modal } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
 function QuestionsLayout({ initialOffer }) {
   const carouselRef = useRef();
@@ -94,46 +95,53 @@ function QuestionsLayout({ initialOffer }) {
             data={formFunc?.conditions?.cosmetic?.interior}
           />
         </ConditionalWrap>
+
         {formFunc?.formRealValues?.cosmetic?.interior && (
-          <div className="fixed_btn">
-            <Bounce bottom>
-              <div className="d-flex justify-content-center align-items-center">
-                {!formFunc?.isReview && (
-                  <Button
-                    size="large"
-                    htmlType="button"
-                    className="w-100  m-1"
-                    onClick={() => {
-                      formFunc?.setIsReview(true);
-                      window.scrollTo(0, 0);
-                    }}
-                    icon={<EyeOutlined />}
-                  >
-                    Preview
-                  </Button>
-                )}
+          <Modal
+            style={{
+              top: window.innerHeight - 200,
+            }}
+            open={true}
+            footer={false}
+            closable={false}
+          >
+            <div className="d-flex justify-content-center align-items-center">
+              {!formFunc?.isReview && (
                 <Button
-                  className="confirm_off_btn m-1"
                   size="large"
-                  htmlType="submit"
-                  loading={
-                    formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading
-                  }
-                  disabled={
-                    formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading
-                  }
+                  htmlType="button"
+                  className="w-100  m-1"
+                  onClick={() => {
+                    formFunc?.setIsReview(true);
+                    window.scrollTo(0, 0);
+                  }}
+                  icon={<EyeOutlined />}
                 >
-                  <span>
-                    {formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading
-                      ? "Getting Details..."
-                      : !formFunc?.isReview
-                      ? "Continue"
-                      : "Confirm"}
-                  </span>
+                  Preview
                 </Button>
-              </div>
-            </Bounce>
-          </div>
+              )}
+              <Button
+                className="confirm_off_btn m-1"
+                size="large"
+                htmlType="submit"
+                onClick={() => form.submit()}
+                loading={
+                  formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading
+                }
+                disabled={
+                  formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading
+                }
+              >
+                <span>
+                  {formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading
+                    ? "Getting Details..."
+                    : !formFunc?.isReview
+                    ? "Continue"
+                    : "Confirm"}
+                </span>
+              </Button>
+            </div>
+          </Modal>
         )}
       </Form>
     </div>

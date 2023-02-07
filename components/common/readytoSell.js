@@ -8,7 +8,7 @@ function ReadyToSell() {
   const [isMobile, setIsMobile] = useState(false);
   const [width] = useWindowSize();
   useEffect(() => {
-    if (width >= 600) {
+    if (width >= 769) {
       setIsMobile(false);
     } else {
       setIsMobile(true);
@@ -63,6 +63,7 @@ function ReadyToSell() {
                 alt="Ready to Sell"
                 title="Ready to Sell"
                 preview={false}
+                className="w-100"
               />
             </div>
           </div>

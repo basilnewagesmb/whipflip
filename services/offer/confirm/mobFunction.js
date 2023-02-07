@@ -7,7 +7,8 @@ import {
   useVehicleWithVinMutation,
 } from "services/util";
 import useCheckMobile from "utils/checkMobile";
-import { Form, Modal, QRCode, Button, message } from "antd";
+import { Form, Modal, QRCode, Button, message,Space, Radio } from "antd";
+import { ExclamationCircleFilled } from "@ant-design/icons";
 import {
   useAddDamagesMutation,
   useGetOfferQuery,
@@ -19,6 +20,7 @@ import { useRouter } from "next/router";
 import SkipButton from "components/offer/steps/confirm/web/skipButton";
 import Link from "next/link";
 function useConfirmFormMob({ form, navFunc }) {
+  const { confirm } = Modal;
   const [isReview, setIsReview] = useState(false);
   const dispatch = useDispatch();
   const [isValid, setValid] = useState(true);
@@ -49,14 +51,13 @@ function useConfirmFormMob({ form, navFunc }) {
   const [vehicleWithPlate, platHdl] = useVehicleWithPlateMutation();
   const [addDamages, { isLoading: confirming }] = useAddDamagesMutation();
 
-
-
   const initialValues = {
     info: {
       type: "vin",
     },
   };
   const onFinish = async (data) => {
+    console.log(data);
     const { info, tire } = data;
     let res;
     switch (info.type) {
@@ -100,18 +101,51 @@ function useConfirmFormMob({ form, navFunc }) {
       uid: offerData.uid,
       cosmetic: data.cosmetic,
     };
-    if (res?.data) {
-      const cRes = await addDamages({
-        issues,
-        ...initialOffer,
-      });
-      if (cRes?.data) {
-        //ShowEasyStep(dispatch, setCurrent);
-      }
+    if ((res?.data?.trimlevel?.length, issues)) {
+      showConfirm(res?.data?.trimlevel, data, issues);
     } else {
-      message.error("trim not found");
-      navFunc.goTo(0);
+      message.error("No vehicle details found!");
     }
+  };
+  const showConfirm = (level, data, issues) => {
+    confirm({
+      title: "Choose your vehicle trim:",
+      icon: <ExclamationCircleFilled />,
+      closable: true,
+      content: (
+        <Radio.Group>
+          <Space
+            direction="vertical"
+            onChange={async (e) => {
+              const full_trim = level.find(
+                (item) => item.vehicle_id == e.target.value
+              ).body;
+              const cRes = await addDamages({
+                issues,
+                vin: data?.info.vinNumber || "",
+                plate_state: data?.info.state || "",
+                plate_number: data?.info.plateNumber || "",
+                full_trim,
+                jd_vehicle_id: e.target.value,
+                uid: initialOffer?.uid,
+              });
+              if (cRes?.data) {
+                Modal.destroyAll();
+              } else {
+                message.error("something went wrong");
+              }
+            }}
+          >
+            {level?.map((item, k) => (
+              <Radio value={item.vehicle_id} key={k}>
+                {item.body}
+              </Radio>
+            ))}
+          </Space>
+        </Radio.Group>
+      ),
+      footer: false,
+    });
   };
 
   const onFinishFailed = (error) => {

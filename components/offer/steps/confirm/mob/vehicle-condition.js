@@ -128,6 +128,8 @@ function VehicleConditionMob({
                                       ["conditions", i, "data", j],
                                     ]);
                                   }}
+                                  checked={formRealValues?.conditions?.[i]
+                                    .data?.[j].active}
                                   className="d-none"
                                 />
                                 <label

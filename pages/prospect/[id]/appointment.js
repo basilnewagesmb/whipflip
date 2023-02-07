@@ -443,6 +443,9 @@ function Congrats({ data }) {
                           title="mail"
                           width={140}
                           height={140}
+                          style={{
+                            objectFit:"contain"
+                          }}
                         />
                       </div>
                     </div>
@@ -470,6 +473,9 @@ function Congrats({ data }) {
                           title="sign"
                           width={140}
                           height={140}
+                          style={{
+                            objectFit:"contain"
+                          }}
                         />
                       </div>
                     </div>
@@ -497,6 +503,9 @@ function Congrats({ data }) {
                           title="key"
                           width={140}
                           height={140}
+                          style={{
+                            objectFit:"contain"
+                          }}
                         />
                       </div>
                     </div>

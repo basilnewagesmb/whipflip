@@ -168,7 +168,7 @@ export const general = createApi({
                 .format("YYYY-MM-DD HH:mm:ss")
           )
           .map((item) => ({
-            hour: moment(item).format("HH:mm A"),
+            hour: moment(item).format("hh:mm A"),
           }));
         return slots;
       },

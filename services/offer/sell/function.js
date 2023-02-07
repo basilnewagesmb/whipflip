@@ -200,7 +200,7 @@ function useSellFuc(data) {
       skip: !formRealData?.zip || !formRealData?.appointment_date,
     }
   );
-  const [appointmentOffer, { isLoading }] = useAppointmentOfferMutation();
+  const [appointmentOffer, { isLoading,data:successData }] = useAppointmentOfferMutation();
   const submitAppointment = async () => {
     closeRuleModal();
     let postData = {
@@ -232,6 +232,7 @@ function useSellFuc(data) {
     closeRuleModal,
     submitAppointment,
     isLoading,
+    successData
   };
 }
 

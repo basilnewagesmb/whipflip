@@ -4120,7 +4120,7 @@ canvas {
 }
 .sellCarTxt {
   h2 {
-    @include responsive(phone) {
+    @include responsive(760) {
       span {
         display: block;
       }
@@ -5179,7 +5179,7 @@ h2.hooray_hd {
     font-size: 28px;
   }
   .hooray_hd_span {
-    @include responsive(phone) {
+    @include responsive(760) {
       span {
         display: block;
       }

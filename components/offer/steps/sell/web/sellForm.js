@@ -520,7 +520,7 @@ function SellFrom({
                                 )}
                               </div>
                               <div className="row">
-                                <div className="col-lg-5 col-12">
+                                <div className="col-lg-12 col-12">
                                   <Form.Item
                                     label={false}
                                     name={"email"}
@@ -559,7 +559,7 @@ function SellFrom({
                                 </div>
                               </div>
                               <div className="row mt-2">
-                                <div className="col-lg-5 col-12">
+                                <div className="col-lg-12 col-12">
                                   <Form.Item
                                     label={false}
                                     name={"phone"}

@@ -211,6 +211,11 @@ function Confirm() {
                                       formRealValues?.info?.type === "vin",
                                     message: "Please select your vin number!",
                                   },
+                                  {
+                                    min: 10,
+                                    message:
+                                      "VIN must be at least 10 characters",
+                                  },
                                 ]}
                                 {...(!isValid
                                   ? {

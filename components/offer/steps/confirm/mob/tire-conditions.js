@@ -12,7 +12,6 @@ function TireConditionsTemp({
   data,
   isReview,
 }) {
-  console.log(formRealValues);
   return (
     <div className="offer_block noBordBtm offer_block_mobi">
       <div className="ob_hd d-flex justify-content-between">

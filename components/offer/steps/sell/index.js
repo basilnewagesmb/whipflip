@@ -6,10 +6,10 @@ import SellFrom from "./web/sellForm";
 
 function Sell({ data }) {
   const sellData = useSellFuc(data);
-  const { isAccept, isLoading } = sellData;
+  const { isAccept, isLoading, successData } = sellData;
   return (
     <>
-      <LoaderAnim text="Loading..." isLoading={isLoading} />
+      <LoaderAnim text="Loading..." isLoading={isLoading || successData} />
       {!isAccept && <Accept {...sellData} />}
       {isAccept && <SellFrom {...sellData} />}
     </>

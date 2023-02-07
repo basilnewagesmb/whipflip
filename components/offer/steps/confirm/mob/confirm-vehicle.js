@@ -128,6 +128,10 @@ function ConfirmVehicle({
                         required: formRealValues?.info?.type === "vin",
                         message: "Please select your vin number!",
                       },
+                      {
+                        min: 10,
+                        message: "VIN must be at least 10 characters",
+                      },
                     ]}
                     {...(!isValid
                       ? {
@@ -246,7 +250,11 @@ function ConfirmVehicle({
               size="large"
               loading={vinHdl?.isLoading || platHdl?.isLoading}
               {...(formRealValues?.info?.type == "vin"
-                ? { disabled: !formRealValues?.info?.vinNumber }
+                ? {
+                    disabled:
+                      !formRealValues?.info?.vinNumber ||
+                      formRealValues?.info?.vinNumber?.length < 10,
+                  }
                 : {
                     disabled:
                       !formRealValues?.info?.plateNumber ||

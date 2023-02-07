@@ -70,6 +70,9 @@ function Index(props) {
                     title="Get Instant Offer"
                     width={150}
                     height={150}
+                    style={{
+                      objectFit: "contain",
+                    }}
                   />
                 </div>
                 <div className="hiw_body">
@@ -90,6 +93,9 @@ function Index(props) {
                     title="Confirm Offer"
                     width={150}
                     height={150}
+                    style={{
+                      objectFit: "contain",
+                    }}
                   />
                 </div>
                 <div className="hiw_body">
@@ -110,6 +116,9 @@ function Index(props) {
                     title="SOLD"
                     width={150}
                     height={150}
+                    style={{
+                      objectFit: "contain",
+                    }}
                   />
                 </div>
                 <div className="hiw_body">
