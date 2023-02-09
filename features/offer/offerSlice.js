@@ -22,6 +22,9 @@ const offerSlice = createSlice({
     setIsModalHide: (state) => {
       state.isModalOpen = false;
     },
+    updateLocalOffer: (state, action) => {
+      state.initialOffer = action.payload;
+    },
   },
 });
 
@@ -31,6 +34,7 @@ export const {
   reset,
   setIsModalOpen,
   setIsModalHide,
+  updateLocalOffer,
 } = offerSlice.actions;
 
 export default offerSlice.reducer;

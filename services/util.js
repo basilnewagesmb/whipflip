@@ -132,7 +132,7 @@ export const general = createApi({
       },
     }),
     validateZip: builder.query({
-      query: (zip) => {
+      query: ({ zip }) => {
         return {
           url: `/zip/status`,
           method: "GET",
@@ -152,9 +152,12 @@ export const general = createApi({
       },
       transformResponse: (response, meta, arg) => {
         const { date } = arg;
+        const today = moment().format("YYYY-MM-DD");
         const slots = response
           ?.map((item) =>
-            moment(`${date} ${item.hour}`).format("YYYY-MM-DD HH:mm:ss")
+            moment(`${date} ${item.hour}`, "YYYY-MM-DD HH:mm A").format(
+              "YYYY-MM-DD HH:mm:ss"
+            )
           )
           .filter(
             (item) =>
@@ -170,7 +173,7 @@ export const general = createApi({
           .map((item) => ({
             hour: moment(item).format("hh:mm A"),
           }));
-        return slots;
+        return date === today ? slots : response;
       },
     }),
   }),

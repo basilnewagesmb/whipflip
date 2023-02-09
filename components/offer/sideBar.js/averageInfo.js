@@ -18,8 +18,8 @@ function AverageInfo({ isShow }) {
           <div className="wci_right">
             <p>
               <b> 96% of WhipFlip customers</b> who scheduled an appointment to
-              set happily sold their cars to us! Ready to sell? Were ready to
-              buy. No time wasted by either party We stand behind our words!
+              set happily sold their cars to us! Ready to sell? We are ready to
+              buy. No time wasted by either party. We stand behind our words!
             </p>
           </div>
         </div>

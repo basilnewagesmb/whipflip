@@ -20,7 +20,11 @@ import { reset } from "features/offer/offerSlice";
 function useSellFuc(data) {
   const dispatch = useDispatch();
   const { push } = useRouter();
-  const [state, setState] = useState({ isAccept: false, isRulesOpen: false });
+  const [state, setState] = useState({
+    isAccept: false,
+    isRulesOpen: false,
+    isZibFetch: false,
+  });
   const [form] = Form.useForm();
   const setAccept = () => {
     setState((prev) => ({
@@ -34,7 +38,12 @@ function useSellFuc(data) {
       isRulesOpen: false,
     }));
   };
-
+  const triggerFetch = (s) => {
+    setState((prev) => ({
+      ...prev,
+      isZibFetch: s,
+    }));
+  };
   const formRealData = Form.useWatch([], form);
 
   const { data: placeResult, isFetching: placeFetching } = usePlaceSearchQuery(
@@ -57,11 +66,10 @@ function useSellFuc(data) {
         )?.short_name || "",
     });
   }, [zipResult]);
-  console.log(/^\d{4,5}?$/.test(formRealData?.zip));
   const { data: zipStatus, isFetching: zipValidating } = useValidateZipQuery(
-    formRealData?.zip,
+    { zip: formRealData?.zip, isZibFetch: state?.isZibFetch },
     {
-      skip: !/^\d{4,5}?$/.test(formRealData?.zip),
+      skip: !state?.isZibFetch,
     }
   );
   useEffect(() => {
@@ -194,13 +202,16 @@ function useSellFuc(data) {
   const { data: slots } = useSlotsQuery(
     {
       zip: formRealData?.zip,
-      date: moment(formRealData?.appointment_date).format("YYYY-MM-DD"),
+      date: moment(formRealData?.appointment_date?.toString()).format(
+        "YYYY-MM-DD"
+      ),
     },
     {
       skip: !formRealData?.zip || !formRealData?.appointment_date,
     }
   );
-  const [appointmentOffer, { isLoading,data:successData }] = useAppointmentOfferMutation();
+  const [appointmentOffer, { isLoading, data: successData }] =
+    useAppointmentOfferMutation();
   const submitAppointment = async () => {
     closeRuleModal();
     let postData = {
@@ -232,7 +243,8 @@ function useSellFuc(data) {
     closeRuleModal,
     submitAppointment,
     isLoading,
-    successData
+    successData,
+    triggerFetch,
   };
 }
 

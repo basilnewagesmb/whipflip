@@ -228,7 +228,7 @@ export const ShowEasyStepMob = (
                     </li>
                   </ul>
                 </div>
-                <Link href={`/prospect/${initialOffer.uid}/valuate`}>
+                <Link href={`/prospect/${initialOffer?.uid}/valuate`}>
                   <Button
                     className="confirm_off_btn rounded"
                     size="large"

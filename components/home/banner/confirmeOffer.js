@@ -15,9 +15,9 @@ function ConfirmOffer({ initialOffer }) {
   const [data, setData] = useState(initialOffer);
 
   const offerData = useGetOfferMinimalByIdQuery(
-    { id: initialOffer.uid },
+    { id: initialOffer?.uid },
     {
-      skip: !initialOffer.uid,
+      skip: !initialOffer?.uid,
     }
   );
   useEffect(() => {

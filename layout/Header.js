@@ -138,7 +138,7 @@ function Header() {
                             key={index}
                           >
                             {item?.sub?.map((s, i) => (
-                              <Link href={s.path}>
+                              <Link href={s.path} key={i}>
                                 <Button
                                   icon={
                                     pathname == s.path && (

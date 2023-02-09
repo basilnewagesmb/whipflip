@@ -7,7 +7,7 @@ import { Button } from "antd";
 // import capture from "public/data/capture.mp3";
 import useSound from "use-sound";
 import { useRouter } from "node_modules/next/router";
-
+import { isIOS } from "react-device-detect";
 function CamLayout({
   children,
   handle,
@@ -27,7 +27,7 @@ function CamLayout({
           backgroundColor: "#3c3c3c",
         }}
       >
-        {handle?.active ? (
+        {!isIOS && handle?.active ? (
           <FullscreenExitOutlined style={fullStyle} onClick={handle.exit} />
         ) : (
           <FullscreenOutlined style={fullStyle} onClick={handle.enter} />

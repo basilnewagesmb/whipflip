@@ -5,6 +5,7 @@ import { useFullScreenHandle } from "react-full-screen";
 import useScreenOrientation from "utils/useScreenOrientation";
 import { useCreateInstantOfferMutation } from "../api";
 import { useLoginMutation, useProcessQuoteMutation } from "../clearQuote";
+import { Modal } from "antd";
 
 function useValuateFun({ offerData }) {
   const { push } = useRouter();
@@ -107,7 +108,18 @@ function useValuateFun({ offerData }) {
       if (permission.state == "granted") {
         console.log("granted");
       } else {
-        console.log(permission.state);
+        Modal.error({
+          title: "Camera is blocked",
+          content: (
+            <div>
+              WhipFlip requires access to your camera. camera is blocked, please
+              enable from site settings{" "}
+              <img className="ml-2" src="/images/ic_blocked_camera_dark.svg" />
+            </div>
+          ),
+          footer: false,
+          closable: false,
+        });
       }
     },
   };

@@ -28,6 +28,7 @@ function SellFrom({
   isRulesOpen,
   data,
   submitAppointment,
+  triggerFetch,
 }) {
   const isMobile = useCheckMobile();
   return (
@@ -166,6 +167,12 @@ function SellFrom({
                       placeholder="Zip Code"
                       maxLength={5}
                       suffix={zipValidating && <LoadingOutlined />}
+                      onBlur={() => {
+                        triggerFetch(true);
+                      }}
+                      onFocus={() => {
+                        triggerFetch(false);
+                      }}
                     />
                   </Form.Item>
                 </div>
@@ -174,59 +181,50 @@ function SellFrom({
                 <div className="form-row frmRow">
                   <div className="frmfldItem">
                     <label htmlFor="">When would you like to sell?</label>
-                    <div
-                      className={`sellfld ${
-                        isMobile && " flex-column align-items-stretch"
-                      }`}
-                    >
-                      <div className="sellfld_itm">
-                        <Form.Item
-                          label={false}
-                          name={"appointment_date"}
-                          className="m-0 w-100"
-                          rules={[
-                            {
-                              required: true,
-                              message: "Please select your Date!",
-                            },
-                          ]}
-                        >
-                          <DatePicker
-                            inputReadOnly={true}
-                            className="w-100"
-                            disabledDate={(current) =>
-                              current.isBefore(moment().subtract(1, "day"))
-                            }
-                            format={"MM-DD-YYYY"}
-                          />
-                        </Form.Item>
-                      </div>
-                      <div className="sellfld_itm">
-                        <div className="selTime">
-                          <Form.Item
-                            label={false}
-                            name={"appointment_time"}
-                            className="m-0"
-                            rules={[
-                              {
-                                required: true,
-                                message: "Please select your state!",
-                              },
-                            ]}
-                          >
-                            <Select
-                              className="w-100"
-                              options={slots?.map?.((i) => ({
-                                value: i.hour,
-                                label: i.hour,
-                              }))}
-                              allowClear
-                              placeholder="Select Time"
-                              disabled={!slots}
-                            />
-                          </Form.Item>
-                        </div>
-                      </div>
+                    <div className="d-flex w-100 flex-column flex-md-row">
+                      <Form.Item
+                        label={false}
+                        name={"appointment_date"}
+                        className="m-0 w-100 mr-0 mr-md-1 mb-1 mb-md-0"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Please select your Date!",
+                          },
+                        ]}
+                      >
+                        <DatePicker
+                          inputReadOnly={true}
+                          className="w-100"
+                          disabledDate={(current) =>
+                            current.isBefore(moment().subtract(1, "day"))
+                          }
+                          format={"MM-DD-YYYY"}
+                        />
+                      </Form.Item>
+
+                      <Form.Item
+                        label={false}
+                        name={"appointment_time"}
+                        className="m-0 w-100 ml-0 ml-md-1 mt-2 mt-md-0"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Please select your state!",
+                          },
+                        ]}
+                      >
+                        <Select
+                          className="w-100"
+                          options={slots?.map?.((i) => ({
+                            value: i.hour,
+                            label: i.hour,
+                          }))}
+                          allowClear
+                          placeholder="Select Time"
+                          disabled={!slots}
+                        />
+                      </Form.Item>
                     </div>
                   </div>
                 </div>
@@ -332,7 +330,7 @@ function SellFrom({
                           <div className="checkIssues">
                             <div className="chooseIssues">
                               <div className="form-fld-grp">
-                                <div className="form-row frmRow">
+                                <div className="form-row frmRow align-items-start">
                                   <div className="frmfldItem">
                                     <Form.Item
                                       label={false}
@@ -425,7 +423,7 @@ function SellFrom({
                                 </div>
                                 {formData?.formRealData?.is_sole_owner ==
                                   "double" && (
-                                  <div className="form-row frmRow mt-2">
+                                  <div className="form-row frmRow mt-2 align-items-start">
                                     <div className="frmfldItem">
                                       <Form.Item
                                         label={false}
@@ -828,7 +826,16 @@ function SellFrom({
               {formData?.formRealData?.has_active_loan == false &&
               formData?.formRealData?.hasTitle == false ? null : (
                 <div className="doneProcess mt-3">
-                  <Form.Item name={"agreed"} className="m-0">
+                  <Form.Item
+                    name={"agreed"}
+                    className="m-0"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please select your Choice!",
+                      },
+                    ]}
+                  >
                     <Checkbox
                       onChange={(e) => {
                         formData?.form.setFieldsValue({
@@ -847,7 +854,7 @@ function SellFrom({
                       <Button
                         htmlType="submit"
                         className="initofferBtn h-auto"
-                        disabled={formData?.formRealData?.agreed != true}
+                        //disabled={formData?.formRealData?.agreed != true}
                       >
                         Submit
                       </Button>
@@ -856,6 +863,7 @@ function SellFrom({
                         htmlType="button"
                         className="initofferBtn h-auto"
                         onClick={() => {
+                          formData?.form.validateFields();
                           window.scrollTo(0, 0);
                         }}
                       >

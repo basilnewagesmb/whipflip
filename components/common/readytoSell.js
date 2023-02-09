@@ -39,7 +39,7 @@ function ReadyToSell() {
               </button>
             </div>
           </div>
-          <div className={`col-lg-5 align-self-end ${isMobile && " p-0"}`}>
+          <div className={`col-lg-5 col-12 align-self-end ${isMobile && " p-0"}`}>
             <div
               className="rts-rtImg"
               style={
@@ -61,7 +61,6 @@ function ReadyToSell() {
                     : "/images/sell_to_customer.png"
                 }
                 alt="Ready to Sell"
-                title="Ready to Sell"
                 preview={false}
                 className="w-100"
               />

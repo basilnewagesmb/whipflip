@@ -13,7 +13,7 @@ function Footer() {
                 <h2>{items[0].title}</h2>
                 <ul>
                   {items?.[0]?.sub?.map((s, i) => (
-                    <Link href={s.path}>
+                    <Link href={s.path} key={i}>
                       <li>{s.title}</li>
                     </Link>
                   ))}
@@ -25,7 +25,7 @@ function Footer() {
                 <h2>{items[1].title}</h2>
                 <ul>
                   {items?.[1]?.sub?.map((s, i) => (
-                    <Link href={s.path}>
+                    <Link href={s.path} key={i}>
                       <li>{s.title}</li>
                     </Link>
                   ))}
@@ -37,7 +37,7 @@ function Footer() {
                 <h2>{items[2].title}</h2>
                 <ul>
                   {items?.[2]?.sub?.map((s, i) => (
-                    <Link href={s.path}>
+                    <Link href={s.path} key={i}>
                       <li>{s.title}</li>
                     </Link>
                   ))}

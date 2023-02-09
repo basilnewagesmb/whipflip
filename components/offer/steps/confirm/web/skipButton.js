@@ -22,7 +22,7 @@ function SkipButton({ skipToInstantOffer, initialOffer }) {
         });
         setSkipping(false);
         if (res.data) {
-          window.location.href = `/prospect/${initialOffer.uid}/${res.data.status}`;
+          window.location.href = `/prospect/${initialOffer?.uid}/${res?.data?.status}`;
         } else {
         }
       }}

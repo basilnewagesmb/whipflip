@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { updateLocalOffer } from "features/offer/offerSlice";
 import transformOfferData from "utils/trancformOfferData";
 export const offerApi = createApi({
   reducerPath: "offerApi",
@@ -41,6 +42,14 @@ export const offerApi = createApi({
       },
       transformResponse: transformOfferData,
       providesTags: ["offers"],
+      async onQueryStarted(id, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(updateLocalOffer(data));
+        } catch (err) {
+          console.log("Error fetching offers!");
+        }
+      },
     }),
     getOfferById: builder.mutation({
       query: (id) => {
@@ -101,5 +110,5 @@ export const {
   useAddDamagesMutation,
   useSkipToInstantOfferMutation,
   useCreateInstantOfferMutation,
-  useAppointmentOfferMutation
+  useAppointmentOfferMutation,
 } = offerApi;
