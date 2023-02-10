@@ -11,9 +11,7 @@ import moment from "moment";
 import useCheckMobile from "utils/checkMobile";
 function Congrats({ data }) {
   const isMobile = useCheckMobile();
-  const { data: offerData } = useGetOfferQuery(data?.uid, {
-    skip: !data?.uid,
-  });
+
   const { width, height } = useWindowDimensions();
   const [confetti, setConfetti] = useState(false);
   useEffect(() => {
@@ -24,8 +22,6 @@ function Congrats({ data }) {
       }, 7000);
     }
   }, []);
-  console.log(data);
-
   return (
     <div>
       {confetti && (
@@ -84,7 +80,7 @@ function Congrats({ data }) {
                               <div className="ofp_left col-5 p-0">
                                 <ShimmerImage
                                   width={285}
-                                  src={offerData?.image || data?.image}
+                                  src={data?.image}
                                   alt={`${data?.year} ${data?.make} ${
                                     data?.model
                                   } ${
@@ -107,7 +103,7 @@ function Congrats({ data }) {
                                 <div className="jd_op_img">
                                   <PoweredBy />
                                 </div>
-                                <h2>{getAmount(offerData || data)}</h2>
+                                <h2>{getAmount(data)}</h2>
                                 <div className="nm_detail">
                                   <h3>
                                     {data?.year} {data?.make}
@@ -394,12 +390,12 @@ function Congrats({ data }) {
                         <div className="jd_op_img">
                           <PoweredBy />
                         </div>
-                        <h2>Your offer: {getAmount(offerData || data)}</h2>
+                        <h2>Your offer: {getAmount(data)}</h2>
                         <div className="offerProduct-mobi row">
                           <div className="ofp_left col-4 p-0">
                             <ShimmerImage
                               width={"100%"}
-                              src={offerData?.image || data?.image}
+                              src={data?.image}
                               alt={`${data?.year} ${data?.make} ${
                                 data?.model
                               } ${
@@ -444,7 +440,7 @@ function Congrats({ data }) {
                           width={140}
                           height={140}
                           style={{
-                            objectFit:"contain"
+                            objectFit: "contain",
                           }}
                         />
                       </div>
@@ -474,7 +470,7 @@ function Congrats({ data }) {
                           width={140}
                           height={140}
                           style={{
-                            objectFit:"contain"
+                            objectFit: "contain",
                           }}
                         />
                       </div>
@@ -504,7 +500,7 @@ function Congrats({ data }) {
                           width={140}
                           height={140}
                           style={{
-                            objectFit:"contain"
+                            objectFit: "contain",
                           }}
                         />
                       </div>

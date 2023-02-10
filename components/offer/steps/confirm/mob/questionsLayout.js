@@ -1,5 +1,5 @@
 import { setCurrentSlide } from "features/mob/mobSlice";
-import { Form, Carousel, Input, Button } from "antd";
+import { Form, Carousel, Input, Button, notification } from "antd";
 import React, { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import useMobileHandler from "services/offer/initial/mobileHandler";
@@ -35,11 +35,63 @@ function QuestionsLayout({ initialOffer }) {
       );
     });
   }, [formFunc?.formRealValues?.conditions]);
+  const BtnC = () => {
+    return (
+      <div className="d-flex justify-content-center align-items-center">
+        {!formFunc?.isReview && (
+          <Button
+            size="large"
+            htmlType="button"
+            className="w-100  m-1 d-flex justify-content-center align-items-center"
+            onClick={() => {
+              formFunc?.setIsReview(true);
+              window.scrollTo(0, 0);
+            }}
+            icon={<EyeOutlined />}
+          >
+            Preview
+          </Button>
+        )}
+        <Button
+          className="confirm_off_btn m-1"
+          size="large"
+          htmlType="submit"
+          onClick={() => form.submit()}
+          loading={formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading}
+          disabled={formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading}
+        >
+          <span>
+            {formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading
+              ? "Getting Details..."
+              : !formFunc?.isReview
+              ? "Continue"
+              : "Confirm"}
+          </span>
+        </Button>
+      </div>
+    );
+  };
+  const [api, contextHolder] = notification.useNotification();
+
+  useEffect(() => {
+    if (formFunc?.formRealValues?.cosmetic?.interior) {
+      api.open({
+        message: false,
+        placement: "bottom",
+        closable: false,
+        key: "updatable",
+        description: <BtnC />,
+        duration: null,
+      });
+    }
+  }, [formFunc?.formRealValues?.cosmetic?.interior, formFunc]);
+
   return (
     <div className="container p-0">
       <div className="itemSelected text-center">
         <span>Initial offer: {getAmount(initialOffer)}</span>
       </div>
+      {contextHolder}
 
       <Form
         name="confirm-mob"
@@ -95,54 +147,6 @@ function QuestionsLayout({ initialOffer }) {
             data={formFunc?.conditions?.cosmetic?.interior}
           />
         </ConditionalWrap>
-
-        {formFunc?.formRealValues?.cosmetic?.interior && (
-          <Modal
-            style={{
-              top: window.innerHeight - 200,
-            }}
-            open={true}
-            footer={false}
-            closable={false}
-          >
-            <div className="d-flex justify-content-center align-items-center">
-              {!formFunc?.isReview && (
-                <Button
-                  size="large"
-                  htmlType="button"
-                  className="w-100  m-1 d-flex justify-content-center align-items-center"
-                  onClick={() => {
-                    formFunc?.setIsReview(true);
-                    window.scrollTo(0, 0);
-                  }}
-                  icon={<EyeOutlined />}
-                >
-                  Preview
-                </Button>
-              )}
-              <Button
-                className="confirm_off_btn m-1"
-                size="large"
-                htmlType="submit"
-                onClick={() => form.submit()}
-                loading={
-                  formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading
-                }
-                disabled={
-                  formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading
-                }
-              >
-                <span>
-                  {formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading
-                    ? "Getting Details..."
-                    : !formFunc?.isReview
-                    ? "Continue"
-                    : "Confirm"}
-                </span>
-              </Button>
-            </div>
-          </Modal>
-        )}
       </Form>
     </div>
   );

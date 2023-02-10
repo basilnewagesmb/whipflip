@@ -69,8 +69,8 @@ function CamLayout({
                         fontWeight: "700",
                       }}
                       onClick={() => {
-                        handle.enter();
-                        Modal.destroyAll();
+                        Modal?.destroyAll();
+                        handle?.enter();
                       }}
                     >
                       No,continue

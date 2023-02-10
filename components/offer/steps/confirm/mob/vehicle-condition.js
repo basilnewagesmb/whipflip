@@ -1,6 +1,7 @@
-import { InputNumber, Form, Button } from "antd";
+import { InputNumber, Form, Button, Modal } from "antd";
 import React from "react";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import BreakDown from "components/anim/breakdown";
 
 function VehicleConditionMob({
   form,
@@ -100,41 +101,53 @@ function VehicleConditionMob({
                       <ul className="ks-cboxtags  row">
                         {item?.data?.map((radio, j) => (
                           <li className="col-6 ci_col" key={j}>
-                            <Form.Item
-                              label={false}
-                              name={["conditions", i, "data", j]}
-                              className="m-0 "
-                              id={radio?.uid}
-                            >
+                            {[
+                              "Doesn't Start/Drive",
+                              "Engine Noise (Knocking)",
+                            ].includes(radio?.name) ? (
                               <>
                                 <input
                                   type="checkbox"
                                   id={radio?.uid}
-                                  onClick={async () => {
-                                    await form.setFieldValue(
-                                      ["conditions", i, "data", j],
-                                      {
-                                        uid: radio.uid,
-                                        name: radio.name,
-                                        active:
-                                          !formRealValues?.conditions?.[i]
-                                            .data?.[j].active,
-                                        image: radio?.image
-                                          ? radio.image
-                                          : null,
-                                      }
-                                    );
-                                    await form.validateFields([
-                                      ["conditions", i, "data", j],
-                                    ]);
-                                  }}
-                                  checked={formRealValues?.conditions?.[i]
-                                    .data?.[j].active}
                                   className="d-none"
                                 />
                                 <label
-                                  htmlFor={radio?.uid}
                                   className="labeltick"
+                                  onClick={() => {
+                                    Modal.success({
+                                      className: "confirm-model",
+                                      icon: <BreakDown isLoading={true} />,
+                                      footer: null,
+                                      closable: true,
+                                      title: (
+                                        <h6 className="text-center">Uh oh!</h6>
+                                      ),
+                                      okText: "OK",
+                                      content: (
+                                        <div className="text-center">
+                                          <p>
+                                            Currently WhipFlip is not purchasing
+                                            vehicles that are running poorly or
+                                            fully inoperable. This includes
+                                            vehicles that do not start due to
+                                            dead/bad batteries, engine seized,
+                                            transmission inoperable or severely
+                                            malfunctioning, flat tires, etc.
+                                            <br />
+                                            You will need to fully repair any of
+                                            the issues mentioned above before
+                                            proceeding forward. We may require
+                                            proof of repair or proper running
+                                            condition before extending an final
+                                            offer.
+                                          </p>
+                                        </div>
+                                      ),
+                                      okButtonProps: {
+                                        className: "getOfferBtn",
+                                      },
+                                    });
+                                  }}
                                 >
                                   <span
                                     className="labeltickspan"
@@ -164,7 +177,75 @@ function VehicleConditionMob({
                                   )}
                                 </label>
                               </>
-                            </Form.Item>
+                            ) : (
+                              <Form.Item
+                                label={false}
+                                name={["conditions", i, "data", j]}
+                                className="m-0 "
+                                id={radio?.uid}
+                              >
+                                <>
+                                  <input
+                                    type="checkbox"
+                                    id={radio?.uid}
+                                    onClick={async () => {
+                                      await form.setFieldValue(
+                                        ["conditions", i, "data", j],
+                                        {
+                                          uid: radio.uid,
+                                          name: radio.name,
+                                          active:
+                                            !formRealValues?.conditions?.[i]
+                                              .data?.[j].active,
+                                          image: radio?.image
+                                            ? radio.image
+                                            : null,
+                                        }
+                                      );
+                                      await form.validateFields([
+                                        ["conditions", i, "data", j],
+                                      ]);
+                                    }}
+                                    checked={
+                                      formRealValues?.conditions?.[i].data?.[j]
+                                        .active
+                                    }
+                                    className="d-none"
+                                  />
+                                  <label
+                                    htmlFor={radio?.uid}
+                                    className="labeltick"
+                                  >
+                                    <span
+                                      className="labeltickspan"
+                                      style={{ wordBreak: "break-all" }}
+                                    >
+                                      {radio?.name}
+                                    </span>
+                                    {radio.image ? (
+                                      <span className="opicon">
+                                        <img
+                                          src={radio.image}
+                                          alt={radio?.name}
+                                          title={radio?.name}
+                                          width={20}
+                                          height={20}
+                                        />
+                                      </span>
+                                    ) : (
+                                      <span className="spanicon">
+                                        <span className="plus">
+                                          <i className="fa-solid fa-plus"></i>
+                                        </span>
+                                        <span className="checked">
+                                          <i className="fa-solid fa-check"></i>
+                                        </span>
+                                      </span>
+                                    )}
+                                  </label>
+                                </>
+                              </Form.Item>
+                            )}
                           </li>
                         ))}
                       </ul>

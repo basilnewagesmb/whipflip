@@ -210,7 +210,7 @@ function SellFrom({
                         rules={[
                           {
                             required: true,
-                            message: "Please select your state!",
+                            message: "Please select your time!",
                           },
                         ]}
                       >

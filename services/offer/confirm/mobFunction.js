@@ -7,7 +7,7 @@ import {
   useVehicleWithVinMutation,
 } from "services/util";
 import useCheckMobile from "utils/checkMobile";
-import { Form, Modal, QRCode, Button, message,Space, Radio } from "antd";
+import { Form, Modal, QRCode, Button, message, Space, Radio } from "antd";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import {
   useAddDamagesMutation,
@@ -206,7 +206,6 @@ export const ShowEasyStepMob = (
                 <Image
                   src="/images/easy-final.svg"
                   alt=""
-                  title="easy final"
                   width={160}
                   height={160}
                 />

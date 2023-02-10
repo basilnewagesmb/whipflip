@@ -1,8 +1,9 @@
-import { Form, Input, InputNumber } from "antd";
+import { Form, Input, InputNumber ,Modal} from "antd";
 import React, { useEffect } from "react";
 import Jump from "react-reveal/Jump";
 import Image from "next/image";
 import VehicleCDSkeleton from "./vehicleCDSkeliton";
+import BreakDown from "components/anim/breakdown";
 function VehicleCD({ form, formRealValues, conditions, isConditionsLoading }) {
   useEffect(() => {
     if (form) form.setFieldValue("conditions", conditions);
@@ -117,37 +118,58 @@ function VehicleCD({ form, formRealValues, conditions, isConditionsLoading }) {
                                   {item?.data?.map((radio, j) => (
                                     <div className="col-lg-6" key={j}>
                                       <div className="form-group check-group mb-0">
-                                        <Form.Item
-                                          label={false}
-                                          name={["conditions", i, "data", j]}
-                                          className="m-0"
-                                          id={radio?.uid}
-                                        >
-                                          <>
-                                            <input
-                                              type="checkbox"
-                                              id={radio?.uid}
-                                              onClick={async () => {
-                                                await form.setFieldValue(
-                                                  ["conditions", i, "data", j],
-                                                  {
-                                                    uid: radio.uid,
-                                                    name: radio.name,
-                                                    active:
-                                                      !formRealValues
-                                                        ?.conditions?.[i]
-                                                        .data?.[j].active,
-                                                    image: radio?.image
-                                                      ? radio.image
-                                                      : null,
-                                                  }
-                                                );
-                                                await form.validateFields([
-                                                  ["conditions", i, "data", j],
-                                                ]);
-                                              }}
-                                            />
-                                            <label htmlFor={radio?.uid}>
+                                        {[
+                                          "Doesn't Start/Drive",
+                                          "Engine Noise (Knocking)",
+                                        ].includes(radio?.name) ? (
+                                          <div
+                                            onClick={async () => {
+                                              Modal.success({
+                                                className: "confirm-model",
+                                                icon: (
+                                                  <BreakDown isLoading={true} />
+                                                ),
+                                                footer: null,
+                                                closable: true,
+                                                title: (
+                                                  <h6 className="text-center">
+                                                    Uh oh!
+                                                  </h6>
+                                                ),
+                                                okText: "OK",
+                                                content: (
+                                                  <div className="text-center">
+                                                    <p>
+                                                      Currently WhipFlip is not
+                                                      purchasing vehicles that
+                                                      are running poorly or
+                                                      fully inoperable. This
+                                                      includes vehicles that do
+                                                      not start due to dead/bad
+                                                      batteries, engine seized,
+                                                      transmission inoperable or
+                                                      severely malfunctioning,
+                                                      flat tires, etc.
+                                                      <br />
+                                                      You will need to fully
+                                                      repair any of the issues
+                                                      mentioned above before
+                                                      proceeding forward. We may
+                                                      require proof of repair or
+                                                      proper running condition
+                                                      before extending an final
+                                                      offer.
+                                                    </p>
+                                                  </div>
+                                                ),
+                                                okButtonProps: {
+                                                  className: "getOfferBtn",
+                                                },
+                                              });
+                                            }}
+                                          >
+                                            <input type="checkbox" />
+                                            <label>
                                               {radio.image && (
                                                 <span className="opicon">
                                                   <img
@@ -161,8 +183,65 @@ function VehicleCD({ form, formRealValues, conditions, isConditionsLoading }) {
                                               )}
                                               {radio?.name}
                                             </label>
-                                          </>
-                                        </Form.Item>
+                                          </div>
+                                        ) : (
+                                          <Form.Item
+                                            label={false}
+                                            name={["conditions", i, "data", j]}
+                                            className="m-0"
+                                            id={radio?.uid}
+                                          >
+                                            <>
+                                              <input
+                                                type="checkbox"
+                                                id={radio?.uid}
+                                                onClick={async () => {
+                                                  await form.setFieldValue(
+                                                    [
+                                                      "conditions",
+                                                      i,
+                                                      "data",
+                                                      j,
+                                                    ],
+                                                    {
+                                                      uid: radio.uid,
+                                                      name: radio.name,
+                                                      active:
+                                                        !formRealValues
+                                                          ?.conditions?.[i]
+                                                          .data?.[j].active,
+                                                      image: radio?.image
+                                                        ? radio.image
+                                                        : null,
+                                                    }
+                                                  );
+                                                  await form.validateFields([
+                                                    [
+                                                      "conditions",
+                                                      i,
+                                                      "data",
+                                                      j,
+                                                    ],
+                                                  ]);
+                                                }}
+                                              />
+                                              <label htmlFor={radio?.uid}>
+                                                {radio.image && (
+                                                  <span className="opicon">
+                                                    <img
+                                                      src={radio.image}
+                                                      alt={radio?.name}
+                                                      title={radio?.name}
+                                                      width={20}
+                                                      height={20}
+                                                    />
+                                                  </span>
+                                                )}
+                                                {radio?.name}
+                                              </label>
+                                            </>
+                                          </Form.Item>
+                                        )}
                                       </div>
                                     </div>
                                   ))}

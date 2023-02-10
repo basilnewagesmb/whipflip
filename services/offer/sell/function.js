@@ -78,6 +78,11 @@ function useSellFuc(data) {
       showNotValidZip();
     }
   }, [zipStatus]);
+  useEffect(() => {
+    form.setFieldsValue({
+      appointment_time: null,
+    });
+  }, [formRealData?.zip, formRealData?.appointment_date]);
 
   const { data: states } = useStatesQuery();
   useEffect(() => {
@@ -86,6 +91,7 @@ function useSellFuc(data) {
       () => {}
     );
   }, []);
+
   const autoComplete = {
     onSelect: (location, d) => {
       triggerFetch(true);

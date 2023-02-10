@@ -216,7 +216,6 @@ export const ShowEasyStep = (
                 <Image
                   src="/images/easy-final.svg"
                   alt=""
-                  title="easy final"
                   width={160}
                   height={160}
                 />
@@ -256,7 +255,6 @@ export const ShowEasyStep = (
                       <Image
                         src="/images/access-email.svg"
                         alt="easy final"
-                        title="easy final"
                         width={60}
                         height={60}
                       />
