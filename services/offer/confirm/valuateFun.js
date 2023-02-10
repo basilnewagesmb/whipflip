@@ -6,7 +6,7 @@ import useScreenOrientation from "utils/useScreenOrientation";
 import { useCreateInstantOfferMutation } from "../api";
 import { useLoginMutation, useProcessQuoteMutation } from "../clearQuote";
 import { Modal } from "antd";
-
+import { isIOS } from "react-device-detect";
 function useValuateFun({ offerData }) {
   const { push } = useRouter();
   const [state, setState] = useState({
@@ -106,18 +106,24 @@ function useValuateFun({ offerData }) {
     onUserMediaError: async () => {
       const permission = await navigator.permissions.query({ name: "camera" });
       if (permission.state == "granted") {
+        await handle.enter();
         console.log("granted");
       } else {
-        Modal.error({
+        await handle.exit();
+        await Modal.error({
           title: "Camera is blocked",
           content: (
             <div>
-              WhipFlip requires access to your camera. camera is blocked, please
-              enable from site settings{" "}
+              {isIOS
+                ? "WhipFlip requires access to your camera. camera is blocked, please reload the page"
+                : "WhipFlip requires access to your camera. camera is blocked, please enable from site settings and reload the page"}
               <img className="ml-2" src="/images/ic_blocked_camera_dark.svg" />
             </div>
           ),
-          footer: false,
+          okText: "Reload",
+          onOk: () => {
+            location.reload();
+          },
           closable: false,
         });
       }

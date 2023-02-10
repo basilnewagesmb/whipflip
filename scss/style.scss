@@ -1659,13 +1659,6 @@ ul.form-stepper li a .form-stepper-circle {
   }
   .selectView {
     input {
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 26px;
-      display: flex;
-      align-items: center;
-      color: #8d8c9d;
       @include responsive(tab-port) {
         font-style: normal;
         font-weight: 400;

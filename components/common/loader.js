@@ -1,42 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Fade from "react-reveal/Fade";
 import Modal from "react-bootstrap/Modal";
 function LoaderAnim({ isLoading, text }) {
+  const [loadingScreen, setLoadingScreen] = useState(false);
   useEffect(() => {
-    if (isLoading) {
-      document.getElementsByTagName("body")[0].style = "overflow: hidden";
-      document.getElementsByTagName("footer")[0].style = "display: none";
-    } else {
-      document.getElementsByTagName("body")[0].style = "overflow: unset";
-      document.getElementsByTagName("footer")[0].style = "display: block";
-    }
+    setLoadingScreen(isLoading);
   }, [isLoading]);
 
   return (
-    <section
-      className="full-page-loading"
-      style={{
-        overflow: "hidden",
-        height: `${isLoading ? "100%" : 0}`,
-      }}
-    >
-      <Modal show={isLoading} fullscreen={true}>
-        <div className="vh-100 d-flex  justify-content-center align-items-center flex-column">
-          <p className="text-center">
-            {text || (
-              <div>
-                Your awesome initial offer
-                <br /> is loading...
-              </div>
-            )}
-          </p>
-          <Fade spy={isLoading} left>
-            <Image src="/images/car-anim.gif" width={200} height={200} />
-          </Fade>
-        </div>{" "}
-      </Modal>
-    </section>
+    <Modal show={loadingScreen} fullscreen={true}>
+      <div className="vh-100 d-flex  justify-content-center align-items-center flex-column">
+        <p className="text-center">
+          {text || (
+            <div>
+              Your awesome initial offer
+              <br /> is loading...
+            </div>
+          )}
+        </p>
+        <Fade spy={loadingScreen} left>
+          <Image src="/images/car-anim.gif" width={200} height={200} />
+        </Fade>
+      </div>{" "}
+    </Modal>
   );
 }
 

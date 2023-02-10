@@ -18,6 +18,7 @@ import { useDispatch } from "react-redux";
 import { reset } from "features/offer/offerSlice";
 
 function useSellFuc(data) {
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const { push } = useRouter();
   const [state, setState] = useState({
@@ -87,6 +88,7 @@ function useSellFuc(data) {
   }, []);
   const autoComplete = {
     onSelect: (location, d) => {
+      triggerFetch(true);
       const geocoder = new google.maps.Geocoder();
       geocoder
         .geocode({ placeId: d.place_id, country: "us" })
@@ -210,9 +212,10 @@ function useSellFuc(data) {
       skip: !formRealData?.zip || !formRealData?.appointment_date,
     }
   );
-  const [appointmentOffer, { isLoading, data: successData }] =
+  const [appointmentOffer, { data: successData }] =
     useAppointmentOfferMutation();
   const submitAppointment = async () => {
+    setIsLoading(true);
     closeRuleModal();
     let postData = {
       ...formRealData,
@@ -226,6 +229,7 @@ function useSellFuc(data) {
       dispatch(reset());
       push(`/prospect/${res?.data?.uid}/appointment`);
     } else {
+      setIsLoading(false);
       message.error("Something went wrong");
     }
   };

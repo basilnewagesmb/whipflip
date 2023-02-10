@@ -64,7 +64,9 @@ function Header() {
               <Navbar.Brand href="/">
                 <Image
                   src={
-                    !pathname?.includes("/prospect")
+                    ["quote", "vehicle", "appointment"]?.includes(
+                      pathname.split("/")[pathname.split("/").length - 1]
+                    )
                       ? "/images/offer-logo.svg"
                       : "/images/offer-sell-header.svg"
                   }

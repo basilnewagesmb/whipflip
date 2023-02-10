@@ -10,7 +10,9 @@ import { useRouter } from "node_modules/next/router";
 import { useDispatch, useSelector } from "react-redux";
 import useCheckMobile from "utils/checkMobile";
 import { useCreateInitialOfferMutation, useGetOfferByIdMutation } from "../api";
+import { useState } from "react";
 function useInitialForm({ form, data, carouselRef, goTo }) {
+  const [isLoadingApi, setIsLoadingApi] = useState(false);
   const router = useRouter();
   const isMobile = useCheckMobile();
   const [createInitialOffer, { isLoading: isCreating }] =
@@ -20,6 +22,7 @@ function useInitialForm({ form, data, carouselRef, goTo }) {
   const dispatch = useDispatch();
   const mileage = Form.useWatch("mileage", form);
   const onFinish = async (values) => {
+    setIsLoadingApi(true);
     const { stills, ...rest } = data;
     const res = await createInitialOffer({
       ...rest,
@@ -60,9 +63,11 @@ function useInitialForm({ form, data, carouselRef, goTo }) {
           query: { id: offerRes?.data?.uid },
         });
       } else {
+        setIsLoadingApi(false);
         message.error(offerRes?.data?.message || "Something went wrong");
       }
     } else {
+      setIsLoadingApi(false);
       message.error(res?.data?.message || "Something went wrong");
     }
   };
@@ -79,7 +84,7 @@ function useInitialForm({ form, data, carouselRef, goTo }) {
   };
 
   const formDate = {
-    isLoading: isLoading || isCreating,
+    isLoading: isLoadingApi,
     initialValues: {},
     onFinish,
     onFinishFailed,

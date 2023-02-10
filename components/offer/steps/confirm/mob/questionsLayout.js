@@ -110,7 +110,7 @@ function QuestionsLayout({ initialOffer }) {
                 <Button
                   size="large"
                   htmlType="button"
-                  className="w-100  m-1"
+                  className="w-100  m-1 d-flex justify-content-center align-items-center"
                   onClick={() => {
                     formFunc?.setIsReview(true);
                     window.scrollTo(0, 0);

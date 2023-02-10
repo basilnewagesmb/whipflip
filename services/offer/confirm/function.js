@@ -120,7 +120,7 @@ function useConfirmForm({ form }) {
       uid: offerData.uid,
       cosmetic: data.cosmetic,
     };
-    if ((res?.data?.trimlevel?.length, issues)) {
+    if (res?.data?.trimlevel?.length) {
       showConfirm(res?.data?.trimlevel, data, issues);
     } else {
       message.error("No vehicle details found!");
