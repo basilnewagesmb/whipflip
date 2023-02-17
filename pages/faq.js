@@ -35,7 +35,7 @@ function FaqPage() {
               <p className="pt-4">How can we help you?</p>
               <h1>Frequently asked questions</h1>
               <div className="pt-4">
-                <form className="form-row justify-content-center">
+                <form className="form-row justify-content-center d-none">
                   <div className="form-group col-9 col-sm-7">
                     <input
                       type="text"

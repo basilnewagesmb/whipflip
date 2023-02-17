@@ -9,6 +9,7 @@ import moment from "moment";
 import { useGetOfferMinimalByIdQuery } from "services/offer/api";
 import getAmount from "utils/getAmount";
 import { Modal } from "antd";
+import Clock from "./clock";
 
 function ConfirmOffer({ initialOffer }) {
   const dispatch = useDispatch();
@@ -25,14 +26,9 @@ function ConfirmOffer({ initialOffer }) {
       setData(offerData.data);
     }
   }, [initialOffer, offerData]);
-  const date =
-    data?.status == "quote"
-      ? moment(data?.last_quote_date).add(5, "days")
-      : moment(data?.last_offer_date).add(5, "days");
-
-  const [days, hours, minutes, seconds, countDown] = useCountdown(
-    date || moment().format("YYYY-MM-DD HH:mm:ss")
-  );
+  const date = data?.last_offer_date
+    ? moment(data?.last_offer_date).add(5, "days")
+    : moment(data?.last_quote_date).add(5, "days");
   return (
     <div className="card card-outline-secondary home-form">
       <div className="confirm_offer_banner">
@@ -83,38 +79,7 @@ function ConfirmOffer({ initialOffer }) {
                 height={24}
               />
             </div>
-            <div className="offer_expire">
-              <h2>Offer expires in:</h2>
-              <div className="oe_time_left">
-                <div className="oet_col">
-                  <div className="oet_col_in">
-                    <span> {countDown > 0 ? days : 0}</span>
-                  </div>
-                  <span>DAYS</span>
-                </div>
-                <b className="mt-md-1 text-muted">:</b>
-                <div className="oet_col">
-                  <div className="oet_col_in">
-                    <span> {countDown > 0 ? hours : 0}</span>
-                  </div>
-                  <span>hrs</span>
-                </div>
-                <b className="mt-md-1 text-muted">:</b>
-                <div className="oet_col">
-                  <div className="oet_col_in">
-                    <span> {countDown > 0 ? minutes : 0}</span>
-                  </div>
-                  <span>mins</span>
-                </div>
-                <b className="mt-md-1 text-muted">:</b>
-                <div className="oet_col">
-                  <div className="oet_col_in">
-                    <span> {countDown > 0 ? seconds : 0}</span>
-                  </div>
-                  <span>secs</span>
-                </div>
-              </div>
-            </div>
+            <Clock date={date} />
           </div>
         </div>
         <div className="cob_foo">

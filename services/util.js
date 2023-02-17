@@ -176,6 +176,23 @@ export const general = createApi({
         return date === today ? slots : response;
       },
     }),
+    subscribe: builder.mutation({
+      query: (email) => {
+        return {
+          url: `/subscribe`,
+          method: "POST",
+          body: email,
+        };
+      },
+    }),
+    blogs: builder.query({
+      query: () => {
+        return {
+          url: `/blogs`,
+          method: "GET",
+        };
+      },
+    }),
   }),
 });
 
@@ -190,4 +207,6 @@ export const {
   useZipSearchQuery,
   useValidateZipQuery,
   useSlotsQuery,
+  useSubscribeMutation,
+  useBlogsQuery,
 } = general;

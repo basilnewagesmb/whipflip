@@ -6,7 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useGetOfferQuery } from "services/offer/api";
 import { useRouter } from "next/router";
 import { reset } from "features/offer/offerSlice";
+import moment from "node_modules/moment/moment";
+import { Modal } from "antd";
+import { ClockCircleOutlined } from "@ant-design/icons";
+import ResetActions from "./resetActions";
+import { useState } from "react";
 function Default({ children, user }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { initialOffer } = useSelector((state) => state.offer);
   const { data } = useGetOfferQuery(initialOffer?.uid, {
     skip: !initialOffer?.uid,
@@ -18,9 +24,45 @@ function Default({ children, user }) {
       dispatch(reset());
     }
   }, [initialOffer]);
+  useEffect(() => {
+    if (
+      data?.last_offer_date &&
+      data?.status == "offer" &&
+      !data?.is_manrev_prospect
+    ) {
+      if (moment().diff(moment(data?.last_offer_date), "days") >= 5) {
+        setIsModalOpen(true);
+      } else {
+        setIsModalOpen(false);
+      }
+    }
+  }, [data]);
 
   return (
     <div>
+      <Modal
+        title={
+          <div>
+            <ClockCircleOutlined
+              className="mr-2"
+              style={{
+                color: "#e9af03",
+              }}
+            />
+            Offer Expired
+          </div>
+        }
+        open={isModalOpen}
+        onCancel={() => setIsModalOpen(false)}
+        icon={<ClockCircleOutlined />}
+        footer={
+          <ResetActions setIsModalOpen={setIsModalOpen} uid={data?.uid} />
+        }
+        width={400}
+      >
+        It looks like your offer has expired. Please tap the Reset button below
+        to recalculate.
+      </Modal>
       <ConditionalWrap
         condition={!pathname?.includes("valuate")}
         wrap={(wrappedChildren) => (
@@ -31,7 +73,7 @@ function Default({ children, user }) {
           </>
         )}
       >
-        <Fade spy={children}>{children}</Fade>
+        <Fade spy={pathname}>{children}</Fade>
       </ConditionalWrap>
     </div>
   );

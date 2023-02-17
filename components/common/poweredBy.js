@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Image } from "antd";
 import React from "react";
 
 function PoweredBy() {
@@ -7,9 +7,9 @@ function PoweredBy() {
       <Image
         src="/images/jd.svg"
         alt="poweredBy"
-        title="poweredBy"
         width={180}
         height={20}
+        preview={false}
       />
     </div>
   );

@@ -221,6 +221,9 @@ span.infoBx {
     background-size: 250%;
     background-position: 0 calc(100%);
   }
+  @media only screen and (min-device-width: 768px) and (max-device-width: 800px) {
+    padding-bottom: 450px;
+  }
   .hb_wrapper {
     height: 100%;
     position: relative;
@@ -232,6 +235,7 @@ span.infoBx {
     }
   }
 }
+
 .whipflip-fluid {
   position: absolute;
   z-index: 999;
@@ -5999,4 +6003,14 @@ li.col-6.ci_col > div > div > div > div > div {
   height: 100vh;
   margin: 0;
   border-radius: 0;
+}
+.selection-border {
+  border-bottom: 4px solid;
+  border-image: linear-gradient(270deg, #4381c0, #4381c0) 0 0 1 0;
+  padding-bottom: 5px;
+  color: #4381c0;
+}
+
+.cur_sor_pointer {
+  cursor: pointer;
 }

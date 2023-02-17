@@ -99,6 +99,16 @@ export const offerApi = createApi({
       },
       invalidatesTags: ["offers"],
     }),
+    resetOffer: builder.mutation({
+      query: (uid) => {
+        return {
+          url: `/prospects/reset/${uid}`,
+          method: "POST",
+          body: {},
+        };
+      },
+      invalidatesTags: ["offers"],
+    }),
   }),
 });
 
@@ -111,4 +121,5 @@ export const {
   useSkipToInstantOfferMutation,
   useCreateInstantOfferMutation,
   useAppointmentOfferMutation,
+  useResetOfferMutation,
 } = offerApi;

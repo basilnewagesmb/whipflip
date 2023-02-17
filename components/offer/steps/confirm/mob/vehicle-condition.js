@@ -151,7 +151,7 @@ function VehicleConditionMob({
                                 >
                                   <span
                                     className="labeltickspan"
-                                    style={{ wordBreak: "break-all" }}
+                                    //style={{ wordBreak: "break-all" }}
                                   >
                                     {radio?.name}
                                   </span>
@@ -218,7 +218,7 @@ function VehicleConditionMob({
                                   >
                                     <span
                                       className="labeltickspan"
-                                      style={{ wordBreak: "break-all" }}
+                                      //style={{ wordBreak: "break-all" }}
                                     >
                                       {radio?.name}
                                     </span>

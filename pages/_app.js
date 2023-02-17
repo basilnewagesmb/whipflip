@@ -16,13 +16,20 @@ import Head from "next/head";
 import { isDev, isLocal } from "utils/helper";
 import * as prodGTM from "utils/GTM/prod";
 import * as devGTM from "utils/GTM/dev";
+import { useNetwork } from "utils/useNetwork";
+import { message } from "antd";
 function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
   useEffect(() => {
     const shouldNotTrack = isLocal("localhost") || isDev();
     const gtm = shouldNotTrack ? devGTM : prodGTM;
     gtm.init("GTM-KS44Q5Z");
   }, []);
-
+  const isOnline = useNetwork();
+  useEffect(() => {
+    if (!isOnline) {
+      message.error("You're currently offline");
+    }
+  }, [isOnline]);
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persister}>

@@ -121,7 +121,7 @@ function useConfirmForm({ form }) {
       cosmetic: data.cosmetic,
     };
     if (res?.data?.trimlevel?.length) {
-      showConfirm(res?.data?.trimlevel, data, issues);
+      showConfirm(res?.data, data, issues);
     } else {
       message.error("No vehicle details found!");
     }
@@ -136,12 +136,12 @@ function useConfirmForm({ form }) {
           <Space
             direction="vertical"
             onChange={async (e) => {
-              const full_trim = level.find(
+              const full_trim = level?.trimlevel?.find(
                 (item) => item.vehicle_id == e.target.value
               ).body;
               const cRes = await addDamages({
                 issues,
-                vin: data?.info.vinNumber || "",
+                vin: data?.info.vinNumber || level?.vin || "",
                 plate_state: data?.info.state || "",
                 plate_number: data?.info.plateNumber || "",
                 full_trim,
@@ -155,7 +155,7 @@ function useConfirmForm({ form }) {
               }
             }}
           >
-            {level?.map((item, k) => (
+            {level?.trimlevel?.map((item, k) => (
               <Radio value={item.vehicle_id} key={k}>
                 {item.body}
               </Radio>
