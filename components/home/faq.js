@@ -1244,7 +1244,7 @@ export const faqData = {
     </div>
   ),
 };
-const Faq = ({ icon }) => {
+const Faq = ({ icon, short }) => {
   const tabs = [
     { title: "HOW IT WORKS", component: faqData.howItWorks },
     { title: "WHAT WE BUY", component: faqData.whatWeBuy },
@@ -1255,7 +1255,7 @@ const Faq = ({ icon }) => {
   ];
 
   function getTabs() {
-    return tabs.map((tab, index) => ({
+    return (short ? [tabs.at(0)] : tabs).map((tab, index) => ({
       title: tab.title,
       getContent: tab.component,
       /* Optional parameters */
@@ -1280,9 +1280,11 @@ const Faq = ({ icon }) => {
       )}
       <div className="secHd text-center mt-2">
         <h1>
-          <span style={{
-            lineHeight:1.5
-          }}>
+          <span
+            style={{
+              lineHeight: 1.5,
+            }}
+          >
             Frequently <span className="asked-questions">Asked Questions</span>
           </span>
         </h1>
@@ -1293,7 +1295,10 @@ const Faq = ({ icon }) => {
             <div className="container">
               <div className="row mb-4">
                 <div className="col-12 material-tab">
-                  <Tabs items={getTabs()} />
+                  <Tabs
+                    items={getTabs()}
+                    tabsWrapperClass={short ? "justify-content-center" : ""}
+                  />
                 </div>
               </div>
             </div>

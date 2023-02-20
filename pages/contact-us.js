@@ -2,10 +2,12 @@ import MetaHead from "components/common/metaHead";
 import React, { useEffect } from "react";
 import { useContactMutation } from "services/util";
 import { Form, Input, Button, message } from "antd";
+import { useState } from "react";
 
 function Index() {
   const [form] = Form.useForm();
-
+  const realVal = Form.useWatch([], form);
+  const [isValid, setIsValid] = useState(false);
   const [contact, { isLoading, isSuccess }] = useContactMutation();
   const onFinish = async (values) => {
     const res = await contact(values);
@@ -16,7 +18,11 @@ function Index() {
       message.success("Submitted");
     }
   }, [isSuccess]);
-
+  useEffect(() => {
+    if (realVal) {
+      setIsValid(Object?.values(realVal).filter((item) => item).length == 5);
+    }
+  }, [realVal]);
   return (
     <>
       <MetaHead title="Contact us" />
@@ -165,14 +171,14 @@ function Index() {
                           },
                         ]}
                       >
-                        <Input.TextArea allowClear rows={"3"} />
+                        <Input.TextArea allowClear rows={"3"} maxLength={200} />
                       </Form.Item>
                     </div>
                     <Button
                       htmlType="submit"
-                      className="btn h-auto py-3 btn-default mb-2 w-100 text-dark"
+                      className={`h-auto py-3  mb-2 w-100 ${isValid && "confirm_offer_btn"}`}
                       loading={isLoading}
-                      disabled={isLoading}
+                      disabled={!isValid}
                     >
                       Submit
                     </Button>

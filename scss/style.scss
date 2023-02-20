@@ -6014,3 +6014,108 @@ li.col-6.ci_col > div > div > div > div > div {
 .cur_sor_pointer {
   cursor: pointer;
 }
+
+.common_initial_model .home-form {
+  box-shadow: none;
+  border-radius: 0px 0px 10px 10px;
+}
+.review_gid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.review_gid .google_review_card {
+  background-color: #fff;
+  padding: 5px;
+  height: 58px;
+}
+
+.review_list .review_item {
+  position: relative;
+  padding: 24px;
+  transition: background-color 0.1s ease 0s;
+  border-radius: 8px;
+  box-sizing: border-box;
+  flex-grow: 1;
+  background-color: #fafafa;
+  margin-bottom: 20px;
+}
+
+.review_list .review_item .review_hd {
+  display: flex;
+  grid-gap: 15px;
+  gap: 15px;
+  align-items: center;
+}
+
+.review_list .review_item .review_hd .rh_left img {
+  width: 70px;
+  border-radius: 50px;
+}
+
+.review_list .review_item .review_hd .rh_right h2 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.review_list .review_item .review_hd .rh_right h2 a {
+  color: #000;
+}
+
+.review_list .review_item .review_hd .rh_right .rating_star {
+  display: flex;
+  grid-gap: 15px;
+  gap: 15px;
+  align-items: flex-end;
+}
+
+.review_list .review_item .review_hd .rh_right .rating_star ul {
+  padding-left: 0;
+  display: inline-flex;
+  margin-bottom: 0;
+  grid-gap: 4px;
+  gap: 4px;
+}
+
+.review_list .review_item .review_hd .rh_right .rating_star ul li {
+  list-style: none;
+}
+
+.review_list .review_item .review_hd .rh_right .rating_star ul li svg {
+  width: 20px;
+}
+
+.review_list .review_item .review_hd .rh_right .rating_star .date_calc {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.8;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.review_list .review_item .review_body {
+  margin-top: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+  .review_list .review_item .review_body p {
+    font-size: 14px;
+  }
+}
+
+.rating__value {
+  flex-wrap: wrap;
+  grid-gap: 35px;
+  gap: 35px;
+  align-items: center;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: center;
+  margin-left: 4px;
+  margin-right: 4px;
+  padding: 24px 10px;
+}

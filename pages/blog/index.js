@@ -31,6 +31,11 @@ function blog(props) {
     const output = data?.filter((e) => keys.some((k) => regex.test(e[k])));
     if (blogs?.length > 0) {
       setBlogs(output);
+    } else {
+      category
+        ? data &&
+          setBlogs((prev) => data?.filter((item) => item?.category == category))
+        : data && setBlogs(data);
     }
   }, [query?.search]);
 

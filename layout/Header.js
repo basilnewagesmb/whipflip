@@ -47,7 +47,16 @@ function Header() {
     <div className="whipflip-header">
       {isModalOpen && (
         <Modal
-          title="Get instant offer"
+          title={
+            <h2
+              style={{
+                fontWeight: 900,
+                fontSize: "26px",
+              }}
+            >
+              Get Instant offer
+            </h2>
+          }
           open={isModalOpen}
           onOk={handleOk}
           onCancel={handleCancel}

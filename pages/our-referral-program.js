@@ -54,7 +54,7 @@ function Index() {
           </div>
           <div className="row mb-5">
             <div className="col-12 ">
-              <Faq />
+              <Faq short={true}/>
             </div>
           </div>
         </div>

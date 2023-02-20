@@ -131,7 +131,7 @@ function Index() {
       </div>
       <ReadyToSell />
       <div className="pt-5">
-        <Faq />
+        <Faq short={true}/>
       </div>
     </>
   );

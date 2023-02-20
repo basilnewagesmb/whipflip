@@ -193,6 +193,15 @@ export const general = createApi({
         };
       },
     }),
+    reviews: builder.query({
+      query: (params) => {
+        return {
+          url: `/prospects/reviews`,
+          method: "GET",
+          params,
+        };
+      },
+    }),
   }),
 });
 
@@ -209,4 +218,5 @@ export const {
   useSlotsQuery,
   useSubscribeMutation,
   useBlogsQuery,
+  useReviewsQuery,
 } = general;
