@@ -318,13 +318,12 @@ function Blog(props) {
 
 export default Blog;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs`);
   const blogs = await res.json();
   return {
     props: {
       blogs,
     },
-    revalidate: 10,
   };
 }
