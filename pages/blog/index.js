@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import { Empty, Spin } from "antd";
 import Highlighter from "react-highlight-words";
 
-function blog(props) {
+function Blog(props) {
   const { query, replace } = useRouter();
   const category = query?.category;
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ function blog(props) {
   }, [category, data]);
 
   useEffect(() => {
-    const keys = ["title", "description"];
+    const keys = ["search_text"];
     const values = query?.search;
     const regex = new RegExp(values, "i");
     const output = data?.filter((e) => keys.some((k) => regex.test(e[k])));
@@ -316,7 +316,7 @@ function blog(props) {
   );
 }
 
-export default blog;
+export default Blog;
 
 export async function getStaticProps() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs`);

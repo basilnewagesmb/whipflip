@@ -66,8 +66,43 @@ function useConfirmFormMob({ form, navFunc }) {
         if (res?.error?.data?.message) {
           window.scrollTo(0, 0);
           setValid(false);
+          analytics &&
+            analytics.event(
+              "VehicleDetailsNotFound",
+              "VehicleDetailsNotFound",
+              `VehicleDetailsNotFound`
+            );
+          fbpixel &&
+            fbpixel.customEvent("VehicleDetailsNotFound", {
+              content_name: "Enter vin",
+              content_category: `VehicleDetailsNotFound`,
+              contents: [],
+            });
         } else {
           setValid(true);
+          if (res.data.old_vehicle) {
+            analytics &&
+              analytics.event("OldModelYear", "Enter vin", `OldVehicle`);
+            fbpixel &&
+              fbpixel.customEvent("OldVehicle", {
+                content_name: "Enter vin",
+                content_category: `OldVehicle`,
+                contents: [
+                  {
+                    ...res.data,
+                  },
+                ],
+              });
+          } else {
+            analytics &&
+              analytics.event("VinEnetered", "VinEnetered", `${res.data.vin}`);
+            fbpixel &&
+              fbpixel.customEvent("VinEnetered", {
+                content_name: "Enter vin",
+                content_category: `VinEnetered`,
+                contents: [{ ...res.data }],
+              });
+          }
         }
         break;
       case "plate":
@@ -75,8 +110,41 @@ function useConfirmFormMob({ form, navFunc }) {
         if (res?.error?.data?.message) {
           window.scrollTo(0, 0);
           setValid(false);
+          analytics?.event(
+            "PlateDetailsNotFound",
+            "Enter plate",
+            `PlateDetailsNotFound`
+          );
+          fbpixel?.customEvent("PlateDetailsNotFound", {
+            content_name: "Enter plate",
+            content_category: `PlateDetailsNotFound`,
+            contents: [],
+          });
         } else {
           setValid(true);
+          if (res.old_vehicle) {
+            analytics?.event("OldModelYear", "Enter plate", `OldVehicle`);
+            fbpixel?.customEvent("OldModelYear", {
+              content_name: "Enter plate",
+              content_category: `OldVehicleModalShowBtn`,
+              contents: [
+                {
+                  ...res.data,
+                },
+              ],
+            });
+          } else {
+            analytics?.event(
+              "PlateDetailsEnetered",
+              "Enter plate",
+              `PlateDetailsEnetered`
+            );
+            fbpixel?.customEvent("PlateDetailsEnetered", {
+              content_name: "Enter plate",
+              content_category: `PlateDetailsEnetered`,
+              contents: [{ ...res.data }],
+            });
+          }
         }
         break;
       default:
@@ -101,13 +169,13 @@ function useConfirmFormMob({ form, navFunc }) {
       uid: offerData.uid,
       cosmetic: data.cosmetic,
     };
-    if ((res?.data?.trimlevel?.length, issues)) {
+    if ((res?.data?.trimlevel?.length, issues, analytics, fbpixel)) {
       showConfirm(res?.data, data, issues);
     } else {
       message.error("No vehicle details found!");
     }
   };
-  const showConfirm = (level, data, issues) => {
+  const showConfirm = (level, data, issues, analytics, fbpixel) => {
     confirm({
       title: "Choose your vehicle trim:",
       icon: <ExclamationCircleFilled />,
@@ -131,6 +199,17 @@ function useConfirmFormMob({ form, navFunc }) {
               });
               if (cRes?.data) {
                 Modal.destroyAll();
+                analytics?.event(
+                  "Damages Added",
+                  "Damages Added",
+                  cRes.data.uid
+                );
+                fbpixel &&
+                  fbpixel.customEvent("Damages Added", {
+                    content_name: "Damages Added",
+                    content_category: `Damages Added`,
+                    content_ids: [cRes.data.uid],
+                  });
               } else {
                 message.error("something went wrong");
               }
@@ -179,7 +258,9 @@ export const ShowEasyStepMob = (
   dispatch,
   setCurrent,
   skipToInstantOffer,
-  initialOffer
+  initialOffer,
+  analytics,
+  fbpixel
 ) => {
   Modal.info({
     title: (
@@ -257,6 +338,8 @@ export const ShowEasyStepMob = (
             <SkipButton
               skipToInstantOffer={skipToInstantOffer}
               initialOffer={initialOffer}
+              analytics
+              fbpixel
             />
           </div>
         </div>

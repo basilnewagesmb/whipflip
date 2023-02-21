@@ -19,7 +19,7 @@ import { useRouter } from "next/router";
 import SkipButton from "components/offer/steps/confirm/web/skipButton";
 import { ShowEasyStepMob } from "./mobFunction";
 import { ExclamationCircleFilled } from "@ant-design/icons";
-function useConfirmForm({ form }) {
+function useConfirmForm({ form, fbpixel, analytics }) {
   const { confirm } = Modal;
   const dispatch = useDispatch();
   const [isValid, setValid] = useState(true);
@@ -39,12 +39,21 @@ function useConfirmForm({ form }) {
       setInitialOffer(offerData);
       if (offerData.status == "quote" && offerData?.is_deduction_added == "Y") {
         !isMobile
-          ? ShowEasyStep(dispatch, setCurrent, skipToInstantOffer, initialOffer)
+          ? ShowEasyStep(
+              dispatch,
+              setCurrent,
+              skipToInstantOffer,
+              initialOffer,
+              analytics,
+              fbpixel
+            )
           : ShowEasyStepMob(
               dispatch,
               setCurrent,
               skipToInstantOffer,
-              initialOffer
+              initialOffer,
+              analytics,
+              fbpixel
             );
       }
     }
@@ -85,8 +94,43 @@ function useConfirmForm({ form }) {
         if (res?.error?.data?.message) {
           window.scrollTo(0, 0);
           setValid(false);
+          analytics &&
+            analytics.event(
+              "VehicleDetailsNotFound",
+              "VehicleDetailsNotFound",
+              `VehicleDetailsNotFound`
+            );
+          fbpixel &&
+            fbpixel.customEvent("VehicleDetailsNotFound", {
+              content_name: "Enter vin",
+              content_category: `VehicleDetailsNotFound`,
+              contents: [],
+            });
         } else {
           setValid(true);
+          if (res.data.old_vehicle) {
+            analytics &&
+              analytics.event("OldModelYear", "Enter vin", `OldVehicle`);
+            fbpixel &&
+              fbpixel.customEvent("OldVehicle", {
+                content_name: "Enter vin",
+                content_category: `OldVehicle`,
+                contents: [
+                  {
+                    ...res.data,
+                  },
+                ],
+              });
+          } else {
+            analytics &&
+              analytics.event("VinEnetered", "VinEnetered", `${res.data.vin}`);
+            fbpixel &&
+              fbpixel.customEvent("VinEnetered", {
+                content_name: "Enter vin",
+                content_category: `VinEnetered`,
+                contents: [{ ...res.data }],
+              });
+          }
         }
         break;
       case "plate":
@@ -94,8 +138,43 @@ function useConfirmForm({ form }) {
         if (res?.error?.data?.message) {
           window.scrollTo(0, 0);
           setValid(false);
+          analytics &&
+            analytics.event(
+              "PlateDetailsNotFound",
+              "Enter plate",
+              `PlateDetailsNotFound`
+            );
+          fbpixel &&
+            fbpixel.customEvent("PlateDetailsNotFound", {
+              content_name: "Enter plate",
+              content_category: `PlateDetailsNotFound`,
+              contents: [],
+            });
         } else {
           setValid(true);
+          if (res.old_vehicle) {
+            analytics?.event("OldModelYear", "Enter plate", `OldVehicle`);
+            fbpixel?.customEvent("OldModelYear", {
+              content_name: "Enter plate",
+              content_category: `OldVehicleModalShowBtn`,
+              contents: [
+                {
+                  ...res.data,
+                },
+              ],
+            });
+          } else {
+            analytics?.event(
+              "PlateDetailsEnetered",
+              "Enter plate",
+              `PlateDetailsEnetered`
+            );
+            fbpixel?.customEvent("PlateDetailsEnetered", {
+              content_name: "Enter plate",
+              content_category: `PlateDetailsEnetered`,
+              contents: [{ ...res.data }],
+            });
+          }
         }
         break;
       default:
@@ -120,13 +199,14 @@ function useConfirmForm({ form }) {
       uid: offerData.uid,
       cosmetic: data.cosmetic,
     };
+
     if (res?.data?.trimlevel?.length) {
-      showConfirm(res?.data, data, issues);
+      showConfirm(res?.data, data, issues, analytics, fbpixel);
     } else {
       message.error("No vehicle details found!");
     }
   };
-  const showConfirm = (level, data, issues) => {
+  const showConfirm = (level, data, issues, analytics, fbpixel) => {
     confirm({
       title: "Choose your vehicle trim:",
       icon: <ExclamationCircleFilled />,
@@ -150,6 +230,17 @@ function useConfirmForm({ form }) {
               });
               if (cRes?.data) {
                 Modal.destroyAll();
+                analytics?.event(
+                  "Damages Added",
+                  "Damages Added",
+                  cRes.data.uid
+                );
+                fbpixel &&
+                  fbpixel.customEvent("Damages Added", {
+                    content_name: "Damages Added",
+                    content_category: `Damages Added`,
+                    content_ids: [cRes.data.uid],
+                  });
               } else {
                 message.error("something went wrong");
               }
@@ -193,7 +284,9 @@ export const ShowEasyStep = (
   dispatch,
   setCurrent,
   skipToInstantOffer,
-  initialOffer
+  initialOffer,
+  analytics,
+  fbpixel
 ) => {
   Modal.info({
     title: "One Final Easy Step!",
@@ -327,6 +420,8 @@ export const ShowEasyStep = (
             <SkipButton
               skipToInstantOffer={skipToInstantOffer}
               initialOffer={initialOffer}
+              analytics
+              fbpixel
             />
           </div>
         </div>

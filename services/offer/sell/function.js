@@ -165,7 +165,6 @@ function useSellFuc(data) {
     name: "Sell",
     size: "large",
     onFinish: (data) => {
-      console.log(data);
       setState((prev) => ({
         ...prev,
         isRulesOpen: true,

@@ -1,6 +1,6 @@
 import { Button } from "antd";
 import React, { useState } from "react";
-function SkipButton({ skipToInstantOffer, initialOffer }) {
+function SkipButton({ skipToInstantOffer, initialOffer, analytics, fbpixel }) {
   const [skipping, setSkipping] = useState(false);
   return (
     <Button
@@ -22,6 +22,14 @@ function SkipButton({ skipToInstantOffer, initialOffer }) {
         });
         setSkipping(false);
         if (res.data) {
+          analytics &&
+            analytics.event("FastForward", "Fast Forward", `Offer generated`);
+          fbpixel &&
+            fbpixel.customEvent("FastForward", {
+              content_name: "Fast Forward",
+              content_category: `Offergenerated`,
+              contents: [{ ...res.data }],
+            });
           window.location.href = `/prospect/${initialOffer?.uid}/${res?.data?.status}`;
         } else {
         }

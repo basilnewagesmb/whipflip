@@ -7,7 +7,7 @@ import { useCreateInstantOfferMutation } from "../api";
 import { useLoginMutation, useProcessQuoteMutation } from "../clearQuote";
 import { Modal } from "antd";
 import { isIOS } from "react-device-detect";
-function useValuateFun({ offerData }) {
+function useValuateFun({ offerData, analytics, fbpixel }) {
   const { push } = useRouter();
   const [state, setState] = useState({
     current: "initial",
@@ -210,6 +210,19 @@ function useValuateFun({ offerData }) {
         }
         const offerRes = await createInstantOffer(postData);
         if (offerRes?.data.uid) {
+          if (response.data["is_over_quote"]) {
+            analytics?.event("OverPrice", "Offer page", `Over Price`);
+            fbpixel &&
+              fbpixel.customEvent("OverPrice", {
+                content_name: "Offer page",
+                content_category: `OverPrice`,
+                contents: [
+                  {
+                    ...response.data,
+                  },
+                ],
+              });
+          }
           push(`/prospect/${offerRes?.data.uid}/${offerRes?.data.status}`);
         } else {
           message.error("Something went Wrong");

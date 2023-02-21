@@ -15,7 +15,7 @@ import { useDispatch } from "react-redux";
 import { useSkipToInstantOfferMutation } from "services/offer/api";
 import { ShowEasyStepMob } from "services/offer/confirm/mobFunction";
 import Link from "next/link";
-function Confirm() {
+function Confirm({ fbpixel, analytics }) {
   const [skipToInstantOffer, {}] = useSkipToInstantOfferMutation();
   const dispatch = useDispatch();
   const [form] = Form.useForm();
@@ -34,7 +34,7 @@ function Confirm() {
     platHdl,
     setValid,
     confirming,
-  } = useConfirmForm({ form });
+  } = useConfirmForm({ form, fbpixel, analytics });
   return (
     <>
       <LoaderAnim isLoading={confirming} />

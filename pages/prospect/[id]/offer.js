@@ -1,13 +1,35 @@
 import OfferLayout from "components/offer/layout";
 import Confirm from "components/offer/steps/confirm/index";
 import Sell from "components/offer/steps/sell/index";
-import React from "react";
+import React, { useEffect } from "react";
 import { useGetOfferQuery } from "services/offer/api";
 
-function Index({ data }) {
+function Index(props) {
+  const { data, fbpixel } = props;
   const { data: offerData } = useGetOfferQuery(data?.uid, {
     skip: !data?.uid,
   });
+  useEffect(() => {
+    if (fbpixel) {
+      const events = ["ViewContent"];
+      for (let item of events) {
+        fbpixel.event(item, {
+          content_ids: [],
+          content_category: "",
+          content_name: "",
+          content_type: "",
+          contents: [],
+          currency: "",
+          num_items: 0,
+          predicted_ltv: 0,
+          search_string: "",
+          status: "",
+          value: "",
+        });
+      }
+    }
+  }, [fbpixel]);
+  
 
   return (
     <OfferLayout data={offerData || data} current={2}>

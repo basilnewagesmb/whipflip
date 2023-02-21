@@ -10,7 +10,8 @@ import useInitialForm from "services/offer/initial/function";
 import LoaderAnim from "components/common/loader";
 import InitialMob from "./mob/index";
 
-function Initial({ data }) {
+function Initial(props) {
+  const { data } = props;
   const isMobile = useCheckMobile();
   const { current, steps } = useSelector((state) => state.offer);
   const [form] = Form.useForm();
@@ -23,7 +24,7 @@ function Initial({ data }) {
     breakDownPop,
     isLoading,
     isDisable,
-  } = useInitialForm({ form, data, carouselRef });
+  } = useInitialForm({ form, data, carouselRef,props });
 
   return (
     <div>

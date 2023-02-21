@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import useCheckMobile from "utils/checkMobile";
 import { useCreateInitialOfferMutation, useGetOfferByIdMutation } from "../api";
 import { useState } from "react";
-function useInitialForm({ form, data, carouselRef, goTo }) {
+function useInitialForm({ form, data, carouselRef, goTo, props }) {
   const [isLoadingApi, setIsLoadingApi] = useState(false);
   const router = useRouter();
   const isMobile = useCheckMobile();
@@ -56,12 +56,42 @@ function useInitialForm({ form, data, carouselRef, goTo }) {
     if (res?.data?.uid) {
       const offerRes = await getOfferById(res?.data?.uid);
       if (offerRes?.data) {
+        try {
+          if (window?._kmq) {
+            window?._kmq.push(["identify", res?.data?.email || ""]);
+          }
+        } catch (error) {}
         dispatch(clear());
         dispatch(setInitialOffer(offerRes?.data));
-        router.push({
-          pathname: "/prospect/[id]/quote",
-          query: { id: offerRes?.data?.uid },
-        });
+        if (offerRes.data["is_over_quote"]) {
+          props.analytics.event("OverPrice", "Price is over $50k");
+          props.fbpixel &&
+            props.fbpixel.customEvent("OverPrice", {
+              content_name: "Vehicle Decode",
+              content_category: `OverPrice`,
+              contents: [
+                {
+                  ...offerRes.data,
+                },
+              ],
+            });
+        } else {
+          props.analytics.event("quote", "Quote Generated", offerRes.data.uid);
+          props.fbpixel &&
+            props.fbpixel.customEvent("quote", {
+              content_name: "Quote Generated",
+              content_category: `Quote Generated`,
+              contents: [
+                {
+                  ...offerRes.data,
+                },
+              ],
+            });
+          router.push({
+            pathname: "/prospect/[id]/quote",
+            query: { id: offerRes?.data?.uid },
+          });
+        }
       } else {
         setIsLoadingApi(false);
         message.error(offerRes?.data?.message || "Something went wrong");

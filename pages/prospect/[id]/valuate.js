@@ -1,5 +1,5 @@
 import Initial from "components/offer/steps/confirm/mob/valuate/initial";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import useValuateFun from "services/offer/confirm/valuateFun";
 import { useGetOfferQuery } from "services/offer/api";
@@ -14,11 +14,21 @@ const Uploading = dynamic(
   () => import("components/offer/steps/confirm/mob/valuate/uploading"),
   { ssr: false }
 );
-function Index({ data }) {
+function Index(props) {
+  const { data, analytics, fbpixel } = props;
+  useEffect(() => {
+    analytics && analytics.event("SnapPics", "Snap pics", `Valuation`);
+    fbpixel &&
+      fbpixel.customEvent("SnapPics", {
+        content_name: "Snap pics",
+        content_category: `Valuation`,
+        content_ids: [data?.uid],
+      });
+  }, []);
   const { data: offerData } = useGetOfferQuery(data?.uid, {
     skip: !data?.uid,
   });
-  const valuateControl = useValuateFun({ offerData });
+  const valuateControl = useValuateFun({ offerData, analytics, fbpixel });
   const { state } = valuateControl;
   return (
     <>
