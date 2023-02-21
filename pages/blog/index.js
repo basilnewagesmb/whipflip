@@ -52,108 +52,107 @@ function Blog(props) {
                   blogs?.length == 0 ? "justify-content-center" : ""
                 }`}
               >
-                {blogs?.length > 0 &&
-                  blogs?.map((blog, index) => (
-                    <>
-                      {index == 0 && (
-                        <div className="col-lg-12" key={index}>
-                          <div className="row blog_single_row">
-                            <div className="col-lg-7">
-                              <div className="news_item_left">
-                                <Link href={`blog/${blog.name}`}>
-                                  <img
-                                    src={blog.image}
-                                    alt=""
-                                    loading="lazy"
-                                    style={{ cursor: "pointer" }}
-                                  />
-                                </Link>
-                              </div>
+                {(blogs || props.blogs).map((blog, index) => (
+                  <>
+                    {index == 0 && (
+                      <div className="col-lg-12" key={index}>
+                        <div className="row blog_single_row">
+                          <div className="col-lg-7">
+                            <div className="news_item_left">
+                              <Link href={`blog/${blog.name}`}>
+                                <img
+                                  src={blog.image}
+                                  alt=""
+                                  loading="lazy"
+                                  style={{ cursor: "pointer" }}
+                                />
+                              </Link>
                             </div>
-                            <div className="col-lg-5">
-                              <div className="news_item__right news_item__right_bd_mob">
-                                <span className="tag_read_time">
-                                  {blog.time_to_read}
-                                </span>
-                                <div className="ni_body">
-                                  <h2>
-                                    <Link href={`blog/${blog.name}`}>
-                                      <Highlighter
-                                        searchWords={[query?.search]}
-                                        autoEscape={true}
-                                        textToHighlight={blog.title}
-                                      />
-                                    </Link>
-                                  </h2>
-                                  <p>
-                                    {" "}
+                          </div>
+                          <div className="col-lg-5">
+                            <div className="news_item__right news_item__right_bd_mob">
+                              <span className="tag_read_time">
+                                {blog.time_to_read}
+                              </span>
+                              <div className="ni_body">
+                                <h2>
+                                  <Link href={`blog/${blog.name}`}>
                                     <Highlighter
                                       searchWords={[query?.search]}
                                       autoEscape={true}
-                                      textToHighlight={blog.description}
+                                      textToHighlight={blog.title}
                                     />
-                                  </p>
-                                  <span className="writer-date">{`${
-                                    blog.author
-                                  } - ${moment(blog.created_at).format(
-                                    "MMMM D, YYYY"
-                                  )}`}</span>
-                                </div>
+                                  </Link>
+                                </h2>
+                                <p>
+                                  {" "}
+                                  <Highlighter
+                                    searchWords={[query?.search]}
+                                    autoEscape={true}
+                                    textToHighlight={blog.description}
+                                  />
+                                </p>
+                                <span className="writer-date">{`${
+                                  blog.author
+                                } - ${moment(blog.created_at).format(
+                                  "MMMM D, YYYY"
+                                )}`}</span>
                               </div>
                             </div>
                           </div>
                         </div>
-                      )}
-                      {index != 0 && (
-                        <div className="col-lg-6" key={index}>
-                          <div className="row blog_single_row">
-                            <div className="col-lg-12">
-                              <div className="news_item_left">
-                                <Link href={`blog/${blog.name}`}>
-                                  <img
-                                    src={blog.image}
-                                    alt=""
-                                    loading="lazy"
-                                    style={{ cursor: "pointer" }}
-                                  />
-                                </Link>
-                              </div>
+                      </div>
+                    )}
+                    {index != 0 && (
+                      <div className="col-lg-6" key={index}>
+                        <div className="row blog_single_row">
+                          <div className="col-lg-12">
+                            <div className="news_item_left">
+                              <Link href={`blog/${blog.name}`}>
+                                <img
+                                  src={blog.image}
+                                  alt=""
+                                  loading="lazy"
+                                  style={{ cursor: "pointer" }}
+                                />
+                              </Link>
                             </div>
-                            <div className="col-lg-12">
-                              <div className="news_item__right news_item__right_bd">
-                                <span className="tag_read_time">
-                                  {blog.time_to_read}
-                                </span>
-                                <div className="ni_body">
-                                  <h2>
-                                    <Link href={`blog/${blog.name}`}>
-                                      <Highlighter
-                                        searchWords={[query?.search]}
-                                        autoEscape={true}
-                                        textToHighlight={blog.title}
-                                      />
-                                    </Link>
-                                  </h2>
-                                  <p>
+                          </div>
+                          <div className="col-lg-12">
+                            <div className="news_item__right news_item__right_bd">
+                              <span className="tag_read_time">
+                                {blog.time_to_read}
+                              </span>
+                              <div className="ni_body">
+                                <h2>
+                                  <Link href={`blog/${blog.name}`}>
                                     <Highlighter
                                       searchWords={[query?.search]}
                                       autoEscape={true}
-                                      textToHighlight={blog.description}
+                                      textToHighlight={blog.title}
                                     />
-                                  </p>
-                                  <span className="writer-date">{`${
-                                    blog.author
-                                  } - ${moment(blog.created_at).format(
-                                    "MMMM D, YYYY"
-                                  )}`}</span>
-                                </div>
+                                  </Link>
+                                </h2>
+                                <p>
+                                  <Highlighter
+                                    searchWords={[query?.search]}
+                                    autoEscape={true}
+                                    textToHighlight={blog.description}
+                                  />
+                                </p>
+                                <span className="writer-date">{`${
+                                  blog.author
+                                } - ${moment(blog.created_at).format(
+                                  "MMMM D, YYYY"
+                                )}`}</span>
                               </div>
                             </div>
                           </div>
                         </div>
-                      )}
-                    </>
-                  ))}
+                      </div>
+                    )}
+                  </>
+                ))}
                 {blogs?.length == 0 && !isLoading && (
                   <div>
                     <Empty
@@ -318,7 +317,7 @@ function Blog(props) {
 
 export default Blog;
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs`);
   const blogs = await res.json();
   return {
