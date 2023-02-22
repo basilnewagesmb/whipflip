@@ -19,7 +19,7 @@ import { setCurrent } from "features/offer/offerSlice";
 import { useRouter } from "next/router";
 import SkipButton from "components/offer/steps/confirm/web/skipButton";
 import Link from "next/link";
-function useConfirmFormMob({ form, navFunc }) {
+function useConfirmFormMob({ form, navFunc, fbpixel, analytics }) {
   const { confirm } = Modal;
   const [isReview, setIsReview] = useState(false);
   const dispatch = useDispatch();
@@ -169,8 +169,8 @@ function useConfirmFormMob({ form, navFunc }) {
       uid: offerData.uid,
       cosmetic: data.cosmetic,
     };
-    if ((res?.data?.trimlevel?.length, issues, analytics, fbpixel)) {
-      showConfirm(res?.data, data, issues);
+    if (res?.data?.trimlevel?.length) {
+      showConfirm(res?.data, data, issues, analytics, fbpixel);
     } else {
       message.error("No vehicle details found!");
     }
@@ -338,8 +338,8 @@ export const ShowEasyStepMob = (
             <SkipButton
               skipToInstantOffer={skipToInstantOffer}
               initialOffer={initialOffer}
-              analytics
-              fbpixel
+              analytics={analytics}
+              fbpixel={fbpixel}
             />
           </div>
         </div>

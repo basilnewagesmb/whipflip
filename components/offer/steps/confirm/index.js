@@ -575,7 +575,11 @@ function Confirm({ fbpixel, analytics }) {
             </Form>
           ) : (
             initialOffer?.is_deduction_added != "Y" && (
-              <ConfirmMob initialOffer={initialOffer} />
+              <ConfirmMob
+                initialOffer={initialOffer}
+                fbpixel={fbpixel}
+                analytics={analytics}
+              />
             )
           )}
         </>

@@ -6,7 +6,7 @@ import getAmount from "utils/getAmount";
 import WillComeback from "components/offer/sideBar.js/willComeback";
 import QuestionsLayout from "./questionsLayout";
 
-function ConfirmMob({ initialOffer }) {
+function ConfirmMob({ initialOffer, fbpixel, analytics }) {
   const [started, setStarted] = useState(false);
   return !started ? (
     <div className="mobConfirmOff">
@@ -86,7 +86,11 @@ function ConfirmMob({ initialOffer }) {
       </div>
     </div>
   ) : (
-    <QuestionsLayout initialOffer={initialOffer} />
+    <QuestionsLayout
+      initialOffer={initialOffer}
+      fbpixel={fbpixel}
+      analytics={analytics}
+    />
   );
 }
 

@@ -420,8 +420,8 @@ export const ShowEasyStep = (
             <SkipButton
               skipToInstantOffer={skipToInstantOffer}
               initialOffer={initialOffer}
-              analytics
-              fbpixel
+              analytics={analytics}
+              fbpixel={fbpixel}
             />
           </div>
         </div>

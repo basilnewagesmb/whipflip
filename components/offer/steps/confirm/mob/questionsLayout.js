@@ -13,13 +13,15 @@ import InteriorConditions from "./interior-conditions";
 import Bounce from "react-reveal/Bounce";
 import { Modal } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
-function QuestionsLayout({ initialOffer }) {
+function QuestionsLayout({ initialOffer, fbpixel, analytics }) {
   const carouselRef = useRef();
   const [form] = Form.useForm();
   const navFunc = useMobileHandler(carouselRef, form);
   const formFunc = useConfirmFormMob({
     form,
     navFunc,
+    fbpixel,
+    analytics,
   });
   const dispatch = useDispatch();
   useEffect(() => {
