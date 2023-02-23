@@ -94,7 +94,6 @@ function useSellFuc(data) {
 
   const autoComplete = {
     onSelect: (location, d) => {
-      triggerFetch(true);
       const geocoder = new google.maps.Geocoder();
       geocoder
         .geocode({ placeId: d.place_id, country: "us" })
@@ -110,8 +109,10 @@ function useSellFuc(data) {
               .reduce((o, c) => {
                 return { ...o, ...c };
               }, {});
+            postal_code?.long_name && triggerFetch(true);
             form.setFieldsValue({
-              street_address: street_address?.long_name || "",
+              street_address:
+                street_address?.long_name || city?.long_name || "",
               zip: postal_code?.long_name || "",
               city: city?.long_name || "",
               state: state?.short_name || "",

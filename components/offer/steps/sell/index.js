@@ -27,19 +27,18 @@ function Sell(props) {
   }, [zipStatus]);
   useEffect(() => {
     if (successData?.uid) {
-      analytics.event(
+      analytics?.event(
         "appointment",
         "Filled Appointment Data",
         successData.uid
       );
-      fbpixel &&
-        fbpixel.customEvent("appointment", {
-          content_name: "Filled Appointment Data",
-          content_category: `Filled Appointment Data`,
-          content_ids: [successData.uid],
-        });
+      fbpixel?.customEvent("appointment", {
+        content_name: "Filled Appointment Data",
+        content_category: `Filled Appointment Data`,
+        content_ids: [successData.uid],
+      });
     }
-  }, [successData]);
+  }, [successData, analytics, fbpixel]);
 
   return (
     <>
