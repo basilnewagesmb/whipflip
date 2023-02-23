@@ -89,7 +89,7 @@ function useValuateFun({ offerData, analytics, fbpixel }) {
     audio: false,
     videoConstraints: {
       aspectRatio: { ideal: 1.7777777778 },
-      facingMode: { exact: "environment" },
+      //facingMode: { exact: "environment" },
     },
     ref: webcamRef,
     screenshotFormat: "image/png",
@@ -106,10 +106,12 @@ function useValuateFun({ offerData, analytics, fbpixel }) {
     onUserMediaError: async () => {
       const permission = await navigator.permissions.query({ name: "camera" });
       if (permission.state == "granted") {
-        await handle.enter();
-        console.log("granted");
+        try {
+          await handle?.enter();
+          console.log("granted");
+        } catch (error) {}
       } else {
-        await handle.exit();
+        await handle?.exit();
         await Modal.error({
           title: "Camera is blocked",
           content: (
@@ -210,19 +212,21 @@ function useValuateFun({ offerData, analytics, fbpixel }) {
         }
         const offerRes = await createInstantOffer(postData);
         if (offerRes?.data.uid) {
-          if (response.data["is_over_quote"]) {
-            analytics?.event("OverPrice", "Offer page", `Over Price`);
-            fbpixel &&
-              fbpixel.customEvent("OverPrice", {
-                content_name: "Offer page",
-                content_category: `OverPrice`,
-                contents: [
-                  {
-                    ...response.data,
-                  },
-                ],
-              });
-          }
+          try {
+            if (offerRes.data["is_over_quote"]) {
+              analytics?.event("OverPrice", "Offer page", `Over Price`);
+              fbpixel &&
+                fbpixel.customEvent("OverPrice", {
+                  content_name: "Offer page",
+                  content_category: `OverPrice`,
+                  contents: [
+                    {
+                      ...offerRes.data,
+                    },
+                  ],
+                });
+            }
+          } catch (error) {}
           push(`/prospect/${offerRes?.data.uid}/${offerRes?.data.status}`);
         } else {
           message.error("Something went Wrong");
