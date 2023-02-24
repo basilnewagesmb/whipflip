@@ -109,27 +109,23 @@ function useConfirmForm({ form, fbpixel, analytics }) {
         } else {
           setValid(true);
           if (res.data.old_vehicle) {
-            analytics &&
-              analytics.event("OldModelYear", "Enter vin", `OldVehicle`);
-            fbpixel &&
-              fbpixel.customEvent("OldVehicle", {
-                content_name: "Enter vin",
-                content_category: `OldVehicle`,
-                contents: [
-                  {
-                    ...res.data,
-                  },
-                ],
-              });
+            analytics?.event("OldModelYear", "Enter vin", `OldVehicle`);
+            fbpixel?.customEvent("OldVehicle", {
+              content_name: "Enter vin",
+              content_category: `OldVehicle`,
+              contents: [
+                {
+                  ...res.data,
+                },
+              ],
+            });
           } else {
-            analytics &&
-              analytics.event("VinEnetered", "VinEnetered", `${res.data.vin}`);
-            fbpixel &&
-              fbpixel.customEvent("VinEnetered", {
-                content_name: "Enter vin",
-                content_category: `VinEnetered`,
-                contents: [{ ...res.data }],
-              });
+            analytics?.event("VinEnetered", "VinEnetered", `${res.data.vin}`);
+            fbpixel?.customEvent("VinEnetered", {
+              content_name: "Enter vin",
+              content_category: `VinEnetered`,
+              contents: [{ ...res.data }],
+            });
           }
         }
         break;
@@ -235,12 +231,11 @@ function useConfirmForm({ form, fbpixel, analytics }) {
                   "Damages Added",
                   cRes.data.uid
                 );
-                fbpixel &&
-                  fbpixel.customEvent("Damages Added", {
-                    content_name: "Damages Added",
-                    content_category: `Damages Added`,
-                    content_ids: [cRes.data.uid],
-                  });
+                fbpixel?.customEvent("Damages Added", {
+                  content_name: "Damages Added",
+                  content_category: `Damages Added`,
+                  content_ids: [cRes.data.uid],
+                });
               } else {
                 message.error("something went wrong");
               }

@@ -63,6 +63,10 @@ function Index() {
                               required: true,
                               message: "Please select your first name!",
                             },
+                            {
+                              whitespace: true,
+                              message: "Please select your first name!",
+                            },
                           ]}
                         >
                           <Input
@@ -80,6 +84,10 @@ function Index() {
                           rules={[
                             {
                               required: true,
+                              message: "Please select your Last name!",
+                            },
+                            {
+                              whitespace: true,
                               message: "Please select your Last name!",
                             },
                           ]}
@@ -101,6 +109,10 @@ function Index() {
                           rules={[
                             {
                               required: true,
+                              message: "Please input your Email!",
+                            },
+                            {
+                              whitespace: true,
                               message: "Please input your Email!",
                             },
                             {
@@ -139,6 +151,10 @@ function Index() {
                               message: "Please input your phone number!",
                             },
                             {
+                              whitespace: true,
+                              message: "Please input your phone number!",
+                            },
+                            {
                               validator: (rule, value = "") => {
                                 if (value.trim().length != 0) {
                                   if (/^[0-9]{10}$/.test(value)) {
@@ -169,6 +185,10 @@ function Index() {
                             required: true,
                             message: "Please select your Message!",
                           },
+                          {
+                            whitespace: true,
+                            message: "Description is required!",
+                          },
                         ]}
                       >
                         <Input.TextArea allowClear rows={"3"} maxLength={200} />
@@ -176,7 +196,9 @@ function Index() {
                     </div>
                     <Button
                       htmlType="submit"
-                      className={`h-auto py-3  mb-2 w-100 ${isValid && "confirm_offer_btn"}`}
+                      className={`h-auto py-3  mb-2 w-100 ${
+                        isValid && "confirm_offer_btn"
+                      }`}
                       loading={isLoading}
                       disabled={!isValid}
                     >

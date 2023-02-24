@@ -292,7 +292,7 @@ export const ShowEasyStepMob = (
                 />
               </div>
             </div>
-            <div className="col-lg-8 fes_col fes_col_right">
+            <div className="col-lg-8 fes_col fes_col_right p-0">
               <div className="fes_col_right_in">
                 <div className="fcr_head">
                   <h2>Use our awesome photo tool!</h2>
@@ -308,7 +308,10 @@ export const ShowEasyStepMob = (
                     </li>
                   </ul>
                 </div>
-                <Link href={`/prospect/${initialOffer?.uid}/valuate`}>
+                <Link
+                  href={`/prospect/${initialOffer?.uid}/valuate`}
+                  prefetch={true}
+                >
                   <Button
                     className="confirm_off_btn rounded"
                     size="large"
@@ -321,7 +324,7 @@ export const ShowEasyStepMob = (
             </div>
           </div>
         </div>
-        <div className="fesFooter fesBody_in_row">
+        <div className="fesFooter fesBody_in_row p-1">
           <div className="fesFooter_body">
             <div className="fes_col_right_in">
               <div className="fcr_head">

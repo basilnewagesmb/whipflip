@@ -145,7 +145,7 @@ function Reviews(props) {
                   setLimit((prev) => prev + 10);
                 }}
               >
-                Loading
+                {isFetching ? "Loading..." : "Load more"}
               </Button>
             )}
           </div>

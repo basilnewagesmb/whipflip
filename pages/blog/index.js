@@ -9,6 +9,7 @@ import moment from "moment";
 import { useRouter } from "next/router";
 import { Empty, Spin } from "antd";
 import Highlighter from "react-highlight-words";
+import { Image } from "antd";
 
 function Blog(props) {
   const { query, replace } = useRouter();
@@ -60,11 +61,24 @@ function Blog(props) {
                           <div className="col-lg-7">
                             <div className="news_item_left">
                               <Link href={`blog/${blog.name}`}>
-                                <img
+                                <Image
                                   src={blog.image}
-                                  alt=""
-                                  loading="lazy"
+                                  title={blog.title}
+                                  alt={blog.title}
                                   style={{ cursor: "pointer" }}
+                                  className="w-100"
+                                  rootClassName="w-100"
+                                  height={200}
+                                  placeholder={
+                                    <Image
+                                      preview={false}
+                                      alt="img"
+                                      rootClassName="w-100"
+                                      src="/images/blurepng.png"
+                                      height={200}
+                                    />
+                                  }
+                                  preview={false}
                                 />
                               </Link>
                             </div>
@@ -109,11 +123,26 @@ function Blog(props) {
                           <div className="col-lg-12">
                             <div className="news_item_left">
                               <Link href={`blog/${blog.name}`}>
-                                <img
+                                <Image
                                   src={blog.image}
-                                  alt=""
-                                  loading="lazy"
+                                  title={blog.title}
+                                  alt={blog.title}
                                   style={{ cursor: "pointer" }}
+                                  className="w-100"
+                                  rootClassName="w-100"
+                                  height={300}
+                                  placeholder={
+                                    <Image
+                                      preview={false}
+                                      alt="img"
+                                      rootClassName="w-100"
+                                      className="w-100"
+                                      src="/images/blurepng.png"
+                                      height={300}
+
+                                    />
+                                  }
+                                  preview={false}
                                 />
                               </Link>
                             </div>

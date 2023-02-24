@@ -1,22 +1,32 @@
-import React from "react";
+import { Image, Slider } from "antd";
+import React, { useState } from "react";
 
 function Overlay({ pendingLayouts, previewing }) {
   const { overlay, title, id } = pendingLayouts?.[0] || {};
+  const [scale, setScale] = useState(50);
+  console.log(scale * 0.05);
   if (!previewing)
     return (
       <div style={overlayStyle}>
         <h5 style={titleStyle}>{title}</h5>
-        {overlay && (
-          <img
-            src={`/overlay/${overlay}`}
-            style={{
-              textAlign: "center",
-              height: "100vh",
-              width: "100%",
-              objectFit: "contain",
-            }}
-          />
-        )}
+        <Image
+          src={`/overlay/${overlay}`}
+          preview={false}
+          style={{
+            textAlign: "center",
+            height: "100vh",
+            width: "100%",
+            objectFit: "contain",
+            transform: `scale(${scale * 0.015})`,
+          }}
+        />
+        {/* <Slider
+          defaultValue={scale}
+          style={zoom}
+          onChange={(value) => {
+            setScale(value);
+          }}
+        /> */}
       </div>
     );
 }
@@ -37,5 +47,13 @@ const titleStyle = {
   transform: "translate(-50%,-5%)",
   padding: "7px 15px",
   fontSize: "14px",
+};
+
+const zoom = {
+  position: "absolute",
+  left: "50%",
+  transform: "translate(-50%,-5%)",
+  bottom: "0",
+  width: "80%",
 };
 export default Overlay;

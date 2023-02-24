@@ -43,6 +43,14 @@ function useVehicleForm(form) {
               className="text-center"
               src="/images/not-found.svg"
               preview={false}
+              placeholder={
+                <Image
+                  preview={false}
+                  alt="img"
+                  className="w-100"
+                  src="/images/not-found.webp"
+                />
+              }
             />
             <p className="text-left">
               {`Oh no! It looks like we are having trouble calculating an offer on

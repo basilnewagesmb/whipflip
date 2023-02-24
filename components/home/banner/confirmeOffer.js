@@ -113,7 +113,7 @@ function ConfirmOffer({ initialOffer }) {
             onClick={() => {
               Modal.confirm({
                 title: "Confirm",
-                content: "Are you sure to stat over new car?",
+                content: "Are you sure to start over new car?",
                 onOk: () => {
                   dispatch(reset());
                 },

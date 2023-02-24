@@ -32,7 +32,7 @@ function ResetActions({ setIsModalOpen, uid }) {
           }
         }}
       >
-        Rest
+        Reset
       </Button>
     </div>
   );
