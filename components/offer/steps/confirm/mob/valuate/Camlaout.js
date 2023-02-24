@@ -27,11 +27,12 @@ function CamLayout({
           backgroundColor: "#3c3c3c",
         }}
       >
-        {!isIOS && handle?.active ? (
-          <FullscreenExitOutlined style={fullStyle} onClick={handle.exit} />
-        ) : (
-          <FullscreenOutlined style={fullStyle} onClick={handle.enter} />
-        )}
+        {!isIOS &&
+          (handle?.active ? (
+            <FullscreenExitOutlined style={fullStyle} onClick={handle.exit} />
+          ) : (
+            <FullscreenOutlined style={fullStyle} onClick={handle.enter} />
+          ))}
         {!previewing && (
           <CloseOutlined
             style={{

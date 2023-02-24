@@ -13,6 +13,9 @@ html,
 .scroll-container {
   scroll-behavior: smooth;
 }
+:root {
+  color-scheme: only light !important;
+}
 @media (prefers-reduced-motion) {
   html,
   .scroll-container {
