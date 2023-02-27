@@ -3,15 +3,16 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Faq from "components/home/faq";
-import MetaHead from "components/common/metaHead";
-import HomeBanner from "components/home/banner/index";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { initialize } from "features/site/siteSlice";
-import ShimmerImage from "components/common/shimmerImage";
 import dynamic from "next/dynamic";
 const HappyCustomersSlider = dynamic(() => import("components/home/slider"));
 const ReadyToSell = dynamic(() => import("components/common/readytoSell"));
+const ShimmerImage = dynamic(() => import("components/common/shimmerImage"));
+const HomeBanner = dynamic(() => import("components/home/banner/index"));
+const MetaHead = dynamic(() => import("components/common/metaHead"));
+
 
 function Index(props) {
   const { query } = useRouter();
@@ -22,23 +23,6 @@ function Index(props) {
       dispatch(initialize(query));
     });
   }, [query]);
-  const [showConfirmOffer, setShowConfirmOffer] = useState(false);
-  const [showRetriveOffer, setShowRetriveOffer] = useState(false);
-  const handleShowConfirmOffer = (e) => {
-    e.preventDefault();
-    setShowConfirmOffer(true);
-  };
-  const handleCloseConfirmOffer = (e) => {
-    e.preventDefault();
-    setShowConfirmOffer(false);
-  };
-  const handleRetriveOffer = (e) => {
-    e.preventDefault();
-    setShowRetriveOffer(true);
-  };
-  const handleCloseRetriveOffer = () => {
-    setShowRetriveOffer(false);
-  };
   return (
     <>
       <MetaHead title="Home" />

@@ -1,15 +1,17 @@
 import React, { useEffect } from "react";
-import Footer from "./Footer";
-import Header from "./Header";
-import Fade from "react-reveal/Fade";
+
+import dynamic from "next/dynamic";
+const Footer = dynamic(() => import("./Footer"));
+const Header = dynamic(() => import("./Header"));
+const Fade = dynamic(() => import("react-reveal/Fade"));
 import { useDispatch, useSelector } from "react-redux";
 import { useGetOfferQuery } from "services/offer/api";
 import { useRouter } from "next/router";
 import { reset } from "features/offer/offerSlice";
-import moment from "node_modules/moment/moment";
+import moment from "moment";
 import { Modal } from "antd";
 import { ClockCircleOutlined } from "@ant-design/icons";
-import ResetActions from "./resetActions";
+const ResetActions = dynamic(() => import("./resetActions"));
 import { useState } from "react";
 function Default({ children, user }) {
   const [isModalOpen, setIsModalOpen] = useState(false);

@@ -1,10 +1,11 @@
 import "scss/style.scss";
 import "styles/animate.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import Default from "layout/Default";
+import dynamic from "next/dynamic";
+const Default = dynamic(() => import("layout/Default"));
 import { persister, store } from "app/store";
 import { Provider } from "react-redux";
-import NextNProgress from "nextjs-progressbar";
+const NextNProgress = dynamic(() => import("nextjs-progressbar"));
 import { PersistGate } from "redux-persist/integration/react";
 import { ConfigProvider } from "antd";
 import { useEffect } from "react";
