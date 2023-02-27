@@ -40,7 +40,9 @@ function CamLayout({
               color: "#fff",
             }}
             onClick={async () => {
-              handle.exit();
+              try {
+                handle.exit();
+              } catch (error) {}
               await Modal.info({
                 icon: null,
                 title: (

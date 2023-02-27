@@ -14,7 +14,7 @@ function careers() {
           <div className="row justify-content-center">
             <div className="col-12 col-lg-10 col-xl-8 page-title text-center">
               <p>Careers</p>
-              <h1>Come join the revolution!</h1>
+              <h1>Come Join the Revolution!</h1>
               <p>
                 {`WhipFlip's team has over 100 years of combined expertise in all
                 facets of the automotive industry, consumer services, and

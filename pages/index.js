@@ -1,17 +1,18 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-
 import Image from "next/image";
 import Link from "next/link";
 import Faq from "components/home/faq";
-import HappyCustomersSlider from "components/home/slider";
 import MetaHead from "components/common/metaHead";
 import HomeBanner from "components/home/banner/index";
 import { useDispatch, useSelector } from "react-redux";
-import ReadyToSell from "components/common/readytoSell";
-import { useRouter } from "node_modules/next/router";
+import { useRouter } from "next/router";
 import { initialize } from "features/site/siteSlice";
 import ShimmerImage from "components/common/shimmerImage";
+import dynamic from "next/dynamic";
+const HappyCustomersSlider = dynamic(() => import("components/home/slider"));
+const ReadyToSell = dynamic(() => import("components/common/readytoSell"));
+
 function Index(props) {
   const { query } = useRouter();
   const dispatch = useDispatch();
