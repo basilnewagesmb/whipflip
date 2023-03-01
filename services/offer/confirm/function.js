@@ -197,7 +197,7 @@ function useConfirmForm({ form, fbpixel, analytics }) {
     };
 
     if (res?.data?.trimlevel?.length) {
-      showConfirm(res?.data, data, issues, analytics, fbpixel);
+      !isMobile && showConfirm(res?.data, data, issues, analytics, fbpixel);
     } else {
       message.error("No vehicle details found!");
     }

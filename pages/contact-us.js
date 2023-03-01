@@ -237,13 +237,34 @@ function Index() {
               </div>
               <div className="text-white">
                 <p className="ic_location pl-5">
-                  1007 N. Orange Street <br />
-                  4th Floor <br />
-                  Wilmington, DE 19801
+                  <a
+                    href="https://goo.gl/maps/855tTpmtpuC9wJiT6"
+                    className=""
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    1007 N. Orange Street <br />
+                    4th Floor <br />
+                    Wilmington, DE 19801{" "}
+                  </a>
                 </p>
-                <p className="ic_phone pl-5">(888) 349-3189</p>
+                <p className="ic_phone pl-5">
+                  <a
+                    href="tel:+18883493189"
+                    className=""
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    (888) 349-3189
+                  </a>
+                </p>
                 <p className="ic_email pl-5">
-                  <a href="#" className="" target="_blank">
+                  <a
+                    href="mailto:support@whipflip.com"
+                    className=""
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     support@whipflip.com
                   </a>
                 </p>

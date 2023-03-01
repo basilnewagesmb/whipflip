@@ -20,6 +20,7 @@ import { useRouter } from "next/router";
 import SkipButton from "components/offer/steps/confirm/web/skipButton";
 import Link from "next/link";
 function useConfirmFormMob({ form, navFunc, fbpixel, analytics }) {
+  const [isTrimSelected, setIsTrimSelected] = useState(false);
   const { confirm } = Modal;
   const [isReview, setIsReview] = useState(false);
   const dispatch = useDispatch();
@@ -57,7 +58,6 @@ function useConfirmFormMob({ form, navFunc, fbpixel, analytics }) {
     },
   };
   const onFinish = async (data) => {
-    console.log(data);
     const { info, tire } = data;
     let res;
     switch (info.type) {
@@ -176,55 +176,57 @@ function useConfirmFormMob({ form, navFunc, fbpixel, analytics }) {
     }
   };
   const showConfirm = (level, data, issues, analytics, fbpixel) => {
-    confirm({
-      title: "Choose your vehicle trim:",
-      icon: <ExclamationCircleFilled />,
-      closable: true,
-      content: (
-        <Radio.Group>
-          <Space
-            direction="vertical"
-            onChange={async (e) => {
-              const full_trim = level?.trimlevel?.find(
-                (item) => item.vehicle_id == e.target.value
-              ).body;
-              const cRes = await addDamages({
-                issues,
-                vin: data?.info.vinNumber || level?.vin || "",
-                plate_state: data?.info.state || "",
-                plate_number: data?.info.plateNumber || "",
-                full_trim,
-                jd_vehicle_id: e.target.value,
-                uid: initialOffer?.uid,
-              });
-              if (cRes?.data) {
-                Modal.destroyAll();
-                analytics?.event(
-                  "Damages Added",
-                  "Damages Added",
-                  cRes.data.uid
-                );
-                fbpixel &&
-                  fbpixel.customEvent("Damages Added", {
-                    content_name: "Damages Added",
-                    content_category: `Damages Added`,
-                    content_ids: [cRes.data.uid],
-                  });
-              } else {
-                message.error("something went wrong");
-              }
-            }}
-          >
-            {level?.trimlevel?.map((item, k) => (
-              <Radio value={item.vehicle_id} key={k}>
-                {item.body}
-              </Radio>
-            ))}
-          </Space>
-        </Radio.Group>
-      ),
-      footer: false,
-    });
+    !isTrimSelected &&
+      confirm({
+        title: "Choose your vehicle trim:",
+        icon: <ExclamationCircleFilled />,
+        closable: true,
+        content: (
+          <Radio.Group>
+            <Space
+              direction="vertical"
+              onChange={async (e) => {
+                const full_trim = level?.trimlevel?.find(
+                  (item) => item.vehicle_id == e.target.value
+                ).body;
+                const cRes = await addDamages({
+                  issues,
+                  vin: data?.info.vinNumber || level?.vin || "",
+                  plate_state: data?.info.state || "",
+                  plate_number: data?.info.plateNumber || "",
+                  full_trim,
+                  jd_vehicle_id: e.target.value,
+                  uid: initialOffer?.uid,
+                });
+                if (cRes?.data) {
+                  setIsTrimSelected(true)
+                  Modal.destroyAll();
+                  analytics?.event(
+                    "Damages Added",
+                    "Damages Added",
+                    cRes.data.uid
+                  );
+                  fbpixel &&
+                    fbpixel.customEvent("Damages Added", {
+                      content_name: "Damages Added",
+                      content_category: `Damages Added`,
+                      content_ids: [cRes.data.uid],
+                    });
+                } else {
+                  message.error("something went wrong");
+                }
+              }}
+            >
+              {level?.trimlevel?.map((item, k) => (
+                <Radio value={item.vehicle_id} key={k}>
+                  {item.body}
+                </Radio>
+              ))}
+            </Space>
+          </Radio.Group>
+        ),
+        footer: false,
+      });
   };
 
   const onFinishFailed = (error) => {

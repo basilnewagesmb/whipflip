@@ -1123,7 +1123,10 @@ const Index = () => (
       <p>
         WhipFlip Customer Support
         <br />
-        Phone: (888) 349-3189
+        Phone:
+        <Link href="tel:+18883493189">
+          <span> (888) 349-3189</span>
+        </Link>
         <br />
         <u>
           <Link href="mailto:support@whipflip.com">

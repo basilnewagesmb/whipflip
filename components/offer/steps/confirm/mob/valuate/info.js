@@ -10,15 +10,26 @@ function InfoCam({ setSkipped }) {
         setSkipped(true);
       }}
     >
-      <CloseOutlined
+      <div
+        onClick={() => {
+          setSkipped(true);
+        }}
         style={{
           fontSize: "20px",
           color: "#fff",
           position: "absolute",
           right: "10px",
           top: "10px",
+          width: "50px",
+          height: "50px",
+          zIndex: "10000",
+          display: "flex",
+          justifyContent:"center",
+          alignItems:"center",
         }}
-      />
+      >
+        <CloseOutlined />
+      </div>
       <div className="cr_body_in">
         {" "}
         <div className="cr_head_dec">
@@ -53,7 +64,9 @@ function InfoCam({ setSkipped }) {
                 </div>
               </div>
               <div className="info_right">
-                <span>Clear away any heavy debris (eg. dirt. snow) from the vehicle </span>
+                <span>
+                  Clear away any heavy debris (eg. dirt. snow) from the vehicle{" "}
+                </span>
               </div>
             </div>
             <div className="crm_info_item col-4">

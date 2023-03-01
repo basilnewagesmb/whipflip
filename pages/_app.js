@@ -29,6 +29,7 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
   useEffect(() => {
     if (!isOnline) {
       message.error("You're currently offline");
+      
     }
   }, [isOnline]);
   return (

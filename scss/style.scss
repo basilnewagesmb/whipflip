@@ -15,7 +15,9 @@ html,
 }
 :root {
   color-scheme: only light !important;
+  touch-action: pan-x pan-y;
 }
+
 @media (prefers-reduced-motion) {
   html,
   .scroll-container {

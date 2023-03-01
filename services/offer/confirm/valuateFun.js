@@ -179,7 +179,6 @@ function useValuateFun({ offerData, analytics, fbpixel }) {
       const token = loginRes?.data?.user?.token;
       const processRes = await processQuote({ data, token });
       if (processRes?.data) {
-        setState((prev) => ({ ...prev, speed: 2 }));
         let dData = processRes.data;
         let deductionData = { panels: [] };
         state?.stills?.forEach((item, index) => {
@@ -227,6 +226,9 @@ function useValuateFun({ offerData, analytics, fbpixel }) {
                 });
             }
           } catch (error) {}
+          setTimeout(() => {
+            setState((prev) => ({ ...prev, speed: 1 }));
+          }, 2000);
           push(`/prospect/${offerRes?.data.uid}/${offerRes?.data.status}`);
         } else {
           message.error("Something went Wrong");
