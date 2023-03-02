@@ -19,9 +19,7 @@ import { useNetwork } from "utils/useNetwork";
 import { message } from "antd";
 import { Suspense } from "react";
 function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
-  const Default = dynamic(() => import("layout/Default"), {
-    suspense: true,
-  });
+  const Default = dynamic(() => import("layout/Default"));
   const NextNProgress = dynamic(() => import("nextjs-progressbar"), {
     suspense: true,
   });
@@ -43,7 +41,6 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
         <Suspense>
           <NextNProgress color="#FFD147" height={2} />
         </Suspense>
-        <Suspense > 
           <Default>
             <ConfigProvider
               theme={{
@@ -90,7 +87,6 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
               />
             </ConfigProvider>
           </Default>
-        </Suspense>
       </PersistGate>
     </Provider>
   );

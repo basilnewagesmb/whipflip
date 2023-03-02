@@ -14,9 +14,7 @@ function Index(props) {
   const ReadyToSell = dynamic(() => import("components/common/readytoSell"), {
     suspense: true,
   });
-  const ShimmerImage = dynamic(() => import("components/common/shimmerImage"), {
-    suspense: true,
-  });
+  const ShimmerImage = dynamic(() => import("components/common/shimmerImage"));
   const HomeBanner = dynamic(() => import("components/home/banner/index"), {
     suspense: true,
   });
