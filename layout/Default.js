@@ -1,8 +1,5 @@
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import dynamic from "next/dynamic";
-const Footer = dynamic(() => import("./Footer"));
-const Header = dynamic(() => import("./Header"));
-const Fade = dynamic(() => import("react-reveal/Fade"));
 import { useDispatch, useSelector } from "react-redux";
 import { useGetOfferQuery } from "services/offer/api";
 import { useRouter } from "next/router";
@@ -10,9 +7,20 @@ import { reset } from "features/offer/offerSlice";
 import moment from "moment";
 import { Modal } from "antd";
 import { ClockCircleOutlined } from "@ant-design/icons";
-const ResetActions = dynamic(() => import("./resetActions"));
 import { useState } from "react";
 function Default({ children, user }) {
+  const Footer = dynamic(() => import("./Footer"), {
+    suspense: true,
+  });
+  const Header = dynamic(() => import("./Header"), {
+    suspense: true,
+  });
+  const Fade = dynamic(() => import("react-reveal/Fade"), {
+    suspense: true,
+  });
+  const ResetActions = dynamic(() => import("./resetActions"), {
+    suspense: true,
+  });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { initialOffer } = useSelector((state) => state.offer);
   const { data } = useGetOfferQuery(initialOffer?.uid, {
@@ -57,7 +65,9 @@ function Default({ children, user }) {
         onCancel={() => setIsModalOpen(false)}
         icon={<ClockCircleOutlined />}
         footer={
-          <ResetActions setIsModalOpen={setIsModalOpen} uid={data?.uid} />
+          <Suspense>
+            <ResetActions setIsModalOpen={setIsModalOpen} uid={data?.uid} />
+          </Suspense>
         }
         width={400}
       >
@@ -68,13 +78,19 @@ function Default({ children, user }) {
         condition={!pathname?.includes("valuate")}
         wrap={(wrappedChildren) => (
           <>
-            <Header />
+            <Suspense>
+              <Header />
+            </Suspense>
             {wrappedChildren}
-            <Footer />
+            <Suspense>
+              <Footer />
+            </Suspense>
           </>
         )}
       >
-        <Fade spy={pathname}>{children}</Fade>
+        <Suspense>
+          <Fade spy={pathname}>{children}</Fade>
+        </Suspense>
       </ConditionalWrap>
     </div>
   );

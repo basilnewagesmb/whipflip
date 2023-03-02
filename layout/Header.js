@@ -4,18 +4,26 @@ import dynamic from "next/dynamic";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-const Sidebar = dynamic(() => import("./Sidebar"));
 import items from "public/data/sidebar.json";
 import Link from "next/link";
 import { useRouter } from "node_modules/next/router";
-const InstantOffer = dynamic(() => import("components/home/banner/instantOffer"));
 import { Button, Modal } from "antd";
 import { CarTwoTone } from "@ant-design/icons";
 import useCheckMobile from "utils/checkMobile";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsModalHide, setIsModalOpen } from "features/offer/offerSlice";
+import { Suspense } from "react";
 
 function Header() {
+  const Sidebar = dynamic(() => import("./Sidebar"), {
+    suspense: true,
+  });
+  const InstantOffer = dynamic(
+    () => import("components/home/banner/instantOffer"),
+    {
+      suspense: true,
+    }
+  );
   const { current, isModalOpen } = useSelector((state) => state.offer);
   const dispatch = useDispatch();
   const isMobile = useCheckMobile();
@@ -64,7 +72,9 @@ function Header() {
           footer={null}
           className="common_initial_model"
         >
-          <InstantOffer handleCancel={handleCancel} />
+          <Suspense>
+            <InstantOffer handleCancel={handleCancel} />
+          </Suspense>
         </Modal>
       )}
       {pathname?.includes("/vehicle") || pathname?.includes("/prospect") ? (
@@ -181,11 +191,13 @@ function Header() {
       )}
 
       <div className="sideMenu">
-        <Sidebar
-          handleShowSideBar={handleShowSideBar}
-          openSideBar={openSideBar}
-          setOpenSideBar={setOpenSideBar}
-        />
+        <Suspense>
+          <Sidebar
+            handleShowSideBar={handleShowSideBar}
+            openSideBar={openSideBar}
+            setOpenSideBar={setOpenSideBar}
+          />
+        </Suspense>
       </div>
     </div>
   );

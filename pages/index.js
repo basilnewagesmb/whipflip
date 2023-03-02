@@ -6,14 +6,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { initialize } from "features/site/siteSlice";
 import dynamic from "next/dynamic";
-const HappyCustomersSlider = dynamic(() => import("components/home/slider"));
-const ReadyToSell = dynamic(() => import("components/common/readytoSell"));
-const ShimmerImage = dynamic(() => import("components/common/shimmerImage"));
-const HomeBanner = dynamic(() => import("components/home/banner/index"));
-const MetaHead = dynamic(() => import("components/common/metaHead"));
-
-
+import { Suspense } from "react";
 function Index(props) {
+  const HappyCustomersSlider = dynamic(() => import("components/home/slider"), {
+    suspense: true,
+  });
+  const ReadyToSell = dynamic(() => import("components/common/readytoSell"), {
+    suspense: true,
+  });
+  const ShimmerImage = dynamic(() => import("components/common/shimmerImage"), {
+    suspense: true,
+  });
+  const HomeBanner = dynamic(() => import("components/home/banner/index"), {
+    suspense: true,
+  });
+  const MetaHead = dynamic(() => import("components/common/metaHead"), {
+    suspense: true,
+  });
   const { query } = useRouter();
   const dispatch = useDispatch();
   const reviews = useSelector((state) => state.reviews);
@@ -24,8 +33,12 @@ function Index(props) {
   }, [query]);
   return (
     <>
-      <MetaHead title="Home" />
-      <HomeBanner reviews={reviews} />
+      <Suspense>
+        <MetaHead title="Home" />
+      </Suspense>
+      <Suspense>
+        <HomeBanner reviews={reviews} />
+      </Suspense>
       <div className="how-it-works pt100">
         <div className="container">
           <div className="secHd text-center">
@@ -412,7 +425,9 @@ function Index(props) {
             </div>
           </h2>
         </div>
-        <HappyCustomersSlider />
+        <Suspense>
+          <HappyCustomersSlider />
+        </Suspense>
         <div className="moreReviews text-center">
           <span>
             Want to see more raving reviews? Visit our{" "}
@@ -425,7 +440,9 @@ function Index(props) {
         </div>
       </div>
       <Faq icon />
-      <ReadyToSell />
+      <Suspense>
+        <ReadyToSell />
+      </Suspense>
       <div className="sell-car-info">
         <div className="container">
           <div className="row">

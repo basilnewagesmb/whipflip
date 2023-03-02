@@ -12,7 +12,7 @@ const HappyCustomersSlider = () => {
         const container = document.createElement("div");
         container.className =
           "elfsight-app-f3baf688-498f-4c7e-84ba-df8e6c487e36";
-        if (reviews.current.children.length == 0) {
+        if (reviews?.current?.children?.length == 0) {
           reviews.current.appendChild(container);
         }
       });
