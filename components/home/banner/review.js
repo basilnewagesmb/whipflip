@@ -1,5 +1,4 @@
-import Stars from "components/common/star";
-import Image from "next/image";
+
 import { Rate } from "antd";
 import React from "react";
 import ShimmerImage from "components/common/shimmerImage";

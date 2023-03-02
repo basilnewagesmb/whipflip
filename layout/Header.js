@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import Sidebar from "./Sidebar";
+const Sidebar = dynamic(() => import("./Sidebar"));
 import items from "public/data/sidebar.json";
 import Link from "next/link";
 import { useRouter } from "node_modules/next/router";
-import InstantOffer from "components/home/banner/instantOffer";
+const InstantOffer = dynamic(() => import("components/home/banner/instantOffer"));
 import { Button, Modal } from "antd";
 import { CarTwoTone } from "@ant-design/icons";
 import useCheckMobile from "utils/checkMobile";

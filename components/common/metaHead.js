@@ -1,13 +1,17 @@
 import Head from "next/head";
 import React from "react";
 
-function MetaHead({ title = "" }) {
+function MetaHead({ title = "", description = "" }) {
   return (
     <Head>
       <title>{!title ? "Whip Flip" : title + " | Whip Flip"}</title>;
       <meta
         name="Description"
-        content="Selling your used car online has never been easier. Find out what your car is worth and get a better offer than trade in. We come to you. Paid on the spot."
+        content={
+          !description
+            ? "Selling your used car online has never been easier. Find out what your car is worth and get a better offer than trade in. We come to you. Paid on the spot."
+            : description
+        }
       ></meta>
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content="https://www.whipflip.com/" />

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-
 import dynamic from "next/dynamic";
 const Footer = dynamic(() => import("./Footer"));
 const Header = dynamic(() => import("./Header"));

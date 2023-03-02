@@ -1,11 +1,11 @@
 import Image from "next/image";
-import Link from "next/link";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import ConfirmOffer from "./confirmeOffer";
-import InstantOffer from "./instantOffer";
-import Reviews from "./review";
-import VideoModal from "./videoModal";
+import dynamic from "next/dynamic";
+const ConfirmOffer = dynamic(() => import("./confirmeOffer"));
+const InstantOffer = dynamic(() => import("./instantOffer"));
+const Reviews = dynamic(() => import("./review"));
+const VideoModal = dynamic(() => import("./videoModal"));
 function HomeBanner({ reviews }) {
   const { initialOffer } = useSelector((state) => state.offer);
   const [isVideoOpen, setIsVideoOpen] = useState(false);

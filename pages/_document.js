@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script";
 
 export default function Document() {
   return (
@@ -16,7 +17,7 @@ export default function Document() {
           href="https://unpkg.com/aos@2.3.1/dist/aos.css"
           rel="stylesheet"
         />
-        <script
+        <Script
           dangerouslySetInnerHTML={{
             __html: `
               var _kmq = _kmq || [];
@@ -33,12 +34,15 @@ export default function Document() {
               _kms('//scripts.kissmetrics.io/' + _kmk + '.2.js');
           `,
           }}
+          id="kissmetrics"
           type="text/javascript"
-        ></script>
+          strategy="afterInteractive"
+        ></Script>
       </Head>
       <body>
         <Main />
-        <script
+        <Script
+          id="livechatinc"
           dangerouslySetInnerHTML={{
             __html: `
           window.__lc = window.__lc || {};
@@ -51,7 +55,8 @@ export default function Document() {
           `,
           }}
           type="text/javascript"
-        ></script>
+          strategy="afterInteractive"
+        ></Script>
         <noscript>
           <a
             href="https://www.livechatinc.com/chat-with/12262323/"

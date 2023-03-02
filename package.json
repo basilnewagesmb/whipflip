@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^13.2.3",
     "@react-hook/window-size": "^3.0.7",
     "@reduxjs/toolkit": "^1.9.1",
     "add": "^2.0.6",
