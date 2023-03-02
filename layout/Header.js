@@ -13,17 +13,10 @@ import useCheckMobile from "utils/checkMobile";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsModalHide, setIsModalOpen } from "features/offer/offerSlice";
 import { Suspense } from "react";
+import InstantOffer from "components/home/banner/instantOffer";
 
 function Header() {
-  const Sidebar = dynamic(() => import("./Sidebar"), {
-    suspense: true,
-  });
-  const InstantOffer = dynamic(
-    () => import("components/home/banner/instantOffer"),
-    {
-      suspense: true,
-    }
-  );
+  const Sidebar = dynamic(() => import("./Sidebar"));
   const { current, isModalOpen } = useSelector((state) => state.offer);
   const dispatch = useDispatch();
   const isMobile = useCheckMobile();
@@ -72,9 +65,7 @@ function Header() {
           footer={null}
           className="common_initial_model"
         >
-          <Suspense>
-            <InstantOffer handleCancel={handleCancel} />
-          </Suspense>
+          <InstantOffer handleCancel={handleCancel} />
         </Modal>
       )}
       {pathname?.includes("/vehicle") || pathname?.includes("/prospect") ? (
@@ -191,13 +182,11 @@ function Header() {
       )}
 
       <div className="sideMenu">
-        <Suspense>
           <Sidebar
             handleShowSideBar={handleShowSideBar}
             openSideBar={openSideBar}
             setOpenSideBar={setOpenSideBar}
           />
-        </Suspense>
       </div>
     </div>
   );
