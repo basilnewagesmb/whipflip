@@ -12,7 +12,7 @@ function About() {
   return (
     <>
       <MetaHead title="About" />
-      <div className="page-header about-company d-flex align-items-center">
+      <div className="page-header about-company d-flex align-items-center" style={{backgroundPositionY:"bottom"}}>
         <div className="container">
           <div className="row">
             <div className="col-12 page-title text-center">

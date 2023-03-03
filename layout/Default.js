@@ -1,5 +1,4 @@
 import React, {  useEffect } from "react";
-import dynamic from "next/dynamic";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetOfferQuery } from "services/offer/api";
 import { useRouter } from "next/router";

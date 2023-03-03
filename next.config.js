@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   images: {
     domains: [
       "demo.whipflip.com",
@@ -10,4 +10,8 @@ const nextConfig = {
   }
 };
 
-module.exports = nextConfig;
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: true,
+  openAnalyzer: false,
+})
+module.exports = withBundleAnalyzer(nextConfig);

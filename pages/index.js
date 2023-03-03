@@ -6,11 +6,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { initialize } from "features/site/siteSlice";
 import HomeBanner from "components/home/banner/index";
-import HappyCustomersSlider from "components/home/slider";
 import ReadyToSell from "components/common/readytoSell";
 import ShimmerImage from "components/common/shimmerImage";
 import MetaHead from "components/common/metaHead";
+import dynamic from "next/dynamic";
 function Index(props) {
+  const HappyCustomersSlider = dynamic(() => import("components/home/slider"), {
+    ssr: false,
+    loading: () => 0,
+  });
   const { query } = useRouter();
   const dispatch = useDispatch();
   const reviews = useSelector((state) => state.reviews);

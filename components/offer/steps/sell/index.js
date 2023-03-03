@@ -1,5 +1,5 @@
 import LoaderAnim from "components/common/loader";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import useSellFuc from "services/offer/sell/function";
 import Accept from "./web/accept";
 import SellFrom from "./web/sellForm";

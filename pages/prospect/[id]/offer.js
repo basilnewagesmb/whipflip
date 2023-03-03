@@ -1,5 +1,4 @@
 import OfferLayout from "components/offer/layout";
-import Confirm from "components/offer/steps/confirm/index";
 import Sell from "components/offer/steps/sell/index";
 import React, { useEffect } from "react";
 import { useGetOfferQuery } from "services/offer/api";
