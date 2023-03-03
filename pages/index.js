@@ -9,12 +9,8 @@ import HomeBanner from "components/home/banner/index";
 import ReadyToSell from "components/common/readytoSell";
 import ShimmerImage from "components/common/shimmerImage";
 import MetaHead from "components/common/metaHead";
-import dynamic from "next/dynamic";
+import HappyCustomersSlider from "components/home/slider";
 function Index(props) {
-  const HappyCustomersSlider = dynamic(() => import("components/home/slider"), {
-    ssr: false,
-    loading: () => 0,
-  });
   const { query } = useRouter();
   const dispatch = useDispatch();
   const reviews = useSelector((state) => state.reviews);
