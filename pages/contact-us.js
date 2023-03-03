@@ -205,13 +205,6 @@ function Index() {
                       Submit
                     </Button>
                   </Form>
-
-                  <p className="text-xs text-muted">
-                    {`By clicking "Next," you acknowledge that your data will be
-                    handled in accordance with Airtable's Privacy Policy, and
-                    you authorize Airtable to send you updates about Airtable
-                    products, services, and events.`}
-                  </p>
                 </div>
               </div>
             </div>
@@ -258,7 +251,10 @@ function Index() {
                     (888) 349-3189
                   </a>
                 </p>
-                <p className="ic_email pl-5">
+                <p
+                  className="ic_email pl-5"
+                  style={{ backgroundPositionY: "center" }}
+                >
                   <a
                     href="mailto:support@whipflip.com"
                     className=""

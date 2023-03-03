@@ -21,6 +21,7 @@ import SkipButton from "components/offer/steps/confirm/web/skipButton";
 import Link from "next/link";
 function useConfirmFormMob({ form, navFunc, fbpixel, analytics }) {
   const [isTrimSelected, setIsTrimSelected] = useState(false);
+  const [showTrimConfirm, setShowTrimConfirm] = useState(false);
   const { confirm } = Modal;
   const [isReview, setIsReview] = useState(false);
   const dispatch = useDispatch();
@@ -170,13 +171,15 @@ function useConfirmFormMob({ form, navFunc, fbpixel, analytics }) {
       cosmetic: data.cosmetic,
     };
     if (res?.data?.trimlevel?.length) {
+      setShowTrimConfirm(true)
       showConfirm(res?.data, data, issues, analytics, fbpixel);
     } else {
+      setShowTrimConfirm(false)
       message.error("No vehicle details found!");
     }
   };
   const showConfirm = (level, data, issues, analytics, fbpixel) => {
-    !isTrimSelected &&
+    !showTrimConfirm &&
       confirm({
         title: "Choose your vehicle trim:",
         icon: <ExclamationCircleFilled />,
@@ -186,6 +189,7 @@ function useConfirmFormMob({ form, navFunc, fbpixel, analytics }) {
             <Space
               direction="vertical"
               onChange={async (e) => {
+                setIsTrimSelected(true);
                 const full_trim = level?.trimlevel?.find(
                   (item) => item.vehicle_id == e.target.value
                 ).body;
@@ -199,7 +203,6 @@ function useConfirmFormMob({ form, navFunc, fbpixel, analytics }) {
                   uid: initialOffer?.uid,
                 });
                 if (cRes?.data) {
-                  setIsTrimSelected(true)
                   Modal.destroyAll();
                   analytics?.event(
                     "Damages Added",
@@ -253,6 +256,8 @@ function useConfirmFormMob({ form, navFunc, fbpixel, analytics }) {
     vehicleWithPlate,
     isReview,
     setIsReview,
+    isTrimSelected,
+    showTrimConfirm
   };
   return formDate;
 }

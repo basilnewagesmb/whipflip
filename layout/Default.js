@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from "react";
+import React, {  useEffect } from "react";
 import dynamic from "next/dynamic";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetOfferQuery } from "services/offer/api";
@@ -8,11 +8,11 @@ import moment from "moment";
 import { Modal } from "antd";
 import { ClockCircleOutlined } from "@ant-design/icons";
 import { useState } from "react";
+import Footer from "./Footer";
+import Header from "./Header";
+import { Fade } from "react-reveal/index";
+import ResetActions from "./resetActions";
 function Default({ children, user }) {
-  const Footer = dynamic(() => import("./Footer"));
-  const Header = dynamic(() => import("./Header"));
-  const Fade = dynamic(() => import("react-reveal/Fade"));
-  const ResetActions = dynamic(() => import("./resetActions"));
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { initialOffer } = useSelector((state) => state.offer);
   const { data } = useGetOfferQuery(initialOffer?.uid, {
@@ -68,13 +68,13 @@ function Default({ children, user }) {
         condition={!pathname?.includes("valuate")}
         wrap={(wrappedChildren) => (
           <>
-            <Header />
+              <Header />
             {wrappedChildren}
-            <Footer />
+              <Footer />
           </>
         )}
       >
-        <Fade spy={pathname}>{children}</Fade>
+          <Fade spy={pathname}>{children}</Fade>
       </ConditionalWrap>
     </div>
   );

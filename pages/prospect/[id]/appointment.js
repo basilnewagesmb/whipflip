@@ -308,7 +308,7 @@ function Congrats({ data }) {
                         support@whipflip.com
                       </a>{" "}
                       or contact us at{" "}
-                      <a href="tell:8883493189"> (888) 349-3189.</a>
+                      <a href="tel:+18883493189"> (888) 349-3189.</a>
                     </span>
                   </p>
                 </div>

@@ -24,7 +24,6 @@ function Reviews(props) {
   useEffect(() => {
     data && setReviews(data?.reviews);
   }, [data]);
-  console.log(reviews);
   return (
     <>
       <MetaHead title="Customer Reviews" />
@@ -116,6 +115,7 @@ function Reviews(props) {
                       />
                     </div>
                     <div className="rh_right">
+                    {/* +" "+_review.lastname */}
                       <h2>{_review.firstname}</h2>
                       <div className="rating_star">
                         <Rate

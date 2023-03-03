@@ -18,10 +18,9 @@ import * as devGTM from "utils/GTM/dev";
 import { useNetwork } from "utils/useNetwork";
 import { message } from "antd";
 import { Suspense } from "react";
+import Default from "layout/Default";
+import NextNProgress from "nextjs-progressbar";
 function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
-  const Default = dynamic(() => import("layout/Default"));
-  const NextNProgress = dynamic(() => import("nextjs-progressbar"));
-
   useEffect(() => {
     const shouldNotTrack = isLocal("localhost") || isDev();
     const gtm = shouldNotTrack ? devGTM : prodGTM;

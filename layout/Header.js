@@ -12,11 +12,10 @@ import { CarTwoTone } from "@ant-design/icons";
 import useCheckMobile from "utils/checkMobile";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsModalHide, setIsModalOpen } from "features/offer/offerSlice";
-import { Suspense } from "react";
 import InstantOffer from "components/home/banner/instantOffer";
+import Sidebar from "./Sidebar/index";
 
 function Header() {
-  const Sidebar = dynamic(() => import("./Sidebar"));
   const { current, isModalOpen } = useSelector((state) => state.offer);
   const dispatch = useDispatch();
   const isMobile = useCheckMobile();

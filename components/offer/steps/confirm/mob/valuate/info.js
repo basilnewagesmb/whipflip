@@ -2,6 +2,7 @@ import React from "react";
 import { CloseOutlined } from "@ant-design/icons";
 import Image from "next/image";
 import { Modal } from "react-bootstrap";
+import { Button } from "antd";
 function InfoCam({ setSkipped }) {
   return (
     <Modal.Body
@@ -10,10 +11,11 @@ function InfoCam({ setSkipped }) {
         setSkipped(true);
       }}
     >
-      <div
+      <Button
         onClick={() => {
           setSkipped(true);
         }}
+        className="btn"
         style={{
           fontSize: "20px",
           color: "#fff",
@@ -22,14 +24,14 @@ function InfoCam({ setSkipped }) {
           top: "10px",
           width: "50px",
           height: "50px",
-          zIndex: "10000",
+          zIndex: "0",
           display: "flex",
           justifyContent:"center",
           alignItems:"center",
         }}
       >
         <CloseOutlined />
-      </div>
+      </Button>
       <div className="cr_body_in">
         {" "}
         <div className="cr_head_dec">

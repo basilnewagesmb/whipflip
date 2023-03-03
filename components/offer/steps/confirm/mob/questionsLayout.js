@@ -60,7 +60,11 @@ function QuestionsLayout({ initialOffer, fbpixel, analytics }) {
           htmlType="submit"
           onClick={() => form.submit()}
           loading={formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading}
-          disabled={formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading}
+          disabled={
+            formFunc?.vinHdl.isLoading ||
+            formFunc?.platHdl.isLoading ||
+            formFunc?.showTrimConfirm
+          }
         >
           <span>
             {formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading

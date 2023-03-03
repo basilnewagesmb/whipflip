@@ -2,7 +2,6 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import dynamic from "next/dynamic";
-import { Suspense } from "react";
 import ConfirmOffer from "./confirmeOffer";
 import InstantOffer from "./instantOffer";
 import Reviews from "./review";
