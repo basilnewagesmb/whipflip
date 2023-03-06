@@ -320,7 +320,7 @@ export const ShowEasyStepMob = (
                   prefetch={true}
                 >
                   <Button
-                    className="confirm_off_btn rounded"
+                    className="confirm_off_btn rounded getofferphoto"
                     size="large"
                     htmlType="button"
                   >

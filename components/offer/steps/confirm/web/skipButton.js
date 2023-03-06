@@ -5,7 +5,7 @@ function SkipButton({ skipToInstantOffer, initialOffer, analytics, fbpixel }) {
   return (
     <Button
       size="large"
-      className="rounded"
+      className="rounded getofferfastforward"
       loading={skipping}
       onClick={async () => {
         setSkipping(true);

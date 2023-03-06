@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import Link from "next/link";
 import { faqData } from "components/home/faq";
 import { Carousel } from "antd";
+import MetaHead from "components/common/metaHead";
 
 function FaqPage() {
   const [current, setCurrent] = useState(0);
@@ -28,6 +29,12 @@ function FaqPage() {
   };
   return (
     <>
+      <MetaHead
+        title="Frequently Asked Questions"
+        ogTitle="Frequently Asked Questions"
+        description="Have a question? We have an answer! Whether you're wondering how to make an appointment or what happens next, read our FAQs to get the answers you're looking for."
+        ogDescription="Have a question? We have an answer! Whether you're wondering how to make an appointment or what happens next, read our FAQs to get the answers you're looking for."
+      />
       <div className="page-header faq d-flex align-items-center">
         <div className="container">
           <div className="row">
