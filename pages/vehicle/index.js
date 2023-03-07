@@ -1,3 +1,4 @@
+import MetaHead from "components/common/metaHead";
 import OfferLayout from "components/offer/layout";
 import Initial from "components/offer/steps/initial/index";
 import React, { useEffect } from "react";
@@ -80,9 +81,12 @@ function Index(props) {
     }
   }, []);
   return (
-    <OfferLayout data={data} current={0}>
-      <Initial {...props} />
-    </OfferLayout>
+    <>
+      <MetaHead title="Get an offer and sell your car to us in 3 easy steps!" />
+      <OfferLayout data={data} current={0}>
+        <Initial {...props} />
+      </OfferLayout>
+    </>
   );
 }
 export async function getServerSideProps({ res, query }) {

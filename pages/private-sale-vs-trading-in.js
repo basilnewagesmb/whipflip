@@ -13,7 +13,12 @@ function Index() {
   });
   return (
     <>
-      <MetaHead title="Private Sale vs. Trading In" />
+      <MetaHead
+        title="Private Sale vs. Trading In Your Car"
+        ogTitle="Private Sale vs. Trading In Your Car"
+        description="Both private sale & dealership trade in have their benefits & drawbacks. WhipFlip can give you  some good advice on these methods as well as how to use them to your advantage."
+        ogDescription="Both private sale & dealership trade in have their benefits & drawbacks. WhipFlip can give you  some good advice on these methods as well as how to use them to your advantage."
+      />
       <div className="page-header faq d-flex align-items-center">
         <div className="container">
           <div className="row">

@@ -197,7 +197,8 @@ function SellFrom({
                           inputReadOnly={true}
                           className="w-100"
                           disabledDate={(current) =>
-                            current.isBefore(moment().subtract(1, "day"))
+                            current.isBefore(moment().subtract(1, "day")) ||
+                            !current.isBefore(moment().add(7, "day"))
                           }
                           format={"MM-DD-YYYY"}
                         />
@@ -218,7 +219,12 @@ function SellFrom({
                           className="w-100"
                           options={slots?.map?.((i) => ({
                             value: i.hour,
-                            label: i.hour,
+                            label:
+                              i.hour +
+                              (i?.current_appointments != 0
+                                ? " (BOOKED!)"
+                                : ""),
+                            disabled: i?.current_appointments != 0,
                           }))}
                           allowClear
                           placeholder="Select Time"

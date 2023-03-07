@@ -1,6 +1,13 @@
+import MetaHead from "components/common/metaHead";
 import Link from "next/link";
 const Index = () => (
   <>
+    <MetaHead
+      title="Terms of Use"
+      ogTitle="Terms of Use"
+      ogDescription="Read about Terms and Use of WhipFlip's Services."
+      description="Read about Terms and Use of WhipFlip's Services."
+    />
     <div
       className="page-header faq d-flex align-items-center"
       style={{ backgroundImage: "url()" }}

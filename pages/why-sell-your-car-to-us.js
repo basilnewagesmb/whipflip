@@ -6,7 +6,12 @@ import ReadyToSell from "components/common/readytoSell";
 function Index() {
   return (
     <>
-      <MetaHead title="Why Sell Your Car to Us?" />
+      <MetaHead
+        title="The Advantage of Selling Your Car to Us"
+        ogTitle="The Advantage of Selling Your Car to Us"
+        description="Learn about the WhipFlip advantage. The process is flippin' fast, flippin' safe, and flippin' easy. Discover the easiest way ever to sell your car."
+        ogDescription="Learn about the WhipFlip advantage. The process is flippin' fast, flippin' safe, and flippin' easy. Discover the easiest way ever to sell your car."
+      />
       <div className="page-header about-company d-flex align-items-center">
         <div className="container">
           <div className="row">
@@ -131,7 +136,7 @@ function Index() {
       </div>
       <ReadyToSell />
       <div className="pt-5">
-        <Faq short={true}/>
+        <Faq short={true} />
       </div>
     </>
   );

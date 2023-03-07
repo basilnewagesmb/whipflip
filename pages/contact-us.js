@@ -25,7 +25,12 @@ function Index() {
   }, [realVal]);
   return (
     <>
-      <MetaHead title="Contact us" />
+      <MetaHead
+        title="Customer Support"
+        ogTitle="Customer Support"
+        description="If you need help or have questions about selling your car to us, we're here to help. It's easy to contact us via email, phone, or send us a message today."
+        ogDescription="If you need help or have questions about selling your car to us, we're here to help. It's easy to contact us via email, phone, or send us a message today."
+      />
       <div className="page-header min-height-none d-flex align-items-center">
         <div className="container">
           <div className="row">

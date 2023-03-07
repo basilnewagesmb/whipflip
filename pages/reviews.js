@@ -26,7 +26,12 @@ function Reviews(props) {
   }, [data]);
   return (
     <>
-      <MetaHead title="Customer Reviews" />
+      <MetaHead
+        title="Customer Reviews"
+        ogTitle="Customer Reviews"
+        ogDescription="Read real reviews from real customers. Learn about their quick, painless experiences and why Whip Flip is the easiest way ever to sell your car."
+        description="Read real reviews from real customers. Learn about their quick, painless experiences and why Whip Flip is the easiest way ever to sell your car."
+      />
       <Head>
         <meta
           name="Description"
@@ -115,7 +120,7 @@ function Reviews(props) {
                       />
                     </div>
                     <div className="rh_right">
-                    {/* +" "+_review.lastname */}
+                      {/* +" "+_review.lastname */}
                       <h2>{_review.firstname}</h2>
                       <div className="rating_star">
                         <Rate

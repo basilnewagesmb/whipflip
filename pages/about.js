@@ -11,8 +11,16 @@ function About() {
   }, [ref]);
   return (
     <>
-      <MetaHead title="About" />
-      <div className="page-header about-company d-flex align-items-center" style={{backgroundPositionY:"bottom"}}>
+      <MetaHead
+        title="Innovation, Trust & Putting Customers First"
+        ogTitle="Innovation, Trust & Putting Customers First"
+        description="WhipFlip is a team of automotive experts who know the struggle of selling your car on your own. Learn about our values and how we put the customer first."
+        ogDescription="WhipFlip is a team of automotive experts who know the struggle of selling your car on your own. Learn about our values and how we put the customer first."
+      />
+      <div
+        className="page-header about-company d-flex align-items-center"
+        style={{ backgroundPositionY: "bottom" }}
+      >
         <div className="container">
           <div className="row">
             <div className="col-12 page-title text-center">

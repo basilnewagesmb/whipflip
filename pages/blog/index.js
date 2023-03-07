@@ -42,7 +42,12 @@ function Blog(props) {
 
   return (
     <>
-      <MetaHead title="Blogs" />
+      <MetaHead
+        title="Innovation, Trust & Putting Customers First"
+        ogTitle="Innovation, Trust & Putting Customers First"
+        ogDescription="WhipFlip is a team of automotive experts who know the struggle of selling your car on your own. Learn about our values and how we put the customer first."
+        description="WhipFlip is a team of automotive experts who know the struggle of selling your car on your own. Learn about our values and how we put the customer first."
+      />
       <Subscribe />
       <div className="how-it-works pt100 pb-5 body-text">
         <div className="container">
@@ -139,7 +144,6 @@ function Blog(props) {
                                       className="w-100"
                                       src="/images/blurepng.png"
                                       height={300}
-
                                     />
                                   }
                                   preview={false}

@@ -21,7 +21,7 @@ function Index(props) {
   }, [query]);
   return (
     <>
-      <MetaHead title="Home" />
+      <MetaHead title="Sell Your Car Online in 3 Steps" />
       <HomeBanner reviews={reviews} />
       <div className="how-it-works pt100">
         <div className="container">

@@ -1,7 +1,14 @@
+import MetaHead from "components/common/metaHead";
 import Link from "next/link";
 
 const Privacy = () => (
   <>
+    <MetaHead
+      title="Privacy Policy"
+      ogTitle="Privacy Policy"
+      ogDescription="Our privacy policy will help you understand how we collect and use personal information from visitors to our website, those who use our online facilities & services, and what we do with that information."
+      description="Our privacy policy will help you understand how we collect and use personal information from visitors to our website, those who use our online facilities & services, and what we do with that information."
+    />
     <div
       className="page-header faq d-flex align-items-center"
       style={{ backgroundImage: "url()" }}
