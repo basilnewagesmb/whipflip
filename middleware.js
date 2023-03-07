@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 
+
 const Middleware = (req) => {
   if (
     req.nextUrl.pathname === req.nextUrl.pathname.toLowerCase() ||
