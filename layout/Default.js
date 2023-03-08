@@ -1,4 +1,4 @@
-import React, {  useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetOfferQuery } from "services/offer/api";
 import { useRouter } from "next/router";
@@ -37,7 +37,12 @@ function Default({ children, user }) {
       }
     }
   }, [data]);
-
+  const { push } = useRouter();
+  const closeModal = () => {
+    setIsModalOpen(false);
+    dispatch(reset());
+    push("/");
+  };
   return (
     <div>
       <Modal
@@ -53,10 +58,10 @@ function Default({ children, user }) {
           </div>
         }
         open={isModalOpen}
-        onCancel={() => setIsModalOpen(false)}
+        onCancel={() => closeModal()}
         icon={<ClockCircleOutlined />}
         footer={
-          <ResetActions setIsModalOpen={setIsModalOpen} uid={data?.uid} />
+          <ResetActions setIsModalOpen={setIsModalOpen} uid={data?.uid} closeModal={closeModal} />
         }
         width={400}
       >
@@ -67,13 +72,13 @@ function Default({ children, user }) {
         condition={!pathname?.includes("valuate")}
         wrap={(wrappedChildren) => (
           <>
-              <Header />
+            <Header />
             {wrappedChildren}
-              <Footer />
+            <Footer />
           </>
         )}
       >
-          <Fade spy={pathname}>{children}</Fade>
+        <Fade spy={pathname}>{children}</Fade>
       </ConditionalWrap>
     </div>
   );

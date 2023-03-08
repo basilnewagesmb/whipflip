@@ -4,7 +4,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useResetOfferMutation } from "services/offer/api";
 
-function ResetActions({ setIsModalOpen, uid }) {
+function ResetActions({ setIsModalOpen, uid, closeModal }) {
   const { push } = useRouter();
   const [resetOffer, { isLoading, error }] = useResetOfferMutation();
   useEffect(() => {
@@ -17,7 +17,7 @@ function ResetActions({ setIsModalOpen, uid }) {
 
   return (
     <div className="mt-3 d-flex justify-content-end">
-      <Button onClick={() => setIsModalOpen(false)}>Cancel</Button>
+      <Button onClick={() => closeModal()}>Cancel</Button>
       <Button
         className="ml-2"
         style={{
