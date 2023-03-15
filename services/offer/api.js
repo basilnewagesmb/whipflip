@@ -109,6 +109,16 @@ export const offerApi = createApi({
       },
       invalidatesTags: ["offers"],
     }),
+    addVehicleImages: builder.mutation({
+      query: ({ uid, data }) => {
+        return {
+          url: `/prospects/${uid}/add_vehicle_images`,
+          method: "POST",
+          body: data,
+        };
+      },
+      invalidatesTags: ["offers"],
+    }),
   }),
 });
 
@@ -122,4 +132,5 @@ export const {
   useCreateInstantOfferMutation,
   useAppointmentOfferMutation,
   useResetOfferMutation,
+  useAddVehicleImagesMutation
 } = offerApi;

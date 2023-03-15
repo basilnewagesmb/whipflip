@@ -61,7 +61,11 @@ function Default({ children, user }) {
         onCancel={() => closeModal()}
         icon={<ClockCircleOutlined />}
         footer={
-          <ResetActions setIsModalOpen={setIsModalOpen} uid={data?.uid} closeModal={closeModal} />
+          <ResetActions
+            setIsModalOpen={setIsModalOpen}
+            uid={data?.uid}
+            closeModal={closeModal}
+          />
         }
         width={400}
       >
@@ -69,7 +73,7 @@ function Default({ children, user }) {
         to recalculate.
       </Modal>
       <ConditionalWrap
-        condition={!pathname?.includes("valuate")}
+        condition={!["/prospect/[id]/valuate", "/prospect/[id]/add-vehicle-images"]?.includes(pathname)}
         wrap={(wrappedChildren) => (
           <>
             <Header />

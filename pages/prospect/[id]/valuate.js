@@ -6,6 +6,8 @@ import { useGetOfferQuery } from "services/offer/api";
 import ProgressBar from "components/offer/sideBar.js/ProgressBar";
 import Header from "layout/Header";
 import Footer from "layout/Footer";
+import { Result } from "antd";
+import { TabletOutlined } from "@ant-design/icons";
 const Camera = dynamic(
   () => import("components/offer/steps/confirm/mob/valuate/camera"),
   { ssr: false }
@@ -14,8 +16,8 @@ const Uploading = dynamic(
   () => import("components/offer/steps/confirm/mob/valuate/uploading"),
   { ssr: false }
 );
-function Index(props) {
-  const { data, analytics, fbpixel } = props;
+function Valuate(props) {
+  const { data, analytics, fbpixel, isForUpload } = props;
   useEffect(() => {
     analytics && analytics.event("SnapPics", "Snap pics", `Valuation`);
     fbpixel &&
@@ -28,30 +30,54 @@ function Index(props) {
   const { data: offerData } = useGetOfferQuery(data?.uid, {
     skip: !data?.uid,
   });
-  const valuateControl = useValuateFun({ offerData, analytics, fbpixel });
+  const valuateControl = useValuateFun({
+    offerData,
+    analytics,
+    fbpixel,
+    isForUpload,
+  });
   const { state } = valuateControl;
   return (
     <>
-      <ConditionalWrap
-        condition={state.current == "uploading"}
-        wrap={(wrappedChildren) => (
-          <>
-            <Header />
-            <div className="col-lg-4 pt-5">
-              <div className="pt-5 b-0">
-                {" "}
-                <ProgressBar current={1} />
+      {valuateControl?.isMobile ? (
+        <ConditionalWrap
+          condition={state.current == "uploading"}
+          wrap={(wrappedChildren) => (
+            <>
+              <Header />
+              <div className="col-lg-4 pt-5">
+                <div className="pt-5 b-0">
+                  {" "}
+                  <ProgressBar current={1} />
+                </div>
               </div>
-            </div>
-            {wrappedChildren}
-            <Footer />
-          </>
-        )}
-      >
-        {state.current == "initial" && <Initial {...valuateControl} />}
-        {state.current == "camera" && <Camera {...valuateControl} />}{" "}
-        {state.current == "uploading" && <Uploading {...valuateControl} />}{" "}
-      </ConditionalWrap>
+              {wrappedChildren}
+              <Footer />
+            </>
+          )}
+        >
+          {state.current == "initial" && (
+            <Initial {...valuateControl} isForUpload={isForUpload} />
+          )}
+          {state.current == "camera" && <Camera {...valuateControl} />}{" "}
+          {state.current == "uploading" && <Uploading {...valuateControl} />}{" "}
+        </ConditionalWrap>
+      ) : (
+        <Result
+          status="error"
+          className="vh-100 d-flex flex-column justify-content-center"
+          icon={<TabletOutlined />}
+          title={
+            <p>
+              {`Welcome! This feature is exclusively designed for mobile users. To
+              access it, we recommend using your mobile phone. Enjoy the best
+              experience on-the-go and make the most out of this feature! If you
+              don't have a mobile device, please feel free to contact us for
+              assistance.Regenerate response`}
+            </p>
+          }
+        />
+      )}
     </>
   );
 }
@@ -77,4 +103,4 @@ export async function getServerSideProps({ res, query }) {
     };
   }
 }
-export default Index;
+export default Valuate;

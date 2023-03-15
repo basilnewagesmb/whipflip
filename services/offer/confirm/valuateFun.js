@@ -3,11 +3,17 @@ import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useFullScreenHandle } from "react-full-screen";
 import useScreenOrientation from "utils/useScreenOrientation";
-import { useCreateInstantOfferMutation } from "../api";
+import {
+  useAddVehicleImagesMutation,
+  useCreateInstantOfferMutation,
+} from "../api";
 import { useLoginMutation, useProcessQuoteMutation } from "../clearQuote";
 import { Modal } from "antd";
 import { isIOS } from "react-device-detect";
-function useValuateFun({ offerData, analytics, fbpixel }) {
+import useCheckMobile from "utils/checkMobile";
+import { uploadImagesToS3 } from "utils/s3";
+function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
+  const isMobile = useCheckMobile();
   const { push } = useRouter();
   const [state, setState] = useState({
     current: "initial",
@@ -158,86 +164,124 @@ function useValuateFun({ offerData, analytics, fbpixel }) {
   const [login] = useLoginMutation();
   const [processQuote] = useProcessQuoteMutation();
   const [createInstantOffer] = useCreateInstantOfferMutation();
+  const [addVehicleImages] = useAddVehicleImagesMutation();
   const compleat = async () => {
     setCurrent("uploading");
     handle.exit();
     try {
       await window?.screen?.orientation?.lock("portrait");
     } catch (error) {}
-    const loginRes = await login();
-    if (loginRes?.data?.user) {
-      const data = {
-        vehicle: {
-          licenseplateno: offerData.plate_number || "0000",
-        },
-        quoteType: "lease",
-        dealerCode: "WhipFlip Test",
-        paintType: "solid",
-        dealer: loginRes?.data?.user?.dealer,
-        imageUrls: state?.stills,
-      };
-      const token = loginRes?.data?.user?.token;
-      const processRes = await processQuote({ data, token });
-      if (processRes?.data) {
-        let dData = processRes.data;
-        let deductionData = { panels: [] };
-        state?.stills?.forEach((item, index) => {
-          deductionData.panels.push({
-            quoteId: dData.quoteId,
-            image: dData.segmentImages.rawImages[index],
-            title: item.title,
-            annotatedImage: dData.segmentImages.annotatedImages[index],
-          });
-        });
-        deductionData["damages"] = dData.segmentationEstimate.estimates
-          .filter((item) => item.damageCode != "Clean")
-          .reduce((obj, damage) => {
-            return { ...obj, [damage.name]: damage["damageCode"] };
-          }, {});
-        const postData = {
-          detection_data: deductionData,
-          odometer_image: "", //odometerImage.Location,
-          vin: offerData.vin,
-          uid: offerData.uid,
-          plate_state: offerData.plate_state,
-          plate_number: offerData.plate_number,
-          option: 1,
-          full_trim: offerData.body || "",
-        };
-        if (offerData.enableMultiTrim) {
-          postData.jd_vehicle_id = offerData.jd_vehicle_id;
-        } else {
-          postData.trim = offerData.trim;
-        }
-        const offerRes = await createInstantOffer(postData);
-        if (offerRes?.data.uid) {
-          try {
-            if (offerRes.data["is_over_quote"]) {
-              analytics?.event("OverPrice", "Offer page", `Over Price`);
-              fbpixel &&
-                fbpixel.customEvent("OverPrice", {
-                  content_name: "Offer page",
-                  content_category: `OverPrice`,
-                  contents: [
-                    {
-                      ...offerRes.data,
-                    },
-                  ],
-                });
-            }
-          } catch (error) {}
-          setTimeout(() => {
-            setState((prev) => ({ ...prev, speed: 1 }));
-          }, 2000);
-          push(`/prospect/${offerRes?.data.uid}/${offerRes?.data.status}`);
+    switch (isForUpload) {
+      case true:
+        const res = await uploadImagesToS3(
+          state?.stills,
+          offerData?.whip_number
+        );
+        if (res.length > 0) {
+          const data = {
+            uid: offerData?.uid,
+            docsData: res.map((item, i) => {
+              return {
+                url: item.src,
+                title: state?.stills[i].title,
+              };
+            }),
+          };
+          const uid = offerData?.uid;
+          const resp = await addVehicleImages({ uid, data });
+          if (resp?.data?.data) {
+            setCurrent("initial");
+            Modal.success({
+              title: "Images uploaded successfully",
+              okText: "Go to home",
+              onOk: () => {
+                push("/");
+              },
+            });
+          } else {
+            message.error("Something went Wrong");
+          }
         } else {
           message.error("Something went Wrong");
         }
-      } else {
-        message.error("Something went Wrong");
-      }
-    } else {
-      message.error("Something went Wrong");
+        break;
+      default:
+        const loginRes = await login();
+        if (loginRes?.data?.user) {
+          const data = {
+            vehicle: {
+              licenseplateno: offerData.plate_number || "0000",
+            },
+            quoteType: "lease",
+            dealerCode: "WhipFlip Test",
+            paintType: "solid",
+            dealer: loginRes?.data?.user?.dealer,
+            imageUrls: state?.stills,
+          };
+          const token = loginRes?.data?.user?.token;
+          const processRes = await processQuote({ data, token });
+          if (processRes?.data) {
+            let dData = processRes.data;
+            let deductionData = { panels: [] };
+            state?.stills?.forEach((item, index) => {
+              deductionData.panels.push({
+                quoteId: dData.quoteId,
+                image: dData.segmentImages.rawImages[index],
+                title: item.title,
+                annotatedImage: dData.segmentImages.annotatedImages[index],
+              });
+            });
+            deductionData["damages"] = dData.segmentationEstimate.estimates
+              .filter((item) => item.damageCode != "Clean")
+              .reduce((obj, damage) => {
+                return { ...obj, [damage.name]: damage["damageCode"] };
+              }, {});
+            const postData = {
+              detection_data: deductionData,
+              odometer_image: "", //odometerImage.Location,
+              vin: offerData.vin,
+              uid: offerData.uid,
+              plate_state: offerData.plate_state,
+              plate_number: offerData.plate_number,
+              option: 1,
+              full_trim: offerData.body || "",
+            };
+            if (offerData.enableMultiTrim) {
+              postData.jd_vehicle_id = offerData.jd_vehicle_id;
+            } else {
+              postData.trim = offerData.trim;
+            }
+            const offerRes = await createInstantOffer(postData);
+            if (offerRes?.data.uid) {
+              try {
+                if (offerRes.data["is_over_quote"]) {
+                  analytics?.event("OverPrice", "Offer page", `Over Price`);
+                  fbpixel &&
+                    fbpixel.customEvent("OverPrice", {
+                      content_name: "Offer page",
+                      content_category: `OverPrice`,
+                      contents: [
+                        {
+                          ...offerRes.data,
+                        },
+                      ],
+                    });
+                }
+              } catch (error) {}
+              setTimeout(() => {
+                setState((prev) => ({ ...prev, speed: 1 }));
+              }, 2000);
+              push(`/prospect/${offerRes?.data.uid}/${offerRes?.data.status}`);
+            } else {
+              message.error("Something went Wrong");
+            }
+          } else {
+            message.error("Something went Wrong");
+          }
+        } else {
+          message.error("Something went Wrong");
+        }
+        break;
     }
   };
   return {
@@ -256,6 +300,7 @@ function useValuateFun({ offerData, analytics, fbpixel }) {
     retake,
     continue_,
     compleat,
+    isMobile,
   };
 }
 

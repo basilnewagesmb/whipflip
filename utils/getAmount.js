@@ -5,9 +5,15 @@ function getAmount(value) {
     return "$ NEEDS REVIEW";
   } else {
     if (value?.status == "quote") {
-      return `$${new Intl.NumberFormat("en-US").format(
-        value?.quote_amount / 100
-      )}`;
+      if (value?.is_deduction_added) {
+        return `$${new Intl.NumberFormat("en-US").format(
+          (value?.base_trade_amount - value?.initial_dedcution_amount) / 100
+        )}`;
+      } else {
+        return `$${new Intl.NumberFormat("en-US").format(
+          value?.quote_amount / 100
+        )}`;
+      }
     } else {
       return `$${new Intl.NumberFormat("en-US").format(
         value?.offer_amount / 100

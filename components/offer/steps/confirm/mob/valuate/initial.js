@@ -4,10 +4,10 @@ import { Modal } from "react-bootstrap";
 import { CloseOutlined } from "@ant-design/icons";
 import { useRouter } from "node_modules/next/router";
 import RotatePhone from "components/anim/phoneRotate";
-function Initial({ setCurrent }) {
+function Initial({ setCurrent, isForUpload }) {
   const { back } = useRouter();
   return (
-    <div show={true} className="camera_ready_modal">
+    <div show={true} className="camera_ready_modal ">
       <Modal.Header>
         <CloseOutlined
           style={{
@@ -17,7 +17,7 @@ function Initial({ setCurrent }) {
           onClick={back}
         />
       </Modal.Header>
-      <Modal.Body className="cr_body h-auto">
+      <Modal.Body className="cr_body h-auto ">
         <div className="cr_body_in">
           <div className="cr_head_dec">
             <div className="cr_hd_img">
@@ -48,7 +48,10 @@ function Initial({ setCurrent }) {
                   </div>
                 </div>
                 <div className="info_right">
-                  <span>Clear away any heavy debris (eg. dirt. snow) from the vehicle </span>
+                  <span>
+                    Clear away any heavy debris (eg. dirt. snow) from the
+                    vehicle{" "}
+                  </span>
                 </div>
               </div>
               <div className="crm_info_item">
@@ -85,6 +88,7 @@ function Initial({ setCurrent }) {
               </div>
             </div>
           </div>
+
           <div className="cr_foo">
             <button
               className="cr_ready_btn"
@@ -94,9 +98,11 @@ function Initial({ setCurrent }) {
             >
               {`I'm Ready`}
             </button>
-            <a href="#" className="skipHref" onClick={back}>
-              Skip Taking Photos
-            </a>
+            {!isForUpload && (
+              <a href="#" className="skipHref" onClick={back}>
+                Skip Taking Photos
+              </a>
+            )}
           </div>
         </div>
       </Modal.Body>
