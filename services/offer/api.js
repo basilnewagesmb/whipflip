@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { updateLocalOffer } from "features/offer/offerSlice";
+import { reset, updateLocalOffer } from "features/offer/offerSlice";
+import moment from "moment";
 import transformOfferData from "utils/trancformOfferData";
 export const offerApi = createApi({
   reducerPath: "offerApi",
@@ -45,6 +46,14 @@ export const offerApi = createApi({
       async onQueryStarted(id, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
+          console.log(data);
+          const utcDate =
+            data.status == "quote"
+              ? moment(data.quote_utc).add(5, "days")
+              : moment(data.offer_utc).add(5, "days");
+          if (utcDate.diff(moment(), "seconds") <= 0) {
+            dispatch(reset());
+          }
           dispatch(updateLocalOffer(data));
         } catch (err) {
           console.log("Error fetching offers!");
@@ -132,5 +141,5 @@ export const {
   useCreateInstantOfferMutation,
   useAppointmentOfferMutation,
   useResetOfferMutation,
-  useAddVehicleImagesMutation
+  useAddVehicleImagesMutation,
 } = offerApi;
