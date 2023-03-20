@@ -49,12 +49,13 @@ export const offerApi = createApi({
           console.log(data);
           const utcDate =
             data.status == "quote"
-              ? moment(data.quote_utc).add(5, "days")
-              : moment(data.offer_utc).add(5, "days");
+              ? moment(data.last_quote_date).add(5, "days")
+              : moment(data.last_offer_date).add(5, "days");
           if (utcDate.diff(moment(), "seconds") <= 0) {
             dispatch(reset());
+          } else {
+            dispatch(updateLocalOffer(data));
           }
-          dispatch(updateLocalOffer(data));
         } catch (err) {
           console.log("Error fetching offers!");
         }
