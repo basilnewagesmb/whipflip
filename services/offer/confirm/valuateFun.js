@@ -301,6 +301,7 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
     continue_,
     compleat,
     isMobile,
+    isForUpload
   };
 }
 

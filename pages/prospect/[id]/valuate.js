@@ -73,7 +73,7 @@ function Valuate(props) {
               access it, we recommend using your mobile phone. Enjoy the best
               experience on-the-go and make the most out of this feature! If you
               don't have a mobile device, please feel free to contact us for
-              assistance.Regenerate response`}
+              assistance.`}
             </p>
           }
         />

@@ -15,6 +15,7 @@ function CamLayout({
   pendingLayouts,
   previewing,
   offerData,
+  isForUpload,
 }) {
   const { push } = useRouter();
   const [play] = useSound("/data/capture.mp3");
@@ -60,7 +61,11 @@ function CamLayout({
                       }}
                       onClick={async () => {
                         Modal.destroyAll();
-                        push(`/prospect/${offerData.uid}/quote`);
+                        if (isForUpload) {
+                          push("/");
+                        } else {
+                          push(`/prospect/${offerData.uid}/quote`);
+                        }
                       }}
                     >
                       Yes, exit

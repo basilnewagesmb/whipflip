@@ -11,6 +11,22 @@ function Index(props) {
 }
 export async function getServerSideProps({ res, query }) {
   const { id } = query;
+  try {
+    const images_count_resp = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/prospects/${id}/get_images_count`
+    );
+    const {
+      data: { count },
+    } = await images_count_resp.json();
+    if (count >= 8) {
+      return {
+        redirect: {
+          permanent: false,
+          destination: `/link-is-no-longer`,
+        },
+      };
+    }
+  } catch (error) {}
   const resp = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/prospects/${id}`
   );

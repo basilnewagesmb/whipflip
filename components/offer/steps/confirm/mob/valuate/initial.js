@@ -5,7 +5,7 @@ import { CloseOutlined } from "@ant-design/icons";
 import { useRouter } from "node_modules/next/router";
 import RotatePhone from "components/anim/phoneRotate";
 function Initial({ setCurrent, isForUpload }) {
-  const { back } = useRouter();
+  const { back, push } = useRouter();
   return (
     <div show={true} className="camera_ready_modal ">
       <Modal.Header>
@@ -14,7 +14,9 @@ function Initial({ setCurrent, isForUpload }) {
             fontSize: "20px",
             color: "#fff",
           }}
-          onClick={back}
+          onClick={() => {
+            isForUpload ? push("/") : back();
+          }}
         />
       </Modal.Header>
       <Modal.Body className="cr_body h-auto ">
