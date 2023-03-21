@@ -4,7 +4,6 @@ import React, { useState } from "react";
 function Overlay({ pendingLayouts, previewing }) {
   const { overlay, title, id } = pendingLayouts?.[0] || {};
   const [scale, setScale] = useState(50);
-  console.log(scale * 0.05);
   if (!previewing)
     return (
       <div style={overlayStyle}>

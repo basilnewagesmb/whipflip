@@ -6,8 +6,9 @@ import { useGetOfferQuery } from "services/offer/api";
 import ProgressBar from "components/offer/sideBar.js/ProgressBar";
 import Header from "layout/Header";
 import Footer from "layout/Footer";
-import { Result } from "antd";
-import { TabletOutlined } from "@ant-design/icons";
+import { Result, Button } from "antd";
+import { WarningOutlined } from "@ant-design/icons";
+import { useRouter } from "next/router";
 const Camera = dynamic(
   () => import("components/offer/steps/confirm/mob/valuate/camera"),
   { ssr: false }
@@ -18,6 +19,7 @@ const Uploading = dynamic(
 );
 function Valuate(props) {
   const { data, analytics, fbpixel, isForUpload } = props;
+  const { push } = useRouter();
   useEffect(() => {
     analytics && analytics.event("SnapPics", "Snap pics", `Valuation`);
     fbpixel &&
@@ -66,15 +68,25 @@ function Valuate(props) {
         <Result
           status="error"
           className="vh-100 d-flex flex-column justify-content-center"
-          icon={<TabletOutlined />}
+          icon={<WarningOutlined />}
           title={
-            <p>
+            <p className="col-8 offset-2">
               {`Welcome! This feature is exclusively designed for mobile users. To
               access it, we recommend using your mobile phone. Enjoy the best
               experience on-the-go and make the most out of this feature! If you
               don't have a mobile device, please feel free to contact us for
               assistance.`}
             </p>
+          }
+          extra={
+            <Button
+              type="primary"
+              onClick={() => {
+                push("/contact-us");
+              }}
+            >
+              Contact Us
+            </Button>
           }
         />
       )}

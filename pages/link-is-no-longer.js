@@ -1,5 +1,5 @@
 import React from "react";
-import { FileImageOutlined } from "@ant-design/icons";
+import { WarningOutlined } from "@ant-design/icons";
 import { Result } from "antd";
 import { Button } from "antd";
 import { useRouter } from "next/router";
@@ -10,7 +10,7 @@ function Index() {
       <Result
         status="error"
         className="vh-100 d-flex flex-column justify-content-center"
-        icon={<FileImageOutlined />}
+        icon={<WarningOutlined />}
         title={
           <p>
             {`The link is no longer valid, as you have already uploaded the vehicle images`}
