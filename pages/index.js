@@ -21,7 +21,10 @@ function Index(props) {
   }, [query]);
   return (
     <>
-      <MetaHead title="Sell Your Car Online in 3 Steps" />
+      <MetaHead
+        title="Sell Your Car Online in 3 Steps"
+        ogImage={"https://whipflipnow.s3.amazonaws.com/Whipflip+Logo.png"}
+      />
       <HomeBanner reviews={reviews} />
       <div className="how-it-works pt100">
         <div className="container">
