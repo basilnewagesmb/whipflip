@@ -37,7 +37,7 @@ function MetaHead({
       />
       <meta
         property="og:description"
-        content={!ogDescription ? staticDescription : ogDescription}
+        content={"sdnmds"}
       />
       <meta
         property="twitter:image"
