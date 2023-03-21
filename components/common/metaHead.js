@@ -41,12 +41,12 @@ function MetaHead({
       />
       <meta
         property="twitter:image"
-        content={!ogImage ? ogStaticImg : ogImage}
+        content={"https://whipflipnow.s3.amazonaws.com/Whipflip+Logo.png"}
       />
       <meta property="og:image" content={"https://whipflipnow.s3.amazonaws.com/Whipflip+Logo.png"} />
       <meta
         property="og:image:secure_url"
-        content={!ogImage ? ogStaticImg : ogImage}
+        content={"https://whipflipnow.s3.amazonaws.com/Whipflip+Logo.png"}
       />
       <meta property="og:image:type" content="image/jpeg" />
       <meta property="og:type" content="image/jpeg" />
