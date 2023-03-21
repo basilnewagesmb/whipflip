@@ -17,7 +17,7 @@ function MetaHead({
     <Head>
       <title>{!title ? "Whip Flip" : title + " | Whip Flip"}</title>;
       <meta
-        name="C"
+        name="Description"
         content={!description ? staticDescription : description}
       ></meta>
       <meta name="twitter:card" content="summary" />
