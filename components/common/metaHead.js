@@ -43,7 +43,7 @@ function MetaHead({
         property="twitter:image"
         content={!ogImage ? ogStaticImg : ogImage}
       />
-      <meta property="og:image" content={!ogImage ? ogStaticImg : ogImage} />
+      <meta property="og:image" content={"https://whipflipnow.s3.amazonaws.com/Whipflip+Logo.png"} />
       <meta
         property="og:image:secure_url"
         content={!ogImage ? ogStaticImg : ogImage}
