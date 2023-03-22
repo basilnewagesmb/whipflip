@@ -20,7 +20,12 @@ import { message } from "antd";
 import { Suspense } from "react";
 import Default from "layout/Default";
 import NextNProgress from "nextjs-progressbar";
+import { useState } from "react";
 function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
   useEffect(() => {
     const shouldNotTrack = isLocal("localhost") || isDev();
     const gtm = shouldNotTrack ? devGTM : prodGTM;
@@ -34,7 +39,14 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
   }, [isOnline]);
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persister}>
+      <ConditionalWrap
+        condition={hydrated}
+        wrap={(wrappedChildren) => (
+          <PersistGate loading={null} persistor={persister}>
+            {wrappedChildren}
+          </PersistGate>
+        )}
+      >
         <NextNProgress color="#FFD147" height={2} />
         <Default>
           <ConfigProvider
@@ -46,8 +58,6 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
             }}
           >
             <Head>
-              <link rel="preload" href="/images/car-anim.gif" as="image" />
-              <meta name="robots" content="index,follow" />
               <meta
                 name="google-site-verification"
                 content="jnAdFCwVEDCZykQl_XGONg9qtAu-07wxtA2-s6sTuKc"
@@ -56,11 +66,6 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
                 name="facebook-domain-verification"
                 content="5qtg49f5uu0blll09ukjxvxpo4tz5g"
               />
-              <meta
-                name="viewport"
-                content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"
-              />
-              <meta name="color-scheme" content="only light" />
             </Head>
             <Component
               {...pageProps}
@@ -69,22 +74,15 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
               hotjar={hotjar}
             />
           </ConfigProvider>
-        </Default>
-      </PersistGate>
+        </Default>{" "}
+      </ConditionalWrap>
     </Provider>
   );
 }
+
+const ConditionalWrap = ({ condition, wrap, children }) =>
+  condition ? wrap(children) : children;
 export default withPixel(
   2810107665901141,
   Router
-)(
-  withHotjar(
-    2096064,
-    6,
-    Router
-  )(
-    withGA("UA-173303436-1", Router)(MyApp, {
-      ssr: true, // Should be true
-    })
-  )
-);
+)(withHotjar(2096064, 6, Router)(withGA("UA-173303436-1", Router)(MyApp)));
