@@ -18,8 +18,11 @@ import * as devGTM from "utils/GTM/dev";
 import { useNetwork } from "utils/useNetwork";
 import { message } from "antd";
 import { Suspense } from "react";
-import Default from "layout/Default";
 import NextNProgress from "nextjs-progressbar";
+const Default = dynamic(() => import("layout/Default"), {
+  loading: () => <p>Loading...</p>,
+});
+
 function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
   useEffect(() => {
     const shouldNotTrack = isLocal("localhost") || isDev();
@@ -32,6 +35,7 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
       message.error("You're currently offline");
     }
   }, [isOnline]);
+
   return (
     <Provider store={store}>
       <PersistGate loading={"null"} persistor={persister}>
