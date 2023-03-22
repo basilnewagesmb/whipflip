@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function MetaHead({
   title = "",
@@ -9,9 +9,11 @@ function MetaHead({
   extraContent = "",
   ogImage = "",
 }) {
-  const pageUrl =
-    `${typeof window !== "undefined" && window.location.href}` ||
-    "https://www.whipflip.com/";
+  const [pageUrl, setPageUrl] = useState("https://www.whipflip.com");
+  useEffect(() => {
+    setPageUrl(window.location.href);
+  }, []);
+
   const ogStaticImg = "https://whipflipnow.s3.amazonaws.com/Whipflip+Logo.png";
   const staticDescription =
     "Selling your used car online has never been easier. Find out what your car is worth and get a better offer than trade in. We come to you. Paid on the spot.";

@@ -34,7 +34,7 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
   }, [isOnline]);
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persister}>
+      <PersistGate loading={"null"} persistor={persister}>
         {() => (
           <Default>
             <ConfigProvider
