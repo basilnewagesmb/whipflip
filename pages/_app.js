@@ -20,12 +20,7 @@ import { message } from "antd";
 import { Suspense } from "react";
 import Default from "layout/Default";
 import NextNProgress from "nextjs-progressbar";
-import { useState } from "react";
 function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
-  const [hydrated, setHydrated] = useState(false);
-  useEffect(() => {
-    setHydrated(true);
-  }, []);
   useEffect(() => {
     const shouldNotTrack = isLocal("localhost") || isDev();
     const gtm = shouldNotTrack ? devGTM : prodGTM;
@@ -39,49 +34,42 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
   }, [isOnline]);
   return (
     <Provider store={store}>
-      <ConditionalWrap
-        condition={hydrated}
-        wrap={(wrappedChildren) => (
-          <PersistGate loading={null} persistor={persister}>
-            {wrappedChildren}
-          </PersistGate>
+      <PersistGate loading={null} persistor={persister}>
+        {() => (
+          <Default>
+            <ConfigProvider
+              theme={{
+                token: {
+                  colorPrimary: "#4381c0",
+                  borderRadiusLG: 4,
+                },
+              }}
+            >
+              {" "}
+              <NextNProgress color="#FFD147" height={2} />
+              <Head>
+                <meta
+                  name="google-site-verification"
+                  content="jnAdFCwVEDCZykQl_XGONg9qtAu-07wxtA2-s6sTuKc"
+                />
+                <meta
+                  name="facebook-domain-verification"
+                  content="5qtg49f5uu0blll09ukjxvxpo4tz5g"
+                />
+              </Head>
+              <Component
+                {...pageProps}
+                analytics={analytics}
+                fbpixel={fbpixel}
+                hotjar={hotjar}
+              />
+            </ConfigProvider>
+          </Default>
         )}
-      >
-        <NextNProgress color="#FFD147" height={2} />
-        <Default>
-          <ConfigProvider
-            theme={{
-              token: {
-                colorPrimary: "#4381c0",
-                borderRadiusLG: 4,
-              },
-            }}
-          >
-            <Head>
-              <meta
-                name="google-site-verification"
-                content="jnAdFCwVEDCZykQl_XGONg9qtAu-07wxtA2-s6sTuKc"
-              />
-              <meta
-                name="facebook-domain-verification"
-                content="5qtg49f5uu0blll09ukjxvxpo4tz5g"
-              />
-            </Head>
-            <Component
-              {...pageProps}
-              analytics={analytics}
-              fbpixel={fbpixel}
-              hotjar={hotjar}
-            />
-          </ConfigProvider>
-        </Default>{" "}
-      </ConditionalWrap>
+      </PersistGate>
     </Provider>
   );
 }
-
-const ConditionalWrap = ({ condition, wrap, children }) =>
-  condition ? wrap(children) : children;
 export default withPixel(
   2810107665901141,
   Router

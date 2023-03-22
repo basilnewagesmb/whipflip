@@ -1,21 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Faq from "components/home/faq";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { initialize } from "features/site/siteSlice";
+import HomeBanner from "components/home/banner/index";
 import ReadyToSell from "components/common/readytoSell";
 import ShimmerImage from "components/common/shimmerImage";
 import MetaHead from "components/common/metaHead";
 import HappyCustomersSlider from "components/home/slider";
-import dynamic from "next/dynamic";
-
 function Index(props) {
-  const [hydrated, setHydrated] = useState(false);
-  useEffect(() => {
-    setHydrated(true);
-  }, []);
   const { query } = useRouter();
   const dispatch = useDispatch();
   const reviews = useSelector((state) => state.reviews);
@@ -24,16 +19,13 @@ function Index(props) {
       dispatch(initialize(query));
     });
   }, [query]);
-  const HomeBanner = dynamic(() => import("components/home/banner/index"), {
-    loading: () => <p className="vh-100">Loading...</p>,
-  });
   return (
     <>
       <MetaHead
         title="Sell Your Car Online in 3 Steps"
         ogImage={"https://whipflipnow.s3.amazonaws.com/Whipflip+Logo.png"}
       />
-      {<HomeBanner reviews={reviews} />}
+      <HomeBanner reviews={reviews} />
       <div className="how-it-works pt100">
         <div className="container">
           <div className="secHd text-center">
@@ -385,7 +377,7 @@ function Index(props) {
             />
           </div>
           <span className="gtagLine">
-            {hydrated && "WhipFlip has earned " + reviews?.count + " stars in"}
+            WhipFlip has earned {reviews.count} stars in
             <span>
               <Image
                 src="/images/google.svg"
