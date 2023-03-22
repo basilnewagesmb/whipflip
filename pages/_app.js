@@ -49,7 +49,6 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
                 },
               }}
             >
-              {" "}
               <NextNProgress color="#FFD147" height={2} />
               <Head>
                 <meta

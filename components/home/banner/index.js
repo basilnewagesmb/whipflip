@@ -6,12 +6,15 @@ import ConfirmOffer from "./confirmeOffer";
 import InstantOffer from "./instantOffer";
 import Reviews from "./review";
 import VideoModal from "./videoModal";
-function HomeBanner({ reviews }) {
+import CardSkeleton from "./cardSkeleton";
+function HomeBanner({ reviews, isClient }) {
   const { initialOffer } = useSelector((state) => state.offer);
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   return (
     <div className="home-banner">
-      <VideoModal isVideoOpen={isVideoOpen} setIsVideoOpen={setIsVideoOpen} />
+      {isClient && (
+        <VideoModal isVideoOpen={isVideoOpen} setIsVideoOpen={setIsVideoOpen} />
+      )}
       <div className="container h100">
         <div className="hb_wrapper">
           <div className="row">
@@ -30,7 +33,7 @@ function HomeBanner({ reviews }) {
                   </div>
                   <div className="bnr_left_info desk-show">
                     <div className="row">
-                      <Reviews reviews={reviews} />
+                      {isClient && <Reviews reviews={reviews} />}
                       <div className="col-lg-6 accredit_col p-0 bnr_left_points">
                         <div className="acc_left">
                           <a
@@ -90,17 +93,21 @@ function HomeBanner({ reviews }) {
               <div className="bnr_right">
                 <div className="row justify-content-center">
                   <div className="col-md-12">
-                    {initialOffer ? (
-                      <ConfirmOffer initialOffer={initialOffer} />
+                    {isClient ? (
+                      initialOffer ? (
+                        <ConfirmOffer initialOffer={initialOffer} />
+                      ) : (
+                        <InstantOffer />
+                      )
                     ) : (
-                      <InstantOffer />
+                      <CardSkeleton />
                     )}
                   </div>
                 </div>
                 <div className="bnr_left_info mob-show">
                   <div className="row justify-content-center">
                     <div className="col-lg-6 col-sm-6 col-12 review_col bnr_left_points bnr_mob_btm_pts">
-                      <Reviews mob={true} reviews={reviews} />
+                      {isClient && <Reviews mob={true} reviews={reviews} />}
                     </div>
                     <div className="col-lg-6 col-sm-6 col-12 accredit_col bnr_left_points bnr_mob_btm_pts">
                       <div className="acc_left">

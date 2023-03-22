@@ -10,7 +10,13 @@ import ReadyToSell from "components/common/readytoSell";
 import ShimmerImage from "components/common/shimmerImage";
 import MetaHead from "components/common/metaHead";
 import HappyCustomersSlider from "components/home/slider";
+import { useState } from "react";
 function Index(props) {
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const { query } = useRouter();
   const dispatch = useDispatch();
   const reviews = useSelector((state) => state.reviews);
@@ -25,7 +31,7 @@ function Index(props) {
         title="Sell Your Car Online in 3 Steps"
         ogImage={"https://whipflipnow.s3.amazonaws.com/Whipflip+Logo.png"}
       />
-      <HomeBanner reviews={reviews} />
+      <HomeBanner reviews={reviews} isClient={isClient} />
       <div className="how-it-works pt100">
         <div className="container">
           <div className="secHd text-center">
@@ -377,7 +383,7 @@ function Index(props) {
             />
           </div>
           <span className="gtagLine">
-            WhipFlip has earned {reviews.count} stars in
+            {isClient && `WhipFlip has earned ${reviews.count} stars in`}
             <span>
               <Image
                 src="/images/google.svg"
