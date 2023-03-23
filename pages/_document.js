@@ -24,7 +24,7 @@ export default function Document() {
           }}
           id="kissmetrics"
           type="text/javascript"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         ></Script>
       </Head>
       <body>
@@ -43,7 +43,7 @@ export default function Document() {
           `,
           }}
           type="text/javascript"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         ></Script>
         <noscript>
           <a
