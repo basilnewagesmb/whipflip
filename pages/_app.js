@@ -74,4 +74,7 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
     </Provider>
   );
 }
-export default MyApp;
+export default withPixel(
+  2810107665901141,
+  Router
+)(withHotjar(2096064, 6, Router)(withGA("UA-173303436-1", Router)(MyApp)));
