@@ -9,8 +9,12 @@ import HomeBanner from "components/home/banner/index";
 import ReadyToSell from "components/common/readytoSell";
 import ShimmerImage from "components/common/shimmerImage";
 import MetaHead from "components/common/metaHead";
-import HappyCustomersSlider from "components/home/slider";
 import { useState } from "react";
+import dynamic from "next/dynamic";
+const HappyCustomersSlider = dynamic(() => import("components/home/slider"), {
+  loading: () => <p>Loading...</p>,
+});
+
 function Index(props) {
   const [isClient, setIsClient] = useState(false);
   useEffect(() => {
