@@ -20,7 +20,7 @@ function TireConditionsTemp({
             fontSize: "20px",
           }}
         >
-          Tire Condition{" "}
+          Tires Condition{" "}
         </h2>
         {!isReview && (
           <div className="d-flex justify-content-center align-items-center">

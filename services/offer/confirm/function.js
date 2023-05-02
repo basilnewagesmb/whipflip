@@ -350,17 +350,16 @@ export const ShowEasyStep = (
                   </div>
                   <div className="fesCon_right">
                     <div className="fesConItem_detail">
-                      <h3>Access the photo tool via email</h3>
+                      <h3>Access our photo tool via email or text.</h3>
                       <p>
-                        We’ve sent you an email! Open the email on your phone
-                        and tap the link.
+                        We’ve sent you an email and text.  On your phone, simply click the link to continue.”
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="seprator">
-                <span>-OR</span>
+                <span>-OR-</span>
               </div>
               <div className="fesConItem">
                 <div className="fesConItemRow align-items-center">
@@ -389,7 +388,7 @@ export const ShowEasyStep = (
               {window?.location?.href && (
                 <div className="d-none">
                   <div className="seprator">
-                    <span>-OR</span>
+                    <span>-OR-</span>
                   </div>
                   <div className="fesConItem d-flex align-items-center justify-content-center">
                     <div className="fesConItemRow align-items-center">
@@ -439,7 +438,7 @@ export const Images = () => {
       },
       tires_rough: {
         src: "/images/bald.svg",
-        description: "Little tread left, steel belts showing",
+        description: "Little tread left, steel belts are showing",
       },
     },
     cosmetic: {
@@ -451,7 +450,7 @@ export const Images = () => {
       exterior_normal: {
         src: "/images/average.svg",
         description:
-          "A few SMALL dings, dents, or scratches on the body, but nothing needing significant repair.",
+          "A few SMALL body dings, dents, or scratches, but doesn't need significant repair.",
       },
       exterior_rough: {
         src: "/images/rough.svg",
@@ -461,7 +460,7 @@ export const Images = () => {
       interior_better: {
         src: "/images/great.svg",
         description:
-          "It might not have the new car smell, but the interior is super clean and there are no signs of wear.",
+          "It may not have the new car smell anymore, but the interior is super clean with no signs of wear or broken parts.",
       },
       interior_normal: {
         src: "/images/average.svg",

@@ -98,7 +98,7 @@ function SeeInitOffer({ form, data, goTo }) {
           <div className="form-group row ob_frm_row">
             <div className="col-lg-12 p-0">
               <Form.Item
-                label="Phone Number (We won’t bug you!)"
+                label="Phone Number (We promise not to bug you.  We may need more info.)"
                 name={["user", "phone"]}
                 className="m-0 w-100"
                 rules={[

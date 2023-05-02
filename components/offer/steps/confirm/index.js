@@ -43,8 +43,8 @@ function Confirm({ fbpixel, analytics }) {
           <div className="or_head">
             <h1>Awesome Initial Offer: {getAmount(initialOffer)}!</h1>
             <p>
-              We just need a few more bits of information to make your offer as
-              accurate as possible!
+              Your offer may be higher or lower. We just need a few important
+              bits of information to finalize a GREAT offer!
             </p>
             <div className="cf_btn cf_btn_web text-center">
               <Link href="/">
@@ -62,8 +62,8 @@ function Confirm({ fbpixel, analytics }) {
               <div className="or_head">
                 <h1>Awesome Initial Offer: {getAmount(initialOffer)}!</h1>
                 <p>
-                  We just need a few more bits of information to make your offer
-                  as accurate as possible!
+                  Your offer may be higher or lower. We just need a few
+                  important bits of information to finalize a GREAT offer!
                 </p>
                 <div className="initial_order_btn mb-5">
                   <Button
@@ -119,8 +119,8 @@ function Confirm({ fbpixel, analytics }) {
                   <div className="or_head">
                     <h1>Awesome Initial Offer: {getAmount(initialOffer)}!</h1>
                     <p>
-                      We just need a few more bits of information to make your
-                      offer as accurate as possible!
+                      Your offer may be higher or lower. We just need a few
+                      important bits of information to finalize a GREAT offer!
                     </p>
                   </div>
                 )}
@@ -334,7 +334,7 @@ function Confirm({ fbpixel, analytics }) {
                 />
                 <div className="offer_block">
                   <div className="ob_hd">
-                    <h2>Tire Condition</h2>
+                    <h2>Tires Condition</h2>
                   </div>
                   <div className="offer_block-body">
                     <div>

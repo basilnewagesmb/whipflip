@@ -4,15 +4,23 @@ import Link from "next/link";
 import React from "react";
 import getAmount from "utils/getAmount";
 
-function CarInfo({ data, isShow, initialOffer }) {
+function CarInfo(prop) {
+  const { data, isShow, initialOffer } = prop;
   return (
     isShow && (
       <>
         <div className="itemImg d-flex align-items-center justify-content-center flex-column">
-          {initialOffer && (
+          {initialOffer ? (
             <>
-              <h5>Initial Offer: {getAmount(initialOffer)}!</h5>
+              <h5>
+                {initialOffer.status === "offer" ? "Final" : "Initial"} Offer:{" "}
+                {getAmount(initialOffer)}!
+              </h5>
               <PoweredBy />
+            </>
+          ) : (
+            <>
+              <h5>YOUR AWESOME CAR</h5>
             </>
           )}
           <ShimmerImage
@@ -30,13 +38,9 @@ function CarInfo({ data, isShow, initialOffer }) {
         </div>
         <div className="itemInfo">
           <h2>
-            {data?.modelyear} {data?.make}
+            {data?.modelyear} {data?.make} {` ${data?.model} `}
           </h2>
-          <span>
-            {data?.enableMultiTrim ? data?.body : data?.trim}
-
-            <span className="miles"> {` ${data?.model} `}</span>
-          </span>
+          <span>{data?.enableMultiTrim ? data?.body : data?.trim}</span>
           <Link href="/">Not your car?</Link>
         </div>
       </>

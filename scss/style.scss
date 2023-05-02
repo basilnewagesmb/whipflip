@@ -5038,6 +5038,9 @@ span.opicon {
 // .offer_block .ob_frm_row div > label{
 //     margin-bottom: 20px;
 // }
+.color_picker .color_picker_toggle .color_dot {
+  margin-right: 10px;
+}
 .modal_accessCam {
   .modal-content {
     padding: 15px;
@@ -5102,7 +5105,6 @@ span.opicon {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     height: 38px;
     border: 1px solid #d5d5dc;
     font-size: inherit;
@@ -5145,7 +5147,6 @@ span.opicon {
         }
         & > span {
           font-style: normal;
-          font-weight: 900;
           font-size: 14px;
           line-height: 22px;
           color: #353442;

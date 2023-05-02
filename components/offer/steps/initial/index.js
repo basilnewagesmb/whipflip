@@ -24,7 +24,7 @@ function Initial(props) {
     breakDownPop,
     isLoading,
     isDisable,
-  } = useInitialForm({ form, data, carouselRef,props });
+  } = useInitialForm({ form, data, carouselRef, props });
 
   return (
     <div>
@@ -70,8 +70,12 @@ function Initial(props) {
                           className="w-100"
                           placeholder="Enter Mileage"
                           min={0}
-                          maxLength={6}
+                          maxLength={7}
                           onBlur={mileageOnblur}
+                          formatter={(value) =>
+                            `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                          }
+                          parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
                         />
                       </Form.Item>
                     </div>
@@ -304,7 +308,7 @@ function Initial(props) {
                       <div className="iptWrapper align-items-end">
                         <div className="iptLt">
                           <Form.Item
-                            label="Phone Number (We won’t bug you!)"
+                            label="Phone Number (We promise not to bug you.  We may need more info.)"
                             name={["user", "phone"]}
                             className="m-0 w-100"
                             rules={[

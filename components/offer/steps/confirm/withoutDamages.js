@@ -7,8 +7,8 @@ function WithoutDamages({ initialOffer }) {
       <div className="or_head">
         <h1>Awesome Initial Offer: {getAmount(initialOffer)}!</h1>
         <p>
-          We just need a few more bits of information to make your offer as
-          accurate as possible!
+          Your offer may be higher or lower. We just need a few important bits
+          of information to finalize a GREAT offer!
         </p>
       </div>
     </div>

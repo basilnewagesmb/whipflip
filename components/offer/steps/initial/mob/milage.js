@@ -25,9 +25,13 @@ function Milage({ carouselRef, form, data, next, goTo }) {
                 className="w-100"
                 placeholder="Enter Mileage"
                 min={0}
-                maxLength={6}
+                maxLength={7}
                 onBlur={mileageOnblur}
                 inputMode="numeric"
+                formatter={(value) =>
+                  `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                }
+                parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
               />
             </Form.Item>
           </div>
