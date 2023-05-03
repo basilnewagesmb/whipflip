@@ -284,7 +284,12 @@ export const ShowEasyStep = (
   fbpixel
 ) => {
   Modal.info({
-    title: "One Final Easy Step!",
+    title: (
+      <>
+        <h5 className="m-0">One Final Easy Step!</h5>
+        <label>Select an option below:</label>
+      </>
+    ),
     className: "final_easy_step_modal",
     width: 700,
     closable: true,
@@ -352,7 +357,8 @@ export const ShowEasyStep = (
                     <div className="fesConItem_detail">
                       <h3>Access our photo tool via email or text.</h3>
                       <p>
-                        We’ve sent you an email and text.  On your phone, simply click the link to continue.”
+                        We’ve sent you an email and text. On your phone, simply
+                        click the link to continue.”
                       </p>
                     </div>
                   </div>
@@ -409,7 +415,8 @@ export const ShowEasyStep = (
           <div className="fesFooter_body">
             <p>
               Your instant offer is a click away! Well confirm the exact
-              condition at your driveway. The final value might change.
+              condition at your driveway.
+              <br/> The final value might change.
             </p>
             <SkipButton
               skipToInstantOffer={skipToInstantOffer}

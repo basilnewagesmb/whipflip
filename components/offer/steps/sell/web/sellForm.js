@@ -35,7 +35,7 @@ function SellFrom({
     <Form {...formData}>
       <div className="offer_right">
         <div className="or_head">
-          <h1>When Can We Drop Off Your Check?</h1>
+          <h1>When & Where Can We Drop Off Your Check?</h1>
         </div>
         <div className="offer_block">
           <div className="ob_hd">
@@ -61,13 +61,14 @@ function SellFrom({
                       className="w-100"
                       {...autoComplete}
                       placeholder="Address"
+                      value={formData?.formRealData?.street_address || ""}
                     />{" "}
                   </Form.Item>
                   <Form.Item name={"latLng"} hidden={true}>
                     <Input hidden />
                   </Form.Item>
                 </div>
-                <div className="col-lg-12 p-0 sacol">
+                {/* <div className="col-lg-12 p-0 sacol">
                   <Form.Item
                     label={false}
                     name={"appartment"}
@@ -85,7 +86,7 @@ function SellFrom({
                       placeholder="Apt/Ste/Other"
                     />
                   </Form.Item>
-                </div>
+                </div> */}
                 <div className="col-lg-12 p-0 sacol">
                   <Form.Item
                     label={false}
@@ -246,7 +247,7 @@ function SellFrom({
             <div autoComplete="off" className="form" role="form">
               <div className="form-group row ob_frm_row">
                 <div className="col-lg-12 p-0">
-                  <label htmlFor="">Sole owner/only name on title?</label>{" "}
+                  {/* <label htmlFor="">Sole owner/only name on title?</label>{" "}
                   <Form.Item
                     name={"is_sole_owner"}
                     rules={[
@@ -330,54 +331,52 @@ function SellFrom({
                     </div>
                   </Form.Item>
                   <div className="viewDetails">
-                    {formData?.formRealData?.is_sole_owner && (
-                      <div className="viewDetail">
-                        <div className="selectView vin">
-                          <div className="checkIssues">
-                            <div className="chooseIssues">
-                              <div className="form-fld-grp">
-                                <div className="form-row frmRow align-items-start">
-                                  <div className="frmfldItem">
-                                    <Form.Item
-                                      label={false}
-                                      name={"first_name"}
-                                      className="m-0 "
-                                      rules={[
-                                        {
-                                          required: true,
-                                          message:
-                                            "Please input your First Name!",
-                                        },
-                                      ]}
-                                    >
-                                      <Input
-                                        size="large"
-                                        className="w-100"
-                                        placeholder="Owner First Name"
-                                      />
-                                    </Form.Item>
-                                  </div>
-                                  <div className="frmfldItem">
-                                    <Form.Item
-                                      label={false}
-                                      name={"last_name"}
-                                      className="m-0 "
-                                      rules={[
-                                        {
-                                          required: true,
-                                          message:
-                                            "Please input your Last Name!",
-                                        },
-                                      ]}
-                                    >
-                                      <Input
-                                        size="large"
-                                        className="w-100"
-                                        placeholder="Owner Last Name"
-                                      />
-                                    </Form.Item>
-                                  </div>
-                                  <div className="frmfldItem suffFld">
+                    {formData?.formRealData?.is_sole_owner && ( */}
+                  <div className="viewDetail">
+                    <div className="selectView vin">
+                      <div className="checkIssues">
+                        <div className="chooseIssues">
+                          <div className="form-fld-grp">
+                            <div className="form-row frmRow align-items-start">
+                              <div className="frmfldItem">
+                                <Form.Item
+                                  label={false}
+                                  name={"first_name"}
+                                  className="m-0 "
+                                  rules={[
+                                    {
+                                      required: true,
+                                      message: "Please input your First Name!",
+                                    },
+                                  ]}
+                                >
+                                  <Input
+                                    size="large"
+                                    className="w-100"
+                                    placeholder="Owner First Name"
+                                  />
+                                </Form.Item>
+                              </div>
+                              <div className="frmfldItem">
+                                <Form.Item
+                                  label={false}
+                                  name={"last_name"}
+                                  className="m-0 "
+                                  rules={[
+                                    {
+                                      required: true,
+                                      message: "Please input your Last Name!",
+                                    },
+                                  ]}
+                                >
+                                  <Input
+                                    size="large"
+                                    className="w-100"
+                                    placeholder="Owner Last Name"
+                                  />
+                                </Form.Item>
+                              </div>
+                              {/* <div className="frmfldItem suffFld">
                                     <Form.Item
                                       label={false}
                                       name={"suffix"}
@@ -425,105 +424,104 @@ function SellFrom({
                                         placeholder="Suffix"
                                       />
                                     </Form.Item>
-                                  </div>
+                                  </div> */}
+                            </div>
+                            {formData?.formRealData?.is_sole_owner ==
+                              "double" && (
+                              <div className="form-row frmRow mt-2 align-items-start">
+                                <div className="frmfldItem">
+                                  <Form.Item
+                                    label={false}
+                                    name={"second_owner_first_name"}
+                                    className="m-0 "
+                                    rules={[
+                                      {
+                                        required: true,
+                                        message:
+                                          "Please input your First Name!",
+                                      },
+                                    ]}
+                                  >
+                                    <Input
+                                      size="large"
+                                      className="w-100"
+                                      placeholder="Second Owner First Name"
+                                    />
+                                  </Form.Item>
                                 </div>
-                                {formData?.formRealData?.is_sole_owner ==
-                                  "double" && (
-                                  <div className="form-row frmRow mt-2 align-items-start">
-                                    <div className="frmfldItem">
-                                      <Form.Item
-                                        label={false}
-                                        name={"second_owner_first_name"}
-                                        className="m-0 "
-                                        rules={[
-                                          {
-                                            required: true,
-                                            message:
-                                              "Please input your First Name!",
-                                          },
-                                        ]}
-                                      >
-                                        <Input
-                                          size="large"
-                                          className="w-100"
-                                          placeholder="Second Owner First Name"
-                                        />
-                                      </Form.Item>
-                                    </div>
-                                    <div className="frmfldItem">
-                                      <Form.Item
-                                        label={false}
-                                        name={"second_owner_last_name"}
-                                        className="m-0 "
-                                        rules={[
-                                          {
-                                            required: true,
-                                            message:
-                                              "Please input your Second Owner Last Name!",
-                                          },
-                                        ]}
-                                      >
-                                        <Input
-                                          size="large"
-                                          className="w-100"
-                                          placeholder="Second Owner Last Name"
-                                        />
-                                      </Form.Item>
-                                    </div>
-                                    <div className="frmfldItem suffFld">
-                                      <Form.Item
-                                        label={false}
-                                        name={"second_owner_suffix"}
-                                        className="m-0"
-                                        rules={[
-                                          {
-                                            required: true,
-                                            message:
-                                              "Please select your suffix!",
-                                          },
-                                        ]}
-                                      >
-                                        <Select
-                                          className="w-100"
-                                          options={[
-                                            {
-                                              value: "Jr.",
-                                              label: "Jr.",
-                                            },
-                                            {
-                                              value: "Sr.",
-                                              label: "Sr.",
-                                            },
-                                            {
-                                              value: "I",
-                                              label: "I",
-                                            },
-                                            {
-                                              value: "II",
-                                              label: "II",
-                                            },
-                                            {
-                                              value: "III",
-                                              label: "III",
-                                            },
-                                            {
-                                              value: "IV",
-                                              label: "IV",
-                                            },
-                                            {
-                                              value: "V",
-                                              label: "V",
-                                            },
-                                          ]}
-                                          allowClear
-                                          placeholder="Suffix"
-                                        />
-                                      </Form.Item>
-                                    </div>
-                                  </div>
-                                )}
+                                <div className="frmfldItem">
+                                  <Form.Item
+                                    label={false}
+                                    name={"second_owner_last_name"}
+                                    className="m-0 "
+                                    rules={[
+                                      {
+                                        required: true,
+                                        message:
+                                          "Please input your Second Owner Last Name!",
+                                      },
+                                    ]}
+                                  >
+                                    <Input
+                                      size="large"
+                                      className="w-100"
+                                      placeholder="Second Owner Last Name"
+                                    />
+                                  </Form.Item>
+                                </div>
+                                <div className="frmfldItem suffFld">
+                                  <Form.Item
+                                    label={false}
+                                    name={"second_owner_suffix"}
+                                    className="m-0"
+                                    rules={[
+                                      {
+                                        required: true,
+                                        message: "Please select your suffix!",
+                                      },
+                                    ]}
+                                  >
+                                    <Select
+                                      className="w-100"
+                                      options={[
+                                        {
+                                          value: "Jr.",
+                                          label: "Jr.",
+                                        },
+                                        {
+                                          value: "Sr.",
+                                          label: "Sr.",
+                                        },
+                                        {
+                                          value: "I",
+                                          label: "I",
+                                        },
+                                        {
+                                          value: "II",
+                                          label: "II",
+                                        },
+                                        {
+                                          value: "III",
+                                          label: "III",
+                                        },
+                                        {
+                                          value: "IV",
+                                          label: "IV",
+                                        },
+                                        {
+                                          value: "V",
+                                          label: "V",
+                                        },
+                                      ]}
+                                      allowClear
+                                      placeholder="Suffix"
+                                    />
+                                  </Form.Item>
+                                </div>
                               </div>
-                              <div className="row">
+                            )}
+                          </div>
+                          {/* <div className="row">
                                 <div className="col-lg-12 col-12">
                                   <Form.Item
                                     label={false}
@@ -596,16 +594,16 @@ function SellFrom({
                                     />
                                   </Form.Item>
                                 </div>
-                              </div>
-                            </div>
-                          </div>
+                              </div> */}
                         </div>
                       </div>
-                    )}
+                    </div>
                   </div>
+                  {/* )}
+                  </div> */}
                 </div>
               </div>
-              <div className="form-group row ob_frm_row">
+              {/* <div className="form-group row ob_frm_row">
                 <div className="col-lg-12 p-0">
                   <label htmlFor="">
                     Do you have the title to this vehicle?
@@ -828,7 +826,7 @@ function SellFrom({
                       </div>
                     )}
                 </div>
-              </div>
+              </div> */}
               {formData?.formRealData?.has_active_loan == false &&
               formData?.formRealData?.hasTitle == false ? null : (
                 <div className="doneProcess mt-3">

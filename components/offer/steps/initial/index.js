@@ -126,7 +126,8 @@ function Initial(props) {
                             />
                             <label
                               htmlFor="radio1"
-                              className="selector-item_label height_40_flex"
+                              className="selector-item_label height_40_flex justify-content-center uniform_item_label"
+                              
                             >
                               Automatic
                             </label>
@@ -145,7 +146,7 @@ function Initial(props) {
                             />
                             <label
                               htmlFor="radio2"
-                              className="selector-item_label height_40_flex"
+                              className="selector-item_label height_40_flex justify-content-center uniform_item_label"
                             >
                               Manual (i.e. Stick Shift)
                             </label>
@@ -184,7 +185,7 @@ function Initial(props) {
                             />
                             <label
                               htmlFor="yes"
-                              className="selector-item_label labelflexCenter height_40_flex"
+                              className="selector-item_label labelflexCenter height_40_flex uniform_item_label"
                             >
                               <Like />
                               <span>Yes</span>
@@ -203,7 +204,7 @@ function Initial(props) {
                             />
                             <label
                               htmlFor="no"
-                              className="selector-item_label labelflexCenter height_40_flex"
+                              className="selector-item_label labelflexCenter height_40_flex uniform_item_label"
                             >
                               <DisLike /> <span>No</span>
                             </label>
@@ -377,7 +378,7 @@ function Initial(props) {
                               />
                               <label
                                 htmlFor={item.uid}
-                                className="selector-item_label labelflexCenter"
+                                className="selector-item_label labelflexCenter uniform_item_label"
                               >
                                 {item.name == "A FEW WEEKS" && <SandClock />}
                                 {item.name == "ASAP!" && <Clock />}

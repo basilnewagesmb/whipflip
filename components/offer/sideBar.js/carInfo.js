@@ -12,10 +12,10 @@ function CarInfo(prop) {
         <div className="itemImg d-flex align-items-center justify-content-center flex-column">
           {initialOffer ? (
             <>
-              <h5>
+              <h4>
                 {initialOffer.status === "offer" ? "Final" : "Initial"} Offer:{" "}
                 {getAmount(initialOffer)}!
-              </h5>
+              </h4>
               <PoweredBy />
             </>
           ) : (

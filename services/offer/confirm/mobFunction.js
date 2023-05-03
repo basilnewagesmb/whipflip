@@ -171,10 +171,10 @@ function useConfirmFormMob({ form, navFunc, fbpixel, analytics }) {
       cosmetic: data.cosmetic,
     };
     if (res?.data?.trimlevel?.length) {
-      setShowTrimConfirm(true)
+      setShowTrimConfirm(true);
       showConfirm(res?.data, data, issues, analytics, fbpixel);
     } else {
-      setShowTrimConfirm(false)
+      setShowTrimConfirm(false);
       message.error("No vehicle details found!");
     }
   };
@@ -257,7 +257,7 @@ function useConfirmFormMob({ form, navFunc, fbpixel, analytics }) {
     isReview,
     setIsReview,
     isTrimSelected,
-    showTrimConfirm
+    showTrimConfirm,
   };
   return formDate;
 }
@@ -273,6 +273,7 @@ export const ShowEasyStepMob = (
     title: (
       <h6 className="text-center " style={{ color: "#4381c0" }}>
         One Final Easy Step!
+        <label>Select an option below:</label>
       </h6>
     ),
     className: "final_easy_step_modal",

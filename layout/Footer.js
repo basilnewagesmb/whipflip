@@ -8,7 +8,7 @@ function Footer() {
       <footer className="footer">
         <div className="container">
           <div className="row fooRow">
-            <div className="col-lg-3 col-6 fooCol">
+            <div className="col-lg-4 col-6 fooCol">
               <div className="fooColIn">
                 <h2>{items[0].title}</h2>
                 <ul>
@@ -20,7 +20,7 @@ function Footer() {
                 </ul>
               </div>
             </div>
-            <div className="col-lg-3 col-6 fooCol">
+            <div className="col-lg-4 col-6 fooCol">
               <div className="fooColIn">
                 <h2>{items[1].title}</h2>
                 <ul>
@@ -32,7 +32,7 @@ function Footer() {
                 </ul>
               </div>
             </div>
-            <div className="col-lg-3 col-6 fooCol">
+            {/* <div className="col-lg-4 col-6 fooCol">
               <div className="fooColIn">
                 <h2>{items[2].title}</h2>
                 <ul>
@@ -43,8 +43,8 @@ function Footer() {
                   ))}
                 </ul>
               </div>
-            </div>
-            <div className="col-lg-3 col-6 fooCol">
+            </div> */}
+            <div className="col-lg-4 col-6 fooCol">
               <div className="fooColIn">
                 <h2>Legal</h2>
                 <ul>

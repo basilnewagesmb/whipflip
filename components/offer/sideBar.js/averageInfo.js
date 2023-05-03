@@ -29,10 +29,9 @@ function AverageInfo({ isShow }) {
                 </>
               ) : (
                 <>
-                  <b> 96% of WhipFlip customers</b> who scheduled an appointment
-                  to set happily sold their cars to us! Ready to sell? We are
-                  ready to buy. No time wasted by either party. We stand behind
-                  our words!
+                  <b> 96% of WhipFlip customers</b> who set an appointment to
+                  sell happily sold their cars to us! No haggle or hassle. Just
+                  a quick and safe transaction at your driveway!
                 </>
               )}
             </p>

@@ -36,8 +36,7 @@ function About() {
             <span>Our Values</span>
             <h2>
               <span>
-                We are guided by our core values for every customer, every
-                employee, every car…every single day!
+                We are guided by our core values for every customer, every employee, every car, every single day!
               </span>
             </h2>
           </div>
@@ -146,11 +145,11 @@ function About() {
                 </h2>
               </div>
               <div className="body-text">
-                <p>
+                <p className="text-justify">
                   {` Why is selling a car whether on your own or trading in still a
                   huge pain? It's time for change.`}
                 </p>
-                <p>
+                <p className="text-justify">
                   WhipFlip is here to put an end to the inconvenience,
                   time-waste, and risk you face with one of the most expensive
                   and difficult assets to sell...a car. Be a part of the
@@ -199,17 +198,15 @@ function About() {
                 <h2 className="mb-4">Meet Our Concierges!</h2>
               </div>
               <div className="body-text">
-                <p>
+                <p className="text-justify">
                   {`WhipFlip does not use third parties to purchase your car. It's you and us all the way!`}
                 </p>
-                <p>
+                <p className="text-justify">
                   {`Our professional Car Concierges will
                   come to you at the time and place you set to sell your car.
                   Before they arrive, you'll receive a text or email of which
                   Concierge will be arriving at your place. You'll instantly
-                  recognize them from the WhipFlip uniform! In only a few
-                  minutes time, our Concierge will verify your vehicle's
-                  condition, and hand you the check!`}
+                  recognize them from the WhipFlip uniform ! In only a few minutes, our Car Concierge will verify your offer, complete paperwork, and hand you a check on the spot!`}
                 </p>
               </div>
             </div>

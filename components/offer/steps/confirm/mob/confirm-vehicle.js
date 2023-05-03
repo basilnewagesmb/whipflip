@@ -188,7 +188,7 @@ function ConfirmVehicle({
               {formRealValues?.info?.type === "plate" && (
                 <div className="selectView license_plate">
                   <Form.Item
-                    label={"Plate Number"}
+                    label={"License Plate Number"}
                     name={["info", "plateNumber"]}
                     className="mb-3"
                     rules={[

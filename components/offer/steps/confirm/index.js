@@ -125,8 +125,10 @@ function Confirm({ fbpixel, analytics }) {
                   </div>
                 )}
                 <div className="offer_block">
-                  <div className="ob_hd">
+                  <div className="ob_hd ob_frm_row">
                     <h2>Vehicle Information</h2>
+                    
+                    <label className="mt-2">Enter your VIN OR License Plate Number</label>
                   </div>
                   <Form.Item label={false} name={["info", "type"]} hidden>
                     <Input />
@@ -160,7 +162,7 @@ function Confirm({ fbpixel, analytics }) {
                               />
                               <label
                                 htmlFor="radio1"
-                                className="selector-item_label justify-content-center"
+                                className="selector-item_label justify-content-center uniform_item_label"
                               >
                                 VIN #
                               </label>
@@ -191,7 +193,7 @@ function Confirm({ fbpixel, analytics }) {
                               />
                               <label
                                 htmlFor="radio2"
-                                className="selector-item_label justify-content-center"
+                                className="selector-item_label justify-content-center uniform_item_label"
                               >
                                 License Plate
                               </label>
@@ -272,7 +274,7 @@ function Confirm({ fbpixel, analytics }) {
                           {formRealValues?.info?.type === "plate" && (
                             <div className="selectView license_plate">
                               <Form.Item
-                                label={"Plate Number"}
+                                label={"License Plate Number"}
                                 name={["info", "plateNumber"]}
                                 className="mb-3"
                                 rules={[

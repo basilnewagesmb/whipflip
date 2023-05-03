@@ -63,7 +63,7 @@ function VehicleCD({ form, formRealValues, conditions, isConditionsLoading }) {
                             ]);
                           }}
                         >
-                          <label className="selector-item_label justify-content-center">
+                          <label className="selector-item_label justify-content-center uniform_item_label">
                             Nope!
                           </label>
                         </div>
@@ -78,7 +78,7 @@ function VehicleCD({ form, formRealValues, conditions, isConditionsLoading }) {
                             ]);
                           }}
                         >
-                          <label className="selector-item_label justify-content-center">
+                          <label className="selector-item_label justify-content-center uniform_item_label">
                             Yes
                           </label>
                         </div>

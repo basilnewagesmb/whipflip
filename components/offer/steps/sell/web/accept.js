@@ -30,8 +30,8 @@ function Accept({ data, setAccept }) {
             </div>
             <div className="at_dec">
               <p>
-                Your offer is good for 5 days. Just let us know when and where
-                we can come to buy your car!
+                Your offer is good for 5 days.<br/>
+                Simply click below to set your time and day to sell and get paid!
               </p>
             </div>
             <div className="at_buttons">
@@ -72,7 +72,7 @@ function Accept({ data, setAccept }) {
                   <div className="wsp_right">
                     <h2>Ultimate Convenience!</h2>
                     <p>
-                      We come to you to pay and pick up...on your time! No more
+                      We come to you to pay and pick up...on your time ! No more
                       wasted time or stress messing with scammers, tire-kickers,
                       or dealers!
                     </p>
@@ -96,8 +96,7 @@ function Accept({ data, setAccept }) {
                     <h2>Best Offer!</h2>
                     <p>
                       Our offers typically are <b>$762 higher</b> than trade-in
-                      and beat most other car-buying companies. Plus, we are
-                      trusted by the best in the industry, JD Power!
+                      and beat most other car-buying companies. Plus we are trusted by the biggest names in the insdustry.
                     </p>
                   </div>
                 </div>

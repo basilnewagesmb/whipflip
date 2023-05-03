@@ -9,6 +9,7 @@ import getAmount from "utils/getAmount";
 import ShimmerImage from "components/common/shimmerImage";
 import moment from "moment";
 import useCheckMobile from "utils/checkMobile";
+import { useStatesQuery } from "services/util";
 function Congrats({ data }) {
   const isMobile = useCheckMobile();
 
@@ -22,6 +23,8 @@ function Congrats({ data }) {
       }, 7000);
     }
   }, []);
+  const { data: states } = useStatesQuery();
+
   return (
     <div>
       {confetti && (
@@ -66,7 +69,12 @@ function Congrats({ data }) {
                             {" "}
                             <span>{data?.street_address} </span>{" "}
                             <span>
-                              {data?.appartment},{data?.state},{data?.zipcode}
+                              {data?.appartment},{data?.city},
+                              {
+                                states?.find((i) => i.abbr === data?.state)
+                                  ?.state
+                              }
+                              ,{data?.zipcode}
                             </span>
                           </h3>
                         </div>
@@ -110,7 +118,15 @@ function Congrats({ data }) {
                                   </h3>
                                   <div className="vehicle_info">
                                     <span>{data?.trim}</span>
-                                    <span>{data?.mileage} miles</span>
+                                    <span>
+                                      {data?.mileage
+                                        ?.toString()
+                                        ?.replace(
+                                          /\B(?=(\d{3})+(?!\d))/g,
+                                          ","
+                                        )}{" "}
+                                      miles
+                                    </span>
                                   </div>
                                 </div>
                               </div>
@@ -143,11 +159,11 @@ function Congrats({ data }) {
                           <div className="np_item_dec">
                             <h2>Respond to Confirmation</h2>
                             <p>
-                              A member of our team will contact you to confirm
-                              your appointment to sell. Please respond
-                              immediately to lock in your day/time to sell. If
-                              we haven`t heard from you, we reserve the right to
-                              cancel and rescind the offer.
+                              Our team will contact you to confirm your vehicle
+                              and appointment details. Please respond
+                              immediately to finalize confirmation. If we are
+                              unable to reach you, we reserve the right to
+                              cancel and rescind our offer.
                             </p>
                           </div>
                         </div>
@@ -380,7 +396,9 @@ function Congrats({ data }) {
                       {" "}
                       <span>{data?.street_address} </span>{" "}
                       <span>
-                        {data?.appartment},{data?.state},{data?.zipcode}
+                        {data?.appartment},{data?.city},
+                        {states?.find((i) => i.abbr === data?.state)?.state},
+                        {data?.zipcode}{" "}
                       </span>
                     </h3>
                   </div>
@@ -416,7 +434,12 @@ function Congrats({ data }) {
                             </h3>
                             <div className="vehicle_info">
                               <span>{data?.trim}</span>
-                              <span>{data?.mileage} miles</span>
+                              <span>
+                                {data?.mileage
+                                  .toString()
+                                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+                                miles
+                              </span>
                             </div>
                           </div>
                         </div>

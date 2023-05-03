@@ -1,13 +1,19 @@
-
 import { Rate } from "antd";
 import React from "react";
 import ShimmerImage from "components/common/shimmerImage";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 function Reviews({ mob, reviews }) {
+  const { push } = useRouter();
   if (mob) {
     return (
-      <div className="reviewRt_info">
+      <div
+        className="reviewRt_info"
+        onClick={() => {
+          push("/reviews");
+        }}
+      >
         {reviews?.count && (
           <Rate allowHalf disabled defaultValue={parseFloat(reviews?.count)} />
         )}
@@ -21,7 +27,15 @@ function Reviews({ mob, reviews }) {
     );
   } else {
     return (
-      <div className="col-lg-6 review_col bnr_left_points">
+      <div
+        className="col-lg-6 review_col bnr_left_points"
+        onClick={() => {
+          push("/reviews");
+        }}
+        style={{
+          cursor: "pointer",
+        }}
+      >
         <article
           data-toggle="modal"
           data-target="#activeUsers"
@@ -32,12 +46,7 @@ function Reviews({ mob, reviews }) {
               reviews?.avatars?.map(
                 (img, i) =>
                   i < 3 && (
-                    <Link
-                      className="c-profile"
-                      href={img.url}
-                      key={i}
-                      target="_blank"
-                    >
+                    <Link className="c-profile" href={"/reviews"} key={i}>
                       <span>
                         <ShimmerImage
                           src={img.src}

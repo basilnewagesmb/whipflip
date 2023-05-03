@@ -48,8 +48,13 @@
   },
   {
     "title": "Support",
-    "icon": "bi-person-fill"
-  
+    "icon": "bi-person-fill",
+    "sub": [
+      {
+        "title": "Contact Us",
+        "path": "/contact-us"
+      }
+    ]
   },
   {
     "title": "Privacy Policy",

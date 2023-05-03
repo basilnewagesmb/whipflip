@@ -93,7 +93,7 @@ function OfferInfo({ isShow, data }) {
                   </div>
                 </div>
               ),
-              title: <h3>Offer Factor</h3>,
+              title: <h3>Offer Factors</h3>,
               closable: true,
               footer: null,
               className: "will_come_back offer_factors_modal",
