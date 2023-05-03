@@ -14,7 +14,7 @@ function CarInfo(prop) {
             <>
               <h4>
                 {initialOffer.status === "offer" ? "Final" : "Initial"} Offer:{" "}
-                {getAmount(initialOffer)}!
+                {getAmount(initialOffer)}
               </h4>
               <PoweredBy />
             </>

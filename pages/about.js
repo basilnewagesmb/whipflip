@@ -36,7 +36,8 @@ function About() {
             <span>Our Values</span>
             <h2>
               <span>
-                We are guided by our core values for every customer, every employee, every car, every single day!
+                We are guided by our core values for every customer, every
+                employee, every car, every single day!
               </span>
             </h2>
           </div>
@@ -209,6 +210,50 @@ function About() {
                   recognize them from the WhipFlip uniform ! In only a few minutes, our Car Concierge will verify your offer, complete paperwork, and hand you a check on the spot!`}
                 </p>
               </div>
+            </div>
+          </div>{" "}
+          <div className="row">
+            <div className="col-12 page-title text-center">
+              <h1>Our Partners</h1>
+            </div>
+          </div>
+          <div className="row justify-content-center ">
+            <div className="col-lg-3 col-xl-2 col-md-4 col-sm-5 col-4 text-center d-flex align-items-center justify-content-center">
+              <img
+                loading="lazy"
+                src="/images/p1.png"
+                alt="JDPower"
+                title="JDPower"
+                className="img-fluid"
+              />
+            </div>
+            <div className="col-lg-3 col-xl-2 col-md-4 col-sm-5 col-4 text-center d-flex align-items-center justify-content-center">
+              <img
+                loading="lazy"
+                src="/images/p2.png"
+                alt="Altis"
+                title="Altis"
+                className="img-fluid"
+              />
+            </div>
+            <div className="col-lg-3 col-xl-2 col-md-4 col-sm-5 col-4 text-center d-flex align-items-center justify-content-center">
+              <img
+                loading="lazy"
+                src="/images/p3.png"
+                alt="Chamber of Commerce"
+                title="Chamber of Commerce"
+                className="img-fluid"
+              />
+            </div>
+            <div className="col-lg-3 col-xl-2 col-md-4 col-sm-5 col-4 text-center d-flex align-items-center justify-content-center">
+              <img
+                loading="lazy"
+                src="/images/p4.png"
+                alt="SBDC"
+                title="SBDC"
+                className="img-fluid"
+                style={{ width: "70%" }}
+              />
             </div>
           </div>
           <div className="row vspace-65">
