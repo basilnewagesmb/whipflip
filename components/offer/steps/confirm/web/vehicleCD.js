@@ -33,7 +33,7 @@ function VehicleCD({ form, formRealValues, conditions, isConditionsLoading }) {
           <div>
             {formRealValues?.conditions?.map((item, i) => (
               <div className="form-group row ob_frm_row" key={i}>
-                <div className="col-lg-12 p-0">
+                <div className="col-lg-8 p-0">
                   <label>{item.title}</label>
                   <Form.Item
                     label={false}

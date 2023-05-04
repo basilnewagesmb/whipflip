@@ -60,7 +60,7 @@ function Confirm({ fbpixel, analytics }) {
           {initialOffer?.is_deduction_added == "Y" && (
             <div className="offer_right">
               <div className="or_head">
-                <h1>Awesome Initial Offer: {getAmount(initialOffer)}</h1>
+                <h1>Confirm Your Initial Offer</h1>
                 <p>
                   Your offer may be higher or lower. We just need a few
                   important bits of information to finalize a GREAT offer!

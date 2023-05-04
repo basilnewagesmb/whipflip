@@ -114,7 +114,7 @@ function Congrats({ data }) {
                                 <h2>{getAmount(data)}</h2>
                                 <div className="nm_detail">
                                   <h3>
-                                    {data?.year} {data?.make}
+                                    {data?.year} {data?.make} {data?.model}
                                   </h3>
                                   <div className="vehicle_info">
                                     <span>{data?.trim}</span>
@@ -431,6 +431,7 @@ function Congrats({ data }) {
                           <div className="ofp_right col-8 text-left">
                             <h3>
                               {data?.year} {data?.make}
+                              {data?.model}
                             </h3>
                             <div className="vehicle_info">
                               <span>{data?.trim}</span>

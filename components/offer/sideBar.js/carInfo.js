@@ -6,6 +6,7 @@ import getAmount from "utils/getAmount";
 
 function CarInfo(prop) {
   const { data, isShow, initialOffer } = prop;
+  console.log(prop);
   return (
     isShow && (
       <>
@@ -38,9 +39,9 @@ function CarInfo(prop) {
         </div>
         <div className="itemInfo">
           <h2>
-            {data?.modelyear} {data?.make} {` ${data?.model} `}
+            {data?.modelyear || data?.year} {data?.make} {` ${data?.model} `}
           </h2>
-          <span>{data?.enableMultiTrim ? data?.body : data?.trim}</span>
+          <span>{data?.body || data?.trim}</span>
           <Link href="/">Not your car?</Link>
         </div>
       </>

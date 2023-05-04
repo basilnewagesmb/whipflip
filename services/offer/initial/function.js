@@ -121,8 +121,9 @@ function useInitialForm({ form, data, carouselRef, goTo, props }) {
     isDisable: isLoading,
     mileage,
     mileageOnblur: () => {
+      let mileageNum = parseInt(mileage?.toString()?.replaceAll(",", ""));
       var diff = moment().diff(`${data.modelyear}-01-01`, "years", true);
-      if (diff > 2 && mileage != null && mileage >= 0 && mileage <= 9999) {
+      if (diff > 2 && mileageNum != null && mileageNum >= 0 && mileageNum <= 9999) {
         Modal.warning({
           className: "confirm-model",
           icon: <SpeedoMeter isLoading={true} />,
@@ -137,13 +138,13 @@ function useInitialForm({ form, data, carouselRef, goTo, props }) {
             <div className="text-center">
               {isMobile ? (
                 <p>
-                  You've entered "{mileage + ""}" for milage.
+                  You've entered "{mileageNum + ""}" for milage.
                   <br />
                   Do you want to double check the number?
                 </p>
               ) : (
                 <p>
-                  Are you sure your vehicle only has "{mileage + ""}" miles?
+                  Are you sure your vehicle only has "{mileageNum + ""}" miles?
                 </p>
               )}
               {isMobile && (

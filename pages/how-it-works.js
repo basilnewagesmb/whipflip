@@ -32,10 +32,9 @@ function Index(props) {
   return (
     <>
       <MetaHead
-        title="Sell Your Car Online in 3 Steps"
+        title="How It Works"
         ogImage={"https://whipflipnow.s3.amazonaws.com/Whipflip+Logo.png"}
       />
-      <HomeBanner reviews={reviews} isClient={isClient} />
       <div className="how-it-works pt100">
         <div className="container">
           <div className="secHd text-center">
@@ -434,7 +433,6 @@ function Index(props) {
           </span>
         </div>
       </div>
-      <Faq icon />
       <ReadyToSell />
       <div className="sell-car-info">
         <div className="container">

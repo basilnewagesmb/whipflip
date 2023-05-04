@@ -1,6 +1,6 @@
 import { Clock, DisLike, Like, SandClock } from "components/common/icons";
 import MetaHead from "components/common/metaHead";
-import { Form, Button, Input, InputNumber } from "antd";
+import { Form, Button, Input, InputNumber, Typography ,Tooltip} from "antd";
 import React, { useRef } from "react";
 import { useSelector } from "react-redux";
 import { InfoCircleOutlined } from "@ant-design/icons";
@@ -9,6 +9,7 @@ import ColorSelect from "./web/colorSelect";
 import useInitialForm from "services/offer/initial/function";
 import LoaderAnim from "components/common/loader";
 import InitialMob from "./mob/index";
+const { Text } = Typography;
 
 function Initial(props) {
   const { data } = props;
@@ -98,7 +99,7 @@ function Initial(props) {
                     </div>
                   </div>
                   <div className="form-group row ob_frm_row">
-                    <div className="col-lg-12 p-0">
+                    <div className="col-lg-6 p-0">
                       <label htmlFor=""></label>
                       <Form.Item
                         label="Transmission"
@@ -127,7 +128,6 @@ function Initial(props) {
                             <label
                               htmlFor="radio1"
                               className="selector-item_label height_40_flex justify-content-center uniform_item_label"
-                              
                             >
                               Automatic
                             </label>
@@ -148,7 +148,9 @@ function Initial(props) {
                               htmlFor="radio2"
                               className="selector-item_label height_40_flex justify-content-center uniform_item_label"
                             >
-                              Manual (i.e. Stick Shift)
+                              <Tooltip title="(i.e. Stick Shift)">
+                                Manual
+                              </Tooltip>
                             </label>
                           </div>
                         </div>{" "}
@@ -156,7 +158,7 @@ function Initial(props) {
                     </div>
                   </div>
                   <div className="form-group row ob_frm_row">
-                    <div className="col-lg-12 p-0">
+                    <div className="col-lg-6 p-0">
                       <Form.Item
                         label="Does the vehicle start and drive?"
                         name="does_vehicle_start"

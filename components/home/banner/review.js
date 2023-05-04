@@ -20,7 +20,7 @@ function Reviews({ mob, reviews }) {
         {!reviews?.count && <Rate allowHalf disabled defaultValue={5} />}
         <div className="revDetail">
           <span>
-            {reviews?.count || 5}/5 in <b>Google</b> reviews
+            {4.8}/5 in <b>Google</b> reviews
           </span>
         </div>
       </div>
@@ -75,7 +75,7 @@ function Reviews({ mob, reviews }) {
           {!reviews?.count && <Rate allowHalf disabled defaultValue={5} />}
           <div className="revDetail">
             <span>
-              {reviews?.count || 5}/5 in <b>Google</b> reviews
+              {4.8}/5 in <b>Google</b> reviews
             </span>
           </div>
         </div>

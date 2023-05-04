@@ -33,6 +33,10 @@
     "icon": "bi-info-circle-fill",
     "sub": [
       {
+        "title": "How It Works",
+        "path": "/how-it-works"
+      },
+      {
         "title": "Private Sale or Trading In?",
         "path": "/private-sale-vs-trading-in"
       },
@@ -49,7 +53,6 @@
   {
     "title": "Support",
     "icon": "bi-person-fill"
-  
   },
   {
     "title": "Privacy Policy",

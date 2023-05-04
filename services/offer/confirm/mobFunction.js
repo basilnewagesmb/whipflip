@@ -332,7 +332,10 @@ export const ShowEasyStepMob = (
             </div>
           </div>
         </div>
-        <div className="fesFooter fesBody_in_row p-1">
+        <div
+          className="fesFooter fesBody_in_row p-1"
+          
+        >
           <div className="fesFooter_body">
             <div className="fes_col_right_in">
               <div className="fcr_head">

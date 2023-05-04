@@ -410,13 +410,18 @@ export const ShowEasyStep = (
             </div>
           </div>
         </div>
-        <div className="fesFooter">
+        <div
+          className="fesFooter"
+          style={{
+            border: "1px solid #4381c0",
+          }}
+        >
           <h2>Can't take the photos right now?</h2>
           <div className="fesFooter_body">
             <p>
               Your instant offer is a click away! Well confirm the exact
               condition at your driveway.
-              <br/> The final value might change.
+              <br /> The final value might change.
             </p>
             <SkipButton
               skipToInstantOffer={skipToInstantOffer}
