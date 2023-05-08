@@ -37,8 +37,8 @@ function ColorSelect({ form }) {
                   style={{ backgroundColor: dropdown[0]?.code }}
                   className={
                     dropdown[0]?.name === "White"
-                      ? "border_for_white color_dot"
-                      : "color_dot"
+                      ? "border_for_white color_dot m-0"
+                      : "color_dot m-0"
                   }
                 ></div>
               )}
@@ -46,7 +46,7 @@ function ColorSelect({ form }) {
                 <img src={dropdown[0]?.path} alt="" className="otherClr" />
               )}
             </div>
-            <span className="ml-2">{dropdown[0]?.name}</span>
+            <span className="ml-3">{dropdown[0]?.name}</span>
           </Dropdown.Toggle>
         ) : (
           <Dropdown.Toggle id="dropdown-basic" className="color_picker_toggle">
@@ -80,7 +80,7 @@ function ColorSelect({ form }) {
                       <img src={value.path} alt="" className="otherClr" />
                     )}
                   </div>
-                  <span className="ms-2">{value.name}</span>
+                  <span >{value.name}</span>
                 </Dropdown.Item>
               </>
             );

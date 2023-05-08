@@ -100,7 +100,7 @@ function careers() {
               /> */}
               <div className="body-text pt-4">
                 <p>
-                 {`don't see the right job ? Contact us at`}{" "}
+                 {`Don't see the right job ? Contact us at`}{" "}
                   <a href="mailto:join@whipflip.com" className="text-primary">
                     join@whipflip.com
                   </a>

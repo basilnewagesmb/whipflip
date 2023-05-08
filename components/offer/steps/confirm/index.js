@@ -213,7 +213,7 @@ function Confirm({ fbpixel, analytics }) {
                                   {
                                     required:
                                       formRealValues?.info?.type === "vin",
-                                    message: "Please select your vin number!",
+                                    message: "Please input your VIN number!",
                                   },
                                   {
                                     min: 17,
@@ -287,7 +287,7 @@ function Confirm({ fbpixel, analytics }) {
                                   {
                                     required:
                                       formRealValues?.info?.type === "plate",
-                                    message: "Please Enter your license plate number!",
+                                    message: "Please input your license plate number!",
                                   },
                                 ]}
                                 {...(!isValid

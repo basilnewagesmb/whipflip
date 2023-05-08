@@ -145,7 +145,7 @@ function SellFrom({
                     rules={[
                       {
                         required: true,
-                        message: "Please select your zip code!",
+                        message: "Please input your zip code!",
                       },
                       {
                         validator: (rule, value = "") => {

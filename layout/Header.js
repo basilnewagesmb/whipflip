@@ -71,25 +71,40 @@ function Header() {
         <div className="offer_header">
           <div className="offer_header_in">
             <div className="oh_logo">
-              <Navbar.Brand href="/">
-                <div className="ohl_in">
-                  <span>
+              <Navbar.Brand href="/" className="w-auto">
+                <div className="ohl_in align-items-center">
+                  <span
+                    style={{
+                      fontSize: isMobile ? "16px" : "30px",
+                    }}
+                  >
                     {["quote", "vehicle", "appointment"]?.includes(
                       pathname.split("/")[pathname.split("/").length - 1]
                     )
                       ? "Get a great"
                       : "Sell Your Car To"}
                   </span>
-                  <span>
+                  <span
+                    style={{
+                      marginBottom: isMobile && "7px",
+                    }}
+                  >
                     <Image
                       src="/images/whiplogo.png"
                       alt="offer sell logo"
                       title="offer sell logo"
-                      width={140}
-                      height={40}
+                      width={isMobile ? 65 : 140}
+                      height={isMobile ? 20 : 40}
+                      style={{
+                        width: isMobile && 65,
+                      }}
                     />
                   </span>
-                  <span>
+                  <span
+                    style={{
+                      fontSize: isMobile ? "16px" : "30px",
+                    }}
+                  >
                     {["quote", "vehicle", "appointment"]?.includes(
                       pathname.split("/")[pathname.split("/").length - 1]
                     ) && "Offer"}
