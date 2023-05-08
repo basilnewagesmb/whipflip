@@ -419,7 +419,7 @@ export const ShowEasyStep = (
           <h2>Can't take the photos right now?</h2>
           <div className="fesFooter_body">
             <p>
-              Your instant offer is a click away! Well confirm the exact
+              Your instant offer is a click away! We'll confirm the exact
               condition at your driveway.
               <br /> The final value might change.
             </p>
