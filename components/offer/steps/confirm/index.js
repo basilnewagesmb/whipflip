@@ -117,7 +117,7 @@ function Confirm({ fbpixel, analytics }) {
               <div className="offer_right">
                 {initialOffer?.is_deduction_added == "N" && (
                   <div className="or_head">
-                    <h1>Awesome Initial Offer: {getAmount(initialOffer)}</h1>
+                    <h1>Confirm Your Initial Offer</h1>
                     <p>
                       Your offer may be higher or lower. We just need a few
                       important bits of information to finalize a GREAT offer!
@@ -127,8 +127,10 @@ function Confirm({ fbpixel, analytics }) {
                 <div className="offer_block">
                   <div className="ob_hd ob_frm_row">
                     <h2>Vehicle Information</h2>
-                    
-                    <label className="mt-2">Enter your VIN OR License Plate Number</label>
+
+                    <label className="mt-2">
+                      Enter your VIN OR License Plate Number
+                    </label>
                   </div>
                   <Form.Item label={false} name={["info", "type"]} hidden>
                     <Input />
@@ -214,9 +216,13 @@ function Confirm({ fbpixel, analytics }) {
                                     message: "Please select your vin number!",
                                   },
                                   {
-                                    min: 10,
+                                    min: 17,
                                     message:
-                                      "VIN must be at least 10 characters",
+                                      "VIN must be at least 17 characters",
+                                  },
+                                  {
+                                    max: 17,
+                                    message: "VIN cannot exceed 17 characters",
                                   },
                                 ]}
                                 {...(!isValid
@@ -281,7 +287,7 @@ function Confirm({ fbpixel, analytics }) {
                                   {
                                     required:
                                       formRealValues?.info?.type === "plate",
-                                    message: "Please select your plate number!",
+                                    message: "Please Enter your license plate number!",
                                   },
                                 ]}
                                 {...(!isValid
@@ -307,7 +313,7 @@ function Confirm({ fbpixel, analytics }) {
                                   {
                                     required:
                                       formRealValues?.info?.type === "plate",
-                                    message: "Please select your plate number!",
+                                    message: "Please select your state!",
                                   },
                                 ]}
                               >
@@ -353,10 +359,10 @@ function Confirm({ fbpixel, analytics }) {
                               },
                             ]}
                           >
-                            <div className="chooseBlock selector row selectorRow rowSell tireconditions">
+                            <div className="chooseBlock selector row selectorRow rowSell tireconditions ">
                               {conditions?.tire?.map((item, i) => (
                                 <div
-                                  className={`sellItemChoose tirecondition ${
+                                  className={`sellItemChoose tirecondition  ${
                                     formRealValues?.tire == item.uid &&
                                     "selected"
                                   }`}
@@ -365,7 +371,7 @@ function Confirm({ fbpixel, analytics }) {
                                     form.setFieldsValue({ tire: item.uid })
                                   }
                                 >
-                                  <label className="selector-item_label labelflexCenter tclabel ">
+                                  <label className="selector-item_label labelflexCenter tclabel min-170 ">
                                     {Images()?.tire[item.match_name].src && (
                                       <span>
                                         <Image

@@ -46,7 +46,7 @@ function ColorSelect({ form }) {
                 <img src={dropdown[0]?.path} alt="" className="otherClr" />
               )}
             </div>
-            <span>{dropdown[0]?.name}</span>
+            <span className="ml-2">{dropdown[0]?.name}</span>
           </Dropdown.Toggle>
         ) : (
           <Dropdown.Toggle id="dropdown-basic" className="color_picker_toggle">
@@ -65,7 +65,7 @@ function ColorSelect({ form }) {
                   key={i}
                   id={value.id}
                 >
-                  <div className="dropItemSpn ">
+                  <div className="dropItemSpn d-flex">
                     {value?.code && (
                       <span
                         style={{ backgroundColor: value.code }}
@@ -80,7 +80,7 @@ function ColorSelect({ form }) {
                       <img src={value.path} alt="" className="otherClr" />
                     )}
                   </div>
-                  <span>{value.name}</span>
+                  <span className="ms-2">{value.name}</span>
                 </Dropdown.Item>
               </>
             );

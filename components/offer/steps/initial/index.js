@@ -1,6 +1,6 @@
 import { Clock, DisLike, Like, SandClock } from "components/common/icons";
 import MetaHead from "components/common/metaHead";
-import { Form, Button, Input, InputNumber, Typography ,Tooltip} from "antd";
+import { Form, Button, Input, InputNumber, Typography, Tooltip } from "antd";
 import React, { useRef } from "react";
 import { useSelector } from "react-redux";
 import { InfoCircleOutlined } from "@ant-design/icons";
@@ -76,7 +76,9 @@ function Initial(props) {
                           formatter={(value) =>
                             `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
                           }
-                          parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
+                          parser={(value) =>
+                            value.replace(/\$\s?|(,*)/g, "").toString()
+                          }
                         />
                       </Form.Item>
                     </div>
@@ -342,10 +344,7 @@ function Initial(props) {
                           </Form.Item>{" "}
                         </div>
                         <div className="iptrt">
-                          <span>
-                            We won’t bug you but may need to contact you for
-                            additional details quickly.
-                          </span>
+                          <span></span>
                         </div>
                       </div>
                     </div>

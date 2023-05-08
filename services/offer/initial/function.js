@@ -29,7 +29,7 @@ function useInitialForm({ form, data, carouselRef, goTo, props }) {
       ...values,
       ...site,
       from: "dropdown",
-      userMileage: values.mileage,
+      userMileage: values.mileage.toString(),
       image: data.stills[0].image,
       image: data.stills[0].image,
       color_name: values.color.name,

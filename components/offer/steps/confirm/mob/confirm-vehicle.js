@@ -129,8 +129,12 @@ function ConfirmVehicle({
                         message: "Please select your vin number!",
                       },
                       {
-                        min: 10,
-                        message: "VIN must be at least 10 characters",
+                        min: 17,
+                        message: "VIN must be at least 17 characters",
+                      },
+                      {
+                        max: 17,
+                        message: "VIN cannot exceed 17 characters",
                       },
                     ]}
                     {...(!isValid
@@ -194,7 +198,7 @@ function ConfirmVehicle({
                     rules={[
                       {
                         required: formRealValues?.info?.type === "plate",
-                        message: "Please select your plate number!",
+                        message: "Please Enter your license plate number!",
                       },
                     ]}
                     {...(!isValid
@@ -219,7 +223,7 @@ function ConfirmVehicle({
                     rules={[
                       {
                         required: formRealValues?.info?.type === "plate",
-                        message: "Please select your plate number!",
+                        message: "Please select your state!",
                       },
                     ]}
                   >

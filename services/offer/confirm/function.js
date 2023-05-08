@@ -314,7 +314,7 @@ export const ShowEasyStep = (
                 />
               </div>
             </div>
-            <div className="col-lg-8 fes_col fes_col_right">
+            <div className="col-lg-8 fes_col fes_col_right p-0">
               <div className="fes_col_right_in">
                 <div className="tag">
                   <span>Highly Recommended!</span>
@@ -355,10 +355,10 @@ export const ShowEasyStep = (
                   </div>
                   <div className="fesCon_right">
                     <div className="fesConItem_detail">
-                      <h3>Access our photo tool via email or text.</h3>
+                      <h3>Access our photo tool via email or text</h3>
                       <p>
                         We’ve sent you an email and text. On your phone, simply
-                        click the link to continue.”
+                        click the link to continue.
                       </p>
                     </div>
                   </div>

@@ -434,8 +434,11 @@ article.reviewLt_icons {
   }
   &:hover {
     background: #d9a300 !important;
+    color: black!important;
+
   }
 }
+
 .btn-primary-color-only {
   background: #ffd147;
   color: #353442;
@@ -1743,6 +1746,9 @@ ul.form-stepper li a .form-stepper-circle {
     font-size: 14px;
   }
 }
+.min-170{
+  min-height: 170px;
+}
 .chooseIssues ul.ks-cboxtags li label {
   height: 100%;
 }
@@ -1914,7 +1920,6 @@ label {
   content: "";
   display: block;
   position: absolute;
-  top: 2px;
   left: 8px;
   width: 6px;
   height: 14px;
@@ -2019,7 +2024,7 @@ label {
                 margin-top: 25px;
               }
               ul {
-                padding-left: 30px;
+                padding-left: 15px;
                 li {
                   font-style: normal;
                   font-weight: 400;
@@ -2640,8 +2645,19 @@ label {
         width: 120px;
       }
     }
+    .ohl_in{
+      display: flex;
+      gap: 7px;
+      span{
+          font-size: 30px;
+          font-weight: 700;
+          color: #fff;
+      }
+  }
   }
 }
+
+
 // sideBar
 .sideMenu {
   display: flex;

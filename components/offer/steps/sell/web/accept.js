@@ -96,7 +96,7 @@ function Accept({ data, setAccept }) {
                     <h2>Best Offer!</h2>
                     <p>
                       Our offers typically are <b>$762 higher</b> than trade-in
-                      and beat most other car-buying companies. Plus we are trusted by the biggest names in the insdustry.
+                      and beat most other car-buying companies. Plus we are trusted by the biggest names in the industry.
                     </p>
                   </div>
                 </div>

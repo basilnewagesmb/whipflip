@@ -57,19 +57,19 @@ function Congrats({ data }) {
                       <h2>Appointment Details:</h2>
                       <div className="dayLocation">
                         <div className="sell_day">
-                          <span>Day and Time :</span>
+                          <span>Day and Time:</span>
                           <h3>
                             {moment(data?.date).format("MMMM Do, YYYY")} at{" "}
                             {data?.time}
                           </h3>
                         </div>
                         <div className="sell_location">
-                          <span>Location : </span>
+                          <span>Location: </span>
                           <h3>
                             {" "}
                             <span>{data?.street_address} </span>{" "}
                             <span>
-                              {data?.appartment},{data?.city},
+                              {data?.appartment}{data?.city},
                               {
                                 states?.find((i) => i.abbr === data?.state)
                                   ?.state

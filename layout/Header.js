@@ -72,20 +72,29 @@ function Header() {
           <div className="offer_header_in">
             <div className="oh_logo">
               <Navbar.Brand href="/">
-                <Image
-                  src={
-                    ["quote", "vehicle", "appointment"]?.includes(
+                <div className="ohl_in">
+                  <span>
+                    {["quote", "vehicle", "appointment"]?.includes(
                       pathname.split("/")[pathname.split("/").length - 1]
                     )
-                      ? "/images/offer-logo.svg"
-                      : "/images/offer-sell-header.svg"
-                  }
-                  alt="offer sell logo"
-                  title="offer sell logo"
-                  width={250}
-                  height={40}
-                  priority
-                />
+                      ? "Get a great"
+                      : "Sell Your Car To"}
+                  </span>
+                  <span>
+                    <Image
+                      src="/images/whiplogo.png"
+                      alt="offer sell logo"
+                      title="offer sell logo"
+                      width={140}
+                      height={40}
+                    />
+                  </span>
+                  <span>
+                    {["quote", "vehicle", "appointment"]?.includes(
+                      pathname.split("/")[pathname.split("/").length - 1]
+                    ) && "Offer"}
+                  </span>
+                </div>
               </Navbar.Brand>
             </div>
             <div className="hambergerMenu" onClick={handleShowSideBar}>
@@ -181,11 +190,11 @@ function Header() {
       )}
 
       <div className="sideMenu">
-          <Sidebar
-            handleShowSideBar={handleShowSideBar}
-            openSideBar={openSideBar}
-            setOpenSideBar={setOpenSideBar}
-          />
+        <Sidebar
+          handleShowSideBar={handleShowSideBar}
+          openSideBar={openSideBar}
+          setOpenSideBar={setOpenSideBar}
+        />
       </div>
     </div>
   );
