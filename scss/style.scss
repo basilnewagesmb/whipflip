@@ -434,8 +434,7 @@ article.reviewLt_icons {
   }
   &:hover {
     background: #d9a300 !important;
-    color: black!important;
-
+    color: black !important;
   }
 }
 
@@ -1709,7 +1708,6 @@ ul.form-stepper li a .form-stepper-circle {
   display: flex;
   justify-content: center;
   align-items: center;
- 
 }
 .selector-item_radio {
   appearance: none;
@@ -1746,8 +1744,11 @@ ul.form-stepper li a .form-stepper-circle {
     font-size: 14px;
   }
 }
-.min-170{
+.min-170 {
   min-height: 170px;
+}
+.min-140 {
+  min-height: 140px;
 }
 .chooseIssues ul.ks-cboxtags li label {
   height: 100%;
@@ -2645,18 +2646,17 @@ label {
         width: 120px;
       }
     }
-    .ohl_in{
+    .ohl_in {
       display: flex;
       gap: 7px;
-      span{
-          font-size: 30px;
-          font-weight: 700;
-          color: #fff;
+      span {
+        font-size: 30px;
+        font-weight: 700;
+        color: #fff;
       }
-  }
+    }
   }
 }
-
 
 // sideBar
 .sideMenu {

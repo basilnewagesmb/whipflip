@@ -20,7 +20,7 @@ function Transmission({ form, next }) {
                 <div className="selecotr-item chooseItem col-6 p-0">
                   <label
                     htmlFor="radio1"
-                    className={`selector-item_label flex-selector d-flex justify-content-center align-items-center ${
+                    className={`min-140 selector-item_label flex-selector d-flex justify-content-center align-items-center ${
                       transmission == "automatic" && " checked"
                     }`}
                     onClick={() => listClick("automatic")}
@@ -40,7 +40,7 @@ function Transmission({ form, next }) {
                 <div className="selecotr-item chooseItem col-6 pr-0">
                   <label
                     htmlFor="radio2"
-                    className={`selector-item_label flex-selector d-flex justify-content-center align-items-center ${
+                    className={`min-140 selector-item_label flex-selector d-flex justify-content-center align-items-center ${
                       transmission == "manual" && " checked"
                     }`}
                     onClick={() => listClick("manual")}
