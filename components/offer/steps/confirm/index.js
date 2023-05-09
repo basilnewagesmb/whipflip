@@ -224,6 +224,10 @@ function Confirm({ fbpixel, analytics }) {
                                     max: 17,
                                     message: "VIN cannot exceed 17 characters",
                                   },
+                                  {
+                                    pattern: new RegExp(/^[a-np-zA-NP-Z0-9]*$/),
+                                    message: "Invalid VIN",
+                                  },
                                 ]}
                                 {...(!isValid
                                   ? {
@@ -287,7 +291,8 @@ function Confirm({ fbpixel, analytics }) {
                                   {
                                     required:
                                       formRealValues?.info?.type === "plate",
-                                    message: "Please input your license plate number!",
+                                    message:
+                                      "Please input your license plate number!",
                                   },
                                 ]}
                                 {...(!isValid

@@ -308,12 +308,8 @@ export const ShowEasyStepMob = (
                 <div className="fcr_list">
                   <ul>
                     <li>Fully guided and super-duper easy!</li>
-                    <li>
-                      Takes less than a minute using a smartphone or tablet!
-                    </li>
-                    <li>
-                      Lasers in exact value so no money is left on the table!
-                    </li>
+                    <li>Takes less than a minute using a smartphone</li>
+                    <li>Lasers in exact condition for an accurate offer</li>
                   </ul>
                 </div>
                 <Link
@@ -332,10 +328,7 @@ export const ShowEasyStepMob = (
             </div>
           </div>
         </div>
-        <div
-          className="fesFooter fesBody_in_row p-1"
-          
-        >
+        <div className="fesFooter fesBody_in_row p-1">
           <div className="fesFooter_body">
             <div className="fes_col_right_in">
               <div className="fcr_head">

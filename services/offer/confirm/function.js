@@ -325,12 +325,8 @@ export const ShowEasyStep = (
                 <div className="fcr_list">
                   <ul>
                     <li>Fully guided and super-duper easy!</li>
-                    <li>
-                      Takes less than a minute using a smartphone or tablet!
-                    </li>
-                    <li>
-                      Lasers in exact value so no money is left on the table!
-                    </li>
+                    <li>Takes less than a minute using a smartphone</li>
+                    <li>Lasers in exact condition for an accurate offer</li>
                   </ul>
                 </div>
               </div>

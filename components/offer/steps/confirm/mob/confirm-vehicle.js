@@ -136,6 +136,10 @@ function ConfirmVehicle({
                         max: 17,
                         message: "VIN cannot exceed 17 characters",
                       },
+                      {
+                        pattern: new RegExp(/^[a-np-zA-NP-Z0-9]*$/),
+                        message: "Invalid VIN",
+                      },
                     ]}
                     {...(!isValid
                       ? {
