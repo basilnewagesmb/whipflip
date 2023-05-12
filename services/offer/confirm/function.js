@@ -325,8 +325,8 @@ export const ShowEasyStep = (
                 <div className="fcr_list">
                   <ul>
                     <li>Fully guided and super-duper easy!</li>
-                    <li>Takes less than a minute using a smartphone</li>
-                    <li>Lasers in exact condition for an accurate offer</li>
+                    <li>Takes less than a minute using a smartphone.</li>
+                    <li>Lasers in exact condition for an accurate offer.</li>
                   </ul>
                 </div>
               </div>
@@ -405,6 +405,9 @@ export const ShowEasyStep = (
               )}
             </div>
           </div>
+        </div>
+        <div className=" mt-4 d-flex justify-content-center align-item-center">
+          <h4>OPTION 2: FAST-FORWARD</h4>
         </div>
         <div
           className="fesFooter"

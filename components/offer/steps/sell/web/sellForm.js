@@ -340,7 +340,7 @@ function SellFrom({
                             <div className="form-row frmRow align-items-start">
                               <div className="frmfldItem">
                                 <Form.Item
-                                  label={false}
+                                  label={"First Name"}
                                   name={"first_name"}
                                   className="m-0 "
                                   rules={[
@@ -359,7 +359,7 @@ function SellFrom({
                               </div>
                               <div className="frmfldItem">
                                 <Form.Item
-                                  label={false}
+                                  label={"Last Name"}
                                   name={"last_name"}
                                   className="m-0 "
                                   rules={[

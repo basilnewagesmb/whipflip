@@ -1,4 +1,4 @@
-import { Form, Input, InputNumber ,Modal} from "antd";
+import { Form, Input, InputNumber, Modal } from "antd";
 import React, { useEffect } from "react";
 import Jump from "react-reveal/Jump";
 import Image from "next/image";
@@ -34,7 +34,7 @@ function VehicleCD({ form, formRealValues, conditions, isConditionsLoading }) {
             {formRealValues?.conditions?.map((item, i) => (
               <div className="form-group row ob_frm_row" key={i}>
                 <div className="col-lg-8 p-0">
-                  <label>{item.title}</label>
+                  <label className="mb-2">{item.title}</label>
                   <Form.Item
                     label={false}
                     className="m-0"
@@ -91,7 +91,9 @@ function VehicleCD({ form, formRealValues, conditions, isConditionsLoading }) {
                         <div className={`viewDetail`}>
                           <div className="selectView vin">
                             <div className="checkIssues">
-                              <h3 className="m-0">Check all that apply.</h3>
+                              <h3 className="m-0 mb-2">
+                                Check all that apply.
+                              </h3>
                               <Form.Item
                                 label={false}
                                 name={["conditions", i, "active"]}

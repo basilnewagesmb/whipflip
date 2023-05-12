@@ -1,13 +1,41 @@
 import OfferInfo from "components/offer/sideBar.js/offerInfo";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import useCheckMobile from "utils/checkMobile";
 import getAmount from "utils/getAmount";
 import AverageInfo from "../../../sideBar.js/averageInfo";
+import Link from "node_modules/next/link";
+import { Modal } from "antd";
+import Reviews from "../reviews";
+import { useReviewsQuery } from "services/util";
 function Accept({ data, setAccept }) {
   const isMobile = useCheckMobile();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [reviews, setReviews] = useState({});
+  const [limit, setLimit] = useState(2);
+  const { data: reviewsData, isFetching } = useReviewsQuery({ limit });
+
   return (
     <div>
+      <Modal
+        title={""}
+        open={isModalOpen}
+        onOk={() => {}}
+        width={1000}
+        onCancel={() => {
+          setIsModalOpen(false);
+        }}
+        footer={false}
+      >
+        <Reviews
+          reviews={reviews}
+          setReviews={setReviews}
+          limit={limit}
+          setLimit={setLimit}
+          data={reviewsData}
+          isFetching={isFetching}
+        />
+      </Modal>
       <div className="acceptOffer">
         <div className="acceptOffer_top">
           <div className="at_in">
@@ -30,8 +58,10 @@ function Accept({ data, setAccept }) {
             </div>
             <div className="at_dec">
               <p>
-                Your offer is good for 5 days.<br/>
-                Simply click below to set your time and day to sell and get paid!
+                Your offer is good for 5 days.
+                <br />
+                Simply click below to set your time and day to sell and get
+                paid!
               </p>
             </div>
             <div className="at_buttons">
@@ -47,8 +77,8 @@ function Accept({ data, setAccept }) {
           </div>
         </div>
         {isMobile && (
-          <div className="mt-4"> 
-            <OfferInfo isShow={true} data={data}/>
+          <div className="mt-4">
+            <OfferInfo isShow={true} data={data} />
             <AverageInfo isShow={true} />
           </div>
         )}
@@ -96,7 +126,8 @@ function Accept({ data, setAccept }) {
                     <h2>Best Offer!</h2>
                     <p>
                       Our offers typically are <b>$762 higher</b> than trade-in
-                      and beat most other car-buying companies. Plus we are trusted by the biggest names in the industry.
+                      and beat most other car-buying companies. Plus we are
+                      trusted by the biggest names in the industry.
                     </p>
                   </div>
                 </div>
@@ -128,7 +159,12 @@ function Accept({ data, setAccept }) {
         </div>
         <div className="acceptOffer_foo">
           <div className="acceptOffer_foo_left">
-            <div className="acceptOffer_foo_left_in">
+            <div
+              className="acceptOffer_foo_left_in card p-3 hover_hand"
+              onClick={() => {
+                setIsModalOpen(true);
+              }}
+            >
               <span>
                 5-Star
                 <span className="googText">
@@ -174,15 +210,12 @@ function Accept({ data, setAccept }) {
               </div>
               <div className="af_foo_dec">
                 <p>
-                  Our customers RAVE about us! Check out our{" "}
-                  <a href="#" title="awesome reviews">
-                    awesome reviews
-                  </a>
+                  Our customers RAVE about us! Check out our awesome reviews{" "}
                 </p>
               </div>
             </div>
           </div>
-          <div className="acceptOffer_foo_right">
+          <div className="acceptOffer_foo_right card p-3">
             <div className="acceptOffer_foo_right_in">
               <div className="acceptOffer_rating">
                 <div className="acc_left">

@@ -67,9 +67,9 @@ export const general = createApi({
             {
               title: "Any aftermarket parts or modifications?",
               yes: "",
-              data: response.mechanical.filter(
-                (m) => m.match_name == "modification"
-              ),
+              data: response.mechanical
+                .filter((m) => m.match_name == "modification")
+                .sort((a, b) => a.order_no - b.order_no),
               active: "",
             },
           ],

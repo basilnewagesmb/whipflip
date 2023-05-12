@@ -212,7 +212,7 @@ function ConfirmVehicle({
                         }
                       : {})}
                   >
-                    <InputNumber
+                    <Input
                       className="w-100"
                       placeholder="Enter Here"
                       onChange={() => {

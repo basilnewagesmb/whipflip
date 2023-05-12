@@ -27,7 +27,11 @@ function RulesModal({
         <Modal.Header className="ror_head" closeButton>
           <Modal.Title>
             <h1>Rules of the Road</h1>
-            <p>
+            <p
+              style={{
+                fontSize: "15px",
+              }}
+            >
               We`ve created the easiest way ever to sell your car. Please make
               it as easy for us to buy it!
             </p>

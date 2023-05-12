@@ -2242,7 +2242,7 @@ label {
         h1 {
           font-style: normal;
           font-weight: $font-bold;
-          font-size: 56px;
+          font-size: 64px;
           line-height: 64px;
           text-align: center;
           letter-spacing: -0.0002em;
@@ -6164,5 +6164,11 @@ label.uniform_item_label {
   font-size: 18px !important;
   span {
     font-size: 18px !important;
+  }
+}
+
+.hover_hand {
+  :hover {
+    cursor: pointer;
   }
 }
