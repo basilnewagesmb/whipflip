@@ -55,7 +55,13 @@ function Reviews(props) {
                     </div>
                   </div>
                   <div className="review_body">
-                    <p>{_review.review}</p>
+                    <p
+                      style={{
+                        fontSize: "1rem",
+                      }}
+                    >
+                      {_review.review}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -66,8 +72,8 @@ function Reviews(props) {
                 loading={isFetching}
                 disabled={isFetching}
                 onClick={() => {
-                   setLimit((prev) => prev + 10);
-                 // push("/reviews");
+                  setLimit((prev) => prev + 10);
+                  // push("/reviews");
                 }}
               >
                 {isFetching ? "Loading..." : "Load more"}
