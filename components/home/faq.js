@@ -666,10 +666,11 @@ export const faqData = {
             <p>
               {" "}
               <span className="font-weight-bold"> - OFFERS</span> are guaranteed
-              as long as the vehilces details, condition, and history are as
-              described. Basically, the information you enter is what the offer
-              is based off of. If what has been entered isn&apos;t reflective of
-              what the vehicle is, the offer could adjust or be cancelled.
+              as long as the details of your vehicle, condition, and history are
+              as described. Basically, the information you enter is what the
+              offer is based off of. If what has been entered isn&apos;t
+              reflective of what the vehicle is, the offer could adjust or be
+              cancelled.
             </p>
             <p>
               *All offers are good for 5 days from when they were generated. If
@@ -687,9 +688,9 @@ export const faqData = {
             <p>
               WhipFlip fully understands that mistakes do happen, on both sides.
               No worries! If an adjustment is needed, it will be for obvious
-              issues that would affect the vehicles value. We do not knitpick.
-              We will work each customer to come to a fair resolution or cancel
-              the offer.{" "}
+              issues that would affect the vehicles value. We do not nitpick. We
+              will work with each customer to come to a fair resolution or
+              cancel the offer.{" "}
             </p>
             <div className="social-icon d-flex">
               <Link href="https://www.facebook.com/WhipFlip-111080500678406">
@@ -1074,7 +1075,8 @@ export const faqData = {
             </p>
             <p>
               1. Electronic Bank Transfer (ACH) - Instantly transfer funds to
-              your back account.
+              your back account. A $99 transaction fee may apply for ACH
+              transfers. ACH transfers may not be available in certain markets.
             </p>
             <p>
               2. Company Check - Printed and delivered at the time of
@@ -1083,7 +1085,7 @@ export const faqData = {
             <p>
               ***Please keep in mind that any payment method can take 24-72
               business hours to clear/post to your account, especially for
-              larger amounts.. This is dependent on your banks standard clearing
+              larger amounts. This is dependent on your banks standard clearing
               time.
             </p>
             <p>

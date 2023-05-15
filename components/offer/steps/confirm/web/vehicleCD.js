@@ -183,7 +183,7 @@ function VehicleCD({ form, formRealValues, conditions, isConditionsLoading }) {
                                                   />
                                                 </span>
                                               )}
-                                              {radio?.name}
+                                              <span> {radio?.name}</span>
                                             </label>
                                           </div>
                                         ) : (
@@ -239,7 +239,7 @@ function VehicleCD({ form, formRealValues, conditions, isConditionsLoading }) {
                                                     />
                                                   </span>
                                                 )}
-                                                {radio?.name}
+                                                <span> {radio?.name}</span>
                                               </label>
                                             </>
                                           </Form.Item>

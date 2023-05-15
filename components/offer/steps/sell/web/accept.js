@@ -12,7 +12,7 @@ function Accept({ data, setAccept }) {
   const isMobile = useCheckMobile();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [reviews, setReviews] = useState({});
-  const [limit, setLimit] = useState(2);
+  const [limit, setLimit] = useState(5);
   const { data: reviewsData, isFetching } = useReviewsQuery({ limit });
 
   return (
@@ -60,8 +60,7 @@ function Accept({ data, setAccept }) {
               <p>
                 Your offer is good for 5 days.
                 <br />
-                Simply click below to set your time and day to sell and get
-                paid!
+                Click below to set your time to sell and get paid!
               </p>
             </div>
             <div className="at_buttons">

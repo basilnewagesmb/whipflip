@@ -1896,7 +1896,6 @@ label {
   position: relative;
   cursor: pointer;
   display: flex !important;
-  align-items: center;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -1915,6 +1914,9 @@ label {
   cursor: pointer;
   margin-right: 5px;
   border-radius: 4px;
+  display: flex;
+  align-self: flex-start;
+  margin-top: 5px;
 }
 
 .check-group input:checked + label:after {

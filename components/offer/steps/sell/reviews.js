@@ -2,8 +2,10 @@ import React, { useEffect } from "react";
 import useCheckMobile from "utils/checkMobile";
 import { Rate, Button } from "antd";
 import moment from "moment";
+import { useRouter } from "next/router";
 function Reviews(props) {
-  const { reviews, setReviews, limit, setLimit ,data, isFetching} = props;
+  const { push } = useRouter();
+  const { reviews, setReviews, limit, setLimit, data, isFetching } = props;
   const isMobile = useCheckMobile();
   useEffect(() => {
     data && setReviews(data?.reviews);
@@ -64,7 +66,8 @@ function Reviews(props) {
                 loading={isFetching}
                 disabled={isFetching}
                 onClick={() => {
-                  setLimit((prev) => prev + 10);
+                   setLimit((prev) => prev + 10);
+                 // push("/reviews");
                 }}
               >
                 {isFetching ? "Loading..." : "Load more"}
