@@ -668,7 +668,7 @@ export const faqData = {
               <span className="font-weight-bold"> - OFFERS</span> are guaranteed
               as long as the details of your vehicle, condition, and history are
               as described. Basically, the information you enter is what the
-              offer is based off of. If what has been entered isn&apos;t
+              offer is based on. If what has been entered isn&apos;t
               reflective of what the vehicle is, the offer could adjust or be
               cancelled.
             </p>
