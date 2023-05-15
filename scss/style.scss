@@ -2214,9 +2214,7 @@ label {
       margin-top: 0;
     }
     .at_in {
-      padding: 0px 140px;
       @include responsive(tab-port) {
-        padding: 0px 20px;
       }
       .at_head {
         span {
