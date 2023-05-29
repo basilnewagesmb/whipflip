@@ -57,7 +57,7 @@ function ConfirmOffer({ initialOffer }) {
             </div>
             <div className="cob_offer_name">
               <h2>
-                {data?.year} {data?.make}
+                {data?.year} {data?.make} {data?.model}
               </h2>
               <p>
                 <span> {data?.trim}</span>

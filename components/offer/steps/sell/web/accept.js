@@ -8,13 +8,13 @@ import Link from "node_modules/next/link";
 import { Modal } from "antd";
 import Reviews from "../reviews";
 import { useReviewsQuery } from "services/util";
+import CarInfo from "../../initial/mob/carInfo";
 function Accept({ data, setAccept }) {
   const isMobile = useCheckMobile();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [reviews, setReviews] = useState({});
   const [limit, setLimit] = useState(5);
   const { data: reviewsData, isFetching } = useReviewsQuery({ limit });
-
   return (
     <div>
       <Modal
@@ -40,8 +40,10 @@ function Accept({ data, setAccept }) {
         <div className="acceptOffer_top">
           <div className="at_in">
             <div className="at_head">
-              <span>
-                Your <i>FLIPPIN’</i> Awesome Offer!
+              <span className="mt-3">
+                Your{" "}
+                <i style={{ color: "#ffd147", fontWeight: "bold" }}>FLIPPIN’</i>{" "}
+                Awesome Offer!
               </span>
               <div className="at_img">
                 <Image
@@ -56,7 +58,8 @@ function Accept({ data, setAccept }) {
             <div className="at_price">
               <h1>{getAmount(data)}</h1>
             </div>
-            <div className="at_dec">
+            {isMobile && <CarInfo data={data} />}
+            <div className="at_dec mt-2">
               <p>
                 Your offer is good for 5 days.
                 <br />

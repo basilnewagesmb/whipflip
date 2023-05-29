@@ -237,15 +237,18 @@ span.infoBx {
     padding-bottom: 100px;
     @include responsive(tab-port) {
       padding-bottom: 0;
+      padding-top: 80px;
     }
   }
 }
+// .ant-steps-item-active .ant-steps-item-icon span.ant-steps-icon {
+//   color: #fff !important;
+// }
 
 .whipflip-fluid {
   position: absolute;
   z-index: 999;
   background-color: #fff;
-  width: 100%;
 }
 .text-highlight {
   position: relative;
@@ -5935,13 +5938,13 @@ li.active.pe-auto {
   color: #fff !important;
 }
 
-.ant-steps-item-active .ant-steps-item-icon {
-  background-color: #ffffff !important;
-  color: #4381c0 !important;
-}
-.ant-steps-item-active .ant-steps-item-icon span.ant-steps-icon {
-  color: #4381c0 !important;
-}
+// .ant-steps-item-active .ant-steps-item-icon {
+//   background-color: #ffffff !important;
+//   color: #4381c0 !important;
+// }
+// .ant-steps-item-active .ant-steps-item-icon span.ant-steps-icon {
+//   color: #4381c0 !important;
+// }
 
 .disabled {
   pointer-events: none;

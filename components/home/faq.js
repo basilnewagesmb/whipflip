@@ -12,6 +12,7 @@ import {
 import "react-responsive-tabs/styles.css";
 import "react-accessible-accordion/dist/fancy-example.css";
 import Image from "next/image";
+import PoweredBy from "components/common/poweredBy";
 export const faqData = {
   howItWorks: () => (
     <div className="whipflip-faq">
@@ -52,7 +53,7 @@ export const faqData = {
                   />
                 </Link>
               </div>
-              <div className="col-lg-2 col-sm-3 col-5">
+              <div className="col-lg-4 col-sm-3 col-5">
                 <Link
                   href="https://g.page/whipflip/review?rc"
                   target="_blank"
@@ -67,6 +68,9 @@ export const faqData = {
                     />
                   </div>
                 </Link>
+              </div>
+              <div className="col-lg-4 col-sm-3 col-12 d-flex justify-content-center">
+                <PoweredBy />
               </div>
             </div>
           </AccordionItemPanel>
@@ -668,9 +672,8 @@ export const faqData = {
               <span className="font-weight-bold"> - OFFERS</span> are guaranteed
               as long as the details of your vehicle, condition, and history are
               as described. Basically, the information you enter is what the
-              offer is based on. If what has been entered isn&apos;t
-              reflective of what the vehicle is, the offer could adjust or be
-              cancelled.
+              offer is based on. If what has been entered isn&apos;t reflective
+              of what the vehicle is, the offer could adjust or be cancelled.
             </p>
             <p>
               *All offers are good for 5 days from when they were generated. If
@@ -1074,23 +1077,21 @@ export const faqData = {
               are on the spot.
             </p>
             <p>
-              1. Electronic Bank Transfer (ACH) - Instantly transfer funds to
-              your back account. A $99 transaction fee may apply for ACH
-              transfers. ACH transfers may not be available in certain markets.
+              WhipFlip's payment method is a company check through Wells Fargo
+              Bank
             </p>
             <p>
-              2. Company Check - Printed and delivered at the time of
-              transaction completion.
+              Payment is on the spot at the time of your vehicle transaction,
+              check is live, and payment is guaranteed
             </p>
             <p>
-              ***Please keep in mind that any payment method can take 24-72
-              business hours to clear/post to your account, especially for
-              larger amounts. This is dependent on your banks standard clearing
-              time.
+              ***Please be advised that your bank may have their own deposit or
+              clearing times and could range from 24 to 72 business hours,
+              especially with large dollar amounts
             </p>
             <p>
-              If you are having any issues with this, please contact Customer
-              Care here.
+              If you are having an issue, please contact our Customer Success
+              Team at (888) 349-3189 and select “Bank Verification” option.
             </p>
             <div className="social-icon d-flex">
               <Link href="https://www.facebook.com/WhipFlip-111080500678406">
@@ -1114,46 +1115,6 @@ export const faqData = {
             <p>
               Our two payment options are a company issued check or electronic
               bank transfer directly into your account.
-            </p>
-            <div className="social-icon d-flex">
-              <Link href="https://www.facebook.com/WhipFlip-111080500678406">
-                <div className="facebook-f mr-2"></div>
-              </Link>
-              <Link href="https://twitter.com/whip_flip">
-                <div className="twitter-t"></div>
-              </Link>
-            </div>
-          </AccordionItemPanel>
-        </AccordionItem>
-        <AccordionItem key={26} uuid={26}>
-          <AccordionItemHeading>
-            <AccordionItemButton>
-              Do I have to give out my account #? How secure is my information?
-            </AccordionItemButton>
-          </AccordionItemHeading>
-          <AccordionItemPanel>
-            <p>
-              Nope! When we get to that point of the process, YOU will enter in
-              all required info and submit. This is all done electronically via
-              a tablet.
-            </p>
-
-            <p>
-              WhipFlip never stores customer account information in our own
-              internal systems. Instead we use a fully secure 3rd party payment
-              processor to complete funding or payment (for negative equity
-              situations) to WhipFlip.
-            </p>
-
-            <p>
-              Also, a Car Concierge DOES NOT enter your account information to
-              process payment, but hands you their tablet used to complete the
-              transaction for you to enter and submit this information.
-            </p>
-
-            <p className="font-weight-bold">
-              Please, please, please make sure you hand it back to them....those
-              tablets are expensive!
             </p>
             <div className="social-icon d-flex">
               <Link href="https://www.facebook.com/WhipFlip-111080500678406">

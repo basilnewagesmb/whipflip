@@ -46,7 +46,6 @@ export const offerApi = createApi({
       async onQueryStarted(id, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          console.log(data);
           const utcDate =
             data.status == "quote"
               ? moment(data.last_quote_date).add(5, "days")

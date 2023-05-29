@@ -271,10 +271,12 @@ export const ShowEasyStepMob = (
 ) => {
   Modal.info({
     title: (
-      <h6 className="text-center " style={{ color: "#4381c0" }}>
-        One Final Easy Step!
-        <label>Select an option below:</label>
-      </h6>
+      <>
+        <h6 className="text-center " style={{ color: "#4381c0" }}>
+          One Final Easy Step!
+          <label>Select an option below:</label>
+        </h6>
+      </>
     ),
     className: "final_easy_step_modal",
     width: 700,
@@ -292,6 +294,16 @@ export const ShowEasyStepMob = (
           <div className="fesBody_in_row row">
             <div className="col-lg-4 fes_col fes_col_left">
               <div className="fes_col_left_in text-center">
+                <span
+                  style={{
+                    background: "#ffefc1",
+                    border: "1px dashed #ffc000",
+                    borderRadius: "4px",
+                    padding: "4px 8px",
+                  }}
+                >
+                  Highly Recommended!
+                </span>
                 <Image
                   src="/images/easy-final.svg"
                   alt=""
@@ -339,9 +351,9 @@ export const ShowEasyStepMob = (
               </div>
               <div className="fcr_list text-left">
                 <ul>
-                  <li>Instant offer is a click away!</li>
-                  <li>We'll confirm the exact condition at your delivery. </li>
-                  <li>Final value might change </li>
+                  <li>Final offer is only a click away!</li>
+                  <li>Exact condition confirmed at driveway.</li>
+                  <li>Final offer may change.</li>
                 </ul>
               </div>
             </div>

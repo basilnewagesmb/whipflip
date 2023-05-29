@@ -6,7 +6,6 @@ import getAmount from "utils/getAmount";
 
 function CarInfo(prop) {
   const { data, isShow, initialOffer } = prop;
-  console.log(prop);
   return (
     isShow && (
       <>

@@ -93,10 +93,10 @@ function Header() {
                       src="/images/whiplogo.png"
                       alt="offer sell logo"
                       title="offer sell logo"
-                      width={isMobile ? 65 : 140}
-                      height={isMobile ? 20 : 40}
+                      width={isMobile ? 100 : 140}
+                      height={isMobile ? 30.49 : 40}
                       style={{
-                        width: isMobile && 65,
+                        width: isMobile && 100,
                       }}
                     />
                   </span>
@@ -130,11 +130,11 @@ function Header() {
             <Navbar expand="lg" className="whipflip_nav navBar">
               <Link href="/">
                 <Image
-                  src={isMobile ? "/images/logo-mob.png" : "/images/logo.png"}
+                  src={"/images/logo.png"}
                   alt="Logo"
-                  width={isMobile ? 100 : 275}
+                  width={isMobile ? 223 : 275}
                   priority
-                  height={isMobile ? 25 : 50}
+                  height={isMobile ? 36.66 : 50}
                 />
               </Link>
               <div className="d-flex justify-content-between align-items-center">

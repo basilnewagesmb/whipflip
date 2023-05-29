@@ -52,7 +52,9 @@ export const general = createApi({
             {
               title: "Any engine and/or drivability issues?",
               yes: "",
-              data: response.mechanical.filter((m) => m.match_name == "engine"),
+              data: response.mechanical
+                .filter((m) => m.match_name == "engine")
+                .sort((a, b) => a.order_no - b.order_no),
               active: "",
             },
             {

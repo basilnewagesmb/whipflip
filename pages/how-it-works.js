@@ -167,9 +167,7 @@ function Index(props) {
               <span>Why Sell to WhipFlip?</span>
             </h2>
             <span>
-              WhipFlip is here to put an end to the inconvenience, time-waste,
-              and risk you face when selling one of the most expensive and
-              difficult assets you own….A CAR!
+              WhipFlip puts and end to the hassle, time-waste, and risk you face when selling a car.  100% safe, fast, and transparent 5-star service!
             </span>
           </div>
           <div className="row wstwRow d-none d-md-flex">
@@ -424,10 +422,10 @@ function Index(props) {
         <HappyCustomersSlider />
         <div className="moreReviews text-center">
           <span>
-            Want to see more raving reviews? Visit our{" "}
+            Want to see more raving reviews?<br/> Visit our{" "}
             <Link href="/reviews">
               <span className="link-primary link_blue">
-                customers reviews page
+                customer reviews page
               </span>
             </Link>
           </span>

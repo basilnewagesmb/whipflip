@@ -313,7 +313,20 @@ function Initial(props) {
                       <div className="iptWrapper align-items-end">
                         <div className="iptLt">
                           <Form.Item
-                            label="Phone Number (We promise not to bug you.  We may need more info.)"
+                            label={
+                              <>
+                                Phone
+                                <span
+                                  style={{
+                                    fontSize: 12,
+                                    marginLeft: 5,
+                                  }}
+                                >
+                                  {" "}
+                                  (We may need more info or clarification)
+                                </span>
+                              </>
+                            }
                             name={["user", "phone"]}
                             className="m-0 w-100"
                             rules={[

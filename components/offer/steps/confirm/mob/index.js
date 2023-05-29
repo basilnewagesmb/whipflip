@@ -13,7 +13,16 @@ function ConfirmMob({ initialOffer, fbpixel, analytics }) {
       <div className="container">
         <div className="confOffBody">
           <h1>
-            Your <i>FLIPPING’</i> Awesome Offer!
+            Your{" "}
+            <i
+              style={{
+                color: "#f8c220",
+                fontWeight: "bold",
+              }}
+            >
+              FLIPPING’
+            </i>{" "}
+            Awesome Offer!
           </h1>
           <div className="ioCard">
             <h2>Initial offer: {getAmount(initialOffer)}</h2>
@@ -23,13 +32,14 @@ function ConfirmMob({ initialOffer, fbpixel, analytics }) {
               </div>
               <div className="ofp_right col-8">
                 <h3>
-                  {initialOffer?.modelyear} {initialOffer?.make}
+                  {initialOffer?.modelyear || initialOffer?.year}{" "}
+                  {initialOffer?.make} {initialOffer?.model}
                 </h3>
                 <span>
                   {initialOffer?.enableMultiTrim
                     ? initialOffer?.body
                     : initialOffer?.trim}
-                  <span className="miles"> {` ${initialOffer?.model} `}</span>
+                  <span className="miles"> {` ${initialOffer?.trim} `}</span>
                 </span>
               </div>
             </div>

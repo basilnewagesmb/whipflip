@@ -21,7 +21,7 @@ import { message } from "antd";
 import { Suspense } from "react";
 import NextNProgress from "nextjs-progressbar";
 const Default = dynamic(() => import("layout/Default"), {
-  loading: () => <p>Loading...</p>,
+  loading: () => <div className="wh-100">Loading...</div>,
 });
 
 function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
