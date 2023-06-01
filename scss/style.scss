@@ -82,6 +82,7 @@ span {
   }
 }
 .whipflip-fluid {
+  width: 100%;
   .wf-nav-list {
     gap: 20px;
   }
@@ -639,6 +640,9 @@ article.reviewLt_icons {
 }
 .pt100 {
   padding-top: 100px;
+  @include responsive(phone) {
+    padding-top: 50px;
+  }
 }
 .pb100 {
   padding-bottom: 100px;
@@ -1562,7 +1566,7 @@ ul.form-stepper li a .form-stepper-circle {
       }
     }
     @include responsive(tab-port) {
-      font-size: 22px;
+      font-size: 18px;
     }
   }
   .ob_frm_row {
@@ -1629,8 +1633,8 @@ ul.form-stepper li a .form-stepper-circle {
     color: #201f2d;
     @include responsive(tab-port) {
       font-style: normal;
-      font-weight: 600;
-      font-size: 18px;
+      font-weight: 700;
+      font-size: 20px;
       line-height: 20px;
       text-align: center;
       color: #201f2d;
@@ -2344,10 +2348,18 @@ label {
             display: flex;
             align-items: center;
             gap: 15px;
+            @include responsive(phone) {
+              padding-top: 50px;
+              flex-direction: column;
+            }
             .wsp_left {
               img {
                 width: 50px;
                 height: 50px;
+                @include responsive(phone) {
+                  width: 100%;
+                  height: 100%;
+                }
               }
             }
             .wsp_right {

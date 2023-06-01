@@ -15,7 +15,7 @@ function Index() {
               <p>Our Referral Program</p>
               <h1>
                 Refer someone {isMobile && <br />}and you {isMobile && <br />}
-                <span className="text-noted">each get $150!</span>
+                <span className="text-noted">each get $100!</span>
               </h1>
             </div>
           </div>

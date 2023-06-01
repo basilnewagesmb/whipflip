@@ -1077,8 +1077,8 @@ export const faqData = {
               are on the spot.
             </p>
             <p>
-              WhipFlip's payment method is a company check through Wells Fargo
-              Bank
+              {`WhipFlip's payment method is a company check through Wells Fargo
+              Bank`}
             </p>
             <p>
               Payment is on the spot at the time of your vehicle transaction,

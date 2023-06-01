@@ -36,6 +36,18 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
       message.error("You're currently offline");
     }
   }, [isOnline]);
+  useEffect(() => {
+    const handleBackButton = (event) => {
+      event.preventDefault();
+      alert("Are you sure!");
+    };
+
+    window.addEventListener("popstate", handleBackButton);
+
+    return () => {
+      window.removeEventListener("popstate", handleBackButton);
+    };
+  }, []);
 
   return (
     <Provider store={store}>

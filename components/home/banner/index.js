@@ -127,7 +127,7 @@ function HomeBanner({ reviews, isClient }) {
                       </div>
                       <div className="acc_right">
                         <span>BBB Rating: A</span>
-                        <span>as of 5/11/2022</span>
+                        <span>as of {new Date().toLocaleDateString()}</span>
                         <span>click for profile</span>
                       </div>
                     </div>

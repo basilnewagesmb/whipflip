@@ -276,7 +276,7 @@ function Index() {
                       {`So if you don't want to deal with the painful task of
                       selling your car on your own or going to the dealership.
                       and just want to get it SOLD now...`}
-                      <b>try WhIpFlIp.</b>
+                      <b>try Whipflip.</b>
                     </p>
                     <h3>Our Advantages</h3>
                     <ul>

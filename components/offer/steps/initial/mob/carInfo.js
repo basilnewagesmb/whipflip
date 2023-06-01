@@ -29,13 +29,11 @@ export default function CarInfo({ data, full }) {
   } else {
     return (
       <div className="offerProduct mt-2 row border-top-0 border-left-0 border-right-0">
-        <Fade>
-          <div className="ofp_right col-12 text-center">
-            <span className="text-center text-muted">
-              {data.enableMultiTrim ? data.body : data.trim}
-            </span>
-          </div>
-        </Fade>
+        <div className="ofp_right col-12 text-center">
+          <span className="text-center text-muted">
+            {data.enableMultiTrim ? data.body : data.trim}
+          </span>
+        </div>
       </div>
     );
   }

@@ -36,7 +36,7 @@ function Congrats({ data }) {
         />
       )}
       {!isMobile ? (
-        <div className="congratsView">
+        <div className="congratsView ">
           <div className="congrats_head_vw congrats_head_web text-center">
             <Image
               src="/images/calendar.svg"
@@ -69,7 +69,8 @@ function Congrats({ data }) {
                             {" "}
                             <span>{data?.street_address} </span>{" "}
                             <span>
-                              {data?.appartment}{data?.city},
+                              {data?.appartment}
+                              {data?.city},
                               {
                                 states?.find((i) => i.abbr === data?.state)
                                   ?.state
@@ -365,9 +366,9 @@ function Congrats({ data }) {
           </div>
         </div>
       ) : (
-        <div className="congratsView">
-          <div className="container">
-            <div className="cv_top">
+        <div className="congratsView pt-5">
+          <div className="container pt-5">
+            <div className="cv_top pt-3">
               <div className="cv_head">
                 <Image
                   src="/images/calendar.svg"
@@ -396,8 +397,8 @@ function Congrats({ data }) {
                       {" "}
                       <span>{data?.street_address} </span>{" "}
                       <span>
-                        {data?.appartment},{data?.city},
-                        {states?.find((i) => i.abbr === data?.state)?.state},
+                        {data?.appartment} {data?.city}{" "}
+                        {states?.find((i) => i.abbr === data?.state)?.state}{" "}
                         {data?.zipcode}{" "}
                       </span>
                     </h3>
@@ -430,8 +431,7 @@ function Congrats({ data }) {
                           </div>
                           <div className="ofp_right col-8 text-left">
                             <h3>
-                              {data?.year} {data?.make}
-                              {data?.model}
+                              {data?.year} {data?.make} {data?.model}
                             </h3>
                             <div className="vehicle_info">
                               <span>{data?.trim}</span>
@@ -473,10 +473,11 @@ function Congrats({ data }) {
                       <div className="np_item_dec">
                         <h2>Respond To Confirmation</h2>
                         <p>
-                          We will contact you to confirm your appointment.
-                          Please respond to lock in your day/time to sell. If we
-                          haven`t heard from you, we reserve the right to cancel
-                          and rescind the offer.
+                          {`All owners must be present to sign off on the bill of
+                          sale and title. Please have your ID's ready as well
+                          for ownership confirmation. Additional ownership
+                          proofs may be needed such as a phone or utility bill
+                          to confirm identity.`}
                         </p>
                       </div>
                     </div>
@@ -533,10 +534,9 @@ function Congrats({ data }) {
                       <div className="np_item_dec">
                         <h2>Have Everything on Hand</h2>
                         <p>
-                          We will contact you to confirm your appointment.
-                          Please respond to lock in your day/time to sell. If we
-                          haven`t heard from you, we reserve the right to cancel
-                          and rescind the offer.
+                          Please ensure you have all ownership documents ready
+                          (i.e. Title or payoff letter), vehicle is cleaned out
+                          with all belongings removed, and ID.
                         </p>
                       </div>
                     </div>
@@ -611,8 +611,8 @@ function Congrats({ data }) {
                   <div className="wa_dec">
                     <h2>Picked Up</h2>
                     <p>
-                      No need to worry about your car anymore. We`ll handle pick
-                      up and you do not need to be there!
+                      {`No need to worry about your car anymore. We'll handle pick
+                      up and you do not need to be there!`}
                     </p>
                   </div>
                 </div>
@@ -635,25 +635,21 @@ function Congrats({ data }) {
               <div className="our_disclaimer">
                 <h2>Our Disclaimer</h2>
                 <p>
-                  WhipFlip`s offers for vehicles are made in good faith, based
-                  off of real-time industry market values, and primarily based
-                  on the customers` input of a vehicle`s details, accuracy in
-                  disclosing overall vehicle condition (mechanical, cosmetic,
-                  etc.) and being the legal owner. On WhipFlip`s end, we strive
-                  to stand behind every offer we make to the dollar. However, on
-                  some vehicles, there might not be adequate market data to
-                  derive an accurate value to purchase as well as rare instances
-                  that our vehicle value/offer generation tool fails to operate
-                  as normal, which would cause harm to WhipFlip.
-                </p>
-                <p>
-                  If any of these instances above should occur, including
-                  deviation from the description of a customer`s vehicle
-                  valuation upon verification from a WhipFlip representative
-                  (including initial and final offers), we will work with the
-                  customer to remedy the situation to come to a reasonable
-                  resolution. WhipFlip reserves the right to fairly adjust or
-                  rescind any active offer without penalty to WhipFlip, Inc.
+                  {`WhipFlip's offers for vehicles are made in good faith,
+                  leverage real-time industry market data, and based on the
+                  customers input of their vehicles information including
+                  condition. Vehicle condition includes mechanical, cosmetic,
+                  and historical factors. Whipflip strives to stand behind every
+                  offer made to the dollar. However, offers may change for any
+                  reason, at WhipFlip's sole discretion for any undisclosed
+                  issues by the customer, technical issues affecting our pricing
+                  tool, or limited transaction data for certain makes and models
+                  of vehicles. If any of these instances should occur, WhipFlip
+                  will work with the customer to arrive at a fair resolution for
+                  both parties. We will do the best we can. In the event
+                  WhipFlip deems such resolution is unobtainable, we reserve the
+                  right to not move forward with the purchase and release from
+                  any offer generated without penalty.`}
                 </p>
               </div>
               <div className="cf_btn">

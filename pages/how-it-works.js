@@ -254,7 +254,7 @@ function Index(props) {
                         maximize it. No more "fuzzy" trade-in math!`}
                       </p>
                       <p>
-                        <span className="meet_txt">
+                        <span className="meet_txt d-none" >
                           Meet some of our Concierges!
                         </span>
                       </p>
@@ -349,7 +349,7 @@ function Index(props) {
                         maximize it. No more "fuzzy" trade-in math!`}
                       </p>
                       <p>
-                        <span className="meet_txt">
+                        <span className="meet_txt d-none">
                           Meet some of our Concierges!
                         </span>
                       </p>

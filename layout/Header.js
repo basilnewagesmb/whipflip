@@ -78,11 +78,13 @@ function Header() {
                       fontSize: isMobile ? "16px" : "30px",
                     }}
                   >
-                    {["quote", "vehicle", "appointment"]?.includes(
-                      pathname.split("/")[pathname.split("/").length - 1]
-                    )
-                      ? "Get a great"
-                      : "Sell Your Car To"}
+                    {pathname.split("/")[pathname.split("/").length - 1] !=
+                      "appointment" &&
+                      (["quote", "vehicle", "appointment"]?.includes(
+                        pathname.split("/")[pathname.split("/").length - 1]
+                      )
+                        ? "Get a great"
+                        : "Sell Your Car To")}
                   </span>
                   <span
                     style={{
@@ -105,9 +107,12 @@ function Header() {
                       fontSize: isMobile ? "16px" : "30px",
                     }}
                   >
-                    {["quote", "vehicle", "appointment"]?.includes(
-                      pathname.split("/")[pathname.split("/").length - 1]
-                    ) && "Offer"}
+                    {pathname.split("/")[pathname.split("/").length - 1] !=
+                      "appointment" &&
+                      ["quote", "vehicle", "appointment"]?.includes(
+                        pathname.split("/")[pathname.split("/").length - 1]
+                      ) &&
+                      "Offer"}
                   </span>
                 </div>
               </Navbar.Brand>
@@ -132,9 +137,9 @@ function Header() {
                 <Image
                   src={"/images/logo.png"}
                   alt="Logo"
-                  width={isMobile ? 223 : 275}
+                  width={isMobile ? 150 : 275}
                   priority
-                  height={isMobile ? 36.66 : 50}
+                  height={isMobile ? 24.66 : 50}
                 />
               </Link>
               <div className="d-flex justify-content-between align-items-center">

@@ -18,11 +18,6 @@
         "path": "/reviews"
       },
       {
-        "title": "Careers",
-        "icon": "bi-phone-fill",
-        "path": "/careers"
-      },
-      {
         "title": "Blog",
         "path": "/blog"
       }

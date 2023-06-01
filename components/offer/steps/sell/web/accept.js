@@ -159,7 +159,7 @@ function Accept({ data, setAccept }) {
             </div>
           </div>
         </div>
-        <div className="acceptOffer_foo">
+        <div className="acceptOffer_foo mt-5 mt-md-3">
           <div className="acceptOffer_foo_left">
             <div
               className="acceptOffer_foo_left_in card p-3 hover_hand"

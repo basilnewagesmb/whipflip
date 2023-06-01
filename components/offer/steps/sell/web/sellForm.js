@@ -603,7 +603,7 @@ function SellFrom({
                   </div> */}
                 </div>
               </div>
-              {/* <div className="form-group row ob_frm_row">
+              <div className="form-group row ob_frm_row">
                 <div className="col-lg-12 p-0">
                   <label htmlFor="">
                     Do you have the title to this vehicle?
@@ -826,7 +826,7 @@ function SellFrom({
                       </div>
                     )}
                 </div>
-              </div> */}
+              </div>
               {formData?.formRealData?.has_active_loan == false &&
               formData?.formRealData?.hasTitle == false ? null : (
                 <div className="doneProcess mt-3">
