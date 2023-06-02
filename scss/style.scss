@@ -257,7 +257,7 @@ span.infoBx {
   text-transform: uppercase;
   &::before {
     content: "";
-    background: url(/images/line.svg);
+    background: url(/images/line.webp);
     position: absolute;
     width: 100%;
     height: 20px;
@@ -2260,7 +2260,7 @@ label {
           z-index: 0;
           &::before {
             content: "";
-            background: url(/images/line.svg);
+            background: url(/images/line.webp);
             position: absolute;
             width: 100%;
             height: 20px;
@@ -3714,7 +3714,7 @@ label.labelflexCenter.tclabel.tclabelMobi {
         display: inline-block;
         &::before {
           content: "";
-          background: url(/images/line.svg);
+          background: url(/images/line.webp);
           position: absolute;
           width: 100%;
           height: 20px;
@@ -4580,7 +4580,7 @@ canvas {
     z-index: 1;
     &::before {
       content: "";
-      background: url(/images/line.svg);
+      background: url(/images/line.webp);
       position: absolute;
       width: 100%;
       height: 20px;

@@ -65,7 +65,7 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
   return (
     <Provider store={store}>
       <PersistGate loading={"null"} persistor={persister}>
-        {() => (
+        {/* {() => ( */}
           <Default>
             <ConfigProvider
               theme={{
@@ -94,7 +94,7 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
               />
             </ConfigProvider>
           </Default>
-        )}
+        {/* )} */}
       </PersistGate>
     </Provider>
   );

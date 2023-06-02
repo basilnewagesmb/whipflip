@@ -44,6 +44,7 @@ function ConfirmOffer({ initialOffer }) {
             <div className="cob_offer_product d-flex justify-content-center">
               <ShimmerImage
                 width={285}
+                height={214}
                 src={data?.image}
                 alt={`${data?.year} ${data?.make} ${data?.model} ${
                   data?.enableMultiTrim ? data?.body : data?.trim

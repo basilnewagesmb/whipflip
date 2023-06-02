@@ -28,38 +28,53 @@ function CamLayout({
   state,
 }) {
   const [open, setOpen] = useState(true);
-  const mask = {
-    style: {
-      boxShadow: "inset 0 0 15px #fff",
-    },
-    color: "rgba(240, 181, 0, 0.24)",
-  };
+
   const steps = [
     {
       title: "Fullscreen toggle Button",
       description: "You can use fullscreen for a better user experience.",
       target: () => fullScreenBtn.current,
-      mask,
+      mask: {
+        style: {
+          boxShadow: "inset 0 0 15px #fff",
+        },
+        color: "rgba(240, 181, 0, 0.24)",
+      },
     },
     {
       title: "Close Button",
       description: "You can use the close button to skip this step.",
       target: () => closeScreenBtn.current,
-      mask,
+      mask: {
+        style: {
+          boxShadow: "inset 0 0 15px #fff",
+        },
+        color: "rgba(240, 181, 0, 0.24)",
+      },
     },
     {
       title: "Capture Button",
       description: "Click here to capture an image",
       placement: "top",
       target: () => captureScreenBtn.current,
-      mask,
+      mask: {
+        style: {
+          boxShadow: "inset 0 0 15px #fff",
+        },
+        color: "rgba(240, 181, 0, 0.24)",
+      },
     },
     {
       title: "Capture count view",
       description: "You can view the count and preview of previous images.",
       target: () => countPreview.current,
       onClose: handle.enter,
-      mask,
+      mask: {
+        style: {
+          boxShadow: "inset 0 0 15px #fff",
+        },
+        color: "rgba(240, 181, 0, 0.24)",
+      },
     },
   ];
   const fullScreenBtn = useRef(null);
