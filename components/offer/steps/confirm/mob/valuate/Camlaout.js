@@ -62,6 +62,7 @@ function CamLayout({
   return (
     <Layout className="vh-100 overflow-hidden">
       <Tour open={open} onClose={() => setOpen(false)} steps={steps} />
+      <button onClick={() => setOpen(tru)}>Tour</button>
       <Sider
         collapsedWidth={60}
         collapsed
