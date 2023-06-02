@@ -2,6 +2,7 @@ import "scss/style.scss";
 import "styles/animate.css";
 import "styles/all.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import 'antd/dist/reset.css';
 import dynamic from "next/dynamic";
 import { persister, store } from "app/store";
 import { Provider } from "react-redux";

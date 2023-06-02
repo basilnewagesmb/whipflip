@@ -9,7 +9,6 @@ import Overlay from "./overlay";
 import Captured from "./captured";
 function Camera(props) {
   const { state, camProps, pendingLayouts } = props;
-  console.log(props);
   return (
     <DeviceOrientation lockOrientation={"landscape"}>
       <Orientation orientation="landscape" alwaysRender={false}>
