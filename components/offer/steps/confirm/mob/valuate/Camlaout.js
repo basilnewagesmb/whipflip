@@ -15,7 +15,7 @@ import {
   Image,
   Row,
   Tour,
-} from "node_modules/antd/es/index";
+} from "antd";
 import { useRef } from "react";
 function CamLayout({
   children,
