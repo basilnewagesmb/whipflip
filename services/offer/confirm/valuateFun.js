@@ -46,26 +46,26 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
   };
   const handle = useFullScreenHandle();
   const orientation = useScreenOrientation();
-  useEffect(() => {
-    const switchOrientation = async () => {
-      try {
-        if (handle.active) {
-          await handle.exit();
-          await window?.screen?.orientation?.unlock();
-        } else {
-          await handle.enter();
-          await window?.screen?.orientation?.lock("landscape");
-        }
-      } catch (error) {
-        console.log(error);
-        // axios.post(`${process.env.apiBaseURL}logError`, {
-        //   prefix: "camera",
-        //   error: JSON.stringify(error.message),
-        // });
-      }
-    };
-    switchOrientation();
-  }, [orientation]);
+  // useEffect(() => {
+  //   const switchOrientation = async () => {
+  //     try {
+  //       if (handle.active) {
+  //         await handle.exit();
+  //         await window?.screen?.orientation?.unlock();
+  //       } else {
+  //         await handle.enter();
+  //         await window?.screen?.orientation?.lock("landscape");
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //       // axios.post(`${process.env.apiBaseURL}logError`, {
+  //       //   prefix: "camera",
+  //       //   error: JSON.stringify(error.message),
+  //       // });
+  //     }
+  //   };
+  //   switchOrientation();
+  // }, [orientation]);
   const webcamRef = useRef(null);
 
   const capture = useCallback(
