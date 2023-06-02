@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Layout, Modal } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 import { FullscreenOutlined, FullscreenExitOutlined } from "@ant-design/icons";
@@ -8,6 +8,15 @@ import { Button } from "antd";
 import useSound from "use-sound";
 import { useRouter } from "node_modules/next/router";
 import { isIOS } from "react-device-detect";
+import {
+  Avatar,
+  Badge,
+  Col,
+  Image,
+  Row,
+  Tour,
+} from "node_modules/antd/es/index";
+import { useRef } from "react";
 function CamLayout({
   children,
   handle,
@@ -16,11 +25,44 @@ function CamLayout({
   previewing,
   offerData,
   isForUpload,
+  state,
 }) {
+  const [open, setOpen] = useState(true);
+  const steps = [
+    {
+      title: "Fullscreen toggle Button",
+      description: "You can use fullscreen for a better user experience.",
+      target: () => fullScreenBtn.current,
+      ski,
+    },
+    {
+      title: "Close Button",
+      description: "You can use the close button to skip this step.",
+      target: () => closeScreenBtn.current,
+    },
+    {
+      title: "Capture Button",
+      description: "Click here to capture an image",
+      placement: "top",
+
+      target: () => captureScreenBtn.current,
+    },
+    {
+      title: "Capture count view",
+      description: "You can view the count and preview of previous images.",
+      target: () => countPreview.current,
+    },
+  ];
+  const fullScreenBtn = useRef(null);
+  const closeScreenBtn = useRef(null);
+  const captureScreenBtn = useRef(null);
+  const countPreview = useRef(null);
+
   const { push } = useRouter();
   const [play] = useSound("/data/capture.mp3");
   return (
     <Layout className="vh-100 overflow-hidden">
+      <Tour open={open} onClose={() => setOpen(false)} steps={steps} />
       <Sider
         collapsedWidth={60}
         collapsed
@@ -30,12 +72,21 @@ function CamLayout({
       >
         {!isIOS &&
           (handle?.active ? (
-            <FullscreenExitOutlined style={fullStyle} onClick={handle.exit} />
+            <FullscreenExitOutlined
+              ref={fullScreenBtn}
+              style={fullStyle}
+              onClick={handle.exit}
+            />
           ) : (
-            <FullscreenOutlined style={fullStyle} onClick={handle.enter} />
+            <FullscreenOutlined
+              ref={fullScreenBtn}
+              style={fullStyle}
+              onClick={handle.enter}
+            />
           ))}
         {!previewing && (
           <CloseOutlined
+            ref={closeScreenBtn}
             style={{
               fontSize: "20px",
               color: "#fff",
@@ -98,12 +149,54 @@ function CamLayout({
           backgroundColor: "#3c3c3c",
         }}
       >
+        <div
+          style={countStyle}
+          onClick={() => {
+            Modal.info({
+              icon: null,
+              width: "100%",
+              height: "100%",
+              centered: true,
+              content: (
+                <div className="row mt-4">
+                  {state?.stills?.map((item, i) => (
+                    <div className="col-3 pb-4 position-relative " key={i}>
+                      <Image
+                        className="card"
+                        width="100%"
+                        src={item.blob || `/overlay/${item.overlay}`}
+                        style={{
+                          objectFit: "contain",
+                        }}
+                      />
+                    </div>
+                  ))}
+                </div>
+              ),
+              closable: true,
+              footer: null,
+            });
+          }}
+          ref={countPreview}
+        >
+          <Badge.Ribbon
+            text={pendingLayouts?.length + "/" + offerData?.stills?.length}
+            color="#F0B500"
+          >
+            <Avatar
+              shape="square"
+              size="large"
+              src={state.stills.at(-1).blob}
+            />
+          </Badge.Ribbon>
+        </div>
         {!previewing && (
           <Button
             type="primary"
             shape="circle"
             style={captureStyle}
             size="large"
+            ref={captureScreenBtn}
             onClick={() => {
               capture(pendingLayouts[0]?.id);
               play();
@@ -136,5 +229,11 @@ const captureStyle = {
   color: "#fff",
   backgroundColor: "#fff",
   border: "4px solid #939393b8",
+};
+const countStyle = {
+  position: "absolute",
+  top: "5%",
+  right: "5%",
+  transform: "translate(-60%,0%)",
 };
 export default CamLayout;

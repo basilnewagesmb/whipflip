@@ -45,6 +45,7 @@ function Captured({ previewing, retake, continue_, pendingLayouts, compleat }) {
                 fontWeight: "700",
               }}
               onClick={retake}
+              size="large"
             >
               Retake
             </Button>
@@ -54,6 +55,7 @@ function Captured({ previewing, retake, continue_, pendingLayouts, compleat }) {
                 backgroundColor: "#ffd147",
                 fontWeight: "700",
               }}
+              size="large"
               onClick={() => {
                 pendingLayouts?.length == 0 ? compleat() : continue_();
               }}
@@ -87,7 +89,7 @@ const titleStyle = {
 
 const controlsStyle = {
   position: "absolute",
-  bottom: "10%",
+  bottom: "30%",
   left: 0,
   width: "100%",
   height: "100%",

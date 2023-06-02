@@ -17,9 +17,10 @@ import { isDev, isLocal } from "utils/helper";
 import * as prodGTM from "utils/GTM/prod";
 import * as devGTM from "utils/GTM/dev";
 import { useNetwork } from "utils/useNetwork";
-import { message } from "antd";
+import { message, Modal } from "antd";
 import { Suspense } from "react";
 import NextNProgress from "nextjs-progressbar";
+import { useRouter } from "next/router";
 const Default = dynamic(() => import("layout/Default"), {
   loading: () => <div className="wh-100">Loading...</div>,
 });
@@ -36,18 +37,30 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
       message.error("You're currently offline");
     }
   }, [isOnline]);
-  useEffect(() => {
-    const handleBackButton = (event) => {
-      event.preventDefault();
-      alert("Are you sure!");
-    };
+  const router = useRouter();
 
-    window.addEventListener("popstate", handleBackButton);
+  useEffect(() => {
+    router.beforePopState(({ as }) => {
+      const currentPath = router.asPath;
+      if (as !== currentPath) {
+        if (
+          confirm(
+            "Are you sure you want to leave this page? You may lose unsaved data."
+          )
+        ) {
+          return true;
+        } else {
+          window.history.pushState(null, "", currentPath);
+          return false;
+        }
+      }
+      return true;
+    });
 
     return () => {
-      window.removeEventListener("popstate", handleBackButton);
+      router.beforePopState(() => true);
     };
-  }, []);
+  }, [router.asPath]);
 
   return (
     <Provider store={store}>
