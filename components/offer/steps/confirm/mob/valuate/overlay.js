@@ -19,13 +19,13 @@ function Overlay({ pendingLayouts, previewing }) {
             transform: `scale(${scale * 0.015})`,
           }}
         />
-        <Slider
+        {/* <Slider
           defaultValue={scale}
           style={zoom}
           onChange={(value) => {
             setScale(value);
           }}
-        />
+        /> */}
       </div>
     );
 }

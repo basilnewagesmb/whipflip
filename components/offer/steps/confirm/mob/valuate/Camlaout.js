@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Layout, Modal } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 import { FullscreenOutlined, FullscreenExitOutlined } from "@ant-design/icons";
@@ -28,28 +28,38 @@ function CamLayout({
   state,
 }) {
   const [open, setOpen] = useState(true);
+  const mask = {
+    style: {
+      boxShadow: "inset 0 0 15px #fff",
+    },
+    color: "rgba(240, 181, 0, 0.24)",
+  };
   const steps = [
     {
       title: "Fullscreen toggle Button",
       description: "You can use fullscreen for a better user experience.",
       target: () => fullScreenBtn.current,
+      mask,
     },
     {
       title: "Close Button",
       description: "You can use the close button to skip this step.",
       target: () => closeScreenBtn.current,
+      mask,
     },
     {
       title: "Capture Button",
       description: "Click here to capture an image",
       placement: "top",
-
       target: () => captureScreenBtn.current,
+      mask,
     },
     {
       title: "Capture count view",
       description: "You can view the count and preview of previous images.",
       target: () => countPreview.current,
+      onClose: handle.enter,
+      mask,
     },
   ];
   const fullScreenBtn = useRef(null);
@@ -59,9 +69,22 @@ function CamLayout({
 
   const { push } = useRouter();
   const [play] = useSound("/data/capture.mp3");
+  useEffect(() => {
+    try {
+      handle.exit();
+    } catch (error) {}
+  }, []);
+
   return (
     <>
-      <Tour open={open} onClose={() => setOpen(false)} steps={steps} />
+      <Tour
+        open={open}
+        onClose={() => {
+          setOpen(false);
+          handle.enter();
+        }}
+        steps={steps}
+      />
       <Layout className="vh-100 overflow-hidden">
         <Sider
           collapsedWidth={60}
@@ -152,6 +175,9 @@ function CamLayout({
           <div
             style={countStyle}
             onClick={() => {
+              try {
+                handle.exit();
+              } catch (error) {}
               Modal.info({
                 icon: null,
                 width: "100%",
@@ -179,8 +205,9 @@ function CamLayout({
             }}
             ref={countPreview}
           >
-            <Badge.Ribbon
-              text={pendingLayouts?.length + "/" + offerData?.stills?.length}
+            <Badge
+              count={pendingLayouts?.length + "/" + offerData?.stills?.length}
+              className="unselectable"
               color="#F0B500"
             >
               <Avatar
@@ -188,7 +215,7 @@ function CamLayout({
                 size="large"
                 src={state.stills.at(-1).blob}
               />
-            </Badge.Ribbon>
+            </Badge>
           </div>
           {!previewing && (
             <Button
