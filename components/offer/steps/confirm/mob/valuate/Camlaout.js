@@ -90,6 +90,7 @@ function CamLayout({
         }}
         steps={steps}
       />
+      <button onClick={() => setOpen(true)}>setOpen(false);</button>
       <Layout className="vh-100 overflow-hidden">
         <Sider
           collapsedWidth={60}
