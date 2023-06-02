@@ -60,151 +60,154 @@ function CamLayout({
   const { push } = useRouter();
   const [play] = useSound("/data/capture.mp3");
   return (
-    <Layout className="vh-100 overflow-hidden">
+    <>
+      
       <Tour open={open} onClose={() => setOpen(false)} steps={steps} />
-      <button onClick={() => setOpen(tru)}>Tour</button>
-      <Sider
-        collapsedWidth={60}
-        collapsed
-        style={{
-          backgroundColor: "#3c3c3c",
-        }}
-      >
-        {!isIOS &&
-          (handle?.active ? (
-            <FullscreenExitOutlined
-              ref={fullScreenBtn}
-              style={fullStyle}
-              onClick={handle.exit}
+      <Layout className="vh-100 overflow-hidden">
+        <button onClick={() => setOpen(tru)}>Tour</button>
+        <Sider
+          collapsedWidth={60}
+          collapsed
+          style={{
+            backgroundColor: "#3c3c3c",
+          }}
+        >
+          {!isIOS &&
+            (handle?.active ? (
+              <FullscreenExitOutlined
+                ref={fullScreenBtn}
+                style={fullStyle}
+                onClick={handle.exit}
+              />
+            ) : (
+              <FullscreenOutlined
+                ref={fullScreenBtn}
+                style={fullStyle}
+                onClick={handle.enter}
+              />
+            ))}
+          {!previewing && (
+            <CloseOutlined
+              ref={closeScreenBtn}
+              style={{
+                fontSize: "20px",
+                color: "#fff",
+              }}
+              onClick={async () => {
+                try {
+                  handle.exit();
+                } catch (error) {}
+                await Modal.info({
+                  icon: null,
+                  title: (
+                    <h6 className="text-center">
+                      Almost there! Are you sure you want to exit now?
+                    </h6>
+                  ),
+                  width: 300,
+                  footer: (
+                    <div className="d-flex justify-content-center">
+                      <Button
+                        className="mx-2 w-100"
+                        style={{
+                          fontWeight: "700",
+                        }}
+                        onClick={async () => {
+                          Modal.destroyAll();
+                          if (isForUpload) {
+                            push("/");
+                          } else {
+                            push(`/prospect/${offerData.uid}/quote`);
+                          }
+                        }}
+                      >
+                        Yes, exit
+                      </Button>
+                      <Button
+                        className="mx-2 w-100 border-0"
+                        style={{
+                          backgroundColor: "#ffd147",
+                          fontWeight: "700",
+                        }}
+                        onClick={() => {
+                          Modal?.destroyAll();
+                          handle?.enter();
+                        }}
+                      >
+                        No, continue
+                      </Button>
+                    </div>
+                  ),
+                });
+              }}
             />
-          ) : (
-            <FullscreenOutlined
-              ref={fullScreenBtn}
-              style={fullStyle}
-              onClick={handle.enter}
-            />
-          ))}
-        {!previewing && (
-          <CloseOutlined
-            ref={closeScreenBtn}
-            style={{
-              fontSize: "20px",
-              color: "#fff",
-            }}
-            onClick={async () => {
-              try {
-                handle.exit();
-              } catch (error) {}
-              await Modal.info({
+          )}
+        </Sider>
+        <Content className="position-relative">{children}</Content>
+        <Sider
+          collapsedWidth={100}
+          collapsed
+          style={{
+            backgroundColor: "#3c3c3c",
+          }}
+        >
+          <div
+            style={countStyle}
+            onClick={() => {
+              Modal.info({
                 icon: null,
-                title: (
-                  <h6 className="text-center">
-                    Almost there! Are you sure you want to exit now?
-                  </h6>
-                ),
-                width: 300,
-                footer: (
-                  <div className="d-flex justify-content-center">
-                    <Button
-                      className="mx-2 w-100"
-                      style={{
-                        fontWeight: "700",
-                      }}
-                      onClick={async () => {
-                        Modal.destroyAll();
-                        if (isForUpload) {
-                          push("/");
-                        } else {
-                          push(`/prospect/${offerData.uid}/quote`);
-                        }
-                      }}
-                    >
-                      Yes, exit
-                    </Button>
-                    <Button
-                      className="mx-2 w-100 border-0"
-                      style={{
-                        backgroundColor: "#ffd147",
-                        fontWeight: "700",
-                      }}
-                      onClick={() => {
-                        Modal?.destroyAll();
-                        handle?.enter();
-                      }}
-                    >
-                      No, continue
-                    </Button>
+                width: "100%",
+                height: "100%",
+                centered: true,
+                content: (
+                  <div className="row mt-4">
+                    {state?.stills?.map((item, i) => (
+                      <div className="col-3 pb-4 position-relative " key={i}>
+                        <Image
+                          className="card"
+                          width="100%"
+                          src={item.blob || `/overlay/${item.overlay}`}
+                          style={{
+                            objectFit: "contain",
+                          }}
+                        />
+                      </div>
+                    ))}
                   </div>
                 ),
+                closable: true,
+                footer: null,
               });
             }}
-          />
-        )}
-      </Sider>
-      <Content className="position-relative">{children}</Content>
-      <Sider
-        collapsedWidth={100}
-        collapsed
-        style={{
-          backgroundColor: "#3c3c3c",
-        }}
-      >
-        <div
-          style={countStyle}
-          onClick={() => {
-            Modal.info({
-              icon: null,
-              width: "100%",
-              height: "100%",
-              centered: true,
-              content: (
-                <div className="row mt-4">
-                  {state?.stills?.map((item, i) => (
-                    <div className="col-3 pb-4 position-relative " key={i}>
-                      <Image
-                        className="card"
-                        width="100%"
-                        src={item.blob || `/overlay/${item.overlay}`}
-                        style={{
-                          objectFit: "contain",
-                        }}
-                      />
-                    </div>
-                  ))}
-                </div>
-              ),
-              closable: true,
-              footer: null,
-            });
-          }}
-          ref={countPreview}
-        >
-          <Badge.Ribbon
-            text={pendingLayouts?.length + "/" + offerData?.stills?.length}
-            color="#F0B500"
+            ref={countPreview}
           >
-            <Avatar
-              shape="square"
+            <Badge.Ribbon
+              text={pendingLayouts?.length + "/" + offerData?.stills?.length}
+              color="#F0B500"
+            >
+              <Avatar
+                shape="square"
+                size="large"
+                src={state.stills.at(-1).blob}
+              />
+            </Badge.Ribbon>
+          </div>
+          {!previewing && (
+            <Button
+              type="primary"
+              shape="circle"
+              style={captureStyle}
               size="large"
-              src={state.stills.at(-1).blob}
+              ref={captureScreenBtn}
+              onClick={() => {
+                capture(pendingLayouts[0]?.id);
+                play();
+              }}
             />
-          </Badge.Ribbon>
-        </div>
-        {!previewing && (
-          <Button
-            type="primary"
-            shape="circle"
-            style={captureStyle}
-            size="large"
-            ref={captureScreenBtn}
-            onClick={() => {
-              capture(pendingLayouts[0]?.id);
-              play();
-            }}
-          />
-        )}
-      </Sider>
-    </Layout>
+          )}
+        </Sider>
+      </Layout>
+    </>
   );
 }
 
