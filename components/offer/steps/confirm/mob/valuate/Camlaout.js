@@ -61,10 +61,8 @@ function CamLayout({
   const [play] = useSound("/data/capture.mp3");
   return (
     <>
-      
       <Tour open={open} onClose={() => setOpen(false)} steps={steps} />
       <Layout className="vh-100 overflow-hidden">
-        <button onClick={() => setOpen(tru)}>Tour</button>
         <Sider
           collapsedWidth={60}
           collapsed
