@@ -33,7 +33,6 @@ function CamLayout({
       title: "Fullscreen toggle Button",
       description: "You can use fullscreen for a better user experience.",
       target: () => fullScreenBtn.current,
-      ski,
     },
     {
       title: "Close Button",
