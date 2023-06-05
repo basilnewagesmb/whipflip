@@ -3,7 +3,7 @@ import React from "react";
 import { useRef } from "react";
 import { useState } from "react";
 
-function test() {
+function Test() {
   const fullScreenBtn = useRef(null);
   const closeScreenBtn = useRef(null);
   const captureScreenBtn = useRef(null);
@@ -73,4 +73,4 @@ function test() {
   );
 }
 
-export default test;
+export default Test;

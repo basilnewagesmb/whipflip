@@ -4,7 +4,7 @@ import React from "react";
 function Loader() {
   return (
     <div className="vh-100 d-flex justify-content-center align-items-center">
-      <div class="lds-spinner">
+      <div className="lds-spinner">
         <div></div>
         <div></div>
         <div></div>
