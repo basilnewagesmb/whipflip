@@ -1221,7 +1221,7 @@ const Faq = ({ icon, short }) => {
   ];
 
   function getTabs() {
-    return (short ? [tabs.at(0)] : tabs).map((tab, index) => ({
+    return (short ? [tabs[0]] : tabs).map((tab, index) => ({
       title: tab.title,
       getContent: tab.component,
       /* Optional parameters */

@@ -707,9 +707,9 @@ function SellFrom({
                       </div>
                     </div>
                   </Form.Item>
-                  {formData?.formRealData?.has_active_loan == true && (
+                  {/* {formData?.formRealData?.has_active_loan == true && (
                     <>
-                      <div className="viewDetail">
+                      <div className="viewDetail"> 
                         <div className="selectView vin">
                           <div className="checkIssues">
                             <div className="chooseIssues">
@@ -788,7 +788,7 @@ function SellFrom({
                         </div>
                       </div>
                     </>
-                  )}
+                  )} */}
                   {formData?.formRealData?.has_active_loan == false &&
                     formData?.formRealData?.hasTitle == false && (
                       <div className="selectView license_plate finance_no">

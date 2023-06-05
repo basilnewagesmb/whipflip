@@ -99,24 +99,23 @@ function useSellFuc(data) {
         .geocode({ placeId: d.place_id, country: "us" })
         .then(({ results }) => {
           for (var i = 0; i < results.length; i++) {
+            const converted = results[i].address_components
+              .reverse()
+              .map((c) => {
+                return { [getTypeName(c.types[0])]: c };
+              })
+              .reduce((o, c) => {
+                return { ...o, ...c };
+              }, {});
             const { street_address, street_number, postal_code, city, state } =
-              results[i].address_components
-                .reverse()
-                .map((c) => {
-                  console.log(c);
-                  return { [getTypeName(c.types[0])]: c };
-                })
-                .reduce((o, c) => {
-                  return { ...o, ...c };
-                }, {});
+              converted;
             postal_code?.long_name && triggerFetch(true);
+            console.log(converted);
             form.setFieldsValue({
               street_address:
                 (street_number?.long_name || "") +
-                  " " +
-                  street_address?.long_name ||
-                city?.long_name ||
-                "",
+                " " +
+                (street_address?.long_name || city?.long_name || ""),
               zip: postal_code?.long_name || "",
               city: city?.long_name || "",
               state: state?.short_name || "",
