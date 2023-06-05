@@ -4,10 +4,6 @@ import { useRef } from "react";
 import { useState } from "react";
 
 function Test() {
-  const fullScreenBtn = useRef(null);
-  const closeScreenBtn = useRef(null);
-  const captureScreenBtn = useRef(null);
-  const countPreview = useRef(null);
   const [open, setOpen] = useState(true);
   const mask = {};
   const steps = [
@@ -41,6 +37,10 @@ function Test() {
       placement: "center",
     },
   ];
+  const fullScreenBtn = useRef(null);
+  const closeScreenBtn = useRef(null);
+  const captureScreenBtn = useRef(null);
+  const countPreview = useRef(null);
   return (
     <div className="mt-5 pt-5">
       {" "}

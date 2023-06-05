@@ -20,6 +20,10 @@ function CamLayout({
   isForUpload,
   state,
 }) {
+  const fullScreenBtn = useRef(null);
+  const closeScreenBtn = useRef(null);
+  const captureScreenBtn = useRef(null);
+  const countPreview = useRef(null);
   const [open, setOpen] = useState(true);
   const mask = {
     style: {
@@ -55,11 +59,6 @@ function CamLayout({
       mask,
     },
   ];
-  const fullScreenBtn = useRef(null);
-  const closeScreenBtn = useRef(null);
-  const captureScreenBtn = useRef(null);
-  const countPreview = useRef(null);
-
   const { push } = useRouter();
   const [play] = useSound("/data/capture.mp3");
   useEffect(() => {
