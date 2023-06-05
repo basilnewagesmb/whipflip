@@ -20,12 +20,7 @@ function Test() {
       title: "Fullscreen toggle Button",
       description: "You can use fullscreen for a better user experience.",
       target: () => fullScreenBtn.current,
-      mask: {
-        style: {
-          boxShadow: "inset 0 0 15px #fff",
-        },
-        color: "rgba(240, 181, 0, 0.24)",
-      },
+      mask,
     },
     {
       title: "Close Button",
@@ -60,11 +55,11 @@ function Test() {
       <div ref={fullScreenBtn} className="mb-5">
         fullScreenBtn
       </div>
-      <div ref={closeScreenBtn} className="mb-5">
-        closeScreenBtn
+      <div ref={closeScreenBtn} className="mb-5 ml-5">
+      closeScreenBtn
       </div>
-      <div ref={closeScreenBtn} className="mb-5">
-        closeScreenBtn
+      <div ref={captureScreenBtn} className="mb-5">
+      captureScreenBtn
       </div>
       <div ref={countPreview} className="mb-5">
         countPreview
