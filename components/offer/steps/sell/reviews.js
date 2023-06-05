@@ -15,7 +15,7 @@ function Reviews(props) {
       <div
         className={isMobile ? "how-it-works pt-4 pb-5" : "how-it-works pt-5 "}
       >
-        <div className="container">
+        <div className="container p-0">
           <div className="sub-title text-center">
             <h2>
               <span>
@@ -30,7 +30,7 @@ function Reviews(props) {
           <div className="review_list mt-5 ">
             {reviews.length > 0 &&
               reviews.map((_review, index) => (
-                <div className="review_item card" key={index}>
+                <div className="review_item card p-3" key={index}>
                   <div className="review_hd">
                     <div className="rh_left">
                       <img
@@ -41,12 +41,13 @@ function Reviews(props) {
                     <div className="rh_right">
                       {/* +" "+_review.lastname */}
                       <h2>{_review.firstname}</h2>
-                      <div className="rating_star">
+                      <div className="rating_star flex-wrap">
                         <Rate
                           allowHalf
                           disabled
                           defaultValue={+_review.rate}
                           style={{ grid: 0, color: "#ffb400" }}
+                          className={"flex-wrap"}
                         />
                         <span className="date_calc">
                           {moment(_review.review_date).fromNow()}

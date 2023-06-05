@@ -101,9 +101,9 @@ function Initial({ setCurrent, isForUpload }) {
               {`I'm Ready`}
             </button>
             {!isForUpload && (
-              <a href="#" className="skipHref" onClick={back}>
+              <div className="skipHref" onClick={() => back()}>
                 Skip Taking Photos
-              </a>
+              </div>
             )}
           </div>
         </div>

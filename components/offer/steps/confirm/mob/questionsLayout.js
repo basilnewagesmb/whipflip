@@ -13,6 +13,7 @@ import InteriorConditions from "./interior-conditions";
 import Bounce from "react-reveal/Bounce";
 import { Modal } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
+import CarInfo from "../../initial/mob/carInfo";
 function QuestionsLayout({ initialOffer, fbpixel, analytics }) {
   const carouselRef = useRef();
   const [form] = Form.useForm();
@@ -94,11 +95,8 @@ function QuestionsLayout({ initialOffer, fbpixel, analytics }) {
 
   return (
     <div className="container p-0">
-      <div className="itemSelected text-center">
-        <span>Initial offer: {getAmount(initialOffer)}</span>
-      </div>
+      <CarInfo data={initialOffer} />
       {contextHolder}
-
       <Form
         name="confirm-mob"
         form={form}

@@ -6,6 +6,7 @@ const nextConfig = {
       "demo.whipflip.com",
       "whipflip.com",
       "d2ivfcfbdvj3sm.cloudfront.net",
+      "seal-delaware.bbb.org"
     ],
   }
 };
