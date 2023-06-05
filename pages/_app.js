@@ -2,7 +2,6 @@ import "scss/style.scss";
 import "styles/animate.css";
 import "styles/all.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import 'antd/dist/reset.css';
 import dynamic from "next/dynamic";
 import { persister, store } from "app/store";
 import { Provider } from "react-redux";
@@ -22,8 +21,9 @@ import { message, Modal } from "antd";
 import { Suspense } from "react";
 import NextNProgress from "nextjs-progressbar";
 import { useRouter } from "next/router";
+import Loader from "layout/Loader";
 const Default = dynamic(() => import("layout/Default"), {
-  loading: () => <div className="wh-100">Loading...</div>,
+  loading: () => <Loader />,
 });
 
 function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
@@ -65,36 +65,36 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
 
   return (
     <Provider store={store}>
-      <PersistGate loading={"null"} persistor={persister}>
+      <PersistGate loading={<Loader />} persistor={persister}>
         {/* {() => ( */}
-          <Default>
-            <ConfigProvider
-              theme={{
-                token: {
-                  colorPrimary: "#4381c0",
-                  borderRadiusLG: 4,
-                },
-              }}
-            >
-              <NextNProgress color="#FFD147" height={2} />
-              <Head>
-                <meta
-                  name="google-site-verification"
-                  content="jnAdFCwVEDCZykQl_XGONg9qtAu-07wxtA2-s6sTuKc"
-                />
-                <meta
-                  name="facebook-domain-verification"
-                  content="5qtg49f5uu0blll09ukjxvxpo4tz5g"
-                />
-              </Head>
-              <Component
-                {...pageProps}
-                analytics={analytics}
-                fbpixel={fbpixel}
-                hotjar={hotjar}
+        <Default>
+          <ConfigProvider
+            theme={{
+              token: {
+                colorPrimary: "#4381c0",
+                borderRadiusLG: 4,
+              },
+            }}
+          >
+            <NextNProgress color="#FFD147" height={2} />
+            <Head>
+              <meta
+                name="google-site-verification"
+                content="jnAdFCwVEDCZykQl_XGONg9qtAu-07wxtA2-s6sTuKc"
               />
-            </ConfigProvider>
-          </Default>
+              <meta
+                name="facebook-domain-verification"
+                content="5qtg49f5uu0blll09ukjxvxpo4tz5g"
+              />
+            </Head>
+            <Component
+              {...pageProps}
+              analytics={analytics}
+              fbpixel={fbpixel}
+              hotjar={hotjar}
+            />
+          </ConfigProvider>
+        </Default>
         {/* )} */}
       </PersistGate>
     </Provider>
