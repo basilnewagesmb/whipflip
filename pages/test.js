@@ -9,29 +9,27 @@ function Test() {
   const captureScreenBtn = useRef(null);
   const countPreview = useRef(null);
   const [open, setOpen] = useState(true);
-  const mask = {
-    style: {
-      boxShadow: "inset 0 0 15px #fff",
-    },
-    color: "rgba(240, 181, 0, 0.24)",
-  };
+  const mask = {};
   const steps = [
     {
       title: "Fullscreen toggle Button",
       description: "You can use fullscreen for a better user experience.",
       target: () => fullScreenBtn.current,
       mask,
+      placement: "center",
     },
     {
       title: "Close Button",
       description: "You can use the close button to skip this step.",
       target: () => closeScreenBtn.current,
+      placement: "center",
+
       mask,
     },
     {
       title: "Capture Button",
       description: "Click here to capture an image",
-      placement: "top",
+      placement: "center",
       target: () => captureScreenBtn.current,
       mask,
     },
@@ -40,6 +38,7 @@ function Test() {
       description: "You can view the count and preview of previous images.",
       target: () => countPreview.current,
       mask,
+      placement: "center",
     },
   ];
   return (
@@ -52,14 +51,14 @@ function Test() {
         }}
         steps={steps}
       />
-      <div ref={fullScreenBtn} className="mb-5">
+      <div ref={fullScreenBtn} className="mb-5 pt-5">
         fullScreenBtn
       </div>
       <div ref={closeScreenBtn} className="mb-5 ml-5">
-      closeScreenBtn
+        closeScreenBtn
       </div>
       <div ref={captureScreenBtn} className="mb-5">
-      captureScreenBtn
+        captureScreenBtn
       </div>
       <div ref={countPreview} className="mb-5">
         countPreview

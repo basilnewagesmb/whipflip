@@ -8,14 +8,7 @@ import { Button } from "antd";
 import useSound from "use-sound";
 import { useRouter } from "node_modules/next/router";
 import { isIOS } from "react-device-detect";
-import {
-  Avatar,
-  Badge,
-  Col,
-  Image,
-  Row,
-  Tour,
-} from "antd";
+import { Avatar, Badge, Col, Image, Row, Tour } from "antd";
 import { useRef } from "react";
 function CamLayout({
   children,
@@ -39,12 +32,7 @@ function CamLayout({
       title: "Fullscreen toggle Button",
       description: "You can use fullscreen for a better user experience.",
       target: () => fullScreenBtn.current,
-      mask: {
-        style: {
-          boxShadow: "inset 0 0 15px #fff",
-        },
-        color: "rgba(240, 181, 0, 0.24)",
-      },
+      mask,
     },
     {
       title: "Close Button",
