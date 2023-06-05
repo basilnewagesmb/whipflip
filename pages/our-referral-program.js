@@ -34,7 +34,7 @@ function Index() {
                 <p>
                   {`Welcome to a true WIN-WIN-WIN! Refer someone you think would
                   benefit from selling their car to WhipFlip. Once they sell
-                  their car to us, we'll send you and them each a $150 referral
+                  their car to us, we'll send you and them each a $100 referral
                   bonus check!`}
                 </p>
                 <p>*Referrer must be a previous customer of WhipFlip.</p>

@@ -17,7 +17,7 @@ function Index() {
           <div className="row">
             <div className="col-12 page-title text-center">
               <p>Why Sell Your Car to Us?</p>
-              <h1>Whipflip Now Makes Selling Your Car 100% Hassle Free</h1>
+              <h1>WhipFlip Now Makes Selling Your Car 100% Hassle Free</h1>
               <p>No, you are not dreaming. This is REAL!</p>
             </div>
           </div>

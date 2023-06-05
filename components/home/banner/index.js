@@ -7,6 +7,7 @@ import InstantOffer from "./instantOffer";
 import Reviews from "./review";
 import VideoModal from "./videoModal";
 import CardSkeleton from "./cardSkeleton";
+import moment from "moment";
 function HomeBanner({ reviews, isClient }) {
   const { initialOffer } = useSelector((state) => state.offer);
   const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -127,7 +128,7 @@ function HomeBanner({ reviews, isClient }) {
                       </div>
                       <div className="acc_right">
                         <span>BBB Rating: A</span>
-                        <span>as of {new Date().toLocaleDateString()}</span>
+                        <span>as of {moment().format("MM/DD/YYYY")}</span>
                         <span>click for profile</span>
                       </div>
                     </div>

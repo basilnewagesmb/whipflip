@@ -24,8 +24,10 @@ function About() {
         <div className="container">
           <div className="row">
             <div className="col-12 page-title text-center">
+              <h1 style={{ opacity: 0 }}>b</h1>
               <p>About Us</p>
               <h1>We Are Built by Consumers for Consumers</h1>
+              <h1 style={{ opacity: 0 }}>d</h1>
             </div>
           </div>
         </div>

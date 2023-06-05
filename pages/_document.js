@@ -5,7 +5,6 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        <link rel="preload" href="/images/car-anim.gif" as="image" />
         <Script
           dangerouslySetInnerHTML={{
             __html: `

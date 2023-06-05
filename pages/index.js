@@ -29,6 +29,7 @@ function Index(props) {
       dispatch(initialize(query));
     });
   }, [query]);
+  
   return (
     <>
       <MetaHead
@@ -36,7 +37,7 @@ function Index(props) {
         ogImage={"https://whipflipnow.s3.amazonaws.com/Whipflip+Logo.png"}
       />
       <HomeBanner reviews={reviews} isClient={isClient} />
-      <div className="how-it-works pt100">
+      <div className="how-it-works pt-home-100 ">
         <div className="container">
           <div className="secHd text-center">
             <span>How It Works</span>

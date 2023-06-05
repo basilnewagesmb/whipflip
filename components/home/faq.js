@@ -1081,11 +1081,11 @@ export const faqData = {
             </p>
             <p>
               {`WhipFlip's payment method is a company check through Wells Fargo
-              Bank`}
+              Bank.`}
             </p>
             <p>
               Payment is on the spot at the time of your vehicle transaction,
-              check is live, and payment is guaranteed
+              check is live, and payment is guaranteed.
             </p>
             <p>
               ***Please be advised that your bank may have their own deposit or

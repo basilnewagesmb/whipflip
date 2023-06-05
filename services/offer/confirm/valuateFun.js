@@ -12,8 +12,9 @@ import { Modal } from "antd";
 import { isIOS } from "react-device-detect";
 import useCheckMobile from "utils/checkMobile";
 import { uploadImagesToS3 } from "utils/s3";
+import useMobileDetect from "utils/useMobileDetect";
 function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
-  const isMobile = useCheckMobile();
+  const isMobile = useMobileDetect();
   const { push } = useRouter();
   const [state, setState] = useState({
     current: "initial",

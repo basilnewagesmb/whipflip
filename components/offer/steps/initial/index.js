@@ -315,7 +315,7 @@ function Initial(props) {
                           <Form.Item
                             label={
                               <>
-                                Phone
+                                Phone #
                                 <span
                                   style={{
                                     fontSize: 12,

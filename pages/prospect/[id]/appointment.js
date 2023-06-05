@@ -504,10 +504,11 @@ function Congrats({ data }) {
                       <div className="np_item_dec">
                         <h2>Make Sure Everyone`s There! </h2>
                         <p>
-                          We will contact you to confirm your appointment.
-                          Please respond to lock in your day/time to sell. If we
-                          haven`t heard from you, we reserve the right to cancel
-                          and rescind the offer.
+                          {`All owners must be present to sign off on the bill of
+                          sale and title. Please have your ID's ready as well
+                          for ownership confirmation. Additional ownership
+                          proofs may be needed such as a phone or utility bill
+                          to confirm identity.`}
                         </p>
                       </div>
                     </div>
@@ -639,7 +640,7 @@ function Congrats({ data }) {
                   leverage real-time industry market data, and based on the
                   customers input of their vehicles information including
                   condition. Vehicle condition includes mechanical, cosmetic,
-                  and historical factors. Whipflip strives to stand behind every
+                  and historical factors. WhipFlip strives to stand behind every
                   offer made to the dollar. However, offers may change for any
                   reason, at WhipFlip's sole discretion for any undisclosed
                   issues by the customer, technical issues affecting our pricing
