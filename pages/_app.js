@@ -40,9 +40,6 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
   const router = useRouter();
   useEffect(() => {
     const currentPath = router.asPath;
-    const handleBeforeUnload = (event) => {
-      event.returnValue = ""; // Required for Chrome and Firefox
-    };
     const handleBackButton = () => {
       const confirmed = window?.confirm(
         "Are you sure you want to leave this page? You may lose unsaved data."
@@ -54,10 +51,8 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
       }
     };
 
-    window.addEventListener("beforeunload", handleBeforeUnload);
     window.addEventListener("popstate", handleBackButton);
     return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
       window.removeEventListener("popstate", handleBackButton);
     };
   }, [router]);

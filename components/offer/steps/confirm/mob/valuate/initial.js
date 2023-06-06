@@ -15,7 +15,15 @@ function Initial({ setCurrent, isForUpload }) {
             color: "#fff",
           }}
           onClick={() => {
-            isForUpload ? push("/") : back();
+            try {
+              if (window.history.length > 1) {
+                back(); // Go back in history if available
+              } else {
+                push("/"); // Redirect to the home screen
+              }
+            } catch (error) {
+              console.log(error);
+            }
           }}
         />
       </Modal.Header>
@@ -101,7 +109,20 @@ function Initial({ setCurrent, isForUpload }) {
               {`I'm Ready`}
             </button>
             {!isForUpload && (
-              <div className="skipHref" onClick={() => back()}>
+              <div
+                className="skipHref"
+                onClick={() => {
+                  try {
+                    if (window.history.length > 1) {
+                      back(); // Go back in history if available
+                    } else {
+                      push("/"); // Redirect to the home screen
+                    }
+                  } catch (error) {
+                    console.log(error);
+                  }
+                }}
+              >
                 Skip Taking Photos
               </div>
             )}
