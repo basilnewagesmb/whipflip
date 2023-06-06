@@ -10,6 +10,8 @@ function PoweredBy() {
         width={180}
         height={20}
         preview={false}
+        layout="responsive"
+
       />
     </div>
   );

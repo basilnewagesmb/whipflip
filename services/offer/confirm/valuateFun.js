@@ -111,8 +111,8 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
     forceScreenshotSourceSize: true,
     onUserMedia: () => {},
     onUserMediaError: async () => {
-      const permission = await navigator.permissions.query({ name: "camera" });
-      if (permission.state == "granted") {
+      const permission = await navigator?.permissions?.query({ name: "camera" });
+      if (permission?.state == "granted") {
         try {
           await handle?.enter();
           console.log("granted");

@@ -31,34 +31,7 @@ function CamLayout({
     },
     color: "rgba(240, 181, 0, 0.24)",
   };
-  const steps = [
-    {
-      title: "Fullscreen toggle Button",
-      description: "You can use fullscreen for a better user experience.",
-      target: () => fullScreenBtn.current,
-      mask,
-    },
-    {
-      title: "Close Button",
-      description: "You can use the close button to skip this step.",
-      target: () => closeScreenBtn.current,
-      mask,
-    },
-    {
-      title: "Capture Button",
-      description: "Click here to capture an image",
-      placement: "top",
-      target: () => captureScreenBtn.current,
-      mask,
-    },
-    {
-      title: "Capture count view",
-      description: "You can view the count and preview of previous images.",
-      target: () => countPreview.current,
-      onClose: handle.enter,
-      mask,
-    },
-  ];
+  const [steps, SetSteps] = useState([]);
   const { push } = useRouter();
   const [play] = useSound("/data/capture.mp3");
   useEffect(() => {
@@ -66,6 +39,137 @@ function CamLayout({
       handle.exit();
     } catch (error) {}
   }, []);
+  const skip = () => {
+    setOpen(false);
+    try {
+      handle.enter();
+    } catch (error) {}
+  };
+  useEffect(() => {
+    !isIOS
+      ? SetSteps([
+          {
+            title: (
+              <>
+                Fullscreen toggle Button{" "}
+                <button
+                  className="ant-btn css-dev-only-do-not-override-p2y309 ant-btn-default ant-btn-sm ant-tour-prev-btn"
+                  onClick={skip}
+                >
+                  Skip
+                </button>
+              </>
+            ),
+            description: "You can use fullscreen for a better user experience.",
+            target: () => fullScreenBtn.current,
+            mask,
+          },
+          {
+            title: (
+              <>
+                Close Button{" "}
+                <button
+                  className="ant-btn css-dev-only-do-not-override-p2y309 ant-btn-default ant-btn-sm ant-tour-prev-btn"
+                  onClick={skip}
+                >
+                  Skip
+                </button>
+              </>
+            ),
+            description: "You can use the close button to skip this step.",
+            target: () => closeScreenBtn.current,
+            mask,
+          },
+          {
+            title: (
+              <>
+                Capture Button{" "}
+                <button
+                  className="ant-btn css-dev-only-do-not-override-p2y309 ant-btn-default ant-btn-sm ant-tour-prev-btn"
+                  onClick={skip}
+                >
+                  Skip
+                </button>
+              </>
+            ),
+            description: "Click here to capture an image",
+            placement: "left",
+            target: () => captureScreenBtn.current,
+            mask,
+          },
+          {
+            title: (
+              <>
+                Capture count view{" "}
+                <button
+                  className="ant-btn css-dev-only-do-not-override-p2y309 ant-btn-default ant-btn-sm ant-tour-prev-btn"
+                  onClick={skip}
+                >
+                  Skip
+                </button>
+              </>
+            ),
+            description:
+              "You can view the count and preview of previous images.",
+            target: () => countPreview.current,
+            onClose: handle.enter,
+            mask,
+          },
+        ])
+      : SetSteps([
+          {
+            title: (
+              <>
+                Close Button{" "}
+                <button
+                  className="ant-btn css-dev-only-do-not-override-p2y309 ant-btn-default ant-btn-sm ant-tour-prev-btn"
+                  onClick={skip}
+                >
+                  Skip
+                </button>
+              </>
+            ),
+            description: "You can use the close button to skip this step.",
+            target: () => closeScreenBtn.current,
+            mask,
+          },
+          {
+            title: (
+              <>
+                Capture Button{" "}
+                <button
+                  className="ant-btn css-dev-only-do-not-override-p2y309 ant-btn-default ant-btn-sm ant-tour-prev-btn"
+                  onClick={skip}
+                >
+                  Skip
+                </button>
+              </>
+            ),
+            description: <>Click here to capture an image</>,
+            placement: "left",
+            target: () => captureScreenBtn.current,
+            mask,
+          },
+          {
+            title: (
+              <>
+                Capture count view{" "}
+                <button
+                  className="ant-btn css-dev-only-do-not-override-p2y309 ant-btn-default ant-btn-sm ant-tour-prev-btn"
+                  onClick={skip}
+                >
+                  Skip
+                </button>
+              </>
+            ),
+            description:
+              "You can view the count and preview of previous images.",
+            target: () => countPreview.current,
+            onClose: handle.enter,
+            mask,
+          },
+        ]);
+  }, [isIOS]);
 
   return (
     <>
@@ -198,7 +302,12 @@ function CamLayout({
             ref={countPreview}
           >
             <Badge
-              count={pendingLayouts?.length + "/" + offerData?.stills?.length}
+              count={
+                offerData?.stills?.length -
+                pendingLayouts?.length +
+                "/" +
+                offerData?.stills?.length
+              }
               className="unselectable"
               color="#F0B500"
             >

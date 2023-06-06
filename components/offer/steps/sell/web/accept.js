@@ -222,7 +222,7 @@ function Accept({ data, setAccept }) {
               <div className="acceptOffer_rating">
                 <div className="acc_left">
                   <Image
-                    src="/images/acc-rating.svg"
+                    src="/api/acc.png"
                     alt="rating"
                     title="rating"
                     width={280}

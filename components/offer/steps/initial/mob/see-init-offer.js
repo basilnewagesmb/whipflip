@@ -99,7 +99,7 @@ function SeeInitOffer({ form, data, goTo }) {
             <div className="col-lg-12 p-0">
               <Form.Item
                 label={
-                  <>
+                  <span>
                     Phone #
                     <span
                       style={{
@@ -110,8 +110,9 @@ function SeeInitOffer({ form, data, goTo }) {
                       {" "}
                       (We may need more info or clarification)
                     </span>
-                  </>
+                  </span>
                 }
+                
                 name={["user", "phone"]}
                 className="m-0 w-100"
                 rules={[

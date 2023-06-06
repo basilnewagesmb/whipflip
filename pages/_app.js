@@ -38,29 +38,29 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
     }
   }, [isOnline]);
   const router = useRouter();
-
   useEffect(() => {
-    router.beforePopState(({ as }) => {
-      const currentPath = router.asPath;
-      if (as !== currentPath) {
-        if (
-          confirm(
-            "Are you sure you want to leave this page? You may lose unsaved data."
-          )
-        ) {
-          return true;
-        } else {
-          window.history.pushState(null, "", currentPath);
-          return false;
-        }
-      }
-      return true;
-    });
-
-    return () => {
-      router.beforePopState(() => true);
+    const currentPath = router.asPath;
+    const handleBeforeUnload = (event) => {
+      event.returnValue = ""; // Required for Chrome and Firefox
     };
-  }, [router.asPath]);
+    const handleBackButton = () => {
+      const confirmed = window?.confirm(
+        "Are you sure you want to leave this page? You may lose unsaved data."
+      );
+      if (confirmed) {
+        router.push("/"); // Redirect to the home screen
+      } else {
+        window.history.pushState(null, "", currentPath);
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    window.addEventListener("popstate", handleBackButton);
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+      window.removeEventListener("popstate", handleBackButton);
+    };
+  }, [router]);
 
   return (
     <Provider store={store}>

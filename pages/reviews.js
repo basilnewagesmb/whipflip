@@ -122,10 +122,11 @@ function Reviews(props) {
                     <div className="rh_right">
                       {/* +" "+_review.lastname */}
                       <h2>{_review.firstname}</h2>
-                      <div className="rating_star">
+                      <div className="rating_star flex-wrap">
                         <Rate
                           allowHalf
                           disabled
+                          className="flex-wrap"
                           defaultValue={+_review.rate}
                           style={{ grid: 0, color: "#ffb400" }}
                         />

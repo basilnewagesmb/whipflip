@@ -343,7 +343,12 @@ export const ShowEasyStepMob = (
         <div className=" mt-4 d-flex justify-content-center align-item-center">
           <h6>OPTION 2: FAST-FORWARD</h6>
         </div>
-        <div className="fesFooter fesBody_in_row p-y-2">
+        <div
+          className="fesFooter fesBody_in_row p-y-2 "
+          style={{
+            border: "1px solid #4381c0",
+          }}
+        >
           <div className="fesFooter_body">
             <div className="fes_col_right_in">
               <div className="fcr_head">

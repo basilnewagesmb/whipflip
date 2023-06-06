@@ -190,9 +190,7 @@ function Congrats({ data }) {
                           <div className="np_item_dec">
                             <h2>Make Sure Everyone`s There!</h2>
                             <p>
-                              All owners and/or co-signers must be present to
-                              sign the appropriate ownership and purchase
-                              documents.
+                              {`All owners must be present to sign off on the bill of sale and title.  Please have your ID’s ready as well for ownership confirmation. Additional ownership proofs may be needed such as a phone or utility bill to confirm identity`}
                             </p>
                           </div>
                         </div>
@@ -218,9 +216,7 @@ function Congrats({ data }) {
                           <div className="np_item_dec">
                             <h2>Have Everything on Hand</h2>
                             <p>
-                              We are buying a lot of cars on the hour. Please be
-                              on time with your title or payoff information, ID,
-                              and keys ready for our Car Concierge.
+                              {`Please ensure you have all ownership documents ready (i.e. Title or payoff letter), vehicle is cleaned out with all belongings removed, and ID.`}
                             </p>
                           </div>
                         </div>
@@ -473,11 +469,7 @@ function Congrats({ data }) {
                       <div className="np_item_dec">
                         <h2>Respond To Confirmation</h2>
                         <p>
-                          {`All owners must be present to sign off on the bill of
-                          sale and title. Please have your ID's ready as well
-                          for ownership confirmation. Additional ownership
-                          proofs may be needed such as a phone or utility bill
-                          to confirm identity.`}
+                          {`Our team will contact you to confirm your vehicle and appointment details. Please respond immediately to finalize confirmation. If we are unable to reach you, we reserve the right to cancel and rescind our offer.`}
                         </p>
                       </div>
                     </div>

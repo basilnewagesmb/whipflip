@@ -215,11 +215,9 @@ function VehicleConditionMob({
                                   <label
                                     htmlFor={radio?.uid}
                                     className="labeltick"
+                                    style={{ height: "100% !important" }}
                                   >
-                                    <span
-                                      className="labeltickspan"
-                                      //style={{ wordBreak: "break-all" }}
-                                    >
+                                    <span className="labeltickspan d-flex align-items-center">
                                       {radio?.name}
                                     </span>
                                     {radio.image ? (

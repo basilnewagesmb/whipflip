@@ -856,12 +856,22 @@ article.reviewLt_icons {
           min-height: 300px;
           @include responsive(tab-port) {
             min-height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
           }
           .si-head {
             img {
               width: 50px;
               height: 50px;
               object-fit: contain;
+              @include responsive(tab-port) {
+                width: 100px;
+                height: 100px;
+                margin-bottom:10px;
+              }
+
             }
           }
           .si-body {
@@ -1658,7 +1668,6 @@ ul.form-stepper li a .form-stepper-circle {
       margin-bottom: 5px;
       font-size: 16px;
       font-weight: 600;
-      height: auto !important;
     }
     select {
       display: block;
@@ -3317,7 +3326,7 @@ button.confirm_off_btn {
   font-size: 14px;
   line-height: 22px;
   color: #353442;
-  span.labeltickspan {
+  span.labeltickspan { 
     width: 80%;
   }
 }
@@ -5077,7 +5086,6 @@ span.opicon {
         color: #ffffff;
         margin-bottom: 0;
         padding-bottom: 20px;
-        border-bottom: 1px solid #fff;
         text-align: center;
       }
     }

@@ -40,23 +40,24 @@ export const faqData = {
               reviews and our Flippin’ awesome partners below.
             </p>
             <div className="row align-items-center">
-              <div className="col-lg-4 col-sm-6 col-7 d-flex justify-content-center">
+              <div className="col-4">
                 <Link
                   href="https://www.bbb.org/us/de/wilmington/profile/used-car-dealers/whipflip-inc-0251-92026602/#sealclick"
                   target="_blank"
                   rel="nofollow noreferrer"
                 >
                   <Image
-                    src="https://seal-delaware.bbb.org/seals/blue-seal-250-52-bbb-92026602.png"
+                    src="/api/acc.png"
                     alt="WhipFlip Inc. BBB Business Review"
                     title="Google reviews"
                     className="img-fluid"
                     width={180}
                     height={20}
+                    layout="responsive"
                   />
                 </Link>
               </div>
-              <div className="col-lg-4 col-sm-3 col-5 d-flex justify-content-center">
+              <div className="col-4 d-flex justify-content-center">
                 <Link
                   href="https://g.page/whipflip/review?rc"
                   target="_blank"
@@ -69,10 +70,11 @@ export const faqData = {
                     className="img-fluid"
                     width={180}
                     height={20}
+                    layout="responsive"
                   />
                 </Link>
               </div>
-              <div className="col-lg-4 col-sm-3 col-12 d-flex justify-content-center">
+              <div className="col-4">
                 <PoweredBy />
               </div>
             </div>
@@ -1090,7 +1092,7 @@ export const faqData = {
             <p>
               ***Please be advised that your bank may have their own deposit or
               clearing times and could range from 24 to 72 business hours,
-              especially with large dollar amounts
+              especially with large dollar amounts.
             </p>
             <p>
               If you are having an issue, please contact our Customer Success
