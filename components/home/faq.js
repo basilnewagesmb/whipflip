@@ -46,7 +46,7 @@ export const faqData = {
                   target="_blank"
                   rel="nofollow noreferrer"
                 >
-                  <Image
+                  <img
                     src="https://seal-delaware.bbb.org/seals/blue-seal-250-52-bbb-92026602.png"
                     alt="WhipFlip Inc. BBB Business Review"
                     title="Google reviews"

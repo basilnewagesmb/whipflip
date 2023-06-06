@@ -221,7 +221,7 @@ function Accept({ data, setAccept }) {
             <div className="acceptOffer_foo_right_in">
               <div className="acceptOffer_rating">
                 <div className="acc_left">
-                  <Image
+                  <img
                     src="https://seal-delaware.bbb.org/seals/blue-seal-250-52-bbb-92026602.png"
                     alt="rating"
                     title="rating"

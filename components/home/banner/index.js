@@ -42,7 +42,8 @@ function HomeBanner({ reviews, isClient }) {
                             target={"_blank"}
                             rel="noreferrer"
                           >
-                            <Image
+
+                            <img
                               src="https://seal-delaware.bbb.org/seals/blue-seal-250-52-bbb-92026602.png" 
                               alt="accredited business"
                               title="accredited business"
