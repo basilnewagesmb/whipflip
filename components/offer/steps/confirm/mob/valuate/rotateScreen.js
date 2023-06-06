@@ -32,9 +32,18 @@ function RotateScreen({ setCurrent }) {
               rotation in the access control center.
             </p>
           </div>
-          <div className="pbr_foo_links">
-            <a href="#">Still having issues?</a>
-            <a href="#">Chat with us using the button below</a>
+          <div
+            className="pbr_foo_links"
+            onClick={async () => {
+              try {
+                await window.LC_API.open_chat_window();
+              } catch (error) {
+                console.log(error);
+              }
+            }}
+          >
+            <a>Still having issues?</a>
+            <a>Chat with us using the button below</a>
           </div>
         </div>
       </div>

@@ -4,28 +4,20 @@ import { Modal } from "react-bootstrap";
 import { CloseOutlined } from "@ant-design/icons";
 import { useRouter } from "node_modules/next/router";
 import RotatePhone from "components/anim/phoneRotate";
-function Initial({ setCurrent, isForUpload }) {
+import Link from "next/link";
+function Initial({ setCurrent, isForUpload, offerData }) {
   const { back, push } = useRouter();
   return (
     <div show={true} className="camera_ready_modal ">
       <Modal.Header>
-        <CloseOutlined
-          style={{
-            fontSize: "20px",
-            color: "#fff",
-          }}
-          onClick={() => {
-            try {
-              if (window.history.length > 1) {
-                back(); // Go back in history if available
-              } else {
-                push("/"); // Redirect to the home screen
-              }
-            } catch (error) {
-              console.log(error);
-            }
-          }}
-        />
+        <Link href={"/prospect/" + offerData?.uid + "/" + offerData?.status}>
+          <CloseOutlined
+            style={{
+              fontSize: "20px",
+              color: "#fff",
+            }}
+          />
+        </Link>
       </Modal.Header>
       <Modal.Body className="cr_body h-auto ">
         <div className="cr_body_in">
@@ -109,22 +101,11 @@ function Initial({ setCurrent, isForUpload }) {
               {`I'm Ready`}
             </button>
             {!isForUpload && (
-              <div
-                className="skipHref"
-                onClick={() => {
-                  try {
-                    if (window.history.length > 1) {
-                      back(); // Go back in history if available
-                    } else {
-                      push("/"); // Redirect to the home screen
-                    }
-                  } catch (error) {
-                    console.log(error);
-                  }
-                }}
+              <Link
+                href={"/prospect/" + offerData?.uid + "/" + offerData?.status}
               >
-                Skip Taking Photos
-              </div>
+                <div className="skipHref">Skip Taking Photos</div>
+              </Link>
             )}
           </div>
         </div>

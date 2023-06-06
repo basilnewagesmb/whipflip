@@ -190,7 +190,7 @@ function Congrats({ data }) {
                           <div className="np_item_dec">
                             <h2>Make Sure Everyone`s There!</h2>
                             <p>
-                              {`All owners must be present to sign off on the bill of sale and title.  Please have your ID’s ready as well for ownership confirmation. Additional ownership proofs may be needed such as a phone or utility bill to confirm identity`}
+                              {`All owners must be present to sign off on the bill of sale and title.  Please have your ID’s ready as well for ownership confirmation. Additional ownership proofs may be needed such as a phone or utility bill to confirm identity.`}
                             </p>
                           </div>
                         </div>
