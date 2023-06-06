@@ -43,7 +43,7 @@ function HomeBanner({ reviews, isClient }) {
                             rel="noreferrer"
                           >
                             <Image
-                              src="/images/acc-text.png"
+                              src="/api/acc.png" 
                               alt="accredited business"
                               title="accredited business"
                               width={200}
