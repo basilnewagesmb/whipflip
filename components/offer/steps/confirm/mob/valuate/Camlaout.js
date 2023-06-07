@@ -290,6 +290,7 @@ function CamLayout({
                           style={{
                             objectFit: "contain",
                           }}
+                          preview={false}
                         />
                       </div>
                     ))}
@@ -314,7 +315,7 @@ function CamLayout({
               <Avatar
                 shape="square"
                 size="large"
-                src={state.stills.at(-1).blob}
+                src={state?.stills[state.stills.length - 1].blob}
               />
             </Badge>
           </div>

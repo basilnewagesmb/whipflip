@@ -37,23 +37,49 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
       message.error("You're currently offline");
     }
   }, [isOnline]);
+  // const router = useRouter();
+  // const currentPath = router.asPath;
+  // const handleBackButton = (e) => {
+  //   e.preventDefault();
+  //   const confirmed = window?.confirm(
+  //     "Are you sure you want to leave this page? You may lose unsaved data."
+  //   );
+  //   if (confirmed) {
+  //     router.push("/"); // Redirect to the home screen
+  //   } else {
+  //     window.history.pushState(null, "", currentPath);
+  //   }
+  // };
+  // useEffect(() => {
+  //   window.addEventListener("popstate", handleBackButton);
+  //   return () => {
+  //     window.removeEventListener("popstate", handleBackButton);
+  //   };
+  // }, []);
   const router = useRouter();
-  const currentPath = router.asPath;
-  const handleBackButton = (e) => {
-    e.preventDefault();
-    const confirmed = window?.confirm(
-      "Are you sure you want to leave this page? You may lose unsaved data."
-    );
-    if (confirmed) {
-      router.push("/"); // Redirect to the home screen
-    } else {
-      window.history.pushState(null, "", currentPath);
-    }
+  const browserTabcloseHandler = (e) => {
+    e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
+    // Chrome requires returnValue to be set
+    e.returnValue = "";
   };
   useEffect(() => {
-    window.addEventListener("popstate", handleBackButton);
+    if (window) {
+      router.beforePopState(() => {
+        const result = window.confirm("are you sure you want to leave?");
+        if (!result) {
+          window.history.pushState("/", "");
+        }
+        return result;
+      });
+      window.onbeforeunload = browserTabcloseHandler;
+    }
     return () => {
-      window.removeEventListener("popstate", handleBackButton);
+      if (window) {
+        window.onbeforeunload = null;
+      }
+      router.beforePopState(() => {
+        return true;
+      });
     };
   }, []);
 
