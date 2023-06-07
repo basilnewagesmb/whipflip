@@ -7,7 +7,7 @@ import { persister, store } from "app/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { ConfigProvider } from "antd";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Router from "next/router";
 import withGA from "components/site/analytics";
 import withPixel from "components/site/fbpixel";
@@ -38,24 +38,24 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
     }
   }, [isOnline]);
   const router = useRouter();
+  const currentPath = router.asPath;
+  const handleBackButton = (e) => {
+    e.preventDefault();
+    const confirmed = window?.confirm(
+      "Are you sure you want to leave this page? You may lose unsaved data."
+    );
+    if (confirmed) {
+      router.push("/"); // Redirect to the home screen
+    } else {
+      window.history.pushState(null, "", currentPath);
+    }
+  };
   useEffect(() => {
-    const currentPath = router.asPath;
-    const handleBackButton = () => {
-      const confirmed = window?.confirm(
-        "Are you sure you want to leave this page? You may lose unsaved data."
-      );
-      if (confirmed) {
-        router.push("/"); // Redirect to the home screen
-      } else {
-        window.history.pushState(null, "", currentPath);
-      }
-    };
-
     window.addEventListener("popstate", handleBackButton);
     return () => {
       window.removeEventListener("popstate", handleBackButton);
     };
-  }, [router]);
+  }, []);
 
   return (
     <Provider store={store}>

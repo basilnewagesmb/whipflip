@@ -75,7 +75,16 @@ export const faqData = {
                 </Link>
               </div>
               <div className="col-4">
-                <PoweredBy />
+                <div className="poweredBy">
+                  <Image
+                    src="/images/jd.svg"
+                    alt="poweredBy"
+                    width={180}
+                    height={20}
+                    preview={false}
+                    layout="responsive"
+                  />
+                </div>
               </div>
             </div>
           </AccordionItemPanel>

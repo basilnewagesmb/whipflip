@@ -101,7 +101,7 @@ function Accept({ data, setAccept }) {
                       />
                     </div>
                   </div>
-                  <div className="wsp_right">
+                  <div className="wsp_right text-md-left text-center">
                     <h2>Ultimate Convenience!</h2>
                     <p>
                       We come to you to pay and pick up...on your time ! No more
@@ -124,7 +124,7 @@ function Accept({ data, setAccept }) {
                       />
                     </div>
                   </div>
-                  <div className="wsp_right">
+                  <div className="wsp_right text-md-left text-center">
                     <h2>Best Offer!</h2>
                     <p>
                       Our offers typically are <b>$762 higher</b> than trade-in
@@ -147,7 +147,7 @@ function Accept({ data, setAccept }) {
                       />
                     </div>
                   </div>
-                  <div className="wsp_right">
+                  <div className="wsp_right text-md-left text-center">
                     <h2>Safe and Smooth!</h2>
                     <p>
                       Guaranteed payment on the spot with all proper paperwork
