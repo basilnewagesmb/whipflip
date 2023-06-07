@@ -314,18 +314,17 @@ function Initial(props) {
                         <div className="iptLt">
                           <Form.Item
                             label={
-                              <span>
-                                Phone #
-                                <span
+                              <div>
+                                <div> Phone #</div>
+                                <div
                                   style={{
                                     fontSize: 12,
-                                    marginLeft: 5,
                                   }}
                                 >
                                   {" "}
                                   (We may need more info or clarification)
-                                </span>
-                              </span>
+                                </div>
+                              </div>
                             }
                             name={["user", "phone"]}
                             className="m-0 w-100"

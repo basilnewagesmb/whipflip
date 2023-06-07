@@ -40,7 +40,7 @@ export const faqData = {
               reviews and our Flippin’ awesome partners below.
             </p>
             <div className="row align-items-center">
-              <div className="col-6 col-md-4">
+              <div className="col-8 col-md-4">
                 <Link
                   href="https://www.bbb.org/us/de/wilmington/profile/used-car-dealers/whipflip-inc-0251-92026602/#sealclick"
                   target="_blank"
@@ -51,13 +51,11 @@ export const faqData = {
                     alt="WhipFlip Inc. BBB Business Review"
                     title="Google reviews"
                     className="img-fluid"
-                    width={180}
-                    height={20}
-                    layout="responsive"
+                   
                   />
                 </Link>
               </div>
-              <div className="col-6 col-md-4 d-flex justify-content-center">
+              <div className="col-4 col-md-4 d-flex justify-content-center">
                 <Link
                   href="https://g.page/whipflip/review?rc"
                   target="_blank"
@@ -70,11 +68,10 @@ export const faqData = {
                     className="img-fluid"
                     width={180}
                     height={20}
-                    layout="responsive"
                   />
                 </Link>
               </div>
-              <div className="col-6 col-md-4">
+              <div className="col-6 col-md-4 pt-2">
                 <div className="poweredBy">
                   <Image
                     src="/images/jd.svg"

@@ -99,20 +99,18 @@ function SeeInitOffer({ form, data, goTo }) {
             <div className="col-lg-12 p-0">
               <Form.Item
                 label={
-                  <span>
-                    Phone #
-                    <span
+                  <div>
+                    <div> Phone #</div>
+                    <div
                       style={{
-                        fontSize: 13,
-                        marginLeft: 5,
+                        fontSize: 12,
                       }}
                     >
                       {" "}
                       (We may need more info or clarification)
-                    </span>
-                  </span>
+                    </div>
+                  </div>
                 }
-                
                 name={["user", "phone"]}
                 className="m-0 w-100"
                 rules={[

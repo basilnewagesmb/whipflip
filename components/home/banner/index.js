@@ -42,9 +42,8 @@ function HomeBanner({ reviews, isClient }) {
                             target={"_blank"}
                             rel="noreferrer"
                           >
-
                             <img
-                              src="https://seal-delaware.bbb.org/seals/blue-seal-250-52-bbb-92026602.png" 
+                              src="https://seal-delaware.bbb.org/seals/blue-seal-250-52-bbb-92026602.png"
                               alt="accredited business"
                               title="accredited business"
                               width={200}
@@ -119,18 +118,13 @@ function HomeBanner({ reviews, isClient }) {
                           rel="noreferrer"
                         >
                           <Image
-                            src="/images/accredit.png"
+                            src="https://seal-delaware.bbb.org/seals/blue-seal-250-52-bbb-92026602.png"
                             alt="accredit"
                             title="accredit"
-                            width={95}
-                            height={36}
+                            width={200}
+                            height={50}
                           />
                         </a>
-                      </div>
-                      <div className="acc_right">
-                        <span>BBB Rating: A</span>
-                        <span>as of {moment().format("MM/DD/YYYY")}</span>
-                        <span>click for profile</span>
                       </div>
                     </div>
                     <div className="col-lg-12 video_col bnr_left_points bnr_mob_btm_pts">

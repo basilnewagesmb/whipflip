@@ -65,6 +65,9 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
   //     });
   //   };
   // }, []);
+  useEffect(() => {
+    Modal.destroyAll();
+  }, [router.asPath]);
 
   return (
     <Provider store={store}>
