@@ -37,51 +37,34 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
       message.error("You're currently offline");
     }
   }, [isOnline]);
-  // const router = useRouter();
-  // const currentPath = router.asPath;
-  // const handleBackButton = (e) => {
-  //   e.preventDefault();
-  //   const confirmed = window?.confirm(
-  //     "Are you sure you want to leave this page? You may lose unsaved data."
-  //   );
-  //   if (confirmed) {
-  //     router.push("/"); // Redirect to the home screen
-  //   } else {
-  //     window.history.pushState(null, "", currentPath);
-  //   }
+  const router = useRouter();
+  // const browserTabLoseHandler = (e) => {
+  //   e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
+  //   // Chrome requires returnValue to be set
+  //   e.returnValue = "";
   // };
   // useEffect(() => {
-  //   window.addEventListener("popstate", handleBackButton);
+  //   if (window) {
+  //     router.beforePopState(() => {
+  //       const result = window.confirm(
+  //         "Are you sure you want to leave this page? You may lose unsaved data."
+  //       );
+  //       if (!result) {
+  //         window.history.pushState("/", "");
+  //       }
+  //       return result;
+  //     });
+  //     window.onbeforeunload = browserTabLoseHandler;
+  //   }
   //   return () => {
-  //     window.removeEventListener("popstate", handleBackButton);
+  //     if (window) {
+  //       window.onbeforeunload = null;
+  //     }
+  //     router.beforePopState(() => {
+  //       return true;
+  //     });
   //   };
   // }, []);
-  const router = useRouter();
-  const browserTabcloseHandler = (e) => {
-    e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
-    // Chrome requires returnValue to be set
-    e.returnValue = "";
-  };
-  useEffect(() => {
-    if (window) {
-      router.beforePopState(() => {
-        const result = window.confirm("are you sure you want to leave?");
-        if (!result) {
-          window.history.pushState("/", "");
-        }
-        return result;
-      });
-      window.onbeforeunload = browserTabcloseHandler;
-    }
-    return () => {
-      if (window) {
-        window.onbeforeunload = null;
-      }
-      router.beforePopState(() => {
-        return true;
-      });
-    };
-  }, []);
 
   return (
     <Provider store={store}>
