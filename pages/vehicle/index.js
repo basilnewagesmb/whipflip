@@ -99,6 +99,21 @@ function Index(props) {
 }
 export async function getServerSideProps({ res, query, req }) {
   const referer = req?.headers?.referer?.split("//")[1];
+  const allowedRouts = [
+    "blog",
+    "about",
+    "careers",
+    "contact-us",
+    "faq",
+    "how-it-works",
+    "link-is-no-longer",
+    "our-referral-program",
+    "privacy-policy",
+    "private-sale-vs-trading-in",
+    "reviews",
+    "terms-and-conditions",
+    "why-sell-your-car-to-us",
+  ];
   const host = req?.headers?.host + "/";
 
   console.log("host", host);
@@ -109,7 +124,7 @@ export async function getServerSideProps({ res, query, req }) {
     `${process.env.NEXT_PUBLIC_API_URL}/vehicles?vehicleID=${vehicle_id}`
   );
   const data = await resp.json();
-  if (host === referer) {
+  if (host === referer ||  allowedRouts.includes(referer.split("/")[1])) {
     return {
       props: { data },
     };
