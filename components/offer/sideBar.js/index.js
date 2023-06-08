@@ -7,18 +7,13 @@ import CarInfo from "./carInfo";
 import OfferInfo from "./offerInfo";
 import ProgressBar from "./ProgressBar";
 import WillComeback from "./willComeback";
-import { useRouter } from "next/router";
 
 function SideBar({ data, current }) {
-  const { push } = useRouter();
   const isMobile = useCheckMobile();
   const { initialOffer } = useSelector((state) => state.offer);
   const { data: offerData } = useGetOfferQuery(initialOffer?.uid, {
     skip: !initialOffer?.uid,
   });
-  useEffect(() => {
-    offerData?.uid && push(`/prospect/${offerData?.uid}/${offerData?.status}`);
-  }, [offerData]);
 
   return (
     <div className="col-lg-4 p-0">

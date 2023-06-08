@@ -1,9 +1,22 @@
 import MetaHead from "components/common/metaHead";
 import OfferLayout from "components/offer/layout";
 import Initial from "components/offer/steps/initial/index";
+import { useRouter } from "next/router";
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useGetOfferQuery } from "services/offer/api";
 
 function Index(props) {
+  const { push } = useRouter();
+  const { initialOffer } = useSelector((state) => state.offer);
+  const { data: offerData } = useGetOfferQuery(initialOffer?.uid, {
+    skip: !initialOffer?.uid,
+  });
+
+  useEffect(() => {
+    offerData?.uid && push(`/prospect/${offerData?.uid}/${offerData?.status}`);
+  }, [offerData]);
+
   const { data } = props;
   useEffect(() => {
     if (props.fbpixel) {
