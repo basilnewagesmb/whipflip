@@ -44,7 +44,6 @@ export async function getServerSideProps({ res, query }) {
   );
   const data = await resp.json();
   if (data.status !== "quote") {
-    res.setHeader("Cache-Control", "no-store, must-revalidate"); // Set cache control headers
     return {
       redirect: {
         permanent: false,
@@ -53,7 +52,6 @@ export async function getServerSideProps({ res, query }) {
       props: { data },
     };
   } else {
-    res.setHeader("Cache-Control", "no-store, must-revalidate"); // Set cache control headers
     return {
       props: { data },
     };
