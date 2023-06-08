@@ -124,7 +124,7 @@ export async function getServerSideProps({ res, query, req }) {
     `${process.env.NEXT_PUBLIC_API_URL}/vehicles?vehicleID=${vehicle_id}`
   );
   const data = await resp.json();
-  if (host === referer ||  allowedRouts.includes(referer.split("/")[1])) {
+  if (host === referer ||  allowedRouts?.includes(referer?.split("/")?.[1])) {
     return {
       props: { data },
     };
