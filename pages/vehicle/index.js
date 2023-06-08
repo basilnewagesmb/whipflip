@@ -12,11 +12,6 @@ function Index(props) {
   const { data: offerData } = useGetOfferQuery(initialOffer?.uid, {
     skip: !initialOffer?.uid,
   });
-
-  useEffect(() => {
-    offerData?.uid && push(`/prospect/${offerData?.uid}/${offerData?.status}`);
-  }, [offerData]);
-
   const { data } = props;
   useEffect(() => {
     if (props.fbpixel) {
@@ -102,13 +97,32 @@ function Index(props) {
     </>
   );
 }
-export async function getServerSideProps({ res, query }) {
+export async function getServerSideProps({ res, query, req }) {
+  const referer = req.headers.referer.split("//")[1];
+  const host = req.headers.host + "/";
+  console.log("all", req.headers);
+
+  console.log("host", host);
+  console.log("inside referer", referer);
+
   const { vehicle_id } = query;
   const resp = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/vehicles?vehicleID=${vehicle_id}`
   );
   const data = await resp.json();
-  return { props: { data } };
+  if (host === referer) {
+    return {
+      props: { data },
+    };
+  } else {
+    return {
+      redirect: {
+        permanent: false,
+        destination: `/`,
+      },
+      props: { data },
+    };
+  }
 }
 
 export default Index;

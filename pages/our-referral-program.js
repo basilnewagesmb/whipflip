@@ -21,7 +21,7 @@ function Index() {
           </div>
         </div>
       </div>
-      <div className={`how-it-works ${isMobile ? "pt-1" : "pt100"}`}>
+      <div className={`how-it-works ${isMobile ? "pt-5" : "pt100"}`}>
         <div className="container">
           <div className="row justify-content-between flex-column-reverse flex-md-row align-items-center">
             <div className="col-md-7 col-lg-6">
