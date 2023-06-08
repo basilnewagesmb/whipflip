@@ -98,9 +98,8 @@ function Index(props) {
   );
 }
 export async function getServerSideProps({ res, query, req }) {
-  const referer = req.headers.referer.split("//")[1];
-  const host = req.headers.host + "/";
-  console.log("all", req.headers);
+  const referer = req?.headers?.referer?.split("//")[1];
+  const host = req?.headers?.host + "/";
 
   console.log("host", host);
   console.log("inside referer", referer);
