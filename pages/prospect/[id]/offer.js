@@ -1,10 +1,18 @@
 import OfferLayout from "components/offer/layout";
 import Sell from "components/offer/steps/sell/index";
+import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useGetOfferQuery } from "services/offer/api";
 
 function Index(props) {
-  const { data, fbpixel } = props;
+  const { data, fbpixel, fromPath } = props;
+  const { push } = useRouter();
+  useEffect(() => {
+    if (fromPath === "valuate") {
+      push(`/prospect/${data.uid}/${data.status}`);
+    }
+  }, []);
+
   const { data: offerData } = useGetOfferQuery(data?.uid, {
     skip: !data?.uid,
   });
@@ -28,7 +36,6 @@ function Index(props) {
       }
     }
   }, [fbpixel]);
-  
 
   return (
     <OfferLayout data={offerData || data} current={2}>
@@ -36,7 +43,9 @@ function Index(props) {
     </OfferLayout>
   );
 }
-export async function getServerSideProps({ res, query }) {
+export async function getServerSideProps({ req, query }) {
+  const ref = req?.headers?.referer?.split("//")[1]?.split("/");
+  const fromPath = ref[ref.length - 1] || null;
   const { id } = query;
   const resp = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/prospects/${id}`
@@ -48,11 +57,11 @@ export async function getServerSideProps({ res, query }) {
         permanent: false,
         destination: `/prospect/${data.uid}/${data.status}`,
       },
-      props: { data },
+      props: { data, fromPath },
     };
   } else {
     return {
-      props: { data },
+      props: { data, fromPath },
     };
   }
 }
