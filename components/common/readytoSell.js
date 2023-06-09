@@ -58,7 +58,7 @@ function ReadyToSell() {
                 src={
                   isMobile
                     ? "/images/ready-to-sell-bg-mob.webp"
-                    : "/images/sell_to_customer.png"
+                    : "/images/sell_to_customer.webp"
                 }
                 alt="Ready to Sell"
                 preview={false}

@@ -289,7 +289,7 @@ span.infoBx {
 .home-banner {
   position: relative;
   background-color: #4381c0;
-  background-image: url(/images/whipbg.png);
+  background-image: url(/images/whipbg.webp);
   z-index: 1;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -1082,14 +1082,14 @@ article.reviewLt_icons {
   }
 }
 .ready-to-sell {
-  background-image: url(/images/ready-to-sell-bg.png);
+  background-image: url(/images/ready-to-sell-bg.webp);
   height: 560px;
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: 0 calc(100% - 40px);
   position: relative;
   @include responsive(tab-port) {
-    background-image: url(/images/ready-to-sell-bg.png);
+    background-image: url(/images/ready-to-sell-bg.webp);
     height: auto;
     background-repeat: no-repeat;
     background-size: 350%;
