@@ -6,8 +6,10 @@ import { useGetOfferQuery } from "services/offer/api";
 
 function Index(props) {
   const { data, fbpixel, fromPath } = props;
+  console.log(fromPath);
   useEffect(() => {
     if (fromPath === "valuate") {
+      // alert()
       location.reload();
     }
   }, []);
@@ -44,7 +46,7 @@ function Index(props) {
 }
 export async function getServerSideProps({ req, query }) {
   const ref = req?.headers?.referer?.split("//")[1]?.split("/");
-  const fromPath = ref[ref.length - 1] || null;
+  const fromPath = ref?.[ref?.length - 1] || null;
   const { id } = query;
   const resp = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/prospects/${id}`
