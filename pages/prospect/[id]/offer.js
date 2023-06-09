@@ -6,10 +6,9 @@ import { useGetOfferQuery } from "services/offer/api";
 
 function Index(props) {
   const { data, fbpixel, fromPath } = props;
-  const { push } = useRouter();
   useEffect(() => {
     if (fromPath === "valuate") {
-      push(`/prospect/${data.uid}/${data.status}`);
+      location.reload();
     }
   }, []);
 
