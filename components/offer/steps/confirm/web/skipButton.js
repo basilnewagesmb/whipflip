@@ -30,7 +30,8 @@ function SkipButton({ skipToInstantOffer, initialOffer, analytics, fbpixel }) {
               content_category: `Offergenerated`,
               contents: [{ ...res.data }],
             });
-          window.location.href = `/prospect/${initialOffer?.uid}/${res?.data?.status}`;
+          //window.location.href = `/prospect/${initialOffer?.uid}/${res?.data?.status}`;
+          location.reload();
         } else {
         }
       }}
