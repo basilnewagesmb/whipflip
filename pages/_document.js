@@ -5,7 +5,7 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        <Script
+        {/* <Script
           dangerouslySetInnerHTML={{
             __html: `
               var _kmq = _kmq || [];
@@ -25,11 +25,11 @@ export default function Document() {
           id="kissmetrics"
           type="text/javascript"
           strategy="lazyOnload"
-        ></Script>
+        ></Script> */}
       </Head>
       <body>
         <Main />
-        <Script
+        {/* <Script
           id="livechatinc"
           dangerouslySetInnerHTML={{
             __html: `
@@ -60,7 +60,7 @@ export default function Document() {
           >
             LiveChat
           </a>
-        </noscript>
+        </noscript> */}
         <NextScript />
       </body>
     </Html>
