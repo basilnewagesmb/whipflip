@@ -14,6 +14,7 @@ function Index(props) {
 
   const { data: offerData } = useGetOfferQuery(data?.uid, {
     skip: !data?.uid,
+    refetchOnMountOrArgChange: true,
   });
   useEffect(() => {
     if (fbpixel) {

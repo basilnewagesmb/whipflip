@@ -9,6 +9,7 @@ function Index(props) {
   const { push } = useRouter();
   const { data: offerData } = useGetOfferQuery(data?.uid, {
     skip: !data?.uid,
+    refetchOnMountOrArgChange: true,
   });
   useEffect(() => {
     if ((offerData || data).status != "quote") {
