@@ -237,9 +237,13 @@ const BlogDetail = (props) => {
   );
 };
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async ({ query, res }) => {
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=5, stale-while-revalidate=59"
+  );
   try {
-    const query = context.query;
+    const query = query;
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/blogs/${query.slug || ""}`
     );

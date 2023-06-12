@@ -274,7 +274,7 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
               setTimeout(() => {
                 setState((prev) => ({ ...prev, speed: 1 }));
               }, 2000);
-              window.location.href = `/prospect/${offerRes?.data.uid}`;
+              push(`/prospect/${offerRes?.data.uid}`)
             } else {
               message.error("Something went Wrong");
             }

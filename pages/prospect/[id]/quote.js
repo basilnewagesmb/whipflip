@@ -38,7 +38,6 @@ function Index(props) {
   if ((offerData || data).status === "quote") {
     return (
       <OfferLayout data={offerData || data} current={1}>
-        <span className="text-danger"> {(offerData || data).status.toString()}</span>
         <Confirm
           data={offerData || data}
           fbpixel={fbpixel}
@@ -48,7 +47,15 @@ function Index(props) {
     );
   }
 }
-export async function getServerSideProps({ res, query }) {
+export async function getServerSideProps({ res, req, query }) {
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=5, stale-while-revalidate=59"
+  );
+  const referer = req?.headers?.referer?.split("//")[1]?.split("/");
+  const fromPath = referer[referer?.length - 1];
+  console.log(fromPath);
+
   const { id } = query;
   const resp = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/prospects/${id}`
