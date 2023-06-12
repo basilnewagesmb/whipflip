@@ -9,7 +9,7 @@ function Index(props) {
   console.log(fromPath);
   useEffect(() => {
     if (fromPath === "valuate") {
-      // alert()
+      alert("test");
       location.reload();
     }
   }, []);
