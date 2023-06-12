@@ -47,7 +47,7 @@ export async function getServerSideProps({ res, query }) {
     return {
       redirect: {
         permanent: false,
-        destination: `/prospect/${data.uid}/${data.status}`,
+        destination: `/prospect/${data.uid}`,
       },
       props: { data },
     };

@@ -6,10 +6,8 @@ import { useGetOfferQuery } from "services/offer/api";
 
 function Index(props) {
   const { data, fbpixel, fromPath } = props;
-  console.log(fromPath);
   useEffect(() => {
     if (fromPath === "valuate") {
-      alert("test");
       location.reload();
     }
   }, []);
