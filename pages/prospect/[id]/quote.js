@@ -38,6 +38,7 @@ function Index(props) {
   if ((offerData || data).status === "quote") {
     return (
       <OfferLayout data={offerData || data} current={1}>
+        <span className="text-danger"> {(offerData || data).status.toString()}</span>
         <Confirm
           data={offerData || data}
           fbpixel={fbpixel}
