@@ -1,13 +1,21 @@
 import OfferLayout from "components/offer/layout";
 import Confirm from "components/offer/steps/confirm/index";
+import { useRouter } from "node_modules/next/router";
 import React, { useEffect, useState } from "react";
 import { useGetOfferQuery } from "services/offer/api";
 
 function Index(props) {
   const { data, fbpixel, analytics } = props;
+  const { push } = useRouter();
   const { data: offerData } = useGetOfferQuery(data?.uid, {
     skip: !data?.uid,
   });
+  useEffect(() => {
+    if ((offerData || data).status != "quote") {
+      push(`/prospect/${(offerData || data).uid}`);
+    }
+  }, [(offerData || data).status]);
+
   useEffect(() => {
     if (fbpixel) {
       fbpixel.customEvent("Initial-Offer", {
@@ -27,15 +35,17 @@ function Index(props) {
     analytics &&
       analytics.event("Initial Offer", "Initial Offer", `Initial Offer`);
   }, [fbpixel, analytics]);
-  return (
-    <OfferLayout data={offerData || data} current={1}>
-      <Confirm
-        data={offerData || data}
-        fbpixel={fbpixel}
-        analytics={analytics}
-      />
-    </OfferLayout>
-  );
+  if ((offerData || data).status === "quote") {
+    return (
+      <OfferLayout data={offerData || data} current={1}>
+        <Confirm
+          data={offerData || data}
+          fbpixel={fbpixel}
+          analytics={analytics}
+        />
+      </OfferLayout>
+    );
+  }
 }
 export async function getServerSideProps({ res, query }) {
   const { id } = query;
