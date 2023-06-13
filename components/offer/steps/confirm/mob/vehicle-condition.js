@@ -1,4 +1,4 @@
-import { InputNumber, Form, Button, Modal } from "antd";
+import { InputNumber, Form, Button, Modal, Input } from "antd";
 import React from "react";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import BreakDown from "components/anim/breakdown";
@@ -14,16 +14,19 @@ function VehicleConditionMob({
   formRealValues,
   isReview,
 }) {
+  
   return (
-    <div className="offer_block noBordBtm offer_block_mobi" key={i}>
+    <div className="m-0 p-0 offer_block noBordBtm offer_block_mobi" key={i}>
       <div className="ob_hd d-flex justify-content-between">
-        <h2
-          style={{
-            fontSize: "20px",
-          }}
-        >
-          Vehicle Condition Details
-        </h2>
+        {i === 0 && (
+          <h2
+            style={{
+              fontSize: "20px",
+            }}
+          >
+            Vehicle Condition Details
+          </h2>
+        )}
         {!isReview && (
           <div className="d-flex justify-content-center align-items-center">
             <Button
@@ -39,16 +42,37 @@ function VehicleConditionMob({
       <div className="form-group row ob_frm_row">
         <div className="col-lg-12 p-0">
           <label>{item.title}</label>
+          <Form.Item
+            label={false}
+            name={["conditions", i, "yes"]}
+            className="m-0 border-0 p-0 height-hide"
+            rules={[
+              {
+                required: true,
+                message: "Please select at least one!",
+              },
+            ]}
+          >
+            <Input
+              className="w-100"
+              style={{
+                height: 0,
+                opacity: 0,
+                overFlow: "hidden",
+              }}
+            />
+          </Form.Item>
           <div className="chooseBlock selector row selectorRow">
             <div className="selecotr-item col-6 p-0">
               <div
                 className={`si-wrap ${item.yes === false && "active-btn-only"}`}
-                onClick={() => {
+                onClick={async () => {
                   form.setFieldValue(["conditions", i, "yes"], false);
                   form.setFieldValue(
                     ["conditions", i, "data"],
                     conditions?.vehicle[i].data
                   );
+                  await form.validateFields([["conditions", i, "yes"]]);
                 }}
               >
                 <label className="selector-item_label justify-content-center">
@@ -59,9 +83,11 @@ function VehicleConditionMob({
             <div className="selecotr-item col-6 pr-0">
               <div
                 className={`si-wrap ${item.yes === true && "active"}`}
-                onClick={() => {
+                onClick={async () => {
                   form.setFieldValue(["conditions", i, "yes"], true);
-                  window.scrollTo(0, 0);
+                  await form.validateFields([["conditions", i, "yes"]]);
+
+                  // window.scrollTo(0, 0);
                 }}
               >
                 <label className="selector-item_label justify-content-center">
@@ -180,7 +206,7 @@ function VehicleConditionMob({
                             ) : (
                               <Form.Item
                                 label={false}
-                                name={["conditions", i, "data", j]}
+                                name={["conditions", i, "data", j, "active"]}
                                 className="m-0 "
                                 id={radio?.uid}
                               >
@@ -189,6 +215,9 @@ function VehicleConditionMob({
                                     type="checkbox"
                                     id={radio?.uid}
                                     onClick={async () => {
+                                      await form.validateFields([
+                                        ["conditions", i, "data", j, "active"],
+                                      ]);
                                       await form.setFieldValue(
                                         ["conditions", i, "data", j],
                                         {
@@ -202,9 +231,6 @@ function VehicleConditionMob({
                                             : null,
                                         }
                                       );
-                                      await form.validateFields([
-                                        ["conditions", i, "data", j],
-                                      ]);
                                     }}
                                     checked={
                                       formRealValues?.conditions?.[i].data?.[j]

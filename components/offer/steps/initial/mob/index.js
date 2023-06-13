@@ -22,7 +22,7 @@ function InitialMob({ data, form, carouselRef }) {
       <div className="container">
         <CarInfo data={data} full={currentSlide == 0} />
         <div className="offer_block noBordBtm offer_block_mobi">
-          {currentSlide == 4 ? (
+          {/* {currentSlide == 4 ? (
             <div className="initOffHd position-relative">
               <h2>
                 <span>See Your Initial Offer!</span>
@@ -49,8 +49,8 @@ function InitialMob({ data, form, carouselRef }) {
                 />
               </div>
             </div>
-          )}
-          <Carousel
+          )} */}
+          {/* <Carousel
             afterChange={(i) => dispatch(setCurrentSlide(i))}
             dots={false}
             effect={"fade"}
@@ -58,13 +58,13 @@ function InitialMob({ data, form, carouselRef }) {
             ref={carouselRef}
             autoplay={false}
             swipe={false}
-          >
+          > */}
             <Milage form={form} data={data} next={next} goTo={goTo} />
             <ColorPicker form={form} data={data} next={next} />
             <Transmission form={form} next={next} />
             <StartAndDrive form={form} data={data} next={next} />
             <SeeInitOffer form={form} data={data} goTo={goTo} />{" "}
-          </Carousel>{" "}
+          {/* </Carousel>{" "} */}
         </div>{" "}
       </div>
     </div>

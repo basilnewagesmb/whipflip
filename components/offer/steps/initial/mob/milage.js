@@ -36,7 +36,7 @@ function Milage({ carouselRef, form, data, next, goTo }) {
             </Form.Item>
           </div>
         </div>
-        <div className="form-group row ob_frm_row">
+        {/* <div className="form-group row ob_frm_row">
           <div className="col-lg-12 p-0 text-center">
             <button
               className="continueBtn"
@@ -63,7 +63,7 @@ function Milage({ carouselRef, form, data, next, goTo }) {
               </span>
             </button>
           </div>
-        </div>
+        </div> */}
       </div>{" "}
     </div>
   );

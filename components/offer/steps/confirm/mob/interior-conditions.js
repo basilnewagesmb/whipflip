@@ -44,8 +44,24 @@ function InteriorConditions({
                 </span>{" "}
                 condition?
               </label>
-              <Form.Item label={false} name={["cosmetic", "interior"]} hidden>
-                <Input />
+              <Form.Item
+                label={false}
+                name={["cosmetic", "interior"]}
+                rules={[
+                  {
+                    required: true,
+                    message: "Please select one!",
+                  },
+                ]}
+                className="m-0 border-0 p-0 height-hide"
+              >
+                <Input
+                  style={{
+                    height: 0,
+                    opacity: 0,
+                    overFlow: "hidden",
+                  }}
+                />
               </Form.Item>
               <div className="chooseBlock selectorRow rowSell tireconditions">
                 {data?.map((item, i) => (
@@ -59,7 +75,8 @@ function InteriorConditions({
                         ["cosmetic", "interior"],
                         item.uid
                       );
-                      next();
+                      await form.validateFields([["cosmetic", "interior"]]);
+                      // next();
                     }}
                     key={i}
                   >

@@ -22,7 +22,7 @@ function StartAndDrive({ form, data, next }) {
                       does_vehicle_start ? " checked" : " "
                     } `}
                     onClick={() => {
-                      next();
+                      //next();
                       form.setFieldsValue({
                         does_vehicle_start: true,
                       });

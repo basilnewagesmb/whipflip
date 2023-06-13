@@ -54,7 +54,7 @@ export async function getServerSideProps({ res, req, query }) {
     "public, s-maxage=5, stale-while-revalidate=59"
   );
   const referer = req?.headers?.referer?.split("//")[1]?.split("/");
-  const fromPath = referer[referer?.length - 1];
+  const fromPath = referer?.[referer?.length - 1];
   console.log(fromPath);
 
   const { id } = query;

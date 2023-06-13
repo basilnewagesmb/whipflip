@@ -7,7 +7,7 @@ function Transmission({ form, next }) {
     await form.setFieldsValue({
       transmission: e,
     });
-    next();
+    //next();
   };
   return (
     <Form.Item label={false} name="transmission" className="m-0 w-100">

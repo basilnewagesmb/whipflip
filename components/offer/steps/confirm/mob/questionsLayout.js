@@ -36,6 +36,7 @@ function QuestionsLayout({ initialOffer, fbpixel, analytics }) {
           ? ""
           : item.data.filter((one) => one.active).length
       );
+      form.validateFields([["conditions", i, "active"]]);
     });
   }, [formFunc?.formRealValues?.conditions]);
   const BtnC = () => {
@@ -92,11 +93,12 @@ function QuestionsLayout({ initialOffer, fbpixel, analytics }) {
       });
     }
   }, [formFunc?.formRealValues?.cosmetic?.interior, formFunc]);
+  console.log(formFunc?.formRealValues);
 
   return (
     <div className="container p-0">
       <CarInfo data={initialOffer} />
-      {contextHolder}
+      {/* {contextHolder} */}
       <Form
         name="confirm-mob"
         form={form}
@@ -105,11 +107,12 @@ function QuestionsLayout({ initialOffer, fbpixel, analytics }) {
         size="large"
         layout="vertical"
         requiredMark={false}
+        scrollToFirstError={true}
       >
         <Form.Item label={false} name={"conditions"} hidden>
           <Input />
         </Form.Item>
-        <ConditionalWrap
+        {/* <ConditionalWrap
           condition={!formFunc?.isReview}
           wrap={(wrappedChildren) => (
             <Carousel
@@ -124,33 +127,52 @@ function QuestionsLayout({ initialOffer, fbpixel, analytics }) {
               {wrappedChildren}
             </Carousel>
           )}
+        > */}
+        <ConfirmVehicle {...formFunc} {...navFunc} />
+        {formFunc?.formRealValues?.conditions?.map((item, i) => (
+          <VehicleConditionMob
+            key={i}
+            i={i}
+            item={item}
+            {...formFunc}
+            {...navFunc}
+          />
+        ))}
+        <TireConditionsTemp
+          {...formFunc}
+          {...navFunc}
+          data={formFunc?.conditions?.tire}
+        />
+        <ExteriorConditions
+          {...formFunc}
+          {...navFunc}
+          data={formFunc?.conditions?.cosmetic?.exterior}
+        />
+        <InteriorConditions
+          {...formFunc}
+          {...navFunc}
+          data={formFunc?.conditions?.cosmetic?.interior}
+        />
+        <Button
+          className="confirm_off_btn m-1"
+          size="large"
+          htmlType="submit"
+          loading={formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading}
+          disabled={
+            formFunc?.vinHdl.isLoading ||
+            formFunc?.platHdl.isLoading ||
+            formFunc?.showTrimConfirm
+          }
         >
-          <ConfirmVehicle {...formFunc} {...navFunc} />
-          {formFunc?.formRealValues?.conditions?.map((item, i) => (
-            <VehicleConditionMob
-              key={i}
-              i={i}
-              item={item}
-              {...formFunc}
-              {...navFunc}
-            />
-          ))}
-          <TireConditionsTemp
-            {...formFunc}
-            {...navFunc}
-            data={formFunc?.conditions?.tire}
-          />
-          <ExteriorConditions
-            {...formFunc}
-            {...navFunc}
-            data={formFunc?.conditions?.cosmetic?.exterior}
-          />
-          <InteriorConditions
-            {...formFunc}
-            {...navFunc}
-            data={formFunc?.conditions?.cosmetic?.interior}
-          />
-        </ConditionalWrap>
+          <span>
+            {formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading
+              ? "Getting Details..."
+              : !formFunc?.isReview
+              ? "Continue"
+              : "Confirm"}
+          </span>
+        </Button>
+        {/* </ConditionalWrap> */}
       </Form>
     </div>
   );

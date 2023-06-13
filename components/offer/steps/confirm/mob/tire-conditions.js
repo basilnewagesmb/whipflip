@@ -38,8 +38,24 @@ function TireConditionsTemp({
           <div className="form-group row ob_frm_row">
             <div className="col-lg-12 p-0">
               <label htmlFor="">How are your tires?</label>
-              <Form.Item label={false} name={"tire"} hidden>
-                <Input />
+              <Form.Item
+                label={false}
+                name={"tire"}
+                rules={[
+                  {
+                    required: true,
+                    message: "Please select one!",
+                  },
+                ]}
+                className="m-0 border-0 p-0 height-hide"
+              >
+                <Input
+                  style={{
+                    height: 0,
+                    opacity: 0,
+                    overFlow: "hidden",
+                  }}
+                />
               </Form.Item>
               <div className="chooseBlock selectorRow rowSell tireconditions">
                 {data?.map((item, i) => (
@@ -49,6 +65,7 @@ function TireConditionsTemp({
                     }`}
                     onClick={async (e) => {
                       await form.setFieldValue("tire", item.uid);
+                      await form.validateFields([["tire"]]);
                     }}
                     key={i}
                   >

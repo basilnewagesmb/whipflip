@@ -24,7 +24,7 @@ function ColorPicker({ form, next }) {
     await form.setFieldsValue({
       color: e,
     });
-    next();
+    //next();
   };
   return (
     <Form.Item

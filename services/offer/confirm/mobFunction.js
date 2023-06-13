@@ -23,7 +23,7 @@ function useConfirmFormMob({ form, navFunc, fbpixel, analytics }) {
   const [isTrimSelected, setIsTrimSelected] = useState(false);
   const [showTrimConfirm, setShowTrimConfirm] = useState(false);
   const { confirm } = Modal;
-  const [isReview, setIsReview] = useState(false);
+  const [isReview, setIsReview] = useState(true);
   const dispatch = useDispatch();
   const [isValid, setValid] = useState(true);
   const formRealValues = Form.useWatch([], form);
