@@ -315,7 +315,7 @@ function CamLayout({
               <Avatar
                 shape="square"
                 size="large"
-                src={state?.stills[state.stills.length - 1].blob}
+                src={state?.stills?.[state?.stills?.length - 1].blob}
               />
             </Badge>
           </div>

@@ -11,6 +11,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import { Fade } from "react-reveal/index";
 import ResetActions from "./resetActions";
+import { Alert } from "antd";
 function Default({ children, user }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { initialOffer } = useSelector((state) => state.offer);
@@ -72,8 +73,18 @@ function Default({ children, user }) {
         It looks like your offer has expired. Please tap the Reset button below
         to recalculate.
       </Modal>
+      <Alert
+        message="Status"
+        description={initialOffer?.status || "not started"}
+        type="error"
+      />
       <ConditionalWrap
-        condition={!["/prospect/[id]/valuate", "/prospect/[id]/add-vehicle-images"]?.includes(pathname)}
+        condition={
+          ![
+            "/prospect/[id]/valuate",
+            "/prospect/[id]/add-vehicle-images",
+          ]?.includes(pathname)
+        }
         wrap={(wrappedChildren) => (
           <>
             <Header />

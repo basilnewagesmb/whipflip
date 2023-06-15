@@ -14,7 +14,7 @@ import { uploadImagesToS3 } from "utils/s3";
 import useMobileDetect from "utils/useMobileDetect";
 function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
   const isMobile = useMobileDetect();
-  const { push,replace } = useRouter();
+  const { push, replace } = useRouter();
   const [state, setState] = useState({
     current: "initial",
     infoSkipped: false,
@@ -273,7 +273,7 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
               setTimeout(() => {
                 setState((prev) => ({ ...prev, speed: 1 }));
               }, 2000);
-              replace(`/prospect/${offerRes?.data.uid}`)
+              replace(`/prospect/${offerRes?.data.uid}`);
             } else {
               message.error("Something went Wrong");
             }

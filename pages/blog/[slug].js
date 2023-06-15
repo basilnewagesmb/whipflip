@@ -16,35 +16,35 @@ const BlogDetail = (props) => {
   return (
     <>
       <Head>
-        <title>{props.data.meta_title}</title>
+        <title>{props?.data?.meta_title}</title>
         <meta
           name="Description"
-          content={props.data.description.substring(0, 199)}
+          content={props?.data?.description?.substring(0, 199)}
         ></meta>
-        <meta name="keywords" content={props.data.meta_keywords} />
+        <meta name="keywords" content={props?.data?.meta_keywords} />
         <meta
           name="twitter:card"
-          content={props.data.description.substring(0, 199)}
+          content={props?.data?.description?.substring(0, 199)}
         />
         <meta
           name="twitter:title"
-          content={props.data.title.substring(0, 69)}
+          content={props?.data?.title.substring(0, 69)}
         />
         <meta
           name="twitter:site"
-          content={`https://www.whipflip.com/blog/${props.data.name}`}
+          content={`https://www.whipflip.com/blog/${props?.data?.name}`}
         />
         <meta
           property="og:url"
-          content={`https://www.whipflip.com/blog/${props.data.name}`}
+          content={`https://www.whipflip.com/blog/${props?.data?.name}`}
         />
-        <meta property="og:title" content={props.data.title.substring(0, 69)} />
+        <meta property="og:title" content={props?.data?.title.substring(0, 69)} />
         <meta
           property="og:description"
-          content={props.data.description.substring(0, 199)}
+          content={props?.data?.description?.substring(0, 199)}
         />
-        <meta property="og:image" content={props.data.image} />
-        <meta property="twitter:image" content={props.data.image} />
+        <meta property="og:image" content={props?.data?.image} />
+        <meta property="twitter:image" content={props?.data?.image} />
       </Head>
       <div className="page-header faq d-flex align-items-center blog_detail">
         <div className="container">
@@ -94,9 +94,9 @@ const BlogDetail = (props) => {
                     <ul className="ss-icons">
                       <li>
                         <TwitterShareButton
-                          url={`https://www.whipflip.com/blog/${props.data.name}`}
+                          url={`https://www.whipflip.com/blog/${props?.data?.name}`}
                           style={{ outlineColor: "rgba(0,0,0,0.1" }}
-                          title={props.data.title}
+                          title={props?.data?.title}
                         >
                           <span>
                             <svg
@@ -116,9 +116,9 @@ const BlogDetail = (props) => {
                       </li>
                       <li>
                         <FacebookShareButton
-                          url={`https://www.whipflip.com/blog/${props.data.name}`}
+                          url={`https://www.whipflip.com/blog/${props?.data?.name}`}
                           style={{ outlineColor: "rgba(0,0,0,0.1" }}
-                          title={props.data.title}
+                          title={props?.data?.title}
                         >
                           <span>
                             <svg
@@ -138,9 +138,9 @@ const BlogDetail = (props) => {
                       </li>
                       <li>
                         <WhatsappShareButton
-                          url={`https://www.whipflip.com/blog/${props.data.name}`}
+                          url={`https://www.whipflip.com/blog/${props?.data?.name}`}
                           style={{ outlineColor: "rgba(0,0,0,0.1" }}
-                          title={props.data.title}
+                          title={props?.data?.title}
                         >
                           <span>
                             <svg width="24" height="24" viewBox="0 0 24 24">
@@ -151,9 +151,9 @@ const BlogDetail = (props) => {
                       </li>
                       <li>
                         <LinkedinShareButton
-                          url={`https://www.whipflip.com/blog/${props.data.name}`}
+                          url={`https://www.whipflip.com/blog/${props?.data?.name}`}
                           style={{ outlineColor: "rgba(0,0,0,0.1" }}
-                          title={props.data.title}
+                          title={props?.data?.title}
                         >
                           <span>
                             <svg
@@ -188,7 +188,7 @@ const BlogDetail = (props) => {
                       </li>
                     </ul>
                     <div className="tag_list">
-                      {props.data.tags &&
+                      {props?.data?.tags &&
                         props.data.tags.split(",").map((tag, index) => (
                           <div className="tag_single" key={index}>
                             <span>#{tag}</span>
@@ -196,7 +196,7 @@ const BlogDetail = (props) => {
                         ))}
                     </div>
 
-                    {readNext.length > 0 && (
+                    {readNext?.length > 0 && (
                       <div className="read_nxt">
                         <h2>Read Next</h2>
                         <div className="rn_list">
@@ -238,12 +238,7 @@ const BlogDetail = (props) => {
 };
 
 export const getServerSideProps = async ({ query, res }) => {
-  res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=5, stale-while-revalidate=59"
-  );
   try {
-    const query = query;
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/blogs/${query.slug || ""}`
     );
