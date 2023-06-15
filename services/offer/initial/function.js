@@ -55,46 +55,72 @@ function useInitialForm({ form, data, carouselRef, goTo, props }) {
     });
     if (res?.data?.uid) {
       const offerRes = await getOfferById(res?.data?.uid);
-      if (offerRes?.data) {
-        try {
-          if (window?._kmq) {
-            window?._kmq.push(["identify", res?.data?.email || ""]);
+      console.log(offerRes);
+      if (offerRes?.data?.area != "OOA") {
+        if (offerRes?.data) {
+          try {
+            if (window?._kmq) {
+              window?._kmq.push(["identify", res?.data?.email || ""]);
+            }
+          } catch (error) {}
+          dispatch(clear());
+          dispatch(setInitialOffer(offerRes?.data));
+          if (offerRes.data["is_over_quote"]) {
+            props.analytics.event("OverPrice", "Price is over $50k");
+            props.fbpixel &&
+              props.fbpixel.customEvent("OverPrice", {
+                content_name: "Vehicle Decode",
+                content_category: `OverPrice`,
+                contents: [
+                  {
+                    ...offerRes.data,
+                  },
+                ],
+              });
+          } else {
+            props.analytics.event(
+              "quote",
+              "Quote Generated",
+              offerRes.data.uid
+            );
+            props.fbpixel &&
+              props.fbpixel.customEvent("quote", {
+                content_name: "Quote Generated",
+                content_category: `Quote Generated`,
+                contents: [
+                  {
+                    ...offerRes.data,
+                  },
+                ],
+              });
+            router.push({
+              pathname: "/prospect/[id]/quote",
+              query: { id: offerRes?.data?.uid },
+            });
           }
-        } catch (error) {}
-        dispatch(clear());
-        dispatch(setInitialOffer(offerRes?.data));
-        if (offerRes.data["is_over_quote"]) {
-          props.analytics.event("OverPrice", "Price is over $50k");
-          props.fbpixel &&
-            props.fbpixel.customEvent("OverPrice", {
-              content_name: "Vehicle Decode",
-              content_category: `OverPrice`,
-              contents: [
-                {
-                  ...offerRes.data,
-                },
-              ],
-            });
         } else {
-          props.analytics.event("quote", "Quote Generated", offerRes.data.uid);
-          props.fbpixel &&
-            props.fbpixel.customEvent("quote", {
-              content_name: "Quote Generated",
-              content_category: `Quote Generated`,
-              contents: [
-                {
-                  ...offerRes.data,
-                },
-              ],
-            });
-          router.push({
-            pathname: "/prospect/[id]/quote",
-            query: { id: offerRes?.data?.uid },
-          });
+          setIsLoadingApi(false);
+          message.error(offerRes?.data?.message || "Something went wrong");
         }
       } else {
         setIsLoadingApi(false);
-        message.error(offerRes?.data?.message || "Something went wrong");
+        Modal.error({
+          centered: true,
+          okText: "Go to Home",
+          onOk: () => {
+            Modal.destroyAll();
+            router.push("/");
+          },
+          title: "UH-OH!",
+          content: (
+            <p>
+              WhipFlip is currently not in your area…yet. Please check back with
+              us in the future as we are adding new service areas regularly. If
+              you have any questions or concerns, please contact our Customer
+              Success Team at <a href="tel:+18883493189">(888) 349-3189.</a>
+            </p>
+          ),
+        });
       }
     } else {
       setIsLoadingApi(false);
@@ -102,7 +128,6 @@ function useInitialForm({ form, data, carouselRef, goTo, props }) {
     }
   };
   const onFinishFailed = (errorInfo) => {
-    console.log(errorInfo);
     if (isMobile && errorInfo.errorFields[0].name == "color") {
       dispatch(setCurrentSlide(1));
       //carouselRef.current.goTo(1);
@@ -123,7 +148,12 @@ function useInitialForm({ form, data, carouselRef, goTo, props }) {
     mileageOnblur: () => {
       let mileageNum = parseInt(mileage?.toString()?.replaceAll(",", ""));
       var diff = moment().diff(`${data.modelyear}-01-01`, "years", true);
-      if (diff > 2 && mileageNum != null && mileageNum >= 0 && mileageNum <= 9999) {
+      if (
+        diff > 2 &&
+        mileageNum != null &&
+        mileageNum >= 0 &&
+        mileageNum <= 9999
+      ) {
         Modal.warning({
           className: "confirm-model",
           icon: <SpeedoMeter isLoading={true} />,

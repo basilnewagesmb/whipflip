@@ -658,56 +658,57 @@ function SellFrom({
                 </div>
               </div>
               <div className="form-group row ob_frm_row">
-                <div className="col-lg-12 p-0">
-                  <label htmlFor=""> Is this vehicle financed?</label>
-                  <Form.Item
-                    name={"has_active_loan"}
-                    rules={[
-                      {
-                        required: true,
-                        message: "Please select your Choice!",
-                      },
-                    ]}
-                    className="m-0"
-                  >
-                    <div className="chooseBlock selector row selectorRow">
-                      <div
-                        className="selecotr-item col-lg-6 col-6 p-0"
-                        onClick={() =>
-                          formData?.form.setFieldsValue({
-                            has_active_loan: true,
-                          })
-                        }
-                      >
-                        <label
-                          className={`selector-item_label justify-content-center ${
-                            formData?.formRealData?.has_active_loan == true &&
-                            "active_"
-                          }`}
+                {formData?.formRealData?.hasTitle == false && (
+                  <div className="col-lg-12 p-0">
+                    <label htmlFor=""> Is this vehicle financed?</label>
+                    <Form.Item
+                      name={"has_active_loan"}
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please select your Choice!",
+                        },
+                      ]}
+                      className="m-0"
+                    >
+                      <div className="chooseBlock selector row selectorRow">
+                        <div
+                          className="selecotr-item col-lg-6 col-6 p-0"
+                          onClick={() =>
+                            formData?.form.setFieldsValue({
+                              has_active_loan: true,
+                            })
+                          }
                         >
-                          Yes
-                        </label>
-                      </div>
-                      <div
-                        className="selecotr-item col-lg-6 col-6 pr-0  "
-                        onClick={() =>
-                          formData?.form.setFieldsValue({
-                            has_active_loan: false,
-                          })
-                        }
-                      >
-                        <label
-                          className={`selector-item_label justify-content-center ${
-                            formData?.formRealData?.has_active_loan == false &&
-                            "active_"
-                          }`}
+                          <label
+                            className={`selector-item_label justify-content-center ${
+                              formData?.formRealData?.has_active_loan == true &&
+                              "active_"
+                            }`}
+                          >
+                            Yes
+                          </label>
+                        </div>
+                        <div
+                          className="selecotr-item col-lg-6 col-6 pr-0  "
+                          onClick={() =>
+                            formData?.form.setFieldsValue({
+                              has_active_loan: false,
+                            })
+                          }
                         >
-                          No
-                        </label>
+                          <label
+                            className={`selector-item_label justify-content-center ${
+                              formData?.formRealData?.has_active_loan ==
+                                false && "active_"
+                            }`}
+                          >
+                            No
+                          </label>
+                        </div>
                       </div>
-                    </div>
-                  </Form.Item>
-                  {/* {formData?.formRealData?.has_active_loan == true && (
+                    </Form.Item>
+                    {/* {formData?.formRealData?.has_active_loan == true && (
                     <>
                       <div className="viewDetail"> 
                         <div className="selectView vin">
@@ -789,43 +790,44 @@ function SellFrom({
                       </div>
                     </>
                   )} */}
-                  {formData?.formRealData?.has_active_loan == false &&
-                    formData?.formRealData?.hasTitle == false && (
-                      <div className="selectView license_plate finance_no">
-                        <div className="unable_to_reach unable_to_reach_desk">
-                          <div className="ur_head text-center">
-                            <Image
-                              src="/images/unable-to-reach.svg"
-                              alt="Unable to reach"
-                              title="Unable to reach"
-                              className="img-fluid"
-                              width={128}
-                              height={164}
-                            />
+                    {formData?.formRealData?.has_active_loan == false &&
+                      formData?.formRealData?.hasTitle == false && (
+                        <div className="selectView license_plate finance_no">
+                          <div className="unable_to_reach unable_to_reach_desk">
+                            <div className="ur_head text-center">
+                              <Image
+                                src="/images/unable-to-reach.svg"
+                                alt="Unable to reach"
+                                title="Unable to reach"
+                                className="img-fluid"
+                                width={128}
+                                height={164}
+                              />
+                            </div>
+                            <div className="ur_body text-center">
+                              <h2>Sorry, but we`re unable to buy your car.</h2>
+                              <p>
+                                If you do not have a physical title and your
+                                vehicle is not currently financed (Yes, we can
+                                buy financed cars!), you will need to get a
+                                clear title in your name before we can proceed.
+                                If you feel your situation is different (e.g.
+                                Estate sale or POA authorization), feel free to
+                                call us at (888) 349-3189.
+                              </p>
+                            </div>
                           </div>
-                          <div className="ur_body text-center">
-                            <h2>Sorry, but we`re unable to buy your car.</h2>
-                            <p>
-                              If you do not have a physical title and your
-                              vehicle is not currently financed (Yes, we can buy
-                              financed cars!), you will need to get a clear
-                              title in your name before we can proceed. If you
-                              feel your situation is different (e.g. Estate sale
-                              or POA authorization), feel free to call us at
-                              (888) 349-3189.
-                            </p>
+                          <div className="returnBtn returnBtnDesk">
+                            <Link href={"/"}>
+                              <button className="retBtn">
+                                Return to the WhipFlip Website
+                              </button>
+                            </Link>
                           </div>
                         </div>
-                        <div className="returnBtn returnBtnDesk">
-                          <Link href={"/"}>
-                            <button className="retBtn">
-                              Return to the WhipFlip Website
-                            </button>
-                          </Link>
-                        </div>
-                      </div>
-                    )}
-                </div>
+                      )}
+                  </div>
+                )}
               </div>
               {formData?.formRealData?.has_active_loan == false &&
               formData?.formRealData?.hasTitle == false ? null : (

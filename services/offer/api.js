@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { reset, updateLocalOffer } from "features/offer/offerSlice";
 import moment from "moment";
+import { Modal } from "antd";
 import transformOfferData from "utils/trancformOfferData";
 export const offerApi = createApi({
   reducerPath: "offerApi",
@@ -50,10 +51,31 @@ export const offerApi = createApi({
             data.status == "quote"
               ? moment(data.last_quote_date).add(5, "days")
               : moment(data.last_offer_date).add(5, "days");
-          if (utcDate.diff(moment(), "seconds") <= 0) {
+          if (data.area === "OOA") {
+            Modal.error({
+              centered: true,
+              okText: "Go To Home",
+              onOk: () => {
+                window.location.href = "/";
+              },
+              title: "UH-OH!",
+              content: (
+                <p>
+                  WhipFlip is currently not in your area…yet. Please check back
+                  with us in the future as we are adding new service areas
+                  regularly. If you have any questions or concerns, please
+                  contact our Customer Success Team at{" "}
+                  <a href="tel:+18883493189">(888) 349-3189.</a>
+                </p>
+              ),
+            });
             dispatch(reset());
           } else {
-            dispatch(updateLocalOffer(data));
+            if (utcDate.diff(moment(), "seconds") <= 0) {
+              dispatch(reset());
+            } else {
+              dispatch(updateLocalOffer(data));
+            }
           }
         } catch (err) {
           console.log("Error fetching offers!");

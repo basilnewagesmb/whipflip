@@ -49,10 +49,7 @@ function Index(props) {
   }
 }
 export async function getServerSideProps({ res, req, query }) {
-  res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=5, stale-while-revalidate=59"
-  );
+  res.setHeader('Cache-Control', 'no-store')
   const referer = req?.headers?.referer?.split("//")[1]?.split("/");
   const fromPath = referer?.[referer?.length - 1];
   console.log(fromPath);
