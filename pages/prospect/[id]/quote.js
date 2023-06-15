@@ -49,11 +49,15 @@ function Index(props) {
   }
 }
 export async function getServerSideProps({ res, req, query }) {
-  res.setHeader('Cache-Control', 'no-store')
-  const referer = req?.headers?.referer?.split("//")[1]?.split("/");
-  const fromPath = referer?.[referer?.length - 1];
-  console.log(fromPath);
-
+  const referrer = req?.headers?.referer || "";
+  if (referrer.includes("/offer")) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false, // Set this to true if the redirection is permanent
+      },
+    };
+  }
   const { id } = query;
   const resp = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/prospects/${id}`

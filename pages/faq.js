@@ -76,7 +76,7 @@ function FaqPage() {
                   <li
                     key={i}
                     onClick={() => {
-                      carouselRef?.current?.goTo(i);
+                     // carouselRef?.current?.goTo(i);
                       setCurrent(i);
                     }}
                     className={i == current ? "active pe-auto" : "pe-auto"}

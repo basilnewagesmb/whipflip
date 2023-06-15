@@ -180,7 +180,7 @@ function useInitialForm({ form, data, carouselRef, goTo, props }) {
               {isMobile && (
                 <Button
                   onClick={() => {
-                    goTo(0);
+                    //goTo(0);
                     Modal.destroyAll();
                   }}
                   className={"getOfferBtn"}
@@ -193,7 +193,7 @@ function useInitialForm({ form, data, carouselRef, goTo, props }) {
                   isMobile ? "getOfferBtn mt-3 bg-light border" : "getOfferBtn"
                 }
                 onClick={() => {
-                  isMobile && goTo(1);
+                 // isMobile && goTo(1);
                   Modal.destroyAll();
                 }}
               >

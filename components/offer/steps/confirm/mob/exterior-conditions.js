@@ -125,7 +125,7 @@ function ExteriorConditions({
                 }}
                 size="large"
                 onClick={async () => {
-                  next();
+                 // next();
                   window.scrollTo(0, 0);
                 }}
                 disabled={!formRealValues?.cosmetic?.exterior}

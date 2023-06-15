@@ -277,7 +277,7 @@ function ConfirmVehicle({
                     if (res?.error?.data?.message) {
                       setValid(false);
                     } else {
-                      next();
+                      //next();
                       setValid(true);
                     }
                     break;
@@ -286,7 +286,7 @@ function ConfirmVehicle({
                     if (res?.error?.data?.message) {
                       setValid(false);
                     } else {
-                      next();
+                      //next();
                       setValid(true);
                     }
                     break;

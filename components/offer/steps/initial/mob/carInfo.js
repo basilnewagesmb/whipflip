@@ -15,8 +15,6 @@ export default function CarInfo({ data, full }) {
               data.enableMultiTrim ? data.body : data.trim
             }`}
             preview={false}
-            height={50}
-
             fallback={"/images/no-car-image.png"}
           />
         </div>
