@@ -73,11 +73,13 @@ function Default({ children, user }) {
         It looks like your offer has expired. Please tap the Reset button below
         to recalculate.
       </Modal>
-      <Alert
-        message="Status"
-        description={initialOffer?.status || "not started"}
-        type="error"
-      />
+      {window?.location?.href?.includes("vercel") && (
+        <Alert
+          message="Status"
+          description={initialOffer?.status || "not started"}
+          type="error"
+        />
+      )}
       <ConditionalWrap
         condition={
           ![
