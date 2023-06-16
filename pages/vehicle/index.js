@@ -9,9 +9,12 @@ import { useGetOfferQuery } from "services/offer/api";
 function Index(props) {
   const { push } = useRouter();
   const { initialOffer } = useSelector((state) => state.offer);
-  const { data: offerData } = useGetOfferQuery(initialOffer?.uid, {
-    skip: !initialOffer?.uid,
-  });
+  const { data: offerData } = useGetOfferQuery(
+    { id: initialOffer?.uid },
+    {
+      skip: !initialOffer?.uid,
+    }
+  );
   const { data } = props;
   useEffect(() => {
     if (props.fbpixel) {
@@ -124,7 +127,7 @@ export async function getServerSideProps({ res, query, req }) {
     `${process.env.NEXT_PUBLIC_API_URL}/vehicles?vehicleID=${vehicle_id}`
   );
   const data = await resp.json();
-  if (host === referer ||  allowedRouts?.includes(referer?.split("/")?.[1])) {
+  if (host === referer || allowedRouts?.includes(referer?.split("/")?.[1])) {
     return {
       props: { data },
     };

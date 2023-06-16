@@ -15,9 +15,12 @@ import { Alert } from "antd";
 function Default({ children, user }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { initialOffer } = useSelector((state) => state.offer);
-  const { data } = useGetOfferQuery(initialOffer?.uid, {
-    skip: !initialOffer?.uid,
-  });
+  const { data } = useGetOfferQuery(
+    { id: initialOffer?.uid },
+    {
+      skip: !initialOffer?.uid,
+    }
+  );
   const { pathname } = useRouter();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -73,13 +76,11 @@ function Default({ children, user }) {
         It looks like your offer has expired. Please tap the Reset button below
         to recalculate.
       </Modal>
-      {window?.location?.href?.includes("vercel") && (
-        <Alert
-          message="Status"
-          description={initialOffer?.status || "not started"}
-          type="error"
-        />
-      )}
+      <Alert
+        message="Status"
+        description={initialOffer?.status || "not started"}
+        type="error"
+      />
       <ConditionalWrap
         condition={
           ![

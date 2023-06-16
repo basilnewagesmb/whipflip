@@ -11,9 +11,12 @@ import WillComeback from "./willComeback";
 function SideBar({ data, current }) {
   const isMobile = useCheckMobile();
   const { initialOffer } = useSelector((state) => state.offer);
-  const { data: offerData } = useGetOfferQuery(initialOffer?.uid, {
-    skip: !initialOffer?.uid,
-  });
+  const { data: offerData } = useGetOfferQuery(
+    { id: initialOffer?.uid },
+    {
+      skip: !initialOffer?.uid,
+    }
+  );
 
   return (
     <div className="col-lg-4 p-0">

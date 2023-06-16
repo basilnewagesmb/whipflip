@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useFullScreenHandle } from "react-full-screen";
 import useScreenOrientation from "utils/useScreenOrientation";
 import {
+  offerApi,
   useAddVehicleImagesMutation,
   useCreateInstantOfferMutation,
 } from "../api";
@@ -12,7 +13,9 @@ import { Modal } from "antd";
 import { isIOS } from "react-device-detect";
 import { uploadImagesToS3 } from "utils/s3";
 import useMobileDetect from "utils/useMobileDetect";
+import { useDispatch } from "node_modules/react-redux/es/exports";
 function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
+  const dispatch = useDispatch();
   const isMobile = useMobileDetect();
   const { push, replace } = useRouter();
   const [state, setState] = useState({
@@ -270,6 +273,7 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
                     });
                 }
               } catch (error) {}
+              dispatch(offerApi.endpoints.getOffer.initiate());
               setTimeout(() => {
                 setState((prev) => ({ ...prev, speed: 1 }));
               }, 2000);

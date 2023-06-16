@@ -12,10 +12,13 @@ function Index(props) {
     }
   }, []);
 
-  const { data: offerData } = useGetOfferQuery(data?.uid, {
-    skip: !data?.uid,
-    refetchOnMountOrArgChange: true,
-  });
+  const { data: offerData } = useGetOfferQuery(
+    { id: data?.uid },
+    {
+      skip: !data?.uid,
+      refetchOnMountOrArgChange: true,
+    }
+  );
   useEffect(() => {
     if (fbpixel) {
       const events = ["ViewContent"];

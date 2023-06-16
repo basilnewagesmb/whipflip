@@ -29,9 +29,12 @@ function Valuate(props) {
         content_ids: [data?.uid],
       });
   }, []);
-  const { data: offerData } = useGetOfferQuery(data?.uid, {
-    skip: !data?.uid,
-  });
+  const { data: offerData } = useGetOfferQuery(
+    { id: data?.uid },
+    {
+      skip: !data?.uid,
+    }
+  );
   const valuateControl = useValuateFun({
     offerData,
     analytics,

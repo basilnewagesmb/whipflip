@@ -6,11 +6,15 @@ import { useGetOfferQuery } from "services/offer/api";
 
 function Index(props) {
   const { data, fbpixel, analytics } = props;
-  const { push } = useRouter();
-  const { data: offerData } = useGetOfferQuery(data?.uid, {
-    skip: !data?.uid,
-    refetchOnMountOrArgChange: true,
-  });
+  const router = useRouter();
+  const { push } = router;
+  const { data: offerData } = useGetOfferQuery(
+    { id: data?.uid, router },
+    {
+      skip: !data?.uid,
+      refetchOnMountOrArgChange: true,
+    }
+  );
   useEffect(() => {
     if ((offerData || data).status != "quote") {
       push(`/prospect/${(offerData || data).uid}`);

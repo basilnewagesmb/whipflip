@@ -36,7 +36,7 @@ export const offerApi = createApi({
       invalidatesTags: ["offers"],
     }),
     getOffer: builder.query({
-      query: (id) => {
+      query: ({ id }) => {
         return {
           url: `/prospects/${id}`,
           method: "GET",

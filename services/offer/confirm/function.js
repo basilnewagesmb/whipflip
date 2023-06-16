@@ -27,9 +27,12 @@ function useConfirmForm({ form, fbpixel, analytics }) {
   const isMobile = useCheckMobile();
   const initialOfferData = useSelector((state) => state.offer);
   const { query } = useRouter();
-  const { data: offerData } = useGetOfferQuery(query.id, {
-    skip: !query.id,
-  });
+  const { data: offerData } = useGetOfferQuery(
+    { id: query.id },
+    {
+      skip: !query.id,
+    }
+  );
   const [initialOffer, setInitialOffer] = useState(
     initialOfferData.initialOffer
   );

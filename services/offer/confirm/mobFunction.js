@@ -15,7 +15,6 @@ import {
   useSkipToInstantOfferMutation,
 } from "../api";
 import Image from "next/image";
-import { setCurrent } from "features/offer/offerSlice";
 import { useRouter } from "next/router";
 import SkipButton from "components/offer/steps/confirm/web/skipButton";
 import Link from "next/link";
@@ -30,9 +29,12 @@ function useConfirmFormMob({ form, navFunc, fbpixel, analytics }) {
   const isMobile = useCheckMobile();
   const initialOfferData = useSelector((state) => state.offer);
   const { query, pathname } = useRouter();
-  const { data: offerData } = useGetOfferQuery(query.id, {
-    skip: !query.id,
-  });
+  const { data: offerData } = useGetOfferQuery(
+    { id: query.id },
+    {
+      skip: !query.id,
+    }
+  );
   const [initialOffer, setInitialOffer] = useState(
     initialOfferData.initialOffer
   );
