@@ -52,11 +52,10 @@ function Index(props) {
     );
   }
 }
-export async function getInitialProps({ store, res, req, query }) {
+export async function getInitialProps({ res }) {
   if (res) {
     res.setHeader("Cache-Control", "no-store");
   }
-  await store.dispatch(action());
   return {};
 }
 export async function getServerSideProps({ res, req, query }) {
