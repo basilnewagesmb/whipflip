@@ -52,6 +52,13 @@ function Index(props) {
     );
   }
 }
+export async function getInitialProps({ store, res, req, query }) {
+  if (res) {
+    res.setHeader("Cache-Control", "no-store");
+  }
+  await store.dispatch(action());
+  return {};
+}
 export async function getServerSideProps({ res, req, query }) {
   const { id } = query;
   const resp = await fetch(

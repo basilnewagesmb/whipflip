@@ -37,19 +37,19 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
       message.error("You're currently offline");
     }
   }, [isOnline]);
-  useEffect(() => {
-    const handlePageShow = (event) => {
-      if (event.persisted) {
-        router.reload();
-      }
-    };
+  // useEffect(() => {
+  //   const handlePageShow = (event) => {
+  //     if (event.persisted) {
+  //       router.reload();
+  //     }
+  //   };
 
-    window.addEventListener("pageshow", handlePageShow);
+  //   window.addEventListener("pageshow", handlePageShow);
 
-    return () => {
-      window.removeEventListener("pageshow", handlePageShow);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("pageshow", handlePageShow);
+  //   };
+  // }, []);
   const router = useRouter();
   // const browserTabLoseHandler = (e) => {
   //   e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
