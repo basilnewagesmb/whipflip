@@ -60,6 +60,7 @@ function InteriorConditions({
                     height: 0,
                     opacity: 0,
                     overFlow: "hidden",
+                    display: "none",
                   }}
                 />
               </Form.Item>

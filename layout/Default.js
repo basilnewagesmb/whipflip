@@ -11,7 +11,6 @@ import Footer from "./Footer";
 import Header from "./Header";
 import { Fade } from "react-reveal/index";
 import ResetActions from "./resetActions";
-import { Alert } from "antd";
 function Default({ children, user }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { initialOffer } = useSelector((state) => state.offer);

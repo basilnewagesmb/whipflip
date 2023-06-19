@@ -70,7 +70,7 @@ function ConfirmVehicle({
                         ? "selector-item_radio active"
                         : "selector-item_radio"
                     }
-                    checked={formRealValues?.info?.type === "vin"}
+                    defaultChecked={formRealValues?.info?.type === "vin"}
                     onClick={(e) => {
                       setValid(true);
                       form.setFieldValue(["info", "type"], "vin");
@@ -101,7 +101,7 @@ function ConfirmVehicle({
                         ? "selector-item_radio active "
                         : "selector-item_radio"
                     }
-                    checked={formRealValues?.info?.type === "plate"}
+                    defaultChecked={formRealValues?.info?.type === "plate"}
                     onClick={(e) => {
                       setValid(true);
                       form.setFieldValue(["info", "type"], "plate");
@@ -125,7 +125,7 @@ function ConfirmVehicle({
                     className="m-0"
                     rules={[
                       {
-                        required: formRealValues?.info?.type === "vin",
+                        required: true,
                         message: "Please input your VIN number!",
                       },
                       {
@@ -201,7 +201,7 @@ function ConfirmVehicle({
                     className="mb-3"
                     rules={[
                       {
-                        required: formRealValues?.info?.type === "plate",
+                        required: true,
                         message: "Please input your license plate number!",
                       },
                     ]}

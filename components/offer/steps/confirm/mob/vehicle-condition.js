@@ -14,7 +14,6 @@ function VehicleConditionMob({
   formRealValues,
   isReview,
 }) {
-  
   return (
     <div className="m-0 p-0 offer_block noBordBtm offer_block_mobi" key={i}>
       <div className="ob_hd d-flex justify-content-between">
@@ -58,7 +57,7 @@ function VehicleConditionMob({
               style={{
                 height: 0,
                 opacity: 0,
-                overFlow: "hidden",
+                display: "none",
               }}
             />
           </Form.Item>
@@ -119,7 +118,7 @@ function VehicleConditionMob({
                         style={{
                           height: 0,
                           opacity: 0,
-                          overFlow: "hidden",
+                          display: "none",
                         }}
                       />
                     </Form.Item>{" "}
@@ -307,7 +306,7 @@ function VehicleConditionMob({
                 }}
                 size="large"
                 onClick={async () => {
-                 // next();
+                  // next();
                   window.scrollTo(0, 0);
                 }}
                 disabled={formRealValues?.conditions[i].yes === ""}

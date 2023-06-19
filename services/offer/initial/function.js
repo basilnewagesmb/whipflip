@@ -106,19 +106,23 @@ function useInitialForm({ form, data, carouselRef, goTo, props }) {
         setIsLoadingApi(false);
         Modal.error({
           centered: true,
-          okText: "Go to Home",
+          okText: "Whipflip Home",
           onOk: () => {
             Modal.destroyAll();
             router.push("/");
           },
           title: "UH-OH!",
           content: (
-            <p>
-              WhipFlip is currently not in your area…yet. Please check back with
-              us in the future as we are adding new service areas regularly. If
-              you have any questions or concerns, please contact our Customer
-              Success Team at <a href="tel:+18883493189">(888) 349-3189.</a>
-            </p>
+            <>
+              {/* <BreakDown isLoading={true} /> */}
+              <p className="mt-3">
+                WhipFlip is currently not in your area…yet. Please check back
+                with us in the future as we are adding new service areas
+                regularly. If you have any questions or concerns, please contact
+                our Customer Success Team at{" "}
+                <a href="tel:+18883493189">(888) 349-3189.</a>
+              </p>
+            </>
           ),
         });
       }
@@ -193,7 +197,7 @@ function useInitialForm({ form, data, carouselRef, goTo, props }) {
                   isMobile ? "getOfferBtn mt-3 bg-light border" : "getOfferBtn"
                 }
                 onClick={() => {
-                 // isMobile && goTo(1);
+                  // isMobile && goTo(1);
                   Modal.destroyAll();
                 }}
               >

@@ -93,7 +93,6 @@ function QuestionsLayout({ initialOffer, fbpixel, analytics }) {
       });
     }
   }, [formFunc?.formRealValues?.cosmetic?.interior, formFunc]);
-  console.log(formFunc?.formRealValues);
 
   return (
     <div className="container p-0">
@@ -107,7 +106,11 @@ function QuestionsLayout({ initialOffer, fbpixel, analytics }) {
         size="large"
         layout="vertical"
         requiredMark={false}
-        scrollToFirstError={true}
+        scrollToFirstError={{
+          behavior: "smooth",
+          block: "center",
+          inline: "center",
+        }}
       >
         <Form.Item label={false} name={"conditions"} hidden>
           <Input />

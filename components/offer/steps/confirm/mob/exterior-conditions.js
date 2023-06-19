@@ -60,6 +60,7 @@ function ExteriorConditions({
                     height: 0,
                     opacity: 0,
                     overFlow: "hidden",
+                    display: "none",
                   }}
                 />
               </Form.Item>
@@ -125,7 +126,7 @@ function ExteriorConditions({
                 }}
                 size="large"
                 onClick={async () => {
-                 // next();
+                  // next();
                   window.scrollTo(0, 0);
                 }}
                 disabled={!formRealValues?.cosmetic?.exterior}

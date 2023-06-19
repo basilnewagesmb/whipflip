@@ -234,8 +234,14 @@ function useConfirmFormMob({ form, navFunc, fbpixel, analytics }) {
       });
   };
 
-  const onFinishFailed = (error) => {
-    console.log(error);
+  const onFinishFailed = () => {
+    var errorElements = document?.getElementsByClassName(
+      "ant-form-item-has-error"
+    );
+    if (errorElements?.length > 0) {
+      var firstErrorElement = errorElements[0];
+      firstErrorElement.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
   };
 
   const formDate = {
