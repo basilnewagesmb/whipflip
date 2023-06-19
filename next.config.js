@@ -28,6 +28,15 @@ const nextConfig = {
         },
       ],
     },
+    {
+      source: "/:vehicle*",
+      headers: [
+        {
+          key: "Cache-Control",
+          value: "no-store",
+        },
+      ],
+    },
   ],
 };
 
