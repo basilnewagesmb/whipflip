@@ -101,7 +101,7 @@ function Index(props) {
   );
 }
 export async function getServerSideProps({ res, query, req }) {
-  const referer = req?.headers?.referer?.split("//")[1];
+  const referer = req?.headers?.referer?.split("//")?.[1];
   const allowedRouts = [
     "blog",
     "about",
@@ -118,10 +118,6 @@ export async function getServerSideProps({ res, query, req }) {
     "why-sell-your-car-to-us",
   ];
   const host = req?.headers?.host + "/";
-
-  console.log("host", host);
-  console.log("inside referer", referer);
-
   const { vehicle_id } = query;
   const resp = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/vehicles?vehicleID=${vehicle_id}`
