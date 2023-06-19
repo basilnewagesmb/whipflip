@@ -10,7 +10,17 @@ function Transmission({ form, next }) {
     //next();
   };
   return (
-    <Form.Item label={false} name="transmission" className="m-0 w-100">
+    <Form.Item
+      label={false}
+      name="transmission"
+      className="m-0 w-100"
+      rules={[
+        {
+          required: true,
+          message: "Please select your Choice!",
+        },
+      ]}
+    >
       <div className="offer_block-body">
         <div autoComplete="off" className="form" role="form">
           <div className="form-group row ob_frm_row">

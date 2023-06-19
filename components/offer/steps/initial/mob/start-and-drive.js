@@ -8,7 +8,17 @@ function StartAndDrive({ form, data, next }) {
   const does_vehicle_start = Form.useWatch("does_vehicle_start", form);
 
   return (
-    <Form.Item label={false} name="does_vehicle_start" className="m-0 w-100">
+    <Form.Item
+      label={false}
+      name="does_vehicle_start"
+      className="m-0 w-100"
+      rules={[
+        {
+          required: true,
+          message: "Please select your Choice!",
+        },
+      ]}
+    >
       <div className="offer_block-body">
         <div className="form">
           <div className="form-group row ob_frm_row">

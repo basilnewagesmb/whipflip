@@ -132,6 +132,13 @@ function useInitialForm({ form, data, carouselRef, goTo, props }) {
     }
   };
   const onFinishFailed = (errorInfo) => {
+    var errorElements = document?.getElementsByClassName(
+      "ant-form-item-has-error"
+    );
+    if (errorElements?.length > 0) {
+      var firstErrorElement = errorElements[0];
+      firstErrorElement.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
     if (isMobile && errorInfo.errorFields[0].name == "color") {
       dispatch(setCurrentSlide(1));
       //carouselRef.current.goTo(1);
