@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import useCheckMobile from "utils/checkMobile";
 import { useCreateInitialOfferMutation, useGetOfferByIdMutation } from "../api";
 import { useState } from "react";
+import OOA from "components/common/OOA";
 function useInitialForm({ form, data, carouselRef, goTo, props }) {
   const [isLoadingApi, setIsLoadingApi] = useState(false);
   const router = useRouter();
@@ -104,26 +105,14 @@ function useInitialForm({ form, data, carouselRef, goTo, props }) {
         }
       } else {
         setIsLoadingApi(false);
-        Modal.error({
+        Modal.info({
           centered: true,
-          okText: "Whipflip Home",
-          onOk: () => {
-            Modal.destroyAll();
-            router.push("/");
-          },
-          title: "UH-OH!",
-          content: (
-            <>
-              {/* <BreakDown isLoading={true} /> */}
-              <p className="mt-3">
-                WhipFlip is currently not in your area…yet. Please check back
-                with us in the future as we are adding new service areas
-                regularly. If you have any questions or concerns, please contact
-                our Customer Success Team at{" "}
-                <a href="tel:+18883493189">(888) 349-3189.</a>
-              </p>
-            </>
-          ),
+          icon: null,
+          footer:null,
+          title: null,
+          content: <OOA />,
+          wrapClassName:"o_o_a"
+
         });
       }
     } else {

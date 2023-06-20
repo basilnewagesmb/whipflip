@@ -133,10 +133,10 @@ export async function getServerSideProps({ res, query, req }) {
     };
   } else {
     return {
-      redirect: {
-        permanent: false,
-        destination: `/`,
-      },
+      // redirect: {
+      //   permanent: false,
+      //   destination: `/`,
+      // },
       props: { data },
     };
   }
