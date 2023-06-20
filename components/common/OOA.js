@@ -30,7 +30,7 @@ function OOA() {
       >
         If you have any questions or concerns, please contact our Customer
         Success Team at{" "}
-        <a href="tel:+18883493189" target="_blank">
+        <a href="tel:+18883493189">
           (888) 349-3189.
         </a>
       </p>
