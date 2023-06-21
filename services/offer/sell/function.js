@@ -162,6 +162,11 @@ function useSellFuc(data) {
         return type;
     }
   };
+  console.log(formRealData);
+  useEffect(() => {
+    triggerFetch(true)
+  }, [formRealData?.zip]);
+
   const formData = {
     form,
     autoComplete: "off",
@@ -171,6 +176,7 @@ function useSellFuc(data) {
     name: "Sell",
     size: "large",
     onFinish: (data) => {
+      console.log(data);
       setState((prev) => ({
         ...prev,
         isRulesOpen: true,

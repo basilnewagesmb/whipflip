@@ -51,8 +51,7 @@ function Initial({ setCurrent, isForUpload, offerData }) {
                 </div>
                 <div className="info_right">
                   <span>
-                    Clear away any heavy debris (eg. dirt. snow) from the
-                    vehicle{" "}
+                    Clear away any heavy debris (eg. dirt,snow) from the vehicle{" "}
                   </span>
                 </div>
               </div>

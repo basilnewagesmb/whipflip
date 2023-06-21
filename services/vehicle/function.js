@@ -14,6 +14,7 @@ import {
   vehicle,
 } from "services/vehicle/api";
 import Link from "next/link";
+import useMobileDetect from "utils/useMobileDetect";
 function useVehicleForm(form) {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -23,6 +24,17 @@ function useVehicleForm(form) {
   const model = Form.useWatch("model", form);
   const trim = Form.useWatch("trim", form);
   const [isLoading, setIsLoading] = useState(false);
+  const isMobile  = useMobileDetect();
+  useEffect(() => {
+    if (isMobile) {
+      if (["year", "make", "model", "trim"].includes(open)) {
+        document?.body?.classList?.add("disable-scroll");
+      } else {
+        document?.body?.classList?.remove("disable-scroll");
+      }
+    }
+  }, [open]);
+
   const onFinish = async (values) => {
     setIsLoading(true);
     const { data } = await dispatch(

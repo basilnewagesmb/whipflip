@@ -25,12 +25,7 @@ function CamLayout({
   const captureScreenBtn = useRef(null);
   const countPreview = useRef(null);
   const [open, setOpen] = useState(true);
-  const mask = {
-    style: {
-      boxShadow: "inset 0 0 15px #fff",
-    },
-    color: "rgba(240, 181, 0, 0.24)",
-  };
+
   const [steps, SetSteps] = useState([]);
   const { push } = useRouter();
   const [play] = useSound("/data/capture.mp3");
@@ -62,7 +57,6 @@ function CamLayout({
             ),
             description: "You can use fullscreen for a better user experience.",
             target: () => fullScreenBtn.current,
-            mask,
           },
           {
             title: (
@@ -78,7 +72,6 @@ function CamLayout({
             ),
             description: "You can use the close button to skip this step.",
             target: () => closeScreenBtn.current,
-            mask,
           },
           {
             title: (
@@ -95,7 +88,6 @@ function CamLayout({
             description: "Click here to capture an image",
             placement: "left",
             target: () => captureScreenBtn.current,
-            mask,
           },
           {
             title: (
@@ -113,7 +105,6 @@ function CamLayout({
               "You can view the count and preview of previous images.",
             target: () => countPreview.current,
             onClose: handle.enter,
-            mask,
           },
         ])
       : SetSteps([
@@ -131,7 +122,6 @@ function CamLayout({
             ),
             description: "You can use the close button to skip this step.",
             target: () => closeScreenBtn.current,
-            mask,
           },
           {
             title: (
@@ -148,7 +138,6 @@ function CamLayout({
             description: <>Click here to capture an image</>,
             placement: "left",
             target: () => captureScreenBtn.current,
-            mask,
           },
           {
             title: (
@@ -166,7 +155,6 @@ function CamLayout({
               "You can view the count and preview of previous images.",
             target: () => countPreview.current,
             onClose: handle.enter,
-            mask,
           },
         ]);
   }, [isIOS]);
@@ -186,7 +174,12 @@ function CamLayout({
           collapsedWidth={60}
           collapsed
           style={{
-            backgroundColor: "#3c3c3c",
+            backgroundColor: "#3c3c3c63",
+            position: "absolute",
+            left: "0",
+            top: "0",
+            height: "100vh",
+            zIndex:"1"
           }}
         >
           {!isIOS &&
@@ -265,7 +258,12 @@ function CamLayout({
           collapsedWidth={100}
           collapsed
           style={{
-            backgroundColor: "#3c3c3c",
+            backgroundColor: "#3c3c3c63",
+            position: "absolute",
+            right: "0",
+            top: "0",
+            height: "100vh",
+            zIndex:"1"
           }}
         >
           <div
@@ -324,7 +322,7 @@ function CamLayout({
               type="primary"
               shape="circle"
               style={captureStyle}
-              size="large"
+              size="100"
               ref={captureScreenBtn}
               onClick={() => {
                 capture(pendingLayouts[0]?.id);
@@ -358,7 +356,9 @@ const captureStyle = {
   fontSize: "20px",
   color: "#fff",
   backgroundColor: "#fff",
-  border: "4px solid #939393b8",
+  border: "6px solid #939393b8",
+  width: "55px",
+  height: "55px",
 };
 const countStyle = {
   position: "absolute",

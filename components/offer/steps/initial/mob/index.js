@@ -22,34 +22,9 @@ function InitialMob({ data, form, carouselRef }) {
       <div className="container">
         <CarInfo data={data} full={currentSlide == 0} />
         <div className="offer_block noBordBtm offer_block_mobi">
-          {/* {currentSlide == 4 ? (
-            <div className="initOffHd position-relative">
-              <h2>
-                <span>See Your Initial Offer!</span>
-                <span>Where Can We Send It?</span>
-              </h2>
-              <Button
-                className="fixed_back d-flex justify-content-center align-items-center"
-                shape="circle"
-                icon={<LeftOutlined />}
-                disabled={currentSlide == 0}
-                onClick={prev}
-              />
-            </div>
-          ) : (
-            <div className="ob_hd d-flex justify-content-between">
-              <h2>Vehicle Basics</h2>
-              <div className="d-flex justify-content-center align-items-center">
-                <Button
-                  className=" d-flex justify-content-center align-items-center"
-                  shape="circle"
-                  icon={<LeftOutlined />}
-                  disabled={currentSlide == 0}
-                  onClick={prev}
-                />
-              </div>
-            </div>
-          )} */}
+          <div className="ob_hd d-flex justify-content-between">
+            <h2>Vehicle Basics</h2>
+          </div>
           {/* <Carousel
             afterChange={(i) => dispatch(setCurrentSlide(i))}
             dots={false}
@@ -59,11 +34,11 @@ function InitialMob({ data, form, carouselRef }) {
             autoplay={false}
             swipe={false}
           > */}
-            <Milage form={form} data={data} next={next} goTo={goTo} />
-            <ColorPicker form={form} data={data} next={next} />
-            <Transmission form={form} next={next} />
-            <StartAndDrive form={form} data={data} next={next} />
-            <SeeInitOffer form={form} data={data} goTo={goTo} />{" "}
+          <Milage form={form} data={data} next={next} goTo={goTo} />
+          <ColorPicker form={form} data={data} next={next} />
+          <Transmission form={form} next={next} />
+          <StartAndDrive form={form} data={data} next={next} />
+          <SeeInitOffer form={form} data={data} goTo={goTo} />{" "}
           {/* </Carousel>{" "} */}
         </div>{" "}
       </div>

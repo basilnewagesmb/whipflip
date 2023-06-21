@@ -19,7 +19,10 @@
 .lds-spinner div {
   transform-origin: 40px 40px;
   animation: lds-spinner 1.2s linear infinite;
+}body.disable-scroll {
+  overflow: hidden;
 }
+
 .lds-spinner div:after {
   content: " ";
   display: block;
@@ -6287,4 +6290,9 @@ label.uniform_item_label {
 }
 .o_o_a .ant-modal-confirm-body {
   justify-content: center;
+}
+.cam_overlay{
+  .ant-image{
+    display: flex;
+  }
 }

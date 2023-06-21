@@ -8,17 +8,20 @@ function Overlay({ pendingLayouts, previewing }) {
     return (
       <div style={overlayStyle}>
         <h5 style={titleStyle}>{title}</h5>
-        <Image
-          src={`/overlay/${overlay}`}
-          preview={false}
-          style={{
-            textAlign: "center",
-            height: "100vh",
-            width: "100%",
-            objectFit: "contain",
-            transform: `scale(${scale * 0.015})`,
-          }}
-        />
+        <div className="m-auto cam_overlay">
+          <Image
+            src={`/overlay/${overlay}`}
+            preview={false}
+            className="d-flex"
+            style={{
+              textAlign: "center",
+              height: "100vh",
+              width: "100%",
+              objectFit: "contain",
+              transform: `scale(${scale * 0.015})`,
+            }}
+          />
+        </div>
         {/* <Slider
           defaultValue={scale}
           style={zoom}

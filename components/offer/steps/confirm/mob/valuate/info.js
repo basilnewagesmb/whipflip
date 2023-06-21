@@ -26,8 +26,8 @@ function InfoCam({ setSkipped }) {
           height: "50px",
           zIndex: "0",
           display: "flex",
-          justifyContent:"center",
-          alignItems:"center",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <CloseOutlined />
@@ -67,7 +67,7 @@ function InfoCam({ setSkipped }) {
               </div>
               <div className="info_right">
                 <span>
-                  Clear away any heavy debris (eg. dirt. snow) from the vehicle{" "}
+                  Clear away any heavy debris (eg. dirt,snow) from the vehicle{" "}
                 </span>
               </div>
             </div>

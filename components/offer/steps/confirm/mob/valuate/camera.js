@@ -13,19 +13,15 @@ function Camera(props) {
     <DeviceOrientation lockOrientation={"landscape"}>
       <Orientation orientation="landscape" alwaysRender={false}>
         <FullScreen {...props}>
-          {!state?.infoSkipped ? (
-            <InfoCam {...props} />
-          ) : (
-            <CamLayout {...props}>
-              <Webcam {...camProps} />
-              {pendingLayouts?.length >= 0 && (
-                <>
-                  <Captured {...props} />
-                  <Overlay {...props} />
-                </>
-              )}
-            </CamLayout>
-          )}
+          <CamLayout {...props}>
+            <Webcam {...camProps} />
+            {pendingLayouts?.length >= 0 && (
+              <>
+                <Captured {...props} />
+                <Overlay {...props} />
+              </>
+            )}
+          </CamLayout>
         </FullScreen>
       </Orientation>
       <Orientation orientation="portrait" alwaysRender={false}>
