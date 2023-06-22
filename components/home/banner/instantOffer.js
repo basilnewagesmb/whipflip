@@ -9,6 +9,7 @@ import { useRetrieveOfferMutation } from "services/util";
 import { useDispatch } from "react-redux";
 import { setInitialOffer } from "features/offer/offerSlice";
 import { useGetOfferByIdMutation } from "services/offer/api";
+import { useRef } from "react";
 
 function InstantOffer({ header, handleShowSideBar, handleCancel }) {
   const [showError, setShowError] = useState(false);
@@ -292,7 +293,7 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
               onFinish={onFinish}
               autoComplete="off"
             >
-              <div className="form-group row" >
+              <div className="form-group row">
                 <div className="col-lg-12">
                   <Form.Item label={null} className="m-0" name="year">
                     <Select
@@ -369,7 +370,12 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
               </div>
               <div className="form-group row">
                 <div className="col-lg-12">
-                  <Form.Item label={null} className="m-0" name="trim">
+                  <Form.Item
+                    label={null}
+                    className="m-0"
+                    name="trim"
+                    id="_form_trim"
+                  >
                     <Select
                       className="w-100"
                       size="large"
