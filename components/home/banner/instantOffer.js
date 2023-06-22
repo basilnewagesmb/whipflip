@@ -292,7 +292,7 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
               onFinish={onFinish}
               autoComplete="off"
             >
-              <div className="form-group row" id="_banner_form_year">
+              <div className="form-group row" >
                 <div className="col-lg-12">
                   <Form.Item label={null} className="m-0" name="year">
                     <Select

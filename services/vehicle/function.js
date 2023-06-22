@@ -15,6 +15,8 @@ import {
 } from "services/vehicle/api";
 import Link from "next/link";
 import useMobileDetect from "utils/useMobileDetect";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+
 function useVehicleForm(form) {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -24,18 +26,17 @@ function useVehicleForm(form) {
   const model = Form.useWatch("model", form);
   const trim = Form.useWatch("trim", form);
   const [isLoading, setIsLoading] = useState(false);
-  const isMobile  = useMobileDetect();
+  const isMobile = useMobileDetect();
   useEffect(() => {
     if (isMobile) {
       if (["year", "make", "model", "trim"].includes(open)) {
-        document?.body?.classList?.add("disable-scroll");
-        document?.getElementById("_banner_form_year")?.scrollIntoView({ behavior: "smooth", block: "center" });
+        disableBodyScroll(document?.body);
       } else {
-        document?.body?.classList?.remove("disable-scroll");
+        enableBodyScroll(document?.body);
       }
     }
   }, [open]);
-console.log(open);
+  console.log(open);
   const onFinish = async (values) => {
     setIsLoading(true);
     const { data } = await dispatch(
@@ -177,7 +178,7 @@ console.log(open);
     },
     isDisable: !year || !make || !model || !trim,
     isLoading,
-    open
+    open,
   };
 
   return formDate;
