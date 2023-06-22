@@ -41,11 +41,8 @@ function useVehicleForm(form) {
   useEffect(() => {
     if (isMobile) {
       if (["year", "make", "model", "trim"].includes(open)) {
-        document
-          ?.getElementById("_banner_form")
-          ?.scrollIntoView({ behavior: "smooth", block: "center" });
-        htmlElement.classList.add("disable-scroll");
         disableScroll();
+        htmlElement.classList.add("disable-scroll");
       } else {
         enableScroll();
         htmlElement.classList.remove("disable-scroll");
