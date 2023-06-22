@@ -28,11 +28,9 @@ function useVehicleForm(form) {
   useEffect(() => {
     if (isMobile) {
       if (["year", "make", "model", "trim"].includes(open)) {
-        //document?.getElementById("_banner_form")?.scrollIntoView({ behavior: "smooth", block: "center" });
         document?.body?.classList?.add("disable-scroll");
-        document.body.style.overflow = 'hidden';
+        document?.getElementById("_banner_form_year")?.scrollIntoView({ behavior: "smooth", block: "center" });
       } else {
-        document.body.style.overflow = 'unset';
         document?.body?.classList?.remove("disable-scroll");
       }
     }
