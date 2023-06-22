@@ -23,6 +23,7 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
     trim,
     setThisOpen,
     isDisable,
+    open,
     isLoading: isVehicleLoad,
   } = useVehicleForm(form);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -175,7 +176,10 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
     );
   } else {
     return (
-      <div className="card card-outline-secondary home-form  ">
+      <div
+        id="_banner_form"
+        className="card card-outline-secondary home-form  "
+      >
         <Modal
           title={
             <div className="border-bottom">
@@ -305,7 +309,9 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
                       onChange={year?.onChange}
                       open={year?.isOpen()}
                       onClick={() => {
-                        !year?.isOpen() && setThisOpen("year");
+                        year?.isOpen()
+                          ? setThisOpen(null)
+                          : setThisOpen("year");
                       }}
                     />
                   </Form.Item>
@@ -328,7 +334,9 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
                       onChange={make?.onChange}
                       open={make?.isOpen()}
                       onClick={() => {
-                        !make?.isOpen() && setThisOpen("make");
+                        make?.isOpen()
+                          ? setThisOpen(null)
+                          : setThisOpen("make");
                       }}
                     />
                   </Form.Item>
@@ -351,7 +359,9 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
                       onChange={model?.onChange}
                       open={model?.isOpen()}
                       onClick={() => {
-                        !model?.isOpen() && setThisOpen("model");
+                        model?.isOpen()
+                          ? setThisOpen(null)
+                          : setThisOpen("model");
                       }}
                     />
                   </Form.Item>
@@ -374,7 +384,9 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
                       onChange={trim?.onChange}
                       open={trim?.isOpen()}
                       onClick={() => {
-                        !trim?.isOpen() && setThisOpen("trim");
+                        trim?.isOpen()
+                          ? setThisOpen(null)
+                          : setThisOpen("trim");
                       }}
                     />
                   </Form.Item>

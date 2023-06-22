@@ -28,13 +28,16 @@ function useVehicleForm(form) {
   useEffect(() => {
     if (isMobile) {
       if (["year", "make", "model", "trim"].includes(open)) {
+        document?.getElementById("_banner_form")?.scrollIntoView({ behavior: "smooth", block: "center" });
         document?.body?.classList?.add("disable-scroll");
+        document.body.style.overflow = 'hidden';
       } else {
+        document.body.style.overflow = 'unset';
         document?.body?.classList?.remove("disable-scroll");
       }
     }
   }, [open]);
-
+console.log(open);
   const onFinish = async (values) => {
     setIsLoading(true);
     const { data } = await dispatch(
@@ -176,6 +179,7 @@ function useVehicleForm(form) {
     },
     isDisable: !year || !make || !model || !trim,
     isLoading,
+    open
   };
 
   return formDate;
