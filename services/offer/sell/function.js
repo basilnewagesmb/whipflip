@@ -164,7 +164,10 @@ function useSellFuc(data) {
   };
   console.log(formRealData);
   useEffect(() => {
-    triggerFetch(true)
+    const zipLength = formRealData?.zip?.length;
+    if ([4, 5].includes(zipLength)) {
+      triggerFetch(true);
+    }
   }, [formRealData?.zip]);
 
   const formData = {

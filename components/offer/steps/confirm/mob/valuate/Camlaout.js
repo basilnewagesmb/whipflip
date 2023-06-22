@@ -20,155 +20,11 @@ function CamLayout({
   isForUpload,
   state,
 }) {
-  const fullScreenBtn = useRef(null);
-  const closeScreenBtn = useRef(null);
-  const captureScreenBtn = useRef(null);
-  const countPreview = useRef(null);
-  const [open, setOpen] = useState(true);
-
-  const [steps, SetSteps] = useState([]);
   const { push } = useRouter();
   const [play] = useSound("/data/capture.mp3");
-  useEffect(() => {
-    try {
-      handle.exit();
-    } catch (error) {}
-  }, []);
-  const skip = () => {
-    setOpen(false);
-    try {
-      handle.enter();
-    } catch (error) {}
-  };
-  useEffect(() => {
-    !isIOS
-      ? SetSteps([
-          {
-            title: (
-              <>
-                Fullscreen toggle Button{" "}
-                <button
-                  className="ant-btn css-dev-only-do-not-override-p2y309 ant-btn-default ant-btn-sm ant-tour-prev-btn"
-                  onClick={skip}
-                >
-                  Skip
-                </button>
-              </>
-            ),
-            description: "You can use fullscreen for a better user experience.",
-            target: () => fullScreenBtn.current,
-          },
-          {
-            title: (
-              <>
-                Close Button{" "}
-                <button
-                  className="ant-btn css-dev-only-do-not-override-p2y309 ant-btn-default ant-btn-sm ant-tour-prev-btn"
-                  onClick={skip}
-                >
-                  Skip
-                </button>
-              </>
-            ),
-            description: "You can use the close button to skip this step.",
-            target: () => closeScreenBtn.current,
-          },
-          {
-            title: (
-              <>
-                Capture Button{" "}
-                <button
-                  className="ant-btn css-dev-only-do-not-override-p2y309 ant-btn-default ant-btn-sm ant-tour-prev-btn"
-                  onClick={skip}
-                >
-                  Skip
-                </button>
-              </>
-            ),
-            description: "Click here to capture an image",
-            placement: "left",
-            target: () => captureScreenBtn.current,
-          },
-          {
-            title: (
-              <>
-                Capture count view{" "}
-                <button
-                  className="ant-btn css-dev-only-do-not-override-p2y309 ant-btn-default ant-btn-sm ant-tour-prev-btn"
-                  onClick={skip}
-                >
-                  Skip
-                </button>
-              </>
-            ),
-            description:
-              "You can view the count and preview of previous images.",
-            target: () => countPreview.current,
-            onClose: handle.enter,
-          },
-        ])
-      : SetSteps([
-          {
-            title: (
-              <>
-                Close Button{" "}
-                <button
-                  className="ant-btn css-dev-only-do-not-override-p2y309 ant-btn-default ant-btn-sm ant-tour-prev-btn"
-                  onClick={skip}
-                >
-                  Skip
-                </button>
-              </>
-            ),
-            description: "You can use the close button to skip this step.",
-            target: () => closeScreenBtn.current,
-          },
-          {
-            title: (
-              <>
-                Capture Button{" "}
-                <button
-                  className="ant-btn css-dev-only-do-not-override-p2y309 ant-btn-default ant-btn-sm ant-tour-prev-btn"
-                  onClick={skip}
-                >
-                  Skip
-                </button>
-              </>
-            ),
-            description: <>Click here to capture an image</>,
-            placement: "left",
-            target: () => captureScreenBtn.current,
-          },
-          {
-            title: (
-              <>
-                Capture count view{" "}
-                <button
-                  className="ant-btn css-dev-only-do-not-override-p2y309 ant-btn-default ant-btn-sm ant-tour-prev-btn"
-                  onClick={skip}
-                >
-                  Skip
-                </button>
-              </>
-            ),
-            description:
-              "You can view the count and preview of previous images.",
-            target: () => countPreview.current,
-            onClose: handle.enter,
-          },
-        ]);
-  }, [isIOS]);
 
   return (
     <>
-      <Tour
-        open={open}
-        onClose={() => {
-          setOpen(false);
-          handle.enter();
-        }}
-        steps={steps}
-      />
       <Layout className="vh-100 overflow-hidden">
         <Sider
           collapsedWidth={60}
@@ -179,26 +35,17 @@ function CamLayout({
             left: "0",
             top: "0",
             height: "100vh",
-            zIndex:"1"
+            zIndex: "1",
           }}
         >
           {!isIOS &&
             (handle?.active ? (
-              <FullscreenExitOutlined
-                ref={fullScreenBtn}
-                style={fullStyle}
-                onClick={handle.exit}
-              />
+              <FullscreenExitOutlined style={fullStyle} onClick={handle.exit} />
             ) : (
-              <FullscreenOutlined
-                ref={fullScreenBtn}
-                style={fullStyle}
-                onClick={handle.enter}
-              />
+              <FullscreenOutlined style={fullStyle} onClick={handle.enter} />
             ))}
           {!previewing && (
             <CloseOutlined
-              ref={closeScreenBtn}
               style={{
                 fontSize: "20px",
                 color: "#fff",
@@ -263,7 +110,7 @@ function CamLayout({
             right: "0",
             top: "0",
             height: "100vh",
-            zIndex:"1"
+            zIndex: "1",
           }}
         >
           <div
@@ -298,7 +145,6 @@ function CamLayout({
                 footer: null,
               });
             }}
-            ref={countPreview}
           >
             <Badge
               count={
@@ -323,7 +169,6 @@ function CamLayout({
               shape="circle"
               style={captureStyle}
               size="100"
-              ref={captureScreenBtn}
               onClick={() => {
                 capture(pendingLayouts[0]?.id);
                 play();
