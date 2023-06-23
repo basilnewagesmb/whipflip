@@ -3,10 +3,10 @@ import React from "react";
 
 function OOA() {
   return (
-    <div className="modal-body pb-4">
+    <div className="modal-body p-0 m-0">
       <img
         className="m-auto d-flex"
-        height="240"
+        height="200"
         src="/images/yellow_car.png"
         alt="yellow car"
       ></img>
@@ -43,7 +43,7 @@ function OOA() {
               color: "#ffff",
             }}
           >
-            Whipflip Home
+            WhipFlip Home
           </a>
         </Link>
       </p>

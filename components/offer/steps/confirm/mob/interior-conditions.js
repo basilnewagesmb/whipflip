@@ -14,13 +14,6 @@ function InteriorConditions({
   return (
     <div className="offer_block noBordBtm offer_block_mobi">
       <div className="ob_hd d-flex justify-content-between">
-        <h2
-          style={{
-            fontSize: "20px",
-          }}
-        >
-          Cosmetic Condition
-        </h2>
         {!isReview && (
           <div className="d-flex justify-content-center align-items-center">
             <Button

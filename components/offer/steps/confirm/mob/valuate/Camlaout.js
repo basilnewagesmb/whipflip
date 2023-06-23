@@ -30,7 +30,7 @@ function CamLayout({
           collapsedWidth={60}
           collapsed
           style={{
-            backgroundColor: "#3c3c3c63",
+            backgroundColor: "#543B4302",
             position: "absolute",
             left: "0",
             top: "0",
@@ -105,7 +105,7 @@ function CamLayout({
           collapsedWidth={100}
           collapsed
           style={{
-            backgroundColor: "#3c3c3c63",
+            backgroundColor: "#543B4302",
             position: "absolute",
             right: "0",
             top: "0",
@@ -202,8 +202,8 @@ const captureStyle = {
   color: "#fff",
   backgroundColor: "#fff",
   border: "6px solid #939393b8",
-  width: "55px",
-  height: "55px",
+  width: "75px",
+  height: "75px",
 };
 const countStyle = {
   position: "absolute",
