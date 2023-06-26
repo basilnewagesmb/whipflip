@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useGetOfferQuery } from "services/offer/api";
 import { useRouter } from "next/router";
 import { reset } from "features/offer/offerSlice";
+
 import moment from "moment";
 import { Modal } from "antd";
 import { ClockCircleOutlined } from "@ant-design/icons";
@@ -12,53 +13,33 @@ import Header from "./Header";
 import { Fade } from "react-reveal/index";
 import ResetActions from "./resetActions";
 import useMobileDetect from "utils/useMobileDetect";
+import { disablePageScroll, enablePageScroll } from "scroll-lock";
+
 function Default({ children, user }) {
   const isMobile = useMobileDetect();
-  var scrollPosition = 0;
-  var scrollable = true;
   const handleScroll = () => {
     if (isMobile) {
+      const modals = document.querySelectorAll(".ant-modal-wrap");
       const antSelectOpenElements =
         document.querySelectorAll(".ant-select-open");
       if (antSelectOpenElements.length > 0) {
-        console.log("disable-scroll");
-        disableScroll();
+        disablePageScroll();
+        modals.forEach((element) => {
+          element.style.overflow = "hidden";
+        });
       } else {
-        console.log("enable-scroll");
-        enableScroll();
+        enablePageScroll();
+        modals.forEach((element) => {
+          element.style.overflow = "auto";
+        });
       }
     }
   };
-
-  
-  function enableScroll() {
-    if (!scrollable) {
-      scrollable = true;
-      document.body.classList.remove("disable-scroll");
-      document.body.style.top = "";
-      window.scrollTo(0, scrollPosition);
-      window.addEventListener("scroll", handleScroll); // Add scroll listener back after enabling scrolling
-      
-    }
-  }
-  function disableScroll() {
-    if (scrollable) {
-      scrollable = false;
-      scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-      document.body.classList.add("disable-scroll");
-      document.body.style.top = `-${scrollPosition}px`;
-      window.removeEventListener("scroll", handleScroll); // Remove scroll listener while scrolling is disabled
-    }
-  }
-
-
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     document.addEventListener("click", handleScroll);
-
     return () => {
       document.removeEventListener("click", handleScroll);
-
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
