@@ -22,7 +22,7 @@ function Default({ children, user }) {
       const modals = document.querySelectorAll(".ant-modal-wrap");
       const antSelectOpenElements =
         document.querySelectorAll(".ant-select-open");
-      if (antSelectOpenElements.length > 0) {
+      if (antSelectOpenElements?.length > 0) {
         disablePageScroll();
         modals.forEach((element) => {
           element.style.overflow = "hidden";
@@ -37,10 +37,14 @@ function Default({ children, user }) {
   };
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    document.addEventListener("click", handleScroll);
+    window.addEventListener("click", handleScroll);
+    document.addEventListener("touchmove", handleScroll);
+    document.addEventListener("touchstart", handleScroll);
     return () => {
-      document.removeEventListener("click", handleScroll);
+      window.removeEventListener("click", handleScroll);
       window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("touchmove", handleScroll);
+      document.removeEventListener("touchstart", handleScroll);
     };
   }, []);
 

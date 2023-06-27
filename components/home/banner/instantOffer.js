@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { setInitialOffer } from "features/offer/offerSlice";
 import { useGetOfferByIdMutation } from "services/offer/api";
 import { useRef } from "react";
-
+import { UpOutlined, DownOutlined } from "@ant-design/icons";
 function InstantOffer({ header, handleShowSideBar, handleCancel }) {
   const [showError, setShowError] = useState(false);
   const [retrieveOffer, { isLoading }] = useRetrieveOfferMutation();
@@ -74,7 +74,14 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
                         value: i.modelyear,
                         label: i.modelyear,
                       }))}
-                      allowClear
+                      suffixIcon={
+                        year?.isOpen() && !year?.isDisable() ? (
+                          <UpOutlined />
+                        ) : (
+                          <DownOutlined />
+                        )
+                      }
+                      allowClear={false}
                       placeholder="Year"
                       disabled={year?.isDisable()}
                       loading={year?.isDisable()}
@@ -91,7 +98,14 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
                         value: i.make,
                         label: i.make,
                       }))}
-                      allowClear
+                      suffixIcon={
+                        make?.isOpen() && !make?.isDisable() ? (
+                          <UpOutlined />
+                        ) : (
+                          <DownOutlined />
+                        )
+                      }
+                      allowClear={false}
                       placeholder="Make"
                       disabled={make?.isDisable()}
                       loading={make?.values?.isFetching}
@@ -114,7 +128,14 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
                         value: i.model,
                         label: i.model,
                       }))}
-                      allowClear
+                      suffixIcon={
+                        model?.isOpen() && !model?.isDisable() ? (
+                          <UpOutlined />
+                        ) : (
+                          <DownOutlined />
+                        )
+                      }
+                      allowClear={false}
                       placeholder="Model"
                       disabled={model?.isDisable()}
                       loading={model?.values?.isFetching}
@@ -137,7 +158,14 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
                         value: i.vehicle_id,
                         label: i.body,
                       }))}
-                      allowClear
+                      suffixIcon={
+                        trim?.isOpen() && !trim?.isDisable() ? (
+                          <UpOutlined />
+                        ) : (
+                          <DownOutlined />
+                        )
+                      }
+                      allowClear={false}
                       placeholder="Trim/Series"
                       disabled={trim?.isDisable()}
                       loading={trim?.values?.isFetching}
@@ -309,7 +337,14 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
                         value: i.modelyear,
                         label: i.modelyear,
                       }))}
-                      allowClear
+                      suffixIcon={
+                        year?.isOpen() && !year?.isDisable() ? (
+                          <UpOutlined />
+                        ) : (
+                          <DownOutlined />
+                        )
+                      }
+                      allowClear={false}
                       placeholder="Year"
                       disabled={year?.isDisable()}
                       loading={year?.isDisable()}
@@ -334,7 +369,14 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
                         value: i.make,
                         label: i.make,
                       }))}
-                      allowClear
+                      suffixIcon={
+                        make?.isOpen() && !make?.isDisable() ? (
+                          <UpOutlined />
+                        ) : (
+                          <DownOutlined />
+                        )
+                      }
+                      allowClear={false}
                       placeholder="Make"
                       disabled={make?.isDisable()}
                       loading={make?.values?.isFetching}
@@ -359,7 +401,14 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
                         value: i.model,
                         label: i.model,
                       }))}
-                      allowClear
+                      suffixIcon={
+                        model?.isOpen() && !model?.isDisable() ? (
+                          <UpOutlined />
+                        ) : (
+                          <DownOutlined />
+                        )
+                      }
+                      allowClear={false}
                       placeholder="Model"
                       disabled={model?.isDisable()}
                       loading={model?.values?.isFetching}
@@ -389,7 +438,14 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
                         value: i.vehicle_id,
                         label: i.body,
                       }))}
-                      allowClear
+                      suffixIcon={
+                        trim?.isOpen() && !trim?.isDisable() ? (
+                          <UpOutlined />
+                        ) : (
+                          <DownOutlined />
+                        )
+                      }
+                      allowClear={false}
                       placeholder="Trim/Series"
                       disabled={trim?.isDisable()}
                       loading={trim?.values?.isFetching}
