@@ -98,7 +98,9 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
                       onChange={make?.onChange}
                       open={make?.isOpen()}
                       onClick={() => {
-                        !make?.isOpen() && setThisOpen("make");
+                        make?.isOpen()
+                          ? setThisOpen(null)
+                          : setThisOpen("make");
                       }}
                     />
                   </Form.Item>
@@ -119,7 +121,9 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
                       onChange={model?.onChange}
                       open={model?.isOpen()}
                       onClick={() => {
-                        !model?.isOpen() && setThisOpen("model");
+                        model?.isOpen()
+                          ? setThisOpen(null)
+                          : setThisOpen("model");
                       }}
                     />
                   </Form.Item>
@@ -140,7 +144,9 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
                       onChange={trim?.onChange}
                       open={trim?.isOpen()}
                       onClick={() => {
-                        !trim?.isOpen() && setThisOpen("trim");
+                        trim?.isOpen()
+                          ? setThisOpen(null)
+                          : setThisOpen("trim");
                       }}
                     />
                   </Form.Item>
