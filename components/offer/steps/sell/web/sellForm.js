@@ -201,7 +201,7 @@ function SellFrom({
                             current.isBefore(moment().subtract(1, "day")) ||
                             !current.isBefore(moment().add(7, "day"))
                           }
-                          format={"MM-DD-YYYY"}
+                          format={"MM-DD-YYYY"}                          
                         />
                       </Form.Item>
 

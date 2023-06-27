@@ -162,10 +162,9 @@ function useSellFuc(data) {
         return type;
     }
   };
-  console.log(formRealData);
   useEffect(() => {
     const zipLength = formRealData?.zip?.length;
-    if ([4, 5].includes(zipLength)) {
+    if ([5].includes(zipLength)) {
       triggerFetch(true);
     }
   }, [formRealData?.zip]);
