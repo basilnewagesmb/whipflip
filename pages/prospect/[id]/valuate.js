@@ -42,6 +42,12 @@ function Valuate(props) {
     isForUpload,
   });
   const { state } = valuateControl;
+  useEffect(() => {
+    if (document.getElementById("chat-widget-minimized")) {
+      document.getElementById("chat-widget-minimized").style.display = "none";
+    }
+  }, [document,window]);
+
   return (
     <>
       {valuateControl?.isMobile ? (

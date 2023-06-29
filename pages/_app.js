@@ -24,6 +24,7 @@ import Loader from "layout/Loader";
 const Default = dynamic(() => import("layout/Default"), {
   loading: () => <Loader />,
 });
+const LiveChat = dynamic(() => import("utils/LiveChat"));
 
 function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
   useEffect(() => {
@@ -37,47 +38,9 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
       message.error("You're currently offline");
     }
   }, [isOnline]);
-  // useEffect(() => {
-  //   const handlePageShow = (event) => {
-  //     if (event.persisted) {
-  //       router.reload();
-  //     }
-  //   };
 
-  //   window.addEventListener("pageshow", handlePageShow);
-
-  //   return () => {
-  //     window.removeEventListener("pageshow", handlePageShow);
-  //   };
-  // }, []);
   const router = useRouter();
-  // const browserTabLoseHandler = (e) => {
-  //   e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
-  //   // Chrome requires returnValue to be set
-  //   e.returnValue = "";
-  // };
-  // useEffect(() => {
-  //   if (window) {
-  //     router.beforePopState(() => {
-  //       const result = window.confirm(
-  //         "Are you sure you want to leave this page? You may lose unsaved data."
-  //       );
-  //       if (!result) {
-  //         window.history.pushState("/", "");
-  //       }
-  //       return result;
-  //     });
-  //     window.onbeforeunload = browserTabLoseHandler;
-  //   }
-  //   return () => {
-  //     if (window) {
-  //       window.onbeforeunload = null;
-  //     }
-  //     router.beforePopState(() => {
-  //       return true;
-  //     });
-  //   };
-  // }, []);
+
   useEffect(() => {
     Modal.destroyAll();
   }, [router.asPath]);
@@ -86,6 +49,7 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
     <Provider store={store}>
       <PersistGate loading={<Loader />} persistor={persister}>
         {/* {() => ( */}
+        <LiveChat />
         <Default>
           <ConfigProvider
             theme={{

@@ -11,7 +11,7 @@ function FaqPage() {
   const tabs = [
     { title: "HOW IT WORKS", component: faqData.howItWorks },
     { title: "WHAT WE BUY", component: faqData.whatWeBuy },
-    { title: "QUOTES & OFFERS", component: faqData.quotesAndOffers },
+    { title: "INSTANT & FINAL OFFER", component: faqData.quotesAndOffers },
     { title: "APPOINTMENT", component: faqData.appointment },
     { title: "PAYMENTS", component: faqData.payments },
     { title: "FEEDBACK", component: faqData.feedback },
@@ -76,7 +76,7 @@ function FaqPage() {
                   <li
                     key={i}
                     onClick={() => {
-                     // carouselRef?.current?.goTo(i);
+                      carouselRef?.current?.goTo(i);
                       setCurrent(i);
                     }}
                     className={i == current ? "active pe-auto" : "pe-auto"}
