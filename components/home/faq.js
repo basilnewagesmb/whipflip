@@ -32,7 +32,7 @@ export const faqData = {
               and how it should be sold in the modern age.
             </p>
             <p>
-              Our final offers are real, service is 5 star, and our payment
+              Our final offer are real, service is 5 star, and our payment
               NEVER bounces! We buy thousands of cars a year ranging from $1,000
               to $250,000+ from awesome customers like yourself and pride
               ourselves on delivering a phenomenal purchase experience at your
@@ -530,7 +530,7 @@ export const faqData = {
             <p>
               {" "}
               WhipFlip doesn&apos;t ask a customer a ton of cumbersome questions
-              to make &quot;guesstimates&quot; on final offers, or just apply
+              to make &quot;guesstimates&quot; on final offer, or just apply
               some broad conservative deduction to determine an offer.
             </p>
             <p>
@@ -542,9 +542,9 @@ export const faqData = {
             </p>
             <p>
               {" "}
-              In addition, our instant offers and final offers are instant to
+              In addition, our instant offer and final offer are instant to
               give you all the information you need without spending hours
-              traveling shopping it around just to get instant offers.
+              traveling shopping it around just to get instant offer.
             </p>
             <div className="social-icon d-flex">
               <Link href="https://www.facebook.com/WhipFlip-111080500678406">
@@ -675,7 +675,7 @@ export const faqData = {
             </p>
             <p>
               <span className="font-weight-bold"> - INSTANT OFFER</span> are not
-              final offers nor guaranteed. Based on the vehicle information you
+              final offer nor guaranteed. Based on the vehicle information you
               entered, you will receive a instant offer which is only to be
               taken as an initial estimate of what our offer could be.
             </p>
@@ -689,7 +689,7 @@ export const faqData = {
               cancelled.
             </p>
             <p>
-              *All final offers are good for 5 days from when they were
+              *All final offer are good for 5 days from when they were
               generated. If this time has lapsed, you will need to complete the
               process for a new offer. The good news is it only takes 3 minutes!
             </p>
@@ -742,7 +742,7 @@ export const faqData = {
               for your car.
             </p>
             <p>
-              We strive to provide best in class final offers for vehicles (aka
+              We strive to provide best in class final offer for vehicles (aka
               more money for you).
             </p>
             <div className="social-icon d-flex">
@@ -765,13 +765,13 @@ export const faqData = {
             <p>
               {" "}
               We try! It&apos;s hard to answer that but WhipFlip has several
-              great advantages that allow us to deliver great final offers to
+              great advantages that allow us to deliver great final offer to
               our customers that can be higher than KBB, Carmax, Carvana,
               Webuyanycar.com etc.
             </p>
 
             <p>
-              Typically, our final offers are close to all others and sometimes
+              Typically, our final offer are close to all others and sometimes
               are much higher. If you have an official offer from any of these
               dealers, please give us a call{" "}
               <Link href="tel:8883493189">
@@ -1196,7 +1196,6 @@ export const faqData = {
               <Link href="#">
                 <div>here</div>
               </Link>
-              .
             </p>
             <p>
               We are built by consumers, for consumers. Let us know how we can
