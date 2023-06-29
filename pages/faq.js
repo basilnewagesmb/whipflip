@@ -76,7 +76,7 @@ function FaqPage() {
                   <li
                     key={i}
                     onClick={() => {
-                      carouselRef?.current?.goTo(i);
+                      // carouselRef?.current?.goTo(i);
                       setCurrent(i);
                     }}
                     className={i == current ? "active pe-auto" : "pe-auto"}
@@ -88,12 +88,14 @@ function FaqPage() {
             </div>
             <div className="col-md-8 col-lg-9 faq right_sidebar_faq">
               <div className="faqWrapper FaqWrapper">
-                <Carousel
+                {/* <Carousel
                   afterChange={onChange}
                   ref={carouselRef}
                   effect="fade"
-                >
-                  {tabs?.map((item, i) => (
+                > */}
+                {tabs
+                  ?.filter((item, k) => current == k)
+                  .map((item, i) => (
                     <div key={i}>
                       <div className="faq_for_each" key={i}>
                         <h3 className="font-weight-600">{item.title}</h3>
@@ -101,7 +103,7 @@ function FaqPage() {
                       </div>
                     </div>
                   ))}
-                </Carousel>
+                {/* </Carousel> */}
               </div>
             </div>
           </div>

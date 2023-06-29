@@ -32,12 +32,12 @@ export const faqData = {
               and how it should be sold in the modern age.
             </p>
             <p>
-              Our final offers are real, service is 5 star, and our payment NEVER
-              bounces! We buy thousands of cars a year ranging from $1,000 to
-              $250,000+ from awesome customers like yourself and pride ourselves
-              on delivering a phenomenal purchase experience at your driveway.
-              Don’t just take our word for it, check out our Google certified
-              reviews and our Flippin’ awesome partners below.
+              Our final offers are real, service is 5 star, and our payment
+              NEVER bounces! We buy thousands of cars a year ranging from $1,000
+              to $250,000+ from awesome customers like yourself and pride
+              ourselves on delivering a phenomenal purchase experience at your
+              driveway. Don’t just take our word for it, check out our Google
+              certified reviews and our Flippin’ awesome partners below.
             </p>
             <div className="row align-items-center">
               <div className="col-8 col-md-4">
@@ -51,7 +51,6 @@ export const faqData = {
                     alt="WhipFlip Inc. BBB Business Review"
                     title="Google reviews"
                     className="img-fluid"
-                   
                   />
                 </Link>
               </div>
@@ -242,8 +241,8 @@ export const faqData = {
           <AccordionItemPanel>
             <p>
               We want to buy your car as fast as you can order a pizza. Our
-              process to get a instant offer, an offer, and book to sell can take less
-              than 5 minutes.
+              process to get a instant offer, an offer, and book to sell can
+              take less than 5 minutes.
             </p>
 
             <p>
@@ -264,9 +263,9 @@ export const faqData = {
               <span className="text-bold">
                 The whole thing!? - 5-10+ minutes -
               </span>{" "}
-              This includes getting a instant offer, an offer, uploading ownership
-              proof, setting an appointment, and completion of the sale at your
-              door.
+              This includes getting a instant offer, an offer, uploading
+              ownership proof, setting an appointment, and completion of the
+              sale at your door.
             </p>
 
             <p>
@@ -295,10 +294,10 @@ export const faqData = {
           </AccordionItemHeading>
           <AccordionItemPanel>
             <p>
-              If you are just looking for a instant offer or basic information about our
-              company you may use any device including a computer. You will need
-              to use a smartphone to complete the rest of the process to get a
-              WhipFlip offer.
+              If you are just looking for a instant offer or basic information
+              about our company you may use any device including a computer. You
+              will need to use a smartphone to complete the rest of the process
+              to get a WhipFlip offer.
             </p>
             <div className="social-icon d-flex">
               <Link href="https://www.facebook.com/WhipFlip-111080500678406">
@@ -531,8 +530,8 @@ export const faqData = {
             <p>
               {" "}
               WhipFlip doesn&apos;t ask a customer a ton of cumbersome questions
-              to make &quot;guesstimates&quot; on final offers, or just apply some
-              broad conservative deduction to determine an offer.
+              to make &quot;guesstimates&quot; on final offers, or just apply
+              some broad conservative deduction to determine an offer.
             </p>
             <p>
               {" "}
@@ -543,9 +542,9 @@ export const faqData = {
             </p>
             <p>
               {" "}
-              In addition, our instant offers and final offers are instant to give you all the
-              information you need without spending hours traveling shopping it
-              around just to get instant offers.
+              In addition, our instant offers and final offers are instant to
+              give you all the information you need without spending hours
+              traveling shopping it around just to get instant offers.
             </p>
             <div className="social-icon d-flex">
               <Link href="https://www.facebook.com/WhipFlip-111080500678406">
@@ -604,20 +603,22 @@ export const faqData = {
             </p>
             <p className="font-weight-bold">Ex. 1 - Repair NOT Recommended</p>
             <p>
-              Jane has a 2009 Honda Accord with a instant offer of $4,500. It has a
-              Check Engine Light on and has two body panels with decent sized
-              dents that need professional repair. When she used WhipFlip, we
-              deducted $780 from the instant offer for these issues. The cost to repair
-              these issues is $1,900 if she decided to repair. In this case, it
-              is not recommended to pay for these repairs and sell as-is.
+              Jane has a 2009 Honda Accord with a instant offer of $4,500. It
+              has a Check Engine Light on and has two body panels with decent
+              sized dents that need professional repair. When she used WhipFlip,
+              we deducted $780 from the instant offer for these issues. The cost
+              to repair these issues is $1,900 if she decided to repair. In this
+              case, it is not recommended to pay for these repairs and sell
+              as-is.
             </p>
             <p className="font-weight-bold">Ex. 2 - Repair Recommended</p>
             <p>
-              John has a 2016 Mercedes E320 sedan with a instant offer of $19,000.
-              Recently his airbag/SRS light came on and WhipFlip deducted $2,200
-              from the instant offer. John went to the local Mercedes service center and
-              they determined that it was a sensor in need of repair and could
-              fix for $960. In this case it is recommended to repair this issue.
+              John has a 2016 Mercedes E320 sedan with a instant offer of
+              $19,000. Recently his airbag/SRS light came on and WhipFlip
+              deducted $2,200 from the instant offer. John went to the local
+              Mercedes service center and they determined that it was a sensor
+              in need of repair and could fix for $960. In this case it is
+              recommended to repair this issue.
             </p>
             It&apos;s your choice. We would love to guide you to make the best
             decision by clicking here.
@@ -673,23 +674,24 @@ export const faqData = {
               Yes and no. Let&apos;s explain.....
             </p>
             <p>
-              <span className="font-weight-bold"> - INSTANT OFFER</span> are not final offers
-              nor guaranteed. Based on the vehicle information you entered, you
-              will receive a instant offer which is only to be taken as an initial
-              estimate of what our offer could be.
+              <span className="font-weight-bold"> - INSTANT OFFER</span> are not
+              final offers nor guaranteed. Based on the vehicle information you
+              entered, you will receive a instant offer which is only to be
+              taken as an initial estimate of what our offer could be.
             </p>
             <p>
               {" "}
-              <span className="font-weight-bold"> - FINAL OFFERS</span> are guaranteed
-              as long as the details of your vehicle, condition, and history are
-              as described. Basically, the information you enter is what the
-              offer is based on. If what has been entered isn&apos;t reflective
-              of what the vehicle is, the offer could adjust or be cancelled.
+              <span className="font-weight-bold"> - FINAL OFFER</span> are
+              guaranteed as long as the details of your vehicle, condition, and
+              history are as described. Basically, the information you enter is
+              what the offer is based on. If what has been entered isn&apos;t
+              reflective of what the vehicle is, the offer could adjust or be
+              cancelled.
             </p>
             <p>
-              *All final offers are good for 5 days from when they were generated. If
-              this time has lapsed, you will need to complete the process for a
-              new offer. The good news is it only takes 3 minutes!
+              *All final offers are good for 5 days from when they were
+              generated. If this time has lapsed, you will need to complete the
+              process for a new offer. The good news is it only takes 3 minutes!
             </p>
             <p className="font-weight-bold">Examples of offer adjustments:</p>
             <p>- Wrong year, make, model, and options selected.</p>
@@ -719,7 +721,7 @@ export const faqData = {
         <AccordionItem key={18} uuid={18}>
           <AccordionItemHeading>
             <AccordionItemButton>
-              Where do your final offers come from? How are they calculated?
+              Where do your final offer come from? How are they calculated?
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
@@ -740,8 +742,8 @@ export const faqData = {
               for your car.
             </p>
             <p>
-              We strive to provide best in class final offers for vehicles (aka more
-              money for you).
+              We strive to provide best in class final offers for vehicles (aka
+              more money for you).
             </p>
             <div className="social-icon d-flex">
               <Link href="https://www.facebook.com/WhipFlip-111080500678406">
@@ -763,14 +765,14 @@ export const faqData = {
             <p>
               {" "}
               We try! It&apos;s hard to answer that but WhipFlip has several
-              great advantages that allow us to deliver great final offers to our
-              customers that can be higher than KBB, Carmax, Carvana,
+              great advantages that allow us to deliver great final offers to
+              our customers that can be higher than KBB, Carmax, Carvana,
               Webuyanycar.com etc.
             </p>
 
             <p>
-              Typically, our final offers are close to all others and sometimes are
-              much higher. If you have an official offer from any of these
+              Typically, our final offers are close to all others and sometimes
+              are much higher. If you have an official offer from any of these
               dealers, please give us a call{" "}
               <Link href="tel:8883493189">
                 <div>(888) 349-3189</div>
@@ -956,7 +958,6 @@ export const faqData = {
               <Link href="tel:8883493189">
                 <div>(888) 349-3189</div>
               </Link>
-              .
             </p>
             <p>
               We LOVE buying cars! It&apos;s all we do. Hopefully we can see you
