@@ -99,21 +99,22 @@ const Index = () => (
           </ul>
         </li>
         <li>
-          <b>The Instant Quote/Offer Tool</b>
+          <b>The Initial offer / final offer Tool</b>
           <p>
             WhipFlip offers a service that assesses the value of vehicles based
-            on certain criteria (the <b>“Instant Quote/Offer Tool”</b>). To use
-            the Instant Quote/Offer Tool, you must submit information about your
-            vehicle, such as: (i) photos; (ii) License Plate or VIN; (iii)
+            on certain criteria (the 
+            <b>Initial offer / Final Offer Tool”</b>). To use the
+            initial offer / final Offer Tool, you must submit information about
+            your vehicle, such as: (i) photos; (ii) License Plate or VIN; (iii)
             mileage; (iv) a description; and (v) any other information we may
             require from time to time.{" "}
           </p>
         </li>
         <li>
-          <b>Specific Quotes & Offers Terms</b>
+          <b>Specific initial offer & Offers Terms</b>
           <p>
             Our website gives you the ability to enter their vehicle information
-            to obtain an initial quote on the value of their vehicle if
+            to obtain an initial offer on the value of their vehicle if
             purchased by WhipFlip through our service. Upon completing a series
             of required steps, an authorized user may obtain an <u>ESTIMATED</u>
             , non-binding offer for WhipFlip to purchase their vehicle through
@@ -122,8 +123,8 @@ const Index = () => (
         </li>
       </ul>
       <p>
-        A QUOTE OR OFFER PRODUCED BY USE OF OUR WEBSITE DOES NOT CONSTITUTE A
-        BINDING OFFER IN ANY WAY, SHAPE, OR FORM.{" "}
+        A INITIAL OFFER OR FINAL OFFER PRODUCED BY USE OF OUR WEBSITE DOES NOT
+        CONSTITUTE A BINDING OFFER IN ANY WAY, SHAPE, OR FORM.{" "}
         <u>
           {" "}
           All offers are subject to final vehicle inspection, ownership
@@ -165,12 +166,12 @@ const Index = () => (
       <p>
         <u>IT IS YOUR SOLE RESPONSIBILITY</u> to ensure full disclosure of all
         vehicle details, condition information, history records, and adherence
-        to all steps in the WhipFlip Quote, Offer, and Appointment Booking
+        to all steps in the WhipFlip initial offer, final offer, and Appointment Booking
         process are accurately completed. If it is determined from either an
         in-person inspection or any other method that there is a deviation from
-        any of the terms set forth in our Quotes & Offers Disclaimer or the
+        any of the terms set forth in our initial offer & Offers Disclaimer or the
         customers vehicle is misrepresented in any way, WhipFlip may adjust at
-        its sole discretion any Quote or Offer, up to and including termination
+        its sole discretion any initial offer or final offer, up to and including termination
         of any non-binding or binding Offer.
       </p>
       <p>
@@ -179,9 +180,9 @@ const Index = () => (
         seamless vehicle selling experience to its customers. Although it is
         expected to be a rare occurrence, these certain technology elements may
         go offline, produce inaccurate results or calculations, or underperform
-        which could deliver inaccurate Quote or Offer values to its customers.
+        which could deliver inaccurate initial offer or Offer values to its customers.
         WhipFlip will make a reasonable effort to remedy this situation with you
-        but reserves the right to adjust or rescind any Quote or Offer made in
+        but reserves the right to adjust or rescind any initial offer or Final offer made in
         its sole discretion, without penalty or any liability.
       </p>
       <p>
@@ -192,22 +193,22 @@ const Index = () => (
         vehicle years, makes, and models, recalls, acts of God, natural
         disasters, or any other automotive market downturn could cause potential
         harm to WhipFlip. Therefore, Whip Flip reserves the right to adjust or
-        rescind any quote or offer made to you whether from the website or
+        rescind any initial offer or offer made to you whether from the website or
         during our in-person visit at its sole discretion, without liability.
       </p>
       <p>
-        You also agree to not rely on any WhipFlip Quote, Offer, or Appointment
+        You also agree to not rely on any WhipFlip initial offer, final Offer, or Appointment
         to relieve or adjoin to a personal detriment, liability, or promise
         between the user and any related party, relationship, or arrangement.
       </p>
       <p>
         WhipFlip makes reasonable efforts to regularly update our Website
-        features pertaining to vehicle values (e.g. Quote or Offer) and
+        features pertaining to vehicle values (e.g. initial offer or final offer) and
         Appointments including any technology, database, or industry information
         used to determine vehicle values displayed on our Website. However,
         WhipFlip makes no guarantees, representations, or warranties and assumes
         no responsibility or liability pertaining to the accuracy, reliability,
-        or completeness of any value (e.g. Quote or Offer), or any other
+        or completeness of any value (e.g. initial offer or final offer), or any other
         information that would reside or be delivered by our Website.
       </p>
       <p>
@@ -217,8 +218,8 @@ const Index = () => (
         of Attorney, and Odometer Disclosure Statement.
       </p>
       <p>
-        If you have any questions or concerns regarding our process, Quotes &
-        Offers, and proper vehicle disclosure you may visit our{" "}
+        If you have any questions or concerns regarding our process, Initial offer &
+        Final offer, and proper vehicle disclosure you may visit our{" "}
         <u>
           <Link href="/faq">
             <div>FAQ</div>

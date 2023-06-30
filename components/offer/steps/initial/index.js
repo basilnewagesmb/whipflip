@@ -296,7 +296,7 @@ function Initial(props) {
                         ]}
                         tooltip={{
                           title:
-                            "We send a copy of your quote to pick up right where you left off. We DO NOT distribute your info to 3rd parties",
+                            "We send a copy of your initial offer to pick up right where you left off. We DO NOT distribute your info to 3rd parties",
                           icon: <InfoCircleOutlined />,
                         }}
                       >

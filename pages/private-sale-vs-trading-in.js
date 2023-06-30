@@ -197,7 +197,7 @@ function Index() {
                       </li>
                       <li>
                         Can take a few days and several hours spent traveling to
-                        several dealers to get just a quote.
+                        several dealers to get just a initial offer.
                       </li>
                       <li>
                         Trade-In offers are typically much lower than private

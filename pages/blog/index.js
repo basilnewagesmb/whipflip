@@ -305,7 +305,7 @@ function Blog(props) {
                 </div>
                 <div className="quote_car_parent desk-show-quote d-none d-md-block">
                   <div className="quote_car">
-                    <h2>Get an instant offer for your car now</h2>
+                    <h2>Get an Initial offer for your car now</h2>
                     <p>
                       Selling your used car online has never been easier. Find
                       out what your car is worth and get a better offer than
@@ -328,7 +328,7 @@ function Blog(props) {
       <div className="quote_car_parent mob-show-quote d-block d-md-none">
         <div className="container">
           <div className="quote_car">
-            <h2>Get an instant offer for your car now</h2>
+            <h2>Get an initial offer for your car now</h2>
             <p>
               Selling your used car online has never been easier. Find out what
               your car is worth and get a better offer than trade in. We come to

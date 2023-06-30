@@ -52,7 +52,7 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
         <div className="vdnHd">
           <div className="vdnHdIn">
             <span>Enter vehicle details</span>
-            <span>for an instant offer.</span>
+            <span>for an initial offer.</span>
           </div>
         </div>
         <div className="vdnForm">

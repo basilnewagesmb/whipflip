@@ -75,7 +75,7 @@ function RulesModal({
                 <h3>All ownership documents are ready.</h3>
                 <p>
                   This includes ID, title (legally in your name on the front),
-                  or loan payoff quote.
+                  or loan payoff initial offer.
                 </p>
               </li>
               <li className="ror_item">

@@ -208,7 +208,7 @@ function About() {
                   {`Our professional Car Concierges will
                   come to you at the time and place you set to sell your car.
                   Before they arrive, you'll receive a text or email of which
-                  Concierge will be arriving at your place. You'll instantly
+                  Concierge will be arriving at your place. You'll initially
                   recognize them from the WhipFlip uniform! In only a few minutes, our Car Concierge will verify your offer, complete paperwork, and hand you a check on the spot!`}
                 </p>
               </div>
@@ -271,7 +271,7 @@ function About() {
                   <p>
                     {`The world is changing to have practically anything that you
                     need right at your fingertips, done from a smartphone, and
-                    delivered to you instantly. So why can't the same exact
+                    delivered to you initially. So why can't the same exact
                     experience exist for selling a car? We are motivated
                     everyday to truly live by our values and always understand
                     who makes us exist - YOU!`}

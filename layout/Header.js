@@ -55,7 +55,7 @@ function Header() {
                 fontSize: "26px",
               }}
             >
-              Get Instant offer
+              Get Instant Offer
             </h2>
           }
           open={isModalOpen}
@@ -155,7 +155,7 @@ function Header() {
                       }
                     }
                   >
-                    <span>GET INSTANT OFFER</span>
+                    <span>Get Instant Offer</span>
                   </Button>
                 )}
                 <div

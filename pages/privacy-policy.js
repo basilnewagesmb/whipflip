@@ -125,7 +125,7 @@ const Privacy = () => (
       <p>
         Please rest assured that this site will only collect personal
         information that you knowingly and willingly provide to us by way of
-        surveys, completed vehicle quotes and offers, purchase transactions, and
+        surveys, completed vehicle initial offer and final offers, purchase transactions, and
         emails. It is the intent of this site to use personal information only
         for the purpose for which it was requested, and any additional uses
         specifically provided for on this Policy.{" "}

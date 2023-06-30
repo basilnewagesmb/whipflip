@@ -11,7 +11,7 @@ function FaqPage() {
   const tabs = [
     { title: "HOW IT WORKS", component: faqData.howItWorks },
     { title: "WHAT WE BUY", component: faqData.whatWeBuy },
-    { title: "INSTANT & FINAL OFFER", component: faqData.quotesAndOffers },
+    { title: "INITIAL & FINAL OFFER", component: faqData.quotesAndOffers },
     { title: "APPOINTMENT", component: faqData.appointment },
     { title: "PAYMENTS", component: faqData.payments },
     { title: "FEEDBACK", component: faqData.feedback },

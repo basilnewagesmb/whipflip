@@ -217,7 +217,7 @@ const BlogDetail = (props) => {
                     )}
                   </div>
                   <div className="quote_car">
-                    <h2>Get an instant offer for your car now</h2>
+                    <h2>Get an initial offer for your car now</h2>
                     <p>
                       Selling your used car online has never been easier. Find
                       out what your car is worth and get a better offer than

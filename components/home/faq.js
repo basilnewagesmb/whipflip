@@ -98,7 +98,7 @@ export const faqData = {
             <ol className="mb-4">
               <li>
                 Visit our site and enter your vehicles details to get an initial
-                instant offer.
+                initial offer.
               </li>
               <li>
                 Use our automated and guided vehicle valuation tool to get an
@@ -241,7 +241,7 @@ export const faqData = {
           <AccordionItemPanel>
             <p>
               We want to buy your car as fast as you can order a pizza. Our
-              process to get a instant offer, an offer, and book to sell can
+              process to get a initial offer, an offer, and book to sell can
               take less than 5 minutes.
             </p>
 
@@ -249,7 +249,7 @@ export const faqData = {
               {" "}
               <span className="text-bold">
                 {" "}
-                To get a instant offer? - 30-60+ seconds.
+                To get a initial offer? - 30-60+ seconds.
               </span>
             </p>
 
@@ -263,7 +263,7 @@ export const faqData = {
               <span className="text-bold">
                 The whole thing!? - 5-10+ minutes -
               </span>{" "}
-              This includes getting a instant offer, an offer, uploading
+              This includes getting a initial offer, an offer, uploading
               ownership proof, setting an appointment, and completion of the
               sale at your door.
             </p>
@@ -294,7 +294,7 @@ export const faqData = {
           </AccordionItemHeading>
           <AccordionItemPanel>
             <p>
-              If you are just looking for a instant offer or basic information
+              If you are just looking for a initial offer or basic information
               about our company you may use any device including a computer. You
               will need to use a smartphone to complete the rest of the process
               to get a WhipFlip offer.
@@ -542,9 +542,9 @@ export const faqData = {
             </p>
             <p>
               {" "}
-              In addition, our instant offer and final offer are instant to
+              In addition, our initial offer and final offer are instant to
               give you all the information you need without spending hours
-              traveling shopping it around just to get instant offer.
+              traveling shopping it around just to Get Instant Offer.
             </p>
             <div className="social-icon d-flex">
               <Link href="https://www.facebook.com/WhipFlip-111080500678406">
@@ -603,19 +603,19 @@ export const faqData = {
             </p>
             <p className="font-weight-bold">Ex. 1 - Repair NOT Recommended</p>
             <p>
-              Jane has a 2009 Honda Accord with a instant offer of $4,500. It
+              Jane has a 2009 Honda Accord with a initial offer of $4,500. It
               has a Check Engine Light on and has two body panels with decent
               sized dents that need professional repair. When she used WhipFlip,
-              we deducted $780 from the instant offer for these issues. The cost
+              we deducted $780 from the initial offer for these issues. The cost
               to repair these issues is $1,900 if she decided to repair. In this
               case, it is not recommended to pay for these repairs and sell
               as-is.
             </p>
             <p className="font-weight-bold">Ex. 2 - Repair Recommended</p>
             <p>
-              John has a 2016 Mercedes E320 sedan with a instant offer of
+              John has a 2016 Mercedes E320 sedan with a initial offer of
               $19,000. Recently his airbag/SRS light came on and WhipFlip
-              deducted $2,200 from the instant offer. John went to the local
+              deducted $2,200 from the initial offer. John went to the local
               Mercedes service center and they determined that it was a sensor
               in need of repair and could fix for $960. In this case it is
               recommended to repair this issue.
@@ -666,7 +666,7 @@ export const faqData = {
         <AccordionItem key={17} uuid={17}>
           <AccordionItemHeading>
             <AccordionItemButton>
-              Is your instant offer or final offer guaranteed?
+              Is your initial offer or final offer guaranteed?
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
@@ -674,9 +674,9 @@ export const faqData = {
               Yes and no. Let&apos;s explain.....
             </p>
             <p>
-              <span className="font-weight-bold"> - INSTANT OFFER</span> are not
+              <span className="font-weight-bold"> - INITIAL OFFER</span> are not
               final offer nor guaranteed. Based on the vehicle information you
-              entered, you will receive a instant offer which is only to be
+              entered, you will receive a initial offer which is only to be
               taken as an initial estimate of what our offer could be.
             </p>
             <p>
@@ -1222,7 +1222,7 @@ const Faq = ({ icon, short }) => {
   const tabs = [
     { title: "HOW IT WORKS", component: faqData.howItWorks },
     { title: "WHAT WE BUY", component: faqData.whatWeBuy },
-    { title: "INSTANT & FINAL OFFER", component: faqData.quotesAndOffers },
+    { title: "INITIAL & FINAL OFFER", component: faqData.quotesAndOffers },
     { title: "APPOINTMENT", component: faqData.appointment },
     { title: "PAYMENTS", component: faqData.payments },
     { title: "FEEDBACK", component: faqData.feedback },
