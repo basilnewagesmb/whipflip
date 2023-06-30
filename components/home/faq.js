@@ -262,7 +262,7 @@ export const faqData = {
               <span className="text-bold">
                 The whole thing!? - 5-10+ minutes -
               </span>{" "}
-              This includes getting a initial, uploading
+              This includes getting a initial offer, uploading
               ownership proof, setting an appointment, and completion of the
               sale at your door.
             </p>
