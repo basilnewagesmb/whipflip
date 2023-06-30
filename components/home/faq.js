@@ -97,7 +97,7 @@ export const faqData = {
             </p>
             <ol className="mb-4">
               <li>
-                Visit our site and enter your vehicles details to get an initialoffer.
+                Visit our site and enter your vehicles details to get an initial offer.
               </li>
               <li>
                 Use our automated and guided vehicle valuation tool to get an
