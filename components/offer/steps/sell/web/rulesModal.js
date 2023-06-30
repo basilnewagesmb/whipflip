@@ -54,7 +54,7 @@ function RulesModal({
             <ul>
               <li className="ror_item">
                 <h3>
-                  Your offer is <b>{getAmount(data)}</b>.
+                  Your final offer is <b>{getAmount(data)}</b>.
                 </h3>
                 <p>
                   This offer is non-negotiable and is based on final inspection.

@@ -97,8 +97,7 @@ export const faqData = {
             </p>
             <ol className="mb-4">
               <li>
-                Visit our site and enter your vehicles details to get an initial
-                initial offer.
+                Visit our site and enter your vehicles details to get an initialoffer.
               </li>
               <li>
                 Use our automated and guided vehicle valuation tool to get an
@@ -241,7 +240,7 @@ export const faqData = {
           <AccordionItemPanel>
             <p>
               We want to buy your car as fast as you can order a pizza. Our
-              process to get a initial offer, an offer, and book to sell can
+              process to get a initial offer, and book to sell can
               take less than 5 minutes.
             </p>
 
@@ -263,7 +262,7 @@ export const faqData = {
               <span className="text-bold">
                 The whole thing!? - 5-10+ minutes -
               </span>{" "}
-              This includes getting a initial offer, an offer, uploading
+              This includes getting a initial, uploading
               ownership proof, setting an appointment, and completion of the
               sale at your door.
             </p>
