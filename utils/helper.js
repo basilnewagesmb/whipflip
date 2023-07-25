@@ -3,5 +3,5 @@ export function isLocal(host) {
 }
 
 export function isDev() {
-  return process.env.APP_MODE !== "production";
+  return process.env.NEXT_PUBLIC_APP_MODE !== "production";
 }
