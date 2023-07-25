@@ -34,7 +34,7 @@ function Index(props) {
         dispatch(initialize(query));
       });
   }, [query]);
-
+  console.log("reviews", reviews);
   return (
     <>
       <MetaHead
