@@ -5,13 +5,18 @@ import { useDispatch, useSelector } from "react-redux";
 import useCheckMobile from "utils/checkMobile";
 import { useRouter } from "node_modules/next/router";
 import { initialize } from "features/site/siteSlice";
+import { isDev, isLocal } from "utils/helper";
 function OfferLayout({ children, data, current }) {
   const { query } = useRouter();
   const dispatch = useDispatch();
+  const shouldNotTrack = isLocal("localhost") || isDev();
+
   useEffect(() => {
-    ga(function () {
-      dispatch(initialize(query));
-    });
+    shouldNotTrack &&
+      window?.ga &&
+      ga(function () {
+        dispatch(initialize(query));
+      });
   }, [query]);
   const isMobile = useCheckMobile();
   return (

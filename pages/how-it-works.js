@@ -11,6 +11,7 @@ import ShimmerImage from "components/common/shimmerImage";
 import MetaHead from "components/common/metaHead";
 import { useState } from "react";
 import dynamic from "next/dynamic";
+import { isDev, isLocal } from "utils/helper";
 const HappyCustomersSlider = dynamic(() => import("components/home/slider"), {
   loading: () => <p>Loading...</p>,
 });
@@ -24,10 +25,14 @@ function Index(props) {
   const { query } = useRouter();
   const dispatch = useDispatch();
   const reviews = useSelector((state) => state.reviews);
+  const shouldNotTrack = isLocal("localhost") || isDev();
+
   useEffect(() => {
-    ga(function () {
-      dispatch(initialize(query));
-    });
+    shouldNotTrack &&
+      window?.ga &&
+      ga(function () {
+        dispatch(initialize(query));
+      });
   }, [query]);
   return (
     <>
@@ -167,7 +172,9 @@ function Index(props) {
               <span>Why Sell to WhipFlip?</span>
             </h2>
             <span>
-              WhipFlip puts and end to the hassle, time-waste, and risk you face when selling a car.  100% safe, fast, and transparent 5-star service!
+              WhipFlip puts and end to the hassle, time-waste, and risk you face
+              when selling a car. 100% safe, fast, and transparent 5-star
+              service!
             </span>
           </div>
           <div className="row wstwRow d-none d-md-flex">
@@ -254,7 +261,7 @@ function Index(props) {
                         maximize it. No more "fuzzy" trade-in math!`}
                       </p>
                       <p>
-                        <span className="meet_txt d-none" >
+                        <span className="meet_txt d-none">
                           Meet some of our Concierges!
                         </span>
                       </p>
@@ -422,7 +429,8 @@ function Index(props) {
         <HappyCustomersSlider />
         <div className="moreReviews text-center">
           <span>
-            Want to see more raving reviews?<br/> Visit our{" "}
+            Want to see more raving reviews?
+            <br /> Visit our{" "}
             <Link href="/reviews">
               <span className="link-primary link_blue">
                 customer reviews page
