@@ -13,7 +13,7 @@ export default (code, Router, { localhost = "localhost" } = {}) =>
         // check if it should track
         const shouldNotTrack = true; //isLocal(localhost) || isDev();
         // check if it should use production or dev analytics
-        const analytics = shouldNotTrack ? prodLytics : prodLytics;
+        const analytics = shouldNotTrack ? devLytics : prodLytics;
 
         // init analytics
         analytics.init(code);
