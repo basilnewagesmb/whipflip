@@ -22,23 +22,31 @@ const HappyCustomersSlider = () => {
       const count = document.getElementsByClassName(
         "RatingValue__Container-sc-1eexc2w-0 "
       )["0"]?.innerText;
-      const reviewsUrls = Array.from(
-        document.getElementsByClassName(
-          "ReviewLinkContainer__Container-sc-1k1tx10-0 gaUYjb"
-        )
+      const reviewsUrls = [];
+      const reviewsElements = document.querySelectorAll(
+        '[class^="ReviewLinkContainer__Link"]'
       );
-      let avatars = Array.from(
-        document.getElementsByClassName("ReviewAvatar__Avatar-sc-1lraoly-2 ")
-      ).map((img, i) => ({
+      reviewsElements.forEach((element) => {
+        reviewsUrls.push(element);
+      });
+      const avatars = [];
+      const avatarsElements = document.querySelectorAll(
+        '[class^="Avatar__StyledAvatar"]'
+      );
+      avatarsElements.forEach((element) => {
+        avatars.push(element);
+      });
+      let avatarData = Array.from(avatarsElements).map((img, i) => ({
         src: img.src,
         url: reviewsUrls[i].href,
         name: img.alt,
       }));
-      if (count && avatars?.length > 0) {
+
+      if (count && avatarData?.length > 0) {
         dispatch(
           setReviews({
             count,
-            avatars,
+            avatars: avatarData,
           })
         );
         clearInterval(timer);
