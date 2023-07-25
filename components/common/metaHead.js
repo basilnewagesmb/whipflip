@@ -64,6 +64,14 @@ function MetaHead({
         content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"
       />
       <meta name="color-scheme" content="only light" />
+      <meta
+        name="google-site-verification"
+        content="jnAdFCwVEDCZykQl_XGONg9qtAu-07wxtA2-s6sTuKc"
+      />
+      <meta
+        name="facebook-domain-verification"
+        content="5qtg49f5uu0blll09ukjxvxpo4tz5g"
+      />
       {extraContent}
     </Head>
   );

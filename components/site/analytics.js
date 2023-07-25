@@ -13,12 +13,12 @@ export default (code, Router, { localhost = "localhost" } = {}) =>
         // check if it should track
         const shouldNotTrack = true; //isLocal(localhost) || isDev();
         // check if it should use production or dev analytics
-        const analytics = shouldNotTrack ? devLytics : prodLytics;
+        const analytics = shouldNotTrack ? console.log("devLytics") : prodLytics;
 
         // init analytics
-        analytics.init(code);
+        // analytics.init(code);
         // log page
-        analytics.pageview();
+        // analytics.pageview();
 
         // save possible previously defined callback
         const previousCallback = Router.onRouteChangeComplete;

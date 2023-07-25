@@ -5,6 +5,52 @@ export default function Document() {
   return (
     <Html>
       <Head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            {
+              "@context": "https://schema.org",
+              "@type": "AutoDealer",
+              "name": "Whipflip",
+              "image": "",
+              "@id": "",
+              "url": "https://whipflip.com",
+              "telephone": "(888) 349-3189",
+              "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "1007 N Orange Street 4th Floor",
+              "addressLocality": "Wilmington",
+              "addressRegion": "DE",
+              "postalCode": "19801",
+              "addressCountry": "US"
+              },
+              "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 39.7465117,
+              "longitude": -75.5491284
+              },
+              "openingHoursSpecification": [{
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+              ],
+              "opens": "09:00",
+              "closes": "20:00"
+              },{
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": "Saturday",
+              "opens": "09:00",
+              "closes": "17:00"
+              }]
+              }
+          `,
+          }}
+          type="application/ld+json"
+        ></script>
         <Script
           dangerouslySetInnerHTML={{
             __html: `
