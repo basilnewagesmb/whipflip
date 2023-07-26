@@ -20,6 +20,9 @@
       {
         "title": "Blog",
         "path": "/blog"
+      }, {
+        "title": "Contact Us",
+        "path": "/contact-us"
       }
     ]
   },

@@ -18,7 +18,7 @@ function Reviews(props) {
     );
   }, []);
   const isMobile = useCheckMobile();
-  const [reviews, setReviews] = useState(props.reviews?.reviews);
+  const [reviews, setReviews] = useState(props?.reviews?.reviews);
   const [limit, setLimit] = useState(10);
   const { data, isFetching } = useReviewsQuery({ limit });
   useEffect(() => {
@@ -109,8 +109,8 @@ function Reviews(props) {
             </h2>
           </div>
           <div className="review_list mt-5">
-            {reviews.length > 0 &&
-              reviews.map((_review, index) => (
+            {reviews?.length > 0 &&
+              reviews?.map((_review, index) => (
                 <div className="review_item" key={index}>
                   <div className="review_hd">
                     <div className="rh_left">
