@@ -2,6 +2,9 @@ import { Button } from "antd";
 import React, { useState } from "react";
 function SkipButton({ skipToInstantOffer, initialOffer, analytics, fbpixel }) {
   const [skipping, setSkipping] = useState(false);
+  const offer = JSON.parse(
+    JSON.parse(localStorage.getItem("persist:root"))?.offer
+  );
   return (
     <Button
       size="large"
@@ -12,7 +15,7 @@ function SkipButton({ skipToInstantOffer, initialOffer, analytics, fbpixel }) {
         const res = await skipToInstantOffer({
           detection_data: initialOffer?.detection_data || [],
           odometer_image: initialOffer?.odometer_image,
-          vin: initialOffer?.vin,
+          vin: initialOffer?.vin || offer?.initialOffer?.vin,
           uid: initialOffer?.uid,
           plate_state: initialOffer?.plate_state,
           plate_number: initialOffer?.plate_number,
