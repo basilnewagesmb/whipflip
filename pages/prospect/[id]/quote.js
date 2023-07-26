@@ -1,3 +1,4 @@
+import MetaHead from "components/common/metaHead";
 import OfferLayout from "components/offer/layout";
 import Confirm from "components/offer/steps/confirm/index";
 import { useRouter } from "node_modules/next/router";
@@ -43,6 +44,10 @@ function Index(props) {
   if ((offerData || data).status === "quote") {
     return (
       <OfferLayout data={offerData || data} current={1}>
+        <MetaHead
+          title="Sell Your Car Online in 3 Steps"
+          ogImage={"https://whipflipnow.s3.amazonaws.com/Whipflip+Logo.png"}
+        />
         <Confirm
           data={offerData || data}
           fbpixel={fbpixel}

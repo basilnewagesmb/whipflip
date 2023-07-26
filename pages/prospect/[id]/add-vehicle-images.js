@@ -1,10 +1,15 @@
 import React from "react";
 import Valuate from "./valuate";
+import MetaHead from "components/common/metaHead";
 
 function Index(props) {
   const upend = { ...props, isForUpload: true };
   return (
     <div>
+      <MetaHead
+        title="Sell Your Car Online in 3 Steps"
+        ogImage={"https://whipflipnow.s3.amazonaws.com/Whipflip+Logo.png"}
+      />
       <Valuate {...upend} />
     </div>
   );

@@ -9,6 +9,7 @@ import Footer from "layout/Footer";
 import { Result, Button } from "antd";
 import { WarningOutlined } from "@ant-design/icons";
 import { useRouter } from "next/router";
+import MetaHead from "components/common/metaHead";
 const Camera = dynamic(
   () => import("components/offer/steps/confirm/mob/valuate/camera"),
   { ssr: false }
@@ -46,10 +47,14 @@ function Valuate(props) {
     if (document.getElementById("chat-widget-minimized")) {
       document.getElementById("chat-widget-minimized").style.display = "none";
     }
-  }, [document,window]);
+  }, [document, window]);
 
   return (
     <>
+      <MetaHead
+        title="Sell Your Car Online in 3 Steps"
+        ogImage={"https://whipflipnow.s3.amazonaws.com/Whipflip+Logo.png"}
+      />
       {valuateControl?.isMobile ? (
         <ConditionalWrap
           condition={state.current == "uploading"}

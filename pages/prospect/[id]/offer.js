@@ -1,3 +1,4 @@
+import MetaHead from "components/common/metaHead";
 import OfferLayout from "components/offer/layout";
 import Sell from "components/offer/steps/sell/index";
 import { useRouter } from "next/router";
@@ -42,6 +43,10 @@ function Index(props) {
 
   return (
     <OfferLayout data={offerData || data} current={2}>
+      <MetaHead
+        title="Sell Your Car Online in 3 Steps"
+        ogImage={"https://whipflipnow.s3.amazonaws.com/Whipflip+Logo.png"}
+      />
       <Sell data={offerData || data} />
     </OfferLayout>
   );

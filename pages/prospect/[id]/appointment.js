@@ -10,6 +10,7 @@ import ShimmerImage from "components/common/shimmerImage";
 import moment from "moment";
 import useCheckMobile from "utils/checkMobile";
 import { useStatesQuery } from "services/util";
+import MetaHead from "components/common/metaHead";
 function Congrats({ data }) {
   const isMobile = useCheckMobile();
 
@@ -27,6 +28,10 @@ function Congrats({ data }) {
 
   return (
     <div>
+      <MetaHead
+        title="Sell Your Car Online in 3 Steps"
+        ogImage={"https://whipflipnow.s3.amazonaws.com/Whipflip+Logo.png"}
+      />
       {confetti && (
         <Confetti
           width={width}
