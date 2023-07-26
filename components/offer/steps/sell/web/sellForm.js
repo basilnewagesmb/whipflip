@@ -201,7 +201,7 @@ function SellFrom({
                             current.isBefore(moment().subtract(1, "day")) ||
                             !current.isBefore(moment().add(7, "day"))
                           }
-                          format={"MM-DD-YYYY"}                          
+                          format={"MM-DD-YYYY"}
                         />
                       </Form.Item>
 
@@ -216,16 +216,18 @@ function SellFrom({
                           },
                         ]}
                       >
+                        {console.log(slots)}
                         <Select
                           className="w-100"
                           options={slots?.map?.((i) => ({
                             value: i.hour,
                             label:
                               i.hour +
-                              (i?.current_appointments != 0
+                              (i[i.day_key] - i.current_appointments <= 0
                                 ? " (BOOKED!)"
                                 : ""),
-                            disabled: i?.current_appointments != 0,
+                            disabled:
+                              i[i.day_key] - i.current_appointments <= 0,
                           }))}
                           allowClear
                           placeholder="Select Time"
