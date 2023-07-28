@@ -130,7 +130,7 @@ function useSellFuc(data) {
         form.setFieldsValue({
           street_address: query,
         });
-      }, 200);
+      }, 0);
     },
     loading: placeFetching,
     options:
