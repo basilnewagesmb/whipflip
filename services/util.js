@@ -156,14 +156,15 @@ export const general = createApi({
         const { date } = arg;
         const today = moment().format("YYYY-MM-DD");
         const slots = response
-          ?.map((item) =>
-            moment(`${date} ${item.hour}`, "YYYY-MM-DD HH:mm A").format(
+          ?.map((item) => ({
+            ...item,
+            hour: moment(`${date} ${item.hour}`, "YYYY-MM-DD HH:mm A").format(
               "YYYY-MM-DD HH:mm:ss"
-            )
-          )
+            ),
+          }))
           .filter(
             (item) =>
-              item >
+              item?.hour >
               moment(
                 new Date().toLocaleString("en-US", {
                   timeZone: "America/New_York",
@@ -173,7 +174,8 @@ export const general = createApi({
                 .format("YYYY-MM-DD HH:mm:ss")
           )
           .map((item) => ({
-            hour: moment(item).format("hh:mm A"),
+            ...item,
+            hour: moment(item.hour).format("hh:mm A"),
           }));
         return date === today ? slots : response;
       },

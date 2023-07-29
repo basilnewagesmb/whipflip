@@ -216,7 +216,6 @@ function SellFrom({
                           },
                         ]}
                       >
-                        {console.log(slots)}
                         <Select
                           className="w-100"
                           options={slots?.map?.((i) => ({
