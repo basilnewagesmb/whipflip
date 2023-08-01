@@ -68,6 +68,7 @@ export const offerApi = createApi({
               if (window.location.pathname === "/") {
                 dispatch(reset());
               }
+              dispatch(updateLocalOffer(data));
             } else {
               dispatch(updateLocalOffer(data));
             }
