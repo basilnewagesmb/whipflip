@@ -74,6 +74,7 @@ export const offerApi = createApi({
             }
           }
         } catch (err) {
+          dispatch(reset());
           console.log("Error fetching offers!");
         }
       },
