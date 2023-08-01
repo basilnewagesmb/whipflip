@@ -65,7 +65,9 @@ export const offerApi = createApi({
             dispatch(reset());
           } else {
             if (utcDate.diff(moment(), "seconds") <= 0) {
-              dispatch(reset());
+              if (window.location.pathname === "/") {
+                dispatch(reset());
+              }
             } else {
               dispatch(updateLocalOffer(data));
             }
