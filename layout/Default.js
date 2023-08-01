@@ -23,11 +23,13 @@ function Default({ children, user }) {
       const antSelectOpenElements =
         document.querySelectorAll(".ant-select-open");
       if (antSelectOpenElements?.length > 0) {
+        console.log("touch-disabled");
         disablePageScroll();
         modals.forEach((element) => {
           element.style.overflow = "hidden";
         });
       } else {
+        console.log("touch-enabled");
         enablePageScroll();
         modals.forEach((element) => {
           element.style.overflow = "auto";
@@ -64,19 +66,19 @@ function Default({ children, user }) {
     }
   }, [initialOffer]);
   useEffect(() => {
-    // if (pathname.includes("prospect")) {
-    if (
-      data?.last_offer_date &&
-      data?.status == "offer" &&
-      !data?.is_manrev_prospect
-    ) {
-      if (moment().diff(moment(data?.last_offer_date), "days") >= 5) {
-        setIsModalOpen(true);
-      } else {
-        setIsModalOpen(false);
+    if (pathname.includes("prospect")) {
+      if (
+        data?.last_offer_date &&
+        data?.status == "offer" &&
+        !data?.is_manrev_prospect
+      ) {
+        if (moment().diff(moment(data?.last_offer_date), "days") >= 5) {
+          setIsModalOpen(true);
+        } else {
+          setIsModalOpen(false);
+        }
       }
     }
-    // }
   }, [data, pathname]);
   const { push } = useRouter();
   const closeModal = () => {
