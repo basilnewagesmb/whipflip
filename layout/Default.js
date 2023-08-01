@@ -64,18 +64,20 @@ function Default({ children, user }) {
     }
   }, [initialOffer]);
   useEffect(() => {
-    if (
-      data?.last_offer_date &&
-      data?.status == "offer" &&
-      !data?.is_manrev_prospect
-    ) {
-      if (moment().diff(moment(data?.last_offer_date), "days") >= 5) {
-        setIsModalOpen(true);
-      } else {
-        setIsModalOpen(false);
+    if (pathname.includes("prospect")) {
+      if (
+        data?.last_offer_date &&
+        data?.status == "offer" &&
+        !data?.is_manrev_prospect
+      ) {
+        if (moment().diff(moment(data?.last_offer_date), "days") >= 5) {
+          setIsModalOpen(true);
+        } else {
+          setIsModalOpen(false);
+        }
       }
     }
-  }, [data]);
+  }, [data, pathname]);
   const { push } = useRouter();
   const closeModal = () => {
     setIsModalOpen(false);
