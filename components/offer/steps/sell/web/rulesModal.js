@@ -38,9 +38,9 @@ function RulesModal({
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="ror_Body">
-          <div style={scrollStyle}>
+          {/* <div style={scrollStyle}>
             <Scroll isLoading={!isVisible} />
-          </div>
+          </div> */}
           <div className="rb_hd">
             <h2>
               Please read the following to proceed. If you are not ready to sell
@@ -106,7 +106,7 @@ function RulesModal({
             </div>
           </div>
         </Modal.Body>
-        <div className="ror_btns" style={isVisible ? null : disableStyle}>
+        <div className="ror_btns"  >
           <button className="agree_btn text-dark" onClick={handleClose}>
             I Disagree
           </button>
