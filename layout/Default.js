@@ -24,12 +24,12 @@ function Default({ children, user }) {
         document.querySelectorAll(".ant-select-open");
       if (antSelectOpenElements?.length > 0) {
         disablePageScroll();
-        modals.forEach((element) => {
+        modals?.forEach((element) => {
           element.style.overflow = "hidden";
         });
       } else {
         enablePageScroll();
-        modals.forEach((element) => {
+        modals?.forEach((element) => {
           element.style.overflow = "auto";
         });
       }

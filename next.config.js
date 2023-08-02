@@ -38,6 +38,40 @@ const nextConfig = {
       ],
     },
   ],
+  async redirects() {
+    return [
+      {
+        source: "/about-us",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/career",
+        destination: "/careers",
+        permanent: true,
+      },
+      {
+        source: "/private-sale",
+        destination: "/private-sale-vs-trading-in",
+        permanent: true,
+      },
+      {
+        source: "/privacy",
+        destination: "/privacy-policy",
+        permanent: true,
+      },
+      {
+        source: "/terms",
+        destination: "/terms-and-conditions",
+        permanent: true,
+      },
+      {
+        source: "/why-sell-to-us",
+        destination: "/why-sell-your-car-to-us",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
