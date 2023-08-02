@@ -29,21 +29,21 @@ function Reviews(props) {
       <MetaHead
         title="Customer Reviews"
         ogTitle="Customer Reviews"
-        ogDescription="Read real reviews from real customers. Learn about their quick, painless experiences and why Whip Flip is the easiest way ever to sell your car."
-        description="Read real reviews from real customers. Learn about their quick, painless experiences and why Whip Flip is the easiest way ever to sell your car."
+        ogDescription="Read real reviews from real customers. Learn about their quick, painless experiences and why WhipFlip is the easiest way ever to sell your car."
+        description="Read real reviews from real customers. Learn about their quick, painless experiences and why WhipFlip is the easiest way ever to sell your car."
       />
       <Head>
         <meta
           name="Description"
-          content="Read real reviews from real customers. Learn about their quick, painless experiences and why Whip Flip is the easiest way ever to sell your car."
+          content="Read real reviews from real customers. Learn about their quick, painless experiences and why WhipFlip is the easiest way ever to sell your car."
         ></meta>
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="https://www.whipflip.com/reviews" />
         <meta property="og:url" content="https://www.whipflip.com/reviews" />
-        <meta property="og:title" content="Customer Reviews | Whip Flip" />
+        <meta property="og:title" content="Customer Reviews | WhipFlip" />
         <meta
           property="og:description"
-          content="Read real reviews from real customers. Learn about their quick, painless experiences and why Whip Flip is the easiest way ever to sell your car."
+          content="Read real reviews from real customers. Learn about their quick, painless experiences and why WhipFlip is the easiest way ever to sell your car."
         />
         <link rel="canonical" href="https://www.whipflip.com/reviews" />
       </Head>

@@ -19,7 +19,7 @@ function MetaHead({
     "Selling your used car online has never been easier. Find out what your car is worth and get a better offer than trade in. We come to you. Paid on the spot.";
   return (
     <Head>
-      <title>{!title ? "Whip Flip" : title + " | Whip Flip"}</title>;
+      <title>{!title ? "WhipFlip" : title + " | WhipFlip"}</title>;
       <link rel="preload" href="/images/car-anim.gif" as="image" />
       <meta name="robots" content="index,follow" />
       <meta
@@ -30,7 +30,7 @@ function MetaHead({
       <meta name="twitter:site" content={pageUrl} />
       <meta
         property="twitter:title"
-        content={!title ? "Whip Flip" : title + " | Whip Flip"}
+        content={!title ? "WhipFlip" : title + " | WhipFlip"}
       />
       <meta
         property="twitter:description"
@@ -39,7 +39,7 @@ function MetaHead({
       <meta property="og:url" content={pageUrl} />
       <meta
         property="og:title"
-        content={!ogTitle ? "Whip Flip" : ogTitle + " | Whip Flip"}
+        content={!ogTitle ? "WhipFlip" : ogTitle + " | WhipFlip"}
       />
       <meta
         property="og:description"

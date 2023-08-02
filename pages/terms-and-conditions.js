@@ -192,7 +192,7 @@ const Index = () => (
         (e.g. recession), pandemics, consumer behavior shifts in specific
         vehicle years, makes, and models, recalls, acts of God, natural
         disasters, or any other automotive market downturn could cause potential
-        harm to WhipFlip. Therefore, Whip Flip reserves the right to adjust or
+        harm to WhipFlip. Therefore, WhipFlip reserves the right to adjust or
         rescind any initial offer or offer made to you whether from the website or
         during our in-person visit at its sole discretion, without liability.
       </p>
