@@ -23,13 +23,11 @@ function Default({ children, user }) {
       const antSelectOpenElements =
         document.querySelectorAll(".ant-select-open");
       if (antSelectOpenElements?.length > 0) {
-        console.log("touch-disabled");
         disablePageScroll();
         modals.forEach((element) => {
           element.style.overflow = "hidden";
         });
       } else {
-        console.log("touch-enabled");
         enablePageScroll();
         modals.forEach((element) => {
           element.style.overflow = "auto";
@@ -38,11 +36,15 @@ function Default({ children, user }) {
     }
   };
   useEffect(() => {
+    window.addEventListener("mousewheel", handleScroll);
+    window.addEventListener("DOMMouseScroll", handleScroll);
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("click", handleScroll);
     document.addEventListener("touchmove", handleScroll);
     document.addEventListener("touchstart", handleScroll);
     return () => {
+      window.removeEventListener("mousewheel", handleScroll);
+      window.removeEventListener("DOMMouseScroll", handleScroll);
       window.removeEventListener("click", handleScroll);
       window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("touchmove", handleScroll);
