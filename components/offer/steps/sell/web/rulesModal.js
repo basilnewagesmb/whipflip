@@ -92,8 +92,10 @@ function RulesModal({
               <div className="apHd">
                 <span>Be on time for your appointment to sell:</span>
                 <h3>
-                  {moment(formRealData?.appointment_date).format("MMMM D")} at{" "}
-                  {formRealData?.appointment_time}
+                  {moment(formRealData?.appointment_date_string).format(
+                    "MMMM D"
+                  )}{" "}
+                  at {formRealData?.appointment_time}
                 </h3>
               </div>
               <div className="apText">
@@ -106,7 +108,7 @@ function RulesModal({
             </div>
           </div>
         </Modal.Body>
-        <div className="ror_btns"  >
+        <div className="ror_btns">
           <button className="agree_btn text-dark" onClick={handleClose}>
             I Disagree
           </button>
