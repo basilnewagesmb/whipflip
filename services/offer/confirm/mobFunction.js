@@ -18,6 +18,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import SkipButton from "components/offer/steps/confirm/web/skipButton";
 import Link from "next/link";
+import TryAnotherVehicle from "./TryAnotherVehicle";
 function useConfirmFormMob({ form, navFunc, fbpixel, analytics }) {
   const [isTrimSelected, setIsTrimSelected] = useState(false);
   const [showTrimConfirm, setShowTrimConfirm] = useState(false);
@@ -181,12 +182,15 @@ function useConfirmFormMob({ form, navFunc, fbpixel, analytics }) {
     }
   };
   const showConfirm = (level, data, issues, analytics, fbpixel) => {
-    !showTrimConfirm &&
-      confirm({
-        title: "Choose your vehicle trim:",
-        icon: <ExclamationCircleFilled />,
-        closable: true,
-        content: (
+    confirm({
+      title: level?.MANREV === 1 ? null : "Choose your vehicle trim:",
+      icon: level?.MANREV === 1 ? null : <ExclamationCircleFilled />,
+      closable: true,
+      className: "trim_confirm",
+      content:
+        level?.MANREV === 1 ? (
+          <TryAnotherVehicle form={form} formRealValues={formRealValues} />
+        ) : (
           <Radio.Group>
             <Space
               direction="vertical"
@@ -230,8 +234,8 @@ function useConfirmFormMob({ form, navFunc, fbpixel, analytics }) {
             </Space>
           </Radio.Group>
         ),
-        footer: false,
-      });
+      footer: false,
+    });
   };
 
   const onFinishFailed = () => {
