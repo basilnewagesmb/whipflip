@@ -182,6 +182,9 @@ function SellFrom({
                 <div className="form-row frmRow">
                   <div className="frmfldItem">
                     <label htmlFor="">When would you like to sell?</label>
+                    <Form.Item label={false} name={"appointment_date_string"} className="d-none">
+                      <Input />
+                    </Form.Item>
                     <div className="d-flex w-100 flex-column flex-md-row">
                       <Form.Item
                         label={false}
@@ -202,6 +205,12 @@ function SellFrom({
                             !current.isBefore(moment().add(7, "day"))
                           }
                           format={"MM-DD-YYYY"}
+                          onChange={(e, dateString) => {
+                            formData?.form?.setFieldValue(
+                              "appointment_date_string",
+                              dateString
+                            );
+                          }}
                         />
                       </Form.Item>
 
