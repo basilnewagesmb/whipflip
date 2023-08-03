@@ -12,12 +12,17 @@ import {
 import debounce from "utils/debounce";
 import services from "utils/services";
 import moment from "moment";
-import { useAppointmentOfferMutation } from "../api";
+import {
+  useAppointmentFlirtMutation,
+  useAppointmentOfferMutation,
+} from "../api";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { reset } from "features/offer/offerSlice";
 
 function useSellFuc(data) {
+  const [klaviyoTrigger, setKlaviyoTrigger] = useState(false);
+  const [appointmentFlirt] = useAppointmentFlirtMutation();
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const { push } = useRouter();
@@ -125,12 +130,27 @@ function useSellFuc(data) {
         })
         .catch((e) => console.log(e));
     },
-    onSearch: (query) => {
+    onSearch: async (query) => {
       debounce(() => {
         form.setFieldsValue({
           street_address: query,
         });
       }, 0);
+      let cookieTrigger = localStorage.getItem("klaviyo_trigger");
+      cookieTrigger =
+        cookieTrigger && cookieTrigger == data?.uid ? data?.uid : null;
+      if (!!cookieTrigger && cookieTrigger !== data?.uid) {
+        localStorage.removeItem("klaviyo_trigger");
+      }
+      if (!klaviyoTrigger && !cookieTrigger) {
+        try {
+          localStorage.setItem("klaviyo_trigger", data?.uid);
+          setKlaviyoTrigger(true);
+          await appointmentFlirt(data);
+        } catch (error) {
+          console.log({ error });
+        }
+      }
     },
     loading: placeFetching,
     options:
@@ -178,7 +198,6 @@ function useSellFuc(data) {
     name: "Sell",
     size: "large",
     onFinish: (data) => {
-      console.log(data);
       setState((prev) => ({
         ...prev,
         isRulesOpen: true,
