@@ -19,6 +19,7 @@ import { useRouter } from "next/router";
 import SkipButton from "components/offer/steps/confirm/web/skipButton";
 import { ShowEasyStepMob } from "./mobFunction";
 import { ExclamationCircleFilled } from "@ant-design/icons";
+import TryAnotherVehicle from "./TryAnotherVehicle";
 function useConfirmForm({ form, fbpixel, analytics }) {
   const { confirm } = Modal;
   const dispatch = useDispatch();
@@ -207,51 +208,55 @@ function useConfirmForm({ form, fbpixel, analytics }) {
   };
   const showConfirm = (level, data, issues, analytics, fbpixel) => {
     confirm({
-      title: "Choose your vehicle trim:",
-      icon: <ExclamationCircleFilled />,
+      title: level?.MANREV === 1 ? null : "Choose your vehicle trim:",
+      icon: level?.MANREV === 1 ? null : <ExclamationCircleFilled />,
       closable: true,
-      content: (
-        <Radio.Group>
-          <Space
-            direction="vertical"
-            onChange={async (e) => {
-              const full_trim = level?.trimlevel?.find(
-                (item) => item.vehicle_id == e.target.value
-              ).body;
-              const cRes = await addDamages({
-                issues,
-                vin: data?.info.vinNumber || level?.vin || "",
-                plate_state: data?.info.state || "",
-                plate_number: data?.info.plateNumber || "",
-                full_trim,
-                jd_vehicle_id: e.target.value,
-                uid: initialOffer?.uid,
-              });
-              if (cRes?.data) {
-                Modal.destroyAll();
-                analytics?.event(
-                  "Damages Added",
-                  "Damages Added",
-                  cRes.data.uid
-                );
-                fbpixel?.customEvent("Damages Added", {
-                  content_name: "Damages Added",
-                  content_category: `Damages Added`,
-                  content_ids: [cRes.data.uid],
+      className: "trim_confirm",
+      content:
+        level?.MANREV === 1 ? (
+          <TryAnotherVehicle form={form} formRealValues={formRealValues} />
+        ) : (
+          <Radio.Group>
+            <Space
+              direction="vertical"
+              onChange={async (e) => {
+                const full_trim = level?.trimlevel?.find(
+                  (item) => item.vehicle_id == e.target.value
+                ).body;
+                const cRes = await addDamages({
+                  issues,
+                  vin: data?.info.vinNumber || level?.vin || "",
+                  plate_state: data?.info.state || "",
+                  plate_number: data?.info.plateNumber || "",
+                  full_trim,
+                  jd_vehicle_id: e.target.value,
+                  uid: initialOffer?.uid,
                 });
-              } else {
-                message.error("something went wrong");
-              }
-            }}
-          >
-            {level?.trimlevel?.map((item, k) => (
-              <Radio value={item.vehicle_id} key={k}>
-                {item.body}
-              </Radio>
-            ))}
-          </Space>
-        </Radio.Group>
-      ),
+                if (cRes?.data) {
+                  Modal.destroyAll();
+                  analytics?.event(
+                    "Damages Added",
+                    "Damages Added",
+                    cRes.data.uid
+                  );
+                  fbpixel?.customEvent("Damages Added", {
+                    content_name: "Damages Added",
+                    content_category: `Damages Added`,
+                    content_ids: [cRes.data.uid],
+                  });
+                } else {
+                  message.error("something went wrong");
+                }
+              }}
+            >
+              {level?.trimlevel?.map((item, k) => (
+                <Radio value={item.vehicle_id} key={k}>
+                  {item.body}
+                </Radio>
+              ))}
+            </Space>
+          </Radio.Group>
+        ),
       footer: false,
     });
   };

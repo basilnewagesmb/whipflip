@@ -161,11 +161,7 @@ function QuestionsLayout({ initialOffer, fbpixel, analytics }) {
           size="large"
           htmlType="submit"
           loading={formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading}
-          disabled={
-            formFunc?.vinHdl.isLoading ||
-            formFunc?.platHdl.isLoading ||
-            formFunc?.showTrimConfirm
-          }
+          disabled={formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading}
         >
           <span>
             {formFunc?.vinHdl.isLoading || formFunc?.platHdl.isLoading
