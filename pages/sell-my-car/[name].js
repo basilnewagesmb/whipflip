@@ -12,7 +12,7 @@ function SEO({ blogs, reviews, car }) {
   const dispatch = useDispatch();
   console.log(car);
   return (
-    <>
+    <div className="seo_page">
       <MetaHead
         title={car?.vehicles?.at(0)?.title}
         ogTitle={car?.vehicles?.at(0)?.title}
@@ -187,7 +187,7 @@ function SEO({ blogs, reviews, car }) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
