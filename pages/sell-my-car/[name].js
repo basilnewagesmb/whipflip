@@ -10,14 +10,15 @@ import MetaHead from "components/common/metaHead";
 import CarCard from "components/sell-my-car/CarCard";
 function SEO({ blogs, reviews, car }) {
   const dispatch = useDispatch();
+  console.log(car);
   return (
     <>
       <MetaHead
-        title={car?.vehicles?.at(0).title}
-        ogTitle={car?.vehicles?.at(0).title}
-        ogImage={car?.vehicles?.at(0).banner_image}
-        description={car?.vehicles?.at(0).description}
-        ogDescription={car?.vehicles?.at(0).description}
+        title={car?.vehicles?.at(0)?.title}
+        ogTitle={car?.vehicles?.at(0)?.title}
+        ogImage={car?.vehicles?.at(0)?.banner_image}
+        description={car?.vehicles?.at(0)?.description}
+        ogDescription={car?.vehicles?.at(0)?.description}
       />
       <div className="seo_banner">
         <div className="row seo-row m-0">
@@ -25,7 +26,7 @@ function SEO({ blogs, reviews, car }) {
             {/* <img src={car?.vehicles?.at(0).banner_image} /> */}
             <Image
               placeholder="blur"
-              src={car?.vehicles?.at(0).banner_image}
+              src={car?.vehicles?.at(0)?.banner_image}
               width={1153}
               height={690}
               blurDataURL={
@@ -37,7 +38,7 @@ function SEO({ blogs, reviews, car }) {
             <div className="bnr_rt_wrap">
               <div className="seo_bnr_hd">
                 <span>Need To Sell Your </span>
-                <h1>{car?.vehicles?.at(0).make}?</h1>
+                <h1>{car?.vehicles?.at(0)?.make}?</h1>
               </div>
               <div className="bnr_dec">
                 <span>
@@ -46,7 +47,7 @@ function SEO({ blogs, reviews, car }) {
                 <p>
                   {" "}
                   Get an instant offer in minutes on your{" "}
-                  {car?.vehicles?.at(0).make} book and appointment to sell. Our
+                  {car?.vehicles?.at(0)?.make} book and appointment to sell. Our
                   friendly car concierge will come to your driveway to pay &
                   pick up your car for free! Ready to sell?
                 </p>
