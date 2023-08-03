@@ -147,6 +147,16 @@ export const offerApi = createApi({
       },
       invalidatesTags: ["offers"],
     }),
+    appointmentFlirt: builder.mutation({
+      query: ({ uid }) => {
+        console.log(uid);
+        return {
+          url: `/prospects/${uid}/appointment_flirt`,
+          method: "POST",
+          body: {},
+        };
+      },
+    }),
   }),
 });
 
@@ -161,4 +171,5 @@ export const {
   useAppointmentOfferMutation,
   useResetOfferMutation,
   useAddVehicleImagesMutation,
+  useAppointmentFlirtMutation,
 } = offerApi;
