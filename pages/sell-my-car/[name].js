@@ -10,7 +10,6 @@ import MetaHead from "components/common/metaHead";
 import CarCard from "components/sell-my-car/CarCard";
 function SEO({ blogs, reviews, car }) {
   const dispatch = useDispatch();
-  console.log(car);
   return (
     <div className="seo_page">
       <MetaHead
@@ -23,7 +22,6 @@ function SEO({ blogs, reviews, car }) {
       <div className="seo_banner">
         <div className="row seo-row m-0">
           <div className="col-lg-5 p-0 seo_banner_left h-100">
-            {/* <img src={car?.vehicles?.at(0).banner_image} /> */}
             <Image
               placeholder="blur"
               src={car?.vehicles?.at(0)?.banner_image}
@@ -80,7 +78,7 @@ function SEO({ blogs, reviews, car }) {
               <h2>
                 <span>Hooray! </span>
                 <span>Selling Your Car Is </span>
-                <span className="highlight-text">Now100% HASSLE-FREE!</span>
+                <span className="highlight-text">Now 100% HASSLE-FREE!</span>
               </h2>
             </div>
             <div className="col-lg-7">
@@ -127,7 +125,7 @@ function SEO({ blogs, reviews, car }) {
               <h2>{car?.purchase_count || 0} cars sold this month</h2>
               <div className="sl_wrap">
                 <div className="sold_list">
-                  {car?.vehicles.map((item, i) => (
+                  {car?.vehicles?.map((item, i) => (
                     <CarCard key={i} {...item} />
                   ))}
                 </div>
@@ -205,7 +203,11 @@ export async function getServerSideProps({ query }) {
       `${process.env.NEXT_PUBLIC_API_URL}/seo-pages?slug=${name}`
     );
     const car = await carResp.json();
-
+    if (car.status === false) {
+      return {
+        notFound: true,
+      };
+    }
     return {
       props: {
         blogs: blogs?.slice(0, 3) || [],
@@ -215,11 +217,7 @@ export async function getServerSideProps({ query }) {
     };
   } catch (error) {
     return {
-      redirect: {
-        permanent: false,
-        destination: `/404`,
-      },
-      props: {},
+      notFound: true,
     };
   }
 }
