@@ -2,14 +2,14 @@ import React from "react";
 import Faq from "components/home/faq";
 import Image from "next/image";
 import { setIsModalOpen } from "features/offer/offerSlice";
-import { useDispatch } from "react-redux";
 import Link from "node_modules/next/link";
 import BlogCard from "components/sell-my-car/BlogCard";
 import ReviewCard from "components/sell-my-car/ReviewCard";
 import MetaHead from "components/common/metaHead";
 import CarCard from "components/sell-my-car/CarCard";
+import { useRouter } from "next/router";
 function SEO({ blogs, reviews, car }) {
-  const dispatch = useDispatch();
+  const { push } = useRouter();
   return (
     <div className="seo_page">
       <MetaHead
@@ -49,7 +49,7 @@ function SEO({ blogs, reviews, car }) {
                   friendly car concierge will come to your driveway to pay &
                   pick up your car for free! Ready to sell?
                 </p>
-                <button onClick={() => dispatch(setIsModalOpen())}>
+                <button onClick={() => push("/")}>
                   <span>
                     <svg
                       width="21.177"
