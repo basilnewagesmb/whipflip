@@ -25,12 +25,8 @@ function Index(props) {
   const { query } = useRouter();
   const dispatch = useDispatch();
   const reviews = useSelector((state) => state.reviews);
-  const shouldNotTrack = isLocal("localhost") || isDev();
-
   useEffect(() => {
-    console.log("shouldNotTrack", shouldNotTrack);
-    console.log("inside useEffect");
-    shouldNotTrack &&
+    !isDev() &&
       window?.ga &&
       ga(function () {
         console.log("inside ga");
