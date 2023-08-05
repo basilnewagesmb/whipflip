@@ -53,6 +53,7 @@ function useInitialForm({ form, data, carouselRef, goTo, props }) {
       documentData: site.documentUrl,
       gc_id: site.gaClientId,
       gclick_id: site.gaClickId,
+      referrerUrl: site.referrerUrl,
     });
     if (res?.data?.uid) {
       const offerRes = await getOfferById(res?.data?.uid);
@@ -108,11 +109,10 @@ function useInitialForm({ form, data, carouselRef, goTo, props }) {
         Modal.info({
           centered: true,
           icon: null,
-          footer:null,
+          footer: null,
           title: null,
           content: <OOA />,
-          wrapClassName:"o_o_a"
-
+          wrapClassName: "o_o_a",
         });
       }
     } else {
