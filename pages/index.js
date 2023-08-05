@@ -28,9 +28,12 @@ function Index(props) {
   const shouldNotTrack = isLocal("localhost") || isDev();
 
   useEffect(() => {
+    console.log("shouldNotTrack", shouldNotTrack);
+    console.log("inside useEffect");
     shouldNotTrack &&
       window?.ga &&
       ga(function () {
+        console.log("inside ga");
         dispatch(initialize(query));
       });
   }, []);
