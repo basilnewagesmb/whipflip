@@ -1,6 +1,7 @@
 import { Component, createElement } from "react";
 import * as prodLytics from "utils/analytics/prod";
 import * as devLytics from "utils/analytics/dev";
+import { isDev, isLocal } from "utils/helper";
 
 export default (code, Router, { localhost = "localhost" } = {}) =>
   (Page) => {
@@ -11,7 +12,7 @@ export default (code, Router, { localhost = "localhost" } = {}) =>
 
       componentDidMount() {
         // check if it should track
-        const shouldNotTrack = true; //isLocal(localhost) || isDev();
+        const shouldNotTrack = isLocal("localhost") || isDev();
         const analytics = shouldNotTrack ? devLytics : prodLytics;
 
         // init analytics
