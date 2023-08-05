@@ -33,7 +33,7 @@ function Index(props) {
       ga(function () {
         dispatch(initialize(query));
       });
-  }, [query]);
+  }, []);
   return (
     <>
       <MetaHead
