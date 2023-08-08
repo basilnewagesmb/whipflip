@@ -8,8 +8,10 @@ import ReviewCard from "components/sell-my-car/ReviewCard";
 import MetaHead from "components/common/metaHead";
 import CarCard from "components/sell-my-car/CarCard";
 import { useRouter } from "next/router";
+import { isMobile } from "react-device-detect";
 function SEO({ blogs, reviews, car }) {
   const { push } = useRouter();
+
   return (
     <div className="seo_page">
       <MetaHead
@@ -50,7 +52,9 @@ function SEO({ blogs, reviews, car }) {
                   Get an instant offer in minutes on your{" "}
                   {car?.vehicles?.[0]?.make} book an appointment to sell. Our
                   friendly car concierge will come to your driveway to pay &
-                  pick up your car for free! Ready to sell?
+                  pick up your car for free!
+                  <br />
+                  <b>Ready to sell?</b>
                 </p>
                 <button onClick={() => push("/")}>
                   <span>
@@ -87,7 +91,7 @@ function SEO({ blogs, reviews, car }) {
             <div className="col-lg-7">
               <div className="flow_row row">
                 <div className="col-lg-4 text-center">
-                  <div className="flow_item">
+                  <div className={`flow_item ${isMobile ? "" : "side_line"}`}>
                     <div className="flow_head">
                       <img src="/images/seo/hiw1.png" alt="Get Instant Offer" />
                     </div>
@@ -97,7 +101,7 @@ function SEO({ blogs, reviews, car }) {
                   </div>
                 </div>
                 <div className="col-lg-4 text-center">
-                  <div className="flow_item">
+                  <div className={`flow_item ${isMobile ? "" : "side_line"}`}>
                     <div className="flow_head">
                       <img src="/images/seo/hiw2.png" alt="Confirm Offer" />
                     </div>

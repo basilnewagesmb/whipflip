@@ -6336,7 +6336,6 @@ label.uniform_item_label {
           width: 100%;
           z-index: 99;
         }
-       
       }
     }
   }
@@ -6357,9 +6356,15 @@ label.uniform_item_label {
     .seo_bnr_hd {
       span {
         font-size: 43px;
+        @media  (max-width: 1370px) {
+          font-size: 30px;
+        }
       }
       h1 {
         font-size: 56px;
+        @media  (max-width: 1370px) {
+          font-size: 40px;
+        }
       }
     }
     .bnr_dec {
@@ -6367,10 +6372,16 @@ label.uniform_item_label {
       & > span {
         font-size: 24px;
         color: #fcc100;
+        @media  (max-width: 1370px) {
+          font-size: 20px;
+        }
       }
       & > p {
         font-size: 22px;
         line-height: 38px;
+        @media (max-width: 1370px) {
+          font-size: 18px;
+        }
       }
       button {
         font-weight: 700;
@@ -6411,7 +6422,8 @@ label.uniform_item_label {
       .flow_item {
         .flow_head {
           img {
-            width: 100%;
+            background-color: #fff;
+            width: 80%;
             height: 180px;
             object-fit: contain;
             @include responsive(tab-port) {
@@ -6431,11 +6443,11 @@ label.uniform_item_label {
   .cta_flows {
     padding: 25px 0;
   }
-  .container {
-    @media (min-width: 1200px) {
-      max-width: 1400px;
-    }
-  }
+  // .container {
+  //   @media (min-width: 1200px) {
+  //     max-width: 1400px;
+  //   }
+  // }
   .reviews_carsold {
     background: #eff4f8 0% 0% no-repeat padding-box;
     padding: 50px 0;
@@ -6651,4 +6663,18 @@ label.uniform_item_label {
     height: 100%;
     bottom: 0;
   }
+}
+.side_line::before {
+  width: 100%;
+  position: absolute;
+  content: "";
+  height: 2px;
+  background-color: #9e9e9e9c;
+  top: calc(50% - 10px);
+  z-index: -1;
+  transform: translateY(-50%);
+}
+
+.flow_row.row {
+  position: relative;
 }
