@@ -118,7 +118,7 @@ function ConfirmVehicle({
             </div>
             <div className="viewDetail">
               {formRealValues?.info?.type === "vin" && (
-                <div className="selectView vin">
+                <div className="selectView vin uppercaseInput">
                   <Form.Item
                     label={false}
                     name={["info", "vinNumber"]}
@@ -194,7 +194,7 @@ function ConfirmVehicle({
                 </div>
               )}
               {formRealValues?.info?.type === "plate" && (
-                <div className="selectView license_plate">
+                <div className="selectView license_plate uppercaseInput">
                   <Form.Item
                     label={"License Plate Number"}
                     name={["info", "plateNumber"]}
