@@ -1,8 +1,9 @@
 import { Rate, Avatar } from "antd";
 import Link from "next/link";
+import moment from "moment";
 import React from "react";
 
-function ReviewCard({ firstname, rate, review, index }) {
+function ReviewCard({ firstname, rate, review, index, review_date }) {
   return (
     <div className="rev_item">
       <div className="prof">
@@ -14,7 +15,7 @@ function ReviewCard({ firstname, rate, review, index }) {
         </div>
         <div className="p_right">
           <h3>{firstname}</h3>
-          <span>3 months ago</span>
+          <span>{moment(review_date).fromNow()}</span>
         </div>
       </div>
       <div className="rating pt-1 px-3">

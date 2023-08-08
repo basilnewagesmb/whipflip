@@ -10,9 +10,7 @@ import {
 } from "react-share";
 
 const BlogDetail = (props) => {
-  console.log(props.data);
   const { readNext } = props;
-
   return (
     <>
       <Head>
