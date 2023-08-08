@@ -15,13 +15,12 @@ import { setIsModalHide, setIsModalOpen } from "features/offer/offerSlice";
 import InstantOffer from "components/home/banner/instantOffer";
 import Sidebar from "./Sidebar/index";
 
-function Header() {
+function Header({openSideBar, setOpenSideBar}) {
   const { current, isModalOpen } = useSelector((state) => state.offer);
   const dispatch = useDispatch();
   const isMobile = useCheckMobile();
   const { pathname } = useRouter();
   const [scroll, setScroll] = useState(false);
-  const [openSideBar, setOpenSideBar] = useState(false);
   const handleShowSideBar = () => {
     setOpenSideBar(true);
   };

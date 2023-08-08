@@ -2,6 +2,7 @@ import items from "public/data/sidebar.json";
 import Link from "next/link";
 import SidebarItem from "./SidebarItem";
 export default function Sidebar({ openSideBar, setOpenSideBar }) {
+ 
   return (
     <div className={openSideBar ? "sidebar" : "sidebar_closed"}>
       <div className="sidebar-header">

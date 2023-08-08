@@ -10,12 +10,14 @@ function CarCard({ location, year, make, price, thumbnail_image }) {
         <div className="col-lg-8 sol_vh_detail">
           <div className="svd_detail">
             <div className="sv_name">
-              <span>{year}</span>
+              <span>
+                <b>{year}</b>
+              </span>
               <h3>{make}</h3>
             </div>
             <div className="sold_price">
               <span>
-                Sold at : <b>${price}</b>
+                Sold at : <b>${new Intl.NumberFormat("en-US").format(price)}</b>
               </span>
             </div>
           </div>

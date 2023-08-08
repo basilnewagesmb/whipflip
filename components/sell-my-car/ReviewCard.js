@@ -19,8 +19,22 @@ function ReviewCard({ firstname, rate, review, index, review_date }) {
         </div>
       </div>
       <div className="rating pt-1 px-3">
-        {rate && <Rate allowHalf disabled defaultValue={parseFloat(rate)} />}
-        {!rate && <Rate allowHalf disabled defaultValue={5} />}
+        {rate && (
+          <Rate
+            allowHalf
+            disabled
+            defaultValue={parseFloat(rate)}
+            style={{ grid: 0, color: "#ffb400" }}
+          />
+        )}
+        {!rate && (
+          <Rate
+            allowHalf
+            disabled
+            defaultValue={5}
+            style={{ grid: 0, color: "#ffb400" }}
+          />
+        )}
       </div>
       <div className="rev_comment position-relative">
         <p>{review}</p>
@@ -31,7 +45,9 @@ function ReviewCard({ firstname, rate, review, index, review_date }) {
           <Link href="/reviews">
             <button>
               <span>Read All Reviews</span>
-              <span>
+              <span style={{
+                transform:"rotate(90deg)"
+              }}>
                 <svg width="7" height="10" viewBox="0 0 9.276 15.698">
                   <path
                     id="go-svgrepo-com"
