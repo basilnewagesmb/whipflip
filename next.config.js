@@ -70,6 +70,14 @@ const nextConfig = {
         destination: "/why-sell-your-car-to-us",
         permanent: true,
       },
+      { source: "/index", destination: "/", permanent: true },
+      {
+        source: "/charlotte-north-carolina",
+        destination: "/",
+        permanent: true,
+      },
+      { source: "/pittsburgh-pennsylvania", destination: "/", permanent: true },
+      { source: "/columbus-ohio", destination: "/", permanent: true },
     ];
   },
 };
