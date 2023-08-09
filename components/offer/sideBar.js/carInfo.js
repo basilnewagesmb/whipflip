@@ -6,6 +6,7 @@ import getAmount from "utils/getAmount";
 
 function CarInfo(prop) {
   const { data, isShow, initialOffer } = prop;
+  console.log(data);
   return (
     isShow && (
       <>
@@ -25,12 +26,12 @@ function CarInfo(prop) {
           )}
           <ShimmerImage
             src={data?.stills?.[0]?.image || data?.image}
-            alt={`${data?.modelyear} ${data?.make} ${data?.model} ${
-              data?.enableMultiTrim ? data?.body : data?.trim
-            }`}
-            title={`${data?.modelyear} ${data?.make} ${data?.model} ${
-              data?.enableMultiTrim ? data?.body : data?.trim
-            }`}
+            alt={`${data?.modelyear || data?.year} ${data?.make} ${
+              data?.model
+            } ${data?.body || data?.trim}`}
+            title={`${data?.modelyear || data?.year} ${data?.make} ${
+              data?.model
+            } ${data?.body || data?.trim}`}
             height={250}
             preview={false}
             fallback={"/images/no-car-image.png"}
