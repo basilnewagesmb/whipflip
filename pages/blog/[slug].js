@@ -1,6 +1,8 @@
+import { setIsModalOpen } from "features/offer/offerSlice";
 import Head from "next/head";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import {
   FacebookShareButton,
   WhatsappShareButton,
@@ -10,6 +12,8 @@ import {
 } from "react-share";
 
 const BlogDetail = (props) => {
+  const dispatch = useDispatch();
+
   const { readNext } = props;
   return (
     <>
@@ -203,9 +207,13 @@ const BlogDetail = (props) => {
                         out what your car is worth and get a better offer than
                         trade in. We come to you. Paid on the spot.
                       </p>
-                      <Link href="/" passHref>
-                        <button>Get Instant Offer</button>
-                      </Link>
+                      <button
+                        onClick={() => {
+                          dispatch(setIsModalOpen());
+                        }}
+                      >
+                        Get Instant Offer
+                      </button>
                     </div>
                     {readNext?.length > 0 && (
                       <div className="read_nxt">
