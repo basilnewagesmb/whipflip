@@ -36,7 +36,10 @@ const BlogDetail = (props) => {
           property="og:url"
           content={`https://www.whipflip.com/blog/${props?.data?.name}`}
         />
-        <meta property="og:title" content={props?.data?.title.substring(0, 69)} />
+        <meta
+          property="og:title"
+          content={props?.data?.title.substring(0, 69)}
+        />
         <meta
           property="og:description"
           content={props?.data?.description?.substring(0, 199)}
@@ -193,12 +196,22 @@ const BlogDetail = (props) => {
                           </div>
                         ))}
                     </div>
-
+                    <div className="quote_car">
+                      <h2>Get an initial offer for your car now</h2>
+                      <p>
+                        Selling your used car online has never been easier. Find
+                        out what your car is worth and get a better offer than
+                        trade in. We come to you. Paid on the spot.
+                      </p>
+                      <Link href="/" passHref>
+                        <button>Get Instant Offer</button>
+                      </Link>
+                    </div>
                     {readNext?.length > 0 && (
                       <div className="read_nxt">
                         <h2>Read Next</h2>
                         <div className="rn_list">
-                          {readNext.map((blog, index) => (
+                          {readNext?.slice(0, 4)?.map((blog, index) => (
                             <div className="rn_item" key={index}>
                               <span className="hd_rd_time">
                                 {blog.time_to_read}
@@ -213,17 +226,6 @@ const BlogDetail = (props) => {
                         </div>
                       </div>
                     )}
-                  </div>
-                  <div className="quote_car">
-                    <h2>Get an initial offer for your car now</h2>
-                    <p>
-                      Selling your used car online has never been easier. Find
-                      out what your car is worth and get a better offer than
-                      trade in. We come to you. Paid on the spot.
-                    </p>
-                    <Link href="/" passHref>
-                      <button>Get Instant Offer</button>
-                    </Link>
                   </div>
                 </div>
               </div>
