@@ -2,14 +2,14 @@ import moment from "moment";
 import { Image } from "antd";
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import useWindowDimensions from "utils/useWindowDimension";
+import { Typography } from "antd";
+import { useElementDimensions } from "utils/useElementDimensions";
+const { Paragraph } = Typography;
 
 function BlogCard({ title, image, created_at, name }) {
   const img = useRef(null);
-  const [width, setWidth] = useState(0);
-  useEffect(() => {
-    setWidth(img.current.offsetWidth);
-  }, [img]);
-
+  const { width } = useElementDimensions(img);
   return (
     <div className="col-lg-4" style={{ cursor: "pointer" }}>
       <Link href={`/blog/${name}`}>
@@ -38,7 +38,15 @@ function BlogCard({ title, image, created_at, name }) {
           <div className="col-lg-8 rdcol-right">
             <div className="rd_wrap">
               <p>Published On {moment(created_at).format("MMMM D, YYYY")}</p>
-              <h3>{title}</h3>
+              <Paragraph
+                ellipsis={{
+                  rows: 2,
+                  symbol: '...',
+                }}
+                className="h5"
+              >
+                {title}
+              </Paragraph>
             </div>
           </div>
         </div>{" "}

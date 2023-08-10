@@ -129,7 +129,12 @@ function SEO({ blogs, reviews, car }) {
         <div className="container">
           <div className="row">
             <div className="col-lg-8 col-rc">
-              <h2>{car?.purchase_count || 0} cars sold this month</h2>
+              <h2>
+                {(car?.purchase_count &&
+                  new Intl.NumberFormat("en-US").format(car?.purchase_count)) ||
+                  0}{" "}
+                cars sold this month
+              </h2>
               <div className="sl_wrap">
                 <div className="sold_list">
                   {car?.vehicles?.map((item, i) => (
@@ -175,7 +180,13 @@ function SEO({ blogs, reviews, car }) {
           <div className="load_mre">
             <Link href={"/blog"}>
               <button>
-                <span>View full blog</span>
+                <span
+                  style={{
+                    color: "#000",
+                  }}
+                >
+                  View full blog
+                </span>
                 <span>
                   <svg width="7" height="10" viewBox="0 0 9.276 15.698">
                     <path

@@ -2,6 +2,7 @@ import { Rate, Avatar } from "antd";
 import Link from "next/link";
 import moment from "moment";
 import React from "react";
+import { getColorForName } from "utils/getColorWithNames";
 
 function ReviewCard({ firstname, rate, review, index, review_date }) {
   return (
@@ -9,7 +10,9 @@ function ReviewCard({ firstname, rate, review, index, review_date }) {
       <div className="prof">
         <div className="p_left">
           <img
-            src={`https://ui-avatars.com/api/?name=${firstname}&background=random&rounded=true`}
+            src={`https://ui-avatars.com/api/?name=${firstname}&background=${getColorForName(
+              firstname
+            )}&rounded=true`}
             alt={firstname}
           />
         </div>
@@ -44,10 +47,18 @@ function ReviewCard({ firstname, rate, review, index, review_date }) {
         <div className="load_mre">
           <Link href="/reviews">
             <button>
-              <span>Read All Reviews</span>
-              <span style={{
-                transform:"rotate(90deg)"
-              }}>
+              <span
+                style={{
+                  color: "#000",
+                }}
+              >
+                Read All Reviews
+              </span>
+              <span
+                style={{
+                  transform: "rotate(90deg)",
+                }}
+              >
                 <svg width="7" height="10" viewBox="0 0 9.276 15.698">
                   <path
                     id="go-svgrepo-com"

@@ -6328,7 +6328,7 @@ label.uniform_item_label {
           content: "";
           position: absolute;
           top: 0;
-          left: 0;
+          right: -4px;
           background: transparent
             linear-gradient(268deg, #4381c0 0%, #4381c09e 100%) 0% 0% no-repeat
             padding-box;
@@ -6356,13 +6356,13 @@ label.uniform_item_label {
     .seo_bnr_hd {
       span {
         font-size: 43px;
-        @media  (max-width: 1370px) {
+        @media (max-width: 1370px) {
           font-size: 30px;
         }
       }
       h1 {
         font-size: 56px;
-        @media  (max-width: 1370px) {
+        @media (max-width: 1370px) {
           font-size: 40px;
         }
       }
@@ -6372,7 +6372,7 @@ label.uniform_item_label {
       & > span {
         font-size: 24px;
         color: #fcc100;
-        @media  (max-width: 1370px) {
+        @media (max-width: 1370px) {
           font-size: 20px;
         }
       }
@@ -6393,6 +6393,7 @@ label.uniform_item_label {
         gap: 10px;
         border: none;
         margin: auto;
+        color: #000;
       }
     }
   }
@@ -6434,7 +6435,10 @@ label.uniform_item_label {
         .flow_body {
           padding-top: 15px;
           h2 {
-            font-size: 24px;
+            font-size: 20px;
+            @media (max-width: 1199px) {
+              font-size: 18px;
+            }
           }
         }
       }
@@ -6451,8 +6455,12 @@ label.uniform_item_label {
   .reviews_carsold {
     background: #eff4f8 0% 0% no-repeat padding-box;
     padding: 50px 0;
+    h2 {
+      font-size: 20px;
+    }
     .col-rc {
       & > h2 {
+        font-size: 20px;
         color: #4381c0;
       }
       .sold_list {
@@ -6483,14 +6491,14 @@ label.uniform_item_label {
                 font-size: 20px;
               }
               h3 {
-                font-size: 30px;
+                font-size: 20px;
               }
             }
             .sold_price {
               font-size: 18px;
               color: #4381c0;
               b {
-                font-size: 28px;
+                font-size: 20px;
               }
             }
           }
@@ -6531,8 +6539,9 @@ label.uniform_item_label {
             }
           }
           .p_right {
+            margin-left: 10px;
             h3 {
-              font-size: 24px;
+              font-size: 20px;
               color: #4381c0;
               margin-bottom: 0;
             }
@@ -6637,7 +6646,7 @@ label.uniform_item_label {
       }
       h3 {
         font-weight: 700;
-        font-size: 22px;
+        font-size: 20px;
         color: #272424;
       }
     }
@@ -6673,6 +6682,9 @@ label.uniform_item_label {
   top: calc(50% - 10px);
   z-index: -1;
   transform: translateY(-50%);
+  @media (max-width: 980px) {
+    width: 0;
+  }
 }
 
 .flow_row.row {

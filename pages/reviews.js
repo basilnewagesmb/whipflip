@@ -10,6 +10,7 @@ import { useReviewsQuery } from "services/util";
 import { useState } from "react";
 import { Rate, Button } from "antd";
 import moment from "moment";
+import { getColorForName } from "utils/getColorWithNames";
 function Reviews(props) {
   useEffect(() => {
     services.loadScript(
@@ -115,7 +116,7 @@ function Reviews(props) {
                   <div className="review_hd">
                     <div className="rh_left">
                       <img
-                        src={`https://ui-avatars.com/api/?name=${_review.firstname}&background=random`}
+                        src={`https://ui-avatars.com/api/?name=${_review.firstname}&background=${getColorForName(_review.firstname)}`}
                         alt=""
                       />
                     </div>
