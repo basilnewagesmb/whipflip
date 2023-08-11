@@ -257,6 +257,9 @@ function useSellFuc(data) {
     closeRuleModal();
     let postData = {
       ...formRealData,
+      appointment_date: moment(
+        formRealData?.appointment_date?.toString()
+      ).format("YYYY-MM-DD"),
       uid: data.uid,
       is_sole_owner: formRealData.isSoleOwner == "double" ? true : false,
       appt_created_date: moment().format("YYYY-MM-DD HH:mm:ss"),
