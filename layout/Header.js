@@ -15,7 +15,7 @@ import { setIsModalHide, setIsModalOpen } from "features/offer/offerSlice";
 import InstantOffer from "components/home/banner/instantOffer";
 import Sidebar from "./Sidebar/index";
 
-function Header({openSideBar, setOpenSideBar}) {
+function Header({ openSideBar, setOpenSideBar }) {
   const { current, isModalOpen } = useSelector((state) => state.offer);
   const dispatch = useDispatch();
   const isMobile = useCheckMobile();
@@ -39,8 +39,10 @@ function Header({openSideBar, setOpenSideBar}) {
     dispatch(setIsModalHide());
   };
   useEffect(() => {
-    dispatch(setIsModalHide());
-    setOpenSideBar(false);
+    try {
+      dispatch(setIsModalHide());
+      setOpenSideBar(false);
+    } catch (error) {}
   }, [pathname]);
 
   return (
