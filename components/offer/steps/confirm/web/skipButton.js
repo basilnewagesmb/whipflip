@@ -39,7 +39,7 @@ function SkipButton({ skipToInstantOffer, initialOffer, analytics, fbpixel }) {
         }
       }}
     >
-      Skip to Initial Offer
+      Skip to Final Offer
     </Button>
   );
 }
