@@ -13,6 +13,8 @@ import { Modal } from "antd";
 import { isIOS } from "react-device-detect";
 import { uploadImagesToS3 } from "utils/s3";
 import useMobileDetect from "utils/useMobileDetect";
+import { dataURLtoFile } from "utils/helper";
+import { usePegasusUploadMutation } from "../pegasus";
 function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
   const isMobile = useMobileDetect();
   const { push, replace } = useRouter();
@@ -96,7 +98,7 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
     audio: false,
     videoConstraints: {
       aspectRatio: { ideal: 1.7777777778 },
-      facingMode: { exact: "environment" },
+      //  facingMode: { exact: "environment" },
     },
     ref: webcamRef,
     screenshotFormat: "image/png",
@@ -165,6 +167,7 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
     }));
   };
   const [login] = useLoginMutation();
+  const [pegasusUpload] = usePegasusUploadMutation();
   const [processQuote] = useProcessQuoteMutation();
   const [createInstantOffer] = useCreateInstantOfferMutation();
   const [addVehicleImages] = useAddVehicleImagesMutation();
@@ -209,36 +212,30 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
         }
         break;
       default:
-        const loginRes = await login();
-        if (loginRes?.data?.user) {
-          const data = {
-            vehicle: {
-              licenseplateno: offerData.plate_number || "0000",
-            },
-            quoteType: "lease",
-            dealerCode: "WhipFlip Test",
-            paintType: "solid",
-            dealer: loginRes?.data?.user?.dealer,
-            imageUrls: state?.stills,
-          };
-          const token = loginRes?.data?.user?.token;
-          const processRes = await processQuote({ data, token });
-          if (processRes?.data) {
-            let dData = processRes.data;
+        var bodyFormData = new FormData();
+        for (let i = 0; i < state?.stills.length; i++) {
+          bodyFormData.append(
+            "imagefile",
+            dataURLtoFile(state?.stills[i].blob, state?.stills[i].overlay)
+          );
+        }
+        pegasusUpload(bodyFormData).then(async (result) => {
+          if (!!result.data.Result.QuoteId) {
+            let dData = result.data;
             let deductionData = { panels: [] };
             state?.stills?.forEach((item, index) => {
               deductionData.panels.push({
-                quoteId: dData.quoteId,
-                image: dData.segmentImages.rawImages[index],
+                quoteId: dData.Result.QuoteId,
+                image: dData.Result["Raw-Image"][index],
                 title: item.title,
-                annotatedImage: dData.segmentImages.annotatedImages[index],
+                annotatedImage: dData.Result["Mask-image"][index],
               });
             });
-            deductionData["damages"] = dData.segmentationEstimate.estimates
-              .filter((item) => item.damageCode != "Clean")
-              .reduce((obj, damage) => {
-                return { ...obj, [damage.name]: damage["damageCode"] };
-              }, {});
+            deductionData["damages"] = dData.Estimate.filter(
+              (item) => item.damageCode != "clean"
+            ).reduce((obj, damage) => {
+              return { ...obj, [damage.panelCode]: damage["damageCode"] };
+            }, {});
             const postData = {
               detection_data: deductionData,
               odometer_image: "", //odometerImage.Location,
@@ -279,11 +276,9 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
               message.error("Something went Wrong");
             }
           } else {
-            message.error("Something went Wrong");
+            throw new Error(result.data.message);
           }
-        } else {
-          message.error("Something went Wrong");
-        }
+        });
         break;
     }
   };
