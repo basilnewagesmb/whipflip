@@ -6639,7 +6639,7 @@ label.uniform_item_label {
         padding-top: 15px;
       }
       p {
-        font-size: 14px;
+        font-size: 12px;
         opacity: 0.69;
         color: #272424;
         margin-bottom: 6px;
@@ -6679,7 +6679,7 @@ label.uniform_item_label {
   content: "";
   height: 2px;
   background-color: #9e9e9e9c;
-  top: calc(50% - 10px);
+  top: calc(50% - 18px);
   z-index: -1;
   transform: translateY(-50%);
   @media (max-width: 980px) {

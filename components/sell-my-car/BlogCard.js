@@ -37,7 +37,7 @@ function BlogCard({ title, image, created_at, name }) {
           </div>
           <div className="col-lg-8 rdcol-right">
             <div className="rd_wrap">
-              <p>Published On {moment(created_at).format("MMMM D, YYYY")}</p>
+              <p>Published On {moment(created_at).format("MMM D, YYYY")}</p>
               <Paragraph
                 ellipsis={{
                   rows: 2,
