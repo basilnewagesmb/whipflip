@@ -16,13 +16,14 @@ import useMobileDetect from "utils/useMobileDetect";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
 
 function Default({ children, user }) {
+  const [openSideBar, setOpenSideBar] = useState(false);
   const isMobile = useMobileDetect();
   const handleScroll = () => {
     if (isMobile) {
       const modals = document.querySelectorAll(".ant-modal-wrap");
       const antSelectOpenElements =
         document.querySelectorAll(".ant-select-open");
-      if (antSelectOpenElements?.length > 0) {
+      if (antSelectOpenElements?.length > 0 || openSideBar) {
         disablePageScroll();
         modals?.forEach((element) => {
           element.style.overflow = "hidden";
@@ -50,7 +51,7 @@ function Default({ children, user }) {
       document.removeEventListener("touchmove", handleScroll);
       document.removeEventListener("touchstart", handleScroll);
     };
-  }, []);
+  }, [openSideBar]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { initialOffer } = useSelector((state) => state.offer);
@@ -128,7 +129,7 @@ function Default({ children, user }) {
         }
         wrap={(wrappedChildren) => (
           <>
-            <Header />
+            <Header openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
             {wrappedChildren}
             <Footer />
           </>
