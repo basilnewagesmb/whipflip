@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 function Reviews({ mob, reviews }) {
-  console.log(reviews);
   const { push } = useRouter();
   if (mob) {
     return (

@@ -26,7 +26,13 @@ function Footer() {
                 <ul>
                   {items?.[1]?.sub?.map((s, i) => (
                     <Link href={s.path} key={i}>
-                      <li>{s.title}</li>
+                      <li
+                        style={{
+                          lineHeight: i === 2 && 1.1,
+                        }}
+                      >
+                        {s.title}
+                      </li>
                     </Link>
                   ))}
                 </ul>
@@ -52,7 +58,13 @@ function Footer() {
                     <li>{items[3].title}</li>
                   </Link>
                   <Link href={items[4].path}>
-                    <li>{items[4].title}</li>
+                    <li
+                      style={{
+                        lineHeight: 1.1,
+                      }}
+                    >
+                      {items[4].title}
+                    </li>
                   </Link>
                 </ul>
               </div>

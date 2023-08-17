@@ -116,6 +116,7 @@ export async function getServerSideProps({ res, query, req }) {
     "reviews",
     "terms-and-conditions",
     "why-sell-your-car-to-us",
+    "sell",
   ];
   let host = req?.headers?.host + "/";
   if (referer.split("/")?.[1]) {

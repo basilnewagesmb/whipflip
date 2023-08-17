@@ -15,7 +15,6 @@ const BlogDetail = (props) => {
   const dispatch = useDispatch();
 
   const { readNext } = props;
-
   return (
     <>
       <Head>
