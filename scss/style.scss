@@ -6311,7 +6311,7 @@ label.uniform_item_label {
 .seo_page {
   .seo_banner {
     .seo-row {
-      height: calc(100vh - 50px);
+      height: calc(100vh - 250px);
       background-color: #4381c0;
       position: relative;
       @include responsive(tab-port) {
