@@ -39,8 +39,10 @@ function Header({ openSideBar, setOpenSideBar }) {
     dispatch(setIsModalHide());
   };
   useEffect(() => {
-    dispatch(setIsModalHide());
-    setOpenSideBar(false);
+    try {
+      dispatch(setIsModalHide());
+      setOpenSideBar(false);
+    } catch (error) {}
   }, [pathname]);
 
   return (
