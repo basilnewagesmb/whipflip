@@ -15,6 +15,8 @@ import { vehicle } from "services/vehicle/api";
 import { offerApi } from "services/offer/api";
 import { general } from "services/util";
 import { clearQuote } from "services/offer/clearQuote";
+import { pegasus } from "services/offer/pegasus";
+import sideBarSlice from "features/sidebar/sideBarSlice";
 
 //
 const persistConfig = {
@@ -27,6 +29,7 @@ const rootReducer = combineReducers({
   offer: offerSlice,
   site: siteSlice,
   mob: mobSlice,
+  sidebar: sideBarSlice,
   [vehicle.reducerPath]: vehicle.reducer,
   [offerApi.reducerPath]: offerApi.reducer,
   [general.reducerPath]: general.reducer,
@@ -42,7 +45,8 @@ export const store = configureStore({
       .concat(vehicle.middleware)
       .concat(offerApi.middleware)
       .concat(general.middleware)
-      .concat(clearQuote.middleware),
+      .concat(clearQuote.middleware)
+      .concat(pegasus.middleware),
 });
 
 export const persister = persistStore(store);

@@ -6311,11 +6311,15 @@ label.uniform_item_label {
 .seo_page {
   .seo_banner {
     .seo-row {
-      height: calc(100vh - 50px);
+      height: calc(100vh - 250px);
       background-color: #4381c0;
       position: relative;
       @include responsive(tab-port) {
         height: auto !important;
+      }
+      @media only screen and (min-width: 1020px) and (max-width: 1026px)  {
+        height: calc(100vh - 860px);
+       
       }
       .seo_banner_left {
         img {

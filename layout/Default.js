@@ -13,10 +13,20 @@ import Header from "./Header";
 import { Fade } from "react-reveal/index";
 import ResetActions from "./resetActions";
 import useMobileDetect from "utils/useMobileDetect";
-import { disablePageScroll, enablePageScroll } from "scroll-lock";
+import {
+  disablePageScroll,
+  enablePageScroll,
+  getScrollState,
+  clearQueueScrollLocks,
+} from "scroll-lock";
+import { setOpenSideBarReducer } from "features/sidebar/sideBarSlice";
 
 function Default({ children, user }) {
-  const [openSideBar, setOpenSideBar] = useState(false);
+  const { openSideBar } = useSelector((state) => state.sidebar);
+  const dispatch = useDispatch();
+  const setOpenSideBar = (e) => {
+    dispatch(setOpenSideBarReducer(e));
+  };
   const isMobile = useMobileDetect();
   const handleScroll = () => {
     if (isMobile) {
@@ -30,12 +40,14 @@ function Default({ children, user }) {
         });
       } else {
         enablePageScroll();
+        clearQueueScrollLocks();
         modals?.forEach((element) => {
           element.style.overflow = "auto";
         });
       }
     }
   };
+
   useEffect(() => {
     window.addEventListener("mousewheel", handleScroll);
     window.addEventListener("DOMMouseScroll", handleScroll);
@@ -62,7 +74,6 @@ function Default({ children, user }) {
     }
   );
   const { pathname } = useRouter();
-  const dispatch = useDispatch();
   useEffect(() => {
     if (initialOffer?.status == "appointment") {
       dispatch(reset());
