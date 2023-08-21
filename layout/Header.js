@@ -14,10 +14,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { setIsModalHide, setIsModalOpen } from "features/offer/offerSlice";
 import InstantOffer from "components/home/banner/instantOffer";
 import Sidebar from "./Sidebar/index";
+import { setOpenSideBarReducer } from "features/sidebar/sideBarSlice";
 
-function Header({ openSideBar, setOpenSideBar }) {
-  const { current, isModalOpen } = useSelector((state) => state.offer);
+function Header() {
+  const { openSideBar } = useSelector((state) => state.sidebar);
   const dispatch = useDispatch();
+  const setOpenSideBar = (e) => {
+    dispatch(setOpenSideBarReducer(e));
+  };
+  const { current, isModalOpen } = useSelector((state) => state.offer);
   const isMobile = useCheckMobile();
   const { pathname } = useRouter();
   const [scroll, setScroll] = useState(false);
@@ -39,10 +44,8 @@ function Header({ openSideBar, setOpenSideBar }) {
     dispatch(setIsModalHide());
   };
   useEffect(() => {
-    try {
-      dispatch(setIsModalHide());
-      setOpenSideBar(false);
-    } catch (error) {}
+    dispatch(setIsModalHide());
+    setOpenSideBar(false);
   }, [pathname]);
 
   return (

@@ -19,10 +19,14 @@ import {
   getScrollState,
   clearQueueScrollLocks,
 } from "scroll-lock";
+import { setOpenSideBarReducer } from "features/sidebar/sideBarSlice";
 
 function Default({ children, user }) {
-  const [openSideBar, setOpenSideBar] = useState(false);
-  const IsScrollable = getScrollState();
+  const { openSideBar } = useSelector((state) => state.sidebar);
+  const dispatch = useDispatch();
+  const setOpenSideBar = (e) => {
+    dispatch(setOpenSideBarReducer(e));
+  };
   const isMobile = useMobileDetect();
   const handleScroll = () => {
     if (isMobile) {
@@ -43,9 +47,6 @@ function Default({ children, user }) {
       }
     }
   };
-  useEffect(() => {
-    console.log("IsScrollable", IsScrollable);
-  }, [IsScrollable]);
 
   useEffect(() => {
     window.addEventListener("mousewheel", handleScroll);
@@ -73,7 +74,6 @@ function Default({ children, user }) {
     }
   );
   const { pathname } = useRouter();
-  const dispatch = useDispatch();
   useEffect(() => {
     if (initialOffer?.status == "appointment") {
       dispatch(reset());
@@ -140,7 +140,7 @@ function Default({ children, user }) {
         }
         wrap={(wrappedChildren) => (
           <>
-            <Header openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
+            <Header />
             {wrappedChildren}
             <Footer />
           </>
