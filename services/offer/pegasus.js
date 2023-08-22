@@ -31,4 +31,4 @@ export const pegasus = createApi({
   }),
 });
 
-export const { usePegasusLoadingMutation, usePegasusUploadMutation } = pegasus;
+export const { usePegasusLoginMutation, usePegasusUploadMutation } = pegasus;
