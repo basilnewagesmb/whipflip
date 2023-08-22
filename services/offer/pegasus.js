@@ -20,11 +20,14 @@ export const pegasus = createApi({
       },
     }),
     pegasusUpload: builder.mutation({
-      query: (data) => {
+      query: ({ data, token }) => {
         return {
           url: `/api/get_predictions_multi`,
           method: "POST",
           body: data,
+          headers: {
+            Authorization: "Bearer " + token,
+          },
         };
       },
     }),
