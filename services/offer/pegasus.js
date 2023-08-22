@@ -5,6 +5,20 @@ export const pegasus = createApi({
     baseUrl: process.env.NEXT_PUBLIC_PEGASUS_API,
   }),
   endpoints: (builder) => ({
+    pegasusLogin: builder.mutation({
+      query: () => {
+        return {
+          url: `/api/login`,
+          method: "POST",
+          body: {
+            user: {
+              email: "whipfliptest01",
+              password: "v8k3j4",
+            },
+          },
+        };
+      },
+    }),
     pegasusUpload: builder.mutation({
       query: (data) => {
         return {
@@ -17,4 +31,4 @@ export const pegasus = createApi({
   }),
 });
 
-export const { usePegasusUploadMutation } = pegasus;
+export const { usePegasusLoadingMutation, usePegasusUploadMutation } = pegasus;
