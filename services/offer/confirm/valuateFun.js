@@ -222,7 +222,6 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
           );
         }
         const loginRes = await pegasusLogin();
-        const boundary ='--------------------------017853031999300782053082';
         if (loginRes?.data.access_token) {
           fetch(
             process.env.NEXT_PUBLIC_PEGASUS_API + "/api/get_predictions_multi",
@@ -231,7 +230,6 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
               body: bodyFormData,
               headers: {
                 Authorization: "Bearer " + loginRes?.data.access_token,
-                "Content-Type": `multipart/form-data boundary=${boundary}`,
               },
             }
           )
