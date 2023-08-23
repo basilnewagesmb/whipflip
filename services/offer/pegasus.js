@@ -8,7 +8,7 @@ export const pegasus = createApi({
     pegasusLogin: builder.mutation({
       query: () => {
         return {
-          url: `/api/login`,
+          url: `/api/auth`,
           method: "POST",
           body: {
             user: {
