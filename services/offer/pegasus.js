@@ -12,7 +12,7 @@ export const pegasus = createApi({
           method: "POST",
           body: {
             user: {
-              email: "whipflip_prod",
+              username: "whipflip_prod",
               password: "RGmdP8tKDjXCO0ra",
             },
           },
