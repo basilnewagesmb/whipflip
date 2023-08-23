@@ -223,10 +223,17 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
         }
         const loginRes = await pegasusLogin();
         if (loginRes?.data.access_token) {
-          pegasusUpload({
-            data: bodyFormData,
-            token: loginRes?.data?.access_token,
-          })
+          fetch(
+            process.env.NEXT_PUBLIC_PEGASUS_API + "/api/get_predictions_multi",
+            {
+              method: "POST",
+              body: bodyFormData,
+              headers: {
+                Authorization: "Bearer " + loginRes?.data.access_token,
+              },
+            }
+          )
+            .then((response) => response.text())
             .then(async (result) => {
               if (!!result?.data?.Result?.QuoteId) {
                 let dData = result.data;
