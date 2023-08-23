@@ -3,7 +3,12 @@ export const pegasus = createApi({
   reducerPath: "pegasus",
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.NEXT_PUBLIC_PEGASUS_API,
+    prepareHeaders: (headers) => {
+      headers.set("Content-Type", "multipart/form-data");
+      return headers;
+    },
   }),
+
   endpoints: (builder) => ({
     pegasusLogin: builder.mutation({
       query: () => {
@@ -23,10 +28,10 @@ export const pegasus = createApi({
           url: `/api/get_predictions_multi`,
           method: "POST",
           body: data,
-          formData:true,
+          formData: true,
           headers: {
             Authorization: "Bearer " + token,
-            "content-type": "multipart/form-data",
+            "Content-Type": "multipart/form-data;",
           },
         };
       },
