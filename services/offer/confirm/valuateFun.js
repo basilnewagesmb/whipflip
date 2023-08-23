@@ -222,6 +222,8 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
           );
         }
         const loginRes = await pegasusLogin();
+        const boundary =
+          "----WebKitFormBoundary" + Math.random().toString(16).substring(2);
         if (loginRes?.data.access_token) {
           fetch(
             process.env.NEXT_PUBLIC_PEGASUS_API + "/api/get_predictions_multi",
@@ -230,7 +232,7 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
               body: bodyFormData,
               headers: {
                 Authorization: "Bearer " + loginRes?.data.access_token,
-                "Content-Type": `multipart/form-data boundary=${bodyFormData?.getBoundary()}`,
+                "Content-Type": `multipart/form-data boundary=${boundary}`,
               },
             }
           )
