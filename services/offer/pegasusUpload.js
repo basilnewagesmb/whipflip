@@ -3,10 +3,6 @@ export const pegasusUpload = createApi({
   reducerPath: "pegasus",
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.NEXT_PUBLIC_PEGASUS_API,
-    prepareHeaders: (headers) => {
-      headers.set("Content-Type", "multipart/form-data");
-      return headers;
-    },
   }),
   endpoints: (builder) => ({
     pegasusUpload: builder.mutation({
