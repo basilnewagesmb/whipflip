@@ -230,7 +230,7 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
               body: bodyFormData,
               headers: {
                 Authorization: "Bearer " + loginRes?.data.access_token,
-                "Content-Type": "multipart/form-data",
+                "Content-Type": `multipart/form-data boundary=${bodyFormData?.getBoundary()}`,
               },
             }
           )
