@@ -14,8 +14,8 @@ import { isIOS } from "react-device-detect";
 import { uploadImagesToS3 } from "utils/s3";
 import useMobileDetect from "utils/useMobileDetect";
 import { dataURLtoFile } from "utils/helper";
-import { usePegasusLoginMutation } from "../pegasusAuth";
 import { usePegasusUploadMutation } from "../pegasusUpload";
+import { usePegasusLoginMutation } from "../pegasusAuth";
 function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
   const isMobile = useMobileDetect();
   const { push, replace } = useRouter();
@@ -222,19 +222,9 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
           );
         }
         const loginRes = await pegasusLogin();
-        if (loginRes?.data.access_token) {
-          fetch(
-            process.env.NEXT_PUBLIC_PEGASUS_API + "/api/get_predictions_multi",
-            {
-              method: "POST",
-              body: bodyFormData,
-              headers: {
-                Authorization: "Bearer " + loginRes?.data.access_token,
-              },
-            }
-          )
+        if (loginRes?.data?.access_token) {
+          pegasusUpload({ data: bodyFormData, token: loginRes.data.token })
             .then(async (result) => {
-              console.log(result);
               if (!!result?.data?.Result?.QuoteId) {
                 let dData = result.data;
                 let deductionData = { panels: [] };
@@ -291,9 +281,7 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
                   throw new Error("Something went Wrong");
                 }
               } else {
-                throw new Error(
-                  result?.data?.message || "Something went Wrong"
-                );
+                throw new Error(result.data.message || "Something went Wrong");
               }
             })
             .catch((error) => {
