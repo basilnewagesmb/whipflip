@@ -234,6 +234,7 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
             }
           )
             .then(async (result) => {
+              console.log(result);
               if (!!result?.data?.Result?.QuoteId) {
                 let dData = result.data;
                 let deductionData = { panels: [] };
