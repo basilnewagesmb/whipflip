@@ -23,6 +23,7 @@ export const pegasus = createApi({
           url: `/api/get_predictions_multi`,
           method: "POST",
           body: data,
+          formData:true,
           headers: {
             Authorization: "Bearer " + token,
             "content-type": "multipart/form-data",
