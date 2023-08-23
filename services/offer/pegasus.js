@@ -11,10 +11,8 @@ export const pegasus = createApi({
           url: `/api/auth`,
           method: "POST",
           body: {
-            user: {
-              username: "whipflip_prod",
-              password: "RGmdP8tKDjXCO0ra",
-            },
+            username: "whipflip_prod",
+            password: "RGmdP8tKDjXCO0ra",
           },
         };
       },
