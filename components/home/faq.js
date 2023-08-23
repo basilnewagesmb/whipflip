@@ -32,12 +32,12 @@ export const faqData = {
               and how it should be sold in the modern age.
             </p>
             <p>
-              Our final offer are real, service is 5 star, and our payment
-              NEVER bounces! We buy thousands of cars a year ranging from $1,000
-              to $250,000+ from awesome customers like yourself and pride
-              ourselves on delivering a phenomenal purchase experience at your
-              driveway. Don’t just take our word for it, check out our Google
-              certified reviews and our Flippin’ awesome partners below.
+              Our final offer are real, service is 5 star, and our payment NEVER
+              bounces! We buy thousands of cars a year ranging from $1,000 to
+              $250,000+ from awesome customers like yourself and pride ourselves
+              on delivering a phenomenal purchase experience at your driveway.
+              Don’t just take our word for it, check out our Google certified
+              reviews and our Flippin’ awesome partners below.
             </p>
             <div className="row align-items-center">
               <div className="col-8 col-md-4">
@@ -97,7 +97,8 @@ export const faqData = {
             </p>
             <ol className="mb-4">
               <li>
-                Visit our site and enter your vehicles details to get an initial offer.
+                Visit our site and enter your vehicles details to get an initial
+                offer.
               </li>
               <li>
                 Use our automated and guided vehicle valuation tool to get an
@@ -240,8 +241,8 @@ export const faqData = {
           <AccordionItemPanel>
             <p>
               We want to buy your car as fast as you can order a pizza. Our
-              process to get a initial offer, and book to sell can
-              take less than 5 minutes.
+              process to get a initial offer, and book to sell can take less
+              than 5 minutes.
             </p>
 
             <p>
@@ -262,9 +263,8 @@ export const faqData = {
               <span className="text-bold">
                 The whole thing!? - 5-10+ minutes -
               </span>{" "}
-              This includes getting a initial offer, uploading
-              ownership proof, setting an appointment, and completion of the
-              sale at your door.
+              This includes getting a initial offer, uploading ownership proof,
+              setting an appointment, and completion of the sale at your door.
             </p>
 
             <p>
@@ -316,10 +316,10 @@ export const faqData = {
           </AccordionItemHeading>
           <AccordionItemPanel>
             <p>
-              Currently, WhipFlip is serving most of Pennsylvania, North
-              Carolina, Ohio, Delaware and New Jersey. We are growing FAST and
-              will be adding many more service areas to handle customer demand
-              in the near future.
+              Currently, WhipFlip is serving most of Pennsylvania, Ohio,
+              Delaware and New Jersey. We are growing FAST and will be adding
+              many more service areas to handle customer demand in the near
+              future.
             </p>
             <div className="social-icon d-flex">
               <Link href="https://www.facebook.com/WhipFlip-111080500678406">
@@ -541,9 +541,9 @@ export const faqData = {
             </p>
             <p>
               {" "}
-              In addition, our initial offer and final offer are instant to
-              give you all the information you need without spending hours
-              traveling shopping it around just to Get Instant Offer.
+              In addition, our initial offer and final offer are instant to give
+              you all the information you need without spending hours traveling
+              shopping it around just to Get Instant Offer.
             </p>
             <div className="social-icon d-flex">
               <Link href="https://www.facebook.com/WhipFlip-111080500678406">
@@ -764,8 +764,8 @@ export const faqData = {
             <p>
               {" "}
               We try! It&apos;s hard to answer that but WhipFlip has several
-              great advantages that allow us to deliver great final offer to
-              our customers that can be higher than KBB, Carmax, Carvana,
+              great advantages that allow us to deliver great final offer to our
+              customers that can be higher than KBB, Carmax, Carvana,
               Webuyanycar.com etc.
             </p>
 
