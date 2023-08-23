@@ -222,7 +222,10 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
         }
         const loginRes = await pegasusLogin();
         if (loginRes?.data.access_token) {
-          pegasusUpload({ data: bodyFormData, token: loginRes?.data.access_token })
+          pegasusUpload({
+            data: bodyFormData,
+            token: loginRes?.data?.access_token,
+          })
             .then(async (result) => {
               if (!!result?.data?.Result?.QuoteId) {
                 let dData = result.data;
