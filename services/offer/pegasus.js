@@ -8,7 +8,6 @@ export const pegasus = createApi({
       return headers;
     },
   }),
-
   endpoints: (builder) => ({
     pegasusLogin: builder.mutation({
       query: () => {
@@ -18,6 +17,9 @@ export const pegasus = createApi({
           body: {
             username: "whipflip_prod",
             password: "RGmdP8tKDjXCO0ra",
+          },
+          headers: {
+            "Content-Type": "application/json",
           },
         };
       },
@@ -31,7 +33,6 @@ export const pegasus = createApi({
           formData: true,
           headers: {
             Authorization: "Bearer " + token,
-            "Content-Type": "multipart/form-data;",
           },
         };
       },
