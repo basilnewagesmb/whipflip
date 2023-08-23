@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-export const pegasus = createApi({
+export const pegasusUpload = createApi({
   reducerPath: "pegasus",
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.NEXT_PUBLIC_PEGASUS_API,
@@ -9,21 +9,6 @@ export const pegasus = createApi({
     },
   }),
   endpoints: (builder) => ({
-    pegasusLogin: builder.mutation({
-      query: () => {
-        return {
-          url: `/api/auth`,
-          method: "POST",
-          body: {
-            username: "whipflip_prod",
-            password: "RGmdP8tKDjXCO0ra",
-          },
-          headers: {
-            "Content-Type": "application/json",
-          },
-        };
-      },
-    }),
     pegasusUpload: builder.mutation({
       query: ({ data, token }) => {
         return {
@@ -40,4 +25,4 @@ export const pegasus = createApi({
   }),
 });
 
-export const { usePegasusLoginMutation, usePegasusUploadMutation } = pegasus;
+export const { usePegasusUploadMutation } = pegasusUpload;

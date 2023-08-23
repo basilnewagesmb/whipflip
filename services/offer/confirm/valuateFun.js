@@ -14,7 +14,8 @@ import { isIOS } from "react-device-detect";
 import { uploadImagesToS3 } from "utils/s3";
 import useMobileDetect from "utils/useMobileDetect";
 import { dataURLtoFile } from "utils/helper";
-import { usePegasusLoginMutation, usePegasusUploadMutation } from "../pegasus";
+import { usePegasusLoginMutation } from "../pegasusAuth";
+import { usePegasusUploadMutation } from "../pegasusUpload";
 function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
   const isMobile = useMobileDetect();
   const { push, replace } = useRouter();
