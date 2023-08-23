@@ -98,7 +98,7 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
     audio: false,
     videoConstraints: {
       aspectRatio: { ideal: 1.7777777778 },
-      facingMode: { exact: "environment" },
+      //facingMode: { exact: "environment" },
     },
     ref: webcamRef,
     screenshotFormat: "image/png",
