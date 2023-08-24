@@ -227,7 +227,7 @@ function useConfirmForm({ form, fbpixel, analytics }) {
                   issues,
                   vin: data?.info.vinNumber?.toUpperCase() || level?.vin?.toUpperCase() || "",
                   plate_state: data?.info.state || "",
-                  plate_number: data?.info.plateNumber.toUpperCase() || "",
+                  plate_number: data?.info.plateNumber?.toUpperCase() || "",
                   full_trim,
                   jd_vehicle_id: e.target.value,
                   uid: initialOffer?.uid,
