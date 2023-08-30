@@ -13,6 +13,9 @@ import { Modal } from "antd";
 import { isIOS } from "react-device-detect";
 import { uploadImagesToS3 } from "utils/s3";
 import useMobileDetect from "utils/useMobileDetect";
+import { dataURLtoFile } from "utils/helper";
+import { usePegasusUploadMutation } from "../pegasusUpload";
+import { usePegasusLoginMutation } from "../pegasusAuth";
 function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
   const isMobile = useMobileDetect();
   const { push, replace } = useRouter();
@@ -165,6 +168,8 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
     }));
   };
   const [login] = useLoginMutation();
+  const [pegasusUpload] = usePegasusUploadMutation();
+  const [pegasusLogin, { isSuccess: isLogin }] = usePegasusLoginMutation();
   const [processQuote] = useProcessQuoteMutation();
   const [createInstantOffer] = useCreateInstantOfferMutation();
   const [addVehicleImages] = useAddVehicleImagesMutation();
@@ -209,81 +214,85 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
         }
         break;
       default:
-        const loginRes = await login();
-        if (loginRes?.data?.user) {
-          const data = {
-            vehicle: {
-              licenseplateno: offerData.plate_number || "0000",
-            },
-            quoteType: "lease",
-            dealerCode: "WhipFlip Test",
-            paintType: "solid",
-            dealer: loginRes?.data?.user?.dealer,
-            imageUrls: state?.stills,
-          };
-          const token = loginRes?.data?.user?.token;
-          const processRes = await processQuote({ data, token });
-          if (processRes?.data) {
-            let dData = processRes.data;
-            let deductionData = { panels: [] };
-            state?.stills?.forEach((item, index) => {
-              deductionData.panels.push({
-                quoteId: dData.quoteId,
-                image: dData.segmentImages.rawImages[index],
-                title: item.title,
-                annotatedImage: dData.segmentImages.annotatedImages[index],
-              });
-            });
-            deductionData["damages"] = dData.segmentationEstimate.estimates
-              .filter((item) => item.damageCode != "Clean")
-              .reduce((obj, damage) => {
-                return { ...obj, [damage.name]: damage["damageCode"] };
-              }, {});
-            const postData = {
-              detection_data: deductionData,
-              odometer_image: "", //odometerImage.Location,
-              vin: offerData.vin,
-              uid: offerData.uid,
-              plate_state: offerData.plate_state,
-              plate_number: offerData.plate_number,
-              option: 1,
-              full_trim: offerData.body || "",
-            };
-            if (offerData.enableMultiTrim) {
-              postData.jd_vehicle_id = offerData.jd_vehicle_id;
-            } else {
-              postData.trim = offerData.trim;
-            }
-            const offerRes = await createInstantOffer(postData);
-            if (offerRes?.data.uid) {
-              try {
-                if (offerRes.data["is_over_quote"]) {
-                  analytics?.event("OverPrice", "Offer page", `Over Price`);
-                  fbpixel &&
-                    fbpixel.customEvent("OverPrice", {
-                      content_name: "Offer page",
-                      content_category: `OverPrice`,
-                      contents: [
-                        {
-                          ...offerRes.data,
-                        },
-                      ],
-                    });
-                }
-              } catch (error) {}
-              setTimeout(() => {
-                setState((prev) => ({ ...prev, speed: 1 }));
-              }, 2000);
-              replace(`/prospect/${offerRes?.data.uid}`);
-            } else {
-              message.error("Something went Wrong");
-            }
-          } else {
-            message.error("Something went Wrong");
-          }
-        } else {
-          message.error("Something went Wrong");
+        var bodyFormData = new FormData();
+        for (let i = 0; i < state?.stills.length; i++) {
+          bodyFormData.append(
+            "imagefile",
+            dataURLtoFile(state?.stills[i].blob, state?.stills[i].overlay)
+          );
         }
+        const loginRes = await pegasusLogin();
+        if (loginRes?.data?.access_token) {
+          pegasusUpload({ data: bodyFormData, token: loginRes?.data?.access_token })
+            .then(async (result) => {
+              if (!!result?.data?.Result?.QuoteId) {
+                let dData = result.data;
+                let deductionData = { panels: [] };
+                state?.stills?.forEach((item, index) => {
+                  deductionData.panels.push({
+                    quoteId: dData.Result.QuoteId,
+                    image: dData.Result["Raw-Image"][index],
+                    title: item.title,
+                    annotatedImage: dData.Result["Mask-image"][index],
+                  });
+                });
+                deductionData["damages"] = dData.Estimate.filter(
+                  (item) => item.damageCode != "clean"
+                ).reduce((obj, damage) => {
+                  return { ...obj, [damage.panelCode]: damage["damageCode"] };
+                }, {});
+                const postData = {
+                  detection_data: deductionData,
+                  odometer_image: "", //odometerImage.Location,
+                  vin: offerData.vin,
+                  uid: offerData.uid,
+                  plate_state: offerData.plate_state,
+                  plate_number: offerData.plate_number,
+                  option: 1,
+                  full_trim: offerData.body || "",
+                };
+                if (offerData.enableMultiTrim) {
+                  postData.jd_vehicle_id = offerData.jd_vehicle_id;
+                } else {
+                  postData.trim = offerData.trim;
+                }
+                const offerRes = await createInstantOffer(postData);
+                if (offerRes?.data.uid) {
+                  try {
+                    if (offerRes.data["is_over_quote"]) {
+                      analytics?.event("OverPrice", "Offer page", `Over Price`);
+                      fbpixel &&
+                        fbpixel.customEvent("OverPrice", {
+                          content_name: "Offer page",
+                          content_category: `OverPrice`,
+                          contents: [
+                            {
+                              ...offerRes.data,
+                            },
+                          ],
+                        });
+                    }
+                  } catch (error) {}
+                  setTimeout(() => {
+                    setState((prev) => ({ ...prev, speed: 1 }));
+                  }, 2000);
+                  replace(`/prospect/${offerRes?.data.uid}`);
+                } else {
+                  throw new Error("Something went Wrong");
+                }
+              } else {
+                throw new Error(result.data.message || "Something went Wrong");
+              }
+            })
+            .catch((error) => {
+              console.log("Upload Failed", error);
+              message.error("Upload Failed");
+            });
+        } else {
+          console.log("Authentication failed", loginRes);
+          message.error(loginRes?.error?.error || "Authentication failed");
+        }
+
         break;
     }
   };

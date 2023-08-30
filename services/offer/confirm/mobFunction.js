@@ -201,9 +201,9 @@ function useConfirmFormMob({ form, navFunc, fbpixel, analytics }) {
                 ).body;
                 const cRes = await addDamages({
                   issues,
-                  vin: data?.info.vinNumber || level?.vin || "",
+                  vin: data?.info.vinNumber?.toUpperCase() || level?.vin?.toUpperCase() || "",
                   plate_state: data?.info.state || "",
-                  plate_number: data?.info.plateNumber || "",
+                  plate_number: data?.info.plateNumber?.toUpperCase() || "",
                   full_trim,
                   jd_vehicle_id: e.target.value,
                   uid: initialOffer?.uid,
