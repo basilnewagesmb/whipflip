@@ -92,7 +92,7 @@ function RulesModal({
               <div className="apHd">
                 <span>Be on time for your appointment to sell:</span>
                 <h3>
-                  {moment(formRealData?.appointment_date_string).format(
+                  {moment(formRealData?.appointment_date_string, "MM-DD-YYYY").format(
                     "MMMM D"
                   )}{" "}
                   at {formRealData?.appointment_time}
