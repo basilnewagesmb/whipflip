@@ -69,4 +69,9 @@
         <lastmod>2023-09-01T00:00:00+00:00</lastmod>
         <priority>0.7</priority>
     </url>
+     <url>
+        <loc>https://www.whipflip.com/blog</loc>
+        <lastmod>2023-09-01T00:00:00+00:00</lastmod>
+        <priority>0.8</priority>
+    </url>
 </urlset>
