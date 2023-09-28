@@ -7,6 +7,7 @@ const nextConfig = {
       "whipflip.com",
       "d2ivfcfbdvj3sm.cloudfront.net",
       "seal-delaware.bbb.org",
+      "dbhdyzvm8lm25.cloudfront.net"
     ],
   },
   headers: () => [
