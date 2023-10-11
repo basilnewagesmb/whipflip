@@ -6311,15 +6311,17 @@ label.uniform_item_label {
 .seo_page {
   .seo_banner {
     .seo-row {
-      height: calc(100vh - 250px);
+      &.initial_offer {
+        height: calc(100vh + 250px);
+      }
+      height: calc(100vh - 50px);
       background-color: #4381c0;
       position: relative;
       @include responsive(tab-port) {
         height: auto !important;
       }
-      @media only screen and (min-width: 1020px) and (max-width: 1026px)  {
+      @media only screen and (min-width: 1020px) and (max-width: 1026px) {
         height: calc(100vh - 860px);
-       
       }
       .seo_banner_left {
         img {
@@ -6327,6 +6329,9 @@ label.uniform_item_label {
           height: 100%;
           object-fit: unset;
           object-position: left;
+          @include responsive(tab-port) {
+            position: absolute;
+          }
         }
         &::before {
           content: "";
@@ -6693,4 +6698,61 @@ label.uniform_item_label {
 
 .flow_row.row {
   position: relative;
+}
+
+.bnr_rt_wrap.bnr_lt_wrap {
+  color: #fff;
+  text-align: left;
+  padding-right: 0;
+  position: absolute;
+  top: calc(50% + 40px);
+  z-index: 99;
+  transform: translateY(-50%);
+  padding: 20px;
+  @include responsive(tab-port) {
+    position: relative;
+    transform: translateY(0);
+    text-align: center;
+  }
+  .bnr_dec {
+    padding-top: 20px;
+    & > span {
+      font-size: 24px;
+      color: #fcc100;
+    }
+    & > p {
+      font-size: 22px;
+      line-height: 38px;
+      @include responsive(tab-port) {
+        font-size: 20px;
+      }
+    }
+    button {
+      font-weight: 700;
+      padding: 10px 30px;
+      background-color: #fcc100;
+      border-radius: 30px;
+      display: inline-flex;
+      justify-content: center;
+      gap: 10px;
+      border: none;
+      margin: auto;
+    }
+  }
+}
+.seo_banner.seo_banner2 {
+  .seo_banner_rt {
+    @include responsive(tab-port) {
+      padding: 30px 20px;
+    }
+  }
+  .seo-row {
+    padding-right: 25px;
+    @include responsive(tab-port) {
+      padding-right: 0;
+    }
+  }
+}
+.home-form.home-form--seo {
+  box-shadow: none !important;
 }
