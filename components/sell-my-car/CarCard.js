@@ -17,12 +17,16 @@ function CarCard({ location, year, make, price, thumbnail_image }) {
             </div>
             <div className="sold_price">
               <span>
-                Sold at : <b>${new Intl.NumberFormat("en-US").format(price)}</b>
+                Sold at: <b>${new Intl.NumberFormat("en-US").format(price)}</b>
               </span>
             </div>
           </div>
           <div className="svd_location">
-            <span>
+            <span
+              style={{
+                height: "24px",
+              }}
+            >
               <svg width="17.5" height="21.52" viewBox="0 0 17.5 21.52">
                 <g id="map-point-svgrepo-com" transform="translate(0.75 0.75)">
                   <path

@@ -6372,12 +6372,15 @@ label.uniform_item_label {
       h1 {
         font-size: 56px;
         @media (max-width: 1370px) {
-          font-size: 40px;
+          font-size: 35px;
         }
       }
     }
     .bnr_dec {
       padding-top: 20px;
+      @media (max-width: 1370px) {
+        padding-top: 8px;
+      }
       & > span {
         font-size: 24px;
         color: #fcc100;
@@ -6390,6 +6393,8 @@ label.uniform_item_label {
         line-height: 38px;
         @media (max-width: 1370px) {
           font-size: 18px;
+          line-height: 18px;
+
         }
       }
       button {
@@ -6710,12 +6715,18 @@ label.uniform_item_label {
   transform: translateY(-50%);
   padding: 20px;
   @include responsive(tab-port) {
+    padding-bottom: 0;
     position: relative;
     transform: translateY(0);
     text-align: center;
   }
   .bnr_dec {
     padding-top: 20px;
+    @include responsive(tab-port) {
+      padding-top: 5px;
+
+
+    }
     & > span {
       font-size: 24px;
       color: #fcc100;
@@ -6725,6 +6736,8 @@ label.uniform_item_label {
       line-height: 38px;
       @include responsive(tab-port) {
         font-size: 20px;
+        line-height: 28px;
+
       }
     }
     button {
@@ -6743,7 +6756,8 @@ label.uniform_item_label {
 .seo_banner.seo_banner2 {
   .seo_banner_rt {
     @include responsive(tab-port) {
-      padding: 30px 20px;
+      padding-top: 0;
+      padding: 0px 20px 30px 20px;
     }
   }
   .seo-row {

@@ -23,6 +23,7 @@ function SEO({ blogs, reviews, car }) {
   }, []);
   const isMobile = useCheckMobile();
   const { push } = useRouter();
+  const isLocation = car?.vehicles?.[0]?.type === "location";
   return (
     <div
       className="seo_page"
@@ -57,8 +58,15 @@ function SEO({ blogs, reviews, car }) {
             )}
             <div className={`bnr_rt_wrap bnr_lt_wrap`}>
               <div className="seo_bnr_hd">
-                <span className="text-center">Need To Sell Your </span>
-                <h1>{car?.vehicles?.[0]?.make}?</h1>
+                <span className="text-center">
+                  {!isLocation && "Need To Sell Your"}
+                </span>
+
+                <h1>
+                  {isLocation
+                    ? car?.vehicles?.[0]?.headline
+                    : car?.vehicles?.[0]?.make + " ?"}
+                </h1>
               </div>
               <div className="bnr_dec">
                 {!isMobile && (
@@ -67,9 +75,14 @@ function SEO({ blogs, reviews, car }) {
                   </span>
                 )}
                 <p>
-                  Get an instant offer on your {car?.vehicles?.[0]?.make} and
+                  {!isLocation
+                    ? `Get an instant offer on your ${car?.vehicles?.[0]?.make} and
                   book an appointment to sell. Our friendly car concierge will
-                  come to your driveway to pay & pick up the car for free!
+                  come to your driveway to pay & pick up the car for free!`
+                    : `Get
+                  an instant offer on your car at  ${car?.vehicles?.[0]?.location}  and book an appointment
+                  to sell. Our friendly car concierge will come to your driveway
+                  to pay & pick up the car for free!`}
                 </p>
               </div>
             </div>
