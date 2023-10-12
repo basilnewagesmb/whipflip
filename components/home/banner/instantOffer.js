@@ -11,7 +11,9 @@ import { setInitialOffer } from "features/offer/offerSlice";
 import { useGetOfferByIdMutation } from "services/offer/api";
 import { useRef } from "react";
 import { UpOutlined, DownOutlined } from "@ant-design/icons";
+import { useRouter } from "next/router";
 function InstantOffer({ header, handleShowSideBar, handleCancel }) {
+  const { pathname } = useRouter();
   const [showError, setShowError] = useState(false);
   const [retrieveOffer, { isLoading }] = useRetrieveOfferMutation();
   const [isTrimOpen, setIsTrimOpen] = useState(false);
@@ -504,14 +506,16 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
                     </Button>
                   )}
                 </div>
-                <div className="col-lg-12 already_offer text-center">
-                  <p>
-                    Already have an offer?{" "}
-                    <span style={{ cursor: "pointer" }} onClick={showModal}>
-                      Retrieve it here
-                    </span>
-                  </p>
-                </div>
+                {pathname === "/" && (
+                  <div className="col-lg-12 already_offer text-center">
+                    <p>
+                      Already have an offer?{" "}
+                      <span style={{ cursor: "pointer" }} onClick={showModal}>
+                        Retrieve it here
+                      </span>
+                    </p>
+                  </div>
+                )}
               </div>
             </Form>
           </div>
