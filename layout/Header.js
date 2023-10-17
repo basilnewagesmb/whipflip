@@ -47,6 +47,13 @@ function Header() {
     dispatch(setIsModalHide());
     setOpenSideBar(false);
   }, [pathname]);
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isModalOpen]);
 
   return (
     <div className="whipflip-header">
