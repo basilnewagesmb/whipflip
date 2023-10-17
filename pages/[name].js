@@ -43,7 +43,7 @@ function SEO({ blogs, reviews, car }) {
             initialOffer && "initial_offer"
           }`}
         >
-          <div className="col-lg-7 col-md-6  p-0 seo_banner_left h-100">
+          <div className="col-lg-7 p-0 seo_banner_left h-100">
             {car?.vehicles?.[0]?.banner_image && (
               <Image
                 placeholder="blur"
@@ -86,7 +86,7 @@ function SEO({ blogs, reviews, car }) {
               </div>
             </div>
           </div>
-          <div className="col-lg-5 col-md-6 align-self-center seo_banner_rt">
+          <div className="col-lg-5 align-self-center seo_banner_rt">
             <div className="row justify-content-center m-0">
               <div className="col-md-12 p-0">
                 {isClient ? (
@@ -236,8 +236,8 @@ export default SEO;
 export async function getServerSideProps({ query }) {
   try {
     const name = query.name;
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs`);
-    const blogs = await res.json();
+    //const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs`);
+   // const blogs = await res.json();
     const revRes = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/prospects/reviews?limit=${3}`
     );
@@ -253,7 +253,7 @@ export async function getServerSideProps({ query }) {
     }
     return {
       props: {
-        blogs: blogs?.slice(0, 3) || [],
+      //  blogs: blogs?.slice(0, 3) || [],
         reviews: reviews?.reviews || [],
         car,
       },
