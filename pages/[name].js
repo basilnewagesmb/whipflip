@@ -8,7 +8,6 @@ import ReviewCard from "components/sell-my-car/ReviewCard";
 import MetaHead from "components/common/metaHead";
 import CarCard from "components/sell-my-car/CarCard";
 import { useRouter } from "next/router";
-import { isMobile } from "react-device-detect";
 import useCheckMobile from "utils/checkMobile";
 import CardSkeleton from "components/home/banner/cardSkeleton";
 import InstantOffer from "components/home/banner/instantOffer";
@@ -44,7 +43,7 @@ function SEO({ blogs, reviews, car }) {
             initialOffer && "initial_offer"
           }`}
         >
-          <div className="col-lg-8 p-0 seo_banner_left h-100">
+          <div className="col-lg-7 p-0 seo_banner_left h-100">
             {car?.vehicles?.[0]?.banner_image && (
               <Image
                 placeholder="blur"
@@ -80,14 +79,14 @@ function SEO({ blogs, reviews, car }) {
                   book an appointment to sell. Our friendly car concierge will
                   come to your driveway to pay & pick up the car for free!`
                     : `Get
-                  an instant offer on your car at  ${car?.vehicles?.[0]?.location}  and book an appointment
+                  an instant offer on your car at  ${car?.vehicles?.[0]?.display_city}  and book an appointment
                   to sell. Our friendly car concierge will come to your driveway
                   to pay & pick up the car for free!`}
                 </p>
               </div>
             </div>
           </div>
-          <div className="col-lg-4 align-self-center seo_banner_rt">
+          <div className="col-lg-5 align-self-center seo_banner_rt">
             <div className="row justify-content-center m-0">
               <div className="col-md-12 p-0">
                 {isClient ? (
