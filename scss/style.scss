@@ -4425,6 +4425,7 @@ canvas {
         }
         img {
           width: 100%;
+          object-fit: contain;
         }
       }
       .cob_offer_name {
