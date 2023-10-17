@@ -120,13 +120,13 @@ export async function getServerSideProps({ res, query, req }) {
   ];
   let host = req?.headers?.host + "/";
   if (referer.split("/")?.[1]) {
-    host = req?.headers?.host + "/" + referer.split("/")?.[1];
+    host = req?.headers?.host + "/" + referer?.split("/")?.[1];
   }
   const { vehicle_id } = query;
   const resp = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/vehicles?vehicleID=${vehicle_id}`
   );
-  const data = await resp.json();
+  const data = await resp?.json();
   if (host === referer || allowedRouts?.includes(referer?.split("/")?.[1])) {
     return {
       props: { data },
