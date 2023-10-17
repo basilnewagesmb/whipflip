@@ -119,7 +119,7 @@ export async function getServerSideProps({ res, query, req }) {
     "sell",
   ];
   let host = req?.headers?.host + "/";
-  if (referer.split("/")?.[1]) {
+  if (referer?.split("/")?.[1]) {
     host = req?.headers?.host + "/" + referer?.split("/")?.[1];
   }
   const { vehicle_id } = query;
