@@ -236,8 +236,8 @@ export default SEO;
 export async function getServerSideProps({ query }) {
   try {
     const name = query.name;
-    //const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs`);
-   // const blogs = await res.json();
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs`);
+    const blogs = await res.json();
     const revRes = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/prospects/reviews?limit=${3}`
     );
@@ -253,7 +253,7 @@ export async function getServerSideProps({ query }) {
     }
     return {
       props: {
-      //  blogs: blogs?.slice(0, 3) || [],
+        blogs: blogs?.slice(0, 3) || [],
         reviews: reviews?.reviews || [],
         car,
       },
