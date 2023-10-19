@@ -205,7 +205,7 @@ function SEO({ blogs, reviews, car }) {
                       <a href="https://www.whipflip.com/blog/how_to_successfully_sell_a_car_in_new_jersey">
                         sell your Toyota Camry
                       </a>
-                      . You don't have to sell it yourself; just enter some
+                      . You don`t have to sell it yourself; just enter some
                       information about your Toyota Camry to get an initial
                       offer.
                     </p>
@@ -246,12 +246,12 @@ function SEO({ blogs, reviews, car }) {
                     <p>
                       The Toyota Camry is a popular midsize sedan known for
                       being reliable and practical. When considering the Camry,
-                      it's essential to be aware of some common issues that
-                      owners have reported. One common concern is the vehicle's
+                      it`s essential to be aware of some common issues that
+                      owners have reported. One common concern is the vehicle`s
                       transmission, particularly in older models. Some drivers
                       have experienced issues with slipping gears or rough
                       shifting. However, in recent years, Toyota has made
-                      improvements to address these problems, so it's advisable
+                      improvements to address these problems, so it`s advisable
                       to look for a newer model or ensure proper maintenance.
                     </p>
                     <p>
@@ -269,7 +269,7 @@ function SEO({ blogs, reviews, car }) {
                       , and a strong resale value, making it a practical and
                       cost-effective choice for many drivers. So, while there
                       may be some common issues to be aware of, the Toyota
-                      Camry's numerous advantages make it a compelling option in
+                      Camry`s numerous advantages make it a compelling option in
                       the midsize sedan market.
                     </p>
                     <h2>
@@ -301,7 +301,7 @@ function SEO({ blogs, reviews, car }) {
                       news is that this process typically takes only 3 minutes!
                     </p>
                     <p>
-                      Don't miss out on the opportunity to get the best value
+                      Don`t miss out on the opportunity to get the best value
                       for your Toyota Camry.{" "}
                       <a href="https://www.whipflip.com/">WhipFlip</a> makes
                       selling your car a breeze.
