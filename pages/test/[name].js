@@ -179,133 +179,142 @@ function SEO({ blogs, reviews, car }) {
           </div>
         </div>
       </div>
-      <div className="container pt-5 mt-5">
-        <div className="row bd_row ">
-          <div className="col-lg-12">
-            <div className="">
-              <div>
-                <div className="bd_detail_block">
-                  <div className="bdd_top">
-                    <div className="readTime">
-                      <span>TBD - 2 mins and 40 secs</span>
+      <div
+        style={{
+          boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+        }}
+        className="pt-5"
+      >
+        <div className="container ">
+          <div className="row bd_row ">
+            <div className="col-lg-12">
+              <div className="">
+                <div>
+                  <div className="bd_detail_block">
+                    <div className="bdd_top">
+                      <div className="readTime">
+                        <span>TBD - 2 mins and 40 secs</span>
+                      </div>
+                      <div className="head_nd_tag">
+                        <h1> Sell Your Toyota Camry </h1>
+                        <span>WhipFlip - Sept 30,2023</span>
+                      </div>
                     </div>
-                    <div className="head_nd_tag">
-                      <h1> Sell Your Toyota Camry </h1>
-                      <span>WhipFlip - Sept 30,2023</span>
+                    <div className="bdd_body">
+                      <h2>
+                        <strong>Sell Your Toyota Camry</strong>
+                      </h2>
+                      <p>
+                        Are you having trouble selling your used Toyota Camry?
+                        Where it should not be. We make it as easy for you as 1,
+                        2, 3 steps to{" "}
+                        <a href="https://www.whipflip.com/blog/how_to_successfully_sell_a_car_in_new_jersey">
+                          sell your Toyota Camry
+                        </a>
+                        . You don`t have to sell it yourself; just enter some
+                        information about your Toyota Camry to get an initial
+                        offer.
+                      </p>
+                      <h2>
+                        <strong>
+                          Sell Your Toyota Camry with Completely No Hassle
+                        </strong>
+                      </h2>
+                      <p>
+                        No more going to dealers and wasting months talking to
+                        people who want to waste your time.&nbsp;
+                      </p>
+                      <p>
+                        Our real-time price engine ensures you get the best
+                        price on the market.
+                      </p>
+                      <p>
+                        In 3 easy steps, you can sell your{" "}
+                        <a href="https://www.hotcars.com/reasons-why-toyota-camry-is-still-best-selling-sedan-in-america/">
+                          Toyota Camry
+                        </a>{" "}
+                        and get paid as soon as today. Payment is guaranteed
+                        right away before we take the keys!
+                      </p>
+                      <p>
+                        No 3rd party, we are with you the whole time. How your
+                        final offer was made, and how to get the most out of
+                        it.&nbsp;
+                      </p>
+                      <h2>
+                        <strong>
+                          What Do You Need To Know About the Toyota Camry
+                        </strong>
+                        <strong>
+                          <br />
+                        </strong>
+                      </h2>
+                      <p>
+                        The Toyota Camry is a popular midsize sedan known for
+                        being reliable and practical. When considering the
+                        Camry, it`s essential to be aware of some common issues
+                        that owners have reported. One common concern is the
+                        vehicle`s transmission, particularly in older models.
+                        Some drivers have experienced issues with slipping gears
+                        or rough shifting. However, in recent years, Toyota has
+                        made improvements to address these problems, so it`s
+                        advisable to look for a newer model or ensure proper
+                        maintenance.
+                      </p>
+                      <p>
+                        On the bright side, there are plenty of good reasons to
+                        consider buying a Toyota Camry. It has a strong
+                        reputation for dependability, often going well over
+                        100,000 miles with minimal issues if well-maintained.
+                        Additionally, the Camry is known for its comfortable and
+                        spacious interior, making it an excellent choice for
+                        families or those who prioritize comfort during daily
+                        commutes. It also offers a smooth and comfortable ride,{" "}
+                        <a href="https://www.chicagotoyota.com/toyota-camry-fuel-economy.htm">
+                          good fuel economy
+                        </a>
+                        , and a strong resale value, making it a practical and
+                        cost-effective choice for many drivers. So, while there
+                        may be some common issues to be aware of, the Toyota
+                        Camry`s numerous advantages make it a compelling option
+                        in the midsize sedan market.
+                      </p>
+                      <h2>
+                        <strong>How Much Is My Toyota Camry Worth?</strong>
+                      </h2>
+                      <p>
+                        There are several things to consider while making an
+                        offer on your car. We might consider:
+                      </p>
+                      <ul>
+                        <li>Year</li>
+                        <li>Make</li>
+                        <li>Model</li>
+                        <li>Trim/Series</li>
+                      </ul>
+                      <p>
+                        The final offers provided are assured as long as the
+                        information about your vehicle, its condition, and its
+                        history matches the deillegalscription you provided. The
+                        accuracy of the details you input forms the basis for
+                        the offer. The offer may be adjusted or canceled if the
+                        information entered does not accurately represent the
+                        vehicle.
+                      </p>
+                      <p>
+                        All final offers remain valid for 5 days from their
+                        generation date. If this timeframe expires, you must
+                        complete the process again to obtain a new offer. The
+                        good news is that this process typically takes only 3
+                        minutes!
+                      </p>
+                      <p>
+                        Don`t miss out on the opportunity to get the best value
+                        for your Toyota Camry.{" "}
+                        <a href="https://www.whipflip.com/">WhipFlip</a> makes
+                        selling your car a breeze.
+                      </p>
                     </div>
-                  </div>
-                  <div className="bdd_body">
-                    <h2>
-                      <strong>Sell Your Toyota Camry</strong>
-                    </h2>
-                    <p>
-                      Are you having trouble selling your used Toyota Camry?
-                      Where it should not be. We make it as easy for you as 1,
-                      2, 3 steps to{" "}
-                      <a href="https://www.whipflip.com/blog/how_to_successfully_sell_a_car_in_new_jersey">
-                        sell your Toyota Camry
-                      </a>
-                      . You don`t have to sell it yourself; just enter some
-                      information about your Toyota Camry to get an initial
-                      offer.
-                    </p>
-                    <h2>
-                      <strong>
-                        Sell Your Toyota Camry with Completely No Hassle
-                      </strong>
-                    </h2>
-                    <p>
-                      No more going to dealers and wasting months talking to
-                      people who want to waste your time.&nbsp;
-                    </p>
-                    <p>
-                      Our real-time price engine ensures you get the best price
-                      on the market.
-                    </p>
-                    <p>
-                      In 3 easy steps, you can sell your{" "}
-                      <a href="https://www.hotcars.com/reasons-why-toyota-camry-is-still-best-selling-sedan-in-america/">
-                        Toyota Camry
-                      </a>{" "}
-                      and get paid as soon as today. Payment is guaranteed right
-                      away before we take the keys!
-                    </p>
-                    <p>
-                      No 3rd party, we are with you the whole time. How your
-                      final offer was made, and how to get the most out of
-                      it.&nbsp;
-                    </p>
-                    <h2>
-                      <strong>
-                        What Do You Need To Know About the Toyota Camry
-                      </strong>
-                      <strong>
-                        <br />
-                      </strong>
-                    </h2>
-                    <p>
-                      The Toyota Camry is a popular midsize sedan known for
-                      being reliable and practical. When considering the Camry,
-                      it`s essential to be aware of some common issues that
-                      owners have reported. One common concern is the vehicle`s
-                      transmission, particularly in older models. Some drivers
-                      have experienced issues with slipping gears or rough
-                      shifting. However, in recent years, Toyota has made
-                      improvements to address these problems, so it`s advisable
-                      to look for a newer model or ensure proper maintenance.
-                    </p>
-                    <p>
-                      On the bright side, there are plenty of good reasons to
-                      consider buying a Toyota Camry. It has a strong reputation
-                      for dependability, often going well over 100,000 miles
-                      with minimal issues if well-maintained. Additionally, the
-                      Camry is known for its comfortable and spacious interior,
-                      making it an excellent choice for families or those who
-                      prioritize comfort during daily commutes. It also offers a
-                      smooth and comfortable ride,{" "}
-                      <a href="https://www.chicagotoyota.com/toyota-camry-fuel-economy.htm">
-                        good fuel economy
-                      </a>
-                      , and a strong resale value, making it a practical and
-                      cost-effective choice for many drivers. So, while there
-                      may be some common issues to be aware of, the Toyota
-                      Camry`s numerous advantages make it a compelling option in
-                      the midsize sedan market.
-                    </p>
-                    <h2>
-                      <strong>How Much Is My Toyota Camry Worth?</strong>
-                    </h2>
-                    <p>
-                      There are several things to consider while making an offer
-                      on your car. We might consider:
-                    </p>
-                    <ul>
-                      <li>Year</li>
-                      <li>Make</li>
-                      <li>Model</li>
-                      <li>Trim/Series</li>
-                    </ul>
-                    <p>
-                      The final offers provided are assured as long as the
-                      information about your vehicle, its condition, and its
-                      history matches the deillegalscription you provided. The
-                      accuracy of the details you input forms the basis for the
-                      offer. The offer may be adjusted or canceled if the
-                      information entered does not accurately represent the
-                      vehicle.
-                    </p>
-                    <p>
-                      All final offers remain valid for 5 days from their
-                      generation date. If this timeframe expires, you must
-                      complete the process again to obtain a new offer. The good
-                      news is that this process typically takes only 3 minutes!
-                    </p>
-                    <p>
-                      Don`t miss out on the opportunity to get the best value
-                      for your Toyota Camry.{" "}
-                      <a href="https://www.whipflip.com/">WhipFlip</a> makes
-                      selling your car a breeze.
-                    </p>
                   </div>
                 </div>
               </div>
