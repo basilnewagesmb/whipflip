@@ -30,7 +30,7 @@ const BlogDetail = (props) => {
         />
         <meta
           name="twitter:title"
-          content={props?.data?.title.substring(0, 69)}
+          content={props?.data?.title?.substring(0, 69)}
         />
         <meta
           name="twitter:site"
@@ -42,7 +42,7 @@ const BlogDetail = (props) => {
         />
         <meta
           property="og:title"
-          content={props?.data?.title.substring(0, 69)}
+          content={props?.data?.title?.substring(0, 69)}
         />
         <meta
           property="og:description"
