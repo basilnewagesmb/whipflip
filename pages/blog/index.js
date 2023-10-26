@@ -348,7 +348,7 @@ function Blog(props) {
         {
           <Pagination
             total={total}
-            pageSize={10}
+            pageSize={15}
             showSizeChanger={false}
             onChange={(page) => {
               replace(
