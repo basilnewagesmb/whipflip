@@ -216,7 +216,7 @@ function Blog(props) {
                       replace(
                         {
                           pathname: "/blog",
-                          query: { ...query, search: e.target.value },
+                          query: { ...query, search: e.target.value, page: 1 },
                         },
                         undefined,
                         { shallow: true }
