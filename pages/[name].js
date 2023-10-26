@@ -236,7 +236,7 @@ export default SEO;
 export async function getServerSideProps({ query }) {
   try {
     const name = query.name;
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs?page=1`);
     const blogs = await res.json();
     const revRes = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/prospects/reviews?limit=${3}`
