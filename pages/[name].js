@@ -14,7 +14,12 @@ import InstantOffer from "components/home/banner/instantOffer";
 import ConfirmOffer from "components/home/banner/confirmeOffer";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-function SEO({ blogs, reviews, car }) {
+import SimpleBLog from "components/blogs/blogCard";
+const restrictedUrsl = [
+  "cash-for-cars-new-jersey",
+  "cash-for-cars-wilmington-de",
+];
+function SEO({ blogs, reviews, car, singleBlog }) {
   const { initialOffer } = useSelector((state) => state.offer);
   const [isClient, setIsClient] = useState(false);
   useEffect(() => {
@@ -179,6 +184,7 @@ function SEO({ blogs, reviews, car }) {
           </div>
         </div>
       </div>
+      {singleBlog && <SimpleBLog {...singleBlog} />}
       <div className="how-it-works pt-4 body-text">
         <div className="container">
           <div className="row">
@@ -237,7 +243,19 @@ export async function getServerSideProps({ query }) {
   try {
     const name = query.name;
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs?page=1`);
-    const blogs = await res.json();
+    const { blogs } = await res.json();
+    let singleBlog = null;
+    if (restrictedUrsl.includes(query.name)) {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/blogs/${query.name.replace(
+          /-/g,
+          "_"
+        )}`
+      );
+      singleBlog = await res.json();
+    } else {
+      singleBlog = null;
+    }
     const revRes = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/prospects/reviews?limit=${3}`
     );
@@ -256,9 +274,11 @@ export async function getServerSideProps({ query }) {
         blogs: blogs?.slice(0, 3) || [],
         reviews: reviews?.reviews || [],
         car,
+        singleBlog,
       },
     };
   } catch (error) {
+    console.log(error);
     return {
       notFound: true,
     };
