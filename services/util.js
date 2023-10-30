@@ -190,10 +190,11 @@ export const general = createApi({
       },
     }),
     blogs: builder.query({
-      query: () => {
+      query: (params) => {
         return {
           url: `/blogs`,
           method: "GET",
+          params,
         };
       },
     }),

@@ -8,7 +8,7 @@ const nextConfig = {
       "d2ivfcfbdvj3sm.cloudfront.net",
       "seal-delaware.bbb.org",
       "dbhdyzvm8lm25.cloudfront.net",
-      "whipflipnow.s3.amazonaws.com"
+      "whipflipnow.s3.amazonaws.com",
     ],
   },
   headers: () => [
@@ -80,6 +80,16 @@ const nextConfig = {
       },
       { source: "/pittsburgh-pennsylvania", destination: "/", permanent: true },
       { source: "/columbus-ohio", destination: "/", permanent: true },
+      {
+        source: "/blog/cash_for_cars_new_jersey",
+        destination: "/cash-for-cars-new-jersey",
+        permanent: true,
+      },
+      {
+        source: "/blog/cash_for_cars_wilmington_de",
+        destination: "/cash-for-cars-wilmington-de",
+        permanent: true,
+      },
     ];
   },
 };
