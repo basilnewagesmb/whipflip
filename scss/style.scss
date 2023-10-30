@@ -6395,7 +6395,6 @@ label.uniform_item_label {
         @media (max-width: 1370px) {
           font-size: 18px;
           line-height: 18px;
-
         }
       }
       button {
@@ -6725,8 +6724,6 @@ label.uniform_item_label {
     padding-top: 20px;
     @include responsive(tab-port) {
       padding-top: 5px;
-
-
     }
     & > span {
       font-size: 24px;
@@ -6738,7 +6735,6 @@ label.uniform_item_label {
       @include responsive(tab-port) {
         font-size: 20px;
         line-height: 28px;
-
       }
     }
     button {
@@ -6770,4 +6766,9 @@ label.uniform_item_label {
 }
 .home-form.home-form--seo {
   box-shadow: none !important;
+}
+.hide_image {
+  img {
+    display: none !important;
+  }
 }

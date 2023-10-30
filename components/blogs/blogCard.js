@@ -9,7 +9,7 @@ function SimpleBLog(props) {
       }}
       className="pt-5"
     >
-      <div className="container">
+      <div className="container hide_image">
         {props.template && (
           <div
             dangerouslySetInnerHTML={{
