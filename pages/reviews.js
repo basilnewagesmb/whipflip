@@ -64,7 +64,7 @@ function Reviews(props) {
                   height={isMobile ? 45 : 80}
                 />
               </picture>
-              <p>Hear It from of Thousands of Raving Customers</p>
+              <p>Hear It from our Thousands of Raving Customers</p>
               <div
                 className="review_gid"
                 itemProp="aggregateRating"
