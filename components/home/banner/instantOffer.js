@@ -251,7 +251,6 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
                 <div>
                   {" "}
                   No user associated with this offer or offer expired
-                  <a> read more</a>
                 </div>
               }
               color={"red"}
@@ -288,9 +287,8 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
               >
                 <Input
                   size="large"
-                  className={`w-100 ${
-                    showError && " ant-input-affix-wrapper-status-error"
-                  }`}
+                  className={`w-100 ${showError && " ant-input-affix-wrapper-status-error"
+                    }`}
                   placeholder="Enter Here"
                   closeable
                   allowClear
