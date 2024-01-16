@@ -90,6 +90,11 @@ const nextConfig = {
         destination: "/cash-for-cars-wilmington-de",
         permanent: true,
       },
+      {
+        source: "/blog/how_much_is_a_2015_nissan_altima_worth",
+        destination: "/how-much-is-a-2015-nissan-altima-worth",
+        permanent: true,
+      },
     ];
   },
 };
