@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import MetaHead from "components/common/metaHead";
 import Subscribe from "components/blogs/subscibe";
 import { useBlogsQuery } from "services/util";
@@ -60,7 +59,7 @@ function Blog(props) {
                           <div className="row blog_single_row">
                             <div className="col-lg-7">
                               <div className="news_item_left">
-                                <Link href={`blog/${blog.name}`}>
+                                <a href={`blog/${blog.name}`} >
                                   <Image
                                     src={blog.image}
                                     title={blog.title}
@@ -80,7 +79,7 @@ function Blog(props) {
                                     }
                                     preview={false}
                                   />
-                                </Link>
+                                </a>
                               </div>
                             </div>
                             <div className="col-lg-5">
@@ -90,13 +89,13 @@ function Blog(props) {
                                 </span>
                                 <div className="ni_body">
                                   <h2>
-                                    <Link href={`blog/${blog.name}`}>
+                                    <a href={`blog/${blog.name}`}>
                                       <Highlighter
                                         searchWords={[query?.search]}
                                         autoEscape={true}
                                         textToHighlight={blog.title}
                                       />
-                                    </Link>
+                                    </a>
                                   </h2>
                                   <p>
                                     {" "}
@@ -121,7 +120,7 @@ function Blog(props) {
                           <div className="row blog_single_row">
                             <div className="col-lg-12">
                               <div className="news_item_left">
-                                <Link href={`blog/${blog.name}`}>
+                                <a href={`blog/${blog.name}`}>
                                   <Image
                                     src={blog.image}
                                     title={blog.title}
@@ -142,7 +141,7 @@ function Blog(props) {
                                     }
                                     preview={false}
                                   />
-                                </Link>
+                                </a>
                               </div>
                             </div>
                             <div className="col-lg-12">
@@ -152,13 +151,13 @@ function Blog(props) {
                                 </span>
                                 <div className="ni_body">
                                   <h2>
-                                    <Link href={`blog/${blog.name}`}>
+                                    <a href={`blog/${blog.name}`}>
                                       <Highlighter
                                         searchWords={[query?.search]}
                                         autoEscape={true}
                                         textToHighlight={blog.title}
                                       />
-                                    </Link>
+                                    </a>
                                   </h2>
                                   <p>
                                     <Highlighter
