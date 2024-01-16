@@ -18,6 +18,7 @@ import SimpleBLog from "components/blogs/blogCard";
 const restrictedUrsl = [
   "cash-for-cars-new-jersey",
   "cash-for-cars-wilmington-de",
+  "how-much-is-a-2015-nissan-altima-worth"
 ];
 function SEO({ blogs, reviews, car, singleBlog }) {
   const { initialOffer } = useSelector((state) => state.offer);
@@ -44,9 +45,8 @@ function SEO({ blogs, reviews, car, singleBlog }) {
       />
       <div className="seo_banner seo_banner2">
         <div
-          className={`row seo-row seo-row m-0 ${
-            initialOffer && "initial_offer"
-          }`}
+          className={`row seo-row seo-row m-0 ${initialOffer && "initial_offer"
+            }`}
         >
           <div className="col-lg-7 p-0 seo_banner_left h-100">
             {car?.vehicles?.[0]?.banner_image && (
@@ -155,35 +155,36 @@ function SEO({ blogs, reviews, car, singleBlog }) {
           </div>
         </div>
       </div>
-      <div className="reviews_carsold">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8 col-rc">
-              <h2>
-                {(car?.purchase_count &&
-                  new Intl.NumberFormat("en-US").format(car?.purchase_count)) ||
-                  0}{" "}
-                cars sold this month
-              </h2>
-              <div className="sl_wrap">
-                <div className="sold_list">
-                  {car?.vehicles?.map((item, i) => (
-                    <CarCard key={i} {...item} />
+      {car?.purchase_coun > 0 &&
+        <div className="reviews_carsold">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-8 col-rc">
+                <h2>
+                  {(car?.purchase_count &&
+                    new Intl.NumberFormat("en-US").format(car?.purchase_count)) ||
+                    0}{" "}
+                  cars sold this month
+                </h2>
+                <div className="sl_wrap">
+                  <div className="sold_list">
+                    {car?.vehicles?.map((item, i) => (
+                      <CarCard key={i} {...item} />
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-4 col-review">
+                {reviews?.[0] && <h2>Verified Reviews</h2>}
+                <div className="rev_list">
+                  {reviews?.map((item, i) => (
+                    <ReviewCard key={i} {...item} index={i} />
                   ))}
                 </div>
               </div>
             </div>
-            <div className="col-lg-4 col-review">
-              {reviews?.[0] && <h2>Verified Reviews</h2>}
-              <div className="rev_list">
-                {reviews?.map((item, i) => (
-                  <ReviewCard key={i} {...item} index={i} />
-                ))}
-              </div>
-            </div>
           </div>
-        </div>
-      </div>
+        </div>}
       {singleBlog && <SimpleBLog {...singleBlog} />}
       <div className="how-it-works pt-4 body-text">
         <div className="container">
@@ -245,6 +246,7 @@ export async function getServerSideProps({ query }) {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs?page=1`);
     const { blogs } = await res.json();
     let singleBlog = null;
+    let car = null;
     if (restrictedUrsl.includes(query.name)) {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/blogs/${query.name.replace(
@@ -253,6 +255,7 @@ export async function getServerSideProps({ query }) {
         )}`
       );
       singleBlog = await res.json();
+      console.log(singleBlog);
     } else {
       singleBlog = null;
     }
@@ -260,14 +263,16 @@ export async function getServerSideProps({ query }) {
       `${process.env.NEXT_PUBLIC_API_URL}/prospects/reviews?limit=${3}`
     );
     const reviews = await revRes.json();
-    const carResp = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/seo-pages?slug=${name}`
-    );
-    const car = await carResp.json();
-    if (car.status === false) {
-      return {
-        notFound: true,
-      };
+    if (!restrictedUrsl.includes(query.name)) {
+      const carResp = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/seo-pages?slug=${name}`
+      );
+      car = await carResp.json();
+      if (car.status === false) {
+        return {
+          notFound: true,
+        };
+      }
     }
     return {
       props: {
@@ -278,7 +283,7 @@ export async function getServerSideProps({ query }) {
       },
     };
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return {
       notFound: true,
     };
