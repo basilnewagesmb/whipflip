@@ -67,9 +67,10 @@ function SEO({ blogs, reviews, car, singleBlog }) {
                 </span>
 
                 <h1>
-                  {isLocation
-                    ? car?.vehicles?.[0]?.headline
-                    : car?.vehicles?.[0]?.make + " ?"}
+                  {car?.vehicles?.[0] ?
+                    isLocation
+                      ? car?.vehicles?.[0]?.headline
+                      : car?.vehicles?.[0]?.make : "Nissan Altima" + " ?"}
                 </h1>
               </div>
               <div className="bnr_dec">
@@ -263,7 +264,7 @@ export async function getServerSideProps({ query }) {
       `${process.env.NEXT_PUBLIC_API_URL}/prospects/reviews?limit=${3}`
     );
     const reviews = await revRes.json();
-    if (!restrictedUrsl.includes(query.name)) {
+    if (query.name != "how-much-is-a-2015-nissan-altima-worth") {
       const carResp = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/seo-pages?slug=${name}`
       );
