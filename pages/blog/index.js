@@ -49,9 +49,8 @@ function Blog(props) {
           <div className="row mb-5 bl_row">
             <div className="col-lg-9">
               <div
-                className={`row blog_list_row ${
-                  data?.blogs?.length == 0 ? "justify-content-center" : ""
-                }`}
+                className={`row blog_list_row ${data?.blogs?.length == 0 ? "justify-content-center" : ""
+                  }`}
               >
                 {!isLoading &&
                   data?.blogs?.map((blog, index) => (
@@ -107,11 +106,10 @@ function Blog(props) {
                                       textToHighlight={blog.description}
                                     />
                                   </p>
-                                  <span className="writer-date">{`${
-                                    blog.author
-                                  } - ${moment(blog.created_at).format(
-                                    "MMMM D, YYYY"
-                                  )}`}</span>
+                                  <span className="writer-date">{`${blog.author
+                                    } - ${moment(blog.created_at).format(
+                                      "MMMM D, YYYY"
+                                    )}`}</span>
                                 </div>
                               </div>
                             </div>
@@ -169,11 +167,10 @@ function Blog(props) {
                                       textToHighlight={blog.description}
                                     />
                                   </p>
-                                  <span className="writer-date">{`${
-                                    blog.author
-                                  } - ${moment(blog.created_at).format(
-                                    "MMMM D, YYYY"
-                                  )}`}</span>
+                                  <span className="writer-date">{`${blog.author
+                                    } - ${moment(blog.created_at).format(
+                                      "MMMM D, YYYY"
+                                    )}`}</span>
                                 </div>
                               </div>
                             </div>
@@ -190,7 +187,7 @@ function Blog(props) {
                         height: 100,
                       }}
                       description={
-                        <span>No data?.blogs are available at the moment</span>
+                        <span>No blogs are available at the moment</span>
                       }
                     ></Empty>
                   </div>
@@ -244,10 +241,9 @@ function Blog(props) {
                   <ul>
                     <li className="cur_sor_pointer">
                       <span
-                        className={`${
-                          query.category == "selling_a_car" &&
+                        className={`${query.category == "selling_a_car" &&
                           "selection-border"
-                        }`}
+                          }`}
                         onClick={() => {
                           replace(
                             {
@@ -265,9 +261,8 @@ function Blog(props) {
                     </li>
                     <li className="cur_sor_pointer">
                       <span
-                        className={`${
-                          query.category == "buying_a_car" && "selection-border"
-                        }`}
+                        className={`${query.category == "buying_a_car" && "selection-border"
+                          }`}
                         onClick={() => {
                           replace(
                             {
