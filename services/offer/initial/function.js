@@ -4,7 +4,6 @@ import SpeedoMeter from "components/anim/speed";
 import { setCurrentSlide } from "features/mob/mobSlice";
 import { setInitialOffer } from "features/offer/offerSlice";
 import { clear } from "features/site/siteSlice";
-import {} from "node_modules/antd/es/index";
 import moment from "moment";
 import { useRouter } from "node_modules/next/router";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,7 +11,9 @@ import useCheckMobile from "utils/checkMobile";
 import { useCreateInitialOfferMutation, useGetOfferByIdMutation } from "../api";
 import { useState } from "react";
 import OOA from "components/common/OOA";
+import GTMDataLayer from "utils/GTM/dataLayer";
 function useInitialForm({ form, data, carouselRef, goTo, props }) {
+  const gtm = GTMDataLayer();
   const [isLoadingApi, setIsLoadingApi] = useState(false);
   const router = useRouter();
   const isMobile = useCheckMobile();
@@ -56,15 +57,23 @@ function useInitialForm({ form, data, carouselRef, goTo, props }) {
       referrerUrl: site.referrerUrl,
     });
     if (res?.data?.uid) {
+      try {
+        gtm.quoteCompleted({
+          email: res?.data?.email,
+          phone_number: res?.data?.phone,
+          postal_code: res?.data?.zipcode
+        })
+      } catch (error) {
+        console.log({ GTMDataLayer: error });
+      }
       const offerRes = await getOfferById(res?.data?.uid);
-      console.log(offerRes);
       if (offerRes?.data?.area != "OOA") {
         if (offerRes?.data) {
           try {
             if (window?._kmq) {
               window?._kmq.push(["identify", res?.data?.email || ""]);
             }
-          } catch (error) {}
+          } catch (error) { }
           dispatch(clear());
           dispatch(setInitialOffer(offerRes?.data));
           if (offerRes.data["is_over_quote"]) {
@@ -100,6 +109,7 @@ function useInitialForm({ form, data, carouselRef, goTo, props }) {
               query: { id: offerRes?.data?.uid },
             });
           }
+
         } else {
           setIsLoadingApi(false);
           message.error(offerRes?.data?.message || "Something went wrong");
