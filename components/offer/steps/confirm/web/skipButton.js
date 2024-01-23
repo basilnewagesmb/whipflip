@@ -1,6 +1,7 @@
 import { Button } from "antd";
 import React, { useState } from "react";
 import GTMDataLayer from "utils/GTM/dataLayer";
+
 function SkipButton({ skipToInstantOffer, initialOffer, analytics, fbpixel }) {
   const gtm = GTMDataLayer();
 
@@ -38,16 +39,17 @@ function SkipButton({ skipToInstantOffer, initialOffer, analytics, fbpixel }) {
             });
           try {
             gtm.offerCompleted({
-              email: res?.data?.email,
-              phone_number: res?.data?.phone,
-              postal_code: res?.data?.zipcode
+              email: initialOffer?.email,
+              phone_number: initialOffer?.phone,
+              postal_code: initialOffer?.zipcode
             })
           } catch (error) {
             console.log({ GTMDataLayer: error });
           }
-          //window.location.href = `/prospect/${initialOffer?.uid}/${res?.data?.status}`;
-          location.reload();
-        } else {
+          import("next/router").then(useRouter => {
+            const { replace } = useRouter
+            replace(`/prospect/${initialOffer?.uid}/offer`);
+          });
         }
       }}
     >

@@ -262,9 +262,9 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
                 if (offerRes?.data.uid) {
                   try {
                     gtm.offerCompleted({
-                      email: offerRes?.data?.email,
-                      phone_number: offerRes?.data?.phone,
-                      postal_code: offerRes?.data?.zipcode
+                      email: offerData?.email,
+                      phone_number: offerData?.phone,
+                      postal_code: offerData?.zipcode
                     })
                   } catch (error) {
                     console.log({ GTMDataLayer: error });

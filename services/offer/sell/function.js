@@ -271,14 +271,14 @@ function useSellFuc(data) {
     if (res?.data?.uid) {
       try {
         gtm.appointmentCompleted({
-          email: res?.data?.email,
-          phone_number: res?.data?.phone,
-          first_name: res?.data?.first_name,
-          last_name: res?.data?.last_name,
-          street: res?.data?.street_address,
-          city: res?.data?.city,
-          region: res?.data?.state,
-          postal_code: res?.data?.zipcode,
+          email: data?.email,
+          phone_number: data?.phone,
+          first_name: formRealData?.first_name,
+          last_name: formRealData?.last_name,
+          street: formRealData?.street_address,
+          city: formRealData?.city,
+          region: formRealData?.state,
+          postal_code: formRealData?.zip,
         })
       } catch (error) {
         console.log({ GTMDataLayer: error });
