@@ -19,8 +19,10 @@ import {
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { reset } from "features/offer/offerSlice";
+import GTMDataLayer from "utils/GTM/dataLayer";
 
 function useSellFuc(data) {
+  const gtm = GTMDataLayer();
   const [klaviyoTrigger, setKlaviyoTrigger] = useState(false);
   const [appointmentFlirt] = useAppointmentFlirtMutation();
   const [isLoading, setIsLoading] = useState(false);
@@ -93,7 +95,7 @@ function useSellFuc(data) {
   useEffect(() => {
     services.loadScript(
       `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}&libraries=places`,
-      () => {}
+      () => { }
     );
   }, []);
 
@@ -267,6 +269,20 @@ function useSellFuc(data) {
     };
     const res = await appointmentOffer(postData);
     if (res?.data?.uid) {
+      try {
+        gtm.appointmentCompleted({
+          email: data?.email,
+          phone_number: data?.phone,
+          first_name: formRealData?.first_name,
+          last_name: formRealData?.last_name,
+          street: formRealData?.street_address,
+          city: formRealData?.city,
+          region: formRealData?.state,
+          postal_code: formRealData?.zip,
+        })
+      } catch (error) {
+        console.log({ GTMDataLayer: error });
+      }
       dispatch(reset());
       push(`/prospect/${res?.data?.uid}/appointment`);
     } else {

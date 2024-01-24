@@ -29,7 +29,8 @@ const LiveChat = dynamic(() => import("utils/LiveChat"));
 function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
   useEffect(() => {
     const shouldNotTrack = isLocal("localhost") || isDev();
-    const gtm = shouldNotTrack ? devGTM : prodGTM;
+    // const gtm = shouldNotTrack ? devGTM : prodGTM;
+    const gtm = prodGTM;
     gtm.init("GTM-KS44Q5Z");
   }, []);
   const isOnline = useNetwork();

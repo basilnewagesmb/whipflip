@@ -16,7 +16,9 @@ import useMobileDetect from "utils/useMobileDetect";
 import { dataURLtoFile } from "utils/helper";
 import { usePegasusUploadMutation } from "../pegasusUpload";
 import { usePegasusLoginMutation } from "../pegasusAuth";
+import GTMDataLayer from "utils/GTM/dataLayer";
 function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
+  const gtm = GTMDataLayer();
   const isMobile = useMobileDetect();
   const { push, replace } = useRouter();
   const [state, setState] = useState({
@@ -91,7 +93,7 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
             ],
           }));
         }
-      } catch (error) {}
+      } catch (error) { }
     },
     [webcamRef]
   );
@@ -112,7 +114,7 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
       objectFit: "cover",
     },
     forceScreenshotSourceSize: true,
-    onUserMedia: () => {},
+    onUserMedia: () => { },
     onUserMediaError: async () => {
       const permission = await navigator?.permissions?.query({
         name: "camera",
@@ -121,7 +123,7 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
         try {
           await handle?.enter();
           console.log("granted");
-        } catch (error) {}
+        } catch (error) { }
       } else {
         await handle?.exit();
         await Modal.error({
@@ -178,7 +180,7 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
     handle.exit();
     try {
       await window?.screen?.orientation?.lock("portrait");
-    } catch (error) {}
+    } catch (error) { }
     switch (isForUpload) {
       case true:
         const res = await uploadImagesToS3(
@@ -259,6 +261,15 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
                 const offerRes = await createInstantOffer(postData);
                 if (offerRes?.data.uid) {
                   try {
+                    gtm.offerCompleted({
+                      email: offerData?.email,
+                      phone_number: offerData?.phone,
+                      postal_code: offerData?.zipcode
+                    })
+                  } catch (error) {
+                    console.log({ GTMDataLayer: error });
+                  }
+                  try {
                     if (offerRes.data["is_over_quote"]) {
                       analytics?.event("OverPrice", "Offer page", `Over Price`);
                       fbpixel &&
@@ -272,7 +283,7 @@ function useValuateFun({ offerData, analytics, fbpixel, isForUpload }) {
                           ],
                         });
                     }
-                  } catch (error) {}
+                  } catch (error) { }
                   setTimeout(() => {
                     setState((prev) => ({ ...prev, speed: 1 }));
                   }, 2000);
