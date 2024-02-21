@@ -407,7 +407,8 @@ function Initial(props) {
                               <input
                                 type="radio"
                                 id={item.uid}
-                                name="readiness"
+                                name="readiness_uid"
+                                value={item.uid}
                                 className="selector-item_radio"
                               />
                               <label
