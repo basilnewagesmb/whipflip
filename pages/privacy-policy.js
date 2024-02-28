@@ -98,14 +98,21 @@ const Privacy = () => (
       <ul>
         <li>
           Voluntarily provided information which may include your name, address,
-          email address, billing and/or credit card information etc. which may
-          be used when upon completing the sale of your vehicle through
-          WhipFlip’s vehicle purchasing service.{" "}
+          email address,phone number, billing and/or credit card information
+          etc. which may be used when upon completing the sale of your vehicle
+          through WhipFlip’s vehicle purchasing service.{" "}
         </li>
         <li>
           Information automatically collected when visiting our website, which
           may include cookies, third party tracking technologies, your Internet
           Protocol (IP) address, and server logs.{" "}
+        </li>
+        <li>
+          "By providing your phone number, you are agreeing to receive text
+          messages from WhipFlip. Please note that message and data rates may
+          apply, and the frequency of messages can vary." We also provide an
+          easy method for customers to opt out of these messages at any time.
+          You can simply text "STOP" to unsubscribe.
         </li>
       </ul>
       <p>
@@ -125,10 +132,10 @@ const Privacy = () => (
       <p>
         Please rest assured that this site will only collect personal
         information that you knowingly and willingly provide to us by way of
-        surveys, completed vehicle initial offer and final offers, purchase transactions, and
-        emails. It is the intent of this site to use personal information only
-        for the purpose for which it was requested, and any additional uses
-        specifically provided for on this Policy.{" "}
+        surveys, completed vehicle initial offer and final offers, purchase
+        transactions, and emails. It is the intent of this site to use personal
+        information only for the purpose for which it was requested, and any
+        additional uses specifically provided for on this Policy.{" "}
       </p>
       <h6 className="pb-3 pt-1">
         <b>
