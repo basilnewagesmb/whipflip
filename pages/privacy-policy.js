@@ -108,11 +108,11 @@ const Privacy = () => (
           Protocol (IP) address, and server logs.{" "}
         </li>
         <li>
-          "By providing your phone number, you are agreeing to receive text
+          {`"By providing your phone number, you are agreeing to receive text
           messages from WhipFlip. Please note that message and data rates may
           apply, and the frequency of messages can vary." We also provide an
           easy method for customers to opt out of these messages at any time.
-          You can simply text "STOP" to unsubscribe.
+          You can simply text "STOP" to unsubscribe.`}
         </li>
       </ul>
       <p>
