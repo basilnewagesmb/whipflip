@@ -83,7 +83,7 @@ function Initial(props) {
                             placeholder="Select Trim"
                           >
                             {data?.trimlevel?.map((item) => (
-                              <Select.Option value={item.trim}>
+                              <Select.Option value={item.trim} key={item}>
                                 {item.trim}
                               </Select.Option>
                             ))}
