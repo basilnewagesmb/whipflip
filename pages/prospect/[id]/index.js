@@ -1,6 +1,5 @@
 import Router from "next/router";
 const Prospect = ({ data, status }) => {
-  console.log(data);
   let queryObject = {};
   if (data.gc_id) queryObject.gc_id = data.gc_id;
   if (data.utm_campaign) queryObject.utm_campaign = data.utm_campaign;
@@ -40,6 +39,18 @@ export const getServerSideProps = async ({ res, params, query }) => {
     data.utm_content = utm_content ? utm_content : null;
   } catch (error) {
     res.statusCode = 404;
+  }
+  if (data?.is_m1) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: `/vehicle?visiter=${data.uid}&status=${data.status}`,
+      },
+      props: {
+        data,
+        status: !!data ? 200 : 404,
+      },
+    };
   }
   return {
     redirect: {

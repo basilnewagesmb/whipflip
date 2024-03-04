@@ -24,16 +24,15 @@ function useInitialForm({ form, data, carouselRef, goTo, props }) {
   const dispatch = useDispatch();
   const mileage = Form.useWatch("mileage", form);
   const onFinish = async (values) => {
-    setIsLoadingApi(true);
     const { stills, ...rest } = data;
-    const res = await createInitialOffer({
+    const isM1 = data?.is_m1;
+    const commonProperties = {
       ...rest,
       ...values,
       ...site,
-      from: "dropdown",
+      from: isM1 ? "m1" : "dropdown",
       userMileage: values.mileage.toString(),
-      image: data.stills[0].image,
-      image: data.stills[0].image,
+      image: data?.stills[0]?.image,
       color_name: values.color.name,
       color_code: values.color.code,
       issues: {
@@ -55,14 +54,25 @@ function useInitialForm({ form, data, carouselRef, goTo, props }) {
       gc_id: site.gaClientId,
       gclick_id: site.gaClickId,
       referrerUrl: site.referrerUrl,
-    });
+    };
+    const upData = isM1
+      ? {
+          ...commonProperties,
+          vehicle_id: data?.trimlevel?.find((item) => item.trim == values.trim)
+            ?.vehicle_id,
+          prospect_id: data?.uid,
+          user_id: data?.user_id,
+        }
+      : { ...commonProperties };
+    setIsLoadingApi(true);
+    const res = await createInitialOffer(upData);
     if (res?.data?.uid) {
       try {
         gtm.quoteCompleted({
           email: res?.data?.email,
           phone_number: res?.data?.phone,
-          postal_code: res?.data?.zipcode
-        })
+          postal_code: res?.data?.zipcode,
+        });
       } catch (error) {
         console.log({ GTMDataLayer: error });
       }
@@ -73,7 +83,7 @@ function useInitialForm({ form, data, carouselRef, goTo, props }) {
             if (window?._kmq) {
               window?._kmq.push(["identify", res?.data?.email || ""]);
             }
-          } catch (error) { }
+          } catch (error) {}
           dispatch(clear());
           dispatch(setInitialOffer(offerRes?.data));
           if (offerRes.data["is_over_quote"]) {
@@ -109,7 +119,6 @@ function useInitialForm({ form, data, carouselRef, goTo, props }) {
               query: { id: offerRes?.data?.uid },
             });
           }
-
         } else {
           setIsLoadingApi(false);
           message.error(offerRes?.data?.message || "Something went wrong");
@@ -147,10 +156,9 @@ function useInitialForm({ form, data, carouselRef, goTo, props }) {
       //carouselRef.current.goTo(0);
     }
   };
-
   const formDate = {
     isLoading: isLoadingApi,
-    initialValues: {},
+    initialValues: { user: { ...data, zip: data?.zipcode } },
     onFinish,
     onFinishFailed,
     isDisable: isLoading,

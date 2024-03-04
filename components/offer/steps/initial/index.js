@@ -1,6 +1,14 @@
 import { Clock, DisLike, Like, SandClock } from "components/common/icons";
 import MetaHead from "components/common/metaHead";
-import { Form, Button, Input, InputNumber, Typography, Tooltip } from "antd";
+import {
+  Form,
+  Button,
+  Input,
+  InputNumber,
+  Typography,
+  Tooltip,
+  Select,
+} from "antd";
 import React, { useRef } from "react";
 import { useSelector } from "react-redux";
 import { InfoCircleOutlined } from "@ant-design/icons";
@@ -13,6 +21,7 @@ const { Text } = Typography;
 
 function Initial(props) {
   const { data } = props;
+  const isM1 = data?.is_m1;
   const isMobile = useCheckMobile();
   const { current, steps } = useSelector((state) => state.offer);
   const [form] = Form.useForm();
@@ -53,6 +62,36 @@ function Initial(props) {
               </div>
               <div className="offer_block-body">
                 <div className="form" role="form">
+                  {" "}
+                  {isM1 && (
+                    <div className="form-group row ob_frm_row">
+                      <div className="col-lg-6 p-0">
+                        <Form.Item
+                          label="Trim"
+                          name="trim"
+                          className="m-0 w-100"
+                          rules={[
+                            {
+                              required: true,
+                              message: "Please select your Trim!",
+                            },
+                          ]}
+                        >
+                          <Select
+                            size="large"
+                            className="w-100"
+                            placeholder="Select Trim"
+                          >
+                            {data?.trimlevel?.map((item) => (
+                              <Select.Option value={item.trim}>
+                                {item.trim}
+                              </Select.Option>
+                            ))}
+                          </Select>
+                        </Form.Item>
+                      </div>
+                    </div>
+                  )}
                   <div className="form-group row ob_frm_row">
                     <div className="col-lg-6 p-0">
                       <Form.Item

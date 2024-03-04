@@ -30,7 +30,7 @@ export const offerApi = createApi({
     createInitialOffer: builder.mutation({
       query: (data) => {
         return {
-          url: `/prospects`,
+          url: `/prospects${data.is_m1 ? "/m1" : ""}`,
           method: "POST",
           body: data,
         };
