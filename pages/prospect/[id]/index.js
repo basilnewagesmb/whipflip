@@ -40,7 +40,7 @@ export const getServerSideProps = async ({ res, params, query }) => {
   } catch (error) {
     res.statusCode = 404;
   }
-  if (data?.is_m1) {
+  if (data?.is_m1 && data.status == "site_visit") {
     return {
       redirect: {
         permanent: false,

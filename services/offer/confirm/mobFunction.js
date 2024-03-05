@@ -55,6 +55,11 @@ function useConfirmFormMob({ form, navFunc, fbpixel, analytics }) {
   const [vehicleWithVin, vinHdl] = useVehicleWithVinMutation();
   const [vehicleWithPlate, platHdl] = useVehicleWithPlateMutation();
   const [addDamages, { isLoading: confirming }] = useAddDamagesMutation();
+  useEffect(() => {
+    if (initialOffer?.vin) {
+      form.setFieldValue(["info", "vinNumber"], initialOffer?.vin);
+    }
+  }, [initialOffer?.vin]);
 
   const initialValues = {
     info: {
@@ -201,7 +206,10 @@ function useConfirmFormMob({ form, navFunc, fbpixel, analytics }) {
                 ).body;
                 const cRes = await addDamages({
                   issues,
-                  vin: data?.info.vinNumber?.toUpperCase() || level?.vin?.toUpperCase() || "",
+                  vin:
+                    data?.info.vinNumber?.toUpperCase() ||
+                    level?.vin?.toUpperCase() ||
+                    "",
                   plate_state: data?.info.state || "",
                   plate_number: data?.info.plateNumber?.toUpperCase() || "",
                   full_trim,

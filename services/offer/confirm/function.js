@@ -83,12 +83,17 @@ function useConfirmForm({ form, fbpixel, analytics }) {
   //     );
   //   }
   // }, [conditions?.tire, conditions?.cosmetic]);
-
   const initialValues = {
     info: {
       type: "vin",
     },
   };
+  useEffect(() => {
+    if (initialOffer?.vin) {
+      form.setFieldValue(["info", "vinNumber"], initialOffer?.vin);
+    }
+  }, [initialOffer?.vin]);
+
   const onFinish = async (data) => {
     const { info, tire } = data;
     let res;
@@ -225,7 +230,10 @@ function useConfirmForm({ form, fbpixel, analytics }) {
                 ).body;
                 const cRes = await addDamages({
                   issues,
-                  vin: data?.info.vinNumber?.toUpperCase() || level?.vin?.toUpperCase() || "",
+                  vin:
+                    data?.info.vinNumber?.toUpperCase() ||
+                    level?.vin?.toUpperCase() ||
+                    "",
                   plate_state: data?.info.state || "",
                   plate_number: data?.info.plateNumber?.toUpperCase() || "",
                   full_trim,
