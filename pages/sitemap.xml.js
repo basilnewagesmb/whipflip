@@ -107,7 +107,7 @@ ${blogs
 `;
 }
 
-export async function getStaticProps({ res }) {
+export async function getServerSideProps({ res }) {
   let blogs = [];
   let seoPages = [];
   try {
