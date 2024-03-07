@@ -182,7 +182,11 @@ function SellFrom({
                 <div className="form-row frmRow">
                   <div className="frmfldItem">
                     <label htmlFor="">When would you like to sell?</label>
-                    <Form.Item label={false} name={"appointment_date_string"} className="d-none">
+                    <Form.Item
+                      label={false}
+                      name={"appointment_date_string"}
+                      className="d-none"
+                    >
                       <Input />
                     </Form.Item>
                     <div className="d-flex w-100 flex-column flex-md-row">
@@ -202,7 +206,7 @@ function SellFrom({
                           className="w-100"
                           disabledDate={(current) =>
                             current.isBefore(moment().subtract(1, "day")) ||
-                            !current.isBefore(moment().add(7, "day"))
+                            !current.isBefore(moment().add(5, "day"))
                           }
                           format={"MM-DD-YYYY"}
                           onChange={(e, dateString) => {
