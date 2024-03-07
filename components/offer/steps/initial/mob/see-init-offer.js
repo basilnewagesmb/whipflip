@@ -299,8 +299,8 @@ function SeeInitOffer({ form, data, goTo }) {
                         <a target="_blank">terms of use</a>
                       </Link>{" "}
                       &{" "}
-                      <Link href={"/privacy-policys"} legacyBehavior>
-                        <a target="_blank">Privacy Policy.</a>
+                      <Link href={"/privacy-policy"} legacyBehavior>
+                        <a target="_blank">privacy policy.</a>
                       </Link>
                     </Checkbox>{" "}
                   </Form.Item>
