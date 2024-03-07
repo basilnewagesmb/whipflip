@@ -1,9 +1,12 @@
 import React from "react";
 import { InfoCircleOutlined } from "@ant-design/icons";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, Checkbox } from "antd";
+import Link from "next/link";
 
 function SeeInitOffer({ form, data, goTo }) {
   const readiness_uid = Form.useWatch("readiness_uid", form);
+  const isAgreed = Form.useWatch("agreed", form);
+
   const listClick = (e) => {
     form.setFieldsValue({
       readiness_uid: e,
@@ -272,15 +275,47 @@ function SeeInitOffer({ form, data, goTo }) {
                   </div>
                 </div>{" "}
               </Form.Item>{" "}
+              <div className="form-group row ob_frm_row">
+                <div className="col-lg-12 p-0">
+                  <Form.Item
+                    label={null}
+                    name="agreed"
+                    className="m-0 w-100"
+                    rules={[
+                      {
+                        required: true,
+                      },
+                    ]}
+                  >
+                    <Checkbox
+                      onChange={(e) => {
+                        form.setFieldsValue({
+                          agreed: e.target.checked,
+                        });
+                      }}
+                    >
+                      I agree to the{" "}
+                      <Link href={"/terms-and-conditions"} legacyBehavior>
+                        <a target="_blank">terms of use</a>
+                      </Link>{" "}
+                      &{" "}
+                      <Link href={"/privacy-policys"} legacyBehavior>
+                        <a target="_blank">Privacy Policy.</a>
+                      </Link>
+                    </Checkbox>{" "}
+                  </Form.Item>
+                </div>
+              </div>
               <div className="initial_order_btn mt-30">
                 <Button
                   htmlType="submit"
                   className="initofferBtn"
                   style={{
                     height: "unset",
+                    opacity: !isAgreed ? "0.8" : 1,
                   }}
                   type="text"
-                  // disabled={isDisable}
+                  disabled={!isAgreed}
                 >
                   <span>Get My Initial Offer</span>
                 </Button>

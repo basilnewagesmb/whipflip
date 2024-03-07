@@ -8,6 +8,7 @@ import {
   Typography,
   Tooltip,
   Select,
+  Checkbox,
 } from "antd";
 import React, { useRef } from "react";
 import { useSelector } from "react-redux";
@@ -17,6 +18,7 @@ import ColorSelect from "./web/colorSelect";
 import useInitialForm from "services/offer/initial/function";
 import LoaderAnim from "components/common/loader";
 import InitialMob from "./mob/index";
+import Link from "next/link";
 const { Text } = Typography;
 
 function Initial(props) {
@@ -35,6 +37,7 @@ function Initial(props) {
     isLoading,
     isDisable,
   } = useInitialForm({ form, data, carouselRef, props });
+  const isAgreed = Form.useWatch("agreed", form);
 
   return (
     <div>
@@ -467,6 +470,37 @@ function Initial(props) {
                         </div>
                       </Form.Item>
                     </div>
+                  </div>{" "}
+                  <div className="form-group row ob_frm_row">
+                    <div className="col-lg-12 p-0">
+                      <Form.Item
+                        label={null}
+                        name="agreed"
+                        className="m-0 w-100"
+                        rules={[
+                          {
+                            required: true,
+                          },
+                        ]}
+                      >
+                        <Checkbox
+                          onChange={(e) => {
+                            form.setFieldsValue({
+                              agreed: e.target.checked,
+                            });
+                          }}
+                        >
+                          I agree to the{" "}
+                          <Link href={"/terms-and-conditions"} legacyBehavior>
+                            <a target="_blank">terms of use</a>
+                          </Link>{" "}
+                          &{" "}
+                          <Link href={"/privacy-policys"} legacyBehavior>
+                            <a target="_blank">Privacy Policy.</a>
+                          </Link>
+                        </Checkbox>{" "}
+                      </Form.Item>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -477,9 +511,10 @@ function Initial(props) {
                 className="getOfferBtn"
                 style={{
                   height: "unset",
+                  opacity: !isAgreed ? "0.8" : 1,
                 }}
                 type="text"
-                disabled={isDisable}
+                disabled={isDisable || !isAgreed}
               >
                 <span>Get My Initial Offer</span>
               </Button>
