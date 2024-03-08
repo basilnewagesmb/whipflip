@@ -294,14 +294,20 @@ function SeeInitOffer({ form, data, goTo }) {
                         });
                       }}
                     >
-                      I agree to the{" "}
-                      <Link href={"/terms-and-conditions"} legacyBehavior>
-                        <a target="_blank">terms of use</a>
-                      </Link>{" "}
-                      &{" "}
-                      <Link href={"/privacy-policy"} legacyBehavior>
-                        <a target="_blank">privacy policy.</a>
-                      </Link>
+                      <div
+                        style={{
+                          marginTop: "1.3rem",
+                        }}
+                      >
+                        I agree to the{" "}
+                        <Link href={"/terms-and-conditions"} legacyBehavior>
+                          <a target="_blank">terms of use</a>
+                        </Link>{" "}
+                        &{" "}
+                        <Link href={"/privacy-policy"} legacyBehavior>
+                          <a target="_blank">privacy policy.</a>
+                        </Link>
+                      </div>
                     </Checkbox>{" "}
                   </Form.Item>
                 </div>
