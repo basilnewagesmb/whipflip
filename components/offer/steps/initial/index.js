@@ -1,6 +1,15 @@
 import { Clock, DisLike, Like, SandClock } from "components/common/icons";
 import MetaHead from "components/common/metaHead";
-import { Form, Button, Input, InputNumber, Typography, Tooltip } from "antd";
+import {
+  Form,
+  Button,
+  Input,
+  InputNumber,
+  Typography,
+  Tooltip,
+  Select,
+  Checkbox,
+} from "antd";
 import React, { useRef } from "react";
 import { useSelector } from "react-redux";
 import { InfoCircleOutlined } from "@ant-design/icons";
@@ -9,10 +18,12 @@ import ColorSelect from "./web/colorSelect";
 import useInitialForm from "services/offer/initial/function";
 import LoaderAnim from "components/common/loader";
 import InitialMob from "./mob/index";
+import Link from "next/link";
 const { Text } = Typography;
 
 function Initial(props) {
   const { data } = props;
+  const isM1 = data?.is_m1;
   const isMobile = useCheckMobile();
   const { current, steps } = useSelector((state) => state.offer);
   const [form] = Form.useForm();
@@ -26,6 +37,7 @@ function Initial(props) {
     isLoading,
     isDisable,
   } = useInitialForm({ form, data, carouselRef, props });
+  const isAgreed = Form.useWatch("agreed", form);
 
   return (
     <div>
@@ -53,6 +65,36 @@ function Initial(props) {
               </div>
               <div className="offer_block-body">
                 <div className="form" role="form">
+                  {" "}
+                  {isM1 && (
+                    <div className="form-group row ob_frm_row">
+                      <div className="col-lg-6 p-0">
+                        <Form.Item
+                          label="Trim"
+                          name="trim"
+                          className="m-0 w-100"
+                          rules={[
+                            {
+                              required: true,
+                              message: "Please select your Trim!",
+                            },
+                          ]}
+                        >
+                          <Select
+                            size="large"
+                            className="w-100"
+                            placeholder="Select Trim"
+                          >
+                            {data?.trimlevel?.map((item) => (
+                              <Select.Option value={item.trim} key={item}>
+                                {item.trim}
+                              </Select.Option>
+                            ))}
+                          </Select>
+                        </Form.Item>
+                      </div>
+                    </div>
+                  )}
                   <div className="form-group row ob_frm_row">
                     <div className="col-lg-6 p-0">
                       <Form.Item
@@ -428,6 +470,37 @@ function Initial(props) {
                         </div>
                       </Form.Item>
                     </div>
+                  </div>{" "}
+                  <div className="form-group row ob_frm_row">
+                    <div className="col-lg-12 p-0">
+                      <Form.Item
+                        label={null}
+                        name="agreed"
+                        className="m-0 w-100"
+                        rules={[
+                          {
+                            required: true,
+                          },
+                        ]}
+                      >
+                        <Checkbox
+                          onChange={(e) => {
+                            form.setFieldsValue({
+                              agreed: e.target.checked,
+                            });
+                          }}
+                        >
+                          I agree to the{" "}
+                          <Link href={"/terms-and-conditions"} legacyBehavior>
+                            <a target="_blank">terms of use</a>
+                          </Link>{" "}
+                          &{" "}
+                          <Link href={"/privacy-policy"} legacyBehavior>
+                            <a target="_blank">privacy policy.</a>
+                          </Link>
+                        </Checkbox>{" "}
+                      </Form.Item>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -438,9 +511,10 @@ function Initial(props) {
                 className="getOfferBtn"
                 style={{
                   height: "unset",
+                  opacity: !isAgreed ? "0.8" : 1,
                 }}
                 type="text"
-                disabled={isDisable}
+                disabled={isDisable || !isAgreed}
               >
                 <span>Get My Initial Offer</span>
               </Button>

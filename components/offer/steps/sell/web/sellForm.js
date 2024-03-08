@@ -15,7 +15,9 @@ import moment from "moment";
 import Link from "next/link";
 import RulesModal from "./rulesModal";
 import useCheckMobile from "utils/checkMobile";
-
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+dayjs.extend(customParseFormat);
 function SellFrom({
   formData,
   autoComplete,
@@ -182,7 +184,11 @@ function SellFrom({
                 <div className="form-row frmRow">
                   <div className="frmfldItem">
                     <label htmlFor="">When would you like to sell?</label>
-                    <Form.Item label={false} name={"appointment_date_string"} className="d-none">
+                    <Form.Item
+                      label={false}
+                      name={"appointment_date_string"}
+                      className="d-none"
+                    >
                       <Input />
                     </Form.Item>
                     <div className="d-flex w-100 flex-column flex-md-row">
@@ -200,10 +206,14 @@ function SellFrom({
                         <DatePicker
                           inputReadOnly={true}
                           className="w-100"
-                          disabledDate={(current) =>
-                            current.isBefore(moment().subtract(1, "day")) ||
-                            !current.isBefore(moment().add(7, "day"))
-                          }
+                          disabledDate={(current) => {
+                            const today = dayjs();
+                            return (
+                              current <
+                                today.subtract(1, "days").endOf("day") ||
+                              current > today.add(5, "days").endOf("day")
+                            );
+                          }}
                           format={"MM-DD-YYYY"}
                           onChange={(e, dateString) => {
                             formData?.form?.setFieldValue(
@@ -213,7 +223,6 @@ function SellFrom({
                           }}
                         />
                       </Form.Item>
-
                       <Form.Item
                         label={false}
                         name={"appointment_time"}

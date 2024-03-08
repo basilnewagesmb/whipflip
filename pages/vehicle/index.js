@@ -1,21 +1,26 @@
 import MetaHead from "components/common/metaHead";
 import OfferLayout from "components/offer/layout";
 import Initial from "components/offer/steps/initial/index";
+import { reset } from "features/offer/offerSlice";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useGetOfferQuery } from "services/offer/api";
 
 function Index(props) {
-  const { push } = useRouter();
+  const dispatch = useDispatch();
+  const { data } = props;
+  const isM1 = data?.is_m1;
+  if (isM1) {
+    dispatch(reset());
+  }
   const { initialOffer } = useSelector((state) => state.offer);
   const { data: offerData } = useGetOfferQuery(
     { id: initialOffer?.uid },
     {
-      skip: !initialOffer?.uid,
+      skip: !initialOffer?.uid || isM1,
     }
   );
-  const { data } = props;
   useEffect(() => {
     if (props.fbpixel) {
       const events = ["ViewContent"];
@@ -95,43 +100,48 @@ function Index(props) {
     <>
       <MetaHead title="Get an offer and sell your car to us in 3 easy steps!" />
       <OfferLayout data={data} current={0}>
-        <Initial {...props} />
+        <Initial {...{ ...props, data }} />
       </OfferLayout>
     </>
   );
 }
 export async function getServerSideProps({ res, query, req }) {
-  const referer = req?.headers?.referer?.split("//")[1];
-  const allowedRouts = [
-    "blog",
-    "about",
-    "careers",
-    "contact-us",
-    "faq",
-    "how-it-works",
-    "link-is-no-longer",
-    "our-referral-program",
-    "privacy-policy",
-    "private-sale-vs-trading-in",
-    "reviews",
-    "terms-and-conditions",
-    "why-sell-your-car-to-us",
-    "sell",
-  ];
+  const { vehicle_id, visiter } = query;
   let host = req?.headers?.host + "/";
-  if (referer?.split("/")?.[1]) {
-    host = req?.headers?.host + "/" + referer?.split("/")?.[1];
+  let data = null;
+
+  const fetchData = async (url) => {
+    const resp = await fetch(url);
+    return await resp?.json();
+  };
+
+  if (visiter) {
+    data = await fetchData(
+      `${process.env.NEXT_PUBLIC_API_URL}/vehicles/decode?uid=${visiter}`
+    );
+  } else if (vehicle_id) {
+    const referer = req?.headers?.referer?.split("//")[1];
+
+    if (referer?.split("/")?.[1]) {
+      host = req?.headers?.host + "/" + referer?.split("/")?.[1];
+    }
+
+    data = await fetchData(
+      `${process.env.NEXT_PUBLIC_API_URL}/vehicles?vehicleID=${vehicle_id}`
+    );
+    if (
+      !(host === referer || allowedRouts.includes(referer?.split("/")?.[1]))
+    ) {
+      return {
+        redirect: {
+          permanent: false,
+          destination: `/`,
+        },
+        props: { data },
+      };
+    }
   }
-  const { vehicle_id } = query;
-  const resp = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/vehicles?vehicleID=${vehicle_id}`
-  );
-  const data = await resp?.json();
-  if (host === referer || allowedRouts?.includes(referer?.split("/")?.[1])) {
-    return {
-      props: { data },
-    };
-  } else {
+  if (!data) {
     return {
       redirect: {
         permanent: false,
@@ -140,6 +150,27 @@ export async function getServerSideProps({ res, query, req }) {
       props: { data },
     };
   }
+
+  return {
+    props: { data },
+  };
 }
+
+const allowedRouts = [
+  "blog",
+  "about",
+  "careers",
+  "contact-us",
+  "faq",
+  "how-it-works",
+  "link-is-no-longer",
+  "our-referral-program",
+  "privacy-policy",
+  "private-sale-vs-trading-in",
+  "reviews",
+  "terms-and-conditions",
+  "why-sell-your-car-to-us",
+  "sell",
+];
 
 export default Index;
