@@ -6776,12 +6776,17 @@ label.uniform_item_label {
   .ant-modal-confirm-body {
     justify-content: center;
   }
+  .ant-modal-content {
+    @media only screen and (max-width: 406px) {
+      padding: 10px;
+    }
+  }
   h6.text-center {
     color: #4b88c0;
     width: fit-content;
     margin: auto;
     @media only screen and (max-width: 406px) {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
     }
     ::after {
