@@ -12,7 +12,7 @@ function InteriorConditions({
   isReview,
 }) {
   return (
-    <div className="offer_block noBordBtm offer_block_mobi">
+    <div className="offer_block noBordBtm offer_block_mobi my-0 py-0">
       <div className="ob_hd d-flex justify-content-between">
         {!isReview && (
           <div className="d-flex justify-content-center align-items-center">

@@ -83,8 +83,8 @@ function Accept({ data, setAccept }) {
         </div>
         <div className="offset-1 col-10 mt-5">
           <p className="text-center font-italic">
-            {`"A smell transaction fee up to $99 will be applied to the offer
-            amount upon completion of the purchase of your vehicle."`}
+            {`*A small transaction fee up to $99 will be applied to the offer
+            amount upon completion of the purchase of your vehicle.`}
           </p>
         </div>{" "}
         <div
@@ -112,7 +112,7 @@ function Accept({ data, setAccept }) {
                           {" "}
                           Supports our awesome Car Concierge who travel to you
                           to pay & pick up, provide a 5-star vehicle selling
-                          experience, ar ensure everything is done accurately
+                          experience, and ensure everything is done accurately
                           for smooth transaction.
                         </li>
                       </ul>

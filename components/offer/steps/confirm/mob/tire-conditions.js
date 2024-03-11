@@ -13,7 +13,7 @@ function TireConditionsTemp({
   isReview,
 }) {
   return (
-    <div className="offer_block noBordBtm offer_block_mobi">
+    <div className="offer_block noBordBtm offer_block_mobi mt-3 mb-0 pb-0">
       <div className="ob_hd d-flex justify-content-between">
         <h2
           style={{
@@ -33,7 +33,7 @@ function TireConditionsTemp({
           </div>
         )}
       </div>
-      <div className="offer_block-body">
+      <div className="offer_block-body ">
         <div autoComplete="off" className="form" role="form">
           <div className="form-group row ob_frm_row">
             <div className="col-lg-12 p-0">
