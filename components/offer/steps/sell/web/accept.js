@@ -101,7 +101,7 @@ function Accept({ data, setAccept }) {
                         <span className="under_line"></span>
                       </h6>
                       <b>
-                        A small fee up to $99 may apply off .of th final offer
+                        A small fee up to $99 may apply to the final offer
                         amount which is used for:
                       </b>
                     </div>
