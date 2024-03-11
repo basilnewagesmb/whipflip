@@ -294,11 +294,7 @@ function SeeInitOffer({ form, data, goTo }) {
                         });
                       }}
                     >
-                      <div
-                        style={{
-                          marginTop: "1.3rem",
-                        }}
-                      >
+                      <div className="responsive_margins">
                         I agree to the{" "}
                         <Link href={"/terms-and-conditions"} legacyBehavior>
                           <a target="_blank">terms of use</a>
