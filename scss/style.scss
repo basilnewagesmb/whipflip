@@ -6772,3 +6772,27 @@ label.uniform_item_label {
     display: none !important;
   }
 }
+.info_pop_up_main {
+  .ant-modal-confirm-body {
+    justify-content: center;
+  }
+  h6.text-center {
+    color: #4b88c0;
+    ::after {
+      display: flex;
+      text-align: center;
+      width: 85%;
+      height: 2.5px;
+      background: #f0b500;
+      content: "";
+      margin: auto;
+      margin-top: 4px;
+    }
+  }
+  ul {
+    padding-left: 16px;
+    li {
+      padding: 12px 0px;
+    }
+  }
+}

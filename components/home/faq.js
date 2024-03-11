@@ -652,6 +652,12 @@ export const faqData = {
               This assumes the vehicle is as described. Please see the following
               question below.
             </p>
+            <p>
+              {`A transaction fee up to $99 may apply to cover standard DMV fees
+              of titling and transfer as well as supporting our awesome Car
+              Concierge staff coming to your location to provide the best car
+              selling experience you've ever had!`}
+            </p>
             <div className="social-icon d-flex">
               <Link href="https://www.facebook.com/WhipFlip-111080500678406">
                 <div className="facebook-f mr-2"></div>
