@@ -59,7 +59,8 @@ function RulesModal({
                 <p>
                   This offer is non-negotiable and is based on final inspection.
                   If there is a moderate to major issue that has not been
-                  disclosed, your offer may change.
+                  disclosed, your offer may change. A small transaction fee up
+                  to $99 may be applied to the final offer amount shown.
                 </p>
               </li>
               <li className="ror_item">
@@ -92,9 +93,10 @@ function RulesModal({
               <div className="apHd">
                 <span>Be on time for your appointment to sell:</span>
                 <h3>
-                  {moment(formRealData?.appointment_date_string, "MM-DD-YYYY").format(
-                    "MMMM D"
-                  )}{" "}
+                  {moment(
+                    formRealData?.appointment_date_string,
+                    "MM-DD-YYYY"
+                  ).format("MMMM D")}{" "}
                   at {formRealData?.appointment_time}
                 </h3>
               </div>

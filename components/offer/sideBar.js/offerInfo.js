@@ -84,10 +84,10 @@ function OfferInfo({ isShow, data }) {
                     <div className="of_item">
                       <h2>Vehicle History:</h2>
                       <p>
-                        Factors in what may be reported by Carfax and other vehicle
-                        history reports that pertain to accident history, rental
-                        or fleet use, or severe history issues such as salvage,
-                        flood, and odometer rollbacks.
+                        Factors in what may be reported by Carfax and other
+                        vehicle history reports that pertain to accident
+                        history, rental or fleet use, or severe history issues
+                        such as salvage, flood, and odometer rollbacks.
                       </p>
                     </div>
                   </div>
