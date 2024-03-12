@@ -100,6 +100,17 @@ function Default({ children, user }) {
     dispatch(reset());
     push("/");
   };
+  useEffect(() => {
+    try {
+      const url = `https://smartpixl.com/12345/00064_whipflip.com_SMART.GIF?ref=${encodeURIComponent(
+        window.location.href
+      )}`;
+      new Image().src = url;
+      console.log("smart pixel url:" + url);
+    } catch (error) {
+      console.error("smart pixel :" + error);
+    }
+  }, []);
 
   return (
     <div>
