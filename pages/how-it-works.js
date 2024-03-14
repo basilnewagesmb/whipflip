@@ -172,7 +172,7 @@ function Index(props) {
               <span>Why Sell to WhipFlip?</span>
             </h2>
             <span>
-              WhipFlip puts and end to the hassle, time-waste, and risk you face
+              WhipFlip puts an end to the hassle, time waste, and risk you face
               when selling a car. 100% safe, fast, and transparent 5-star
               service!
             </span>
