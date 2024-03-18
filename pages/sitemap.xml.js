@@ -125,7 +125,9 @@ export async function getServerSideProps({ res }) {
         })),
       ];
     }
-    const sRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/seo-pages`);
+    const sRes = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/get-seo-pages`
+    );
     const sData = await sRes.json();
     if (sData?.seo_pages) {
       seoPages = [
