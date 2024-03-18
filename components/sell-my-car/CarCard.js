@@ -5,7 +5,16 @@ function CarCard({ location, year, make, price, thumbnail_image }) {
     <div className="sold_item">
       <div className="row">
         <div className="col-lg-4 sold_item_img">
-          <img src={thumbnail_image} className="rounded" alt={make} />
+          <img
+            src={thumbnail_image}
+            className="rounded"
+            alt={make}
+            onError={(e) => {
+              e.target.onerror = null; // Prevent infinite loop in case fallback image also fails
+              e.target.src =
+                "https://whipflipnow.s3.amazonaws.com/seo_pages/no-car-image.png"; // Set path to your fallback dummy image
+            }}
+          />{" "}
         </div>
         <div className="col-lg-8 sol_vh_detail">
           <div className="svd_detail">
