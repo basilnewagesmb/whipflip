@@ -857,7 +857,7 @@ function SellFrom({
                     rules={[
                       {
                         required: true,
-                        message: "Please select your Choice!",
+                        message: "Please agree to continue!",
                       },
                     ]}
                   >
@@ -868,10 +868,16 @@ function SellFrom({
                         });
                       }}
                     >
-                      I agree to the{" "}
-                      <Link href={"/terms-and-conditions"} legacyBehavior>
-                        <a target="_blank">terms of use.</a>
-                      </Link>
+                      <div className="">
+                        I agree to the{" "}
+                        <Link href={"/terms-and-conditions"} legacyBehavior>
+                          <a target="_blank">terms of use</a>
+                        </Link>{" "}
+                        &{" "}
+                        <Link href={"/privacy-policy"} legacyBehavior>
+                          <a target="_blank">privacy policy.</a>
+                        </Link>
+                      </div>
                     </Checkbox>
                   </Form.Item>
                   <div className="initial_order_btn mt-2">
@@ -879,7 +885,11 @@ function SellFrom({
                       <Button
                         htmlType="submit"
                         className="initofferBtn h-auto"
-                        //disabled={formData?.formRealData?.agreed != true}
+                        disabled={formData?.formRealData?.agreed != true}
+                        style={{
+                          opacity:
+                            formData?.formRealData?.agreed != true ? 0.5 : 1,
+                        }}
                       >
                         Submit
                       </Button>
@@ -887,9 +897,14 @@ function SellFrom({
                       <Button
                         htmlType="button"
                         className="initofferBtn h-auto"
+                        disabled={formData?.formRealData?.agreed != true}
                         onClick={() => {
                           formData?.form.validateFields();
                           window.scrollTo(0, 0);
+                        }}
+                        style={{
+                          opacity:
+                            formData?.formRealData?.agreed != true ? 0.5 : 1,
                         }}
                       >
                         Submit
