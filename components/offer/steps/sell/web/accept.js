@@ -79,12 +79,6 @@ function Accept({ data, setAccept }) {
             </div>
           </div>
         </div>
-        <div className="offset-1 col-10 mt-5">
-          <p className="text-center font-italic">
-            {`*A small transaction fee up to $99 will be applied to the offer
-            amount upon completion of the purchase of your vehicle.`}
-          </p>
-        </div>{" "}
         {isMobile && (
           <div className="mt-4">
             <OfferInfo isShow={true} data={data} />
