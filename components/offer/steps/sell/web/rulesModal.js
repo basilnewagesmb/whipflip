@@ -85,7 +85,7 @@ function RulesModal({
                               </div>
                               <div className="of_item mt-2">
                                 <ul>
-                                  <li>Required DMV title & transfer fees</li>
+                                  <li>Required DMV title & transfer fees.</li>
                                   <li>
                                     {" "}
                                     Supports our awesome Car Concierge who
