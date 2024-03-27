@@ -6,6 +6,9 @@ import moment from "moment";
 import useOnScreen from "utils/useOnScreen";
 import { useRef } from "react";
 import Scroll from "components/anim/scroll";
+import { Modal as AntModal } from "antd";
+import InfoIcon from "components/common/infoIcon";
+
 function RulesModal({
   show,
   handleClose,
@@ -13,6 +16,8 @@ function RulesModal({
   formRealData,
   submitAppointment,
 }) {
+  const { confirm } = AntModal;
+
   const isMobile = useCheckMobile();
   const [isVisible, setIsVisible] = useState(false);
   return (
@@ -60,7 +65,61 @@ function RulesModal({
                   This offer is non-negotiable and is based on final inspection.
                   If there is a moderate to major issue that has not been
                   disclosed, your offer may change. A small transaction fee up
-                  to $99 may be applied to the final offer amount shown.
+                  to $99 may be applied to the final offer amount shown.{" "}
+                  <span
+                    onClick={() => {
+                      confirm({
+                        icon: null,
+                        content: (
+                          <div className="of_body mt-3">
+                            <div className="of_list">
+                              <div className="of_item">
+                                <h6 className="text-center mb-3">
+                                  Unlike others, we do not hide our fee!
+                                  <span className="under_line"></span>
+                                </h6>
+                                <b>
+                                  A small fee up to $99 may apply to the final
+                                  offer amount which is used for:
+                                </b>
+                              </div>
+                              <div className="of_item mt-2">
+                                <ul>
+                                  <li>Required DMV title & transfer fees.</li>
+                                  <li>
+                                    {" "}
+                                    Supports our awesome Car Concierge who
+                                    travel to you to pay & pick up, provide a
+                                    5-star vehicle selling experience, and
+                                    ensure everything is done accurately for
+                                    smooth transaction.
+                                  </li>
+                                </ul>
+                              </div>
+                              <h6 className="text-center mb-4">
+                                Compare to others that charge $499+
+                              </h6>
+                            </div>
+                          </div>
+                        ),
+                        title: null,
+                        closable: true,
+                        footer: null,
+                        className: "info_pop_up_main",
+                      });
+                    }}
+                  >
+                    <span
+                      className="text-center font-italic"
+                      style={{
+                        cursor: "pointer",
+                      }}
+                    >
+                      {" "}
+                      <InfoIcon fill="#FFC000" size={30} />
+                      <b>{`What's this?`}</b>
+                    </span>
+                  </span>
                 </p>
               </li>
               <li className="ror_item">
