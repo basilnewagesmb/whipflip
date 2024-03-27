@@ -6826,3 +6826,6 @@ span.ant-modal-close-x::after {
 span.ant-modal-close-x svg {
   display: none;
 }
+.ant-modal-wrap {
+  z-index: 1055 !important;
+}

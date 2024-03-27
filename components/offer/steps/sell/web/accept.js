@@ -11,8 +11,6 @@ import { useReviewsQuery } from "services/util";
 import CarInfo from "../../initial/mob/carInfo";
 import InfoIcon from "components/common/infoIcon";
 function Accept({ data, setAccept }) {
-  const { confirm } = Modal;
-
   const isMobile = useCheckMobile();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [reviews, setReviews] = useState({});
@@ -87,60 +85,6 @@ function Accept({ data, setAccept }) {
             amount upon completion of the purchase of your vehicle.`}
           </p>
         </div>{" "}
-        <div
-          className="offset-1 col-10 "
-          onClick={() => {
-            confirm({
-              icon: null,
-              content: (
-                <div className="of_body mt-3">
-                  <div className="of_list">
-                    <div className="of_item">
-                      <h6 className="text-center mb-3">
-                        Unlike others, we do not hide our fee!
-                        <span className="under_line"></span>
-                      </h6>
-                      <b>
-                        A small fee up to $99 may apply to the final offer
-                        amount which is used for:
-                      </b>
-                    </div>
-                    <div className="of_item mt-2">
-                      <ul>
-                        <li>Required DMV title & transfer fees</li>
-                        <li>
-                          {" "}
-                          Supports our awesome Car Concierge who travel to you
-                          to pay & pick up, provide a 5-star vehicle selling
-                          experience, and ensure everything is done accurately
-                          for smooth transaction.
-                        </li>
-                      </ul>
-                    </div>
-                    <h6 className="text-center mb-4">
-                      Compare to others that charge $499+
-                    </h6>
-                  </div>
-                </div>
-              ),
-              title: null,
-              closable: true,
-              footer: null,
-              className: "info_pop_up_main",
-            });
-          }}
-        >
-          <div
-            className="text-center font-italic"
-            style={{
-              cursor: "pointer",
-            }}
-          >
-            {" "}
-            <InfoIcon fill="#FFC000" size={30} />
-            <b>{`What's this?`}</b>
-          </div>
-        </div>
         {isMobile && (
           <div className="mt-4">
             <OfferInfo isShow={true} data={data} />
