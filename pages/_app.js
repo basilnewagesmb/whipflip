@@ -21,6 +21,7 @@ import { message, Modal } from "antd";
 import NextNProgress from "nextjs-progressbar";
 import { useRouter } from "next/router";
 import Loader from "layout/Loader";
+import Script from "next/script";
 const Default = dynamic(() => import("layout/Default"), {
   loading: () => <Loader />,
 });
@@ -75,7 +76,7 @@ function MyApp({ Component, pageProps, analytics, fbpixel, hotjar }) {
               analytics={analytics}
               fbpixel={fbpixel}
               hotjar={hotjar}
-            />
+            />{" "}
           </ConfigProvider>
         </Default>
         {/* )} */}

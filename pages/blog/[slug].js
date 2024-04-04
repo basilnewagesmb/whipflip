@@ -10,6 +10,8 @@ import {
   TwitterShareButton,
   WhatsappIcon,
 } from "react-share";
+import parse from "html-react-parser";
+import Script from "next/script";
 
 const BlogDetail = (props) => {
   const dispatch = useDispatch();
@@ -80,16 +82,7 @@ const BlogDetail = (props) => {
                       <span style={{ cursor: "pointer" }}>Back to Blog</span>
                     </Link>
                   </div>
-                  {props.data && props.data.template && (
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: props.data.template.replace(
-                          /(<? *script)/gi,
-                          "illegalscript"
-                        ),
-                      }}
-                    ></div>
-                  )}
+                  {parse(props?.data?.template)}
                 </div>
               </div>
               <div className="col-lg-3">
@@ -241,6 +234,7 @@ const BlogDetail = (props) => {
           </div>
         </div>
       </div>
+      <Script src="https://public.flourish.studio/resources/embed.js" />
     </>
   );
 };
