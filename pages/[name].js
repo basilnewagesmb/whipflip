@@ -19,6 +19,17 @@ const restrictedUrsl = [
   "cash-for-cars-new-jersey",
   "cash-for-cars-wilmington-de",
   "how-much-is-a-2015-nissan-altima-worth",
+  "cash_for_cars_akron_ohio",
+  "cash_for_cars_cleveland_oh",
+  "cash_for_cars_dayton_ohio",
+  "cash_for_cars_edison_nj",
+  "cash_for_cars_youngstown_oh",
+  "sell_my_2019_tesla_model_3",
+  "sell_my_audi_a5_sportback",
+  "sell_my_car_in_cincinnati_oh",
+  "sell_my_car_in_elizabeth_nj",
+  "sell_my_chevy_silverado_1500",
+  "sell_my_kia_forte_gt",
 ];
 function SEO({ blogs, reviews, car, singleBlog }) {
   const { initialOffer } = useSelector((state) => state.offer);
