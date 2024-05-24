@@ -19,17 +19,17 @@ const restrictedUrsl = [
   "cash-for-cars-new-jersey",
   "cash-for-cars-wilmington-de",
   "how-much-is-a-2015-nissan-altima-worth",
-  "cash_for_cars_akron_ohio",
-  "cash_for_cars_cleveland_oh",
-  "cash_for_cars_dayton_ohio",
-  "cash_for_cars_edison_nj",
-  "cash_for_cars_youngstown_oh",
-  "sell_my_2019_tesla_model_3",
-  "sell_my_audi_a5_sportback",
-  "sell_my_car_in_cincinnati_oh",
-  "sell_my_car_in_elizabeth_nj",
-  "sell_my_chevy_silverado_1500",
-  "sell_my_kia_forte_gt",
+  "cash-for-cars-akron-ohio",
+  "cash-for-cars-cleveland-oh",
+  "cash-for-cars-dayton-ohio",
+  "cash-for-cars-edison-nj",
+  "cash-for-cars-youngstown-oh",
+  "sell-my-2019-tesla-model-3",
+  "sell-my-audi-a5-sportback",
+  "sell-my-car-in-cincinnati-oh",
+  "sell-my-car-in-elizabeth-nj",
+  "sell-my-chevy-silverado-1500",
+  "sell-my-kia-forte-gt",
 ];
 function SEO({ blogs, reviews, car, singleBlog }) {
   const { initialOffer } = useSelector((state) => state.offer);
@@ -169,35 +169,39 @@ function SEO({ blogs, reviews, car, singleBlog }) {
           </div>
         </div>
       </div>
-      <div className="reviews_carsold">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8 col-rc">
-              <h2>
-                {(car?.purchase_count &&
-                  new Intl.NumberFormat("en-US").format(car?.purchase_count)) ||
-                  0}{" "}
-                cars sold this month
-              </h2>
-              <div className="sl_wrap">
-                <div className="sold_list">
-                  {car?.vehicles?.map((item, i) => (
-                    <CarCard key={i} {...item} />
+      {car.vehicles[0].whip && (
+        <div className="reviews_carsold">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-8 col-rc">
+                <h2>
+                  {(car?.purchase_count &&
+                    new Intl.NumberFormat("en-US").format(
+                      car?.purchase_count
+                    )) ||
+                    0}{" "}
+                  cars sold this month
+                </h2>
+                <div className="sl_wrap">
+                  <div className="sold_list">
+                    {car?.vehicles?.map((item, i) => (
+                      <CarCard key={i} {...item} />
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-4 col-review">
+                {reviews?.[0] && <h2>Verified Reviews</h2>}
+                <div className="rev_list">
+                  {reviews?.map((item, i) => (
+                    <ReviewCard key={i} {...item} index={i} />
                   ))}
                 </div>
               </div>
             </div>
-            <div className="col-lg-4 col-review">
-              {reviews?.[0] && <h2>Verified Reviews</h2>}
-              <div className="rev_list">
-                {reviews?.map((item, i) => (
-                  <ReviewCard key={i} {...item} index={i} />
-                ))}
-              </div>
-            </div>
           </div>
         </div>
-      </div>
+      )}
       {singleBlog && <SimpleBLog {...singleBlog} />}
       <div className="how-it-works pt-4 body-text">
         <div className="container">
@@ -268,7 +272,7 @@ export async function getServerSideProps({ query }) {
         )}`
       );
       singleBlog = await res.json();
-      console.log(singleBlog);
+      // console.log(singleBlog);
     } else {
       singleBlog = null;
     }
@@ -281,6 +285,7 @@ export async function getServerSideProps({ query }) {
         `${process.env.NEXT_PUBLIC_API_URL}/seo-pages?slug=${name}`
       );
       car = await carResp.json();
+      console.log("car-----", car);
       if (car.status === false) {
         return {
           notFound: true,
