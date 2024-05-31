@@ -95,6 +95,61 @@ const nextConfig = {
         destination: "/how-much-is-a-2015-nissan-altima-worth",
         permanent: true,
       },
+      {
+        source: "/blog/cash_for_cars_akron_ohio",
+        destination: "/cash-for-cars-akron-ohio",
+        permanent: true,
+      },
+      {
+        source: "/blog/cash_for_cars_cleveland_oh",
+        destination: "/cash-for-cars-cleveland-oh",
+        permanent: true,
+      },
+      {
+        source: "/blog/cash_for_cars_dayton_ohio",
+        destination: "/cash-for-cars-dayton-ohio",
+        permanent: true,
+      },
+      {
+        source: "/blog/cash_for_cars_edison_nj",
+        destination: "/cash-for-cars-edison-nj",
+        permanent: true,
+      },
+      {
+        source: "/blog/cash_for_cars_youngstown_oh",
+        destination: "/cash-for-cars-youngstown-oh",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_2019_tesla_model_3",
+        destination: "/sell-my-2019-tesla-model-3",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_audi_a5_sportback",
+        destination: "/sell-my-audi-a5-sportback",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_car_in_cincinnati_oh",
+        destination: "/sell-my-car-in-cincinnati-oh",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_car_in_elizabeth_nj",
+        destination: "/sell-my-car-in-elizabeth-nj",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_chevy_silverado_1500",
+        destination: "/sell-my-chevy-silverado-1500",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_kia_forte_gt",
+        destination: "/sell-my-kia-forte-gt",
+        permanent: true,
+      },
     ];
   },
 };
