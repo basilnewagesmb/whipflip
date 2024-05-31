@@ -1,4 +1,5 @@
 User-agent: *
-Disallow:
+Disallow: /[name]
+Disallow: /prospect/[id]/quote
 
 Sitemap: https://whipflip.com/sitemap.xml
