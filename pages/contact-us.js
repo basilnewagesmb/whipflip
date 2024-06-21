@@ -1,16 +1,31 @@
 import MetaHead from "components/common/metaHead";
 import React, { useEffect } from "react";
 import { useContactMutation } from "services/util";
-import { Form, Input, Button, message } from "antd";
+import { Form, Input, Button, message, Checkbox } from "antd";
 import { useState } from "react";
+import Captcha from "react-google-recaptcha";
+import { useRef } from "react";
+import Link from "next/link";
 
 function Index() {
+  const captchaRef = useRef(null);
   const [form] = Form.useForm();
   const realVal = Form.useWatch([], form);
   const [isValid, setIsValid] = useState(false);
   const [contact, { isLoading, isSuccess }] = useContactMutation();
   const onFinish = async (values) => {
-    const res = await contact(values);
+    const captcha = await captchaRef.current?.executeAsync();
+    const res = await fetch("/api/subscribe", {
+      method: "POST",
+      body: JSON.stringify({ captcha }),
+      headers: { "Content-type": "application/json" },
+    });
+    if (res.ok) {
+      await contact(values);
+    } else {
+      const { error } = await res.json();
+      message.error(error);
+    }
   };
   useEffect(() => {
     if (isSuccess) {
@@ -19,10 +34,19 @@ function Index() {
     }
   }, [isSuccess]);
   useEffect(() => {
-    if (realVal) {
-      setIsValid(Object?.values(realVal).filter((item) => item).length == 5);
-    }
+    const values = form.getFieldsValue();
+    const requiredFields = [
+      "firstName",
+      "lastName",
+      "email",
+      "phone",
+      "message",
+      "agreed",
+    ];
+    const allFieldsValid = requiredFields.every((field) => !!values[field]);
+    setIsValid(allFieldsValid);
   }, [realVal]);
+
   return (
     <>
       <MetaHead
@@ -48,6 +72,12 @@ function Index() {
             <div className="col-lg-6 my-3">
               <div className="card border-0">
                 <div className="card-body p-4">
+                  <Captcha
+                    ref={captchaRef}
+                    size="invisible"
+                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA}
+                    badge="bottomleft"
+                  />
                   <Form
                     form={form}
                     layout={"vertical"}
@@ -61,7 +91,7 @@ function Index() {
                       <div className="form-group WFinput-text col-sm-6">
                         <Form.Item
                           label="First Name"
-                          name={"fastName"}
+                          name={"firstName"}
                           className="m-0 w-100"
                           rules={[
                             {
@@ -198,6 +228,37 @@ function Index() {
                       >
                         <Input.TextArea allowClear rows={"3"} maxLength={200} />
                       </Form.Item>
+                    </div>
+                    <div className="form-group row ob_frm_row col-12">
+                      <div className="col-lg-12 p-0">
+                        <Form.Item
+                          label={null}
+                          name="agreed"
+                          className="m-0 w-100"
+                          rules={[
+                            {
+                              required: true,
+                            },
+                          ]}
+                        >
+                          <Checkbox
+                            onChange={(e) => {
+                              form.setFieldsValue({
+                                agreed: e.target.checked,
+                              });
+                            }}
+                          >
+                            I agree to the{" "}
+                            <Link href={"/terms-and-conditions"} legacyBehavior>
+                              <a target="_blank">terms of use</a>
+                            </Link>{" "}
+                            &{" "}
+                            <Link href={"/privacy-policy"} legacyBehavior>
+                              <a target="_blank">privacy policy.</a>
+                            </Link>
+                          </Checkbox>{" "}
+                        </Form.Item>
+                      </div>
                     </div>
                     <Button
                       htmlType="submit"
