@@ -317,9 +317,9 @@ export const faqData = {
           <AccordionItemPanel>
             <p>
               Currently, WhipFlip is serving most of Pennsylvania, Ohio,
-              Delaware and New Jersey. We are growing FAST and will be adding
-              many more service areas to handle customer demand in the near
-              future.
+              Delaware, New Jersey and part of Minnesota. We are growing FAST
+              and will be adding many more service areas to handle customer
+              demand in the near future.
             </p>
             <div className="social-icon d-flex">
               <Link href="https://www.facebook.com/WhipFlip-111080500678406">
