@@ -30,6 +30,15 @@ const restrictedUrsl = [
   "sell-my-car-in-elizabeth-nj",
   "sell-my-chevy-silverado-1500",
   "sell-my-kia-forte-gt",
+  "sell-my-car-in-toms-river-nj",
+  "cash-for-cars-in-canton-oh",
+  "cash-for-cars-in-trenton-nj",
+  "cash-for-cars-minneapolis-mn",
+  "sell-your-car-for-cash-in-parma-oh",
+  "sell-my-2020-alfa-romeo-giulia",
+  "sell-my-2022-honda-civic",
+  "sell-my-volkswagen-arteon",
+  "sell-my-volvo-s90",
 ];
 function SEO({ blogs, reviews, car, singleBlog }) {
   const { initialOffer } = useSelector((state) => state.offer);
