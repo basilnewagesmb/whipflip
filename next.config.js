@@ -150,6 +150,56 @@ const nextConfig = {
         destination: "/sell-my-kia-forte-gt",
         permanent: true,
       },
+      {
+        source: "/sell_my_car_in_toms_river_nj",
+        destination: "/sell-my-car-in-toms-river-nj",
+        permanent: true,
+      },
+      {
+        source: "/cash_for_cars_in_canton_oh",
+        destination: "/cash-for-cars-in-canton-oh",
+        permanent: true,
+      },
+      {
+        source: "/cash_for_cars_in_trenton_nj",
+        destination: "/cash-for-cars-in-trenton-nj",
+        permanent: true,
+      },
+      {
+        source: "/cash_for_cars_minneapolis_mn",
+        destination: "/cash-for-cars-minneapolis-mn",
+        permanent: true,
+      },
+      {
+        source: "/sell_your_car_for_cash_in_parma_oh",
+        destination: "/sell-your-car-for-cash-in-parma-oh",
+        permanent: true,
+      },
+      {
+        source: "/sell_my_2020_alfa_romeo_giulia",
+        destination: "/sell-my-2020-alfa-romeo-giulia",
+        permanent: true,
+      },
+      {
+        source: "/sell_my_2022_honda_civic",
+        destination: "/sell-my-2022-honda-civic",
+        permanent: true,
+      },
+      {
+        source: "/sell_my_volkswagen_arteon",
+        destination: "/sell-my-volkswagen-arteon",
+        permanent: true,
+      },
+      {
+        source: "/sell_my_volvo_s90",
+        destination: "/sell-my-volvo-s90",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_kia_forte_gt",
+        destination: "/sell-my-kia-forte-gt",
+        permanent: true,
+      },
     ];
   },
 };
