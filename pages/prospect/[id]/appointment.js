@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import PoweredBy from "components/common/poweredBy";
 import useWindowDimensions from "utils/useWindowDimension";
 import Confetti from "react-confetti";
 import { useGetOfferQuery } from "services/offer/api";
@@ -114,9 +113,7 @@ function Congrats({ data }) {
                                 />
                               </div>
                               <div className="ofp_right ofp_right_web col-6">
-                                <div className="jd_op_img">
-                                  <PoweredBy />
-                                </div>
+                                <div className="jd_op_img"></div>
                                 <h2>{getAmount(data)}</h2>
                                 <div className="nm_detail">
                                   <h3>
@@ -407,9 +404,7 @@ function Congrats({ data }) {
                   <div className="mobConfirmOff">
                     <div className="confOffBody">
                       <div className="ioCard">
-                        <div className="jd_op_img">
-                          <PoweredBy />
-                        </div>
+                        <div className="jd_op_img"></div>
                         <h2>Your offer: {getAmount(data)}</h2>
                         <div className="offerProduct-mobi row">
                           <div className="ofp_left col-4 p-0">

@@ -46,15 +46,6 @@ function Accept({ data, setAccept }) {
                 <i style={{ color: "#ffd147", fontWeight: "bold" }}>FLIPPIN’</i>{" "}
                 Awesome Offer!
               </span>
-              <div className="at_img">
-                <Image
-                  src="/images/jd.webp"
-                  alt="jd"
-                  title="jd"
-                  width={200}
-                  height={25}
-                />
-              </div>
             </div>
             <div className="at_price">
               <h1>{getAmount(data)}</h1>
@@ -231,15 +222,7 @@ function Accept({ data, setAccept }) {
                   />
                 </div>
               </div>
-              <div className="poweredBy">
-                <Image
-                  src="/images/jd.webp"
-                  alt="jd"
-                  title="jd"
-                  width={200}
-                  height={25}
-                />
-              </div>
+              <div className="poweredBy"></div>
               <div className="af_foo_dec">
                 <p>
                   We are trusted by the biggest and best names in the industry!
