@@ -223,15 +223,6 @@ function About() {
             <div className="col-lg-3 col-xl-2 col-md-4 col-sm-5 col-4 text-center d-flex align-items-center justify-content-center">
               <img
                 loading="lazy"
-                src="/images/p1.png"
-                alt="JDPower"
-                title="JDPower"
-                className="img-fluid"
-              />
-            </div>
-            <div className="col-lg-3 col-xl-2 col-md-4 col-sm-5 col-4 text-center d-flex align-items-center justify-content-center">
-              <img
-                loading="lazy"
                 src="/images/p2.png"
                 alt="Altis"
                 title="Altis"

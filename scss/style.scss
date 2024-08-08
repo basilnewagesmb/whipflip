@@ -28,6 +28,10 @@ html.disable-scroll {
   scroll-behavior: auto;
 }
 
+.ant-select-dropdown {
+  z-index: 100000000;
+}
+
 body.disable-scroll {
   overflow: hidden !important;
   position: fixed;
