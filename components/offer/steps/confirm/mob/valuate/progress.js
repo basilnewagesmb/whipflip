@@ -91,20 +91,6 @@ export const Progress = ({ speed }) => {
             </div>
           </div>
         </div>
-        <div>
-          <div className="whip_cus_info px-4">
-            <div className="wci_in d-block">
-              <div className="wci_right  d-flex flex-column align-items-center justify-content-center">
-                <p>
-                  <b>
-                    Our partnership with JD Power ensures your offer is
-                    top-notch and based on current market value!
-                  </b>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
       </Carousel>
     </div>
   );
