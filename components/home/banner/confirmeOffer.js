@@ -71,15 +71,7 @@ function ConfirmOffer({ initialOffer }) {
             <div className="cob_offer_price">
               <h1>{getAmount(data)}</h1>
             </div>
-            <div className="poweredBy">
-              <Image
-                src="/images/jd.svg"
-                alt="poweredBy"
-                title="poweredBy"
-                width={200}
-                height={24}
-              />
-            </div>
+            <div className="poweredBy"></div>
             <Clock date={date} />
           </div>
         </div>

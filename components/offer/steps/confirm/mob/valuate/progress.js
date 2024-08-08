@@ -2,13 +2,12 @@ import Image from "next/image";
 import React from "react";
 import Fade from "react-reveal/Fade";
 import { Carousel } from "antd";
-import PoweredBy from "components/common/poweredBy";
 import UploadingAnim from "components/anim/uploading";
 
 export const Progress = ({ speed }) => {
   return (
     <div className="d-flex  justify-content-center  text-center flex-column">
-      <UploadingAnim isLoading={true} speed={speed}/>
+      <UploadingAnim isLoading={true} speed={speed} />
       <p className="text-center text-muted">
         Please wait! This can take up to minute..
       </p>
@@ -96,7 +95,6 @@ export const Progress = ({ speed }) => {
           <div className="whip_cus_info px-4">
             <div className="wci_in d-block">
               <div className="wci_right  d-flex flex-column align-items-center justify-content-center">
-                <PoweredBy />
                 <p>
                   <b>
                     Our partnership with JD Power ensures your offer is

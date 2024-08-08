@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import InfoIcon from "components/common/infoIcon";
 import TrimModal from "./trimModal";
 import useVehicleForm from "services/vehicle/function";
-import PoweredBy from "components/common/poweredBy";
 import { Modal } from "antd";
 import { useRetrieveOfferMutation } from "services/util";
 import { useDispatch } from "react-redux";
@@ -248,10 +247,7 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
             {" "}
             <Tooltip
               title={
-                <div>
-                  {" "}
-                  No user associated with this offer or offer expired
-                </div>
+                <div> No user associated with this offer or offer expired</div>
               }
               color={"red"}
               key={"red"}
@@ -287,8 +283,9 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
               >
                 <Input
                   size="large"
-                  className={`w-100 ${showError && " ant-input-affix-wrapper-status-error"
-                    }`}
+                  className={`w-100 ${
+                    showError && " ant-input-affix-wrapper-status-error"
+                  }`}
                   placeholder="Enter Here"
                   closeable
                   allowClear
@@ -314,7 +311,6 @@ function InstantOffer({ header, handleShowSideBar, handleCancel }) {
         <TrimModal isTrimOpen={isTrimOpen} setIsTrimOpen={setIsTrimOpen} />
         <div className="get_offer_banner">
           <div className="form_top">
-            <PoweredBy />
             <div className="form_head">
               <h2>Get a REAL offer in seconds!</h2>
               <p>Enter your vehicles details:</p>

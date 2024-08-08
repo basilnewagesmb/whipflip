@@ -12,7 +12,6 @@ import {
 import "react-responsive-tabs/styles.css";
 import "react-accessible-accordion/dist/fancy-example.css";
 import Image from "next/image";
-import PoweredBy from "components/common/poweredBy";
 export const faqData = {
   howItWorks: () => (
     <div className="whipflip-faq">
@@ -70,18 +69,7 @@ export const faqData = {
                   />
                 </Link>
               </div>
-              <div className="col-6 col-md-4 pt-2">
-                <div className="poweredBy">
-                  <Image
-                    src="/images/jd.svg"
-                    alt="poweredBy"
-                    width={180}
-                    height={20}
-                    preview={false}
-                    layout="responsive"
-                  />
-                </div>
-              </div>
+              <div className="col-6 col-md-4 pt-2"></div>
             </div>
           </AccordionItemPanel>
         </AccordionItem>

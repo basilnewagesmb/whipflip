@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import PoweredBy from "components/common/poweredBy";
 import ShimmerImage from "components/common/shimmerImage";
 import getAmount from "utils/getAmount";
 import WillComeback from "components/offer/sideBar.js/willComeback";
@@ -43,7 +42,6 @@ function ConfirmMob({ initialOffer, fbpixel, analytics }) {
                 </span>
               </div>
             </div>
-            <PoweredBy />
           </div>
           <div className="custo_info">
             <p>We’d love to buy your car!</p>
@@ -74,15 +72,7 @@ function ConfirmMob({ initialOffer, fbpixel, analytics }) {
           <WillComeback isShow={true} />
           <div className="whip_cus_info">
             <div className="wci_in wci-mob-in">
-              <div className="wci_left">
-                <Image
-                  src="/images/bulb.svg"
-                  alt="jd power"
-                  title="jd power"
-                  width={80}
-                  height={80}
-                />
-              </div>
+              <div className="wci_left"></div>
               <div className="wci_right">
                 <p>
                   Feel free to compare your free estimate to average trade-in

@@ -1,4 +1,3 @@
-import PoweredBy from "components/common/poweredBy";
 import ShimmerImage from "components/common/shimmerImage";
 import Link from "next/link";
 import React from "react";
@@ -17,7 +16,6 @@ function CarInfo(prop) {
                 {initialOffer.status === "offer" ? "Final" : "Initial"} Offer:{" "}
                 {getAmount(initialOffer)}
               </h4>
-              <PoweredBy />
             </>
           ) : (
             <>
