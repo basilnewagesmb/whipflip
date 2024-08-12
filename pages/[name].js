@@ -39,6 +39,7 @@ const restrictedUrsl = [
   "sell-my-2022-honda-civic",
   "sell-my-volkswagen-arteon",
   "sell-my-volvo-s90",
+  "sell-my-car-dayton-ohio",
 ];
 function SEO({ blogs, reviews, car, singleBlog }) {
   const { initialOffer } = useSelector((state) => state.offer);
