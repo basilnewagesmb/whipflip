@@ -196,6 +196,11 @@ const nextConfig = {
         destination: "/sell-my-volvo-s90",
         permanent: true,
       },
+      {
+        source: "/blog/sell_my_car_dayton_ohio",
+        destination: "/sell-my-car-dayton-ohio",
+        permanent: true,
+      },
     ];
   },
 };
