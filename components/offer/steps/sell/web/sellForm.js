@@ -241,8 +241,8 @@ function SellFrom({
                             label:
                               i.hour +
                               (i[i.day_key] - i.current_appointments <= 0
-                                ? " (BOOKED!)"
-                                : ""),
+                                ? " (BOOKED!) EST"
+                                : " EST"),
                             disabled:
                               i[i.day_key] - i.current_appointments <= 0,
                           }))}
