@@ -201,6 +201,76 @@ const nextConfig = {
         destination: "/sell-my-car-dayton-ohio",
         permanent: true,
       },
+      {
+        source: "/blog/sell_my_car_dayton_ohio",
+        destination: "/sell-my-car-dayton-ohio",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_audi_a4",
+        destination: "/sell-my-audi-a4",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_audi_q7",
+        destination: "/sell-my-audi-q7",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_audi",
+        destination: "/sell-my-audi",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_cadillac",
+        destination: "/sell-my-cadillac",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_car_in_saint_paul_mn",
+        destination: "/sell-my-car-in-saint-paul-mn",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_ev",
+        destination: "/sell-my-ev",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_ford_f150",
+        destination: "/sell-my-ford-f150",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_ford",
+        destination: "/sell-my-ford",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_honda_hr_v",
+        destination: "/sell-my-honda-hr-v",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_honda_pilot",
+        destination: "/sell-my-honda-pilot",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_porsche_911",
+        destination: "/sell-my-porsche-911",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_subaru",
+        destination: "/sell-my-subaru",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_vw_jetta",
+        destination: "/sell-my-vw-jetta",
+        permanent: true,
+      },
     ];
   },
 };

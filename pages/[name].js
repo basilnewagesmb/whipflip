@@ -40,6 +40,19 @@ const restrictedUrsl = [
   "sell-my-volkswagen-arteon",
   "sell-my-volvo-s90",
   "sell-my-car-dayton-ohio",
+  "sell-my-audi-a4",
+  "sell-my-audi-q7",
+  "sell-my-audi",
+  "sell-my-cadillac",
+  "sell-my-car-in-saint-paul-mn",
+  "sell-my-ev",
+  "sell-my-ford-f150",
+  "sell-my-ford",
+  "sell-my-honda-hr-v",
+  "sell-my-honda-pilot",
+  "sell-my-porsche-911",
+  "sell-my-subaru",
+  "sell-my-vw-jetta",
 ];
 function SEO({ blogs, reviews, car, singleBlog }) {
   const { initialOffer } = useSelector((state) => state.offer);
