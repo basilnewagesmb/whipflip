@@ -45,6 +45,9 @@ function Index(props) {
       <div className="bg-light">
         <div className="container  pt100 concierge">
           <div className="row mb-4 concierge-banner">
+            <div className="blue-card-bg"> 
+
+            </div>
             <div className="col-12">
               <div className="card banner-card bg-opacity-25 border-0 rounded-5 overflow-hidden">
                 <div className="card-body position-relative">
@@ -114,7 +117,7 @@ function Index(props) {
                       height={80}
                     />
                   </div>
-                  <h3 className="h4 mb-3">Nick</h3>
+                  <h3 className="h5 mb-3">Nick</h3>
                   <p className="">
                     Nick is a Pittsburgh native who loves all things cars, punk
                     rock, and being Italian. You can find him at the local...
@@ -135,7 +138,7 @@ function Index(props) {
                       height={80}
                     />
                   </div>
-                  <h3 className="h4 mb-3">Nick</h3>
+                  <h3 className="h5 mb-3">Nick</h3>
                   <p className="">
                     Nick is a Pittsburgh native who loves all things cars, punk
                     rock, and being Italian. You can find him at the local...
