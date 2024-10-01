@@ -15,6 +15,7 @@ import ConfirmOffer from "components/home/banner/confirmeOffer";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import SimpleBLog from "components/blogs/blogCard";
+import Concierge from "components/home/concierge";
 const restrictedUrsl = [
   "cash-for-cars-new-jersey",
   "cash-for-cars-wilmington-de",
@@ -54,7 +55,7 @@ const restrictedUrsl = [
   "sell-my-subaru",
   "sell-my-vw-jetta",
 ];
-function SEO({ blogs, reviews, car, singleBlog }) {
+function SEO({ blogs, reviews, car, singleBlog, concierges }) {
   const { initialOffer } = useSelector((state) => state.offer);
   const [isClient, setIsClient] = useState(false);
   useEffect(() => {
@@ -63,6 +64,9 @@ function SEO({ blogs, reviews, car, singleBlog }) {
   const isMobile = useCheckMobile();
   const { push } = useRouter();
   const isLocation = car?.vehicles?.[0]?.type === "location";
+  if (concierges) {
+    return <Concierge concierges={concierges} />;
+  }
   return (
     <div
       className="seo_page"
@@ -282,7 +286,25 @@ function SEO({ blogs, reviews, car, singleBlog }) {
 export default SEO;
 export async function getServerSideProps({ query }) {
   try {
-    const name = query.name;
+    const name = query?.name;
+    let concierges = [];
+    if (
+      ["meet-the-car-concierge-phl", "meet-the-car-concierge-wpa"].includes(
+        name
+      )
+    ) {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/get-concierges?slug=${name}`
+      );
+      const data = await res.json();
+      concierges = data.concierges;
+      return {
+        props: {
+          concierges,
+        },
+      };
+    }
+
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs?page=1`);
     const { blogs } = await res.json();
     let singleBlog = null;

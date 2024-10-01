@@ -1,41 +1,8 @@
-import React, { useEffect } from "react";
-import { isDev, isLocal } from "utils/helper";
-import { useDispatch, useSelector } from "react-redux";
-
-import Faq from "components/home/faq";
-import HomeBanner from "components/home/banner/index";
-import Image from "next/image";
-import Link from "next/link";
 import MetaHead from "components/common/metaHead";
-import ReadyToSell from "components/common/readytoSell";
-import ShimmerImage from "components/common/shimmerImage";
-import dynamic from "next/dynamic";
-import { initialize } from "features/site/siteSlice";
-import { useRouter } from "next/router";
-import { useState } from "react";
+import Image from "next/image";
+import React from "react";
 
-const HappyCustomersSlider = dynamic(() => import("components/home/slider"), {
-  loading: () => <p>Loading...</p>,
-});
-
-function Index({ concierges }) {
-  const [isClient, setIsClient] = useState(false);
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  const { query } = useRouter();
-  const dispatch = useDispatch();
-  const reviews = useSelector((state) => state.reviews);
-  const shouldNotTrack = isLocal("localhost") || isDev();
-
-  useEffect(() => {
-    shouldNotTrack &&
-      window?.ga &&
-      ga(function () {
-        dispatch(initialize(query));
-      });
-  }, [query]);
+function Concierge({ concierges }) {
   return (
     <>
       <MetaHead
@@ -129,19 +96,4 @@ function Index({ concierges }) {
   );
 }
 
-export default Index;
-
-export async function getStaticProps({ query }) {
-  const name = query.name;
-
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/get-concierges?slug=${name}`
-  );
-  const data = await res.json();
-  return {
-    props: {
-      concierges: data.concierges,
-    },
-    revalidate: 10,
-  };
-}
+export default Concierge;
