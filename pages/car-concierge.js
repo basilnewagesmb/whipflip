@@ -18,7 +18,7 @@ const HappyCustomersSlider = dynamic(() => import("components/home/slider"), {
   loading: () => <p>Loading...</p>,
 });
 
-function Index(props) {
+function Index({ concierges }) {
   const [isClient, setIsClient] = useState(false);
   useEffect(() => {
     setIsClient(true);
@@ -45,9 +45,7 @@ function Index(props) {
       <div className="bg-light">
         <div className="container  pt100 concierge">
           <div className="row mb-4 concierge-banner">
-            <div className="blue-card-bg"> 
-
-            </div>
+            <div className="blue-card-bg"></div>
             <div className="col-12">
               <div className="card banner-card bg-opacity-25 border-0 rounded-5 overflow-hidden">
                 <div className="card-body position-relative">
@@ -105,47 +103,25 @@ function Index(props) {
           </div>
 
           <div className="row pt-3">
-            <div className="col-md-6 mb-4">
-              <div className="card h-100 concierge-profile">
-                <div className="card-body text-center d-flex justify-content-center flex-column align-items-center">
-                  <div className="image-wrapper">
-                    <Image
-                      src="/images/prof.png"
-                      alt="money"
-                      title="money"
-                      width={80}
-                      height={80}
-                    />
+            {concierges.map(({ cc_name, cc_about, image_url }, k) => (
+              <div className="col-md-6 mb-4" key={k}>
+                <div className="card h-100 concierge-profile">
+                  <div className="card-body text-center d-flex justify-content-center flex-column align-items-center">
+                    <div className="image-wrapper">
+                      <Image
+                        src={image_url}
+                        alt={cc_name}
+                        title={cc_name}
+                        width={80}
+                        height={80}
+                      />
+                    </div>
+                    <h3 className="h5 mb-3">{cc_name}</h3>
+                    <p className="">{cc_about}</p>
                   </div>
-                  <h3 className="h5 mb-3">Nick</h3>
-                  <p className="">
-                    Nick is a Pittsburgh native who loves all things cars, punk
-                    rock, and being Italian. You can find him at the local...
-                  </p>
                 </div>
               </div>
-            </div>
-
-            <div className="col-md-6 mb-4">
-              <div className="card h-100 concierge-profile">
-                <div className="card-body text-center d-flex justify-content-center flex-column align-items-center">
-                  <div className="image-wrapper">
-                    <Image
-                      src="/images/prof.png"
-                      alt="money"
-                      title="money"
-                      width={80}
-                      height={80}
-                    />
-                  </div>
-                  <h3 className="h5 mb-3">Nick</h3>
-                  <p className="">
-                    Nick is a Pittsburgh native who loves all things cars, punk
-                    rock, and being Italian. You can find him at the local...
-                  </p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -154,3 +130,14 @@ function Index(props) {
 }
 
 export default Index;
+
+export async function getStaticProps() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-concierges`);
+  const data = await res.json();
+  return {
+    props: {
+      concierges: data.concierges,
+    },
+    revalidate: 10,
+  };
+}
