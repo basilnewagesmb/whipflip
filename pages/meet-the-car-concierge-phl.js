@@ -131,8 +131,12 @@ function Index({ concierges }) {
 
 export default Index;
 
-export async function getStaticProps() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-concierges`);
+export async function getStaticProps({ query }) {
+  const name = query.name;
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/get-concierges?slug=${name}`
+  );
   const data = await res.json();
   return {
     props: {
