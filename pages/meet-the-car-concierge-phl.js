@@ -39,7 +39,7 @@ function Index({ concierges }) {
   return (
     <>
       <MetaHead
-        title="Car Concierge"
+        title="Meet our car concierge"
         ogImage={"https://whipflipnow.s3.amazonaws.com/Whipflip+Logo.png"}
       />
       <div className="bg-light">
