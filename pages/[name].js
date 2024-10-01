@@ -288,11 +288,7 @@ export async function getServerSideProps({ query }) {
   try {
     const name = query?.name;
     let concierges = [];
-    if (
-      ["meet-the-car-concierge-phl", "meet-the-car-concierge-wpa"].includes(
-        name
-      )
-    ) {
+    if (name.startsWith("meet-the-car")) {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/get-concierges?slug=${name}`
       );
