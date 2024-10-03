@@ -69,7 +69,7 @@ function Concierge({ concierges }) {
             </div>
           </div>
 
-          <div className="row pt-3">
+          <div className="row pt-3 align-items-start">
             {concierges.map(({ cc_name, cc_about, image_url }, k) => (
               <div className="col-md-6 mb-4" key={k}>
                 <div className="card h-100 concierge-profile">
