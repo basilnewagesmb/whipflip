@@ -294,11 +294,17 @@ export async function getServerSideProps({ query }) {
       );
       const data = await res.json();
       concierges = data.concierges;
-      return {
-        props: {
-          concierges,
-        },
-      };
+      if (concierges.length) {
+        return {
+          props: {
+            concierges,
+          },
+        };
+      } else {
+        return {
+          notFound: true,
+        };
+      }
     }
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs?page=1`);
