@@ -832,6 +832,9 @@ article.reviewLt_icons {
       padding: 50px 50px;
       min-height: 150px;
     }
+    @media (min-width: 767px) and (max-width: 900px) {
+      min-height: 538px;
+    }
   }
 
   .banner-img {
