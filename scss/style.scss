@@ -392,7 +392,7 @@ span.infoBx {
       }
     }
   }
-  &.blue-arrow-down{
+  &.blue-arrow-down {
     &::before {
       content: "";
       background: url(/images/arrow-blue.png);
@@ -827,8 +827,10 @@ article.reviewLt_icons {
 .concierge {
   .card-body {
     padding: 50px 90px;
+    min-height: 412px;
     @include responsive(phone) {
       padding: 50px 50px;
+      min-height: 150px;
     }
   }
 
@@ -840,7 +842,11 @@ article.reviewLt_icons {
   .banner-card {
     border-radius: 25px;
     background: rgb(221, 239, 254);
-    background: radial-gradient(circle, rgba(221, 239, 254, 1) 0%, rgba(190, 222, 249, 1) 56%);
+    background: radial-gradient(
+      circle,
+      rgba(221, 239, 254, 1) 0%,
+      rgba(190, 222, 249, 1) 56%
+    );
   }
 
   .concierge-profile {
@@ -873,7 +879,7 @@ article.reviewLt_icons {
     width: 95%;
     height: 100%;
     position: absolute;
-    background: #1A578B;
+    background: #1a578b;
     left: 2%;
     transform: rotate(-0.5deg);
     border-radius: 25px;
