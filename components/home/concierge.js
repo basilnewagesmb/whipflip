@@ -60,7 +60,9 @@ function Concierge({ concierges }) {
 
           <div className="row mb-5 text-center">
             <div className="col-12">
-              <h2 className="h3 text mb-3">Car Concierges in Pittsburgh, PA</h2>
+              <h2 className="h3 text mb-3">
+                Car Concierges in {concierges?.[0]?.display_market}
+              </h2>
               <p className="text-highlight text-capitalize blue-arrow-down">
                 {" "}
                 One of our friendly car concierges will come to your driveway to
