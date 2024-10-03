@@ -75,7 +75,7 @@ function Concierge({ concierges }) {
             {concierges.map(({ cc_name, cc_about, image_url }, k) => (
               <div className="col-md-6 mb-4" key={k}>
                 <div className="card h-100 concierge-profile">
-                  <div className="card-body text-center d-flex justify-content-center flex-column align-items-center">
+                  <div className="card-body text-center d-flex  flex-column align-items-center">
                     <div className="image-wrapper">
                       <Image
                         src={image_url || "/images/avatar.png"}
