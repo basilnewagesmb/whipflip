@@ -76,7 +76,7 @@ function Concierge({ concierges }) {
                   <div className="card-body text-center d-flex justify-content-center flex-column align-items-center">
                     <div className="image-wrapper">
                       <Image
-                        src={image_url}
+                        src={image_url || "/images/avatar.png"}
                         alt={cc_name}
                         title={cc_name}
                         width={80}
