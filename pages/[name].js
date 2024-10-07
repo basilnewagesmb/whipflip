@@ -54,6 +54,22 @@ const restrictedUrsl = [
   "sell-my-porsche-911",
   "sell-my-subaru",
   "sell-my-vw-jetta",
+  "sell-my-audi-a6",
+  "sell-my-audi-q5",
+  "sell-my-audi-r8",
+  "sell-my-car-in-bensalem-pa",
+  "sell-my-car-in-bridgewater-nj",
+  "sell-my-car-in-duluth-minnesota",
+  "sell-my-car-in-lorain-oh",
+  "sell-my-car-in-new-brunswick-nj",
+  "sell-my-car-in-princeton-nj",
+  "sell-my-car-in-springfield-oh",
+  "sell-my-car-in-woodbridge-township-nj",
+  "sell-my-ford-escort",
+  "sell-my-ford-maverick",
+  "sell-my-ford-probe",
+  "sell-my-subaru-impreza",
+  "sell-my-subaru-wrx",
 ];
 function SEO({ blogs, reviews, car, singleBlog, concierges }) {
   const { initialOffer } = useSelector((state) => state.offer);
