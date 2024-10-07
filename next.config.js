@@ -271,6 +271,86 @@ const nextConfig = {
         destination: "/sell-my-vw-jetta",
         permanent: true,
       },
+      {
+        source: "/blog/sell_my_audi_a6",
+        destination: "/sell-my-audi-a6",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_audi_q5",
+        destination: "/sell-my-audi-q5",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_audi_r8",
+        destination: "/sell-my-audi-r8",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_car_in_bensalem_pa",
+        destination: "/sell-my-car-in-bensalem-pa",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_car_in_bridgewater_nj",
+        destination: "/sell-my-car-in-bridgewater-nj",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_car_in_duluth_minnesota",
+        destination: "/sell-my-car-in-duluth-minnesota",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_car_in_lorain_oh",
+        destination: "/sell-my-car-in-lorain-oh",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_car_in_new_brunswick_nj",
+        destination: "/sell-my-car-in-new-brunswick-nj",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_car_in_princeton_nj",
+        destination: "/sell-my-car-in-princeton-nj",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_car_in_springfield_oh",
+        destination: "/sell-my-car-in-springfield-oh",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_car_in_woodbridge_township_nj",
+        destination: "/sell-my-car-in-woodbridge-township-nj",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_ford_escort",
+        destination: "/sell-my-ford-escort",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_ford_maverick",
+        destination: "/sell-my-ford-maverick",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_ford_probe",
+        destination: "/sell-my-ford-probe",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_subaru_impreza",
+        destination: "/sell-my-subaru-impreza",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_subaru_wrx",
+        destination: "/sell-my-subaru-wrx",
+        permanent: true,
+      },
     ];
   },
 };
