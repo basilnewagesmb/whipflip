@@ -1,5 +1,5 @@
-import MetaHead from "components/common/metaHead";
 import Image from "next/image";
+import MetaHead from "components/common/metaHead";
 import React from "react";
 
 function Concierge({ concierges }) {
@@ -29,7 +29,7 @@ function Concierge({ concierges }) {
                         }}
                       />
                     </div>
-                    <div className="col-md-8 z-1">
+                    <div className="col-md-7 z-1">
                       <h1 className="display-6 font-weight-bold mb-3 main-heading">
                         Meet Your Car <br /> Concierge!
                       </h1>
@@ -38,13 +38,13 @@ function Concierge({ concierges }) {
                         your car. It&apos;s you and us all the way!
                       </p>
                     </div>
-                    <div className="col-md-4 d-none d-md-block end-0 top-0 h-100 ">
+                    <div className="col-md-5 d-none d-md-block end-0 top-0 h-100 banner-img">
                       <Image
                         src="/images/car-concierge.png"
                         alt="Car Concierge Banner"
                         title="Car Concierge Banner"
-                        width={550}
-                        height={500}
+                        width={650}
+                        height={600}
                         style={{
                           objectFit: "contain",
                           height: "auto",

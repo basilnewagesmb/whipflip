@@ -827,19 +827,28 @@ article.reviewLt_icons {
 .concierge {
   .card-body {
     padding: 50px 90px;
-    min-height: 412px;
+    // min-height: 412px;
     @include responsive(phone) {
       padding: 50px 50px;
       min-height: 150px;
     }
-    @media (min-width: 767px) and (max-width: 900px) {
-      min-height: 538px;
+    @media (min-width: 767px) and (max-width: 988px) {
+      // min-height: 538px;
+      .banner-img {
+        img{
+          min-width: 250px;
+        }
+      }
     }
+  }
+  .main-heading{
+    font-size: 3rem;
   }
 
   .banner-img {
-    width: 350px;
-    height: 300px;
+    img{
+      min-width: 360px;
+    }
   }
 
   .banner-card {
@@ -855,10 +864,12 @@ article.reviewLt_icons {
   .concierge-profile {
     border-radius: 25px;
     border: none;
-
+    .card-body{
+      padding: 30px 50px;
+    }
     .image-wrapper {
-      height: 120px;
-      width: 120px;
+      height: 150px;
+      width: 150px;
       background-color: #f8b84e;
       display: flex;
       justify-content: center;
