@@ -887,8 +887,7 @@ article.reviewLt_icons {
       }
     }
   }
-  @media only screen and (min-width: 767px) and (max-width: 912px) and (orientation: portrait),
-    only screen and (min-width: 1080px) and (max-width: 1368px) and (orientation: landscape) {
+  @media only screen and (min-width: 767px) and (max-width: 1368px) {
     .concierge-profile {
       min-height: 425px;
     }
