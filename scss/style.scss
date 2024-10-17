@@ -835,18 +835,18 @@ article.reviewLt_icons {
     @media (min-width: 767px) and (max-width: 988px) {
       // min-height: 538px;
       .banner-img {
-        img{
+        img {
           min-width: 250px;
         }
       }
     }
   }
-  .main-heading{
+  .main-heading {
     font-size: 3rem;
   }
 
   .banner-img {
-    img{
+    img {
       min-width: 360px;
     }
   }
@@ -864,7 +864,10 @@ article.reviewLt_icons {
   .concierge-profile {
     border-radius: 25px;
     border: none;
-    .card-body{
+    min-height: 425px;
+    justify-content: center;
+    align-items: center;
+    .card-body {
       padding: 30px 50px;
     }
     .image-wrapper {
