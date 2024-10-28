@@ -86,6 +86,21 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/blog/cash_for_cars_columbus_ohio",
+        destination: "/cash-for-cars-columbus-ohio",
+        permanent: true
+      },
+      {
+        source: "/blog/cash_for_cars_philadelphia",
+        destination: "/cash-for-cars-philadelphia",
+        permanent: true
+      },
+      {
+        source: "/blog/cash_for_cars_pittsburgh",
+        destination: "/cash-for-cars-pittsburgh",
+        permanent: true
+      },
+      {
         source: "/blog/cash_for_cars_wilmington_de",
         destination: "/cash-for-cars-wilmington-de",
         permanent: true,
@@ -194,11 +209,6 @@ const nextConfig = {
       {
         source: "/blog/sell_my_volvo_s90",
         destination: "/sell-my-volvo-s90",
-        permanent: true,
-      },
-      {
-        source: "/blog/sell_my_car_dayton_ohio",
-        destination: "/sell-my-car-dayton-ohio",
         permanent: true,
       },
       {
