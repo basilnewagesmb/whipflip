@@ -218,7 +218,7 @@ function SEO({ blogs, reviews, car, singleBlog, concierges, seoSlug }) {
           </div>
         </div>
       </div>
-      {car.vehicles[0].whip && (
+    {!singleBlog && <> {car.vehicles[0].whip && (
         <div className="reviews_carsold">
           <div className="container">
             <div className="row">
@@ -250,8 +250,58 @@ function SEO({ blogs, reviews, car, singleBlog, concierges, seoSlug }) {
             </div>
           </div>
         </div>
+      )}</>}
+      {/* {singleBlog && <SimpleBLog {...singleBlog} />} */}
+
+
+      {singleBlog && (
+        <>     <div className="reviews_carsold">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-8 col-rc">
+              <SimpleBLog {...singleBlog} />
+              </div>
+              <div className="col-lg-4 col-review">
+                {reviews?.[0] && <h2>Verified Reviews</h2>}
+                <div className="rev_list">
+                  {reviews?.map((item, i) => (
+                    <ReviewCard key={i} {...item} index={i} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="reviews_carsold">
+        <div className="container">
+        <div className="col-lg-10 col-rc">
+                <h2>
+                  {(car?.purchase_count &&
+                    new Intl.NumberFormat("en-US").format(
+                      car?.purchase_count
+                    )) ||
+                    0}{" "}
+                  cars sold this month
+                </h2>
+                <div className="sl_wrap">
+                  <div className="sold_list">
+                    {car?.vehicles?.map((item, i) => (
+                      <CarCard key={i} {...item} />
+                    ))}
+                  </div>
+                </div>
+                </div>
+                </div>
+                </div>
+
+
+        
+        </>  
       )}
-      {singleBlog && <SimpleBLog {...singleBlog} />}
+
+
+
       <div className="how-it-works pt-4 body-text">
         <div className="container">
           <div className="row">
