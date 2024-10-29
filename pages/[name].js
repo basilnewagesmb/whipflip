@@ -307,7 +307,7 @@ function SEO({ blogs, reviews, car, singleBlog, concierges, seoSlug }) {
           <div className="row">
             <div className="col-md-12 col-lg-12 faq right_sidebar_faq">
               <div className="faqWrapper pagefaqWrapper faq_seo">
-                <div className="faq_for_each text-center">
+                <div className="faq_for_each ">
                   <Faq seoSlug={seoSlug} />
                 </div>
               </div>
