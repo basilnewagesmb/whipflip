@@ -1,17 +1,19 @@
-import React from "react";
-import Tabs from "react-responsive-tabs";
-import Link from "next/link";
+import "react-responsive-tabs/styles.css";
+import "react-accessible-accordion/dist/fancy-example.css";
 
 import {
   Accordion,
   AccordionItem,
-  AccordionItemHeading,
   AccordionItemButton,
+  AccordionItemHeading,
   AccordionItemPanel,
 } from "react-accessible-accordion";
-import "react-responsive-tabs/styles.css";
-import "react-accessible-accordion/dist/fancy-example.css";
+
 import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import Tabs from "react-responsive-tabs";
+
 export const faqData = {
   howItWorks: () => (
     <div className="whipflip-faq">
@@ -644,7 +646,7 @@ export const faqData = {
               {`A transaction fee up to $99 may apply to cover standard DMV fees
               of titling and transfer as well as supporting our awesome Car
               Concierge staff coming to your location to provide the best car
-              selling experience you've ever had!`}
+              selling experience you&apos;ve ever had!`}
             </p>
             <div className="social-icon d-flex">
               <Link href="https://www.facebook.com/WhipFlip-111080500678406">
@@ -1082,7 +1084,7 @@ export const faqData = {
               are on the spot.
             </p>
             <p>
-              {`WhipFlip's payment method is a company check through Wells Fargo
+              {`WhipFlip&apos;s payment method is a company check through Wells Fargo
               Bank.`}
             </p>
             <p>
@@ -1210,9 +1212,387 @@ export const faqData = {
       </Accordion>
     </div>
   ),
+  "cash-for-cars-columbus-ohio": () => (
+    <div className="whipflip-faq">
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+        <AccordionItem key={1} uuid={1}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              How To Replace Title To Your Car In Columbus, Ohio?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              To{" "}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.whipflip.com/blog/how_to_replace_title_to_your_car_in_columbus_ohio"
+              >
+                replace your car title in Columbus, Ohio
+              </a>
+              , visit the local BMV office or use their online services.
+              Complete the duplicate title application with your VIN, proof of
+              ID, and payment (around $15). If the title is lost or stolen,
+              submit a sworn statement. The new title will arrive by mail within
+              a few weeks.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={2} uuid={2}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Does Columbus, OH Require Emissions Testing?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              Columbus, OH, requires{" "}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.whipflip.com/blog/does_columbus_oh_require_emissions_testing"
+              >
+                emissions testing
+              </a>{" "}
+              every two years for vehicles over four years old registered in
+              designated urban areas like Franklin County as part of Ohio&apos;s
+              program to reduce air pollution. Vehicle owners should check
+              specific requirements to ensure compliance and avoid penalties.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={3} uuid={3}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              How To Sell A Car In Columbus, OH?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              To{" "}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.whipflip.com/blog/how_to_sell_a_car_in_columbus_oh"
+              >
+                sell a car in Columbus, OH
+              </a>
+              , ensure the title is in your name, complete a bill of sale with
+              the buyer, and remove license plates. Complete the transaction at
+              a local BMV office to finalize the sale and transfer ownership.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  ),
+  "cash-for-cars-new-jersey": () => (
+    <div className="whipflip-faq">
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+        <AccordionItem key={1} uuid={1}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              How To Transfer A Car Title In NJ?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              In New Jersey, the buyer must take the signed title, bill of sale,
+              and completed Vehicle Registration Application to the local Motor
+              Vehicle Commission (MVC) office, where they will pay a title
+              transfer fee and sales tax. To avoid penalties, the{" "}
+              <a
+                rel="noopener noreferrer"
+                href="https://www.whipflip.com/blog/how_to_transfer_a_car_title_in_nj"
+                target="_blank"
+              >
+                transfer
+              </a>{" "}
+              must be completed within 10 business days, and if there is a lien,
+              additional documentation may be required.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={2} uuid={2}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Can You Sell A Car Without Inspection In NJ?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              You can sell a car in New Jersey{" "}
+              <a
+                rel="noopener noreferrer"
+                href="https://www.whipflip.com/blog/can_you_sell_a_car_without_inspection_in_nj"
+                target="_blank"
+              >
+                without an inspection
+              </a>
+              , but it&apos;s important to inform the buyer if the car
+              hasn&apos;t passed or is being sold &quot;as-is.&quot; The buyer
+              will be responsible for the inspection after the purchase, and you
+              must provide a valid title and complete the necessary paperwork.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={3} uuid={3}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Can You Sell A Car If The Registration Is Suspended In New Jersey?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              You can sell a car in New Jersey even if the{" "}
+              <a
+                rel="noopener noreferrer"
+                href="https://www.whipflip.com/blog/can_you_sell_a_car_if_the_registration_is_suspended_in_new_jersey"
+                target="_blank"
+              >
+                registration is suspended
+              </a>
+              , as the registration status doesn&apos;t affect vehicle
+              ownership. However, the buyer must register the car in their name
+              and may need to resolve any suspension-related issues before
+              legally driving it.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  ),
+  "cash-for-cars-philadelphia": () => (
+    <div className="whipflip-faq">
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+        <AccordionItem key={1} uuid={1}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Do I need to cancel my registration when I sell my car in
+              Philadelphia, PA?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              Yes, when you sell your car in Philadelphia, PA, you should{" "}
+              <a
+                href="https://www.whipflip.com/blog/do_i_need_to_cancel_my_registration_when_i_sell_my_car_in_pa"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                cancel your registration
+              </a>
+              . This helps prevent liability for any future issues related to
+              the vehicle. Make sure to notify the Pennsylvania Department of
+              Transportation (PennDOT) and return the license plates to avoid
+              any potential fees.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={2} uuid={2}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              How To Sell A Car In Philadelphia, Pennsylvania?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              To{" "}
+              <a
+                href="https://www.whipflip.com/blog/how_to_sell_a_car_in_pennsylvania"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                sell a car to WhipFlip in Philadelphia, Pennsylvania
+              </a>
+              , start by visiting our website to get an instant quote. Provide
+              details about your vehicle, such as its make, model, year, and
+              condition. Schedule an appointment for a quick inspection and
+              final offer.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={3} uuid={3}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Can I Sell My Car With An Open Insurance Claim In PA?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              Yes, you can sell your car with an{" "}
+              <a
+                href="https://www.whipflip.com/blog/can_i_sell_my_car_with_an_open_insurance_claim_in_pa"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                open insurance claim in Philadelphia, Pennsylvania
+              </a>
+              . However, you should notify the insurance company about the sale,
+              as they may have a vested interest in the vehicle until the claim
+              is resolved. It&apos;s also important to check if the potential
+              buyer is willing to purchase a car with an open claim.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  ),
+  "cash-for-cars-pittsburgh": () => (
+    <div className="whipflip-faq">
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+        <AccordionItem key={1} uuid={1}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Does Pittsburgh Require Emissions Testing?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              Yes, Pittsburgh requires{" "}
+              <a
+                href="https://www.whipflip.com/blog/does_pittsburgh_require_emissions_testing"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                emissions testing
+              </a>{" "}
+              for certain vehicles as part of its air quality management
+              efforts. These inspections are designed to ensure that vehicles
+              meet state and federal emissions standards, helping to reduce air
+              pollution and protect public health.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={2} uuid={2}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              How Much Is Car Registration In Pittsburgh PA?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              In Pittsburgh, PA, the{" "}
+              <a
+                href="https://www.whipflip.com/blog/how_much_is_car_registration_in_pittsburgh_pa"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                cost of car registration
+              </a>{" "}
+              varies based on several factors, including the type of vehicle and
+              its weight. As of 2024, the standard registration fee for a
+              passenger vehicle is approximately $38.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={3} uuid={3}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              How to Sell Your Car In Pittsburgh, PA?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              To{" "}
+              <a
+                href="https://www.whipflip.com/blog/sell_your_car_online_in_pittsburgh_pa"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                sell your car in Pittsburgh, PA
+              </a>
+              , first research reputable platforms and compare their offers.
+              Provide accurate information about your car&apos;s condition,
+              mileage, and features, and schedule an inspection with the
+              service, often at your convenience. Once the inspection is
+              complete, negotiate the final price and terms. If satisfied, agree
+              to the sale, and the service will handle the paperwork and
+              payment.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  ),
+  "sell-my-car-dayton-ohio": () => (
+    <div className="whipflip-faq">
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+        <AccordionItem key={1} uuid={1}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              How To Transfer A Car Title in Dayton, Ohio?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              To{" "}
+              <a
+                href="https://www.whipflip.com/blog/how_to_transfer_a_car_title_in_ohio"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                transfer a car title in Dayton, Ohio
+              </a>
+              , the seller must sign the title in the presence of a notary, and
+              the buyer must also sign. Both parties need to provide the
+              vehicle&apos;s odometer reading.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={2} uuid={2}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Do You Need A Notary To Sell A Car In Dayton, Ohio?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              No, you do not need a{" "}
+              <a
+                href="https://www.whipflip.com/blog/do_you_need_a_notary_to_sell_a_car_in_ohio"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                notary to sell a car in Dayton, Ohio
+              </a>
+              . However, the title must be notarized when you transfer
+              ownership, meaning you will need a notary&apos;s signature on the
+              vehicle title at the time of the sale. Both the seller and buyer
+              must be present for this process to complete the legal transfer.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={3} uuid={3}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              How To Transfer A Car Title To A New Owner In Dayton, Ohio?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              To{" "}
+              <a
+                href="https://www.whipflip.com/blog/how_to_transfer_a_car_title_to_a_new_owner_in_ohio"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                transfer a car title to a new owner
+              </a>{" "}
+              in Dayton, Ohio, both the buyer and seller must visit a local Ohio
+              Bureau of Motor Vehicles (BMV) office. The seller needs to sign
+              the title and provide a notarized signature, while the buyer must
+              complete an Application for a Certificate of Title.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  ),
 };
-const Faq = ({ icon, short }) => {
-  const tabs = [
+const Faq = ({ icon, short, seoSlug }) => {
+  let tabs = [
     { title: "HOW IT WORKS", component: faqData.howItWorks },
     { title: "WHAT WE BUY", component: faqData.whatWeBuy },
     { title: "INITIAL & FINAL OFFER", component: faqData.quotesAndOffers },
@@ -1220,14 +1600,17 @@ const Faq = ({ icon, short }) => {
     { title: "PAYMENTS", component: faqData.payments },
     { title: "FEEDBACK", component: faqData.feedback },
   ];
-
+  if(faqData[seoSlug]){
+    tabs = [{ title: null, component: faqData[seoSlug] }];
+  }
+  // console.log(faqData[seoSlug]);
   function getTabs() {
     return (short ? [tabs[0]] : tabs).map((tab, index) => ({
       title: tab.title,
       getContent: tab.component,
       /* Optional parameters */
       key: index,
-      tabClassName: "tab",
+      tabClassName: tab.title ? "tab" : "invisible",
       panelClassName: "panel",
     }));
   }

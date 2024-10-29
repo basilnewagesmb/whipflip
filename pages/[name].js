@@ -1,21 +1,23 @@
 import React, { useEffect } from "react";
+
+import BlogCard from "components/sell-my-car/BlogCard";
+import CarCard from "components/sell-my-car/CarCard";
+import CardSkeleton from "components/home/banner/cardSkeleton";
+import Concierge from "components/home/concierge";
+import ConfirmOffer from "components/home/banner/confirmeOffer";
 import Faq from "components/home/faq";
 import Image from "next/image";
-import { setIsModalOpen } from "features/offer/offerSlice";
-import Link from "node_modules/next/link";
-import BlogCard from "components/sell-my-car/BlogCard";
-import ReviewCard from "components/sell-my-car/ReviewCard";
-import MetaHead from "components/common/metaHead";
-import CarCard from "components/sell-my-car/CarCard";
-import { useRouter } from "next/router";
-import useCheckMobile from "utils/checkMobile";
-import CardSkeleton from "components/home/banner/cardSkeleton";
 import InstantOffer from "components/home/banner/instantOffer";
-import ConfirmOffer from "components/home/banner/confirmeOffer";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import Link from "node_modules/next/link";
+import MetaHead from "components/common/metaHead";
+import ReviewCard from "components/sell-my-car/ReviewCard";
 import SimpleBLog from "components/blogs/blogCard";
-import Concierge from "components/home/concierge";
+import { setIsModalOpen } from "features/offer/offerSlice";
+import useCheckMobile from "utils/checkMobile";
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { useState } from "react";
+
 const restrictedUrsl = [
   "cash-for-cars-new-jersey",
   "cash-for-cars-wilmington-de",
@@ -70,8 +72,12 @@ const restrictedUrsl = [
   "sell-my-ford-probe",
   "sell-my-subaru-impreza",
   "sell-my-subaru-wrx",
+
+  "cash-for-cars-columbus-ohio",
+  "cash-for-cars-philadelphia",
+  "cash-for-cars-pittsburgh",
 ];
-function SEO({ blogs, reviews, car, singleBlog, concierges }) {
+function SEO({ blogs, reviews, car, singleBlog, concierges, seoSlug }) {
   const { initialOffer } = useSelector((state) => state.offer);
   const [isClient, setIsClient] = useState(false);
   useEffect(() => {
@@ -252,7 +258,7 @@ function SEO({ blogs, reviews, car, singleBlog, concierges }) {
             <div className="col-md-12 col-lg-12 faq right_sidebar_faq">
               <div className="faqWrapper pagefaqWrapper faq_seo">
                 <div className="faq_for_each text-center">
-                  <Faq />
+                  <Faq seoSlug={seoSlug} />
                 </div>
               </div>
             </div>
@@ -314,6 +320,7 @@ export async function getServerSideProps({ query }) {
         return {
           props: {
             concierges,
+            seoSlug: name,
           },
         };
       } else {
@@ -328,6 +335,7 @@ export async function getServerSideProps({ query }) {
     let singleBlog = null;
     let car = null;
     if (restrictedUrsl.includes(query.name)) {
+      console.log(query.name,'tittooo')
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/blogs/${query.name.replace(
           /-/g,
@@ -361,6 +369,7 @@ export async function getServerSideProps({ query }) {
         reviews: reviews?.reviews || [],
         car,
         singleBlog,
+        seoSlug: name,
       },
     };
   } catch (error) {
