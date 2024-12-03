@@ -22,7 +22,7 @@ function VideoModal({ isVideoOpen, setIsVideoOpen }) {
         className="img-fluid"
       >
         <source
-          src="https://whipflipnow.s3.amazonaws.com/videos/whipflip_customer_process.mp4"
+          src="https://whipflipupload.s3.us-east-1.amazonaws.com/videos/WhipFlipProcess.mp4"
           type="video/mp4"
         />
       </video>
