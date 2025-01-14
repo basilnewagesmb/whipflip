@@ -390,7 +390,7 @@ function Index(props) {
               height={145}
             />
           </div>
-          <span className="gtagLine">
+          {/* <span className="gtagLine ">
             {isClient && `WhipFlip has earned 4.8 stars in`}
             <span>
               <Image
@@ -402,7 +402,7 @@ function Index(props) {
               />
               <span> certified reviews</span>
             </span>
-          </span>
+          </span> */}
 
           <h2 className="desk-show">
             <span>Thousands of </span>

@@ -9,6 +9,7 @@ const nextConfig = {
       "seal-delaware.bbb.org",
       "dbhdyzvm8lm25.cloudfront.net",
       "whipflipnow.s3.amazonaws.com",
+      "whipflipupload.s3.us-east-1.amazonaws.com",
     ],
   },
   headers: () => [
@@ -88,17 +89,17 @@ const nextConfig = {
       {
         source: "/blog/cash_for_cars_columbus_ohio",
         destination: "/cash-for-cars-columbus-ohio",
-        permanent: true
+        permanent: true,
       },
       {
         source: "/blog/cash_for_cars_philadelphia",
         destination: "/cash-for-cars-philadelphia",
-        permanent: true
+        permanent: true,
       },
       {
         source: "/blog/cash_for_cars_pittsburgh",
         destination: "/cash-for-cars-pittsburgh",
-        permanent: true
+        permanent: true,
       },
       {
         source: "/blog/cash_for_cars_wilmington_de",
