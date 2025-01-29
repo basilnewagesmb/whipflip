@@ -43,11 +43,18 @@ const restrictedUrsl = [
   "sell-my-volkswagen-arteon",
   "sell-my-volvo-s90",
   "sell-my-car-dayton-ohio",
+  "sell-my-car-bethlehem-pa",
+  "sell-my-car-harrisburg-pa",
+  "sell-my-car-lancaster-pa",
+  "sell-my-car-altoona-pa",
+  "sell-your-car-mt-lebanon-pa",
+  "sell-my-car-in-scranton-pa",
   "sell-my-audi-a4",
   "sell-my-audi-q7",
   "sell-my-audi",
   "sell-my-cadillac",
   "sell-my-car-in-saint-paul-mn",
+  "sell-my-car-lakewood-nj",
   "sell-my-ev",
   "sell-my-ford-f150",
   "sell-my-ford",
@@ -66,6 +73,7 @@ const restrictedUrsl = [
   "sell-my-car-in-new-brunswick-nj",
   "sell-my-car-in-princeton-nj",
   "sell-my-car-in-springfield-oh",
+  "sell-my-car-ohio",
   "sell-my-car-in-woodbridge-township-nj",
   "sell-my-ford-escort",
   "sell-my-ford-maverick",
@@ -189,7 +197,7 @@ function SEO({ blogs, reviews, car, singleBlog, concierges, seoSlug }) {
                       <img src="/images/seo/hiw1.png" alt="Get Instant Offer" />
                     </div>
                     <div className="flow_body">
-                      <h2>Get Instant Offer</h2>
+                      <h3>Get Instant Offer</h3>
                     </div>
                   </div>
                 </div>
@@ -199,7 +207,7 @@ function SEO({ blogs, reviews, car, singleBlog, concierges, seoSlug }) {
                       <img src="/images/seo/hiw2.png" alt="Confirm Offer" />
                     </div>
                     <div className="flow_body">
-                      <h2>Confirm Offer</h2>
+                      <h3>Confirm Offer</h3>
                     </div>
                   </div>
                 </div>
@@ -209,7 +217,7 @@ function SEO({ blogs, reviews, car, singleBlog, concierges, seoSlug }) {
                       <img src="/images/seo/hiw3.png" alt="SOLD!" />
                     </div>
                     <div className="flow_body">
-                      <h2>SOLD!</h2>
+                      <h3>SOLD!</h3>
                     </div>
                   </div>
                 </div>
@@ -218,64 +226,69 @@ function SEO({ blogs, reviews, car, singleBlog, concierges, seoSlug }) {
           </div>
         </div>
       </div>
-    {!singleBlog && <> {car.vehicles[0].whip && (
-        <div className="reviews_carsold">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-8 col-rc">
-                <h2>
-                  {(car?.purchase_count &&
-                    new Intl.NumberFormat("en-US").format(
-                      car?.purchase_count
-                    )) ||
-                    0}{" "}
-                  cars sold this month
-                </h2>
-                <div className="sl_wrap">
-                  <div className="sold_list">
-                    {car?.vehicles?.map((item, i) => (
-                      <CarCard key={i} {...item} />
-                    ))}
+      {!singleBlog && (
+        <>
+          {" "}
+          {car.vehicles[0].whip && (
+            <div className="reviews_carsold">
+              <div className="container">
+                <div className="row">
+                  <div className="col-lg-8 col-rc">
+                    <h2>
+                      {(car?.purchase_count &&
+                        new Intl.NumberFormat("en-US").format(
+                          car?.purchase_count
+                        )) ||
+                        0}{" "}
+                      cars sold this month
+                    </h2>
+                    <div className="sl_wrap">
+                      <div className="sold_list">
+                        {car?.vehicles?.map((item, i) => (
+                          <CarCard key={i} {...item} />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-4 col-review">
+                    {reviews?.[0] && <h2>Verified Reviews</h2>}
+                    <div className="rev_list">
+                      {reviews?.map((item, i) => (
+                        <ReviewCard key={i} {...item} index={i} />
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="col-lg-4 col-review">
-                {reviews?.[0] && <h2>Verified Reviews</h2>}
-                <div className="rev_list">
-                  {reviews?.map((item, i) => (
-                    <ReviewCard key={i} {...item} index={i} />
-                  ))}
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
-      )}</>}
+          )}
+        </>
+      )}
       {/* {singleBlog && <SimpleBLog {...singleBlog} />} */}
 
-
       {singleBlog && (
-        <>     <div className="reviews_carsold">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-8 col-rc">
-              <SimpleBLog {...singleBlog} />
-              </div>
-              <div className="col-lg-4 col-review">
-                {reviews?.[0] && <h2>Verified Reviews</h2>}
-                <div className="rev_list">
-                  {reviews?.map((item, i) => (
-                    <ReviewCard key={i} {...item} index={i} />
-                  ))}
+        <>
+          {" "}
+          <div className="reviews_carsold">
+            <div className="container">
+              <div className="row">
+                <div className="col-lg-8 col-rc">
+                  <SimpleBLog {...singleBlog} />
+                </div>
+                <div className="col-lg-4 col-review">
+                  {reviews?.[0] && <h2>Verified Reviews</h2>}
+                  <div className="rev_list">
+                    {reviews?.map((item, i) => (
+                      <ReviewCard key={i} {...item} index={i} />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="reviews_carsold">
-        <div className="container">
-        <div className="col-lg-10 col-rc">
+          {/* <div className="reviews_carsold">
+            <div className="container">
+              <div className="col-lg-10 col-rc">
                 <h2>
                   {(car?.purchase_count &&
                     new Intl.NumberFormat("en-US").format(
@@ -291,16 +304,11 @@ function SEO({ blogs, reviews, car, singleBlog, concierges, seoSlug }) {
                     ))}
                   </div>
                 </div>
-                </div>
-                </div>
-                </div>
-
-
-        
-        </>  
+              </div>
+            </div>
+          </div> */}
+        </>
       )}
-
-
 
       <div className="how-it-works pt-4 body-text">
         <div className="container">
@@ -385,7 +393,7 @@ export async function getServerSideProps({ query }) {
     let singleBlog = null;
     let car = null;
     if (restrictedUrsl.includes(query.name)) {
-      console.log(query.name,'tittooo')
+      console.log(query.name, "tittooo");
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/blogs/${query.name.replace(
           /-/g,
