@@ -9,6 +9,7 @@ const nextConfig = {
       "seal-delaware.bbb.org",
       "dbhdyzvm8lm25.cloudfront.net",
       "whipflipnow.s3.amazonaws.com",
+      "whipflipnowbucket.s3.us-east-1.amazonaws.com"
     ],
   },
   headers: () => [
@@ -359,6 +360,41 @@ const nextConfig = {
       {
         source: "/blog/sell_my_subaru_wrx",
         destination: "/sell-my-subaru-wrx",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_car_in_altoona_pa_get_an_instant_online_offer",
+        destination: "/sell-my-car-altoona-pa",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_car_in_bethlehem_pa_quick_cash_for_your_vehicle",
+        destination: "/sell-my-car-bethlehem-pa",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_car_in_harrisburg_pa_get_an_instant_cash_offer",
+        destination: "/sell-my-car-harrisburg-pa",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_car_lakewood_nj",
+        destination: "/sell-my-car-lakewood-nj",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_car_in_lancaster_pa_fast_cash_easy_process",
+        destination: "/sell-my-car-lancaster-pa",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_your_car_in_mt_lebanon_pa_get_an_instant_online_offer",
+        destination: "/sell-your-car-mt-lebanon-pa",
+        permanent: true,
+      },
+      {
+        source: "/blog/sell_my_car_in_scranton_pa",
+        destination: "/sell-my-car-in-scranton-pa",
         permanent: true,
       },
     ];
