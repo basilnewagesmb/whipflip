@@ -8,52 +8,21 @@ const HappyCustomersSlider = () => {
   const reviews = useRef(null);
   useEffect(() => {
     if (window)
-      services.loadScript(`https://apps.elfsight.com/p/platform.js`, () => {
-        const container = document.createElement("div");
-        container.className =
-          "elfsight-app-f3baf688-498f-4c7e-84ba-df8e6c487e36";
-        if (reviews?.current?.children?.length == 0) {
-          reviews.current.appendChild(container);
-        }
-      });
+      services.loadScript(
+        `https://widgets.rr.skeepers.io/carousel/74b77a84-2556-b644-d55f-1bd5142f4822/2d22ee34-65df-4b2c-b954-c6280398ee28.js`,
+        () => {}
+      );
   }, []);
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const count = document.getElementsByClassName(
-        "RatingValue__Container-sc-1eexc2w-0 "
-      )["0"]?.innerText;
-      const reviewsUrls = [];
-      const reviewsElements = document.querySelectorAll(
-        '[class^="ReviewLinkContainer__Link"]'
-      );
-      reviewsElements.forEach((element) => {
-        reviewsUrls.push(element);
-      });
-      const avatars = [];
-      const avatarsElements = document.querySelectorAll(
-        '[class^="Avatar__StyledAvatar"]'
-      );
-      avatarsElements.forEach((element) => {
-        avatars.push(element);
-      });
-      let avatarData = Array.from(avatarsElements).map((img, i) => ({
-        src: img.src,
-        url: reviewsUrls[i].href,
-        name: img.alt,
-      }));
 
-      if (count && avatarData?.length > 0) {
-        dispatch(
-          setReviews({
-            count,
-            avatars: avatarData,
-          })
-        );
-        clearInterval(timer);
-      }
-    }, 1000);
-  }, []);
-  return <div className="happy_customers_list p-4 " ref={reviews}></div>;
+  return (
+    <div className="container pt-5">
+      <div
+        class="skeepers_carousel_container"
+        dataSlidesCount="4"
+        ref={reviews}
+      ></div>
+    </div>
+  );
 };
 
 export default HappyCustomersSlider;

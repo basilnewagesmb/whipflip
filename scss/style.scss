@@ -864,13 +864,11 @@ article.reviewLt_icons {
   .concierge-profile {
     border-radius: 25px;
     border: none;
-    min-height: 425px;
+    min-height: 377px;
     justify-content: center;
     align-items: center;
     .card-body {
       padding: 30px 50px;
-      justify-content: center;
-      align-items: center;
     }
     .image-wrapper {
       height: 150px;
@@ -887,6 +885,11 @@ article.reviewLt_icons {
         height: 90%;
         border-radius: 50%;
       }
+    }
+  }
+  @media only screen and (min-width: 767px) and (max-width: 1368px) {
+    .concierge-profile {
+      min-height: 425px;
     }
   }
 
@@ -6964,4 +6967,7 @@ span.ant-modal-close-x svg {
 .ant-modal-wrap,
 .ant-modal-mask {
   z-index: 1055 !important;
+}
+.rating__value {
+  background-color: #edf2f8 !important;
 }
