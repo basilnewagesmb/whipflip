@@ -1,19 +1,21 @@
 import React, { useEffect } from "react";
+
+import BlogCard from "components/sell-my-car/BlogCard";
+import CarCard from "components/sell-my-car/CarCard";
+import CardSkeleton from "components/home/banner/cardSkeleton";
+import ConfirmOffer from "components/home/banner/confirmeOffer";
 import Faq from "components/home/faq";
 import Image from "next/image";
-import { setIsModalOpen } from "features/offer/offerSlice";
-import Link from "node_modules/next/link";
-import BlogCard from "components/sell-my-car/BlogCard";
-import ReviewCard from "components/sell-my-car/ReviewCard";
-import MetaHead from "components/common/metaHead";
-import CarCard from "components/sell-my-car/CarCard";
-import { useRouter } from "next/router";
-import useCheckMobile from "utils/checkMobile";
-import CardSkeleton from "components/home/banner/cardSkeleton";
 import InstantOffer from "components/home/banner/instantOffer";
-import ConfirmOffer from "components/home/banner/confirmeOffer";
-import { useState } from "react";
+import Link from "node_modules/next/link";
+import MetaHead from "components/common/metaHead";
+import ReviewCard from "components/sell-my-car/ReviewCard";
+import { setIsModalOpen } from "features/offer/offerSlice";
+import useCheckMobile from "utils/checkMobile";
+import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
+import { useState } from "react";
+
 function SEO({ blogs, reviews, car }) {
   const { initialOffer } = useSelector((state) => state.offer);
   const [isClient, setIsClient] = useState(false);
@@ -79,7 +81,7 @@ function SEO({ blogs, reviews, car }) {
                   book an appointment to sell. Our friendly car concierge will
                   come to your driveway to pay & pick up the car for free!`
                     : `Get
-                  an instant offer on your car at  ${car?.vehicles?.[0]?.display_city}  and book an appointment
+                  an instant offer on your car in  ${car?.vehicles?.[0]?.display_city}  and book an appointment
                   to sell. Our friendly car concierge will come to your driveway
                   to pay & pick up the car for free!`}
                 </p>

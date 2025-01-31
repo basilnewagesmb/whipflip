@@ -1590,6 +1590,865 @@ export const faqData = {
       </Accordion>
     </div>
   ),
+  "sell-my-car-altoona-pa": () => (
+    <div className="whipflip-faq">
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+        <AccordionItem key={1} uuid={1}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              How can I quickly sell my car in Altoona, PA?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              Use WhipFlip for a fast sale; they offer instant evaluations and
+              manage the entire selling process, including pickup from your
+              location.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={2} uuid={2}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              What documents do I need to sell my car in Altoona, PA?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              You&apos;ll need the vehicle title, a valid ID, and maintenance
+              records to facilitate the transaction and secure a good price.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={3} uuid={3}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Is it possible to sell my car in Altoona, PA if it&apos;s not
+              running?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              Selling a non-running car in Altoona can be challenging. While
+              WhipFlip typically buys vehicles that can operate, you might
+              consider local junkyards or services that specialize in buying
+              non-operational vehicles.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  ),
+  "sell-my-car-in-bensalem-pa": () => (
+    <div className="whipflip-faq">
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+        <AccordionItem key={1} uuid={1}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Do You Need a Notary to Sell a Car in Bensalem, PA?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              No, one of the best things about using our service is we take care
+              of all the{" "}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.whipflip.com/blog/do_you_need_a_notary_to_sell_a_car_in_pa"
+              >
+                notary work on your title
+              </a>
+              . The only thing is that you need to be present and ready to sign
+              off on the deal. The entire process takes about 10 minutes once we
+              arrive to pick up your vehicle.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={2} uuid={2}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Can I Sell My Car with an Open Insurance Claim in Bensalem, PA?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              If you currently have an{" "}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.whipflip.com/blog/can_i_sell_my_car_with_an_open_insurance_claim_in_pa"
+              >
+                open insurance claim
+              </a>{" "}
+              on your automobile, you need to settle it before you can make the
+              sale. While we are still interested in purchasing your car, we
+              must ensure the claim is settled. You need to talk with your
+              insurance company to move forward.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={3} uuid={3}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Do I Need to Cancel My Registration When I Sell My Car in
+              Bensalem, PA?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              No, once we transfer the title from your name to ours, your{" "}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.whipflip.com/blog/do_i_need_to_cancel_my_registration_when_i_sell_my_car_in_pa"
+              >
+                registration
+              </a>{" "}
+              for this vehicle becomes null and void. There&apos;s no need to go
+              to the BMV and stand in line, as this is taken care of for you.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  ),
+  "sell-my-car-in-bridgewater-nj": () => (
+    <div className="whipflip-faq">
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+        <AccordionItem key={1} uuid={1}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Can You Sell A Car Without Inspection In Bridgewater, NJ?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              No, you cannot sell a car{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/can_you_sell_a_car_without_inspection_in_nj"
+              >
+                without an inspection in Bridgewater, NJ
+              </a>
+              . While WhipFlip offers car-buying services, New Jersey law
+              requires a valid inspection certificate for selling a car. The
+              Motor Vehicle Commission (MVC) takes these violations seriously to
+              ensure road safety. Selling without an inspection could result in
+              fines or even legal action. It&apos;s best to get your car
+              inspected before attempting to sell it in Bridgewater, New Jersey.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={2} uuid={2}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Can I Get A Refund On Registration If I Sell My Car In
+              Bridgewater, NJ?{" "}
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              Yes, you can typically get a{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/can_i_get_a_refund_on_registration_if_i_sell_my_car_in_nj"
+              >
+                refund on your registration fees
+              </a>{" "}
+              if you sell your car in Bridgewater, NJ. You&apos;ll need to
+              provide proof of sale, such as a bill of sale, to the local motor
+              vehicle department. However, specific refund policies may vary, so
+              it&apos;s best to contact the New Jersey Motor Vehicle Commission
+              for accurate information.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={3} uuid={3}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              How To Sell My Car For Cash In Bridgewater, New Jersey?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              WhipFlip offers a fast and easy way to{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/how_to_sell_my_car_for_cash_in_new_jersey"
+              >
+                sell your car for cash in Bridgewater, NJ
+              </a>
+              . Just visit our website, enter your vehicle&rsquo;s details, and
+              get an initial offer through our automated valuation tool. If you
+              accept, upload your ownership documents, like the title and proof
+              of address. Then, schedule an appointment for a Car Concierge to
+              visit you, complete the sale, and pay you on the spot. Selling
+              your car is simple and stress-free with WhipFlip.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  ),
+  "sell-my-car-in-cincinnati-oh": () => (
+    <div className="whipflip-faq">
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+        <AccordionItem key={1} uuid={1}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              What is the fastest way to sell my car in Cincinnati, Ohio?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              The{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/where_can_i_sell_my_car_for_the_most_money_in_cincinnati"
+              >
+                fastest way to sell your car in Cincinnati
+              </a>{" "}
+              is through a direct buyer like WhipFlip. You can quickly receive
+              an offer by entering your vehicle details on our website. If you
+              accept, we&rsquo;ll arrange an immediate payment and handle all
+              the necessary paperwork, making the process swift and hassle-free.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={2} uuid={2}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              What documents do I need to sell my car in Cincinnati, Ohio?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              To sell your car in Cincinnati, you&apos;ll need to provide a few
+              key documents: the{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/how_to_transfer_a_car_title_in_ohio"
+              >
+                car&apos;s title
+              </a>{" "}
+              to prove ownership, a valid state ID or driver&apos;s license, and
+              ideally, maintenance records to show the car&rsquo;s history.
+              WhipFlip can help you gather and prepare all necessary documents
+              for a smooth transaction.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  ),
+  "sell-my-car-bethlehem-pa": () => (
+    <div className="whipflip-faq">
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+        <AccordionItem key={1} uuid={1}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              What are the steps to sell my car in Bethlehem, PA?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              Selling your car in Bethlehem, PA, involves a few simple steps.
+              First,{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/what_paperwork_do_i_need_to_sell_a_car"
+              >
+                gather necessary documents
+              </a>{" "}
+              like the car title, valid photo ID, and any maintenance records.
+              Next, determine your car&rsquo;s value using tools like Kelley
+              Blue Book or WhipFlip&apos;s instant valuation tool. Once you set
+              a price, you can either list your car for sale or sell directly to
+              a service like WhipFlip, which handles paperwork and offers
+              instant payment. Finally, ensure the title transfer is completed
+              to finalize the sale legally.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={2} uuid={2}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Do I need to go to PennDOT to transfer ownership when selling my
+              car in Bethlehem, PA?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              Yes, the title transfer process in Pennsylvania, including
+              Bethlehem, requires a trip to a PennDOT-authorized agent or DMV
+              office. Both the buyer and seller must sign the title in front of
+              a notary, and the buyer will need to pay the{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/do_both_parties_have_to_be_present_to_transfer_a_car_title_in_pa"
+              >
+                title transfer
+              </a>{" "}
+              fee. Services like WhipFlip simplify this process by handling the
+              paperwork for you, saving time and effort.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={3} uuid={3}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              How can I sell my car quickly in Bethlehem, PA?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              If yo&apos;re looking to{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/12_best_sites_to_sell_your_used_car_quickly"
+              >
+                sell your car quickly
+              </a>{" "}
+              in Bethlehem, using a direct car-buying service like WhipFlip is
+              the best option. WhipFlip provides an instant offer for your car,
+              handles all the paperwork, and picks up the vehicle from your
+              location at a time that&rsquo;s convenient for you. This
+              eliminates the need for listing, negotiating with buyers, or
+              making multiple trips to complete the sale.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  ),
+  "sell-my-car-harrisburg-pa": () => (
+    <div className="whipflip-faq">
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+        <AccordionItem key={1} uuid={1}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              What steps should I follow to sell my car in Harrisburg, PA?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              Prepare your car by{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/does_cleaning_your_car_increase_trade_in_value"
+              >
+                cleaning it
+              </a>{" "}
+              and gathering necessary documents like the title. For a
+              streamlined process, consider using WhipFlip, which offers
+              valuation, handles paperwork, and arranges vehicle pickup.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={2} uuid={2}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Can I sell my car in Harrisburg, PA without a vehicle title?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              It&apos;s challenging to{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/how_to_prove_car_ownership_without_a_title"
+              >
+                sell a car without a title
+              </a>{" "}
+              in Harrisburg. If missing, apply for a duplicate at the
+              Pennsylvania Department of Transportation.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={3} uuid={3}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              How quickly can I sell my car in Harrisburg, PA using WhipFlip?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              WhipFlip can facilitate a quick sale, often completing pickups and
+              payments within a few days after receiving your details and making
+              an offer.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  ),
+  "sell-my-car-lakewood-nj": () => (
+    <div className="whipflip-faq">
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+        <AccordionItem key={1} uuid={1}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              How can I sell my car fast in Lakewood, NJ?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              Use online services like WhipFlip for{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/how_much_is_my_car_worth"
+              >
+                instant quotes
+              </a>{" "}
+              and quick, convenient car pickups at your location.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={2} uuid={2}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              What paperwork do I need to sell my car in Lakewood, NJ?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              You’ll need the vehicle title, your driver&apos;s license, and
+              vehicle registration to sell your car.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={3} uuid={3}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Where can I find a buyer for my used car in Lakewood, NJ?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              Explore options like online marketplaces, local dealerships, or
+              services like WhipFlip that offer competitive pricing and handle
+              all paperwork.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  ),
+  "sell-my-car-lancaster-pa": () => (
+    <div className="whipflip-faq">
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+        <AccordionItem key={1} uuid={1}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              What do I need to do to sell my car in Lancaster, PA?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              Clean your car and{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/what_paperwork_do_i_need_to_sell_a_car"
+              >
+                gather important documents
+              </a>{" "}
+              like the title and maintenance records. Consider using WhipFlip
+              for a hassle-free process, as they handle evaluations, pickups,
+              and paperwork.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={2} uuid={2}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              How can I get the best price for my car in Lancaster, PA?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              Provide detailed information and keep your car well-maintained.
+              Use WhipFlip for a{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/how_much_is_my_car_worth"
+              >
+                fair market evaluation
+              </a>{" "}
+              and competitive pricing.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={3} uuid={3}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Is it necessary to go to the DMV when I sell my car in Lancaster,
+              PA?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              No, if you use WhipFlip, we manage all paperwork and DMV
+              communications, eliminating the need for you to visit the DMV.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  ),
+  "sell-my-car-in-lorain-oh": () => (
+    <div className="whipflip-faq">
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+        <AccordionItem key={1} uuid={1}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Do You Need A Notary To Sell A Car In Lorain, Ohio?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              When selling a car in Lorain, Ohio, it&apos;s important to follow
+              certain formalities to ensure a smooth transaction. One key step
+              is to have the{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/do_you_need_a_notary_to_sell_a_car_in_ohio"
+              >
+                title transfer notarized
+              </a>
+              . Having a notary public witness and attest to the title transfer
+              is highly recommended to ensure the sale is legally binding and
+              complies with Ohio law.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={2} uuid={2}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              How To Transfer A Car Title To A New Owner In Lorain, Ohio?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/how_to_transfer_a_car_title_to_a_new_owner_in_ohio"
+              >
+                Transferring the car title
+              </a>{" "}
+              to Lorain, Ohio, is convenient. First, the buyer and seller must
+              write their details on the title certificate. Finally, the seller
+              must afford their signature over the title and a notary&apos;s
+              seal. Then, the buyer has to go to the Bureau of Motor Vehicles.
+            </p>
+            <p>
+              (BMV) to finalize the transfer and present the notarized title to
+              BMV.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={3} uuid={3}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Can I Get A Refund On My Registration If I Sell My Car in Lorain,
+              Ohio?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              No, you generally cannot get a{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/can_i_get_a_refund_on_my_registration_if_i_sell_my_car_ohio"
+              >
+                refund on your registration fees
+              </a>{" "}
+              if you sell your car in Lorain, Ohio. Registration fees are
+              typically non-refundable, even if you sell the vehicle before the
+              registration period ends. However, you might be able to transfer
+              the registration to a new vehicle.
+            </p>
+            <p>
+              It&apos;s best to consult the Ohio Bureau of Motor Vehicles (BMV)
+              for specific guidelines and any potential exceptions.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  ),
+  "sell-your-car-mt-lebanon-pa": () => (
+    <div className="whipflip-faq">
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+        <AccordionItem key={1} uuid={1}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              What is the best way to sell my car in Mt. Lebanon, PA?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              The best way to sell your car in Mt. Lebanon is to use a reputable
+              service like WhipFlip, which offers a straightforward{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/how_much_is_my_car_worth"
+              >
+                online valuation
+              </a>
+              , handles all the paperwork, and can pick up the car directly from
+              your location.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={2} uuid={2}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              What documents do I need to sell my car in Mt. Lebanon, PA?{" "}
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              To sell your car in Mt. Lebanon, you&apos;ll need{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/how_to_sign_over_your_car_title_in_pennsylvania_pa"
+              >
+                your car title
+              </a>
+              , a valid state ID, and proof of vehicle registration. Having your
+              maintenance records handy can also help ensure a smooth sale.
+              <br />
+              <br />
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={3} uuid={3}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              How quickly can I complete the sale of my car in Mt. Lebanon, PA?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              With services like WhipFlip, you can complete the sale of your car
+              quite quickly, often within a day. We manage the entire process,
+              from inspection to payment, minimizing delays.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  ),
+  "sell-your-car-for-cash-in-parma-oh": () => (
+    <div className="whipflip-faq">
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+        <AccordionItem key={1} uuid={1}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              How can I quickly sell my car in Parma, Ohio?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              Selling your car quickly in Parma, Ohio, can be efficiently
+              managed by using a direct car buying service like WhipFlip.
+              WhipFlip offers an instant purchasing option where you can receive
+              an immediate payment. Simply submit your car’s details on our
+              website, receive an offer, and if you accept, we’ll handle all the
+              paperwork and pick up your car directly from your chosen location.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={2} uuid={2}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              What do I need to prepare when selling my car in Parma, Ohio?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              When preparing to sell your car in Parma, Ohio, you should have
+              your{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/can_you_transfer_a_car_title_online_in_ohio"
+              >
+                vehicle&apos;s title
+              </a>{" "}
+              clear of liens, a valid photo ID, and any service records that
+              highlight your car&rsquo;s maintenance history. Ensuring your car
+              is clean and in{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/mileage_matters_how_does_it_impact_trade_in_value"
+              >
+                good condition
+              </a>{" "}
+              can also help you get the best offer. WhipFlip simplifies this
+              process by guiding you through each step and ensuring all
+              necessary documentation is ready.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={3} uuid={3}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Are there any fees associated with selling my car in Parma, Ohio
+              through WhipFlip?{" "}
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              No, selling your car through WhipFlip in Parma, Ohio, comes with
+              no hidden fees. We offer free vehicle valuation, paperwork
+              handling, and car pickup from your location. The price we offer is
+              the amount you receive, ensuring a transparent and straightforward
+              car selling experience.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  ),
+  "sell-my-car-in-toms-river-nj": () => (
+    <div className="whipflip-faq">
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+        <AccordionItem key={1} uuid={1}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              What is the quickest way to sell my car in Toms River, NJ?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              Use online services like WhipFlip for fast quotes and convenient
+              home pickup.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={2} uuid={2}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              What documents are required to sell my car in Toms River, NJ?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              You&apos;ll need the vehicle title, driver’s license, and current
+              registration.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={3} uuid={3}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Can I sell my car in Toms River, NJ without a vehicle inspection?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              Yes, services like WhipFlip may buy your car as-is, without a
+              prior inspection.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  ),
+  "sell-my-car-in-springfield-oh": () => (
+    <div className="whipflip-faq">
+      <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+        <AccordionItem key={1} uuid={1}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Do You Need a Notary to Sell a Car in Springfield, Ohio?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              Yes. In Springfield, Ohio, you typically need a{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/do_you_need_a_notary_to_sell_a_car_in_ohio"
+              >
+                notary to sell a car
+              </a>
+              . Fortunately, WhipFlip handles this for you so that you will not
+              have to worry about finding a notary on your own.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={2} uuid={2}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Can I Get a Refund on My Registration If I Sell My Car in
+              Springfield, Ohio?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              Ohio does not offer{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/can_i_get_a_refund_on_my_registration_if_i_sell_my_car_ohio"
+              >
+                refunds on vehicle registration
+              </a>{" "}
+              when you sell your car. However, if you are planning to buy a new
+              car, you can transfer your current plates to your new vehicle.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem key={3} uuid={3}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              How To Transfer a Car Title in Springfield, Ohio?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              To{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/how_to_transfer_a_car_title_in_ohio"
+              >
+                transfer a car title in Ohio
+              </a>
+              , you need to sign the title in front of a notary, who verifies
+              the sale. After that, the new owner must take the signed title to
+              the Bureau of Motor Vehicles (BMV) to complete the transfer. If
+              you are selling your car to WhipFlip, they handle this part of the
+              process for you.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  ),
 };
 const Faq = ({ icon, short, seoSlug }) => {
   let tabs = [
@@ -1600,7 +2459,7 @@ const Faq = ({ icon, short, seoSlug }) => {
     { title: "PAYMENTS", component: faqData.payments },
     { title: "FEEDBACK", component: faqData.feedback },
   ];
-  if(faqData[seoSlug]){
+  if (faqData[seoSlug]) {
     tabs = [{ title: null, component: faqData[seoSlug] }];
   }
   // console.log(faqData[seoSlug]);
