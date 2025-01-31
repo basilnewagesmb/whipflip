@@ -155,7 +155,7 @@ function SEO({ blogs, reviews, car, singleBlog, concierges, seoSlug }) {
                   book an appointment to sell. Our friendly car concierge will
                   come to your driveway to pay & pick up the car for free!`
                     : `Get
-                  an instant offer on your car at  ${car?.vehicles?.[0]?.display_city}  and book an appointment
+                  an instant offer on your car in  ${car?.vehicles?.[0]?.display_city}  and book an appointment
                   to sell. Our friendly car concierge will come to your driveway
                   to pay & pick up the car for free!`}
                 </p>
