@@ -1844,6 +1844,30 @@ export const faqData = {
             </p>
           </AccordionItemPanel>
         </AccordionItem>
+        <AccordionItem key={3} uuid={3}>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Is WhipFlip a safe platform to use?
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <p>
+              WhipFlip prioritizes safety and security in all transactions. We
+              verify all{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.whipflip.com/blog/what_paperwork_do_i_need_to_sell_a_car"
+              >
+                relevant documents
+              </a>{" "}
+              and provide a secure platform for you to receive your payment.
+              Additionally, we offer a contactless service where we pick up your
+              car directly from your chosen location in Cincinnati, ensuring a
+              convenient and safe selling experience.
+            </p>
+          </AccordionItemPanel>
+        </AccordionItem>
       </Accordion>
     </div>
   ),
