@@ -80,11 +80,12 @@ const restrictedUrsl = [
   "sell-my-ford-probe",
   "sell-my-subaru-impreza",
   "sell-my-subaru-wrx",
-
   "cash-for-cars-columbus-ohio",
   "cash-for-cars-philadelphia",
   "cash-for-cars-pittsburgh",
 ];
+const excludeFAQ = ["sell-my-car-ohio"];
+
 function SEO({ blogs, reviews, car, singleBlog, concierges, seoSlug }) {
   const { initialOffer } = useSelector((state) => state.offer);
   const [isClient, setIsClient] = useState(false);
@@ -309,20 +310,21 @@ function SEO({ blogs, reviews, car, singleBlog, concierges, seoSlug }) {
           </div> */}
         </>
       )}
-
-      <div className="how-it-works pt-4 body-text">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12 col-lg-12 faq right_sidebar_faq">
-              <div className="faqWrapper pagefaqWrapper faq_seo">
-                <div className="faq_for_each ">
-                  <Faq seoSlug={seoSlug} />
+      {!excludeFAQ.includes(seoSlug) && (
+        <div className="how-it-works pt-4 body-text">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12 col-lg-12 faq right_sidebar_faq">
+                <div className="faqWrapper pagefaqWrapper faq_seo">
+                  <div className="faq_for_each ">
+                    <Faq seoSlug={seoSlug} />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
       <div className="read_all">
         <div className="read_hd text-center">
           <h2>Read all about it</h2>
