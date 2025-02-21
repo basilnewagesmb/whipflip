@@ -39,7 +39,7 @@ function Index(props) {
         title="Sell Your Car Online in 3 Steps"
         ogImage={"https://whipflipnow.s3.amazonaws.com/Whipflip+Logo.png"}
       />
-      <HomeBanner reviews={reviews} isClient={isClient} />
+      {/* <HomeBanner reviews={reviews} isClient={isClient} /> */}
       <div className="how-it-works pt-home-100 ">
         <div className="container">
           <div className="secHd text-center">
